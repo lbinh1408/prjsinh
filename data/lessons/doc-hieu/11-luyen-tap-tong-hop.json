@@ -1,0 +1,185 @@
+{
+  "id": "doc-hieu.11-luyen-tap-tong-hop",
+  "title": "Luyện tập tổng hợp",
+  "version": "1.0",
+  "enabled": true,
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "format": "essay",
+        "content": "Một người ăn xin già lọm khọm đứng ngay trước mặt tôi. Đôi mắt ông đỏ hoe, nước mắt giàn giụa, đôi môi tái nhợt, quần áo tả tơi. Ông chìa bàn tay sưng húp, bẩn thỉu ra cầu xin cứu giúp.<br>Tôi lục hết túi nọ đến túi kia, không có lấy một đồng xu, không có cả khăn tay, chẳng có gì hết. Ông lão vẫn đợi tôi. Tôi chẳng biết làm thế nào. Bàn tay tôi run run nắm chặt lấy bàn tay run rẩy của ông:<br>– Xin ông đừng giận cháu! Cháu không có gì cho ông cả.<br>Ông lão nhìn tôi chằm chằm, đôi môi nở nụ cười:<br>– Cháu ơi, cảm ơn cháu! Như vậy là cháu đã cho lão rồi.<br>Khi ấy, tôi chợt hiểu ra: cả tôi nữa, tôi cũng vừa nhận được một chút gì của ông lão.<br><i>(Theo Tuốc-ghê-nhép, Người ăn xin)</i>",
+        "guide": [
+          "Chú ý đại từ nhân xưng.",
+          "Chú ý các câu thoại và hành động của nhân vật."
+        ],
+        "hint": "Văn bản kể về cuộc gặp gỡ xúc động giữa cậu bé và ông lão ăn xin, qua đó làm bật lên bài học về sự đồng cảm.",
+        "title": "Đọc hiểu văn bản",
+        "instruction": "Đọc kỹ đoạn trích sau và chuẩn bị trả lời các câu hỏi bên dưới:",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Phương thức biểu đạt CHÍNH của văn bản trên là gì?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Miêu tả"
+          },
+          {
+            "id": "B",
+            "text": "Biểu cảm"
+          },
+          {
+            "id": "C",
+            "text": "Tự sự"
+          },
+          {
+            "id": "D",
+            "text": "Nghị luận"
+          }
+        ],
+        "answer": "C",
+        "title": "Câu 1: Phương thức biểu đạt",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Câu chuyện được kể theo ngôi thứ mấy?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Ngôi thứ nhất (người kể xưng 'tôi')"
+          },
+          {
+            "id": "B",
+            "text": "Ngôi thứ hai (trò chuyện trực tiếp)"
+          },
+          {
+            "id": "C",
+            "text": "Ngôi thứ ba (người kể giấu mình)"
+          },
+          {
+            "id": "D",
+            "text": "Kết hợp ngôi thứ nhất và ngôi thứ ba"
+          }
+        ],
+        "answer": "A",
+        "title": "Câu 2: Ngôi kể",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Một người ăn xin già lọm khọm đứng ngay trước mặt tôi.",
+          "– Xin ông đừng giận cháu! Cháu không có gì cho ông cả.",
+          "Ông lão nhìn tôi chằm chằm, đôi môi nở nụ cười:",
+          "– Cháu ơi, cảm ơn cháu! Như vậy là cháu đã cho lão rồi."
+        ],
+        "right": [
+          "Lời nhân vật",
+          "Lời người kể"
+        ],
+        "answer": {
+          "Một người ăn xin già lọm khọm đứng ngay trước mặt tôi.": "Lời người kể",
+          "– Xin ông đừng giận cháu! Cháu không có gì cho ông cả.": "Lời nhân vật",
+          "Ông lão nhìn tôi chằm chằm, đôi môi nở nụ cười:": "Lời người kể",
+          "– Cháu ơi, cảm ơn cháu! Như vậy là cháu đã cho lão rồi.": "Lời nhân vật"
+        },
+        "title": "Câu 3: Phân loại lời kể",
+        "instruction": "Kéo các câu sau vào đúng nhóm của chúng:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step05",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Hành động 'Bàn tay tôi run run nắm chặt lấy bàn tay run rẩy của ông' mang ý nghĩa gì sâu sắc nhất?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Thể hiện sự sợ hãi của cậu bé trước ông lão ăn xin."
+          },
+          {
+            "id": "B",
+            "text": "Thể hiện sự đồng cảm, xót thương và sự tôn trọng chân thành từ trái tim cậu bé dành cho ông lão."
+          },
+          {
+            "id": "C",
+            "text": "Cậu bé muốn kiểm tra xem tay ông lão có lạnh không."
+          },
+          {
+            "id": "D",
+            "text": "Để che giấu việc mình không có tiền cho ông lão."
+          }
+        ],
+        "answer": "B",
+        "title": "Câu 4: Chi tiết nghệ thuật",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Qua câu chuyện trên, tác giả muốn gửi gắm thông điệp gì đến người đọc?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Nên cẩn thận với những người ăn xin trên phố."
+          },
+          {
+            "id": "B",
+            "text": "Sự cho và nhận trong cuộc sống đôi khi không phải là vật chất, mà là sự đồng cảm, tình yêu thương chân thành."
+          },
+          {
+            "id": "C",
+            "text": "Ra đường luôn phải mang theo tiền để giúp đỡ người khác."
+          },
+          {
+            "id": "D",
+            "text": "Lời cảm ơn luôn là điều cần thiết trong giao tiếp."
+          }
+        ],
+        "answer": "B",
+        "title": "Câu 5: Thông điệp",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "flashcard",
+      "data": {
+        "front": "Bí quyết làm bài Đọc hiểu tổng hợp là gì?",
+        "back": "Đọc kỹ ngữ liệu, phân biệt rõ các yếu tố hình thức (ngôi kể, ptbđ) và cảm nhận sâu sắc nội dung (chi tiết, thông điệp).",
+        "completedWhen": "flipped",
+        "title": "Tổng kết",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "doc-hieu",
+    "difficulty": 3,
+    "xp": 100,
+    "stars": 3,
+    "description": "Ôn tập và vận dụng tổng hợp các kỹ năng đọc hiểu: xác định phương thức biểu đạt, ngôi kể, chi tiết nghệ thuật và thông điệp.",
+    "durationMinutes": 25
+  }
+}

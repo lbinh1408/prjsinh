@@ -1,0 +1,833 @@
+{
+  "id": "viet-bai-03",
+  "title": "Lập dàn ý — Sắp xếp những gì mình có",
+  "type": "skill",
+  "version": "1.0.0",
+  "meta": {
+    "module": "viet-bai-van",
+    "lessonNumber": 3,
+    "durationMinutes": 360,
+    "difficulty": "beginner",
+    "skill": "lap-dan-y",
+    "description": "Học cách chọn, sắp xếp và kiểm tra các ý để tạo thành một dàn ý rõ ràng, phù hợp với từng kiểu bài."
+  },
+  "learningGoals": [
+    "Hiểu dàn ý là cách tổ chức các ý trước khi viết.",
+    "Biết lựa chọn những ý phù hợp với yêu cầu của đề.",
+    "Biết sắp xếp ý theo một trình tự hợp lí.",
+    "Nhận ra mỗi kiểu bài có cách tổ chức ý khác nhau.",
+    "Biết lập dàn ý cho bài miêu tả.",
+    "Biết lập dàn ý cho bài tự sự.",
+    "Biết lập dàn ý cho bài biểu cảm.",
+    "Biết lập dàn ý cho bài nghị luận xã hội.",
+    "Biết lập dàn ý cho bài nghị luận văn học.",
+    "Biết kiểm tra xem dàn ý đã đủ ý và có mạch lạc hay chưa."
+  ],
+  "completion": {
+    "requiredSections": [
+      "story",
+      "observe",
+      "discover",
+      "teach",
+      "guidedPractice",
+      "miniChallenge",
+      "reflection",
+      "cheatSheet",
+      "finalChallenge"
+    ],
+    "action": "completeLesson",
+    "message": "🎉 Có ý rồi chưa đủ. Hãy biết sắp xếp ý để người đọc có thể đi theo mạch suy nghĩ của em."
+  },
+  "steps": [
+    {
+      "id": "story_01",
+      "type": "story",
+      "data": {
+        "title": "Có rất nhiều ý nhưng vẫn không biết viết từ đâu?",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "split_compare",
+          "layout": "two_columns",
+          "question": "Hai bạn đều có những ý giống nhau. Nhưng dàn ý nào giúp việc viết dễ dàng hơn?"
+        },
+        "content": {
+          "prompt": "Hãy quan sát hai cách sắp xếp ý dưới đây.",
+          "left": {
+            "label": "ĐOẠN A — Ý ĐẾN ĐÂU VIẾT ĐẾN ĐÓ",
+            "paragraph": "- Bạn ấy rất vui.<br>- Sân trường có nhiều cây.<br>- Hôm đó trời đẹp.<br>- Em nhớ cô giáo.<br>- Các bạn cùng chơi.<br>- Em thấy ngày khai trường thật đáng nhớ."
+          },
+          "right": {
+            "label": "ĐOẠN B — CÓ SẮP XẾP",
+            "paragraph": "Mở đầu:<br> - Giới thiệu ngày khai trường.<br>Diễn biến:<br> - Cảnh sân trường và hoạt động của học sinh.<br> Điểm đáng nhớ:<br> - Gặp cô giáo, chơi cùng bạn bè.<br>Kết thúc:<br> - Cảm xúc của em về ngày khai trường."
+          }
+        },
+        "interaction": {
+          "type": "choice",
+          "choices": [
+            {
+              "id": "a",
+              "text": "ĐOẠN A",
+              "correct": false
+            },
+            {
+              "id": "b",
+              "text": "ĐOẠN B",
+              "correct": true
+            }
+          ],
+          "feedback": {
+            "correct": "✓ Đúng. Khi ý được sắp xếp thành một trình tự, em sẽ biết mình cần viết gì trước, gì sau.",
+            "incorrect": "△ Hãy thử xem cách nào tạo được một đường đi rõ ràng cho người viết."
+          }
+        },
+        "reveal": {
+          "title": "💡 Điều quan trọng",
+          "text": "Lập dàn ý không phải là viết bài trước. Đó là sắp xếp những điều mình muốn nói thành một mạch hợp lí."
+        }
+      }
+    },
+    {
+      "id": "observe_01",
+      "type": "observe",
+      "data": {
+        "title": "Một dàn ý được hình thành như thế nào?",
+        "durationSeconds": 150,
+        "ui": {
+          "component": "paragraph_highlight",
+          "interaction": "tap_sentence",
+          "question": "Hãy nhấn vào từng phần để xem nó đang làm nhiệm vụ gì."
+        },
+        "content": {
+          "prompt": "Ví dụ: Lập dàn ý cho bài viết về một người bạn.",
+          "paragraph": [
+            {
+              "id": "s1",
+              "text": "Giới thiệu người bạn mà em muốn kể.",
+              "role": "opening",
+              "roleLabel": "🎯 MỞ ĐẦU",
+              "feedback": "Phần này xác định đối tượng và giúp người đọc biết em sẽ viết về ai."
+            },
+            {
+              "id": "s2",
+              "text": "--> Giới thiệu một vài đặc điểm nổi bật của người bạn.",
+              "role": "development",
+              "roleLabel": "🌿 TRIỂN KHAI",
+              "feedback": "Phần này đưa những ý chính cần phát triển."
+            },
+            {
+              "id": "s3",
+              "text": "--> Kể một kỉ niệm đáng nhớ giữa em và bạn.",
+              "role": "detail",
+              "roleLabel": "🔎 CHI TIẾT",
+              "feedback": "Chi tiết cụ thể giúp bài viết có hình ảnh và không bị chung chung."
+            },
+            {
+              "id": "s4",
+              "text": "--> Nêu cảm nghĩ của em về người bạn.",
+              "role": "reflection",
+              "roleLabel": "❤️ CẢM NHẬN",
+              "feedback": "Phần này giúp bài viết thể hiện suy nghĩ và tình cảm của người viết."
+            },
+            {
+              "id": "s5",
+              "text": "--> Khẳng định ý nghĩa của tình bạn.",
+              "role": "close",
+              "roleLabel": "🎯 KẾT",
+              "feedback": "Phần kết khép lại mạch viết và để lại suy nghĩ."
+            }
+          ]
+        },
+        "reveal": {
+          "title": "Em vừa nhìn thấy gì?",
+          "text": "Một dàn ý tốt không phải là danh sách ý rời rạc. Các ý phải được sắp xếp thành một trình tự phù hợp với kiểu bài và yêu cầu của đề."
+        }
+      }
+    },
+    {
+      "id": "discover_01",
+      "type": "discover",
+      "data": {
+        "title": "Cùng một ý nhưng có thể sắp xếp khác nhau",
+        "durationSeconds": 150,
+        "ui": {
+          "component": "card_to_slot",
+          "interaction": "tap_to_place"
+        },
+        "content": {
+          "prompt": "Hãy ghép mỗi kiểu bài với cách tổ chức ý phù hợp.",
+          "slots": [
+            {
+              "id": "description",
+              "label": "🌿 MIÊU TẢ",
+              "question": "Nên tổ chức ý như thế nào?"
+            },
+            {
+              "id": "narrative",
+              "label": "📖 TỰ SỰ",
+              "question": "Nên tổ chức ý như thế nào?"
+            },
+            {
+              "id": "expression",
+              "label": "❤️ BIỂU CẢM",
+              "question": "Nên tổ chức ý như thế nào?"
+            },
+            {
+              "id": "social_argument",
+              "label": "💡 NGHỊ LUẬN XÃ HỘI",
+              "question": "Nên tổ chức ý như thế nào?"
+            },
+            {
+              "id": "literary_argument",
+              "label": "📚 NGHỊ LUẬN VĂN HỌC",
+              "question": "Nên tổ chức ý như thế nào?"
+            }
+          ],
+          "cards": [
+            {
+              "id": "description_card",
+              "target": "description",
+              "correct": true,
+              "slotText": "Đối tượng → bao quát → các đặc điểm/chi tiết → cảm nhận.",
+              "feedback": "✓ Đúng. Miêu tả cần giúp người đọc hình dung đối tượng.",
+              "label": "Đối tượng → bao quát → các đặc điểm/chi tiết → cảm nhận."
+            },
+            {
+              "id": "narrative_card",
+              "target": "narrative",
+              "correct": true,
+              "slotText": "Mở đầu → diễn biến → sự việc nổi bật/cao trào → kết thúc.",
+              "feedback": "✓ Đúng. Tự sự cần tạo được một mạch sự việc.",
+              "label": "Mở đầu → diễn biến → sự việc nổi bật/cao trào → kết thúc."
+            },
+            {
+              "id": "expression_card",
+              "target": "expression",
+              "correct": true,
+              "slotText": "Đối tượng → cảm xúc → kỉ niệm/chi tiết gợi cảm → suy nghĩ → dư âm.",
+              "feedback": "✓ Đúng. Biểu cảm cần tạo được mạch cảm xúc.",
+              "label": "Đối tượng → cảm xúc → kỉ niệm/chi tiết gợi cảm → suy nghĩ → dư âm."
+            },
+            {
+              "id": "social_argument_card",
+              "target": "social_argument",
+              "correct": true,
+              "slotText": "Nêu vấn đề → giải thích → lí lẽ/dẫn chứng → bàn luận → bài học/nhận thức.",
+              "feedback": "✓ Đúng. Nghị luận xã hội cần tổ chức các luận điểm để làm sáng tỏ vấn đề.",
+              "label": "Nêu vấn đề → giải thích → lí lẽ/dẫn chứng → bàn luận → bài học/nhận thức."
+            },
+            {
+              "id": "literary_argument_card",
+              "target": "literary_argument",
+              "correct": true,
+              "slotText": "Nêu vấn đề → bằng chứng từ tác phẩm → phân tích → ý nghĩa → nhận xét.",
+              "feedback": "✓ Đúng. Nghị luận văn học phải dựa vào chính tác phẩm để làm sáng tỏ nhận xét.",
+              "label": "Nêu vấn đề → bằng chứng từ tác phẩm → phân tích → ý nghĩa → nhận xét."
+            },
+            {
+              "id": "wrong_card",
+              "target": null,
+              "correct": false,
+              "slotText": "Có ý gì thì viết ý đó trước.",
+              "feedback": "△ Có ý chưa có nghĩa là đã có dàn ý. Em cần quyết định ý nào đi trước, ý nào đi sau.",
+              "label": "Có ý gì thì viết ý đó trước."
+            }
+          ]
+        },
+        "reveal": {
+          "title": "🔎 Phát hiện quan trọng",
+          "text": "Không có một chiếc khuôn dàn ý duy nhất cho mọi bài. Trình tự sắp xếp ý phải phục vụ kiểu bài và yêu cầu của đề."
+        }
+      }
+    },
+    {
+      "id": "teach_01",
+      "type": "teach",
+      "data": {
+        "title": "6 KIỂU BÀI — 6 CÁCH TỔ CHỨC Ý",
+        "durationSeconds": 360,
+        "ui": {
+          "component": "vertical_map",
+          "interaction": "click_node",
+          "center": "LẬP DÀN Ý"
+        },
+        "prompt": "Hãy lần lượt khám phá cách tổ chức dàn ý của từng kiểu bài.",
+        "nodes": [
+          {
+            "id": "description",
+            "icon": "🌿",
+            "title": "MIÊU TẢ",
+            "short": "Giúp người đọc hình dung",
+            "question": "Em đang muốn người đọc nhìn thấy điều gì?",
+            "example": "Đề: Tả một cây phượng trong sân trường.",
+            "outline": [
+              "Giới thiệu cây phượng.",
+              "Tả bao quát: vị trí, kích thước, dáng cây.",
+              "Tả các đặc điểm nổi bật: thân, cành, lá, hoa.",
+              "Tả một vài hình ảnh/chi tiết đặc biệt.",
+              "Nêu cảm nhận về cây phượng."
+            ],
+            "importantNote": "Có thể sắp xếp từ bao quát đến cụ thể, từ ngoài vào trong hoặc theo trình tự quan sát."
+          },
+          {
+            "id": "narrative",
+            "icon": "📖",
+            "title": "TỰ SỰ",
+            "short": "Tạo thành mạch sự việc",
+            "question": "Chuyện gì xảy ra trước, chuyện gì xảy ra sau?",
+            "example": "Đề: Kể lại một kỉ niệm đáng nhớ với người bạn.",
+            "outline": [
+              "Giới thiệu hoàn cảnh và sự việc.",
+              "Sự việc bắt đầu.",
+              "Các diễn biến chính.",
+              "Sự việc nổi bật/cao trào.",
+              "Kết thúc sự việc.",
+              "Suy nghĩ hoặc bài học sau câu chuyện."
+            ],
+            "importantNote": "Không nhất thiết kể mọi sự việc. Chỉ giữ những sự việc cần thiết để làm nổi bật câu chuyện."
+          },
+          {
+            "id": "expression",
+            "icon": "❤️",
+            "title": "BIỂU CẢM",
+            "short": "Tạo thành mạch cảm xúc",
+            "question": "Cảm xúc của em phát triển như thế nào?",
+            "example": "Đề: Viết bài văn bày tỏ tình cảm với mẹ.",
+            "outline": [
+              "Giới thiệu đối tượng và cảm xúc ban đầu.",
+              "Nêu những đặc điểm/chi tiết khiến em xúc động.",
+              "Kể một kỉ niệm hoặc hình ảnh gợi cảm xúc.",
+              "Từ chi tiết → suy nghĩ, cảm nhận.",
+              "Làm sâu tình cảm.",
+              "Kết lại bằng một dư âm hoặc lời nhắn gửi."
+            ],
+            "importantNote": "Biểu cảm không phải liệt kê hàng loạt lời yêu thương. Các ý cần nối thành một mạch cảm xúc."
+          },
+          {
+            "id": "social_argument",
+            "icon": "💡",
+            "title": "NGHỊ LUẬN XÃ HỘI",
+            "short": "Tạo thành mạch lập luận",
+            "question": "Em cần làm sáng tỏ vấn đề bằng những lí lẽ nào?",
+            "example": "Đề: Suy nghĩ về ý nghĩa của lòng biết ơn.",
+            "outline": [
+              "Nêu vấn đề.",
+              "Giải thích khái niệm.",
+              "Nêu biểu hiện hoặc thực trạng.",
+              "Phân tích vai trò/ý nghĩa bằng lí lẽ.",
+              "Đưa dẫn chứng thực tế.",
+              "Bàn luận, mở rộng hoặc phản đề.",
+              "Rút ra nhận thức và hành động."
+            ],
+            "importantNote": "Không phải đề nghị luận xã hội nào cũng cần đủ tất cả các mục. Hãy chọn những phần phù hợp với yêu cầu đề."
+          },
+          {
+            "id": "literary_argument",
+            "icon": "📚",
+            "title": "NGHỊ LUẬN VĂN HỌC",
+            "short": "Dùng tác phẩm để chứng minh",
+            "question": "Chi tiết nào trong tác phẩm giúp em làm sáng tỏ nhận xét?",
+            "example": "Đề: Phân tích tình yêu làng của ông Hai trong truyện ngắn Làng.",
+            "outline": [
+              "Nêu vấn đề cần nghị luận.",
+              "Chọn chi tiết/lời nói/hành động/tâm trạng phù hợp.",
+              "Phân tích bằng chứng.",
+              "Giải thích ý nghĩa của chi tiết.",
+              "Liên hệ với đặc điểm nhân vật hoặc nội dung tác phẩm.",
+              "Nhận xét về cách thể hiện của tác giả."
+            ],
+            "importantNote": "Không kể lại tác phẩm. Dẫn chứng phải được đưa vào lập luận và phân tích."
+          },
+          {
+            "id": "exposition",
+            "icon": "📝",
+            "title": "THUYẾT MINH",
+            "short": "Tổ chức thông tin",
+            "question": "Người đọc cần biết những thông tin nào?",
+            "example": "Đề: Thuyết minh về chiếc nón lá Việt Nam.",
+            "outline": [
+              "Giới thiệu đối tượng.",
+              "Nguồn gốc/khái quát.",
+              "Đặc điểm, cấu tạo.",
+              "Cách làm/cách sử dụng.",
+              "Công dụng và giá trị.",
+              "Vị trí/ý nghĩa của đối tượng.",
+              "Kết thúc."
+            ],
+            "importantNote": "Cách sắp xếp có thể theo cấu tạo, trình tự thời gian, quan hệ nguyên nhân – kết quả hoặc từng phương diện."
+          }
+        ],
+        "diagnosticQuestion": "Nếu đổi kiểu bài, cách sắp xếp ý có cần thay đổi không?",
+        "importantNote": "Dàn ý không phải công thức cứng. Mỗi kiểu bài có một logic tổ chức riêng, nhưng trong cùng một kiểu bài cũng có thể có nhiều cách sắp xếp khác nhau."
+      }
+    },
+    {
+      "id": "guidedPractice_01",
+      "type": "guidedPractice",
+      "data": {
+        "title": "Sắp xếp ý thành dàn ý",
+        "durationSeconds": 180,
+        "ui": {
+          "component": "builder",
+          "interaction": "type_to_place"
+        },
+        "prompt": "Hãy sắp xếp các ý sau thành dàn ý hợp lí.",
+        "content": {
+          "prompt": "Đề: Tả cây phượng trong sân trường.",
+          "slots": [
+            {
+              "id": "opening",
+              "label": "🌱 MỞ ĐẦU",
+              "question": "Giới thiệu đối tượng.",
+              "hint": "Một sự việc cụ thể."
+            },
+            {
+              "id": "overview",
+              "label": "🌿 BAO QUÁT",
+              "question": "Tả cây nhìn chung.",
+              "hint": "tả bao quát"
+            },
+            {
+              "id": "details",
+              "label": "🔎 CHI TIẾT",
+              "question": "Tả các đặc điểm nổi bật.",
+              "hint": "Tả từng đặc điểm cụ thể"
+            },
+            {
+              "id": "special",
+              "label": "🌺 HÌNH ẢNH ĐẶC BIỆT",
+              "question": "Chi tiết gây ấn tượng.",
+              "hint": "Tả tập trung đặc điểm đặc biệt."
+            },
+            {
+              "id": "feeling",
+              "label": "❤️ CẢM NHẬN",
+              "question": "Nêu cảm nghĩ.",
+              "hint": "Nêu đánh giá"
+            }
+          ],
+          "cards": [
+            {
+              "id": "opening",
+              "target": "opening",
+              "correct": true,
+              "slotText": "Giới thiệu cây phượng già ở góc sân trường.",
+              "feedback": "✓ Đúng. Trước tiên cần xác định đối tượng.",
+              "label": "Giới thiệu chung"
+            },
+            {
+              "id": "overview",
+              "target": "overview",
+              "correct": true,
+              "slotText": "Cây phượng cao lớn, tán cây xòe rộng như một chiếc ô.",
+              "feedback": "✓ Đúng. Đây là phần tả bao quát.",
+              "label": "Tả bao quát"
+            },
+            {
+              "id": "details",
+              "target": "details",
+              "correct": true,
+              "slotText": "Tả thân cây, cành cây, lá và những chùm hoa đỏ.",
+              "feedback": "✓ Đúng. Đây là phần triển khai các đặc điểm cụ thể.",
+              "label": "Tả chi tiết"
+            },
+            {
+              "id": "special",
+              "target": "special",
+              "correct": true,
+              "slotText": "Mỗi khi ve kêu, những chùm hoa đỏ rực khiến góc sân như bừng sáng.",
+              "feedback": "✓ Đúng. Chi tiết đặc biệt giúp bài miêu tả có hình ảnh.",
+              "label": "Tả điểm đặc biệt"
+            },
+            {
+              "id": "feeling",
+              "target": "feeling",
+              "correct": true,
+              "slotText": "Em luôn yêu quý cây phượng vì nó gắn với những năm tháng học trò.",
+              "feedback": "✓ Đúng. Cuối cùng có thể đưa cảm nhận về đối tượng.",
+              "label": "Nêu cảm nhận"
+            }
+          ]
+        },
+        "completion": {
+          "button": "Kiểm tra dàn ý",
+          "feedback": {
+            "correct": "✓ Tốt! Các ý đã đi từ giới thiệu → bao quát → chi tiết → điểm nhấn → cảm nhận.",
+            "partial": "△ Một vài ý chưa nằm ở vị trí phù hợp. Hãy hỏi: người đọc cần biết điều gì trước?",
+            "wrong": "△ Hãy bắt đầu bằng việc xác định đối tượng cần viết."
+          }
+        }
+      }
+    },
+    {
+      "id": "miniChallenge_01",
+      "type": "miniChallenge",
+      "data": {
+        "title": "Đổi kiểu bài — đổi cách sắp xếp",
+        "durationSeconds": 150,
+        "ui": {
+          "layout": "single_choice"
+        },
+        "prompt": "Nếu đề chuyển từ “Tả cây phượng” sang “Kể một kỉ niệm với cây phượng”, em có nên giữ nguyên dàn ý không?",
+        "question": "Cách xử lí nào phù hợp nhất?",
+        "choices": [
+          {
+            "id": "same",
+            "text": "Giữ nguyên dàn ý vì cùng nói về cây phượng.",
+            "correct": false
+          },
+          {
+            "id": "change",
+            "text": "Cần thay đổi cách sắp xếp vì kiểu bài đã chuyển từ miêu tả sang tự sự.",
+            "correct": true
+          },
+          {
+            "id": "remove",
+            "text": "Không cần lập dàn ý nữa.",
+            "correct": false
+          }
+        ],
+        "feedback": {
+          "correct": "✓ Chính xác. Đối tượng có thể giống nhau nhưng yêu cầu kiểu bài khác thì cách tổ chức ý cũng phải thay đổi.",
+          "same": "△ Cùng đối tượng không có nghĩa là cùng cách viết.",
+          "remove": "△ Dàn ý vẫn rất hữu ích, đặc biệt khi bài có nhiều ý."
+        }
+      }
+    },
+    {
+      "id": "reflection_01",
+      "type": "reflection",
+      "data": {
+        "title": "Dàn ý của em đang có vấn đề ở đâu?",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "checklist_free_text"
+        },
+        "question": "Trước khi bắt đầu viết, em sẽ kiểm tra dàn ý của mình như thế nào?",
+        "choices": [
+          {
+            "id": "requirement",
+            "text": "🎯 Dàn ý đã bám đúng yêu cầu của đề chưa?"
+          },
+          {
+            "id": "enough",
+            "text": "💡 Các ý quan trọng đã đủ chưa?"
+          },
+          {
+            "id": "order",
+            "text": "🔗 Các ý đã được sắp xếp hợp lí chưa?"
+          },
+          {
+            "id": "repetition",
+            "text": "♻️ Có ý nào trùng hoặc không cần thiết không?"
+          },
+          {
+            "id": "type",
+            "text": "🧩 Cách tổ chức có phù hợp với kiểu bài không?"
+          }
+        ],
+        "freeText": {
+          "label": "Em sẽ kiểm tra...",
+          "placeholder": "Ví dụ: Em sẽ xem các ý đã đúng kiểu bài và có đi theo một trình tự rõ ràng chưa..."
+        },
+        "metacognition": "Một dàn ý tốt không phải là dàn ý có thật nhiều ý. Đó là dàn ý có những ý cần thiết, được sắp xếp theo một logic rõ ràng."
+      }
+    },
+    {
+      "id": "cheatSheet_01",
+      "type": "cheatSheet",
+      "data": {
+        "title": "GHI NHỚ: LẬP DÀN Ý",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "card_list",
+          "actions": [
+            "save",
+            "download"
+          ]
+        },
+        "items": [
+          {
+            "order": 1,
+            "icon": "🎯",
+            "title": "BÁM ĐỀ",
+            "question": "Đề yêu cầu mình viết gì?"
+          },
+          {
+            "order": 2,
+            "icon": "💡",
+            "title": "CHỌN Ý",
+            "question": "Ý nào thật sự cần thiết?"
+          },
+          {
+            "order": 3,
+            "icon": "🔗",
+            "title": "SẮP XẾP",
+            "question": "Ý nào đi trước, ý nào đi sau?"
+          },
+          {
+            "order": 4,
+            "icon": "🧩",
+            "title": "ĐÚNG KIỂU BÀI",
+            "question": "Cách tổ chức này có phù hợp với kiểu bài không?"
+          },
+          {
+            "order": 5,
+            "icon": "🔍",
+            "title": "KIỂM TRA MẠCH",
+            "question": "Đọc dàn ý có thấy một đường đi rõ ràng không?"
+          }
+        ],
+        "keyMessage": "⭐ Tìm ý là có nguyên liệu. Lập dàn ý là sắp nguyên liệu thành một món hoàn chỉnh.",
+        "note": "Không có một công thức dàn ý duy nhất cho mọi bài. Hãy luôn bắt đầu từ yêu cầu của đề và kiểu bài.",
+        "typeMap": [
+          {
+            "type": "Miêu tả",
+            "formula": "Đối tượng → Bao quát → Chi tiết → Điểm nhấn → Cảm nhận"
+          },
+          {
+            "type": "Tự sự",
+            "formula": "Mở đầu → Diễn biến → Điểm nổi bật/Cao trào → Kết thúc → Suy nghĩ"
+          },
+          {
+            "type": "Biểu cảm",
+            "formula": "Đối tượng → Cảm xúc → Chi tiết/Kỉ niệm → Suy nghĩ → Làm sâu → Dư âm"
+          },
+          {
+            "type": "Nghị luận xã hội",
+            "formula": "Vấn đề → Giải thích → Lí lẽ/Dẫn chứng → Bàn luận → Bài học"
+          },
+          {
+            "type": "Nghị luận văn học",
+            "formula": "Vấn đề → Bằng chứng → Phân tích → Ý nghĩa → Nhận xét"
+          },
+          {
+            "type": "Thuyết minh",
+            "formula": "Đối tượng → Đặc điểm → Thông tin → Công dụng/Giá trị → Kết"
+          }
+        ],
+        "practiceButton": {
+          "label": "🛠️ Thử lập dàn ý",
+          "action": "open_mini_practice"
+        }
+      }
+    },
+    {
+      "id": "finalChallenge_01",
+      "type": "finalChallenge",
+      "data": {
+        "title": "THỬ THÁCH: LẬP DÀN Ý CHO MỘT ĐỀ MỚI",
+        "durationSeconds": 180,
+        "ui": {
+          "component": "multi_stage_challenge",
+          "layout": "multi_stage"
+        },
+        "prompt": "Hãy lập dàn ý cho một đề mới hoàn toàn.",
+        "stages": [
+          {
+            "key": "type",
+            "type": "single_choice",
+            "title": "🎯 BƯỚC 1 — XÁC ĐỊNH KIỂU BÀI",
+            "question": "Đề sau thuộc kiểu bài nào?",
+            "prompt": "Hãy kể lại một kỉ niệm đáng nhớ khiến em thay đổi cách nhìn về một người bạn.",
+            "choices": [
+              {
+                "id": "description",
+                "label": "🌿 Miêu tả",
+                "correct": false
+              },
+              {
+                "id": "narrative",
+                "label": "📖 Tự sự",
+                "correct": true
+              },
+              {
+                "id": "expression",
+                "label": "❤️ Biểu cảm",
+                "correct": false
+              },
+              {
+                "id": "argument",
+                "label": "💡 Nghị luận",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "key": "ideas",
+            "type": "multi_select",
+            "title": "💡 BƯỚC 2 — CHỌN Ý",
+            "question": "Những ý nào cần thiết cho đề này?",
+            "minSelections": 2,
+            "maxSelections": 4,
+            "cards": [
+              {
+                "id": "situation",
+                "text": "Hoàn cảnh xảy ra kỉ niệm.",
+                "correct": true
+              },
+              {
+                "id": "event",
+                "text": "Các sự việc chính của kỉ niệm.",
+                "correct": true
+              },
+              {
+                "id": "change",
+                "text": "Điều khiến em thay đổi cách nhìn về người bạn.",
+                "correct": true
+              },
+              {
+                "id": "ending",
+                "text": "Kết thúc câu chuyện và suy nghĩ của em.",
+                "correct": true
+              },
+              {
+                "id": "unrelated",
+                "text": "Mô tả toàn bộ ngôi trường.",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "key": "outline",
+            "type": "card_to_slot",
+            "title": "🔗 BƯỚC 3 — XẾP DÀN Ý",
+            "prompt": "Đưa các ý vào đúng vị trí để tạo thành mạch kể chuyện.",
+            "slots": [
+              {
+                "id": "opening",
+                "label": "🌱 MỞ ĐẦU",
+                "question": "Hoàn cảnh và chuyện gì đã xảy ra?",
+                "hint": "Giới thiệu hoàn cảnh và câu chuyện."
+              },
+              {
+                "id": "development",
+                "label": "📖 DIỄN BIẾN",
+                "question": "Các sự việc chính của kỉ niệm?",
+                "hint": "Các sự việc chính."
+              },
+              {
+                "id": "turning",
+                "label": "⚡ ĐIỂM NỔI BẬT",
+                "question": "Điều gì khiến em thay đổi cách nhìn?",
+                "hint": "Sự việc làm thay đổi cách nhìn."
+              },
+              {
+                "id": "ending",
+                "label": "🌙 KẾT",
+                "question": "Kết thúc câu chuyện và suy nghĩ của em?",
+                "hint": "Kết thúc và suy nghĩ."
+              }
+            ],
+            "cards": [
+              {
+                "id": "opening",
+                "target": "opening",
+                "correct": true,
+                "slotText": "Giới thiệu người bạn và hoàn cảnh xảy ra kỉ niệm.",
+                "feedback": "✓ Đây là mở bài của bài viết.",
+                "label": "📖 Mở bài"
+              },
+              {
+                "id": "development",
+                "target": "development",
+                "correct": true,
+                "slotText": "Kể lại những sự việc chính diễn ra giữa em và bạn.",
+                "feedback": "✓ Đây là thân bài 1 của bài viết.",
+                "label": "📖 Thân bài 1"
+              },
+              {
+                "id": "turning",
+                "target": "turning",
+                "correct": true,
+                "slotText": "Một hành động của bạn khiến em bất ngờ và nhận ra mình đã hiểu sai về bạn.",
+                "feedback": "✓ Đây là thân bài 2 của bài viết.",
+                "label": "📖 Thân bài 2"
+              },
+              {
+                "id": "ending",
+                "target": "ending",
+                "correct": true,
+                "slotText": "Em thay đổi cách nhìn và càng trân trọng tình bạn.",
+                "feedback": "✓ Đây là kết bài của bài viết.",
+                "label": "📖 Kết bài"
+              }
+            ]
+          },
+          {
+            "key": "writing",
+            "type": "editor",
+            "title": "✍️ BƯỚC 4 — VIẾT DÀN Ý",
+            "placeholder": "Viết dàn ý của em...",
+            "minCharacters": 80,
+            "maxCharacters": 600,
+            "submit": {
+              "label": "🚀 Kiểm tra dàn ý"
+            }
+          },
+          {
+            "key": "analysis",
+            "type": "analysis",
+            "title": "🧠 HỒ SƠ DÀN Ý",
+            "metrics": [
+              {
+                "id": "requirement",
+                "label": "Bám yêu cầu đề",
+                "status": "detect"
+              },
+              {
+                "id": "ideas",
+                "label": "Đủ ý chính",
+                "status": "detect"
+              },
+              {
+                "id": "order",
+                "label": "Trình tự hợp lí",
+                "status": "detect"
+              },
+              {
+                "id": "type",
+                "label": "Đúng kiểu bài",
+                "status": "detect"
+              },
+              {
+                "id": "coherence",
+                "label": "Mạch rõ ràng",
+                "status": "detect"
+              }
+            ],
+            "diagnosticQuestion": "Nếu người khác chỉ nhìn vào dàn ý này, họ có thể hình dung được em sẽ viết bài theo đường đi nào không?",
+            "feedbackRules": [
+              {
+                "when": "missing_requirement",
+                "feedback": "△ Dàn ý chưa bám rõ yêu cầu của đề."
+              },
+              {
+                "when": "missing_ideas",
+                "feedback": "△ Em còn thiếu một hoặc vài ý quan trọng."
+              },
+              {
+                "when": "bad_order",
+                "feedback": "△ Một số ý chưa được sắp xếp theo trình tự hợp lí."
+              },
+              {
+                "when": "wrong_type",
+                "feedback": "△ Cách tổ chức ý chưa phù hợp với kiểu bài."
+              },
+              {
+                "when": "good_outline",
+                "feedback": "✓ Dàn ý đã tạo được một đường đi rõ ràng từ mở đầu đến kết thúc."
+              }
+            ],
+            "scoreDimensions": [
+              "requirement",
+              "ideas",
+              "order",
+              "type",
+              "coherence"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,417 @@
+{
+    "id": "so-sanh-lien-he.02-lien-he-cung-de-tai",
+    "title": "Liên hệ tác phẩm cùng đề tài",
+    "type": "skill",
+    "version": "1.0.0",
+    "meta": {
+        "module": "so-sanh-lien-he",
+        "lessonNumber": 2,
+        "durationMinutes": 45,
+        "difficulty": 4,
+        "skill": "ky-nang-lien-he-cung-de-tai",
+        "description": "Học cách liên hệ, đối chiếu các tác phẩm có cùng đề tài (người lính, người phụ nữ, tình cảm gia đình...) để thấy được sự phong phú của văn học và dấu ấn sáng tạo riêng của từng tác giả."
+    },
+    "learningGoals": [
+        "Hiểu đề tài là gì và vì sao nên liên hệ các tác phẩm cùng đề tài.",
+        "Nhận biết được một số đề tài lớn trong chương trình Ngữ văn (người lính, người phụ nữ, tình cảm gia đình, quê hương...).",
+        "Nắm vững các bước so sánh điểm tương đồng và khác biệt khi cùng viết về một đề tài.",
+        "Thực hành viết được một đoạn văn liên hệ mở rộng cùng đề tài một cách thuyết phục."
+    ],
+    "completion": {
+        "requiredSections": [
+            "story_01",
+            "observe_01",
+            "teach_01",
+            "teach_02",
+            "guidedPractice_01",
+            "miniChallenge_01",
+            "reflection_01",
+            "cheatSheet_01"
+        ],
+        "action": "completeLesson",
+        "message": "Em đã hoàn thành bài Liên hệ tác phẩm cùng đề tài. Hãy nhớ: Cùng một mảnh đất hiện thực, nhưng mỗi nhà văn sẽ gieo một hạt giống sáng tạo riêng để tạo nên những bông hoa khác biệt."
+    },
+    "steps": [
+        {
+            "id": "story_01",
+            "type": "story",
+            "data": {
+                "title": "Cùng một vầng trăng, hai góc nhìn",
+                "durationSeconds": 120,
+                "ui": {
+                    "component": "split_compare",
+                    "layout": "two_columns",
+                    "question": "Vì sao cùng viết về vầng trăng, nhưng mỗi bài thơ lại mang đến một cảm xúc khác biệt?"
+                },
+                "content": {
+                    "left": {
+                        "label": "Đồng chí (Chính Hữu)",
+                        "paragraph": "'Đầu súng trăng treo'. Trăng là biểu tượng cho vẻ đẹp hòa bình, lãng mạn, soi sáng tình đồng chí gắn bó trong đêm phục kích giặc giữa rừng hoang sương muối."
+                    },
+                    "right": {
+                        "label": "Ánh trăng (Nguyễn Duy)",
+                        "paragraph": "'Ngửa mặt lên nhìn mặt/có cái gì rưng rưng'. Trăng là người bạn tri kỷ của quá khứ, là tấm gương soi chiếu để thức tỉnh lương tâm con người về đạo lý 'uống nước nhớ nguồn'."
+                    }
+                },
+                "interaction": {
+                    "type": "compare",
+                    "options": [
+                        "Vì các nhà văn đã copy ý tưởng của nhau.",
+                        "Vì trăng trong văn học không có ý nghĩa thực tế.",
+                        "Vì tuy cùng đề tài (vầng trăng), nhưng mỗi nhà văn lại có những trải nghiệm và gửi gắm những suy ngẫm, triết lý riêng."
+                    ],
+                    "correct": 2
+                },
+                "reveal": {
+                    "title": "Sự đa dạng của văn học",
+                    "text": "Liên hệ cùng đề tài giúp ta thấy được sự phong phú của thế giới nghệ thuật. Cùng viết về một đối tượng, một phạm vi hiện thực (đề tài), nhưng mỗi tác giả lại có một góc nhìn, một 'nhãn quan' độc đáo."
+                }
+            }
+        },
+        {
+            "id": "observe_01",
+            "type": "matching",
+            "validator": "matchValidator",
+            "data": {
+                "left": [
+                    "Đồng chí (Chính Hữu) và Bài thơ về tiểu đội xe không kính (Phạm Tiến Duật)",
+                    "Chuyện người con gái Nam Xương (Nguyễn Dữ) và Truyện Kiều (Nguyễn Du)",
+                    "Bếp lửa (Bằng Việt) và Khúc hát ru những em bé lớn trên lưng mẹ (Nguyễn Khoa Điềm)"
+                ],
+                "right": [
+                    "Đề tài Người phụ nữ",
+                    "Đề tài Người lính",
+                    "Đề tài Tình cảm gia đình"
+                ],
+                "answer": {
+                    "Đồng chí (Chính Hữu) và Bài thơ về tiểu đội xe không kính (Phạm Tiến Duật)": "Đề tài Người lính",
+                    "Chuyện người con gái Nam Xương (Nguyễn Dữ) và Truyện Kiều (Nguyễn Du)": "Đề tài Người phụ nữ",
+                    "Bếp lửa (Bằng Việt) và Khúc hát ru những em bé lớn trên lưng mẹ (Nguyễn Khoa Điềm)": "Đề tài Tình cảm gia đình"
+                },
+                "title": "Quan sát: Nhận diện đề tài",
+                "instruction": "Hãy ghép các cặp tác phẩm sau vào nhóm đề tài chung của chúng.",
+                "score": 1,
+                "durationSeconds": 180,
+                "content": {
+                    "cards": [
+                        {
+                            "id": "c1",
+                            "text": "Đồng chí (Chính Hữu) và Bài thơ về tiểu đội xe không kính (Phạm Tiến Duật)",
+                            "target": "s2"
+                        },
+                        {
+                            "id": "c2",
+                            "text": "Chuyện người con gái Nam Xương (Nguyễn Dữ) và Truyện Kiều (Nguyễn Du)",
+                            "target": "s1"
+                        },
+                        {
+                            "id": "c3",
+                            "text": "Bếp lửa (Bằng Việt) và Khúc hát ru những em bé lớn trên lưng mẹ (Nguyễn Khoa Điềm)",
+                            "target": "s3"
+                        }
+                    ],
+                    "slots": [
+                        {
+                            "id": "s1",
+                            "label": "Đề tài Người phụ nữ"
+                        },
+                        {
+                            "id": "s2",
+                            "label": "Đề tài Người lính"
+                        },
+                        {
+                            "id": "s3",
+                            "label": "Đề tài Tình cảm gia đình"
+                        }
+                    ]
+                },
+                "interaction": {
+                    "correctMapping": {
+                        "c1": "s2",
+                        "c2": "s1",
+                        "c3": "s3"
+                    }
+                },
+                "reveal": {
+                    "title": "Những mảnh đất chung",
+                    "text": "Nhận ra những tác phẩm 'cùng họ' (cùng đề tài) chính là bước đầu tiên để em có thể lựa chọn tác phẩm liên hệ mở rộng một cách chính xác."
+                }
+            }
+        },
+        {
+            "id": "teach_01",
+            "type": "observe",
+            "data": {
+                "title": "Tại sao lại liên hệ cùng đề tài?",
+                "durationSeconds": 240,
+                "ui": {
+                    "component": "paragraph_highlight",
+                    "question": "Mục đích của việc đặt các tác phẩm cùng đề tài cạnh nhau là gì?"
+                },
+                "content": {
+                    "paragraph": [
+                        {
+                            "text": "Liên hệ cùng đề tài giúp bài văn sâu sắc và có tầm nhìn bao quát hơn.",
+                            "type": "normal",
+                            "feedback": ""
+                        },
+                        {
+                            "text": "Thấy được sự tương đồng (Điểm chung):",
+                            "type": "normal",
+                            "feedback": "Chứng minh rằng đề tài đó là một hiện thực mang tính phổ biến, được nhiều nhà văn quan tâm và phản ánh (Ví dụ: vẻ đẹp của người lính, số phận bi kịch của người phụ nữ...)."
+                        },
+                        {
+                            "text": "Thấy được sự khác biệt (Nét riêng):",
+                            "type": "normal",
+                            "feedback": "Làm nổi bật sự độc đáo, sáng tạo của nhà văn trong cách xây dựng nhân vật, cảm hứng nghệ thuật, hoặc do hoàn cảnh thời đại chi phối."
+                        },
+                        {
+                            "text": "Khẳng định giá trị tác phẩm chính:",
+                            "type": "normal",
+                            "feedback": "Dùng tác phẩm phụ làm nền để tôn vinh vẻ đẹp riêng, đóng góp mới mẻ của tác phẩm đang phân tích."
+                        }
+                    ],
+                    "format": "paragraph"
+                },
+                "prompt": "Nhấn vào từng dòng để hiểu mục đích của việc liên hệ cùng đề tài."
+            }
+        },
+        {
+            "id": "teach_02",
+            "type": "observe",
+            "data": {
+                "title": "Công thức viết liên hệ cùng đề tài",
+                "durationSeconds": 240,
+                "ui": {
+                    "component": "paragraph_highlight",
+                    "question": "Khi đặt bút viết liên hệ cùng đề tài, ta triển khai thế nào cho mượt mà?"
+                },
+                "content": {
+                    "paragraph": [
+                        {
+                            "text": "1. Dẫn dắt và kết nối (Nêu điểm tương đồng).",
+                            "type": "normal",
+                            "feedback": "Ví dụ: 'Cùng viết về vẻ đẹp của tình đồng chí, nếu như Phạm Tiến Duật... thì Chính Hữu...'"
+                        },
+                        {
+                            "text": "2. Chỉ ra điểm khác biệt (Nét sáng tạo riêng).",
+                            "type": "normal",
+                            "feedback": "Phân tích ngắn gọn sự khác nhau (về hoàn cảnh, tính cách, nghệ thuật). Chú ý chỉ lướt qua tác phẩm phụ, xoáy sâu vào tác phẩm chính."
+                        },
+                        {
+                            "text": "3. Giải thích nguyên nhân sự khác biệt.",
+                            "type": "normal",
+                            "feedback": "Thường là do hoàn cảnh thời đại khác nhau (chống Pháp khác chống Mỹ) hoặc do cá tính sáng tạo, phong cách nghệ thuật của từng nhà văn."
+                        },
+                        {
+                            "text": "4. Đánh giá, tổng kết.",
+                            "type": "normal",
+                            "feedback": "Khẳng định rằng dù giống hay khác, các tác phẩm đều góp phần làm phong phú thêm mảng đề tài đó trong kho tàng văn học dân tộc."
+                        }
+                    ],
+                    "format": "paragraph"
+                },
+                "prompt": "Nhấn vào từng bước để ghi nhớ công thức liên hệ."
+            }
+        },
+        {
+            "id": "guidedPractice_01",
+            "type": "multiChoice",
+            "data": {
+                "title": "Luyện tập 1: Tìm nguyên nhân khác biệt",
+                "durationSeconds": 240,
+                "ui": {
+                    "component": "single_choice"
+                },
+                "content": {
+                    "questions": [
+                        {
+                            "question": "Khi so sánh hình tượng người phụ nữ trong 'Chuyện người con gái Nam Xương' (Vũ Nương) và 'Truyện Kiều' (Thúy Kiều), điểm giống nhau cốt lõi là gì?",
+                            "options": [
+                                "Cả hai đều xuất thân từ gia đình nghèo khó.",
+                                "Cả hai đều có tài năng thơ ca xuất chúng.",
+                                "Họ đều mang vẻ đẹp toàn vẹn (nhan sắc, phẩm hạnh) nhưng lại phải chịu số phận oan nghiệt, bi kịch.",
+                                "Cả hai đều tìm được hạnh phúc viên mãn ở cuối truyện."
+                            ],
+                            "correct": 2,
+                            "explanation": "Đặc điểm chung của đề tài người phụ nữ trong văn học trung đại thường là tài sắc vẹn toàn nhưng chịu số phận bi kịch (hồng nhan bạc mệnh)."
+                        },
+                        {
+                            "question": "Vì sao người lính trong 'Đồng chí' (Chính Hữu) mang vẻ đẹp mộc mạc, còn người lính trong 'Bài thơ về tiểu đội xe không kính' (Phạm Tiến Duật) lại trẻ trung, sôi nổi?",
+                            "options": [
+                                "Do trình độ học vấn của các tác giả khác nhau.",
+                                "Do người lính chống Mỹ thích đùa giỡn hơn.",
+                                "Do hoàn cảnh thời đại (chống Pháp là những nông dân mặc áo lính, khó khăn thiếu thốn; chống Mỹ là thế hệ trẻ tuổi có tri thức, khí thế hào hùng) và phong cách tác giả.",
+                                "Do đề tài của hai bài thơ hoàn toàn khác nhau."
+                            ],
+                            "correct": 2,
+                            "explanation": "Hoàn cảnh lịch sử, đặc điểm thế hệ và phong cách riêng của từng nhà văn chính là nguyên nhân tạo ra sự khác biệt."
+                        }
+                    ]
+                },
+                "options": [
+                    {
+                        "text": "Cả hai đều xuất thân từ gia đình nghèo khó.",
+                        "isCorrect": false,
+                        "feedback": "Thuý Kiều vốn sinh ra trong gia đình trung lưu vương giả."
+                    },
+                    {
+                        "text": "Cả hai đều có tài năng thơ ca xuất chúng.",
+                        "isCorrect": false,
+                        "feedback": "Vũ Nương không được miêu tả nổi bật về tài năng thơ ca."
+                    },
+                    {
+                        "text": "Họ đều mang vẻ đẹp toàn vẹn (nhan sắc, phẩm hạnh) nhưng lại phải chịu số phận oan nghiệt, bi kịch.",
+                        "isCorrect": true,
+                        "feedback": "Đặc điểm chung của đề tài người phụ nữ trong văn học trung đại thường là tài sắc vẹn toàn nhưng chịu số phận bi kịch (hồng nhan bạc mệnh)."
+                    },
+                    {
+                        "text": "Cả hai đều tìm được hạnh phúc viên mãn ở cuối truyện.",
+                        "isCorrect": false,
+                        "feedback": "Cả hai đều trải qua nhiều đau khổ, bi kịch."
+                    }
+                ]
+            },
+            "question": "Khi so sánh hình tượng người phụ nữ trong 'Chuyện người con gái Nam Xương' và 'Truyện Kiều', điểm giống nhau cốt lõi là gì?"
+        },
+        {
+            "id": "miniChallenge_01",
+            "type": "finalChallenge",
+            "data": {
+                "title": "Thử thách: Khúc ca về tình mẫu tử",
+                "durationSeconds": 300,
+                "ui": {
+                    "component": "multi_stage_challenge",
+                    "layout": "multi_stage"
+                },
+                "prompt": "Em đang phân tích vẻ đẹp tình mẫu tử thiêng liêng trong tác phẩm 'Con cò' (Chế Lan Viên). Hãy viết một đoạn liên hệ mở rộng với bài thơ 'Khúc hát ru những em bé lớn trên lưng mẹ' (Nguyễn Khoa Điềm).",
+                "question": [
+                    "Chỉ ra sự tương đồng (điểm chung về tình mẫu tử).",
+                    "Chỉ ra sự khác biệt (cách thể hiện tình mẹ).",
+                    "Đánh giá ý nghĩa."
+                ],
+                "stages": [
+                    {
+                        "key": "stage1",
+                        "type": "editor",
+                        "title": "📝 Bước 1: Điểm chung",
+                        "question": "Hai bài thơ cùng thể hiện điều gì về tình mẫu tử?",
+                        "placeholder": "Cả hai bài thơ đều gặp gỡ nhau ở...",
+                        "minCharacters": 10,
+                        "maxCharacters": 200,
+                        "submit": {
+                            "label": "Nộp bài",
+                            "feedback": "Cả hai tác phẩm đều ngợi ca tình mẫu tử thiêng liêng, sâu nặng, thể hiện qua những lời ru ngọt ngào và sự hi sinh vô bờ bến của người mẹ dành cho con."
+                        }
+                    },
+                    {
+                        "key": "stage2",
+                        "type": "editor",
+                        "title": "📝 Bước 2: Điểm riêng",
+                        "question": "Tình mẹ trong 'Con cò' khác gì với tình mẹ trong 'Khúc hát ru...'?",
+                        "placeholder": "Tuy nhiên, nếu 'Khúc hát ru...' gắn tình mẹ với..., thì 'Con cò' lại khai thác tình mẹ qua...",
+                        "minCharacters": 10,
+                        "maxCharacters": 250,
+                        "submit": {
+                            "label": "Nộp bài",
+                            "feedback": "Tuy nhiên, nếu Nguyễn Khoa Điềm gắn tình yêu con của người mẹ Tà-ôi với tình yêu quê hương, đất nước và cuộc kháng chiến gian khổ; thì Chế Lan Viên lại mượn hình tượng con cò trong ca dao để ca ngợi tình mẹ mang ý nghĩa triết lý, chở che con suốt cuộc đời."
+                        }
+                    },
+                    {
+                        "key": "stage3",
+                        "type": "editor",
+                        "title": "📝 Bước 3: Tổng hợp ý nghĩa",
+                        "question": "Sự khác biệt đó mang lại giá trị gì?",
+                        "placeholder": "Chính sự khác biệt đó đã làm cho...",
+                        "minCharacters": 10,
+                        "maxCharacters": 200,
+                        "submit": {
+                            "label": "Nộp bài",
+                            "feedback": "Sự đa dạng trong cách tiếp cận ấy không chỉ khẳng định tài năng của mỗi nhà thơ mà còn làm cho bức tượng đài về tình mẫu tử trong thơ ca Việt Nam trở nên phong phú, lung linh và sâu sắc hơn."
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "id": "reflection_01",
+            "type": "reflection",
+            "data": {
+                "title": "Tự kiểm tra: Em đã nắm vững cách liên hệ cùng đề tài chưa?",
+                "durationSeconds": 180,
+                "ui": {
+                    "component": "checklist_free_text"
+                },
+                "question": "Đánh dấu những kỹ năng em tự tin thực hiện được:",
+                "choices": [
+                    {
+                        "id": "1",
+                        "text": "Em nhận diện được các tác phẩm chung đề tài (người lính, gia đình...).",
+                        "correct": false
+                    },
+                    {
+                        "id": "2",
+                        "text": "Em biết cách chỉ ra điểm tương đồng cốt lõi giữa hai tác phẩm.",
+                        "correct": false
+                    },
+                    {
+                        "id": "3",
+                        "text": "Em biết phân tích nét khác biệt dựa vào hoàn cảnh và phong cách tác giả.",
+                        "correct": false
+                    },
+                    {
+                        "id": "4",
+                        "text": "Em biết cách viết gọn gàng, không làm lu mờ tác phẩm chính.",
+                        "correct": false
+                    }
+                ],
+                "freeText": {
+                    "label": "Em thích liên hệ mở rộng ở đề tài nào nhất? Vì sao?",
+                    "placeholder": "Em thích nhất đề tài..."
+                },
+                "metacognition": "Liên hệ đề tài = TÌM ĐIỂM CHUNG để nối, TÌM ĐIỂM RIÊNG để tôn vinh."
+            }
+        },
+        {
+            "id": "cheatSheet_01",
+            "type": "cheatSheet",
+            "data": {
+                "title": "Sổ tay 30 giây",
+                "durationSeconds": 120,
+                "ui": {
+                    "component": "card_list",
+                    "actions": [
+                        "save",
+                        "download"
+                    ]
+                },
+                "items": [
+                    {
+                        "order": 1,
+                        "icon": "📚",
+                        "title": "ĐỀ TÀI",
+                        "question": "Là phạm vi hiện thực được nhà văn phản ánh (người lính, người phụ nữ, tình gia đình...)."
+                    },
+                    {
+                        "order": 2,
+                        "icon": "🤝",
+                        "title": "BƯỚC 1: TƯƠNG ĐỒNG",
+                        "question": "Chỉ ra điểm giống nhau. Ví dụ: 'Cùng viết về người lính, cả hai tác phẩm đều ca ngợi vẻ đẹp dũng cảm, gắn bó...'."
+                    },
+                    {
+                        "order": 3,
+                        "icon": "⭐",
+                        "title": "BƯỚC 2: KHÁC BIỆT",
+                        "question": "Phân tích nét riêng độc đáo của tác phẩm chính. Ví dụ: 'Tuy nhiên, nếu tác phẩm A..., thì tác phẩm B (chính) lại nổi bật với...'."
+                    },
+                    {
+                        "order": 4,
+                        "icon": "💡",
+                        "title": "BƯỚC 3: GIẢI THÍCH",
+                        "question": "Lí giải sự khác biệt dựa trên hoàn cảnh thời đại (chống Pháp khác chống Mỹ) và phong cách, cá tính sáng tạo của nhà văn."
+                    }
+                ]
+            }
+        }
+    ]
+}

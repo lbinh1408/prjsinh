@@ -1,0 +1,187 @@
+{
+  "id": "cau-tao-tu.05-phan-biet-ghep-lay",
+  "title": "Ôn tập: Từ ghép và Từ láy",
+  "version": "3.1",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "quần áo",
+          "xinh xinh",
+          "xe đạp",
+          "lao xao"
+        ],
+        "right": [
+          "Từ ghép đẳng lập",
+          "Từ láy toàn bộ",
+          "Từ ghép chính phụ",
+          "Từ láy bộ phận"
+        ],
+        "answer": {
+          "quần áo": "Từ ghép đẳng lập",
+          "xinh xinh": "Từ láy toàn bộ",
+          "xe đạp": "Từ ghép chính phụ",
+          "lao xao": "Từ láy bộ phận"
+        },
+        "title": "Khởi động: Nhận diện cấu tạo từ",
+        "instruction": "Ghép mỗi từ sau với cấu tạo tương ứng của nó.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step02",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "sách vở",
+          "lung linh",
+          "bàn ghế",
+          "mếu máo",
+          "học sinh",
+          "lấp lánh",
+          "tươi tốt",
+          "xào xạc"
+        ],
+        "targets": [
+          "Từ ghép",
+          "Từ láy"
+        ],
+        "answer": {
+          "sách vở": "Từ ghép",
+          "bàn ghế": "Từ ghép",
+          "học sinh": "Từ ghép",
+          "tươi tốt": "Từ ghép",
+          "lung linh": "Từ láy",
+          "mếu máo": "Từ láy",
+          "lấp lánh": "Từ láy",
+          "xào xạc": "Từ láy"
+        },
+        "title": "Phân loại từ phức",
+        "instruction": "Kéo các từ vào đúng cột loại từ tương ứng.",
+        "score": 2
+      }
+    },
+    {
+      "id": "step03",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trong câu 'Sân trường hôm nay thật nhộn nhịp.', từ 'nhộn nhịp' là từ ghép hay từ láy?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Từ ghép"
+          },
+          {
+            "id": "B",
+            "text": "Từ láy"
+          }
+        ],
+        "answer": "B",
+        "title": "Nhận diện trong ngữ cảnh",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Từ nào sau đây là từ ghép mặc dù có vẻ giống từ láy?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "lung linh"
+          },
+          {
+            "id": "B",
+            "text": "mặt mũi"
+          },
+          {
+            "id": "C",
+            "text": "xào xạc"
+          },
+          {
+            "id": "D",
+            "text": "râm ran"
+          }
+        ],
+        "answer": "B",
+        "title": "Nhận diện từ phức",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "highlight",
+      "data": {
+        "content": "Bầu trời thăm thẳm, những vì sao lấp lánh trong đêm.",
+        "answer": [
+          "thăm thẳm",
+          "lấp lánh"
+        ],
+        "title": "Tô sáng Từ láy",
+        "instruction": "Hãy chọn để tô sáng các từ láy trong câu sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Dòng nào dưới đây chỉ gồm các từ láy?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "tươi tốt, rực rỡ, lung linh"
+          },
+          {
+            "id": "B",
+            "text": "đo đỏ, xinh xinh, ngoan ngoãn"
+          },
+          {
+            "id": "C",
+            "text": "học hành, nhà cửa, xe cộ"
+          },
+          {
+            "id": "D",
+            "text": "bàn ghế, lao xao, mếu máo"
+          }
+        ],
+        "answer": "B",
+        "title": "Vận dụng: Chọn nhóm từ đúng",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Vì sao 'quần áo' là từ ghép còn 'lạnh lẽo' là từ láy?",
+        "sampleAnswer": [
+          "'quần áo' có các từ được có quen hệ về nghĩa còn 'lạnh lẽo' có các từ có quan hệ về âm",
+          "Vì 'lạnh lẽo' "
+        ],
+        "title": "Thông hiểu",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "cau-tao-tu",
+    "difficulty": 3,
+    "xp": 90,
+    "stars": 3,
+    "description": "Thực hành phân biệt sự khác nhau giữa từ ghép và từ láy trong tiếng Việt.",
+    "prerequisite": null,
+    "unlock": null,
+    "reviewMode": "instant",
+    "durationMinutes": 22
+  }
+}

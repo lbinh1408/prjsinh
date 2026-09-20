@@ -1,0 +1,367 @@
+```json
+{
+  "id": "text-nlxh-03",
+  "title": "🔬 Thất bại không phải dấu chấm hết",
+  "tags": [
+    {
+      "label": "Nghị luận xã hội",
+      "color": "blue"
+    },
+    {
+      "label": "Phản biện quan niệm",
+      "color": "purple"
+    },
+    {
+      "label": "Điểm cao",
+      "color": "green"
+    }
+  ],
+  "sourceNote": "Đoạn văn minh họa<br>Phong cách nghị luận có chiều sâu",
+  "prompt": "Suy nghĩ của em về ý nghĩa của thất bại trong cuộc sống.",
+  "paragraphs": [
+    {
+      "id": "p1",
+      "number": "Đoạn 1",
+      "content": "Nhiều người sợ thất bại vì họ nhìn nó như một dấu hiệu của sự kém cỏi. {highlight:that-bai-01}Nhưng thất bại đôi khi không phải là lời tuyên án dành cho năng lực của một con người, mà chỉ là lời nhắc rằng cách đi hiện tại chưa đưa ta đến nơi mình muốn."
+    },
+    {
+      "id": "p2",
+      "number": "Đoạn 2",
+      "content": "Vì thế, điều đáng sợ không phải là một lần vấp ngã mà là việc ta biến lần vấp ngã ấy thành lý do để không đứng dậy nữa. {highlight:that-bai-02}Một thất bại chỉ thực sự trở thành thất bại cuối cùng khi con người từ chối học bất cứ điều gì từ nó."
+    },
+    {
+      "id": "p3",
+      "number": "Đoạn 3",
+      "content": "Thomas Edison từng trải qua rất nhiều lần thử nghiệm không thành công trước khi hoàn thiện bóng đèn điện. {highlight:that-bai-03}Điều đáng học hỏi ở Edison không nằm ở việc ông chưa từng thất bại, mà ở khả năng biến mỗi lần thử sai thành một dữ liệu để tiếp tục tìm kiếm cách làm tốt hơn."
+    },
+    {
+      "id": "p4",
+      "number": "Đoạn 4",
+      "content": "{highlight:that-bai-04}Nếu thành công cho ta một câu trả lời, thì thất bại thường cho ta biết mình cần đặt lại câu hỏi như thế nào."
+    }
+  ],
+  "highlights": {
+    "that-bai-01": {
+      "text": "Nhưng thất bại đôi khi không phải là lời tuyên án dành cho năng lực của một con người, mà chỉ là lời nhắc rằng cách đi hiện tại chưa đưa ta đến nơi mình muốn.",
+      "lenses": [
+        {
+          "id": "tu-ngu",
+          "name": "🔤 Kính từ ngữ",
+          "zoom": "“lời tuyên án” ↔ “lời nhắc”",
+          "observation": "Hai hình ảnh được đặt đối lập để thay đổi cách nhìn về thất bại.",
+          "effect": "Thất bại từ một điều mang tính kết tội trở thành thông tin giúp con người điều chỉnh.",
+          "simple": "Thất bại không có nghĩa là ta kém cỏi.",
+          "technique": "Ẩn dụ đối lập để tái định nghĩa khái niệm."
+        },
+        {
+          "id": "cau-van",
+          "name": "🧩 Kính câu văn",
+          "zoom": "“không phải là..., mà chỉ là...”",
+          "observation": "Câu văn phủ định cách hiểu tiêu cực rồi thay bằng cách hiểu tích cực hơn.",
+          "effect": "Tạo cảm giác lập luận có phản biện.",
+          "simple": "Thất bại chỉ là một bài học.",
+          "technique": "Phủ định – tái định nghĩa."
+        },
+        {
+          "id": "lap-luan",
+          "name": "🧠 Kính lập luận",
+          "zoom": "“lời tuyên án” → “lời nhắc”",
+          "observation": "Người viết trực tiếp đối thoại với một quan niệm phổ biến: thất bại chứng minh con người kém cỏi.",
+          "effect": "Đoạn văn có tính phản biện và không một chiều.",
+          "simple": "Thất bại giúp ta trưởng thành.",
+          "technique": "Nêu quan niệm phổ biến → phản biện → đưa ra cách hiểu mới."
+        },
+        {
+          "id": "phan-tich",
+          "name": "🔎 Kính phân tích",
+          "zoom": "“cách đi hiện tại chưa đưa ta đến nơi mình muốn”",
+          "observation": "Người viết phân biệt giữa “con người thất bại” và “cách làm chưa phù hợp”.",
+          "effect": "Giảm cách nhìn tuyệt đối hóa thất bại và mở ra khả năng điều chỉnh.",
+          "simple": "Thất bại cho ta kinh nghiệm.",
+          "technique": "Tách con người khỏi kết quả nhất thời để phân tích bản chất."
+        },
+        {
+          "id": "lien-ket",
+          "name": "🔗 Kính liên kết",
+          "zoom": "“Nhưng”",
+          "observation": "Từ nối báo hiệu sự chuyển hướng lập luận.",
+          "effect": "Ý sau trực tiếp phản biện nhận định tiêu cực ở câu trước.",
+          "simple": "Thất bại không đáng sợ.",
+          "technique": "Dùng từ nối chuyển hướng để tạo thế phản biện."
+        },
+        {
+          "id": "diem-cao",
+          "name": "⭐ Kính điểm cao",
+          "zoom": "“thất bại đôi khi không phải là lời tuyên án... mà chỉ là lời nhắc...”",
+          "observation": "Người viết không chỉ khuyên “đừng sợ thất bại” mà đưa ra một cách định nghĩa lại thất bại.",
+          "effect": "Lập luận có dấu ấn tư duy.",
+          "simple": "Đừng sợ thất bại.",
+          "technique": "Tái định nghĩa vấn đề thay vì chỉ đưa lời khuyên."
+        },
+        {
+          "id": "tu-duy",
+          "name": "💭 Kính tư duy",
+          "zoom": "“cách đi hiện tại chưa đưa ta đến nơi mình muốn”",
+          "observation": "Người viết xem thất bại như phản hồi về phương pháp chứ không phải bản án về giá trị con người.",
+          "effect": "Đây là góc nhìn tích cực nhưng không sáo rỗng.",
+          "simple": "Thất bại giúp ta tiến bộ.",
+          "technique": "Thay đổi điểm nhìn từ đánh giá bản thân → đánh giá phương pháp."
+        }
+      ],
+      "beforeAfter": {
+        "before": "Thất bại không có nghĩa là ta kém cỏi.",
+        "after": "Nhưng thất bại đôi khi không phải là lời tuyên án dành cho năng lực của một con người, mà chỉ là lời nhắc rằng cách đi hiện tại chưa đưa ta đến nơi mình muốn."
+      },
+      "takeaway": "Một cách rất mạnh để nâng lập luận là thay đổi cách nhìn về chính khái niệm đang nghị luận."
+    },
+    "that-bai-02": {
+      "text": "Một thất bại chỉ thực sự trở thành thất bại cuối cùng khi con người từ chối học bất cứ điều gì từ nó.",
+      "lenses": [
+        {
+          "id": "tu-ngu",
+          "name": "🔤 Kính từ ngữ",
+          "zoom": "“thất bại cuối cùng”, “từ chối học”",
+          "observation": "Các từ ngữ tạo cảm giác quyết định nằm ở thái độ của con người.",
+          "effect": "Nhấn mạnh yếu tố chủ động của con người trước thất bại.",
+          "simple": "Nếu không học từ thất bại thì ta sẽ không tiến bộ.",
+          "technique": "Dùng từ ngữ có sắc thái mạnh để tạo điểm nhấn."
+        },
+        {
+          "id": "cau-van",
+          "name": "🧩 Kính câu văn",
+          "zoom": "“chỉ thực sự... khi...”",
+          "observation": "Cấu trúc điều kiện làm thay đổi cách xác định “thất bại cuối cùng”.",
+          "effect": "Câu văn tạo cảm giác như một nguyên tắc.",
+          "simple": "Không học từ thất bại thì sẽ thất bại.",
+          "technique": "Cấu trúc điều kiện để tạo nhận định có tính khái quát."
+        },
+        {
+          "id": "lap-luan",
+          "name": "🧠 Kính lập luận",
+          "zoom": "“thất bại” → “từ chối học”",
+          "observation": "Người viết chuyển nguyên nhân quyết định từ sự việc bên ngoài sang lựa chọn của con người.",
+          "effect": "Tư duy nghị luận trở nên chủ động và có trách nhiệm.",
+          "simple": "Thất bại có thể giúp ta trưởng thành.",
+          "technique": "Đặt trọng tâm vào thái độ sau sự việc."
+        },
+        {
+          "id": "phan-tich",
+          "name": "🔎 Kính phân tích",
+          "zoom": "“từ chối học bất cứ điều gì từ nó”",
+          "observation": "Người viết chỉ ra điều khiến thất bại trở nên vô nghĩa: không rút kinh nghiệm.",
+          "effect": "Thông điệp cụ thể hơn lời khuyên “hãy học từ thất bại”.",
+          "simple": "Cần rút kinh nghiệm sau thất bại.",
+          "technique": "Chỉ ra điều kiện biến một trải nghiệm thành bài học."
+        },
+        {
+          "id": "lien-ket",
+          "name": "🔗 Kính liên kết",
+          "zoom": "“Vì thế” → “Một thất bại...”",
+          "observation": "Câu sau là sự kết tinh của lập luận trước.",
+          "effect": "Mạch văn từ giải thích chuyển sang khái quát.",
+          "simple": "Ta cần học từ thất bại.",
+          "technique": "Từ lập luận → kết luận khái quát."
+        },
+        {
+          "id": "diem-cao",
+          "name": "⭐ Kính điểm cao",
+          "zoom": "“một thất bại chỉ thực sự trở thành thất bại cuối cùng...”",
+          "observation": "Câu văn tạo ra một nghịch lý có sức suy ngẫm.",
+          "effect": "Gây ấn tượng và giúp thông điệp dễ nhớ.",
+          "simple": "Thất bại không đáng sợ nếu ta biết rút kinh nghiệm.",
+          "technique": "Nghịch lý lập luận để tạo chiều sâu."
+        },
+        {
+          "id": "tu-duy",
+          "name": "💭 Kính tư duy",
+          "zoom": "“thất bại cuối cùng”",
+          "observation": "Người viết đặt câu hỏi ngầm: điều gì mới thực sự khiến thất bại trở thành dấu chấm hết?",
+          "effect": "Câu trả lời không phải bản thân thất bại mà là thái độ từ bỏ việc học hỏi.",
+          "simple": "Không nên bỏ cuộc.",
+          "technique": "Đặt lại tiêu chí xác định “thất bại” để tạo phát hiện."
+        }
+      ],
+      "beforeAfter": {
+        "before": "Ta cần học hỏi từ thất bại.",
+        "after": "Một thất bại chỉ thực sự trở thành thất bại cuối cùng khi con người từ chối học bất cứ điều gì từ nó."
+      },
+      "takeaway": "Câu văn điểm cao thường biến một lời khuyên thành một nhận định có tính quy luật."
+    },
+    "that-bai-03": {
+      "text": "Điều đáng học hỏi ở Edison không nằm ở việc ông chưa từng thất bại, mà ở khả năng biến mỗi lần thử sai thành một dữ liệu để tiếp tục tìm kiếm cách làm tốt hơn.",
+      "lenses": [
+        {
+          "id": "tu-ngu",
+          "name": "🔤 Kính từ ngữ",
+          "zoom": "“biến mỗi lần thử sai thành một dữ liệu”",
+          "observation": "Từ “dữ liệu” mang sắc thái tư duy khoa học.",
+          "effect": "Dẫn chứng Edison được phân tích theo hướng học hỏi từ thử nghiệm.",
+          "simple": "Edison rút kinh nghiệm từ thất bại.",
+          "technique": "Lựa chọn từ ngữ phù hợp với bản chất của dẫn chứng."
+        },
+        {
+          "id": "cau-van",
+          "name": "🧩 Kính câu văn",
+          "zoom": "“không nằm ở..., mà ở...”",
+          "observation": "Câu văn chuyển trọng tâm từ số lần thất bại sang cách sử dụng thất bại.",
+          "effect": "Dẫn chứng được đào sâu.",
+          "simple": "Edison không bỏ cuộc.",
+          "technique": "Đối chiếu để xác định giá trị thực sự của dẫn chứng."
+        },
+        {
+          "id": "lap-luan",
+          "name": "🧠 Kính lập luận",
+          "zoom": "“chưa từng thất bại” ↔ “biến mỗi lần thử sai thành một dữ liệu”",
+          "observation": "Người viết bác bỏ cách đánh giá Edison bằng số lần thất bại.",
+          "effect": "Làm nổi bật cách ứng xử với thất bại.",
+          "simple": "Edison rất kiên trì.",
+          "technique": "Dẫn chứng → phản biện cách hiểu đơn giản → rút ra phẩm chất."
+        },
+        {
+          "id": "phan-tich",
+          "name": "🔎 Kính phân tích",
+          "zoom": "“biến mỗi lần thử sai thành một dữ liệu”",
+          "observation": "Câu văn giải thích thất bại có thể cung cấp thông tin để điều chỉnh phương pháp.",
+          "effect": "Dẫn chứng tạo ra một bài học cụ thể.",
+          "simple": "Thất bại giúp ta có kinh nghiệm.",
+          "technique": "Giải thích cơ chế mà thất bại tạo ra bài học."
+        },
+        {
+          "id": "lien-ket",
+          "name": "🔗 Kính liên kết",
+          "zoom": "“Điều đáng học hỏi ở Edison...”",
+          "observation": "Cụm từ mở đầu báo hiệu câu văn đang chuyển từ dẫn chứng sang bài học.",
+          "effect": "Ranh giới giữa kể và phân tích được rõ ràng.",
+          "simple": "Edison đã thử nghiệm nhiều lần.",
+          "technique": "Dùng tín hiệu phân tích để kết nối dẫn chứng với luận điểm."
+        },
+        {
+          "id": "diem-cao",
+          "name": "⭐ Kính điểm cao",
+          "zoom": "“biến mỗi lần thử sai thành một dữ liệu”",
+          "observation": "Câu văn không chỉ ca ngợi sự kiên trì mà chỉ ra cách tư duy đằng sau sự kiên trì.",
+          "effect": "Dẫn chứng trở thành một phát hiện có giá trị.",
+          "simple": "Edison rất kiên trì.",
+          "technique": "Đi sâu từ phẩm chất → cơ chế tư duy tạo nên phẩm chất."
+        },
+        {
+          "id": "tu-duy",
+          "name": "💭 Kính tư duy",
+          "zoom": "“thử sai” → “dữ liệu”",
+          "observation": "Người viết nhìn thất bại dưới góc độ thông tin thay vì mất mát.",
+          "effect": "Đây là góc nhìn mới giúp bài nghị luận tránh sáo mòn.",
+          "simple": "Thất bại cho ta kinh nghiệm.",
+          "technique": "Tái diễn giải thất bại dưới một hệ quy chiếu mới."
+        }
+      ],
+      "beforeAfter": {
+        "before": "Edison là người kiên trì vì ông không bỏ cuộc.",
+        "after": "Điều đáng học hỏi ở Edison không nằm ở việc ông chưa từng thất bại, mà ở khả năng biến mỗi lần thử sai thành một dữ liệu để tiếp tục tìm kiếm cách làm tốt hơn."
+      },
+      "takeaway": "Khi dùng dẫn chứng, hãy tìm một nét đáng học hỏi cụ thể thay vì chỉ gắn cho nhân vật một phẩm chất."
+    },
+    "that-bai-04": {
+      "text": "Nếu thành công cho ta một câu trả lời, thì thất bại thường cho ta biết mình cần đặt lại câu hỏi như thế nào.",
+      "lenses": [
+        {
+          "id": "tu-ngu",
+          "name": "🔤 Kính từ ngữ",
+          "zoom": "“câu trả lời” ↔ “đặt lại câu hỏi”",
+          "observation": "Hai hình ảnh thuộc cùng trường nghĩa nhận thức được đặt đối lập.",
+          "effect": "Tạo cảm giác triết lý và cô đọng.",
+          "simple": "Thất bại giúp ta suy nghĩ lại.",
+          "technique": "Ẩn dụ hóa quá trình học hỏi bằng hình ảnh câu hỏi – câu trả lời."
+        },
+        {
+          "id": "cau-van",
+          "name": "🧩 Kính câu văn",
+          "zoom": "“Nếu... thì...”",
+          "observation": "Cấu trúc song hành tạo thế đối chiếu giữa thành công và thất bại.",
+          "effect": "Hai khái niệm được đặt trong cùng một hệ quy chiếu.",
+          "simple": "Thành công và thất bại đều có ý nghĩa.",
+          "technique": "Cấu trúc đối xứng để tạo điểm nhấn."
+        },
+        {
+          "id": "lap-luan",
+          "name": "🧠 Kính lập luận",
+          "zoom": "“thành công” ↔ “thất bại”",
+          "observation": "Người viết không xem hai trạng thái là đối lập tuyệt đối mà cho thấy cả hai đều cung cấp bài học.",
+          "effect": "Quan điểm trở nên cân bằng và đa chiều.",
+          "simple": "Thất bại cũng có ích.",
+          "technique": "Đặt hai mặt đối lập vào cùng một hệ giá trị."
+        },
+        {
+          "id": "phan-tich",
+          "name": "🔎 Kính phân tích",
+          "zoom": "“đặt lại câu hỏi như thế nào”",
+          "observation": "Thất bại được phân tích như một cơ hội xem xét lại cách suy nghĩ và phương pháp.",
+          "effect": "Bài học từ thất bại trở nên cụ thể hơn.",
+          "simple": "Thất bại giúp ta sửa sai.",
+          "technique": "Chuyển thất bại thành cơ hội tự vấn."
+        },
+        {
+          "id": "lien-ket",
+          "name": "🔗 Kính liên kết",
+          "zoom": "“Nếu... thì...”",
+          "observation": "Hai vế tạo quan hệ tương ứng.",
+          "effect": "Câu văn có tính cân đối và dễ ghi nhớ.",
+          "simple": "Thành công và thất bại đều dạy ta điều gì đó.",
+          "technique": "Liên kết bằng cấu trúc điều kiện – kết quả."
+        },
+        {
+          "id": "diem-cao",
+          "name": "⭐ Kính điểm cao",
+          "zoom": "“Nếu thành công cho ta một câu trả lời, thì thất bại thường cho ta biết mình cần đặt lại câu hỏi như thế nào.”",
+          "observation": "Câu văn khép lại vấn đề bằng một hình ảnh tư duy thay vì một lời khuyên trực tiếp.",
+          "effect": "Tạo dư âm và mở ra suy ngẫm cho người đọc.",
+          "simple": "Thất bại giúp ta sửa chữa sai lầm.",
+          "technique": "Khái quát bài học thành một hình ảnh nhận thức."
+        },
+        {
+          "id": "tu-duy",
+          "name": "💭 Kính tư duy",
+          "zoom": "“đặt lại câu hỏi”",
+          "observation": "Người viết không chỉ nói thất bại cho ta đáp án mới mà cho rằng nó có thể khiến ta xem xét lại chính vấn đề ban đầu.",
+          "effect": "Đưa lập luận từ mức “rút kinh nghiệm” lên mức “thay đổi cách đặt vấn đề”.",
+          "simple": "Thất bại giúp ta nhìn lại.",
+          "technique": "Nâng cấp bài học từ sửa đáp án → xem lại cách đặt câu hỏi."
+        }
+      ],
+      "beforeAfter": {
+        "before": "Thất bại giúp ta nhận ra sai lầm.",
+        "after": "Nếu thành công cho ta một câu trả lời, thì thất bại thường cho ta biết mình cần đặt lại câu hỏi như thế nào."
+      },
+      "takeaway": "Câu kết hay không nhất thiết phải đưa ra lời khuyên; đôi khi chỉ cần mở ra một cách nhìn khiến người đọc tiếp tục suy nghĩ."
+    }
+  ],
+  "practice": [
+    {
+      "type": "multiple-choice",
+      "title": "🔍 Bài 1 — Nhận ra phản biện",
+      "question": "Câu nào dưới đây có tính phản biện rõ nhất?",
+      "choices": [
+        {
+          "text": "A. Thất bại giúp chúng ta trưởng thành.",
+          "isCorrect": false
+        },
+        {
+          "text": "B. Nhưng thất bại đôi khi không phải là lời tuyên án dành cho năng lực của một con người, mà chỉ là lời nhắc rằng cách đi hiện tại chưa đưa ta đến nơi mình muốn.",
+          "isCorrect": true,
+          "feedback": "Đúng. Câu B bác bỏ cách hiểu thất bại đồng nghĩa với kém cỏi và đưa ra cách nhìn mới."
+        },
+        {
+          "text": "C. Vì vậy, chúng ta không nên sợ thất bại.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "type": "writing",
+      "title": "✍️ Bài 2 — Biến lời khuyên thành lập luận",
+      "question": "Hãy nâng cấp câu: “Chúng ta cần học hỏi từ thất bại.”",
+      "placeholder": "Hãy thử trả lời: Khi nào một thất bại trở thành có ích?",
+      "modelAnswer": "Một thất bại chỉ thực sự trở nên có ích khi con người biết nhìn lại nguyên nhân, rút ra bài học và điều chỉnh cách mình bước tiếp."
+    }
+  ]
+}
+```

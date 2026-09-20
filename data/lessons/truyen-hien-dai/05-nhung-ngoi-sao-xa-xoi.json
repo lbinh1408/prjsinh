@@ -1,0 +1,16 @@
+{
+    "id": "truyen-hien-dai.05-nhung-ngoi-sao-xa-xoi",
+    "title": "Những ngôi sao xa xôi",
+    "module": "truyen-hien-dai",
+    "steps": [
+        {
+            "id": "intro",
+            "type": "observe",
+            "data": {
+                "title": "Những ngôi sao xa xôi",
+                "subtitle": "Lê Minh Khuê",
+                "content": "Nội dung bài học đang được cập nhật."
+            }
+        }
+    ]
+}

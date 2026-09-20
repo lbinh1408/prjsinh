@@ -1,0 +1,212 @@
+{
+  "id": "doc-hieu-theo-kieu-van-ban.08",
+  "title": "Luyện tập tổng hợp",
+  "version": "1.0",
+  "enabled": true,
+  "steps": [
+    {
+      "id": "step01",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Vũ khí 1: Phản xạ 6 câu hỏi vàng",
+            "icon": "🌟",
+            "active": true,
+            "content": {
+              "text": "Với mỗi kiểu văn bản (Thơ, Truyện, Nghị luận, Thông tin) đều có 6 câu hỏi cốt lõi để bóc tách vấn đề. Đọc ngữ liệu nào, dùng chìa khóa đó.",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Vũ khí 2: Biết dạng = Biết công thức",
+            "icon": "🧠",
+            "active": false,
+            "content": {
+              "text": "Xác định ngay câu hỏi đang hỏi ở cấp độ nào (Nhận biết/Thông hiểu/Vận dụng). Nếu hỏi tác dụng, phải trả lời theo 2 vế (Chỉ ra + Nêu tác dụng cụ thể).",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-3",
+            "title": "Vũ khí 3: 4 Bước vàng",
+            "icon": "⏳",
+            "active": false,
+            "content": {
+              "text": "KHÔNG đọc ngữ liệu trước. Hãy: Quét câu hỏi -> Đọc ngữ liệu & Gạch chân -> Tách ý viết bài -> Dành tối đa 25 phút.",
+              "examples": []
+            }
+          }
+        ],
+        "title": "Khởi động: Nhắc lại vũ khí",
+        "instruction": "Trước khi bước vào bài test tổng hợp, hãy kiểm tra lại hành trang của bạn:",
+        "score": 1
+      }
+    },
+    {
+      "id": "step02",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Nếu ngữ liệu là một đoạn trích có các nhân vật đang hội thoại với nhau, kể về một sự việc diễn ra ở một không gian cụ thể, kèm theo tình huống bất ngờ. Bạn sẽ áp dụng chiến thuật đọc hiểu của kiểu văn bản nào?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Văn bản Thơ (Tìm BPTT, mạch cảm xúc)"
+          },
+          {
+            "id": "B",
+            "text": "Văn bản Nghị luận (Tìm Luận điểm, lý lẽ)"
+          },
+          {
+            "id": "C",
+            "text": "Văn bản Tự sự (Tìm Ý nghĩa chi tiết, phân tích tính cách qua tình huống)"
+          },
+          {
+            "id": "D",
+            "text": "Văn bản Thông tin (Tìm 5W1H)"
+          }
+        ],
+        "answer": "C",
+        "title": "Thử thách 1: Xác định Kiểu văn bản",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Với câu hỏi: 'Nêu tác dụng của dẫn chứng Helen Keller trong đoạn trích nghị luận trên', câu trả lời nào sau đây BỊ TRỪ ĐIỂM do mắc lỗi kinh điển?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Dẫn chứng Helen Keller đã làm sáng tỏ luận điểm: Những người tàn tật vẫn có thể làm nên điều vĩ đại nhờ ý chí vượt lên số phận."
+          },
+          {
+            "id": "B",
+            "text": "Việc sử dụng tấm gương Helen Keller giúp đoạn văn thêm sinh động, hấp dẫn và tăng sức thuyết phục cho người đọc."
+          },
+          {
+            "id": "C",
+            "text": "Tác giả đưa ra dẫn chứng về Helen Keller nhằm chứng minh cho lý lẽ: Nghị lực sống là sức mạnh giúp con người vượt qua mọi nghịch cảnh tăm tối nhất."
+          },
+          {
+            "id": "D",
+            "text": "Dẫn chứng thực tế về Helen Keller giúp tăng độ tin cậy, thuyết phục người đọc tin vào chân lý: Khiếm khuyết thể xác không thể trói buộc tâm hồn."
+          }
+        ],
+        "answer": "B",
+        "title": "Thử thách 2: Bắt bệnh lỗi sai (Nghị luận)",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trong bài thơ 'Bếp lửa' có câu: 'Ôi kì lạ và thiêng liêng - bếp lửa!'. Câu hỏi thi: 'Từ ÔI có tác dụng gì?'. Câu trả lời chuẩn xác nhất theo công thức phân tích từ ngữ biểu cảm là gì?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Từ 'Ôi' làm câu thơ hay hơn và vần điệu hơn."
+          },
+          {
+            "id": "B",
+            "text": "Từ 'Ôi' là thán từ bộc lộ trực tiếp cảm xúc ngỡ ngàng, xúc động và niềm kính yêu mãnh liệt của người cháu khi nhớ về hình ảnh bếp lửa và người bà."
+          },
+          {
+            "id": "C",
+            "text": "Từ 'Ôi' giúp bài thơ trở nên sinh động, gợi hình gợi cảm."
+          },
+          {
+            "id": "D",
+            "text": "Từ 'Ôi' cho thấy nhân vật trữ tình đang rất buồn bã."
+          }
+        ],
+        "answer": "B",
+        "title": "Thử thách 3: Xử lý câu hỏi Thơ",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Bạn đang làm bài Đọc hiểu đến phút thứ 20. Câu số 4 (Vận dụng cao) hỏi về bài học rút ra, bạn phân vân giữa 2 ý tưởng và không biết diễn đạt sao cho hay. Chiến thuật khôn ngoan nhất lúc này là:",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Gạch bỏ toàn bộ bài làm Đọc hiểu vì cho rằng mình chưa đủ giỏi."
+          },
+          {
+            "id": "B",
+            "text": "Dừng bút suy nghĩ thêm 15 phút nữa cho đến khi viết được đoạn văn ưng ý, thà mất thời gian viết văn còn hơn mất điểm câu này."
+          },
+          {
+            "id": "C",
+            "text": "Viết đại một câu thật ngắn rồi vội vàng chuyển sang Làm văn."
+          },
+          {
+            "id": "D",
+            "text": "Chừa trống khoảng 5-7 dòng, lập tức chuyển sang làm phần Nghị luận văn học (chiếm nhiều điểm nhất). Khi nào làm xong hoặc ý tưởng chín muồi sẽ quay lại viết sau."
+          }
+        ],
+        "answer": "D",
+        "title": "Thử thách 4: Chiến thuật phòng thi",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Dùng số liệu (Thuyết minh)",
+          "Liệt kê (Thuyết minh/Nghị luận)",
+          "Nhân hóa (Thơ)",
+          "Điệp ngữ (Thơ/Nghị luận)"
+        ],
+        "right": [
+          "Cung cấp bằng chứng chính xác, tăng độ xác thực tuyệt đối.",
+          "Trình bày đầy đủ, phong phú nhiều khía cạnh của đối tượng.",
+          "Làm sự vật vô tri trở nên có hồn, sinh động, gần gũi với con người.",
+          "Tạo nhịp điệu dồn dập, nhấn mạnh cảm xúc hoặc ý nghĩa cốt lõi."
+        ],
+        "answer": {
+          "Dùng số liệu (Thuyết minh)": "Cung cấp bằng chứng chính xác, tăng độ xác thực tuyệt đối.",
+          "Liệt kê (Thuyết minh/Nghị luận)": "Trình bày đầy đủ, phong phú nhiều khía cạnh của đối tượng.",
+          "Nhân hóa (Thơ)": "Làm sự vật vô tri trở nên có hồn, sinh động, gần gũi với con người.",
+          "Điệp ngữ (Thơ/Nghị luận)": "Tạo nhịp điệu dồn dập, nhấn mạnh cảm xúc hoặc ý nghĩa cốt lõi."
+        },
+        "title": "Thử thách 5: Ghép Tác dụng với Phương pháp",
+        "instruction": "Hãy nối các Phương pháp/Biện pháp với đúng tác dụng đặc trưng của chúng (thường dùng trong văn Thuyết minh và Thơ):",
+        "score": 2
+      }
+    },
+    {
+      "id": "step07",
+      "type": "flashcard",
+      "data": {
+        "front": "Bạn đã nắm giữ toàn bộ 'bí kíp' chinh phục phần Đọc hiểu!",
+        "back": "Hãy tự tin bước vào phòng thi. Nhớ rằng: Nhận diện đúng Dạng -> Nhớ lại Công thức -> Trình bày tách ý -> Lấy trọn 3 điểm!",
+        "completedWhen": "flipped",
+        "title": "Hoàn thành xuất sắc!",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "doc-hieu-theo-kieu-van-ban",
+    "difficulty": 3,
+    "xp": 100,
+    "stars": 3,
+    "description": "Thử thách phản xạ đọc hiểu với các ngữ liệu đa dạng (Thơ, Tự sự, Nghị luận, Thông tin) để kiểm tra độ nhạy bén của bạn.",
+    "durationMinutes": 30
+  }
+}

@@ -1,0 +1,625 @@
+{
+    "id": "story_01",
+    "type": "story",
+    "data": {
+        "title": "câu chuyện đang kể điều gì?",
+        "durationSeconds": 120,
+        "ui": {
+            "component": "split_compare",
+            "layout": "two_columns",
+            "question": "Khi một tác phẩm kể về cuộc sống nghèo khổ, bất công và những con người chịu đau khổ, nhà văn chỉ đang kể chuyện hay còn muốn nói điều gì?"
+        },
+        "content": {
+            "left": {
+                "label": "Điều tác phẩm cho ta thấy",
+                "paragraph": "Một gia đình nghèo sống trong hoàn cảnh thiếu thốn. Con người phải chịu đói khổ, áp bức và nhiều bất hạnh."
+            },
+            "right": {
+                "label": "Điều nhà văn muốn gửi gắm",
+                "paragraph": "Nhà văn xót thương những con người bất hạnh, trân trọng phẩm chất của họ và mong muốn con người được sống tốt đẹp hơn."
+            }
+        },
+        "interaction": {
+            "type": "compare",
+            "options": [
+                "Đây chỉ là hai cách kể giống nhau.",
+                "Hai phần cho thấy tác phẩm vừa phản ánh đời sống vừa thể hiện tình cảm của nhà văn.",
+                "Chỉ phần thứ hai mới có ý nghĩa văn học."
+            ],
+            "correct": 1
+        },
+        "reveal": {
+            "title": "Hai hướng nhìn quan trọng",
+            "text": "Một tác phẩm có thể vừa cho ta thấy một bức tranh về đời sống, vừa cho thấy cách nhà văn nhìn và đối xử với con người trong bức tranh ấy. Đây là điểm xuất phát để hiểu giá trị hiện thực và giá trị nhân đạo."
+        }
+    }
+},
+{
+    "id": "observe_01",
+    "type": "highlight",
+    "data": {
+        "title": "Quan sát: Tác phẩm đang phản ánh điều gì?",
+        "durationSeconds": 180,
+        "ui": {
+            "component": "paragraph_highlight",
+            "question": "Đọc các ý sau và đánh dấu những chi tiết chủ yếu cho thấy hoàn cảnh đời sống được phản ánh trong tác phẩm."
+        },
+        "content": "[[Nhân vật phải sống trong cảnh nghèo đói.]] [[Người dân chịu nhiều áp bức và bất công.]] [[Nhân vật vẫn giữ được tình yêu thương đối với người thân.]] [[Nhà văn thể hiện sự xót xa trước số phận con người.]] [[Nhân vật mong muốn có một cuộc sống tốt đẹp hơn.]]",
+        "answer": [
+            "Nhân vật phải sống trong cảnh nghèo đói.",
+            " Người dân chịu nhiều áp bức và bất công."
+        ],
+        "interaction": {
+            "highlightTargets": [
+                "Nhân vật phải sống trong cảnh nghèo đói.",
+                "Người dân chịu nhiều áp bức và bất công.",
+                "Nhân vật vẫn giữ được tình yêu thương đối với người thân.",
+                "Nhà văn thể hiện sự xót xa trước số phận con người.",
+                "Nhân vật mong muốn có một cuộc sống tốt đẹp hơn."
+            ],
+            "correctTargets": [
+                "Nhân vật phải sống trong cảnh nghèo đói.",
+                "Người dân chịu nhiều áp bức và bất công."
+            ]
+        },
+        "reveal": {
+            "title": "Bắt đầu từ đời sống",
+            "text": "Giá trị hiện thực thường nằm ở những gì tác phẩm phản ánh về đời sống: hoàn cảnh, số phận, cảnh nghèo đói, bất công, áp bức hoặc những vấn đề xã hội được đặt ra."
+        },
+        "question": "Đọc các ý sau và đánh dấu những chi tiết chủ yếu cho thấy hoàn cảnh đời sống được phản ánh trong tác phẩm.",
+        "targets": [
+            "Nhân vật phải sống trong cảnh nghèo đói.",
+            "Người dân chịu nhiều áp bức và bất công."
+        ]
+    }
+},
+{
+    "id": "observe_02",
+    "type": "matching",
+    "validator": "matchValidator",
+    "data": {
+        "left": [
+            "Xót thương người nghèo khổ",
+            "Lên án sự tàn nhẫn, bất công",
+            "Trân trọng phẩm chất tốt đẹp của con người",
+            "Phản ánh cảnh đói nghèo của người dân"
+        ],
+        "right": [
+            "Phản ánh đời sống",
+            "Thái độ đối với con người"
+        ],
+        "answer": {
+            "Xót thương người nghèo khổ": "Thái độ đối với con người",
+            "Lên án sự tàn nhẫn, bất công": "Thái độ đối với con người",
+            "Trân trọng phẩm chất tốt đẹp của con người": "Thái độ đối với con người",
+            "Phản ánh cảnh đói nghèo của người dân": "Phản ánh đời sống"
+        },
+        "title": "Quan sát: Nhà văn đứng ở đâu?",
+        "instruction": "Ghép mỗi ý tác giả muốn nói với khía cạnh tương ứng.",
+        "score": 1,
+        "durationSeconds": 180,
+        "content": {
+            "cards": [
+                {
+                    "id": "c1",
+                    "text": "Xót thương người nghèo khổ",
+                    "target": "s2"
+                },
+                {
+                    "id": "c2",
+                    "text": "Lên án sự tàn nhẫn, bất công",
+                    "target": "s2"
+                },
+                {
+                    "id": "c3",
+                    "text": "Trân trọng phẩm chất tốt đẹp của con người",
+                    "target": "s2"
+                },
+                {
+                    "id": "c4",
+                    "text": "Phản ánh cảnh đói nghèo của người dân",
+                    "target": "s1"
+                }
+            ],
+            "slots": [
+                {
+                    "id": "s1",
+                    "label": "Phản ánh đời sống"
+                },
+                {
+                    "id": "s2",
+                    "label": "Thái độ đối với con người"
+                }
+            ]
+        },
+        "interaction": {
+            "correctMapping": {
+                "c1": "s2",
+                "c2": "s2",
+                "c3": "s2",
+                "c4": "s1"
+            }
+        },
+        "reveal": {
+            "title": "Hai hướng nhìn",
+            "text": "Một bên là hiện thực đời sống được phản ánh. Một bên là thái độ, tình cảm và cách nhà văn nhìn con người. Hai hướng này thường cùng tồn tại trong một tác phẩm."
+        }
+    }
+},
+{
+    "id": "discover_01",
+    "type": "ordering",
+    "validator": "orderValidator",
+    "data": {
+        "items": [
+            "Chi tiết trong tác phẩm: Hoàn cảnh, số phận, sự việc, hành động, lời nói...",
+            "Tác phẩm phản ánh đời sống: Con người sống như thế nào? Xã hội có vấn đề gì?",
+            "Giá trị hiện thực: Bức tranh đời sống và những vấn đề hiện thực được phản ánh.",
+            "Nhà văn nhìn con người như thế nào?: Xót thương? Trân trọng? Bênh vực? Lên án cái xấu?",
+            "Giá trị nhân đạo: Tình yêu thương con người, sự trân trọng, bênh vực và khát vọng sống tốt đẹp."
+        ],
+        "answer": [
+            "Chi tiết trong tác phẩm: Hoàn cảnh, số phận, sự việc, hành động, lời nói...",
+            "Tác phẩm phản ánh đời sống: Con người sống như thế nào? Xã hội có vấn đề gì?",
+            "Giá trị hiện thực: Bức tranh đời sống và những vấn đề hiện thực được phản ánh.",
+            "Nhà văn nhìn con người như thế nào?: Xót thương? Trân trọng? Bênh vực? Lên án cái xấu?",
+            "Giá trị nhân đạo: Tình yêu thương con người, sự trân trọng, bênh vực và khát vọng sống tốt đẹp."
+        ],
+        "instruction": "Hãy sắp xếp các câu sau theo trình tự logic hợp lý: Từ chi tiết → điều gì → giá trị nào?",
+        "score": 1,
+        "title": "Tự phát hiện quy luật",
+        "durationSeconds": 180,
+        "ui": {
+            "component": "vertical_map",
+            "question": "Từ chi tiết → điều gì → giá trị nào?"
+        },
+        "content": {
+            "nodes": [
+                {
+                    "id": "n1",
+                    "label": "Chi tiết trong tác phẩm",
+                    "description": "Hoàn cảnh, số phận, sự việc, hành động, lời nói..."
+                },
+                {
+                    "id": "n2",
+                    "label": "Tác phẩm phản ánh đời sống",
+                    "description": "Con người sống như thế nào? Xã hội có vấn đề gì?"
+                },
+                {
+                    "id": "n3",
+                    "label": "Giá trị hiện thực",
+                    "description": "Bức tranh đời sống và những vấn đề hiện thực được phản ánh."
+                },
+                {
+                    "id": "n4",
+                    "label": "Nhà văn nhìn con người như thế nào?",
+                    "description": "Xót thương? Trân trọng? Bênh vực? Lên án cái xấu?"
+                },
+                {
+                    "id": "n5",
+                    "label": "Giá trị nhân đạo",
+                    "description": "Tình yêu thương con người, sự trân trọng, bênh vực và khát vọng sống tốt đẹp."
+                }
+            ]
+        },
+        "interaction": {
+            "type": "sequence",
+            "correctOrder": [
+                "n1",
+                "n2",
+                "n3",
+                "n4",
+                "n5"
+            ]
+        },
+        "reveal": {
+            "title": "Quy luật em vừa phát hiện",
+            "text": "Muốn tìm giá trị hiện thực, hãy hỏi: Tác phẩm phản ánh đời sống nào? Muốn tìm giá trị nhân đạo, hãy hỏi: Nhà văn nhìn con người bằng thái độ và tình cảm như thế nào?"
+        }
+    },
+    "question": "Từ chi tiết → điều gì → giá trị nào?",
+    "items": [
+        {
+            "id": "n1",
+            "text": "Chi tiết trong tác phẩm"
+        },
+        {
+            "id": "n2",
+            "text": "Tác phẩm phản ánh đời sống"
+        },
+        {
+            "id": "n3",
+            "text": "Giá trị hiện thực"
+        },
+        {
+            "id": "n4",
+            "text": "Nhà văn nhìn con người như thế nào?"
+        },
+        {
+            "id": "n5",
+            "text": "Giá trị nhân đạo"
+        }
+    ],
+    "correctOrder": [
+        "n1",
+        "n2",
+        "n3",
+        "n4",
+        "n5"
+    ]
+},
+{
+    "id": "teach_01",
+    "type": "observe",
+    "data": {
+        "title": "Giá trị hiện thực là gì?",
+        "durationSeconds": 240,
+        "ui": {
+            "component": "paragraph_highlight",
+            "question": "Không phải cứ tác phẩm có chuyện buồn hoặc nhân vật nghèo khổ là có giá trị hiện thực. Cần chỉ ra hiện thực ấy được phản ánh như thế nào và có ý nghĩa gì."
+        },
+        "content": {
+            "paragraph": [
+                {
+                    "text": "Giá trị hiện thực là khả năng của tác phẩm trong việc phản ánh chân thực, sâu sắc một phương diện của đời sống con người và xã hội.",
+                    "type": "normal",
+                    "feedback": ""
+                },
+                {
+                    "text": "Nhân vật đang sống trong hoàn cảnh nào?",
+                    "type": "normal",
+                    "feedback": "Phản ánh hoàn cảnh sống của con người."
+                },
+                {
+                    "text": "Nhân vật đang phải đối mặt với những vấn đề gì?",
+                    "type": "normal",
+                    "feedback": "Phản ánh số phận, nỗi khổ hoặc những vấn đề mà con người phải đối mặt."
+                },
+                {
+                    "text": "Hoàn cảnh ấy phản ánh vấn đề gì của đời sống?",
+                    "type": "normal",
+                    "feedback": "Phản ánh những mâu thuẫn, bất công hoặc mặt hạn chế của xã hội."
+                },
+                {
+                    "text": "Tác phẩm cho người đọc nhìn thấy hiện thực nào?",
+                    "type": "normal",
+                    "feedback": "Qua đời sống của nhân vật, giúp người đọc nhận ra một vấn đề có ý nghĩa rộng hơn."
+                }
+            ],
+            "format": "paragraph"
+        },
+        "prompt": "Nhấn vào từng dòng của văn bản trên để hiểu rõ hơn về giá trị hiện thực."
+    }
+},
+{
+    "id": "teach_02",
+    "type": "observe",
+    "data": {
+        "title": "Giá trị nhân đạo là gì?",
+        "durationSeconds": 240,
+        "ui": {
+            "component": "paragraph_highlight",
+            "question": "Giá trị nhân đạo không chỉ là 'thương nhân vật'. Cần chỉ ra nhà văn thương ai, trân trọng điều gì, lên án điều gì và hướng con người tới giá trị sống nào."
+        },
+        "content": {
+            "paragraph": [
+                {
+                    "text": "Giá trị nhân đạo thể hiện tình yêu thương, sự trân trọng con người và những khát vọng tốt đẹp của con người mà nhà văn gửi gắm qua tác phẩm.",
+                    "type": "normal",
+                    "feedback": ""
+                },
+                {
+                    "text": "Nhà văn thương ai?",
+                    "type": "normal",
+                    "feedback": "Cảm thương trước những số phận bất hạnh."
+                },
+                {
+                    "text": "Nhà văn trân trọng điều gì ở con người?",
+                    "type": "normal",
+                    "feedback": "Trân trọng phẩm chất, vẻ đẹp và giá trị của con người."
+                },
+                {
+                    "text": "Nhà văn bênh vực điều gì?",
+                    "type": "normal",
+                    "feedback": "Bênh vực quyền sống, quyền được yêu thương và được sống hạnh phúc."
+                },
+                {
+                    "text": "Nhà văn lên án điều gì?",
+                    "type": "normal",
+                    "feedback": "Lên án những thế lực hoặc hành động chà đạp con người."
+                },
+                {
+                    "text": "Nhà văn phát hiện và nâng niu điều gì ở con người?",
+                    "type": "normal",
+                    "feedback": "Phát hiện và nâng niu những khát vọng sống tốt đẹp."
+                },
+                {
+                    "text": "Điều nhà văn mong muốn ở con người? ",
+                    "type": "normal",
+                    "feedback": "Đôi khi thể hiện niềm tin vào khả năng hướng thiện hoặc thay đổi của con người."
+                }
+            ],
+            "format": "paragraph"
+        },
+        "prompt": "Nhấn vào từng dòng của văn bản trên để hiểu rõ hơn về giá trị nhân đạo."
+    }
+},
+{
+    "id": "teach_03",
+    "type": "story",
+    "data": {
+        "title": "Phân biệt hiện thực và nhân đạo",
+        "durationSeconds": 240,
+        "ui": {
+            "component": "split_compare",
+            "layout": "two_columns"
+        },
+        "content": {
+            "left": {
+                "label": "Giá trị hiện thực: Tác phẩm cho ta thấy điều gì về đời sống?",
+                "paragraph": "phản ánh, đời sống, hoàn cảnh, số phận, xã hội, bất công, mâu thuẫn"
+            },
+            "right": {
+                "label": "Giá trị nhân đạo: Nhà văn nhìn con người bằng thái độ nào?",
+                "paragraph": "yêu thương, cảm thương, trân trọng, bênh vực, lên án, khát vọng, niềm tin"
+            }
+        },
+        "reveal": {
+            "title": "Mẹo phân biệt",
+            "text": "Nếu câu trả lời tập trung vào 'đời sống được phản ánh' → nghĩ đến hiện thực. Nếu câu trả lời tập trung vào 'tình cảm, thái độ và cách nhà văn đối xử với con người' → nghĩ đến nhân đạo."
+        }
+    }
+},
+{
+    "id": "guidedPractice_01",
+    "type": "multiChoice",
+    "data": {
+        "title": "Luyện tập 1: Nhìn chi tiết để gọi tên giá trị",
+        "durationSeconds": 240,
+        "ui": {
+            "component": "single_choice"
+        },
+        "content": {
+            "questions": [
+                {
+                    "question": "Một tác phẩm miêu tả cuộc sống đói nghèo, bị áp bức của người dân trong xã hội cũ. Biểu hiện này trước hết cho thấy giá trị nào?",
+                    "options": [
+                        "Giá trị hiện thực",
+                        "Giá trị nhân đạo",
+                        "Giá trị giải trí",
+                        "Giá trị ngôn ngữ"
+                    ],
+                    "correct": 0,
+                    "explanation": "Trọng tâm của nhận xét là bức tranh đời sống và những vấn đề xã hội được phản ánh."
+                },
+                {
+                    "question": "Nhà văn thể hiện sự xót thương trước số phận bất hạnh của nhân vật. Đây là biểu hiện rõ nhất của:",
+                    "options": [
+                        "Giá trị hiện thực",
+                        "Giá trị nhân đạo",
+                        "Cốt truyện",
+                        "Ngôi kể"
+                    ],
+                    "correct": 1,
+                    "explanation": "Sự xót thương là một biểu hiện của tình cảm nhân đạo."
+                },
+                {
+                    "question": "Tác giả trân trọng vẻ đẹp tâm hồn của một nhân vật dù nhân vật ấy sống trong hoàn cảnh khắc nghiệt. Điều này cho thấy:",
+                    "options": [
+                        "Giá trị nhân đạo",
+                        "Giá trị hiện thực",
+                        "Tình huống truyện",
+                        "Điểm nhìn"
+                    ],
+                    "correct": 0,
+                    "explanation": "Sự trân trọng phẩm chất con người là một biểu hiện quan trọng của giá trị nhân đạo."
+                },
+                {
+                    "question": "Một tác phẩm vừa phản ánh cuộc sống nghèo khổ vừa thể hiện niềm thương cảm đối với người nghèo. Nhận xét nào đúng?",
+                    "options": [
+                        "Chỉ có giá trị hiện thực.",
+                        "Chỉ có giá trị nhân đạo.",
+                        "Có thể đồng thời thể hiện cả giá trị hiện thực và nhân đạo.",
+                        "Không có giá trị nào."
+                    ],
+                    "correct": 2,
+                    "explanation": "Hai giá trị thường gắn bó với nhau: hiện thực cho thấy đời sống, nhân đạo cho thấy cách nhà văn nhìn và đối xử với con người."
+                }
+            ]
+        },
+        "options": [
+            {
+                "text": "Giá trị hiện thực",
+                "isCorrect": true,
+                "feedback": "Trọng tâm của nhận xét là bức tranh đời sống và những vấn đề xã hội được phản ánh."
+            },
+            {
+                "text": "Giá trị nhân đạo",
+                "isCorrect": false,
+                "feedback": "Trọng tâm của nhận xét là bức tranh đời sống và những vấn đề xã hội được phản ánh."
+            },
+            {
+                "text": "Giá trị giải trí",
+                "isCorrect": false,
+                "feedback": "Trọng tâm của nhận xét là bức tranh đời sống và những vấn đề xã hội được phản ánh."
+            },
+            {
+                "text": "Giá trị ngôn ngữ",
+                "isCorrect": false,
+                "feedback": "Trọng tâm của nhận xét là bức tranh đời sống và những vấn đề xã hội được phản ánh."
+            }
+        ]
+    },
+    "question": "Một tác phẩm miêu tả cuộc sống đói nghèo, bị áp bức của người dân trong xã hội cũ. Biểu hiện này trước hết cho thấy giá trị nào?"
+},
+{
+    "id": "guidedPractice_02",
+    "type": "ordering",
+    "validator": "orderValidator",
+    "title": "Luyện tập 2: Phân tích một dẫn chứng",
+    "instruction": "Hãy sắp xếp các ý để tạo thành một nhận xét có sức thuyết phục về giá trị hiện thực.",
+    "score": 2,
+    "data": {
+        "items": [
+            "Qua cuộc sống của nhân vật",
+            "tác phẩm phản ánh chân thực",
+            "những khó khăn và bất công mà con người phải đối mặt",
+            "qua đó giúp người đọc nhận ra một vấn đề của đời sống"
+        ],
+        "answer": [
+            "Qua cuộc sống của nhân vật",
+            "tác phẩm phản ánh chân thực",
+            "những khó khăn và bất công mà con người phải đối mặt",
+            "qua đó giúp người đọc nhận ra một vấn đề của đời sống"
+        ]
+    },
+    "question": "Hãy sắp xếp các ý để tạo thành một nhận xét có sức thuyết phục về giá trị hiện thực."
+},
+{
+    "id": "guidedPractice_03",
+    "type": "explain",
+    "validator": "textValidator",
+    "data": {
+        "title": "Luyện tập 3: Chi tiết → ý nghĩa nhân đạo",
+        "question": "Một nhân vật dù sống trong hoàn cảnh nghèo khổ vẫn yêu thương người thân và cố gắng bảo vệ gia đình. Chi tiết ấy cho em thấy gì về giá trị nhân đạo của tác phẩm?",
+        "sampleAnswer": [
+            "trân trọng phẩm chất tốt đẹp",
+            "cảm thương hoàn cảnh",
+            "đề cao tình yêu thương",
+            "khẳng định giá trị của con người"
+        ],
+        "modelAnswer": "Chi tiết cho thấy nhà văn không chỉ cảm thương trước hoàn cảnh nghèo khổ của nhân vật mà còn trân trọng tình yêu thương và phẩm chất tốt đẹp của con người. Qua đó, tác phẩm thể hiện giá trị nhân đạo sâu sắc.",
+        "keywords": [
+            "trân trọng phẩm chất tốt đẹp",
+            "cảm thương hoàn cảnh",
+            "đề cao tình yêu thương",
+            "khẳng định giá trị của con người"
+        ]
+    }
+},
+{
+    "id": "guidedPractice_04",
+    "type": "highlight",
+    "data": {
+        "title": "Luyện tập 4: Đừng chỉ gọi tên",
+        "durationSeconds": 240,
+        "ui": {
+            "component": "paragraph_highlight"
+        },
+        "content": "Tác phẩm có giá trị nhân đạo sâu sắc. Nhà văn rất thương nhân vật. Nhân vật có hoàn cảnh khó khăn. Tác giả đã xây dựng nhân vật rất thành công. Qua nhân vật, nhà văn trân trọng tình yêu thương và khát vọng được sống hạnh phúc của con người.",
+        "interaction": {
+            "correctText": "Qua nhân vật, nhà văn trân trọng tình yêu thương và khát vọng được sống hạnh phúc của con người."
+        },
+        "reveal": {
+            "title": "Phân tích khác gọi tên",
+            "text": "Câu 'tác phẩm có giá trị nhân đạo sâu sắc' chỉ mới gọi tên. Câu phân tích phải trả lời được: nhà văn thương ai, trân trọng điều gì, lên án điều gì hoặc khẳng định khát vọng nào."
+        },
+        "question": "Đâu là câu thực sự phân tích giá trị nhân đạo?",
+        "targets": [
+            "Qua nhân vật, nhà văn trân trọng tình yêu thương và khát vọng được sống hạnh phúc của con người."
+        ]
+    }
+},
+{
+    "id": "miniChallenge_01",
+    "type": "finalChallenge",
+    "data": {
+        "title": "Thử thách: Một chi tiết, hai hướng phân tích",
+        "durationSeconds": 300,
+        "ui": {
+            "component": "multi_stage_challenge",
+            "layout": "multi_stage"
+        },
+        "prompt": "Một truyện ngắn kể về một người mẹ nghèo phải chịu nhiều mất mát nhưng vẫn cố gắng bảo vệ và yêu thương con.",
+        "stages": [
+            {
+                "key": "stage1",
+                "type": "editor",
+                "title": "📝 Tìm hiện thực",
+                "question": "Chi tiết trên phản ánh điều gì về đời sống?",
+                "placeholder": "Chi tiết trên phản ánh ....",
+                "minCharacters": 10,
+                "maxCharacters": 200,
+                "submit": {
+                    "label": "Nộp bài",
+                    "feedback": "Hoàn cảnh nghèo khó và những mất mát mà con người phải chịu đựng."
+                }
+            },
+            {
+                "key": "stage2",
+                "type": "editor",
+                "title": "📝 Tìm nhân đạo",
+                "question": "Nhà văn trân trọng điều gì ở nhân vật?",
+                "placeholder": "Nhà văn trân trọng ....",
+                "minCharacters": 10,
+                "maxCharacters": 100,
+                "submit": {
+                    "label": "Nộp bài",
+                    "feedback": "Tình mẫu tử, sự yêu thương và sức mạnh tinh thần của con người."
+                }
+            },
+            {
+                "key": "stage3",
+                "type": "editor",
+                "title": "📝 Kết luận",
+                "question": "Hãy viết một câu nhận xét kết hợp cả hai giá trị.",
+                "placeholder": "Kết luận ...",
+                "minCharacters": 10,
+                "maxCharacters": 200,
+                "submit": {
+                    "label": "Nộp bài",
+                    "feedback": "Qua số phận và tình mẫu tử của nhân vật, tác phẩm vừa phản ánh những khó khăn của đời sống vừa thể hiện sự cảm thương, trân trọng đối với tình yêu thương và phẩm chất tốt đẹp của con người."
+                }
+            }
+        ]
+    }
+},
+{
+    "id": "reflection_01",
+    "type": "reflection",
+    "data": {
+        "title": "Tự kiểm tra: Em đã thật sự hiểu chưa?",
+        "durationSeconds": 180,
+        "ui": {
+            "component": "checklist_free_text"
+        },
+        "question": "Chọn những điều em thấy mình đã nắm được sau bài học:",
+        "choices": [
+            {
+                "id": "1",
+                "text": "Em có thể giải thích giá trị nhân đạo bằng lời của mình.",
+                "correct": false
+            },
+            {
+                "id": "1",
+                "text": "Em biết phân biệt 'tác phẩm phản ánh gì' và 'nhà văn thể hiện thái độ gì'.",
+                "correct": false
+            },
+            {
+                "id": "1",
+                "text": "Em biết tìm biểu hiện của giá trị hiện thực từ hoàn cảnh, số phận và vấn đề xã hội.",
+                "correct": false
+            },
+            {
+                "id": "1",
+                "text": "Em biết tìm biểu hiện của giá trị nhân đạo từ sự cảm thương, trân trọng, bênh vực, lên án và khát vọng sống.",
+                "correct": false
+            },
+            {
+                "id": "1",
+                "text": "Em biết đi từ chi tiết → ý nghĩa thay vì chỉ kể lại chi tiết.",
+                "correct": false
+            },
+            {
+                "id": "1",
+                "text": "Em có thể viết một câu nhận xét về giá trị hiện thực hoặc nhân đạo.",
+                "correct": false
+            }
+        ],
+        "freeText": {
+            "label": "Điều em dễ nhầm nhất giữa giá trị hiện thực và giá trị nhân đạo là gì?",
+            "placeholder": "Điều em dễ nhầm nhất là "
+        },
+        "metacognition": "Cách phân biệt cực nhanh<br>Hiện thực = NHÌN VÀO ĐỜI SỐNG<br>Nhân đạo = NHÌN VÀO CON NGƯỜI"
+    }
+},

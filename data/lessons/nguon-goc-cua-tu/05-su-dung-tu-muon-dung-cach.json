@@ -1,0 +1,211 @@
+{
+  "id": "nguon-goc-cua-tu.05-su-dung-tu-muon-dung-cach",
+  "title": "Sử dụng từ mượn đúng cách",
+  "version": "3.0",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "content": "\"Hôm nay mình rất <b>happy</b> vì bài kiểm tra Toán được điểm cao. Lát nữa tụi mình đi ăn <b>fastfood</b> rồi đi <b>shopping</b> nhé!\"",
+        "guide": [
+          "Cách nói trên có điểm gì đáng chú ý?",
+          "Em có thể thay thế các từ in đậm bằng những từ thuần Việt nào?"
+        ],
+        "hint": "Câu nói này lạm dụng quá nhiều từ mượn tiếng Anh trong khi tiếng Việt đã có những từ tương đương hoàn toàn có thể sử dụng được.",
+        "title": "Quan sát",
+        "instruction": "Đọc câu nói sau của một bạn học sinh và trả lời câu hỏi.",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Bảo vệ sự trong sáng của tiếng Việt",
+            "icon": "🛡️",
+            "active": true,
+            "content": {
+              "text": "Mượn từ là một cách làm giàu tiếng Việt. Tuy nhiên, để bảo vệ sự trong sáng của ngôn ngữ dân tộc, không nên mượn từ nước ngoài một cách tùy tiện, lạm dụng.",
+              "examples": [
+                {
+                  "category": "Nên: ",
+                  "word": "Mượn từ khi tiếng Việt chưa có từ tương ứng để biểu đạt (ví dụ: in-tơ-nét, vi-ta-min, ra-đa...).",
+                  "emoji": "✅"
+                },
+                {
+                  "category": "Không nên: ",
+                  "word": "Lạm dụng từ mượn khi tiếng Việt đã có từ tương đương (ví dụ: dùng 'fan' thay vì 'người hâm mộ', dùng 'view' thay vì 'lượt xem',...).",
+                  "emoji": "❌"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Mục đích mượn từ",
+            "icon": "🎯",
+            "active": false,
+            "content": {
+              "text": "Trong một số trường hợp, chúng ta dùng từ Hán Việt để tạo sắc thái trang trọng, tôn kính hoặc tao nhã, tránh gây cảm giác thô tục, ghê sợ.",
+              "examples": [
+                {
+                  "category": "Ví dụ: ",
+                  "word": "Dùng 'phụ nữ' thay cho 'đàn bà', dùng 'hi sinh' hoặc 'từ trần' thay cho 'chết'.",
+                  "emoji": "✨"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Nguyên tắc",
+        "instruction": "Nguyên tắc khi sử dụng từ mượn.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "fan",
+          "hot",
+          "view",
+          "show"
+        ],
+        "right": [
+          "người hâm mộ",
+          "nóng bỏng, nổi bật",
+          "lượt xem, quang cảnh",
+          "chương trình, buổi diễn"
+        ],
+        "answer": {
+          "fan": "người hâm mộ",
+          "hot": "nóng bỏng, nổi bật",
+          "view": "lượt xem, quang cảnh",
+          "show": "chương trình, buổi diễn"
+        },
+        "title": "Nối câu",
+        "instruction": "Hãy tìm từ thuần Việt tương ứng có thể thay thế cho các từ mượn sau đây.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trường hợp nào sau đây sử dụng từ mượn hợp lý?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Cậu ấy là một người rất cute."
+          },
+          {
+            "id": "B",
+            "text": "Bác sĩ khuyên ông em cần bổ sung thêm vi-ta-min C."
+          },
+          {
+            "id": "C",
+            "text": "Hôm nay thời tiết thật là hot quá đi!"
+          },
+          {
+            "id": "D",
+            "text": "Mình vừa mua một bộ quần áo mới để đi party."
+          }
+        ],
+        "answer": "B",
+        "title": "Lựa chọn",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Vì sao trong các bản tin thời sự hoặc trong các văn bản nhà nước, người ta thường dùng từ 'quốc gia' thay cho 'nước', dùng 'phụ nữ' thay cho 'đàn bà'?",
+        "sampleAnswer": [
+          "Các từ 'quốc gia', 'phụ nữ' là từ Hán Việt. Việc sử dụng chúng trong văn bản hành chính, bản tin thời sự nhằm tạo ra sắc thái trang trọng, lịch sự, phù hợp với tính chất nghiêm túc của hoàn cảnh giao tiếp."
+        ],
+        "title": "Thông hiểu",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "Bài hát này vừa ra mắt đã lọt top trending.",
+          "Mạng in-tơ-nét đang gặp sự cố.",
+          "Ông nhà tôi đã khuất núi hồi năm ngoái.",
+          "Ca sĩ đó có lượng fan rất đông đảo."
+        ],
+        "targets": [
+          "Lạm dụng từ mượn",
+          "Sử dụng từ mượn hợp lý"
+        ],
+        "answer": {
+          "Bài hát này vừa ra mắt đã lọt top trending.": "Lạm dụng từ mượn",
+          "Mạng in-tơ-nét đang gặp sự cố.": "Sử dụng từ mượn hợp lý",
+          "Ông nhà tôi đã khuất núi hồi năm ngoái.": "Sử dụng từ mượn hợp lý",
+          "Ca sĩ đó có lượng fan rất đông đảo.": "Lạm dụng từ mượn"
+        },
+        "title": "Kéo và thả",
+        "instruction": "Sắp xếp các câu sau vào nhóm tương ứng.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "highlight",
+      "data": {
+        "content": "Bức ảnh này được chụp ở góc độ rất xịn, trông background thật tuyệt vời.",
+        "answer": [
+          "background"
+        ],
+        "title": "Tô sáng",
+        "instruction": "Hãy tô sáng từ mượn bị lạm dụng không cần thiết trong câu sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step08",
+      "type": "reflection",
+      "data": {
+        "question": "Em hãy viết lại câu sau bằng cách sử dụng các từ thuần Việt thay cho các từ mượn bị lạm dụng: 'Buổi talkshow ngày hôm nay có sự góp mặt của nhiều idol nổi tiếng.'",
+        "sampleAnswer": "Buổi trò chuyện (hoặc buổi tọa đàm, chương trình giao lưu) ngày hôm nay có sự góp mặt của nhiều thần tượng nổi tiếng.",
+        "title": "Vận dụng",
+        "score": 1
+      }
+    },
+    {
+      "id": "step09",
+      "type": "flashcard",
+      "data": {
+        "front": "Nguyên tắc sử dụng từ mượn",
+        "back": "Mượn từ để làm phong phú tiếng Việt nhưng không mượn tùy tiện, lạm dụng từ nước ngoài khi tiếng Việt đã có từ tương đương để biểu đạt, nhằm bảo vệ sự trong sáng của tiếng Việt.",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "nguon-goc-cua-tu",
+    "difficulty": "reference",
+    "xp": 100,
+    "stars": 3,
+    "description": "Nguyên tắc mượn từ và cách sử dụng từ mượn sao cho hợp lý, tránh lạm dụng làm mất đi sự trong sáng của tiếng Việt.",
+    "prerequisite": null,
+    "unlock": null,
+    "reviewMode": "instant",
+    "durationMinutes": 15
+  }
+}

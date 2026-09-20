@@ -1,0 +1,3057 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson — Viết đoạn văn nghị luận văn học</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, Arial, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+        }
+
+        button,
+        textarea {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        .app {
+            min-height: 100vh;
+        }
+
+        /* =========================
+   TOP BAR
+========================= */
+
+        .topbar {
+            height: 64px;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 28px;
+            position: sticky;
+            top: 0;
+            z-index: 20;
+        }
+
+        .logo {
+            font-weight: 800;
+            color: #4f46e5;
+        }
+
+        .progress-wrap {
+            width: 360px;
+        }
+
+        .progress-label {
+            font-size: 12px;
+            color: #6b7280;
+            margin-bottom: 5px;
+        }
+
+        .progress {
+            height: 7px;
+            background: #e5e7eb;
+            border-radius: 99px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 11%;
+            background: #6366f1;
+            transition: .3s;
+        }
+
+        /* =========================
+   LAYOUT
+========================= */
+
+        .main {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+
+        .lesson-header {
+            margin-bottom: 28px;
+        }
+
+        .lesson-number {
+            color: #6366f1;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .lesson-title {
+            font-size: 32px;
+            margin: 0 0 10px;
+        }
+
+        .lesson-subtitle {
+            color: #6b7280;
+            max-width: 760px;
+            line-height: 1.6;
+        }
+
+        /* =========================
+   STEP
+========================= */
+
+        .step {
+            display: none;
+            animation: fadeIn .25s ease;
+        }
+
+        .step.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .step-label {
+            font-size: 13px;
+            color: #6366f1;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .step-title {
+            font-size: 28px;
+            margin: 0 0 10px;
+        }
+
+        .step-description {
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 28px;
+        }
+
+        /* =========================
+   CARD
+========================= */
+
+        .card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 0 8px 30px rgba(15, 23, 42, .05);
+        }
+
+        .card+.card {
+            margin-top: 18px;
+        }
+
+        /* =========================
+   STORY
+========================= */
+
+        .compare-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .compare-card {
+            border: 2px solid #e5e7eb;
+            border-radius: 18px;
+            padding: 22px;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .compare-card:hover {
+            transform: translateY(-2px);
+            border-color: #a5b4fc;
+        }
+
+        .compare-card.selected {
+            border-color: #6366f1;
+            background: #f5f3ff;
+        }
+
+        .compare-label {
+            font-size: 13px;
+            font-weight: 800;
+            color: #6366f1;
+            margin-bottom: 14px;
+        }
+
+        .paragraph {
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        .question-box {
+            margin-top: 24px;
+            padding: 18px;
+            background: #f8fafc;
+            border-radius: 14px;
+        }
+
+        .choice-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 14px;
+        }
+
+        .choice {
+            border: 1px solid #d1d5db;
+            background: white;
+            border-radius: 12px;
+            padding: 11px 16px;
+        }
+
+        .choice:hover {
+            border-color: #6366f1;
+        }
+
+        .choice.correct {
+            background: #ecfdf5;
+            border-color: #10b981;
+        }
+
+        .choice.wrong {
+            background: #fef2f2;
+            border-color: #ef4444;
+        }
+
+        /* =========================
+   OBSERVE
+========================= */
+
+        .sentence-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .sentence {
+            padding: 17px 18px;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: .2s;
+            background: white;
+        }
+
+        .sentence:hover {
+            border-color: #a5b4fc;
+        }
+
+        .sentence.active {
+            border-color: #6366f1;
+            background: #f5f3ff;
+        }
+
+        .sentence-number {
+            display: inline-flex;
+            width: 27px;
+            height: 27px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #eef2ff;
+            color: #4f46e5;
+            font-size: 12px;
+            font-weight: 800;
+            margin-right: 8px;
+        }
+
+        .role {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 12px;
+            font-weight: 800;
+            color: #6366f1;
+        }
+
+        .feedback-box {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 14px;
+            background: #f8fafc;
+            border-left: 4px solid #6366f1;
+        }
+
+        /* =========================
+   DISCOVER
+========================= */
+
+        .slot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .slot {
+            min-height: 140px;
+            border: 2px dashed #cbd5e1;
+            border-radius: 16px;
+            padding: 18px;
+            background: #f8fafc;
+        }
+
+        .slot-title {
+            font-weight: 800;
+            margin-bottom: 7px;
+        }
+
+        .slot-question {
+            font-size: 13px;
+            color: #64748b;
+            margin-bottom: 12px;
+        }
+
+        .slot.filled {
+            border-style: solid;
+            border-color: #818cf8;
+            background: #eef2ff;
+        }
+
+        .evidence-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .evidence-card {
+            background: white;
+            border: 1px solid #d1d5db;
+            border-radius: 14px;
+            padding: 15px;
+            max-width: 270px;
+            cursor: pointer;
+        }
+
+        .evidence-card.selected {
+            border-color: #6366f1;
+            background: #eef2ff;
+        }
+
+        /* =========================
+   TEACH MAP
+========================= */
+
+        .argument-map {
+            max-width: 720px;
+            margin: auto;
+        }
+
+        .map-node {
+            position: relative;
+            padding: 20px;
+            border: 2px solid #e5e7eb;
+            border-radius: 17px;
+            background: white;
+            cursor: pointer;
+        }
+
+        .map-node:hover,
+        .map-node.active {
+            border-color: #6366f1;
+            background: #f5f3ff;
+        }
+
+        .map-icon {
+            font-size: 24px;
+        }
+
+        .map-title {
+            font-weight: 800;
+            margin-top: 5px;
+        }
+
+        .map-short {
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .map-arrow {
+            text-align: center;
+            font-size: 22px;
+            color: #94a3b8;
+            padding: 6px;
+        }
+
+        .map-detail {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 15px;
+        }
+
+        /* =========================
+   GUIDED PRACTICE
+========================= */
+
+        .builder {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .builder-row {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 15px;
+            align-items: stretch;
+        }
+
+        .builder-label {
+            background: #eef2ff;
+            border-radius: 14px;
+            padding: 18px;
+            font-weight: 800;
+        }
+
+        .builder-content {
+            border: 2px dashed #cbd5e1;
+            border-radius: 14px;
+            padding: 18px;
+            min-height: 70px;
+            cursor: pointer;
+        }
+
+        .builder-content.filled {
+            border-style: solid;
+            border-color: #6366f1;
+            background: #f5f3ff;
+        }
+
+        .builder-cards {
+            margin-top: 24px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .builder-card {
+            border: 1px solid #d1d5db;
+            background: white;
+            border-radius: 12px;
+            padding: 12px 15px;
+            cursor: pointer;
+        }
+
+        .builder-card.used {
+            opacity: .4;
+        }
+
+        /* =========================
+   MINI CHALLENGE
+========================= */
+
+        .challenge-text {
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 14px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .big-choice {
+            width: 100%;
+            text-align: left;
+            padding: 18px;
+            border: 2px solid #e5e7eb;
+            border-radius: 14px;
+            background: white;
+            margin-bottom: 10px;
+        }
+
+        .big-choice:hover {
+            border-color: #818cf8;
+        }
+
+        .big-choice.correct {
+            border-color: #10b981;
+            background: #ecfdf5;
+        }
+
+        .big-choice.wrong {
+            border-color: #ef4444;
+            background: #fef2f2;
+        }
+
+        /* =========================
+   REFLECTION
+========================= */
+
+        .check-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .check-item {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            padding: 14px;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 120px;
+            resize: vertical;
+            border: 1px solid #d1d5db;
+            border-radius: 14px;
+            padding: 15px;
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: #6366f1;
+        }
+
+        /* =========================
+   CHEAT SHEET
+========================= */
+
+        .cheat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .cheat-item {
+            padding: 20px;
+            border-radius: 16px;
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+        }
+
+        .cheat-icon {
+            font-size: 24px;
+        }
+
+        .cheat-title {
+            font-weight: 800;
+            margin-top: 8px;
+        }
+
+        .cheat-question {
+            color: #64748b;
+            margin-top: 5px;
+        }
+
+        .mantra {
+            margin-top: 22px;
+            padding: 22px;
+            background: #eef2ff;
+            color: #3730a3;
+            border-radius: 16px;
+            text-align: center;
+            font-weight: 800;
+            font-size: 18px;
+        }
+
+        /* =========================
+   FINAL BOSS
+========================= */
+
+        .boss-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .boss-badge {
+            display: inline-block;
+            padding: 7px 12px;
+            border-radius: 99px;
+            background: #fef3c7;
+            color: #92400e;
+            font-weight: 800;
+            font-size: 12px;
+        }
+
+        .boss-stage {
+            display: none;
+        }
+
+        .boss-stage.active {
+            display: block;
+        }
+
+        .stage-progress {
+            display: flex;
+            gap: 7px;
+            margin-bottom: 25px;
+        }
+
+        .stage-dot {
+            flex: 1;
+            height: 6px;
+            border-radius: 99px;
+            background: #e5e7eb;
+        }
+
+        .stage-dot.done,
+        .stage-dot.active {
+            background: #6366f1;
+        }
+
+        .emotion-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .emotion-option {
+            border: 2px solid #e5e7eb;
+            border-radius: 15px;
+            padding: 20px;
+            background: white;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .emotion-option.selected {
+            border-color: #6366f1;
+            background: #eef2ff;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .detail-option {
+            border: 1px solid #d1d5db;
+            padding: 15px;
+            border-radius: 13px;
+            background: white;
+            cursor: pointer;
+        }
+
+        .detail-option.selected {
+            border-color: #6366f1;
+            background: #eef2ff;
+        }
+
+        .flow-slots {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .flow-slot {
+            border: 2px dashed #cbd5e1;
+            padding: 18px;
+            border-radius: 14px;
+            min-height: 60px;
+        }
+
+        .flow-slot.filled {
+            border-style: solid;
+            border-color: #6366f1;
+            background: #f5f3ff;
+        }
+
+        .flow-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .flow-card {
+            border: 1px solid #d1d5db;
+            background: white;
+            border-radius: 12px;
+            padding: 12px;
+            cursor: pointer;
+        }
+
+        .flow-card.used {
+            opacity: .35;
+        }
+
+        .editor {
+            min-height: 260px;
+            font-size: 17px;
+            line-height: 1.8;
+        }
+
+        .analysis-loading {
+            text-align: center;
+            padding: 35px;
+        }
+
+        .loader {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 5px solid #e5e7eb;
+            border-top-color: #6366f1;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 18px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .analysis-result {
+            display: none;
+        }
+
+        .metric {
+            margin-bottom: 18px;
+        }
+
+        .metric-head {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 7px;
+        }
+
+        .metric-bar {
+            height: 9px;
+            background: #e5e7eb;
+            border-radius: 99px;
+            overflow: hidden;
+        }
+
+        .metric-fill {
+            height: 100%;
+            background: #6366f1;
+        }
+
+        .ai-feedback {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 15px;
+            background: #f8fafc;
+        }
+
+        /* =========================
+   NAVIGATION
+========================= */
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 28px;
+        }
+
+        .btn {
+            border: none;
+            border-radius: 12px;
+            padding: 12px 20px;
+            font-weight: 700;
+        }
+
+        .btn-primary {
+            background: #4f46e5;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #4338ca;
+        }
+
+        .btn-secondary {
+            background: white;
+            border: 1px solid #d1d5db;
+        }
+
+        .btn:disabled {
+            opacity: .45;
+            cursor: not-allowed;
+        }
+
+        /* =========================
+   RESPONSIVE
+========================= */
+
+        @media (max-width: 760px) {
+
+            .compare-grid,
+            .slot-grid,
+            .cheat-grid,
+            .emotion-options,
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .builder-row {
+                grid-template-columns: 1fr;
+            }
+
+            .progress-wrap {
+                width: 150px;
+            }
+
+            .lesson-title {
+                font-size: 26px;
+            }
+
+            .main {
+                padding: 25px 15px 60px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="app">
+
+        <header class="topbar">
+            <div class="logo">TS10 • Learning</div>
+
+            <div class="progress-wrap">
+                <div class="progress-label">
+                    Lesson 08 — Viết đoạn văn nghị luận văn học
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+            </div>
+        </header>
+
+
+        <main class="main">
+
+            <div class="lesson-header">
+                <div class="lesson-number">LESSON 08 • VIẾT ĐOẠN VĂN</div>
+
+                <h1 class="lesson-title">
+                    Viết đoạn văn nghị luận văn học
+                </h1>
+
+                <p class="lesson-subtitle">
+                    Biến một nhận xét về tác phẩm thành một đoạn văn có bằng chứng,
+                    phân tích và chiều sâu.
+                </p>
+            </div>
+
+
+            <!-- =====================================================
+     01 STORY
+===================================================== -->
+
+            <section class="step active" data-step="0">
+
+                <div class="step-label">❶ STORY</div>
+
+                <h2 class="step-title">
+                    Có bằng chứng mà vẫn chưa thuyết phục?
+                </h2>
+
+                <p class="step-description">
+                    Hai đoạn dưới đây đều nói về ông Hai trong truyện
+                    <i>Làng</i>. Nhưng một đoạn đang kể lại nhiều hơn là phân tích.
+                </p>
+
+                <div class="card">
+
+                    <div class="compare-grid">
+
+                        <div class="compare-card" onclick="selectStory('A', this)">
+
+                            <div class="compare-label">ĐOẠN A — KỂ</div>
+
+                            <div class="paragraph">
+                                Ông Hai nghe tin làng theo giặc.
+                                Ông rất buồn và tủi hổ.
+                                Ông cúi gằm mặt mà đi.
+                                Ông không muốn về làng nữa.
+                            </div>
+
+                        </div>
+
+
+                        <div class="compare-card" onclick="selectStory('B', this)">
+
+                            <div class="compare-label">ĐOẠN B — PHÂN TÍCH</div>
+
+                            <div class="paragraph">
+                                Khi nghe tin làng theo giặc, ông Hai
+                                <b>“cúi gằm mặt mà đi”</b>.
+                                Hành động ấy cho thấy nỗi đau đớn,
+                                tủi hổ của ông khi niềm tự hào về quê hương
+                                bị tổn thương.
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="question-box">
+
+                        <b>
+                            Đoạn nào giúp em hiểu nhân vật sâu hơn?
+                        </b>
+
+                        <div class="choice-row">
+
+                            <button class="choice" onclick="storyAnswer('A', this)">
+                                Đoạn A
+                            </button>
+
+                            <button class="choice" onclick="storyAnswer('B', this)">
+                                Đoạn B
+                            </button>
+
+                        </div>
+
+                        <div id="storyFeedback"></div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="navigation">
+                    <span></span>
+                    <button class="btn btn-primary" onclick="nextStep()">
+                        Bắt đầu khám phá →
+                    </button>
+                </div>
+
+            </section>
+
+
+
+            <!-- =====================================================
+     02 OBSERVE
+===================================================== -->
+
+            <section class="step" data-step="1">
+
+                <div class="step-label">❷ OBSERVE</div>
+
+                <h2 class="step-title">
+                    Một chi tiết có thể nói nhiều hơn em nghĩ
+                </h2>
+
+                <p class="step-description">
+                    Hãy chạm vào từng câu. Đừng vội học thuộc tên gọi.
+                    Hãy xem câu đó đang giúp em hiểu điều gì.
+                </p>
+
+
+                <div class="card">
+
+                    <div class="sentence-list">
+
+                        <div class="sentence" onclick="observeSentence(0, this)">
+
+                            <span class="sentence-number">1</span>
+
+                            Ông Hai nghe tin làng Chợ Dầu theo giặc.
+
+                        </div>
+
+
+                        <div class="sentence" onclick="observeSentence(1, this)">
+
+                            <span class="sentence-number">2</span>
+
+                            Ông cúi gằm mặt mà đi.
+
+                        </div>
+
+
+                        <div class="sentence" onclick="observeSentence(2, this)">
+
+                            <span class="sentence-number">3</span>
+
+                            Ông không dám bước chân ra ngoài.
+
+                        </div>
+
+
+                        <div class="sentence" onclick="observeSentence(3, this)">
+
+                            <span class="sentence-number">4</span>
+
+                            Ông Hai đau đớn, tủi hổ vì niềm tự hào về làng
+                            bị tổn thương.
+
+                        </div>
+
+                    </div>
+
+
+                    <div id="observeFeedback"></div>
+
+                </div>
+
+
+                <div class="navigation">
+
+                    <button class="btn btn-secondary" onclick="prevStep()">
+                        ← Quay lại
+                    </button>
+
+                    <button class="btn btn-primary" onclick="nextStep()">
+                        Tiếp tục →
+                    </button>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =====================================================
+     03 DISCOVER
+===================================================== -->
+
+            <section class="step" data-step="2">
+
+                <div class="step-label">❸ DISCOVER</div>
+
+                <h2 class="step-title">
+                    Chi tiết này cho em hiểu gì?
+                </h2>
+
+                <p class="step-description">
+                    Đừng chỉ ghép “chi tiết” với “ý nghĩa”.
+                    Hãy tự phát hiện mối quan hệ giữa chúng.
+                </p>
+
+
+                <div class="card">
+
+                    <div class="slot-grid">
+
+                        <div class="slot" id="slot-detail">
+
+                            <div class="slot-title">
+                                🔎 CHI TIẾT
+                            </div>
+
+                            <div class="slot-question">
+                                Điều gì thực sự xuất hiện trong tác phẩm?
+                            </div>
+
+                            <div id="slotDetailContent">
+                                Chưa chọn
+                            </div>
+
+                        </div>
+
+
+                        <div class="slot" id="slot-meaning">
+
+                            <div class="slot-title">
+                                💡 Ý NGHĨA
+                            </div>
+
+                            <div class="slot-question">
+                                Chi tiết ấy cho em hiểu gì?
+                            </div>
+
+                            <div id="slotMeaningContent">
+                                Chưa chọn
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="evidence-cards">
+
+                        <div class="evidence-card" onclick="discoverSelect('detail')">
+
+                            🔎 “Cúi gằm mặt mà đi”
+                        </div>
+
+
+                        <div class="evidence-card" onclick="discoverSelect('wrong')">
+
+                            📖 Ông Hai rất buồn.
+                        </div>
+
+
+                        <div class="evidence-card" onclick="discoverSelect('meaning')">
+
+                            💡 Thể hiện nỗi đau đớn, tủi hổ.
+                        </div>
+
+
+                        <div class="evidence-card" onclick="discoverSelect('wrongMeaning')">
+
+                            💡 Ông Hai là người rất tốt.
+                        </div>
+
+                    </div>
+
+
+                    <div id="discoverFeedback"></div>
+
+                </div>
+
+
+                <div class="navigation">
+
+                    <button class="btn btn-secondary" onclick="prevStep()">
+                        ← Quay lại
+                    </button>
+
+                    <button class="btn btn-primary" onclick="nextStep()">
+                        Em đã phát hiện →
+                    </button>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =====================================================
+     04 TEACH
+===================================================== -->
+
+            <section class="step" data-step="3">
+
+                <div class="step-label">❹ TEACH</div>
+
+                <h2 class="step-title">
+                    Bộ công cụ phân tích bằng chứng
+                </h2>
+
+                <p class="step-description">
+                    Nghị luận văn học không dừng ở việc nói tác phẩm có gì.
+                    Em cần đi từ chi tiết đến ý nghĩa.
+                </p>
+
+
+                <div class="card">
+
+                    <div class="argument-map">
+
+                        <div class="map-node" onclick="teachNode('problem', this)">
+
+                            <div class="map-icon">📖</div>
+
+                            <div class="map-title">
+                                ĐỀ BÀI
+                            </div>
+
+                            <div class="map-short">
+                                Đề đang bắt em làm rõ điều gì?
+                            </div>
+
+                        </div>
+
+
+                        <div class="map-arrow">↓</div>
+
+
+                        <div class="map-node" onclick="teachNode('evidence', this)">
+
+                            <div class="map-icon">🔎</div>
+
+                            <div class="map-title">
+                                CHỌN BẰNG CHỨNG
+                            </div>
+
+                            <div class="map-short">
+                                Chi tiết nào trong tác phẩm?
+                            </div>
+
+                        </div>
+
+
+                        <div class="map-arrow">↓</div>
+
+
+                        <div class="map-node" onclick="teachNode('analysis', this)">
+
+                            <div class="map-icon">💭</div>
+
+                            <div class="map-title">
+                                PHÂN TÍCH
+                            </div>
+
+                            <div class="map-short">
+                                Chi tiết ấy cho thấy điều gì?
+                            </div>
+
+                        </div>
+
+
+                        <div class="map-arrow">↓</div>
+
+
+                        <div class="map-node" onclick="teachNode('meaning', this)">
+
+                            <div class="map-icon">💡</div>
+
+                            <div class="map-title">
+                                GIẢI THÍCH Ý NGHĨA
+                            </div>
+
+                            <div class="map-short">
+                                Vì sao chi tiết ấy có ý nghĩa?
+                            </div>
+
+                        </div>
+
+
+                        <div class="map-arrow">↓</div>
+
+
+                        <div class="map-node" onclick="teachNode('comment', this)">
+
+                            <div class="map-icon">🌿</div>
+
+                            <div class="map-title">
+                                NHẬN XÉT
+                            </div>
+
+                            <div class="map-short">
+                                Tác giả muốn làm nổi bật điều gì?
+                            </div>
+
+                        </div>
+
+
+                        <div id="teachDetail" class="map-detail">
+
+                            👆 Hãy chọn một bước để khám phá.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <b>⭐ Câu hỏi chẩn đoán</b>
+
+                    <p>
+                        “Chi tiết này cho em hiểu gì?”
+                    </p>
+
+                    <p style="color:#64748b">
+                        Đây là câu hỏi em có thể dùng mỗi khi viết
+                        nghị luận văn học.
+                    </p>
+
+                </div>
+
+
+                <div class="navigation">
+
+                    <button class="btn btn-secondary" onclick="prevStep()">
+                        ← Quay lại
+                    </button>
+
+                    <button class="btn btn-primary" onclick="nextStep()">
+                        Thử làm →
+                    </button>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =====================================================
+     05 GUIDED PRACTICE
+===================================================== -->
+
+            <section class="step" data-step="4">
+
+                <div class="step-label">❺ GUIDED PRACTICE</div>
+
+                <h2 class="step-title">
+                    Biến bằng chứng thành phân tích
+                </h2>
+
+                <p class="step-description">
+                    Hãy chọn câu phù hợp cho từng vị trí.
+                </p>
+
+
+                <div class="card">
+
+                    <div class="builder">
+
+                        <div class="builder-row">
+
+                            <div class="builder-label">
+                                🎯 NHẬN XÉT
+                            </div>
+
+                            <div class="builder-content" id="builder-opinion" onclick="builderFill('opinion')">
+                                Nhấn vào để chọn câu
+                            </div>
+
+                        </div>
+
+
+                        <div class="builder-row">
+
+                            <div class="builder-label">
+                                🔎 BẰNG CHỨNG
+                            </div>
+
+                            <div class="builder-content" id="builder-evidence" onclick="builderFill('evidence')">
+                                Nhấn vào để chọn câu
+                            </div>
+
+                        </div>
+
+
+                        <div class="builder-row">
+
+                            <div class="builder-label">
+                                💭 PHÂN TÍCH
+                            </div>
+
+                            <div class="builder-content" id="builder-analysis" onclick="builderFill('analysis')">
+                                Nhấn vào để chọn câu
+                            </div>
+
+                        </div>
+
+
+                        <div class="builder-row">
+
+                            <div class="builder-label">
+                                🌿 Ý NGHĨA
+                            </div>
+
+                            <div class="builder-content" id="builder-meaning" onclick="builderFill('meaning')">
+                                Nhấn vào để chọn câu
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="builder-cards">
+
+                        <button class="builder-card" onclick="chooseBuilderCard('opinion')">
+
+                            “Tình yêu làng của ông Hai rất sâu sắc.”
+
+                        </button>
+
+
+                        <button class="builder-card" onclick="chooseBuilderCard('evidence')">
+
+                            “Cúi gằm mặt mà đi.”
+
+                        </button>
+
+
+                        <button class="builder-card" onclick="chooseBuilderCard('analysis')">
+
+                            “Hành động ấy cho thấy nỗi đau đớn và tủi hổ của ông.”
+
+                        </button>
+
+
+                        <button class="builder-card" onclick="chooseBuilderCard('meaning')">
+
+                            “Qua đó, tác giả làm nổi bật tình yêu quê hương sâu nặng của nhân vật.”
+
+                        </button>
+
+                    </div>
+
+
+                    <div id="builderFeedback"></div>
+
+                </div>
+
+
+                <div class="navigation">
+
+                    <button class="btn btn-secondary" onclick="prevStep()">
+                        ← Quay lại
+                    </button>
+
+                    <button class="btn btn-primary" onclick="checkBuilder()">
+
+                        Kiểm tra đoạn phân tích
+
+                    </button>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =====================================================
+     06 MINI CHALLENGE
+===================================================== -->
+
+            <section class="step" data-step="5">
+
+                <div class="step-label">❻ MINI CHALLENGE</div>
+
+                <h2 class="step-title">
+                    Kể hay phân tích?
+                </h2>
+
+                <p class="step-description">
+                    Đây là phản xạ quan trọng nhất của Lesson.
+                </p>
+
+
+                <div class="card">
+
+                    <div class="challenge-text">
+
+                        <b>Đoạn văn:</b>
+
+                        <p>
+                            Ông Hai nghe tin làng theo giặc.
+                            Ông rất buồn. Ông cúi gằm mặt mà đi.
+                        </p>
+
+                        <p>
+                            Người viết muốn làm rõ tình trạng của ông Hai.
+                        </p>
+
+                    </div>
+
+
+                    <b>
+                        Câu nào dưới đây đã thực sự phân tích?
+                    </b>
+
+
+                    <div style="margin-top:18px">
+
+                        <button class="big-choice" onclick="miniAnswer('a', this)">
+
+                            A. Ông Hai nghe tin làng theo giặc
+                            rồi rất buồn.
+
+                        </button>
+
+
+                        <button class="big-choice" onclick="miniAnswer('b', this)">
+
+                            B. Ông cúi gằm mặt mà đi.
+
+                        </button>
+
+
+                        <button class="big-choice" onclick="miniAnswer('c', this)">
+
+                            C. Hành động “cúi gằm mặt mà đi”
+                            cho thấy nỗi đau đớn, tủi hổ của ông Hai
+                            khi niềm tự hào về quê hương bị tổn thương.
+
+                        </button>
+
+                    </div>
+
+
+                    <div id="miniFeedback"></div>
+
+                </div>
+
+
+                <div class="navigation">
+
+                    <button class="btn btn-secondary" onclick="prevStep()">
+                        ← Quay lại
+                    </button>
+
+                    <button class="btn btn-primary" onclick="nextStep()">
+                        Tiếp tục →
+                    </button>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =====================================================
+     07 REFLECTION
+===================================================== -->
+
+            <section class="step" data-step="6">
+
+                <div class="step-label">❼ REFLECTION</div>
+
+                <h2 class="step-title">
+                    Em đang phân tích hay đang kể?
+                </h2>
+
+                <p class="step-description">
+                    Hãy thử hình thành một thói quen tự kiểm tra trước khi nộp bài.
+                </p>
+
+
+                <div class="card">
+
+                    <b>
+                        Khi viết nghị luận văn học, em sẽ kiểm tra điều gì?
+                    </b>
+
+                    <div class="check-list" style="margin-top:18px">
+
+                        <label class="check-item">
+                            <input type="checkbox">
+                            Em đã xác định đúng vấn đề đề bài yêu cầu chưa?
+                        </label>
+
+                        <label class="check-item">
+                            <input type="checkbox">
+                            Em đã dùng bằng chứng cụ thể từ tác phẩm chưa?
+                        </label>
+
+                        <label class="check-item">
+                            <input type="checkbox">
+                            Em đã giải thích chi tiết ấy cho thấy điều gì chưa?
+                        </label>
+
+                        <label class="check-item">
+                            <input type="checkbox">
+                            Em có đang kể lại thay vì phân tích không?
+                        </label>
+
+                        <label class="check-item">
+                            <input type="checkbox">
+                            Em đã liên hệ chi tiết với nhân vật / tác phẩm chưa?
+                        </label>
+
+                    </div>
+
+
+                    <div style="margin-top:25px">
+
+                        <label>
+                            <b>Điều em cần nhớ nhất:</b>
+                        </label>
+
+                        <textarea id="reflectionText"
+                            placeholder="Ví dụ: Em cần giải thích chi tiết chứ không chỉ kể lại..."></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <div class="navigation">
+
+                    <button class="btn btn-secondary" onclick="prevStep()">
+                        ← Quay lại
+                    </button>
+
+                    <button class="btn btn-primary" onclick="nextStep()">
+                        Ghi nhớ →
+                    </button>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =====================================================
+     08 CHEAT SHEET
+===================================================== -->
+
+            <section class="step" data-step="7">
+
+                <div class="step-label">❽ CHEAT SHEET</div>
+
+                <h2 class="step-title">
+                    Bộ công cụ phân tích văn học
+                </h2>
+
+                <p class="step-description">
+                    Không học thuộc một công thức cứng.
+                    Hãy nhớ mạch suy nghĩ.
+                </p>
+
+
+                <div class="card">
+
+                    <div class="cheat-grid">
+
+                        <div class="cheat-item">
+
+                            <div class="cheat-icon">🎯</div>
+
+                            <div class="cheat-title">
+                                XÁC ĐỊNH
+                            </div>
+
+                            <div class="cheat-question">
+                                Đề bắt em làm rõ điều gì?
+                            </div>
+
+                        </div>
+
+
+                        <div class="cheat-item">
+
+                            <div class="cheat-icon">🔎</div>
+
+                            <div class="cheat-title">
+                                BẰNG CHỨNG
+                            </div>
+
+                            <div class="cheat-question">
+                                Chi tiết nào trong tác phẩm?
+                            </div>
+
+                        </div>
+
+
+                        <div class="cheat-item">
+
+                            <div class="cheat-icon">💭</div>
+
+                            <div class="cheat-title">
+                                PHÂN TÍCH
+                            </div>
+
+                            <div class="cheat-question">
+                                Chi tiết ấy cho thấy điều gì?
+                            </div>
+
+                        </div>
+
+
+                        <div class="cheat-item">
+
+                            <div class="cheat-icon">💡</div>
+
+                            <div class="cheat-title">
+                                Ý NGHĨA
+                            </div>
+
+                            <div class="cheat-question">
+                                Vì sao điều đó quan trọng?
+                            </div>
+
+                        </div>
+
+
+                        <div class="cheat-item">
+
+                            <div class="cheat-icon">🌿</div>
+
+                            <div class="cheat-title">
+                                NHẬN XÉT
+                            </div>
+
+                            <div class="cheat-question">
+                                Tác giả làm nổi bật điều gì?
+                            </div>
+
+                        </div>
+
+
+                        <div class="cheat-item">
+
+                            <div class="cheat-icon">✍️</div>
+
+                            <div class="cheat-title">
+                                VIẾT
+                            </div>
+
+                            <div class="cheat-question">
+                                Nối các ý thành một mạch lập luận.
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="mantra">
+
+                        🔎 ĐỪNG CHỈ NÓI TÁC PHẨM CÓ GÌ.<br>
+
+                        HÃY NÓI CHI TIẾT ẤY CHO EM HIỂU GÌ.
+
+                    </div>
+
+                </div>
+
+
+                <div class="navigation">
+
+                    <button class="btn btn-secondary" onclick="prevStep()">
+                        ← Quay lại
+                    </button>
+
+                    <button class="btn btn-primary" onclick="nextStep()">
+                        Vào FINAL BOSS →
+                    </button>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =====================================================
+     09 FINAL CHALLENGE
+===================================================== -->
+
+            <section class="step" data-step="8">
+
+                <div class="step-label">❾ FINAL CHALLENGE</div>
+
+                <h2 class="step-title">
+                    📖 Literary Analysis Boss
+                </h2>
+
+                <p class="step-description">
+                    Lần này không cho em sẵn đường đi.
+                    Em phải tự biến bằng chứng văn học thành một đoạn phân tích.
+                </p>
+
+
+                <div class="card">
+
+                    <div class="boss-header">
+
+                        <span class="boss-badge">
+                            🏆 FINAL BOSS
+                        </span>
+
+                        <h3>
+                            Viết đoạn văn nghị luận văn học
+                        </h3>
+
+                        <p>
+                            Phân tích tình yêu làng của nhân vật ông Hai
+                            trong truyện ngắn <i>Làng</i> của Kim Lân.
+                        </p>
+
+                    </div>
+
+
+                    <div class="stage-progress">
+
+                        <div class="stage-dot active" id="stageDot1"></div>
+                        <div class="stage-dot" id="stageDot2"></div>
+                        <div class="stage-dot" id="stageDot3"></div>
+                        <div class="stage-dot" id="stageDot4"></div>
+
+                    </div>
+
+
+                    <!-- STAGE 1 -->
+
+                    <div class="boss-stage active" id="bossStage1">
+
+                        <h3>
+                            Tầng 1 — 🎯 Xác định vấn đề
+                        </h3>
+
+                        <p>
+                            Đề đang yêu cầu em tập trung vào điều gì?
+                        </p>
+
+
+                        <div class="emotion-options">
+
+                            <div class="emotion-option" onclick="bossChoice('wrong', this)">
+                                Kể lại toàn bộ truyện <i>Làng</i>
+                            </div>
+
+                            <div class="emotion-option" onclick="bossChoice('correct', this)">
+                                Phân tích tình yêu làng của ông Hai
+                            </div>
+
+                            <div class="emotion-option" onclick="bossChoice('wrong', this)">
+                                Phân tích tất cả nhân vật trong truyện
+                            </div>
+
+                            <div class="emotion-option" onclick="bossChoice('wrong', this)">
+                                Giới thiệu tác giả Kim Lân
+                            </div>
+
+                        </div>
+
+
+                        <div id="bossFeedback1"></div>
+
+
+                        <div class="navigation">
+
+                            <span></span>
+
+                            <button class="btn btn-primary" id="bossNext1" disabled onclick="bossNext(1)">
+
+                                Tiếp tục →
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- STAGE 2 -->
+
+                    <div class="boss-stage" id="bossStage2">
+
+                        <h3>
+                            Tầng 2 — 🔎 Chọn bằng chứng
+                        </h3>
+
+                        <p>
+                            Chi tiết nào phù hợp nhất để làm rõ
+                            tình yêu làng của ông Hai?
+                        </p>
+
+
+                        <div class="detail-grid">
+
+                            <div class="detail-option" onclick="toggleDetail(this, true)">
+                                Ông thường khoe về làng Chợ Dầu.
+                            </div>
+
+                            <div class="detail-option" onclick="toggleDetail(this, false)">
+                                Ông có một người hàng xóm.
+                            </div>
+
+                            <div class="detail-option" onclick="toggleDetail(this, true)">
+                                Ông đau đớn, tủi hổ khi nghe tin làng theo giặc.
+                            </div>
+
+                            <div class="detail-option" onclick="toggleDetail(this, false)">
+                                Ông đi ra ngoài đường.
+                            </div>
+
+                            <div class="detail-option" onclick="toggleDetail(this, true)">
+                                Ông sung sướng khi nghe tin cải chính.
+                            </div>
+
+                            <div class="detail-option" onclick="toggleDetail(this, false)">
+                                Ông nói chuyện với những người xung quanh.
+                            </div>
+
+                        </div>
+
+
+                        <div id="bossFeedback2"></div>
+
+
+                        <div class="navigation">
+
+                            <button class="btn btn-secondary" onclick="bossBack(2)">
+                                ←
+                            </button>
+
+                            <button class="btn btn-primary" onclick="bossNext(2)">
+                                Tiếp tục →
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- STAGE 3 -->
+
+                    <div class="boss-stage" id="bossStage3">
+
+                        <h3>
+                            Tầng 3 — 💭 Phân tích bằng chứng
+                        </h3>
+
+                        <p>
+                            Hãy hoàn thành mạch suy nghĩ:
+                        </p>
+
+
+                        <div class="flow-slots">
+
+                            <div class="flow-slot" id="flow1">
+                                🔎 “Cúi gằm mặt mà đi”
+                            </div>
+
+                            <div class="flow-slot" id="flow2">
+                                💭 ...
+                            </div>
+
+                            <div class="flow-slot" id="flow3">
+                                💡 ...
+                            </div>
+
+                            <div class="flow-slot" id="flow4">
+                                🌿 ...
+                            </div>
+
+                        </div>
+
+
+                        <div class="flow-cards">
+
+                            <button class="flow-card" onclick="flowSelect(this, 2)">
+                                Cho thấy nỗi đau đớn, tủi hổ.
+                            </button>
+
+                            <button class="flow-card" onclick="flowSelect(this, 3)">
+                                Niềm tự hào về quê hương bị tổn thương.
+                            </button>
+
+                            <button class="flow-card" onclick="flowSelect(this, 4)">
+                                Qua đó làm nổi bật tình yêu làng sâu sắc của ông Hai.
+                            </button>
+
+                        </div>
+
+
+                        <div id="bossFeedback3"></div>
+
+
+                        <div class="navigation">
+
+                            <button class="btn btn-secondary" onclick="bossBack(3)">
+                                ←
+                            </button>
+
+                            <button class="btn btn-primary" onclick="bossNext(3)">
+                                Viết đoạn →
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- STAGE 4 -->
+
+                    <div class="boss-stage" id="bossStage4">
+
+                        <h3>
+                            Tầng 4 — ✍️ Viết đoạn văn
+                        </h3>
+
+                        <p>
+                            Hãy viết một đoạn văn ngắn phân tích
+                            tình yêu làng của ông Hai.
+                        </p>
+
+
+                        <textarea class="editor" id="finalEditor" placeholder="Viết đoạn văn của em..."></textarea>
+
+
+                        <div style="
+                display:flex;
+                justify-content:space-between;
+                margin-top:8px;
+                color:#64748b;
+                font-size:13px;
+            ">
+
+                            <span>
+                                Hãy nhớ: bằng chứng → phân tích → ý nghĩa.
+                            </span>
+
+                            <span id="charCount">
+                                0 chữ
+                            </span>
+
+                        </div>
+
+
+                        <div class="navigation">
+
+                            <button class="btn btn-secondary" onclick="bossBack(4)">
+                                ←
+                            </button>
+
+                            <button class="btn btn-primary" onclick="submitFinal()">
+                                🚀 Nộp & phân tích
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ANALYSIS -->
+
+                    <div class="boss-stage" id="bossAnalysis">
+
+                        <div class="analysis-loading" id="analysisLoading">
+
+                            <div class="loader"></div>
+
+                            <h3>
+                                Đang đọc đoạn văn của em...
+                            </h3>
+
+                            <p>
+                                Hệ thống đang kiểm tra:
+                                bằng chứng → phân tích → ý nghĩa.
+                            </p>
+
+                        </div>
+
+
+                        <div class="analysis-result" id="analysisResult">
+
+                            <h3>
+                                🧠 HỒ SƠ PHÂN TÍCH VĂN HỌC
+                            </h3>
+
+
+                            <div class="metric">
+
+                                <div class="metric-head">
+                                    <span>🎯 Xác định đúng vấn đề</span>
+                                    <b>90%</b>
+                                </div>
+
+                                <div class="metric-bar">
+                                    <div class="metric-fill" style="width:90%">
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="metric">
+
+                                <div class="metric-head">
+                                    <span>🔎 Bằng chứng văn học</span>
+                                    <b>85%</b>
+                                </div>
+
+                                <div class="metric-bar">
+                                    <div class="metric-fill" style="width:85%">
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="metric">
+
+                                <div class="metric-head">
+                                    <span>💭 Phân tích</span>
+                                    <b>75%</b>
+                                </div>
+
+                                <div class="metric-bar">
+                                    <div class="metric-fill" style="width:75%">
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="metric">
+
+                                <div class="metric-head">
+                                    <span>💡 Giải thích ý nghĩa</span>
+                                    <b>70%</b>
+                                </div>
+
+                                <div class="metric-bar">
+                                    <div class="metric-fill" style="width:70%">
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="metric">
+
+                                <div class="metric-head">
+                                    <span>🌿 Nhận xét văn học</span>
+                                    <b>80%</b>
+                                </div>
+
+                                <div class="metric-bar">
+                                    <div class="metric-fill" style="width:80%">
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="ai-feedback">
+
+                                <h4>
+                                    🤖 NHẬN XÉT
+                                </h4>
+
+                                <p>
+                                    ✓ Em đã chọn đúng vấn đề cần nghị luận.
+                                </p>
+
+                                <p>
+                                    ✓ Em đã sử dụng bằng chứng cụ thể
+                                    từ tác phẩm.
+                                </p>
+
+                                <p>
+                                    ✓ Em đã bước đầu giải thích ý nghĩa
+                                    của hành động “cúi gằm mặt mà đi”.
+                                </p>
+
+                                <p>
+                                    △ Nếu muốn đoạn văn sâu hơn,
+                                    hãy trả lời thêm:
+                                    <b>“Nỗi đau ấy nói gì về tình yêu làng
+                                        của ông Hai?”</b>
+                                </p>
+
+                                <p>
+                                    💡 Hãy nhớ:
+                                    <b>chi tiết → cảm xúc → ý nghĩa → nhận xét.</b>
+                                </p>
+
+                            </div>
+
+
+                            <div style="
+                    margin-top:25px;
+                    padding:22px;
+                    background:#eef2ff;
+                    border-radius:16px;
+                    text-align:center;
+                ">
+
+                                <b>
+                                    🔎 CÂU HỎI EM CÓ THỂ MANG SANG
+                                    BẤT KỲ BÀI NGHỊ LUẬN VĂN HỌC NÀO:
+                                </b>
+
+                                <div style="
+                        margin-top:10px;
+                        font-size:21px;
+                        font-weight:800;
+                        color:#3730a3;
+                    ">
+                                    “CHI TIẾT NÀY CHO EM HIỂU GÌ?”
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+    <script>
+
+        /* =====================================================
+           GLOBAL STATE
+        ===================================================== */
+
+        let currentStep = 0;
+
+        const totalSteps = 9;
+
+        let selectedStory = null;
+
+        let selectedDiscover = [];
+
+        let builderState = {};
+
+        let bossStage = 1;
+
+        let selectedBossDetails = [];
+
+        let flowState = {};
+
+
+
+        /* =====================================================
+           STEP NAVIGATION
+        ===================================================== */
+
+        function updateProgress() {
+
+            const percent =
+                ((currentStep + 1) / totalSteps) * 100;
+
+            document.getElementById("progressBar")
+                .style.width = percent + "%";
+        }
+
+
+        function showStep(index) {
+
+            if (index < 0 || index >= totalSteps) {
+                return;
+            }
+
+            document.querySelectorAll(".step")
+                .forEach(step => {
+                    step.classList.remove("active");
+                });
+
+            const target =
+                document.querySelector(
+                    `.step[data-step="${index}"]`
+                );
+
+            if (target) {
+                target.classList.add("active");
+            }
+
+            currentStep = index;
+
+            updateProgress();
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+
+
+        function nextStep() {
+
+            if (currentStep < totalSteps - 1) {
+                showStep(currentStep + 1);
+            }
+
+        }
+
+
+        function prevStep() {
+
+            if (currentStep > 0) {
+                showStep(currentStep - 1);
+            }
+
+        }
+
+
+        updateProgress();
+
+
+
+        /* =====================================================
+           STORY
+        ===================================================== */
+
+        function selectStory(value, element) {
+
+            document.querySelectorAll(".compare-card")
+                .forEach(card => {
+                    card.classList.remove("selected");
+                });
+
+            element.classList.add("selected");
+
+            selectedStory = value;
+        }
+
+
+        function storyAnswer(value, button) {
+
+            document.querySelectorAll(".question-box .choice")
+                .forEach(btn => {
+                    btn.classList.remove("correct", "wrong");
+                });
+
+            const feedback =
+                document.getElementById("storyFeedback");
+
+            if (value === "B") {
+
+                button.classList.add("correct");
+
+                feedback.innerHTML = `
+            <div class="feedback-box">
+                ✓ Chính xác. Đoạn B không dừng ở việc kể
+                ông Hai làm gì mà giải thích hành động ấy
+                cho thấy điều gì.
+                <br><br>
+                ⭐ Đây chính là khác biệt giữa
+                <b>kể</b> và <b>phân tích</b>.
+            </div>
+        `;
+
+            } else {
+
+                button.classList.add("wrong");
+
+                feedback.innerHTML = `
+            <div class="feedback-box">
+                △ Đoạn A đang kể lại sự việc.
+                Hãy chú ý xem đoạn B đã làm thêm điều gì
+                sau khi đưa bằng chứng.
+            </div>
+        `;
+
+            }
+
+        }
+
+
+
+        /* =====================================================
+           OBSERVE
+        ===================================================== */
+
+        const observeData = [
+
+            {
+                role: "📖 SỰ VIỆC",
+                text: "Chi tiết này cho biết điều gì đã xảy ra trong tác phẩm."
+            },
+
+            {
+                role: "🔎 BẰNG CHỨNG",
+                text: "Đây là chi tiết cụ thể có thể dùng để chứng minh nhận xét."
+            },
+
+            {
+                role: "💭 PHÂN TÍCH",
+                text: "Hành động ấy cho thấy ông Hai đang đau đớn và tủi hổ."
+            },
+
+            {
+                role: "🌿 NHẬN XÉT",
+                text: "Từ chi tiết này, ta hiểu sâu hơn tình yêu làng và tình yêu quê hương của ông Hai."
+            }
+
+        ];
+
+
+        function observeSentence(index, element) {
+
+            document.querySelectorAll(".sentence")
+                .forEach(item => {
+                    item.classList.remove("active");
+                });
+
+            element.classList.add("active");
+
+            const data = observeData[index];
+
+            document.getElementById("observeFeedback")
+                .innerHTML = `
+            <div class="feedback-box">
+                <b>${data.role}</b>
+                <p>${data.text}</p>
+            </div>
+        `;
+        }
+
+
+
+        /* =====================================================
+           DISCOVER
+        ===================================================== */
+
+        function discoverSelect(type) {
+
+            const feedback =
+                document.getElementById("discoverFeedback");
+
+            if (type === "detail") {
+
+                document.getElementById("slotDetailContent")
+                    .innerHTML =
+                    "<b>“Cúi gằm mặt mà đi”</b>";
+
+                document.getElementById("slot-detail")
+                    .classList.add("filled");
+
+                feedback.innerHTML = `
+            <div class="feedback-box">
+                ✓ Đây là một bằng chứng cụ thể từ tác phẩm.
+                Nhưng chưa đủ.
+                <br><br>
+                Bây giờ phải hỏi:
+                <b>“Chi tiết ấy cho em hiểu gì?”</b>
+            </div>
+        `;
+
+            }
+
+            if (type === "wrong") {
+
+                feedback.innerHTML = `
+            <div class="feedback-box">
+                △ “Ông Hai rất buồn” đã là một nhận xét,
+                chưa phải bằng chứng cụ thể.
+            </div>
+        `;
+
+            }
+
+            if (type === "meaning") {
+
+                document.getElementById("slotMeaningContent")
+                    .innerHTML =
+                    "<b>Nỗi đau đớn, tủi hổ.</b>";
+
+                document.getElementById("slot-meaning")
+                    .classList.add("filled");
+
+                feedback.innerHTML = `
+            <div class="feedback-box">
+                ✓ Tốt. Em đã bắt đầu biến chi tiết
+                thành một nhận xét có ý nghĩa.
+            </div>
+        `;
+
+            }
+
+            if (type === "wrongMeaning") {
+
+                feedback.innerHTML = `
+            <div class="feedback-box">
+                △ Nhận xét này quá xa chi tiết.
+                Hãy hỏi:
+                “Tại sao hành động cúi gằm mặt
+                lại cho thấy ông Hai là người như thế?”
+            </div>
+        `;
+
+            }
+
+        }
+
+
+
+        /* =====================================================
+           TEACH
+        ===================================================== */
+
+        const teachData = {
+
+            problem: `
+        <b>Đề bài</b>
+        <p>
+            Phân tích tình yêu làng của ông Hai.
+        </p>
+        <p>
+            Không cần kể toàn bộ truyện.
+            Em cần tập trung vào những biểu hiện
+            làm nổi bật tình yêu làng.
+        </p>
+    `,
+
+            evidence: `
+        <b>Chọn bằng chứng</b>
+        <p>
+            Ưu tiên lời nói, hành động,
+            chi tiết, hình ảnh, diễn biến tâm trạng
+            hoặc câu thơ cụ thể.
+        </p>
+        <p>
+            Ví dụ:
+            <b>“cúi gằm mặt mà đi”</b>.
+        </p>
+    `,
+
+            analysis: `
+        <b>Phân tích</b>
+        <p>
+            Đừng dừng ở việc nhắc lại chi tiết.
+        </p>
+        <p>
+            Hãy trả lời:
+            <b>“Chi tiết ấy cho thấy điều gì?”</b>
+        </p>
+    `,
+
+            meaning: `
+        <b>Giải thích ý nghĩa</b>
+        <p>
+            Hỏi tiếp:
+            “Tại sao nhân vật lại có cảm xúc,
+            hành động như vậy?”
+        </p>
+        <p>
+            Từ đó đi sâu vào đặc điểm nhân vật
+            hoặc nội dung tác phẩm.
+        </p>
+    `,
+
+            comment: `
+        <b>Nhận xét</b>
+        <p>
+            Cuối cùng, đưa phân tích trở lại
+            với vấn đề nghị luận.
+        </p>
+        <p>
+            Ví dụ:
+            Qua đó, Kim Lân làm nổi bật
+            tình yêu làng sâu sắc của ông Hai.
+        </p>
+    `
+
+        };
+
+
+        function teachNode(type, element) {
+
+            document.querySelectorAll(".map-node")
+                .forEach(node => {
+                    node.classList.remove("active");
+                });
+
+            element.classList.add("active");
+
+            document.getElementById("teachDetail")
+                .innerHTML = teachData[type];
+        }
+
+
+
+        /* =====================================================
+           BUILDER
+        ===================================================== */
+
+        let currentBuilderChoice = null;
+
+
+        function chooseBuilderCard(type) {
+
+            currentBuilderChoice = type;
+
+            document.querySelectorAll(".builder-card")
+                .forEach(card => {
+                    card.classList.remove("used");
+                });
+
+        }
+
+
+        function builderFill(slot) {
+
+            if (!currentBuilderChoice) {
+
+                document.getElementById("builderFeedback")
+                    .innerHTML = `
+                <div class="feedback-box">
+                    👆 Hãy chọn một câu bên dưới trước.
+                </div>
+            `;
+
+                return;
+            }
+
+
+            const values = {
+
+                opinion:
+                    "Tình yêu làng của ông Hai rất sâu sắc.",
+
+                evidence:
+                    "“Cúi gằm mặt mà đi.”",
+
+                analysis:
+                    "Hành động ấy cho thấy nỗi đau đớn và tủi hổ của ông.",
+
+                meaning:
+                    "Qua đó, tác giả làm nổi bật tình yêu làng sâu sắc của ông Hai."
+
+            };
+
+
+            const target =
+                document.getElementById(
+                    "builder-" + slot
+                );
+
+
+            target.innerHTML =
+                values[currentBuilderChoice];
+
+            target.classList.add("filled");
+
+            builderState[slot] =
+                currentBuilderChoice;
+
+            currentBuilderChoice = null;
+        }
+
+
+        function checkBuilder() {
+
+            const required = [
+                "opinion",
+                "evidence",
+                "analysis",
+                "meaning"
+            ];
+
+            const complete =
+                required.every(
+                    key => builderState[key]
+                );
+
+            const feedback =
+                document.getElementById("builderFeedback");
+
+
+            if (complete) {
+
+                feedback.innerHTML = `
+            <div class="feedback-box">
+                ✓ Em đã tạo được mạch:
+                <b>nhận xét → bằng chứng → phân tích → ý nghĩa</b>.
+                <br><br>
+                Đây chính là cách biến bằng chứng
+                thành lập luận văn học.
+            </div>
+        `;
+
+            } else {
+
+                feedback.innerHTML = `
+            <div class="feedback-box">
+                △ Hãy hoàn thành các vị trí còn thiếu.
+            </div>
+        `;
+
+            }
+
+        }
+
+
+
+        /* =====================================================
+           MINI CHALLENGE
+        ===================================================== */
+
+        function miniAnswer(value, button) {
+
+            document.querySelectorAll(".big-choice")
+                .forEach(btn => {
+                    btn.classList.remove("correct", "wrong");
+                });
+
+
+            const feedback =
+                document.getElementById("miniFeedback");
+
+
+            if (value === "c") {
+
+                button.classList.add("correct");
+
+                feedback.innerHTML = `
+            <div class="feedback-box">
+                ✓ Chính xác.
+                Câu C không chỉ nhắc lại hành động
+                mà giải thích hành động ấy cho thấy gì.
+                <br><br>
+                ⭐ Đây là <b>phân tích</b>.
+            </div>
+        `;
+
+            } else {
+
+                button.classList.add("wrong");
+
+                feedback.innerHTML = `
+            <div class="feedback-box">
+                △ Câu này vẫn chủ yếu kể hoặc nhắc lại
+                chi tiết.
+                <br><br>
+                Hãy tìm câu trả lời cho:
+                <b>“Chi tiết ấy cho em hiểu gì?”</b>
+            </div>
+        `;
+
+            }
+
+        }
+
+
+
+        /* =====================================================
+           FINAL BOSS
+        ===================================================== */
+
+        function showBossStage(number) {
+
+            document.querySelectorAll(".boss-stage")
+                .forEach(stage => {
+                    stage.classList.remove("active");
+                });
+
+
+            if (number <= 4) {
+
+                document.getElementById(
+                    "bossStage" + number
+                ).classList.add("active");
+
+            }
+
+
+            for (let i = 1; i <= 4; i++) {
+
+                const dot =
+                    document.getElementById(
+                        "stageDot" + i
+                    );
+
+                dot.classList.remove("active", "done");
+
+                if (i < number) {
+                    dot.classList.add("done");
+                }
+
+                if (i === number) {
+                    dot.classList.add("active");
+                }
+
+            }
+
+
+            bossStage = number;
+
+        }
+
+
+        function bossChoice(result, element) {
+
+            document.querySelectorAll(".emotion-option")
+                .forEach(item => {
+                    item.classList.remove("selected");
+                });
+
+            element.classList.add("selected");
+
+
+            const feedback =
+                document.getElementById("bossFeedback1");
+
+            const next =
+                document.getElementById("bossNext1");
+
+
+            if (result === "correct") {
+
+                feedback.innerHTML = `
+            <div class="feedback-box">
+                ✓ Đúng.
+                Đề yêu cầu em <b>phân tích tình yêu làng
+                của ông Hai</b>, không phải kể lại toàn bộ truyện.
+            </div>
+        `;
+
+                next.disabled = false;
+
+            } else {
+
+                feedback.innerHTML = `
+            <div class="feedback-box">
+                △ Hãy đọc lại động từ
+                <b>“phân tích”</b> và đối tượng
+                <b>“tình yêu làng của ông Hai”</b>.
+            </div>
+        `;
+
+                next.disabled = true;
+
+            }
+
+        }
+
+
+        function bossNext(stage) {
+
+            if (stage === 1) {
+
+                showBossStage(2);
+
+                return;
+
+            }
+
+
+            if (stage === 2) {
+
+                if (selectedBossDetails.length < 2) {
+
+                    document.getElementById("bossFeedback2")
+                        .innerHTML = `
+                    <div class="feedback-box">
+                        △ Hãy chọn ít nhất hai bằng chứng
+                        phù hợp.
+                    </div>
+                `;
+
+                    return;
+                }
+
+                showBossStage(3);
+
+                return;
+
+            }
+
+
+            if (stage === 3) {
+
+                const complete =
+                    flowState[2] &&
+                    flowState[3] &&
+                    flowState[4];
+
+                if (!complete) {
+
+                    document.getElementById("bossFeedback3")
+                        .innerHTML = `
+                    <div class="feedback-box">
+                        △ Hãy hoàn thành mạch:
+                        chi tiết → phân tích → ý nghĩa.
+                    </div>
+                `;
+
+                    return;
+                }
+
+                showBossStage(4);
+
+                return;
+
+            }
+
+        }
+
+
+        function bossBack(stage) {
+
+            if (stage > 1) {
+
+                showBossStage(stage - 1);
+
+            }
+
+        }
+
+
+
+        /* =====================================================
+           BOSS DETAILS
+        ===================================================== */
+
+        function toggleDetail(element, correct) {
+
+            element.classList.toggle("selected");
+
+
+            if (element.classList.contains("selected")) {
+
+                selectedBossDetails.push({
+                    element,
+                    correct
+                });
+
+            } else {
+
+                selectedBossDetails =
+                    selectedBossDetails.filter(
+                        item => item.element !== element
+                    );
+
+            }
+
+
+            const correctCount =
+                selectedBossDetails.filter(
+                    item => item.correct
+                ).length;
+
+
+            const wrongCount =
+                selectedBossDetails.filter(
+                    item => !item.correct
+                ).length;
+
+
+            document.getElementById("bossFeedback2")
+                .innerHTML = `
+            <div class="feedback-box">
+                Đã chọn:
+                <b>${selectedBossDetails.length}</b>
+                chi tiết.
+                ${wrongCount
+                    ? "△ Có một số chi tiết chưa thật sự tiêu biểu."
+                    : ""
+                }
+            </div>
+        `;
+
+        }
+
+
+
+        /* =====================================================
+           FLOW
+        ===================================================== */
+
+        function flowSelect(element, slotNumber) {
+
+            if (flowState[slotNumber]) {
+                return;
+            }
+
+
+            flowState[slotNumber] =
+                element.innerText;
+
+
+            element.classList.add("used");
+
+
+            document.getElementById(
+                "flow" + slotNumber
+            ).innerHTML =
+                element.innerText;
+
+
+            document.getElementById(
+                "flow" + slotNumber
+            ).classList.add("filled");
+
+
+            document.getElementById("bossFeedback3")
+                .innerHTML = `
+            <div class="feedback-box">
+                ✓ Tốt. Em đang đi từ
+                <b>chi tiết → phân tích → ý nghĩa</b>.
+            </div>
+        `;
+
+        }
+
+
+
+        /* =====================================================
+           FINAL EDITOR
+        ===================================================== */
+
+        document.getElementById("finalEditor")
+            .addEventListener("input", function () {
+
+                const count =
+                    this.value.trim().length;
+
+                document.getElementById("charCount")
+                    .innerText =
+                    count + " chữ";
+
+            });
+
+
+        function submitFinal() {
+
+            const text =
+                document.getElementById("finalEditor")
+                    .value.trim();
+
+
+            if (text.length < 80) {
+
+                alert(
+                    "Hãy viết thêm một chút để hệ thống có thể phân tích đoạn văn."
+                );
+
+                return;
+
+            }
+
+
+            document.querySelectorAll(".boss-stage")
+                .forEach(stage => {
+                    stage.classList.remove("active");
+                });
+
+
+            document.getElementById("bossAnalysis")
+                .classList.add("active");
+
+
+            document.querySelectorAll(".stage-dot")
+                .forEach(dot => {
+                    dot.classList.add("done");
+                });
+
+
+            document.getElementById("analysisLoading")
+                .style.display = "block";
+
+            document.getElementById("analysisResult")
+                .style.display = "none";
+
+
+            setTimeout(() => {
+
+                document.getElementById("analysisLoading")
+                    .style.display = "none";
+
+                document.getElementById("analysisResult")
+                    .style.display = "block";
+
+            }, 1800);
+
+        }
+
+    </script>
+
+</body>
+
+</html>

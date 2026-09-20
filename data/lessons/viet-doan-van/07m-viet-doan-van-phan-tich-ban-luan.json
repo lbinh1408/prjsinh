@@ -1,0 +1,684 @@
+{
+  "id": "viet-doan-van-05-ban-luan",
+  "title": "Viết đoạn bàn luận — Làm vấn đề sâu hơn thế nào?",
+  "type": "skill",
+  "version": "1.0.0",
+  "meta": {
+    "module": "viet-bai-van",
+    "lessonNumber": 5,
+    "durationMinutes": 180,
+    "difficulty": "intermediate",
+    "skill": "viet-doan-ban-luan-nghi-luan-xa-hoi",
+    "description": "Học cách đào sâu một vấn đề bằng phân tích, khía cạnh, ý nghĩa và dẫn chứng thay vì chỉ nêu ý kiến."
+  },
+  "learningGoals": [
+    "Hiểu đoạn bàn luận có nhiệm vụ làm cho vấn đề được nhìn nhận sâu hơn.",
+    "Biết đặt câu hỏi để phát triển một ý kiến.",
+    "Biết phân tích các khía cạnh, biểu hiện, nguyên nhân hoặc ý nghĩa của vấn đề.",
+    "Biết đưa dẫn chứng vào để làm sáng tỏ luận điểm.",
+    "Biết phân tích dẫn chứng thay vì chỉ kể lại sự việc.",
+    "Biết kết nối phần phân tích với nhận xét chung về vấn đề.",
+    "Biết sử dụng khung phát triển ý khi còn yếu và dần thoát khỏi công thức khi viết tốt hơn."
+  ],
+  "completion": {
+    "requiredSections": [
+      "story",
+      "observe",
+      "discover",
+      "teach",
+      "guidedPractice",
+      "miniChallenge",
+      "reflection",
+      "cheatSheet",
+      "finalChallenge"
+    ],
+    "action": "completeLesson",
+    "message": "🎯 Bàn luận không phải nói thật nhiều. Đó là làm cho người đọc hiểu vấn đề sâu hơn."
+  },
+  "steps": [
+    {
+      "id": "story_01",
+      "type": "story",
+      "data": {
+        "title": "Nói đúng nhưng vẫn chưa sâu",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "split_compare",
+          "layout": "two_columns",
+          "question": "Hai đoạn đều nói về lòng nhân ái. Đoạn nào giúp em hiểu vấn đề sâu hơn?"
+        },
+        "content": {
+          "prompt": "Đọc hai đoạn và so sánh cách phát triển ý.",
+          "title": "Lòng nhân ái",
+          "left": {
+            "label": "ĐOẠN A",
+            "paragraph": "Lòng nhân ái rất quan trọng. Nó giúp con người yêu thương nhau. Nó cũng làm xã hội tốt đẹp hơn. Vì vậy, mỗi người cần có lòng nhân ái."
+          },
+          "right": {
+            "label": "ĐOẠN B",
+            "paragraph": "Lòng nhân ái khiến con người biết quan tâm đến những người đang gặp khó khăn thay vì chỉ nghĩ đến lợi ích của bản thân. Một sự giúp đỡ đúng lúc không chỉ giúp người khác vượt qua nghịch cảnh mà còn tạo nên sự gắn kết giữa người với người. Vì thế, giá trị của lòng nhân ái không chỉ nằm ở điều ta trao đi mà còn ở sự tốt đẹp mà nó tạo ra trong các mối quan hệ."
+          }
+        },
+        "interaction": {
+          "type": "choice",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Đoạn A",
+              "correct": false
+            },
+            {
+              "id": "b",
+              "text": "Đoạn B",
+              "correct": true
+            },
+            {
+              "id": "same",
+              "text": "Hai đoạn sâu như nhau",
+              "correct": false
+            }
+          ],
+          "feedback": {
+            "correct": "✓ Đúng. Đoạn B không chỉ nói lòng nhân ái quan trọng mà còn giải thích nó biểu hiện thế nào và tạo ra giá trị gì.",
+            "incorrect": "△ Hãy thử xem đoạn nào giúp người đọc hiểu thêm: Vì sao? Như thế nào? Có ý nghĩa gì?"
+          }
+        },
+        "reveal": {
+          "title": "💡 Bàn luận làm nhiệm vụ gì?",
+          "text": "Đoạn bàn luận giúp người đọc nhìn vấn đề sâu hơn bằng cách phân tích các khía cạnh, biểu hiện, nguyên nhân, ý nghĩa hoặc hệ quả của vấn đề."
+        }
+      }
+    },
+    {
+      "id": "observe_01",
+      "type": "observe",
+      "data": {
+        "title": "Một ý được làm sâu như thế nào?",
+        "durationSeconds": 180,
+        "ui": {
+          "component": "paragraph_highlight",
+          "interaction": "tap_sentence",
+          "question": "Nhấn vào từng câu và xem người viết đang làm sâu ý bằng cách nào."
+        },
+        "content": {
+          "prompt": "Hãy quan sát cách đoạn văn phát triển ý về lòng biết ơn.",
+          "paragraph": [
+            {
+              "id": "s1",
+              "text": "Lòng biết ơn giúp con người biết trân trọng những điều tốt đẹp mình đã nhận được.",
+              "role": "point",
+              "roleLabel": "🎯 NÊU KHÍA CẠNH",
+              "feedback": "🟢 Người viết bắt đầu bằng một ý cụ thể về giá trị của lòng biết ơn."
+            },
+            {
+              "id": "s2",
+              "text": "Khi nhận ra phía sau những điều mình có là sự yêu thương, hi sinh và giúp đỡ của người khác, con người sẽ không còn xem những điều ấy là hiển nhiên.",
+              "role": "explain",
+              "roleLabel": "💡 PHÂN TÍCH",
+              "feedback": "🟡 Câu này giải thích vì sao lòng biết ơn khiến con người biết trân trọng."
+            },
+            {
+              "id": "s3",
+              "text": "Bởi vậy, một lời cảm ơn chân thành hay một hành động đáp lại đúng lúc đều có thể làm cho mối quan hệ giữa người với người trở nên tốt đẹp hơn.",
+              "role": "meaning",
+              "roleLabel": "🌱 LÀM RÕ Ý NGHĨA",
+              "feedback": "🟢 Người viết tiếp tục chỉ ra kết quả và ý nghĩa của điều vừa phân tích."
+            },
+            {
+              "id": "s4",
+              "text": "Trong cuộc sống, những người luôn ghi nhớ công ơn của cha mẹ, thầy cô hay những người từng giúp đỡ mình thường biết sống trách nhiệm và tình nghĩa hơn.",
+              "role": "evidence",
+              "roleLabel": "🔎 MINH HỌA",
+              "feedback": "🔵 Câu này đưa một biểu hiện thực tế để làm cho nhận xét bớt chung chung."
+            },
+            {
+              "id": "s5",
+              "text": "Như vậy, biết ơn không chỉ là nhớ đến điều người khác đã làm cho mình mà còn là cách mỗi người thể hiện sự trân trọng bằng hành động.",
+              "role": "comment",
+              "roleLabel": "🎯 NHẬN XÉT",
+              "feedback": "🟣 Câu cuối nâng ý từ ví dụ trở lại thành một nhận xét khái quát."
+            }
+          ]
+        },
+        "reveal": {
+          "title": "Em vừa nhìn thấy gì?",
+          "text": "Một đoạn bàn luận có thể đi từ một ý nhỏ → phân tích → làm rõ ý nghĩa → minh họa → khái quát. Không phải đoạn nào cũng cần đúng thứ tự hoặc đủ tất cả các bước."
+        }
+      }
+    },
+    {
+      "id": "discover_01",
+      "type": "discover",
+      "data": {
+        "title": "Muốn đào sâu một vấn đề, hãy hỏi gì?",
+        "durationSeconds": 180,
+        "ui": {
+          "component": "card_to_slot",
+          "interaction": "tap_to_place"
+        },
+        "reveal": {
+          "title": "🔎 Công cụ đào sâu",
+          "text": "Khi bí ý, đừng cố nghĩ thêm câu. Hãy đặt câu hỏi cho chính vấn đề."
+        },
+        "content": {
+          "prompt": "Nối mỗi câu hỏi với kiểu suy nghĩ mà nó giúp em phát triển.",
+          "slots": [
+            {
+              "id": "why",
+              "label": "💡 VÌ SAO?",
+              "question": "Câu hỏi này giúp tìm gì?",
+              "hint": "Tìm nguyên nhân hoặc lí do."
+            },
+            {
+              "id": "how",
+              "label": "🔎 NHƯ THẾ NÀO?",
+              "question": "Câu hỏi này giúp tìm gì?",
+              "hint": "Tìm biểu hiện hoặc cách vấn đề diễn ra."
+            },
+            {
+              "id": "meaning",
+              "label": "🌱 CÓ Ý NGHĨA GÌ?",
+              "question": "Câu hỏi này giúp tìm gì?",
+              "hint": "Tìm giá trị hoặc tác động."
+            },
+            {
+              "id": "consequence",
+              "label": "⚠️ NẾU THIẾU THÌ SAO?",
+              "question": "Câu hỏi này giúp tìm gì?",
+              "hint": "Tìm hệ quả hoặc mặt trái."
+            }
+          ],
+          "cards": [
+            {
+              "id": "c1",
+              "target": "why",
+              "correct": true,
+              "slotText": "Vì sao con người cần biết yêu thương và chia sẻ?",
+              "feedback": "✓ Câu hỏi này giúp tìm nguyên nhân hoặc lí do.",
+              "label": "💡 Tìm nguyên nhân."
+            },
+            {
+              "id": "c2",
+              "target": "how",
+              "correct": true,
+              "slotText": "Lòng nhân ái được thể hiện như thế nào trong cuộc sống?",
+              "feedback": "✓ Câu hỏi này giúp tìm biểu hiện cụ thể.",
+              "label": "🔎 Tìm biểu hiện."
+            },
+            {
+              "id": "c3",
+              "target": "meaning",
+              "correct": true,
+              "slotText": "Lòng nhân ái đem lại điều gì cho con người và cộng đồng?",
+              "feedback": "✓ Câu hỏi này giúp tìm ý nghĩa và giá trị.",
+              "label": "🌱 Tìm ý nghĩa."
+            },
+            {
+              "id": "c4",
+              "target": "consequence",
+              "correct": true,
+              "slotText": "Điều gì có thể xảy ra nếu con người chỉ biết sống cho bản thân?",
+              "feedback": "✓ Câu hỏi này giúp nhìn vấn đề từ chiều ngược lại.",
+              "label": "⚠️ Tìm hệ quả."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "teach_01",
+      "type": "teach",
+      "data": {
+        "title": "BẢN ĐỒ ĐÀO SÂU MỘT Ý",
+        "durationSeconds": 300,
+        "ui": {
+          "component": "vertical_map",
+          "interaction": "click_node",
+          "center": "MỘT Ý KIẾN"
+        },
+        "prompt": "Ví dụ: Vì sao cần có lòng nhân ái?",
+        "nodes": [
+          {
+            "id": "point",
+            "icon": "🎯",
+            "title": "Ý CHÍNH",
+            "short": "Nêu khía cạnh",
+            "question": "Em muốn làm rõ điều gì?",
+            "example": "Lòng nhân ái giúp con người sống gần gũi và biết quan tâm đến nhau."
+          },
+          {
+            "id": "why",
+            "icon": "💡",
+            "title": "VÌ SAO?",
+            "short": "Phân tích nguyên nhân",
+            "question": "Vì sao điều đó đúng?",
+            "example": "Bởi khi biết đặt mình vào hoàn cảnh của người khác, con người dễ thấu hiểu và chia sẻ với những khó khăn mà họ đang trải qua."
+          },
+          {
+            "id": "how",
+            "icon": "🔎",
+            "title": "NHƯ THẾ NÀO?",
+            "short": "Biểu hiện",
+            "question": "Điều đó được thể hiện ra sao?",
+            "example": "Lòng nhân ái có thể bắt đầu từ những việc rất nhỏ như biết lắng nghe, giúp đỡ người đang gặp khó khăn hoặc sẵn sàng chia sẻ khi người khác cần."
+          },
+          {
+            "id": "meaning",
+            "icon": "🌱",
+            "title": "CÓ Ý NGHĨA GÌ?",
+            "short": "Giá trị",
+            "question": "Điều đó đem lại điều gì?",
+            "example": "Những hành động ấy giúp người được chia sẻ có thêm niềm tin, đồng thời tạo nên sự gắn kết và tử tế trong cộng đồng."
+          },
+          {
+            "id": "evidence",
+            "icon": "📌",
+            "title": "CÓ GÌ MINH HỌA?",
+            "short": "Dẫn chứng",
+            "question": "Thực tế nào cho thấy điều đó?",
+            "example": "Trong những đợt thiên tai, nhiều người đã quyên góp tiền, lương thực và nhu yếu phẩm để hỗ trợ đồng bào vùng bị ảnh hưởng."
+          },
+          {
+            "id": "analysis",
+            "icon": "🧩",
+            "title": "DẪN CHỨNG NÓI GÌ?",
+            "short": "Phân tích dẫn chứng",
+            "question": "Ví dụ đó chứng minh điều gì?",
+            "example": "Những hành động ấy cho thấy lòng nhân ái không phải một khái niệm trừu tượng mà được thể hiện bằng sự sẻ chia cụ thể trong đời sống."
+          },
+          {
+            "id": "comment",
+            "icon": "🎯",
+            "title": "NHẬN XÉT",
+            "short": "Khái quát",
+            "question": "Sau khi phân tích, em hiểu vấn đề sâu hơn thế nào?",
+            "example": "Vì vậy, lòng nhân ái vừa giúp con người vượt qua khó khăn vừa góp phần tạo nên một cộng đồng biết yêu thương."
+          }
+        ],
+        "diagnosticQuestion": "Điều em vừa nói giúp người đọc hiểu thêm điều gì về vấn đề?",
+        "importantNote": "Đây là bản đồ tư duy để tìm và phát triển ý, không phải công thức bắt buộc. Khi viết tốt hơn, học sinh có thể bỏ bớt hoặc thay đổi các câu hỏi tùy vấn đề."
+      }
+    },
+    {
+      "id": "guidedPractice_01",
+      "type": "guidedPractice",
+      "data": {
+        "title": "Tập đào sâu một vấn đề",
+        "durationSeconds": 180,
+        "ui": {
+          "component": "builder",
+          "interaction": "type_to_place"
+        },
+        "prompt": "Hãy sắp xếp các ý để phát triển vấn đề: Sự trung thực.",
+        "instruction": "Đưa từng ý vào đúng vị trí để tạo thành một mạch bàn luận hợp lí.",
+        "content": {
+          "prompt": "Vấn đề: Sự trung thực",
+          "slots": [
+            {
+              "id": "point",
+              "label": "🎯 Ý CHÍNH",
+              "question": "Em muốn làm rõ điều gì?",
+              "hint": "Nêu một khía cạnh của vấn đề."
+            },
+            {
+              "id": "why",
+              "label": "💡 VÌ SAO?",
+              "question": "Vì sao điều đó đúng?",
+              "hint": "Giải thích nguyên nhân hoặc lí do."
+            },
+            {
+              "id": "how",
+              "label": "🔎 BIỂU HIỆN",
+              "question": "Điều đó thể hiện thế nào?",
+              "hint": "Tìm một biểu hiện cụ thể."
+            },
+            {
+              "id": "meaning",
+              "label": "🌱 Ý NGHĨA",
+              "question": "Điều đó đem lại gì?",
+              "hint": "Tìm giá trị hoặc tác động."
+            },
+            {
+              "id": "comment",
+              "label": "🎯 NHẬN XÉT",
+              "question": "Sau khi phân tích, em có thể khái quát gì?",
+              "hint": "Quay lại nhận xét chung."
+            }
+          ],
+          "cards": [
+            {
+              "id": "point",
+              "target": "point",
+              "correct": true,
+              "slotText": "Sự trung thực giúp con người xây dựng được niềm tin với những người xung quanh.",
+              "feedback": "✓ Đây là ý chính cần được làm rõ.",
+              "label": "🎯 Ý chính."
+            },
+            {
+              "id": "why",
+              "target": "why",
+              "correct": true,
+              "slotText": "Bởi khi con người nói đúng sự thật và không cố che giấu sai lầm, người khác có cơ sở để tin tưởng họ.",
+              "feedback": "✓ Câu này giải thích vì sao sự trung thực tạo nên niềm tin.",
+              "label": "💡 Phân tích lí do."
+            },
+            {
+              "id": "how",
+              "target": "how",
+              "correct": true,
+              "slotText": "Trong học tập, một học sinh trung thực sẽ tự làm bài, không quay cóp và dám nhận lỗi khi mình mắc sai sót.",
+              "feedback": "✓ Câu này đưa ra những biểu hiện cụ thể.",
+              "label": "🔎 Biểu hiện."
+            },
+            {
+              "id": "meaning",
+              "target": "meaning",
+              "correct": true,
+              "slotText": "Nhờ đó, các mối quan hệ trở nên rõ ràng, lành mạnh và bền vững hơn.",
+              "feedback": "✓ Câu này chỉ ra ý nghĩa của sự trung thực.",
+              "label": "🌱 Ý nghĩa."
+            },
+            {
+              "id": "comment",
+              "target": "comment",
+              "correct": true,
+              "slotText": "Vì vậy, trung thực không chỉ là nói thật mà còn là thái độ sống có trách nhiệm với bản thân và người khác.",
+              "feedback": "✓ Đây là nhận xét khái quát sau quá trình phân tích.",
+              "label": "🎯 Khái quát."
+            }
+          ]
+        },
+        "completion": {
+          "button": "Kiểm tra mạch bàn luận",
+          "feedback": {
+            "correct": "✓ Tốt! Em đã biết đi từ một ý → phân tích → biểu hiện → ý nghĩa → nhận xét.",
+            "partial": "△ Một số ý chưa đúng vị trí. Hãy thử hỏi: ý này đang trả lời “Vì sao?”, “Như thế nào?” hay “Có ý nghĩa gì?”",
+            "wrong": "△ Hãy bắt đầu từ một ý chính rồi đặt câu hỏi để đào sâu nó."
+          }
+        }
+      }
+    },
+    {
+      "id": "miniChallenge_01",
+      "type": "miniChallenge",
+      "data": {
+        "title": "Đoạn bàn luận đang thiếu gì?",
+        "durationSeconds": 120,
+        "ui": {
+          "layout": "single_choice"
+        },
+        "prompt": "Hãy đọc đoạn văn và tìm điểm còn thiếu.",
+        "question": "Sự tự giác giúp con người chủ động hơn trong học tập và công việc. Vì vậy, mỗi người cần rèn luyện sự tự giác.",
+        "choices": [
+          {
+            "id": "analysis",
+            "text": "💡 Phần phân tích: Vì sao sự tự giác giúp con người chủ động hơn?",
+            "correct": true
+          },
+          {
+            "id": "conclusion",
+            "text": "🎯 Câu kết bài",
+            "correct": false
+          },
+          {
+            "id": "topic",
+            "text": "🎯 Chủ đề của bài",
+            "correct": false
+          }
+        ],
+        "feedback": {
+          "correct": "✓ Đúng. Đoạn mới nêu nhận xét nhưng chưa đào sâu vì sao điều đó đúng.",
+          "analysis": "△ Chính xác. Đây là phần còn thiếu.",
+          "conclusion": "△ Đây chưa phải vấn đề chính. Đoạn đang thiếu phần phát triển ý.",
+          "topic": "△ Chủ đề đã rõ: sự tự giác."
+        }
+      }
+    },
+    {
+      "id": "reflection_01",
+      "type": "reflection",
+      "data": {
+        "title": "Khi bí ý, em sẽ làm gì?",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "checklist_free_text"
+        },
+        "question": "Khi đã có một ý nhưng không biết viết tiếp, em có thể đặt những câu hỏi nào?",
+        "choices": [
+          {
+            "id": "why",
+            "text": "💡 Vì sao điều đó đúng?"
+          },
+          {
+            "id": "how",
+            "text": "🔎 Điều đó biểu hiện như thế nào?"
+          },
+          {
+            "id": "meaning",
+            "text": "🌱 Điều đó có ý nghĩa gì?"
+          },
+          {
+            "id": "evidence",
+            "text": "📌 Có dẫn chứng nào minh họa?"
+          },
+          {
+            "id": "analysis",
+            "text": "🧩 Dẫn chứng đó cho thấy điều gì?"
+          }
+        ],
+        "freeText": {
+          "label": "Bộ câu hỏi em sẽ dùng...",
+          "placeholder": "Ví dụ: Khi bí ý, em sẽ hỏi vì sao, biểu hiện thế nào và điều đó có ý nghĩa gì..."
+        },
+        "metacognition": "Khi bí ý, đừng cố nghĩ thêm câu. Hãy đặt câu hỏi cho chính ý mình đang có."
+      }
+    },
+    {
+      "id": "cheatSheet_01",
+      "type": "cheatSheet",
+      "data": {
+        "title": "BỘ CÂU HỎI ĐÀO SÂU MỘT VẤN ĐỀ",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "card_list",
+          "actions": [
+            "save",
+            "download"
+          ]
+        },
+        "items": [
+          {
+            "order": 1,
+            "icon": "🎯",
+            "title": "Ý CHÍNH",
+            "question": "Mình đang muốn làm rõ điều gì?"
+          },
+          {
+            "order": 2,
+            "icon": "💡",
+            "title": "VÌ SAO?",
+            "question": "Vì sao điều đó đúng?"
+          },
+          {
+            "order": 3,
+            "icon": "🔎",
+            "title": "NHƯ THẾ NÀO?",
+            "question": "Điều đó biểu hiện ra sao?"
+          },
+          {
+            "order": 4,
+            "icon": "🌱",
+            "title": "CÓ Ý NGHĨA GÌ?",
+            "question": "Điều đó đem lại giá trị gì?"
+          },
+          {
+            "order": 5,
+            "icon": "📌",
+            "title": "CÓ GÌ MINH HỌA?",
+            "question": "Thực tế nào cho thấy điều đó?"
+          },
+          {
+            "order": 6,
+            "icon": "🧩",
+            "title": "DẪN CHỨNG NÓI GÌ?",
+            "question": "Ví dụ đó chứng minh điều gì?"
+          },
+          {
+            "order": 7,
+            "icon": "🎯",
+            "title": "NHẬN XÉT",
+            "question": "Sau khi phân tích, mình hiểu vấn đề sâu hơn thế nào?"
+          }
+        ],
+        "keyMessage": "⭐ Bàn luận không phải viết thật nhiều. Bàn luận là làm cho một ý trở nên sâu hơn.",
+        "note": "Đây là bộ câu hỏi hỗ trợ tìm ý, không phải công thức bắt buộc. Khi viết tốt hơn, em có thể chọn những câu hỏi phù hợp với từng vấn đề.",
+        "practiceButton": {
+          "label": "🛠️ Thử đào sâu",
+          "action": "open_mini_practice"
+        }
+      }
+    },
+    {
+      "id": "finalChallenge_01",
+      "type": "finalChallenge",
+      "data": {
+        "title": "THỬ THÁCH: VIẾT MỘT ĐOẠN BÀN LUẬN",
+        "durationSeconds": 300,
+        "ui": {
+          "component": "multi_stage_challenge",
+          "layout": "multi_stage"
+        },
+        "prompt": "Hãy viết một đoạn bàn luận làm rõ ý kiến: “Biết giữ lời hứa là một biểu hiện của trách nhiệm.”",
+        "stages": [
+          {
+            "key": "scaffold",
+            "type": "scaffold",
+            "title": "🧩 TRƯỚC KHI VIẾT",
+            "question": "Hãy thử đào sâu vấn đề bằng các câu hỏi gợi ý.",
+            "scaffold": [
+              {
+                "id": "point",
+                "label": "Ý CHÍNH",
+                "hint": "Em muốn làm rõ điều gì về việc giữ lời hứa?"
+              },
+              {
+                "id": "why",
+                "label": "VÌ SAO?",
+                "hint": "Vì sao giữ lời hứa thể hiện trách nhiệm?"
+              },
+              {
+                "id": "how",
+                "label": "BIỂU HIỆN",
+                "hint": "Người có trách nhiệm giữ lời hứa như thế nào?"
+              },
+              {
+                "id": "meaning",
+                "label": "Ý NGHĨA",
+                "hint": "Việc giữ lời hứa đem lại điều gì?"
+              },
+              {
+                "id": "evidence",
+                "label": "DẪN CHỨNG",
+                "hint": "Có sự việc hoặc người thật nào minh họa?"
+              },
+              {
+                "id": "analysis",
+                "label": "PHÂN TÍCH DẪN CHỨNG",
+                "hint": "Dẫn chứng đó cho thấy điều gì?"
+              },
+              {
+                "id": "comment",
+                "label": "NHẬN XÉT",
+                "hint": "Sau khi phân tích, em muốn khẳng định điều gì?"
+              }
+            ]
+          },
+          {
+            "key": "writing",
+            "type": "editor",
+            "title": "✍️ VIẾT ĐOẠN BÀN LUẬN",
+            "placeholder": "Hãy viết đoạn văn của em. Em không nhất thiết phải dùng đủ tất cả các bước...",
+            "minCharacters": 120,
+            "maxCharacters": 350,
+            "submit": {
+              "label": "🚀 Nộp & phân tích"
+            }
+          },
+          {
+            "key": "analysis",
+            "type": "analysis",
+            "title": "🧠 KIỂM TRA ĐỘ SÂU CỦA ĐOẠN",
+            "metrics": [
+              {
+                "id": "point",
+                "label": "Có ý chính rõ",
+                "status": "detect"
+              },
+              {
+                "id": "analysis",
+                "label": "Có phân tích",
+                "status": "detect"
+              },
+              {
+                "id": "meaning",
+                "label": "Có làm rõ ý nghĩa",
+                "status": "detect"
+              },
+              {
+                "id": "evidence",
+                "label": "Có minh họa",
+                "status": "detect"
+              },
+              {
+                "id": "evidence_analysis",
+                "label": "Có phân tích dẫn chứng",
+                "status": "detect"
+              },
+              {
+                "id": "comment",
+                "label": "Có nhận xét khái quát",
+                "status": "detect"
+              },
+              {
+                "id": "depth",
+                "label": "Mạch suy nghĩ có chiều sâu",
+                "status": "detect"
+              }
+            ],
+            "diagnosticQuestion": "Điều em vừa viết giúp người đọc hiểu thêm điều gì về vấn đề?",
+            "feedbackRules": [
+              {
+                "when": "only_repeat",
+                "feedback": "△ Em đang lặp lại ý kiến. Hãy thử hỏi: “Vì sao điều đó đúng?”"
+              },
+              {
+                "when": "no_analysis",
+                "feedback": "△ Em đã có ý nhưng chưa giải thích sâu. Hãy thử nói rõ nguyên nhân hoặc ý nghĩa."
+              },
+              {
+                "when": "evidence_without_analysis",
+                "feedback": "△ Em đã đưa dẫn chứng nhưng chưa phân tích dẫn chứng. Hãy trả lời: “Dẫn chứng này cho thấy điều gì?”"
+              },
+              {
+                "when": "too_many_questions",
+                "feedback": "△ Không cần dùng tất cả các câu hỏi. Hãy chọn những câu hỏi giúp làm sáng rõ vấn đề nhất."
+              },
+              {
+                "when": "good_depth",
+                "feedback": "✓ Tốt! Đoạn viết đã biết đi từ ý kiến đến phân tích, minh họa và nhận xét."
+              }
+            ],
+            "scoreDimensions": [
+              "clarity",
+              "analysis",
+              "evidence",
+              "evidence_analysis",
+              "coherence",
+              "depth"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

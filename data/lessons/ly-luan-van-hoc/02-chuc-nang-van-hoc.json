@@ -1,0 +1,481 @@
+{
+    "id": "ly-luan-van-hoc.02-chuc-nang-van-hoc",
+    "title": "Chức năng của văn học",
+    "type": "skill",
+    "version": "1.0.0",
+    "meta": {
+        "module": "ly-luan-van-hoc",
+        "lessonNumber": 2,
+        "durationMinutes": 40,
+        "difficulty": 4,
+        "skill": "nhan-biet-va-phan-tich-chuc-nang-van-hoc",
+        "description": "Học cách nhận ra và phân tích 3 chức năng chính của văn học: nhận thức, giáo dục và thẩm mỹ."
+    },
+    "learningGoals": [
+        "Hiểu chức năng nhận thức là gì.",
+        "Hiểu chức năng giáo dục là gì.",
+        "Hiểu chức năng thẩm mỹ là gì.",
+        "Nhận ra sự gắn bó không thể tách rời giữa 3 chức năng này.",
+        "Biết phân tích biểu hiện của từng chức năng trong tác phẩm văn học."
+    ],
+    "completion": {
+        "requiredSections": [
+            "story_01",
+            "observe_01",
+            "teach_01",
+            "teach_02",
+            "teach_03",
+            "guidedPractice_01",
+            "miniChallenge_01",
+            "reflection_01",
+            "cheatSheet_01"
+        ],
+        "action": "completeLesson",
+        "message": "Em đã hoàn thành bài Chức năng của văn học. Hãy nhớ: Văn học giúp ta hiểu đời (nhận thức), dạy ta làm người (giáo dục) và mang đến cho ta rung động trước cái đẹp (thẩm mỹ)."
+    },
+    "steps": [
+        {
+            "id": "story_01",
+            "type": "story",
+            "data": {
+                "title": "Văn học sinh ra để làm gì?",
+                "durationSeconds": 120,
+                "ui": {
+                    "component": "split_compare",
+                    "layout": "two_columns",
+                    "question": "Khi đọc một tác phẩm hay, ta nhận được điều gì?"
+                },
+                "content": {
+                    "left": {
+                        "label": "Góc nhìn 1: Biết thêm điều mới",
+                        "paragraph": "Ta hiểu thêm về lịch sử, về những vùng đất mới, và về chính tâm tư của con người."
+                    },
+                    "right": {
+                        "label": "Góc nhìn 2: Rung động và thay đổi",
+                        "paragraph": "Ta thấy xót xa, đồng cảm, thấy yêu cái đẹp và muốn sống tử tế hơn."
+                    }
+                },
+                "interaction": {
+                    "type": "compare",
+                    "options": [
+                        "Văn học chỉ giúp ta biết thêm kiến thức.",
+                        "Văn học chỉ mang lại cảm xúc.",
+                        "Văn học vừa mang lại hiểu biết, vừa bồi đắp tâm hồn và cảm xúc."
+                    ],
+                    "correct": 2
+                },
+                "reveal": {
+                    "title": "Sức mạnh của văn học",
+                    "text": "Một tác phẩm văn học chân chính không chỉ là cuốn từ điển về cuộc sống, mà còn là người thầy dẫn dắt tâm hồn và mang đến cho ta những rung động cái đẹp. Đó chính là 3 chức năng của văn học."
+                }
+            }
+        },
+        {
+            "id": "observe_01",
+            "type": "matching",
+            "validator": "matchValidator",
+            "data": {
+                "left": [
+                    "Giúp ta hiểu về thế giới và con người",
+                    "Giúp ta sống tốt đẹp, đạo đức hơn",
+                    "Mang lại cảm xúc, rung động trước cái đẹp"
+                ],
+                "right": [
+                    "Chức năng nhận thức",
+                    "Chức năng giáo dục",
+                    "Chức năng thẩm mỹ"
+                ],
+                "answer": {
+                    "Giúp ta hiểu về thế giới và con người": "Chức năng nhận thức",
+                    "Giúp ta sống tốt đẹp, đạo đức hơn": "Chức năng giáo dục",
+                    "Mang lại cảm xúc, rung động trước cái đẹp": "Chức năng thẩm mỹ"
+                },
+                "title": "Quan sát: 3 chức năng chính",
+                "instruction": "Ghép mỗi tác dụng của văn học với tên gọi chức năng tương ứng.",
+                "score": 1,
+                "durationSeconds": 180,
+                "content": {
+                    "cards": [
+                        {
+                            "id": "c1",
+                            "text": "Giúp ta hiểu về thế giới và con người",
+                            "target": "s1"
+                        },
+                        {
+                            "id": "c2",
+                            "text": "Giúp ta sống tốt đẹp, đạo đức hơn",
+                            "target": "s2"
+                        },
+                        {
+                            "id": "c3",
+                            "text": "Mang lại cảm xúc, rung động trước cái đẹp",
+                            "target": "s3"
+                        }
+                    ],
+                    "slots": [
+                        {
+                            "id": "s1",
+                            "label": "Chức năng nhận thức"
+                        },
+                        {
+                            "id": "s2",
+                            "label": "Chức năng giáo dục"
+                        },
+                        {
+                            "id": "s3",
+                            "label": "Chức năng thẩm mỹ"
+                        }
+                    ]
+                },
+                "interaction": {
+                    "correctMapping": {
+                        "c1": "s1",
+                        "c2": "s2",
+                        "c3": "s3"
+                    }
+                },
+                "reveal": {
+                    "title": "Sự thống nhất",
+                    "text": "Nhận thức (hiểu biết), Giáo dục (đạo đức) và Thẩm mỹ (cái đẹp) là 3 chức năng gắn bó chặt chẽ, không thể tách rời trong văn học."
+                }
+            }
+        },
+        {
+            "id": "teach_01",
+            "type": "observe",
+            "data": {
+                "title": "Chức năng Nhận thức",
+                "durationSeconds": 240,
+                "ui": {
+                    "component": "paragraph_highlight",
+                    "question": "Nhận thức không chỉ là học kiến thức địa lý, lịch sử mà còn là hiểu về con người và chính mình."
+                },
+                "content": {
+                    "paragraph": [
+                        {
+                            "text": "Văn học là 'cuốn bách khoa toàn thư về cuộc sống'.",
+                            "type": "normal",
+                            "feedback": ""
+                        },
+                        {
+                            "text": "Nhận thức thế giới khách quan:",
+                            "type": "normal",
+                            "feedback": "Cho ta biết về thiên nhiên, phong tục, lịch sử, văn hóa của nhiều vùng đất, nhiều thời đại."
+                        },
+                        {
+                            "text": "Nhận thức thế giới chủ quan:",
+                            "type": "normal",
+                            "feedback": "Giúp ta hiểu được thế giới nội tâm phức tạp của con người (niềm vui, nỗi buồn, khát vọng...)."
+                        },
+                        {
+                            "text": "Tự nhận thức:",
+                            "type": "normal",
+                            "feedback": "Qua tác phẩm, người đọc soi lại chính mình, hiểu bản thân mình hơn."
+                        }
+                    ],
+                    "format": "paragraph"
+                },
+                "prompt": "Nhấn vào từng dòng để hiểu rõ hơn về chức năng nhận thức."
+            }
+        },
+        {
+            "id": "teach_02",
+            "type": "observe",
+            "data": {
+                "title": "Chức năng Giáo dục",
+                "durationSeconds": 240,
+                "ui": {
+                    "component": "paragraph_highlight",
+                    "question": "Giáo dục trong văn học không khô khan như những lời thuyết giáo, mà thấm sâu qua con đường tình cảm."
+                },
+                "content": {
+                    "paragraph": [
+                        {
+                            "text": "Văn học giúp con người vươn tới Chân - Thiện - Mỹ.",
+                            "type": "normal",
+                            "feedback": ""
+                        },
+                        {
+                            "text": "Hình thành lẽ sống, lý tưởng:",
+                            "type": "normal",
+                            "feedback": "Bồi dưỡng những phẩm chất tốt đẹp như lòng yêu nước, tình nhân ái, lòng dũng cảm."
+                        },
+                        {
+                            "text": "Thanh lọc tâm hồn:",
+                            "type": "normal",
+                            "feedback": "Làm cho con người biết ghét cái ác, cái xấu, biết đồng cảm và xót thương trước nỗi đau."
+                        },
+                        {
+                            "text": "Giáo dục bằng con đường tình cảm:",
+                            "type": "normal",
+                            "feedback": "Văn học không ép buộc, mà tự ngấm vào nhận thức qua những rung động mãnh liệt."
+                        }
+                    ],
+                    "format": "paragraph"
+                },
+                "prompt": "Nhấn vào từng dòng để hiểu rõ hơn về chức năng giáo dục."
+            }
+        },
+        {
+            "id": "teach_03",
+            "type": "observe",
+            "data": {
+                "title": "Chức năng Thẩm mỹ",
+                "durationSeconds": 240,
+                "ui": {
+                    "component": "paragraph_highlight",
+                    "question": "Văn học thỏa mãn nhu cầu về cái đẹp của con người."
+                },
+                "content": {
+                    "paragraph": [
+                        {
+                            "text": "Văn học mang lại khoái cảm thẩm mỹ.",
+                            "type": "normal",
+                            "feedback": ""
+                        },
+                        {
+                            "text": "Vẻ đẹp của hình thức:",
+                            "type": "normal",
+                            "feedback": "Cái đẹp của ngôn từ, giọng điệu, kết cấu, hình ảnh..."
+                        },
+                        {
+                            "text": "Vẻ đẹp của nội dung:",
+                            "type": "normal",
+                            "feedback": "Cái đẹp của tình người, của thiên nhiên, của những hành động dũng cảm, cao cả."
+                        },
+                        {
+                            "text": "Đánh thức cảm quan cái đẹp:",
+                            "type": "normal",
+                            "feedback": "Làm cho con người biết rung động, thưởng thức và sáng tạo ra cái đẹp trong đời sống."
+                        }
+                    ],
+                    "format": "paragraph"
+                },
+                "prompt": "Nhấn vào từng dòng để hiểu rõ hơn về chức năng thẩm mỹ."
+            }
+        },
+        {
+            "id": "guidedPractice_01",
+            "type": "multiChoice",
+            "data": {
+                "title": "Luyện tập 1: Gọi tên chức năng",
+                "durationSeconds": 240,
+                "ui": {
+                    "component": "single_choice"
+                },
+                "content": {
+                    "questions": [
+                        {
+                            "question": "Khi đọc tác phẩm, ta thấy đồng cảm với nhân vật và muốn sống yêu thương hơn. Đây là biểu hiện của:",
+                            "options": [
+                                "Chức năng nhận thức",
+                                "Chức năng giáo dục",
+                                "Chức năng thẩm mỹ",
+                                "Chức năng giao tiếp"
+                            ],
+                            "correct": 1,
+                            "explanation": "Tác động đến đạo đức, tình cảm và cách sống chính là chức năng giáo dục."
+                        },
+                        {
+                            "question": "Đọc bài thơ, ta thốt lên: 'Từ ngữ và hình ảnh đẹp quá!'. Đây là biểu hiện của:",
+                            "options": [
+                                "Chức năng nhận thức",
+                                "Chức năng giáo dục",
+                                "Chức năng thẩm mỹ",
+                                "Chức năng giải trí"
+                            ],
+                            "correct": 2,
+                            "explanation": "Rung động trước vẻ đẹp của ngôn từ và hình ảnh là chức năng thẩm mỹ."
+                        },
+                        {
+                            "question": "Nhờ đọc truyện, em hiểu được cuộc sống của người nông dân Việt Nam trước Cách mạng. Đây là biểu hiện của:",
+                            "options": [
+                                "Chức năng nhận thức",
+                                "Chức năng giáo dục",
+                                "Chức năng thẩm mỹ",
+                                "Chức năng giao tiếp"
+                            ],
+                            "correct": 0,
+                            "explanation": "Giúp mở rộng hiểu biết về đời sống, xã hội là chức năng nhận thức."
+                        }
+                    ]
+                },
+                "options": [
+                    {
+                        "text": "Chức năng nhận thức",
+                        "isCorrect": false,
+                        "feedback": "Giúp mở rộng hiểu biết về đời sống, xã hội là chức năng nhận thức."
+                    },
+                    {
+                        "text": "Chức năng giáo dục",
+                        "isCorrect": true,
+                        "feedback": "Tác động đến đạo đức, tình cảm và cách sống chính là chức năng giáo dục."
+                    },
+                    {
+                        "text": "Chức năng thẩm mỹ",
+                        "isCorrect": false,
+                        "feedback": "Rung động trước vẻ đẹp của ngôn từ và hình ảnh là chức năng thẩm mỹ."
+                    }
+                ]
+            },
+            "question": "Khi đọc tác phẩm, ta thấy đồng cảm với nhân vật và muốn sống yêu thương hơn. Đây là biểu hiện của chức năng nào?"
+        },
+        {
+            "id": "miniChallenge_01",
+            "type": "finalChallenge",
+            "data": {
+                "title": "Thử thách: Nhìn thấu 3 chức năng",
+                "durationSeconds": 300,
+                "ui": {
+                    "component": "multi_stage_challenge",
+                    "layout": "multi_stage"
+                },
+                "prompt": "Một bài thơ ca ngợi vẻ đẹp của quê hương đất nước qua những từ ngữ trau chuốt, khiến người đọc thêm hiểu về lịch sử dân tộc và dâng trào tình yêu nước.",
+                "question": [
+                    "Chỉ ra chức năng nhận thức.",
+                    "Chỉ ra chức năng giáo dục.",
+                    "Chỉ ra chức năng thẩm mỹ."
+                ],
+                "stages": [
+                    {
+                        "key": "stage1",
+                        "type": "editor",
+                        "title": "📝 Chức năng nhận thức",
+                        "question": "Bài thơ giúp người đọc hiểu thêm điều gì?",
+                        "placeholder": "Bài thơ giúp người đọc ....",
+                        "minCharacters": 10,
+                        "maxCharacters": 200,
+                        "submit": {
+                            "label": "Nộp bài",
+                            "feedback": "Bài thơ giúp người đọc hiểu thêm về lịch sử dân tộc và vẻ đẹp quê hương."
+                        }
+                    },
+                    {
+                        "key": "stage2",
+                        "type": "editor",
+                        "title": "📝 Chức năng giáo dục",
+                        "question": "Bài thơ bồi đắp tình cảm gì cho người đọc?",
+                        "placeholder": "Bài thơ bồi đắp ....",
+                        "minCharacters": 10,
+                        "maxCharacters": 200,
+                        "submit": {
+                            "label": "Nộp bài",
+                            "feedback": "Bài thơ khơi dậy và bồi đắp tình yêu nước mãnh liệt."
+                        }
+                    },
+                    {
+                        "key": "stage3",
+                        "type": "editor",
+                        "title": "📝 Chức năng thẩm mỹ",
+                        "question": "Vẻ đẹp nào của tác phẩm làm người đọc rung động?",
+                        "placeholder": "Người đọc rung động trước ....",
+                        "minCharacters": 10,
+                        "maxCharacters": 200,
+                        "submit": {
+                            "label": "Nộp bài",
+                            "feedback": "Người đọc rung động trước vẻ đẹp của những từ ngữ trau chuốt và hình ảnh thơ mộng."
+                        }
+                    },
+                    {
+                        "key": "stage4",
+                        "type": "editor",
+                        "title": "📝 Tổng hợp",
+                        "question": "Viết 1 câu nhận xét về sự thống nhất của 3 chức năng.",
+                        "placeholder": "Qua những từ ngữ trau chuốt (thẩm mỹ), bài thơ không chỉ giúp ta hiểu thêm về quê hương (nhận thức) mà còn...",
+                        "minCharacters": 10,
+                        "maxCharacters": 300,
+                        "submit": {
+                            "label": "Nộp bài",
+                            "feedback": "Qua vẻ đẹp của ngôn từ nghệ thuật (thẩm mỹ), bài thơ đã mang đến những hiểu biết sâu sắc (nhận thức), từ đó bồi đắp tình yêu đất nước thiết tha trong tâm hồn người đọc (giáo dục)."
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "id": "reflection_01",
+            "type": "reflection",
+            "data": {
+                "title": "Tự kiểm tra: Em đã thật sự hiểu chưa?",
+                "durationSeconds": 180,
+                "ui": {
+                    "component": "checklist_free_text"
+                },
+                "question": "Chọn những điều em thấy mình đã nắm được sau bài học:",
+                "choices": [
+                    {
+                        "id": "1",
+                        "text": "Em hiểu chức năng nhận thức là cung cấp hiểu biết.",
+                        "correct": false
+                    },
+                    {
+                        "id": "2",
+                        "text": "Em hiểu chức năng giáo dục là bồi đắp tình cảm, đạo đức.",
+                        "correct": false
+                    },
+                    {
+                        "id": "3",
+                        "text": "Em hiểu chức năng thẩm mỹ là mang lại rung động trước cái đẹp.",
+                        "correct": false
+                    },
+                    {
+                        "id": "4",
+                        "text": "Em biết phân biệt 3 chức năng này khi phân tích tác phẩm.",
+                        "correct": false
+                    },
+                    {
+                        "id": "5",
+                        "text": "Em nhận ra 3 chức năng này luôn gắn bó chặt chẽ với nhau.",
+                        "correct": false
+                    }
+                ],
+                "freeText": {
+                    "label": "Chức năng nào em thấy dễ nhận biết nhất trong tác phẩm?",
+                    "placeholder": "Em thấy chức năng ... dễ nhận biết nhất vì ..."
+                },
+                "metacognition": "Nhận thức = HIỂU BIẾT<br>Giáo dục = LÀM NGƯỜI<br>Thẩm mỹ = CÁI ĐẸP"
+            }
+        },
+        {
+            "id": "cheatSheet_01",
+            "type": "cheatSheet",
+            "data": {
+                "title": "Sổ tay 30 giây",
+                "durationSeconds": 120,
+                "ui": {
+                    "component": "card_list",
+                    "actions": [
+                        "save",
+                        "download"
+                    ]
+                },
+                "items": [
+                    {
+                        "order": 1,
+                        "icon": "🧠",
+                        "title": "CHỨC NĂNG NHẬN THỨC",
+                        "question": "Tác phẩm giúp ta BIẾT thêm điều gì?<br>Hiểu về tự nhiên, xã hội, con người và chính mình."
+                    },
+                    {
+                        "order": 2,
+                        "icon": "❤️",
+                        "title": "CHỨC NĂNG GIÁO DỤC",
+                        "question": "Tác phẩm bồi đắp TÌNH CẢM gì?<br>Hình thành lẽ sống, lý tưởng đạo đức, biết yêu ghét rõ ràng."
+                    },
+                    {
+                        "order": 3,
+                        "icon": "✨",
+                        "title": "CHỨC NĂNG THẨM MỸ",
+                        "question": "Tác phẩm mang lại RUNG ĐỘNG nào?<br>Cái đẹp của ngôn từ, hình thức và nội dung."
+                    },
+                    {
+                        "order": 4,
+                        "icon": "🔗",
+                        "title": "MỐI QUAN HỆ",
+                        "question": "Ba chức năng luôn thống nhất, hòa quyện. Nhận thức đúng đắn dẫn đến giáo dục sâu sắc, và giáo dục thông qua con đường thẩm mỹ."
+                    }
+                ]
+            }
+        }
+    ]
+}

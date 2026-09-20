@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Lesson 08 — Viết các kiểu đoạn văn</title>
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: #f5f7fb;
+            color: #172033;
+            font-family: system-ui, -apple-system, Segoe UI, sans-serif
+        }
+
+        .app {
+            max-width: 1100px;
+            margin: auto;
+            padding: 22px
+        }
+
+        .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px
+        }
+
+        .brand {
+            font-weight: 800
+        }
+
+        .muted {
+            color: #6b7280;
+            font-size: 14px
+        }
+
+        .progress {
+            height: 7px;
+            background: #e5e7eb;
+            border-radius: 9px;
+            overflow: hidden;
+            margin-bottom: 22px
+        }
+
+        .progress i {
+            display: block;
+            height: 100%;
+            background: #635bff;
+            width: 11%;
+            transition: .3s
+        }
+
+        .screen {
+            display: none
+        }
+
+        .screen.active {
+            display: block
+        }
+
+        .hero {
+            text-align: center;
+            padding: 28px 10px
+        }
+
+        .hero .emoji {
+            font-size: 46px
+        }
+
+        .hero h1 {
+            font-size: 32px;
+            margin: 8px 0
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 18px;
+            padding: 22px;
+            margin-bottom: 16px;
+            box-shadow: 0 5px 18px #00000008
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px
+        }
+
+        .label {
+            font-size: 12px;
+            font-weight: 800;
+            color: #635bff;
+            letter-spacing: .08em
+        }
+
+        .quote {
+            line-height: 1.8;
+            font-size: 17px;
+            background: #fafafa;
+            border-left: 4px solid #635bff;
+            padding: 13px 16px;
+            border-radius: 10px
+        }
+
+        button {
+            font: inherit
+        }
+
+        .btn {
+            border: 0;
+            background: #635bff;
+            color: #fff;
+            padding: 11px 16px;
+            border-radius: 11px;
+            font-weight: 700;
+            cursor: pointer
+        }
+
+        .secondary {
+            background: #eceef3;
+            color: #172033
+        }
+
+        .green {
+            background: #16a34a
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-top: 18px
+        }
+
+        .choices {
+            display: grid;
+            gap: 9px
+        }
+
+        .choice,
+        .pill {
+            border: 1px solid #e5e7eb;
+            background: #fff;
+            border-radius: 11px;
+            padding: 13px;
+            cursor: pointer
+        }
+
+        .choice.selected,
+        .pill.selected {
+            border: 2px solid #635bff;
+            background: #eef0ff
+        }
+
+        .feedback {
+            display: none;
+            background: #ecfdf3;
+            padding: 13px;
+            border-radius: 11px;
+            margin-top: 12px
+        }
+
+        .feedback.show {
+            display: block
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px
+        }
+
+        .tab {
+            border: 1px solid #e5e7eb;
+            background: #fff;
+            padding: 9px 14px;
+            border-radius: 10px;
+            cursor: pointer
+        }
+
+        .tab.active {
+            background: #635bff;
+            color: #fff
+        }
+
+        .para {
+            font-size: 18px;
+            line-height: 1.9;
+            margin: 18px 0
+        }
+
+        .map {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px
+        }
+
+        .node {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 15px;
+            padding: 18px;
+            text-align: center;
+            cursor: pointer
+        }
+
+        .node:hover {
+            transform: translateY(-2px)
+        }
+
+        .node .big {
+            font-size: 30px
+        }
+
+        .scaffold {
+            border: 2px dashed #cdd0ff;
+            background: #fafaff;
+            padding: 16px;
+            border-radius: 15px
+        }
+
+        .slot {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            padding: 13px;
+            border-radius: 10px;
+            margin: 9px 0
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 140px;
+            border: 1px solid #dfe2e8;
+            border-radius: 12px;
+            padding: 13px;
+            font: inherit;
+            resize: vertical
+        }
+
+        .tag {
+            display: inline-block;
+            background: #eef0ff;
+            color: #4f46e5;
+            border-radius: 99px;
+            padding: 5px 9px;
+            margin: 3px;
+            font-size: 12px;
+            font-weight: 700
+        }
+
+        .decision {
+            display: grid;
+            grid-template-columns: 1fr 35px 1fr;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 0
+        }
+
+        .arrow {
+            text-align: center;
+            font-size: 25px
+        }
+
+        .boss {
+            background: linear-gradient(135deg, #171b32, #302b63);
+            color: #fff;
+            border-radius: 20px;
+            padding: 25px
+        }
+
+        .boss .muted {
+            color: #c8cad9
+        }
+
+        .score {
+            font-size: 40px;
+            font-weight: 900;
+            color: #635bff
+        }
+
+        .bar {
+            height: 9px;
+            background: #e5e7eb;
+            border-radius: 99px;
+            overflow: hidden
+        }
+
+        .bar i {
+            display: block;
+            height: 100%;
+            background: #635bff
+        }
+
+        @media(max-width:760px) {
+
+            .grid,
+            .map {
+                grid-template-columns: 1fr 1fr
+            }
+        }
+
+        @media(max-width:520px) {
+
+            .grid,
+            .map {
+                grid-template-columns: 1fr
+            }
+
+            .decision {
+                grid-template-columns: 1fr
+            }
+
+            .hero h1 {
+                font-size: 26px
+            }
+
+            .app {
+                padding: 14px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app">
+        <div class="top">
+            <div>
+                <div class="brand">✍️ Writing Lab</div>
+                <div class="muted">Lesson 08 · Viết các kiểu đoạn văn</div>
+            </div><b id="step">1 / 9</b>
+        </div>
+        <div class="progress"><i id="bar"></i></div>
+
+        <section class="screen active" id="s1">
+            <div class="hero">
+                <div class="emoji">🎬</div>
+                <h1>Cùng nói về mẹ,<br>nhưng sao viết khác nhau?</h1>
+                <p>Một nội dung có thể được tổ chức theo nhiều mục đích.</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <div class="label">A · KỂ</div>
+                    <p class="quote">Sáng hôm ấy, mẹ đánh thức em dậy rồi chuẩn bị bữa sáng. Sau đó, mẹ đưa em đến
+                        trường.</p>
+                </div>
+                <div class="card">
+                    <div class="label">B · TẢ</div>
+                    <p class="quote">Mẹ có mái tóc đen dài và nụ cười rất dịu dàng. Đôi bàn tay mẹ luôn thoăn thoắt làm
+                        việc.</p>
+                </div>
+                <div class="card">
+                    <div class="label">C · CẢM XÚC</div>
+                    <p class="quote">Em luôn cảm thấy ấm áp mỗi khi nghĩ về mẹ. Với em, mẹ là người em yêu thương nhất.
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="label">D · SUY NGHĨ</div>
+                    <p class="quote">Tình yêu thương của mẹ có ý nghĩa rất lớn đối với mỗi người. Nó giúp chúng ta có
+                        thêm động lực để trưởng thành.</p>
+                </div>
+            </div>
+            <div class="card" style="text-align:center"><b>“Cùng nói về mẹ. Nhưng người viết đang làm những việc khác
+                    nhau. Em nhận ra không?”</b></div>
+            <div class="actions"><span></span><button class="btn" onclick="next()">Tìm hiểu →</button></div>
+        </section>
+
+        <section class="screen" id="s2">
+            <div class="hero">
+                <div class="emoji">👀</div>
+                <h1>Đoạn văn đang làm nhiệm vụ gì?</h1>
+                <p>Chạm từng đoạn để nhìn thấy “việc” người viết đang làm.</p>
+            </div>
+            <div class="card">
+                <div class="tabs" id="tabs"></div>
+                <div id="observe" class="para"></div>
+                <div id="otags"></div>
+                <p id="ohint" class="muted"></p>
+            </div>
+            <div class="card"><b>“Điều gì đang được ưu tiên trong đoạn này?”</b></div>
+            <div class="actions"><button class="btn secondary" onclick="prev()">← Quay lại</button><button class="btn"
+                    onclick="next()">Tự tìm quy luật →</button></div>
+        </section>
+
+        <section class="screen" id="s3">
+            <div class="hero">
+                <div class="emoji">🧩</div>
+                <h1>Đề đang bắt em làm gì?</h1>
+                <p>Hãy nhìn nhiệm vụ trong đề, không nhìn tên kiểu đoạn trước.</p>
+            </div>
+            <div class="card">
+                <p class="quote">“Kể lại một kỷ niệm đáng nhớ với người bạn thân.”</p>
+                <div id="dc1" class="choices"></div>
+                <div id="df1" class="feedback"></div>
+            </div>
+            <div class="card">
+                <p class="quote">“Trình bày suy nghĩ về ý nghĩa của tình bạn.”</p>
+                <div id="dc2" class="choices"></div>
+                <div id="df2" class="feedback"></div>
+            </div>
+            <div class="actions"><button class="btn secondary" onclick="prev()">← Quay lại</button><button class="btn"
+                    onclick="next()">Reveal quy luật →</button></div>
+        </section>
+
+        <section class="screen" id="s4">
+            <div class="hero">
+                <div class="emoji">🧠</div>
+                <h1>Paragraph Type Map</h1>
+                <p>Với TS10, tập trung sâu vào <b>Nghị luận</b> và <b>Biểu cảm</b>; Tự sự + Miêu tả là kỹ năng hỗ trợ.
+                </p>
+            </div>
+            <div class="card" style="text-align:center;background:linear-gradient(135deg,#f7f5ff,#fff)">
+                <div class="label">TRỌNG TÂM ÔN TS10</div>
+                <h2 style="margin:8px 0">✍️ CÁCH VIẾT ĐOẠN</h2>
+                <div class="map">
+                    <div class="node" onclick="teach(3)"
+                        style="border:2px solid #635bff;box-shadow:0 6px 20px #635bff20">
+                        <div class="big">🧠</div><b>NGHỊ LUẬN</b><br><span class="tag">TRỌNG TÂM 1</span><br><span
+                            class="muted">Trình bày suy nghĩ · quan điểm</span>
+                    </div>
+                    <div class="node" onclick="teach(2)"
+                        style="border:2px solid #ec4899;box-shadow:0 6px 20px #ec489920">
+                        <div class="big">❤️</div><b>BIỂU CẢM</b><br><span class="tag"
+                            style="color:#be185d;background:#fce7f3">TRỌNG TÂM 2</span><br><span class="muted">Bộc lộ
+                            cảm xúc · cảm nghĩ</span>
+                    </div>
+                    <div class="node" onclick="teach(0)">
+                        <div class="big">🏃</div><b>TỰ SỰ</b><br><span class="muted">Kể sự việc · hỗ trợ</span>
+                    </div>
+                    <div class="node" onclick="teach(1)">
+                        <div class="big">👀</div><b>MIÊU TẢ</b><br><span class="muted">Làm hiện lên · hỗ trợ</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card" id="teach"><b>Chạm một node.</b>
+                <p class="muted">Ví dụ và “khi nào nên dùng?” sẽ mở ở đây.</p>
+            </div>
+            <div class="card" style="text-align:center"><b>🧭 Diagnostic Question</b>
+                <h2>“Đề muốn em bộc lộ cảm nghĩ hay trình bày suy nghĩ?”</h2>
+                <p class="muted">Sau đó mới xem Tự sự / Miêu tả có vai trò hỗ trợ gì.</p>
+            </div>
+            <div class="actions"><button class="btn secondary" onclick="prev()">← Quay lại</button><button class="btn"
+                    onclick="next()">Guided Practice →</button></div>
+        </section>
+
+        <section class="screen" id="s5">
+            <div class="hero">
+                <div class="emoji">🏗️</div>
+                <h1>Guided Practice</h1>
+                <p>Phân biệt hai dạng quan trọng: <b>Nghị luận</b> và <b>Biểu cảm</b>.</p>
+            </div>
+            <div class="card">
+                <div class="label">STEP 1 · ĐỌC ĐỀ</div>
+                <h2>“Trình bày suy nghĩ của em về ý nghĩa của sự tự tin.”</h2>
+                <div id="gc" class="choices"></div>
+                <div id="gf" class="feedback"></div>
+            </div>
+            <div class="card" id="sc" style="display:none">
+                <div class="label">STEP 2 · SCAFFOLD NGHỊ LUẬN</div>
+                <div class="scaffold">
+                    <div class="slot"><b>① NÊU Ý KIẾN</b><br>Em nghĩ gì về sự tự tin?</div>
+                    <div class="slot"><b>② LÍ GIẢI / TRIỂN KHAI</b><br>Vì sao điều đó có ý nghĩa?</div>
+                    <div class="slot"><b>③ KHẲNG ĐỊNH</b><br>Em rút ra điều gì?</div>
+                </div>
+                <button class="btn green" onclick="document.getElementById('gw').style.display='block'">Mở editor
+                    ✍️</button>
+            </div>
+            <div class="card" id="gw" style="display:none">
+                <div class="label">STEP 3 · VIẾT</div><textarea
+                    placeholder="Viết đoạn nghị luận của em..."></textarea><button class="btn" style="margin-top:10px"
+                    onclick="alert('Demo: bài viết đã được ghi nhận!')">Nộp thử</button>
+            </div>
+            <div class="card">
+                <div class="label">STEP 4 · SO SÁNH BIỂU CẢM</div>
+                <p class="quote">“Em luôn cảm thấy tự tin giúp mình mạnh mẽ hơn. Mỗi lần dám thử một điều mới, em lại
+                    thấy mình trưởng thành thêm một chút.”</p>
+                <p class="muted">→ Trọng tâm là cảm xúc, cảm nhận của người viết.</p>
+            </div>
+            <div class="actions"><button class="btn secondary" onclick="prev()">← Quay lại</button><button class="btn"
+                    onclick="next()">Mini Challenge →</button></div>
+        </section>
+
+        <section class="screen" id="s6">
+            <div class="hero">
+                <div class="emoji">🎯</div>
+                <h1>Mini Challenge — Em chọn cách nào?</h1>
+                <p>Không cho sẵn kiểu. Em tự đọc mục đích của đề.</p>
+            </div>
+            <div class="card">
+                <div class="label">ĐỀ MỚI</div>
+                <h2>“Hãy trình bày cảm nghĩ của em về một người em kính trọng.”</h2>
+                <h3>🧠 Em sẽ ưu tiên...</h3>
+                <div id="mc" class="choices"></div>
+                <div id="mf" class="feedback"></div>
+            </div>
+            <div class="card" id="why" style="display:none">
+                <h3>Vì sao em chọn cách này?</h3><textarea placeholder="Vì đề muốn em..."></textarea><button class="btn"
+                    style="margin-top:10px" onclick="document.getElementById('mw').style.display='block'">Tiếp tục
+                    →</button>
+            </div>
+            <div class="card" id="mw" style="display:none">
+                <div class="label">WRITE</div><textarea placeholder="Bắt đầu viết đoạn của em..."></textarea>
+            </div>
+            <div class="actions"><button class="btn secondary" onclick="prev()">← Quay lại</button><button class="btn"
+                    onclick="next()">Reflection →</button></div>
+        </section>
+
+        <section class="screen" id="s7">
+            <div class="hero">
+                <div class="emoji">🪞</div>
+                <h1>Em chọn kiểu dựa vào đâu?</h1>
+                <p>Không kiểm tra trí nhớ. Kiểm tra cách em ra quyết định.</p>
+            </div>
+            <div class="card">
+                <h2>Điều gì giúp em quyết định cách viết?</h2>
+                <div class="choices">
+                    <div class="choice">○ “Trình bày suy nghĩ” → nghiêng về nghị luận</div>
+                    <div class="choice">○ “Trình bày cảm nghĩ” → nghiêng về biểu cảm</div>
+                    <div class="choice">○ Nội dung em muốn nói</div>
+                    <div class="choice">○ Cách muốn người đọc tiếp nhận</div>
+                </div>
+            </div>
+            <div class="card">
+                <h2>Nếu gặp một đề mới, em sẽ làm gì trước?</h2><textarea placeholder="Em sẽ..."></textarea>
+            </div>
+            <div class="card" style="text-align:center"><span class="tag">ĐỌC ĐỀ</span> → <span class="tag">XÁC ĐỊNH
+                    NHIỆM VỤ</span> → <span class="tag">CHỌN CÁCH VIẾT</span> → <span class="tag">TRIỂN KHAI</span>
+            </div>
+            <div class="actions"><button class="btn secondary" onclick="prev()">← Quay lại</button><button class="btn"
+                    onclick="next()">Decision Card →</button></div>
+        </section>
+
+        <section class="screen" id="s8">
+            <div class="hero">
+                <div class="emoji">🧭</div>
+                <h1>Decision Card</h1>
+                <p>Không hỏi “kiểu nào đúng?” — hỏi “kiểu nào phù hợp?”</p>
+            </div>
+            <div class="card">
+                <div class="decision">
+                    <div>🏃 <b>CÓ SỰ VIỆC?</b><br><span class="tag">TỰ SỰ</span></div>
+                    <div class="arrow">→</div>
+                    <div>Kể diễn biến, hành động, sự kiện.</div>
+                </div>
+                <div class="decision">
+                    <div>👀 <b>MUỐN LÀM HIỆN LÊN?</b><br><span class="tag">MIÊU TẢ</span></div>
+                    <div class="arrow">→</div>
+                    <div>Làm người, vật, cảnh hiện lên.</div>
+                </div>
+                <div class="decision">
+                    <div>❤️ <b>MUỐN BỘC LỘ?</b><br><span class="tag">BIỂU CẢM</span></div>
+                    <div class="arrow">→</div>
+                    <div>Đưa cảm xúc, tình cảm vào đoạn.</div>
+                </div>
+                <div class="decision">
+                    <div>🧠 <b>MUỐN NÊU SUY NGHĨ?</b><br><span class="tag">NGHỊ LUẬN</span></div>
+                    <div class="arrow">→</div>
+                    <div>Trình bày quan điểm, lí lẽ, dẫn chứng.</div>
+                </div>
+            </div>
+            <div class="card" style="text-align:center"><b>⭐ Không phải chọn một phương thức duy nhất.</b><br>Hãy xác
+                định <b>phương thức chính</b> rồi dùng các phương thức khác để hỗ trợ.</div>
+            <div class="actions"><button class="btn secondary" onclick="prev()">← Quay lại</button><button class="btn"
+                    onclick="next()">FINAL BOSS →</button></div>
+        </section>
+
+        <section class="screen" id="s9">
+            <div class="hero">
+                <div class="emoji">🏆</div>
+                <h1>FINAL BOSS — Đạo diễn đoạn văn</h1>
+                <p>Boss kiểm tra đúng trọng tâm: <b>Nghị luận + Biểu cảm</b>.</p>
+            </div>
+            <div class="boss">
+                <div class="label" style="color:#bdbaff">BOSS 1 · NGHỊ LUẬN</div>
+                <h2>Hãy viết một đoạn văn trình bày suy nghĩ của em về vai trò của sự tự tin trong cuộc sống.</h2>
+                <div id="bc1" class="choices"></div>
+                <div id="be1" style="display:none;margin-top:15px"><textarea
+                        placeholder="Viết đoạn nghị luận của em..."></textarea><button class="btn"
+                        style="margin-top:10px" onclick="document.getElementById('result1').style.display='block'">🚀
+                        Nộp & phân tích</button></div>
+            </div>
+            <div class="card" id="result1" style="display:none">
+                <div class="label">🤖 AI ANALYSIS · DEMO</div>
+                <h2>HỒ SƠ ĐOẠN NGHỊ LUẬN</h2>
+                <p>🧠 Ý kiến ✓ &nbsp; 📌 Lí giải ✓ &nbsp; 🔗 Liên kết ✓</p>
+                <h3>MỨC ĐỘ PHÙ HỢP</h3>
+                <div class="score">88%</div>
+                <div class="bar"><i style="width:88%"></i></div>
+                <p>✓ Nêu được quan điểm rõ.<br>△ Có thể bổ sung một lí do cụ thể hơn.</p>
+            </div>
+            <div class="card">
+                <div class="label">BOSS 2 · BIỂU CẢM</div>
+                <h2>Hãy viết một đoạn văn trình bày cảm nghĩ của em về một người em kính trọng.</h2>
+                <div id="bc2" class="choices"></div>
+                <div id="be2" style="display:none;margin-top:15px"><textarea
+                        placeholder="Viết đoạn biểu cảm của em..."></textarea><button class="btn"
+                        style="margin-top:10px" onclick="document.getElementById('result2').style.display='block'">🚀
+                        Nộp & phân tích</button></div>
+            </div>
+            <div class="card" id="result2" style="display:none">
+                <div class="label">🤖 AI ANALYSIS · DEMO</div>
+                <h2>HỒ SƠ ĐOẠN BIỂU CẢM</h2>
+                <p>❤️ Cảm xúc ✓ &nbsp; 💭 Cảm nhận ✓ &nbsp; 🧩 Chi tiết hỗ trợ ✓</p>
+                <h3>MỨC ĐỘ PHÙ HỢP</h3>
+                <div class="score">91%</div>
+                <div class="bar"><i style="width:91%"></i></div>
+                <p>✓ Cảm xúc tự nhiên.<br>△ Có thể thêm một chi tiết cụ thể để cảm xúc chân thực hơn.</p>
+            </div>
+            <div class="actions"><button class="btn secondary" onclick="prev()">← Quay lại</button><button
+                    class="btn green" onclick="alert('🎉 Demo hoàn thành Lesson 08!')">Hoàn thành lesson ✓</button>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        let cur = 1;
+        const types = ['Tự sự', 'Miêu tả', 'Biểu cảm', 'Nghị luận'];
+        const obs = [
+            ['Sáng hôm ấy, mẹ đánh thức em dậy rồi chuẩn bị bữa sáng. Sau đó, mẹ đưa em đến trường.', '🏃 Kể sự việc', 'Tập trung vào diễn biến và hành động.'],
+            ['Mẹ có mái tóc đen dài và nụ cười rất dịu dàng. Đôi bàn tay mẹ luôn thoăn thoắt làm việc.', '👀 Làm hiện lên', 'Tập trung vào đặc điểm.'],
+            ['Em luôn cảm thấy ấm áp mỗi khi nghĩ về mẹ. Với em, mẹ là người em yêu thương nhất.', '❤️ Bộc lộ cảm xúc', 'Tập trung vào tình cảm, cảm nhận.'],
+            ['Tình yêu thương của mẹ có ý nghĩa rất lớn đối với mỗi người. Nó giúp chúng ta có thêm động lực để trưởng thành.', '🧠 Trình bày suy nghĩ', 'Tập trung vào quan điểm và suy nghĩ.']
+        ];
+        function render() { document.querySelectorAll('.screen').forEach(x => x.classList.remove('active')); document.getElementById('s' + cur).classList.add('active'); document.getElementById('step').textContent = cur + ' / 9'; document.getElementById('bar').style.width = (cur / 9 * 100) + '%'; scrollTo({ top: 0, behavior: 'smooth' }) }
+        function next() { if (cur < 9) { cur++; render() } } function prev() { if (cur > 1) { cur--; render() } }
+        function setObserve(i, el) { document.querySelectorAll('.tab').forEach(x => x.classList.remove('active')); el.classList.add('active'); document.getElementById('observe').textContent = obs[i][0]; document.getElementById('otags').innerHTML = '<span class="tag">' + obs[i][1] + '</span>'; document.getElementById('ohint').textContent = obs[i][2] }
+        function makeChoices(id, items, fn) { let box = document.getElementById(id); box.innerHTML = ''; items.forEach((x, i) => { let d = document.createElement('div'); d.className = 'choice'; d.textContent = x; d.onclick = () => { box.querySelectorAll('.choice').forEach(y => y.classList.remove('selected')); d.classList.add('selected'); fn(i) }; box.appendChild(d) }) }
+        function teach(i) { let d = [['🏃', 'TỰ SỰ', 'Kể lại sự việc; phù hợp khi đề yêu cầu kể chuyện, kỷ niệm, diễn biến.'], ['👀', 'MIÊU TẢ', 'Làm người, vật, cảnh hiện lên bằng đặc điểm.'], ['❤️', 'BIỂU CẢM', 'Trọng tâm là tình cảm và cảm nhận.'], ['🧠', 'NGHỊ LUẬN', 'Trình bày quan điểm, lí lẽ, dẫn chứng.']][i]; document.getElementById('teach').innerHTML = '<div style="font-size:34px">' + d[0] + '</div><h2>' + d[1] + '</h2><p>' + d[2] + '</p>' }
+        document.getElementById('tabs').innerHTML = ['A', 'B', 'C', 'D'].map((x, i) => '<button class="tab ' + (i === 0 ? 'active' : '') + '" onclick="setObserve(' + i + ',this)">' + x + '</button>').join(''); setObserve(0, document.querySelector('.tab'));
+        makeChoices('dc1', types, i => { let f = document.getElementById('df1'); f.className = 'feedback show'; f.innerHTML = i === 0 ? '✓ “Kể lại” → <b>Tự sự</b>.' : '💡 Nhìn lại động từ “Kể lại”.' });
+        makeChoices('dc2', types, i => { let f = document.getElementById('df2'); f.className = 'feedback show'; f.innerHTML = i === 3 ? '✓ “Trình bày suy nghĩ” → <b>Nghị luận</b>.' : '💡 Nhìn lại nhiệm vụ “Trình bày suy nghĩ”.' });
+        makeChoices('gc', ['Nghị luận', 'Biểu cảm', 'Tự sự', 'Miêu tả'], i => { let f = document.getElementById('gf'); f.className = 'feedback show'; if (i === 0) { f.innerHTML = '✓ Đúng hướng. “Trình bày suy nghĩ” → <b>Nghị luận</b>.'; document.getElementById('sc').style.display = 'block' } else f.innerHTML = '💡 Hãy nhìn vào nhiệm vụ “Trình bày suy nghĩ”.' });
+        makeChoices('mc', ['Ưu tiên bộc lộ cảm xúc và cảm nhận', 'Ưu tiên nêu quan điểm và lí lẽ', 'Chỉ kể lại một kỷ niệm', 'Chỉ tả ngoại hình'], i => { document.getElementById('mf').className = 'feedback show'; document.getElementById('mf').innerHTML = i === 0 ? '✓ “Trình bày cảm nghĩ” → <b>Biểu cảm</b> là trọng tâm. Có thể kết hợp suy nghĩ, chi tiết và kể chuyện để hỗ trợ.' : '💡 Hãy đọc thật kỹ cụm “trình bày cảm nghĩ”.'; document.getElementById('why').style.display = 'block' });
+        makeChoices('bc1', ['Nghị luận', 'Biểu cảm'], i => { document.getElementById('be1').style.display = 'block' });
+        makeChoices('bc2', ['Biểu cảm', 'Nghị luận'], i => { document.getElementById('be2').style.display = 'block' });
+    </script>
+</body>
+
+</html>

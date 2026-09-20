@@ -1,0 +1,229 @@
+{
+  "id": "nghia-tu.09-truong-tu-vung",
+  "title": "Trường từ vựng",
+  "version": "3.0",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "format": "essay",
+        "content": "Mùa hè năm nay, lớp em được tham gia một ngày hội ở bãi biển. Tiếng <b>sóng</b> vỗ rì rào hòa cùng tiếng <b>hải âu</b> gọi nhau trên bầu trời trong xanh. Những chiếc <b>thuyền</b> đánh cá lặng lẽ neo gần bờ, còn các bạn nhỏ thì thích thú chạy chân trần trên bãi <b>cát</b>, nhặt từng chiếc <b>vỏ ốc</b> đủ màu sắc.",
+        "guide": [
+          "Quan sát những từ ngữ in đậm.",
+          "Các từ này có điểm chung gì về nghĩa?"
+        ],
+        "hint": "Chúng đều liên quan đến một chủ đề chung.",
+        "title": "Quan sát",
+        "instruction": "Đọc đoạn văn sau.",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "1. Khái niệm",
+            "icon": "📚",
+            "active": true,
+            "content": {
+              "text": "Các từ cùng nói về một sự vật, hiện tượng, hoạt động... có nét nghĩa chung thì tạo thành một trường từ vựng.",
+              "examples": [
+                {
+                  "category": "Ví dụ: ",
+                  "word": "Sóng, hải âu, thuyền, cát... thuộc trường từ vựng về 'Biển'.",
+                  "emoji": "🌊"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "2. Đặc điểm",
+            "icon": "🔄",
+            "active": false,
+            "content": {
+              "text": "Một trường từ vựng lớn có thể bao gồm nhiều trường từ vựng nhỏ hơn. Một từ có thể thuộc nhiều trường từ vựng khác nhau do hiện tượng nhiều nghĩa.",
+              "examples": [
+                {
+                  "category": "Ví dụ: ",
+                  "word": "'Lưới' vừa thuộc trường từ vựng 'Dụng cụ đánh bắt', vừa thuộc trường từ vựng 'Thể thao' (lưới bóng chuyền).",
+                  "emoji": "🕸️"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Trường từ vựng là gì?",
+        "instruction": "Trường từ vựng là tập hợp của những từ có ít nhất một nét chung về nghĩa.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "identify",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Nhóm từ nào dưới đây đều thuộc trường từ vựng 'Trường học'?",
+        "options": [
+          "Bút, vở, giáo viên, bài tập",
+          "Sóng, biển, ngư dân, thuyền",
+          "Nông dân, cày, cuốc, lúa",
+          "Bóng đá, trọng tài, cầu môn, bàn thắng"
+        ],
+        "answer": "Bút, vở, giáo viên, bài tập",
+        "title": "Nhận biết",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Vì sao các từ 'bóng đá', 'cầu môn', 'trọng tài' thuộc cùng một trường từ vựng?",
+        "sampleAnswer": [
+          "Vì chúng có nét nghĩa chung với cầu thủ.",
+          "Vì chúng đều gợi nhắc đến một chủ đề chung là môn thể thao bóng đá.",
+          "Vì chúng đều là danh từ."
+        ],
+        "title": "Thông hiểu",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "highlight",
+      "data": {
+        "content": "[[Buổi]] [[biểu diễn]] [[rất]] [[tuyệt vời]] [[với]] [[tiếng]] [[đàn]], [[tiếng]] [[sáo]], [[tiếng]] [[trống]] [[hòa]] [[cùng]] [[lời ca]] [[vang]] [[lên]].",
+        "answer": [
+          "đàn",
+          "sáo",
+          "trống",
+          "lời ca"
+        ],
+        "title": "Tô sáng",
+        "instruction": "Hãy tô sáng tất cả các từ thuộc trường từ vựng 'Âm nhạc' trong câu sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "reflection",
+      "data": {
+        "question": "Hãy kể tên 4 từ thuộc trường từ vựng 'Đồ dùng học tập'.",
+        "sampleAnswer": "Bút chì, thước kẻ, tẩy, compa.",
+        "title": "Vận dụng",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Từ 'đường' KHÔNG thể nằm trong trường từ vựng nào dưới đây?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Gia vị"
+          },
+          {
+            "id": "B",
+            "text": "Nguyên liệu làm bánh"
+          },
+          {
+            "id": "C",
+            "text": "Nguyên liệu nấu ăn"
+          },
+          {
+            "id": "D",
+            "text": "Đồ dùng học tập"
+          }
+        ],
+        "answer": "D",
+        "title": "Lựa chọn",
+        "score": 1
+      }
+    },
+    {
+      "id": "step08",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Bác sĩ, y tá, bệnh nhân",
+          "Sóng, cát, hải âu",
+          "Bóng đá, trọng tài",
+          "Nắng, mưa, sấm chớp"
+        ],
+        "right": [
+          "Thể thao",
+          "Biển",
+          "Thời tiết",
+          "Bệnh viện"
+        ],
+        "answer": {
+          "Bác sĩ, y tá, bệnh nhân": "Bệnh viện",
+          "Sóng, cát, hải âu": "Biển",
+          "Bóng đá, trọng tài": "Thể thao",
+          "Nắng, mưa, sấm chớp": "Thời tiết"
+        },
+        "title": "Nối từ",
+        "instruction": "Ghép mỗi nhóm từ với trường từ vựng phù hợp.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step09",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "Ngư dân",
+          "Mái chèo",
+          "Lúa",
+          "Cày cuốc"
+        ],
+        "targets": [
+          "Nông nghiệp",
+          "Ngư nghiệp (Biển)"
+        ],
+        "answer": {
+          "Lúa": "Nông nghiệp",
+          "Cày cuốc": "Nông nghiệp",
+          "Ngư dân": "Ngư nghiệp (Biển)",
+          "Mái chèo": "Ngư nghiệp (Biển)"
+        },
+        "title": "Kéo và thả",
+        "instruction": "Kéo các từ vào đúng trường từ vựng của chúng.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step10",
+      "type": "flashcard",
+      "data": {
+        "front": "Trường từ vựng",
+        "back": "Trường từ vựng là tập hợp những từ có ít nhất một nét chung về nghĩa (cùng thuộc một chủ đề, lĩnh vực).",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "nghia-tu",
+    "difficulty": "reference",
+    "xp": 100,
+    "stars": 3,
+    "description": "Nhận biết và sử dụng trường từ vựng trong tiếng Việt.",
+    "prerequisite": "nghia-tu.08-cap-do-khai-quat",
+    "unlock": null,
+    "reviewMode": "instant",
+    "durationMinutes": 15
+  }
+}

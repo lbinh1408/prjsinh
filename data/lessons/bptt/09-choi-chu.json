@@ -1,0 +1,305 @@
+{
+  "id": "bptt.09-choi-chu",
+  "title": "Chơi chữ",
+  "version": "3.0",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "content": "Bà già đi chợ Cầu Đông<br>Bói xem một quẻ có chồng lợi chăng?<br>Thầy bói gieo quẻ nói rằng<br><b>Lợi</b> thì có <b>lợi</b>, nhưng răng không còn.",
+        "guide": [
+          "Từ 'lợi' trong câu hỏi của bà già mang ý nghĩa gì?",
+          "Từ 'lợi' trong câu trả lời của thầy bói mang ý nghĩa gì? Sự trùng âm này tạo ra hiệu quả gì?"
+        ],
+        "hint": "Việc lợi dụng sự giống nhau về âm thanh của từ để tạo ra một ý nghĩa bất ngờ, hài hước.",
+        "title": "Quan sát",
+        "instruction": "Đọc kĩ câu ca dao sau.",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Khái niệm",
+            "icon": "🤹",
+            "active": true,
+            "content": {
+              "text": "Chơi chữ là lợi dụng đặc sắc về âm, về nghĩa của từ ngữ để tạo sắc thái dí dỏm, hài hước... làm câu văn, câu thơ hấp dẫn và thú vị.",
+              "examples": [
+                {
+                  "category": "Ví dụ: ",
+                  "word": "Con ngựa đá con ngựa đá (Từ 'đá' thứ nhất là hành động, từ 'đá' thứ hai là chất liệu).",
+                  "emoji": "🐴"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Tác dụng",
+            "icon": "✨",
+            "active": false,
+            "content": {
+              "text": "Tạo ra tiếng cười, sự bất ngờ, châm biếm sâu cay hoặc mang lại vẻ đẹp độc đáo về ngôn từ cho văn chương.",
+              "examples": [
+                {
+                  "category": "Ứng dụng: ",
+                  "word": "Chơi chữ được dùng nhiều trong ca dao, tục ngữ, thơ trào phúng, câu đối, và trong giao tiếp hàng ngày.",
+                  "emoji": "🎭"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Khái niệm",
+        "instruction": "Biện pháp tu từ được sử dụng ở trên gọi là <i>Chơi chữ</i>.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "identify",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Câu nào dưới đây KHÔNG có hiện tượng chơi chữ?",
+        "options": [
+          "Ruồi đậu mâm xôi đậu.",
+          "Kiến bò đĩa thịt bò.",
+          "Trời mưa lác đác ướt cả sân.",
+          "Mênh mông muôn mẫu một màu mưa."
+        ],
+        "answer": "Trời mưa lác đác ướt cả sân.",
+        "title": "Nhận biết",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Trong câu 'Bà già đi chợ Cầu Đông... Lợi thì có lợi, nhưng răng không còn', thầy bói đã dùng cách chơi chữ nào?",
+        "sampleAnswer": [
+          "Thầy bói dùng từ đồng âm.",
+          "Từ 'lợi' (ích lợi) và 'lợi' (phần thịt bao quanh chân răng) đồng âm với nhau, tạo ra sự hiểu lầm hài hước."
+        ],
+        "title": "Thông hiểu",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "highlight",
+      "data": {
+        "content": "Con ruồi đậu mâm xôi đậu.",
+        "answer": [
+          "đậu"
+        ],
+        "title": "Tô sáng",
+        "instruction": "Hãy tô sáng từ ngữ mang hiện tượng chơi chữ (đồng âm) trong câu sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "reflection",
+      "data": {
+        "question": "Hãy giải thích sự thú vị trong câu: 'Con ngựa đá con ngựa đá'.",
+        "sampleAnswer": "Sự thú vị nằm ở chỗ từ 'đá' lặp lại 2 lần với 2 nghĩa khác nhau: 'đá' đầu tiên là động từ chỉ hành động đá, 'đá' thứ hai là danh từ chỉ vật liệu làm con ngựa.",
+        "title": "Vận dụng",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "1. Dùng từ đồng âm",
+            "icon": "👯",
+            "active": true,
+            "content": {
+              "items": [
+                {
+                  "type": "common",
+                  "label": "Đặc điểm",
+                  "definition": "Sử dụng những từ phát âm giống hệt nhau nhưng mang ý nghĩa hoàn toàn khác nhau.",
+                  "examples": [
+                    "Ruồi đậu mâm xôi đậu."
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "2. Dùng lối nói trại âm (gần âm)",
+            "icon": "🗣️",
+            "active": false,
+            "content": {
+              "items": [
+                {
+                  "type": "common",
+                  "label": "Đặc điểm",
+                  "definition": "Sử dụng các từ phát âm gần giống nhau (thường do phương ngữ) để tạo sự liên tưởng.",
+                  "examples": [
+                    "Có tài mà cậy chi tài / Chữ tài liền với chữ tai một vần. (tài - tai)"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-3",
+            "title": "3. Dùng cách điệp âm",
+            "icon": "🔁",
+            "active": false,
+            "content": {
+              "items": [
+                {
+                  "type": "common",
+                  "label": "Đặc điểm",
+                  "definition": "Cố ý lặp lại một âm đầu nhiều lần trong câu để tạo âm hưởng đặc biệt.",
+                  "examples": [
+                    "Mênh mông muôn mẫu một màu mưa."
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-4",
+            "title": "4. Dùng lối nói lái / nhiều nghĩa",
+            "icon": "🔀",
+            "active": false,
+            "content": {
+              "items": [
+                {
+                  "type": "common",
+                  "label": "Đặc điểm",
+                  "definition": "Đảo vần, đảo thanh điệu của từ để tạo ra một từ mới mang ý nghĩa bất ngờ, hài hước.",
+                  "examples": [
+                    "Con cá đối nằm trên cối đá (cá đối - cối đá)."
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Các lối chơi chữ thường gặp",
+        "score": 0
+      }
+    },
+    {
+      "id": "step08",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Câu 'Mênh mông muôn mẫu một màu mưa / Mỏi mắt miên man mãi mịt mờ' sử dụng lối chơi chữ nào?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Dùng từ đồng âm."
+          },
+          {
+            "id": "B",
+            "text": "Dùng lối nói lái."
+          },
+          {
+            "id": "C",
+            "text": "Dùng lối điệp âm."
+          },
+          {
+            "id": "D",
+            "text": "Dùng từ gần âm."
+          }
+        ],
+        "answer": "C",
+        "title": "Lựa chọn",
+        "score": 1
+      }
+    },
+    {
+      "id": "step09",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Về Thủ Đức năm canh thức đủ, đến Kỳ Son trong dạ còn si.",
+          "Da trắng vỗ bì bạch.",
+          "Bươm bướm bềnh bồng bỏ bạn bay bay."
+        ],
+        "right": [
+          "Dùng lối điệp âm",
+          "Dùng từ đồng nghĩa",
+          "Dùng lối nói lái."
+        ],
+        "answer": {
+          "Về Thủ Đức năm canh thức đủ, đến Kỳ Son trong dạ còn si.": "Dùng lối nói lái",
+          "Da trắng vỗ bì bạch.": "Dùng từ đồng nghĩa",
+          "Bươm bướm bềnh bồng bỏ bạn bay bay.": "Dùng lối điệp âm"
+        },
+        "title": "Nối câu",
+        "instruction": "Ghép mỗi ví dụ với lối chơi chữ tương ứng.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step10",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "Mỹ mà xấu.",
+          "Chị Xuân đi chợ mùa hè/ Mua cá thu về chợ hãy còn đông",
+          "Trăng bao nhiêu tuổi trăng già / Núi bao nhiêu tuổi gọi là núi non",
+          "Anh Hươu đi chợ Đồng Nai/ Bước qua Bến Nghé, ngồi nhai thịt bò"
+        ],
+        "targets": [
+          "Dùng từ đồng âm.",
+          "Dùng trường từ vựng.",
+          "Dùng từ trái nghĩa/ đồng âm.",
+          "Dùng từ gần nghĩa"
+        ],
+        "answer": {
+          "Mỹ mà xấu.": "Dùng từ đồng âm.",
+          "Chị Xuân đi chợ mùa hè/ Mua cá thu về chợ hãy còn đông": "Dùng trường từ vựng.",
+          "Trăng bao nhiêu tuổi trăng già / Núi bao nhiêu tuổi gọi là núi non": "Dùng từ trái nghĩa/ đồng âm.",
+          "Anh Hươu đi chợ Đồng Nai/ Bước qua Bến Nghé, ngồi nhai thịt bò": "Dùng trường từ vựng."
+        },
+        "title": "Kéo và thả",
+        "instruction": "Hãy phân loại các câu sau vào đúng nhóm lối chơi chữ.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step11",
+      "type": "flashcard",
+      "data": {
+        "front": "Chơi chữ",
+        "back": "Chơi chữ là lợi dụng đặc sắc về âm, về nghĩa của từ ngữ (đồng âm, gần âm, điệp âm, nhiều nghĩa, nói lái...) để tạo sắc thái dí dỏm, hài hước, làm câu văn thêm hấp dẫn.",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "bptt",
+    "difficulty": "reference",
+    "xp": 100,
+    "stars": 3,
+    "description": "Nhận biết và sử dụng biện pháp tu từ chơi chữ.",
+    "prerequisite": null,
+    "unlock": null,
+    "reviewMode": "instant",
+    "durationMinutes": 15
+  }
+}

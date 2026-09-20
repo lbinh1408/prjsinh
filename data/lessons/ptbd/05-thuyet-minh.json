@@ -1,0 +1,362 @@
+{
+  "id": "ptbd.05-thuyet-minh",
+  "title": "Thuyết minh",
+  "version": "1.0",
+  "enabled": true,
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "format": "essay",
+        "content": "Cây phượng là loài cây được trồng phổ biến trong nhiều sân trường ở Việt Nam. Thân cây cao, tán rộng, tạo bóng mát cho học sinh trong những ngày hè. Lá phượng nhỏ, kép lông chim, còn hoa thường nở thành từng chùm lớn với màu đỏ rực vào khoảng tháng năm. Ngoài giá trị tạo cảnh quan, cây phượng còn gắn với nhiều kỉ niệm tuổi học trò nên thường được gọi là \"hoa học trò\".",
+        "guide": [
+          "ngôn từ",
+          "tính khách quan"
+        ],
+        "hint": "Ngôn từ phổ thông, dễ hiểu; mang tính chính xác, khách quan. ",
+        "title": "Quan sát",
+        "instruction": "Hãy đọc đoạn văn sau:",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Sau khi đọc đoạn văn, mục đích chính của người viết là gì?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Kể một câu chuyện về cây phượng."
+          },
+          {
+            "id": "B",
+            "text": "Bộc lộ tình cảm với cây phượng."
+          },
+          {
+            "id": "C",
+            "text": "Giới thiệu đặc điểm và công dụng của cây phượng."
+          },
+          {
+            "id": "D",
+            "text": "Thuyết phục mọi người trồng cây phượng."
+          }
+        ],
+        "answer": "C",
+        "title": "Nhận xét",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Những thông tin nào giúp em hiểu rõ hơn về cây phượng?",
+        "sampleAnswer": [
+          "Thân cây cao, tán rộng.",
+          "Lá kép lông chim, hoa đỏ rực.",
+          "Tạo bóng mát, gắn với tuổi học trò."
+        ],
+        "title": "Phân tích",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Mục đích",
+            "icon": "ℹ️",
+            "active": true,
+            "content": {
+              "text": "Dùng để:\n- Giới thiệu\n- Giải thích\n- Cung cấp tri thức khách quan",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Dấu hiệu nhận biết",
+            "icon": "🔍",
+            "active": false,
+            "content": {
+              "text": "Thường có các thông tin khách quan về đặc điểm, cấu tạo, công dụng, phân loại, số liệu...",
+              "examples": [
+                {
+                  "category": "Ngôn ngữ",
+                  "word": "Rõ ràng, chính xác, dễ hiểu, ít đan xen cảm xúc cá nhân.",
+                  "emoji": "💡"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-3",
+            "title": "Mẹo nhận biết",
+            "icon": "💡",
+            "active": false,
+            "content": {
+              "text": "Sau khi đọc xong, nếu bạn thấy mình biết thêm KIẾN THỨC về một sự vật hay hiện tượng, rất có thể đoạn văn sử dụng phương thức thuyết minh.",
+              "examples": []
+            }
+          }
+        ],
+        "title": "Kiến thức trọng tâm",
+        "instruction": "Phương thức thuyết minh dùng để giới thiệu, giải thích và cung cấp tri thức, giúp người đọc hiểu đúng về sự vật, hiện tượng.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "fillBlank",
+      "validator": "fillBlankValidator",
+      "data": {
+        "question": "Điền vào chỗ trống",
+        "sentence": "Cây tre có thân rỗng, nhiều ___ và thường mọc thành bụi.",
+        "answer": "đốt",
+        "title": "Điền khuyết",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "reflection",
+      "data": {
+        "question": "Em hãy viết 3–4 câu giới thiệu về một đồ vật quen thuộc trong lớp học (sử dụng thông tin khách quan).",
+        "sampleAnswer": "Chiếc bảng đen được treo ở giữa lớp. Mặt bảng nhẵn mịn, có kẻ ô li mờ để giáo viên dễ viết. Bảng dùng để ghi chép bài giảng mỗi ngày.",
+        "title": "Vận dụng",
+        "score": 2
+      }
+    },
+    {
+      "id": "step07",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Đoạn văn nào dưới đây có phương thức biểu đạt chính là thuyết minh?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Ngày xửa ngày xưa, ở một ngôi làng nọ có hai vợ chồng nghèo..."
+          },
+          {
+            "id": "B",
+            "text": "Mặt trời rọi những tia nắng vàng óng ả xuống cánh đồng lúa đang chín rộ."
+          },
+          {
+            "id": "C",
+            "text": "Ôi, nhớ làm sao những ngày thơ bé được rong ruổi cùng đám bạn trên đê!"
+          },
+          {
+            "id": "D",
+            "text": "Nón lá thường được làm bằng lá cọ, lá nón và khung tre, có hình chóp nhọn."
+          }
+        ],
+        "answer": "D",
+        "title": "Trắc nghiệm",
+        "score": 1
+      }
+    },
+    {
+      "id": "step08",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Nhận định nào sau đây là SAI về phương thức thuyết minh?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Nhằm mục đích cung cấp thông tin, tri thức."
+          },
+          {
+            "id": "B",
+            "text": "Có thể giới thiệu đặc điểm của một sự vật."
+          },
+          {
+            "id": "C",
+            "text": "Chủ yếu dùng để bộc lộ cảm xúc của người viết."
+          },
+          {
+            "id": "D",
+            "text": "Ngôn ngữ cần rõ ràng, chính xác."
+          }
+        ],
+        "answer": "C",
+        "title": "Đúng hay Sai?",
+        "score": 1
+      }
+    },
+    {
+      "id": "step09",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Cây phượng",
+          "Trống trường",
+          "Áo dài",
+          "Bánh chưng"
+        ],
+        "right": [
+          "Tạo bóng mát, hoa nở đỏ rực",
+          "Báo hiệu giờ học, giờ chơi",
+          "Trang phục truyền thống của phụ nữ Việt",
+          "Món ăn truyền thống ngày Tết cổ truyền"
+        ],
+        "answer": {
+          "Cây phượng": "Tạo bóng mát, hoa nở đỏ rực",
+          "Trống trường": "Báo hiệu giờ học, giờ chơi",
+          "Áo dài": "Trang phục truyền thống của phụ nữ Việt",
+          "Bánh chưng": "Món ăn truyền thống ngày Tết cổ truyền"
+        },
+        "title": "Ghép thông tin",
+        "instruction": "Ghép đối tượng với thông tin thuyết minh phù hợp:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step10",
+      "type": "ordering",
+      "validator": "orderValidator",
+      "data": {
+        "items": [
+          "Đây là một đồ dùng học tập rất quen thuộc với học sinh.",
+          "Thân bút thường được làm bằng gỗ, dễ gọt.",
+          "Ruột bút chứa lõi than chì để tạo ra nét chữ.",
+          "Cây bút chì được dùng để viết, vẽ hoặc nháp bài."
+        ],
+        "answer": [
+          "Đây là một đồ dùng học tập rất quen thuộc với học sinh.",
+          "Thân bút thường được làm bằng gỗ, dễ gọt.",
+          "Ruột bút chứa lõi than chì để tạo ra nét chữ.",
+          "Cây bút chì được dùng để viết, vẽ hoặc nháp bài."
+        ],
+        "title": "Sắp xếp câu",
+        "instruction": "Sắp xếp các ý sau để tạo thành đoạn văn thuyết minh hợp lí:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step11",
+      "type": "highlight",
+      "data": {
+        "content": "Chiếc nón lá được làm từ lá cọ, lá nón và khung tre. Nón có dạng hình chóp, giúp che nắng, che mưa và là nét đẹp trong văn hóa Việt Nam.",
+        "answer": [
+          "được làm từ",
+          "lá cọ",
+          "lá nón",
+          "khung tre",
+          "dạng hình chóp",
+          "che nắng",
+          "che mưa",
+          "nét đẹp trong văn hóa Việt Nam"
+        ],
+        "title": "Tô sáng từ ngữ",
+        "instruction": "Tô đậm những cụm từ cung cấp thông tin về ĐẶC ĐIỂM HOẶC CÔNG DỤNG trong đoạn sau:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step12",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Trái thanh long chứa nhiều vitamin C.",
+          "Đồng hồ dùng để đo thời gian.",
+          "Em rất yêu cây lúa quê mình.",
+          "Hôm qua em đi thăm vườn thanh long."
+        ],
+        "right": [
+          "Câu thuyết minh",
+          "Câu thuyết minh 2",
+          "Câu biểu cảm",
+          "Câu tự sự"
+        ],
+        "answer": {
+          "Trái thanh long chứa nhiều vitamin C.": "Câu thuyết minh",
+          "Đồng hồ dùng để đo thời gian.": "Câu thuyết minh 2",
+          "Em rất yêu cây lúa quê mình.": "Câu biểu cảm",
+          "Hôm qua em đi thăm vườn thanh long.": "Câu tự sự"
+        },
+        "title": "Phân loại câu",
+        "instruction": "Ghép từng câu văn vào đúng nhóm phương thức biểu đạt:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step13",
+      "type": "ordering",
+      "validator": "orderValidator",
+      "data": {
+        "items": [
+          "Chọn đối tượng",
+          "Quan sát và thu thập thông tin",
+          "Sắp xếp thông tin theo trình tự hợp lí",
+          "Giới thiệu bằng ngôn ngữ rõ ràng, chính xác"
+        ],
+        "answer": [
+          "Chọn đối tượng",
+          "Quan sát và thu thập thông tin",
+          "Sắp xếp thông tin theo trình tự hợp lí",
+          "Giới thiệu bằng ngôn ngữ rõ ràng, chính xác"
+        ],
+        "title": "Quy trình thuyết minh",
+        "instruction": "Sắp xếp theo đúng quy trình viết một đoạn văn thuyết minh:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step14",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Tự sự",
+          "Miêu tả",
+          "Biểu cảm",
+          "Thuyết minh"
+        ],
+        "right": [
+          "Kể lại một chuyến tham quan bảo tàng.",
+          "Tái hiện lại bức tranh cánh đồng lúc hoàng hôn.",
+          "Bày tỏ lòng biết ơn đối với thầy cô giáo.",
+          "Giới thiệu cấu tạo của chiếc xe đạp."
+        ],
+        "answer": {
+          "Tự sự": "Kể lại một chuyến tham quan bảo tàng.",
+          "Miêu tả": "Tái hiện lại bức tranh cánh đồng lúc hoàng hôn.",
+          "Biểu cảm": "Bày tỏ lòng biết ơn đối với thầy cô giáo.",
+          "Thuyết minh": "Giới thiệu cấu tạo của chiếc xe đạp."
+        },
+        "title": "Ôn tập tổng hợp",
+        "instruction": "Kéo các đoạn văn vào đúng phương thức biểu đạt chính:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step15",
+      "type": "flashcard",
+      "data": {
+        "front": "Phương thức thuyết minh là gì?",
+        "back": "Dùng để giới thiệu, giải thích và cung cấp tri thức khách quan về sự vật, hiện tượng hoặc vấn đề.",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "ptbd",
+    "difficulty": 2,
+    "xp": 80,
+    "stars": 3,
+    "description": "Nhận biết và sử dụng phương thức thuyết minh trong văn bản.",
+    "durationMinutes": 25
+  }
+}

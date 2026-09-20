@@ -1,0 +1,321 @@
+{
+  "id": "tu-loai.06-pho-tu",
+  "title": "Phó từ",
+  "version": "3.0",
+  "image": "assets/images/pho-tu.png",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "content": "Lan <b>đang</b> học bài <b>rất</b> chăm chỉ.",
+        "guide": [
+          "Chú ý các từ được in đậm trong câu.",
+          "Các từ đó bổ sung ý nghĩa cho những từ nào?"
+        ],
+        "hint": "Các từ in đậm dùng để bổ sung ý nghĩa cho động từ hoặc tính từ.",
+        "title": "Quan sát",
+        "instruction": "Đọc câu văn dưới đây.",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "1. Định nghĩa cốt lõi",
+            "icon": "📖",
+            "active": true,
+            "content": {
+              "text": "Phó từ là những từ chuyên đi kèm động từ, tính từ để bổ sung ý nghĩa cho động từ, tính từ.",
+              "examples": [
+                {
+                  "category": "Chỉ thời gian",
+                  "word": "đã, đang, sẽ",
+                  "emoji": "⏳"
+                },
+                {
+                  "category": "Chỉ mức độ",
+                  "word": "rất, quá, lắm",
+                  "emoji": "📈"
+                },
+                {
+                  "category": "Chỉ sự phủ định",
+                  "word": "không, chưa, chẳng",
+                  "emoji": "🚫"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "2. Đặc điểm ngữ pháp",
+            "icon": "🔗",
+            "active": false,
+            "content": {
+              "combination": {
+                "description": "Phó từ không thể gọi tên sự vật, hành động, tính chất. Chúng thường đứng trước hoặc sau động từ, tính từ.",
+                "examples": [
+                  "đang học (đứng trước động từ)",
+                  "đẹp lắm (đứng sau tính từ)"
+                ]
+              }
+            }
+          }
+        ],
+        "title": "Khái niệm",
+        "instruction": "Các từ vừa tìm được chính là các <i>phó từ</i>.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "identify",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Từ nào sau đây là phó từ?",
+        "options": [
+          "chạy",
+          "rất",
+          "cái bàn",
+          "đẹp đẽ"
+        ],
+        "answer": "rất",
+        "title": "Nhận biết",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Giải thích vì sao 'đang' là phó từ trong câu 'Mưa đang rơi'?",
+        "sampleAnswer": [
+          "Vì nó đứng trước động từ 'rơi' để bổ sung ý nghĩa về thời gian (sự tiếp diễn).",
+          "Vì nó không phải là động từ",
+          "Vì nó bổ nghĩa cho chủ ngữ"
+        ],
+        "title": "Thông hiểu",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "highlight",
+      "data": {
+        "content": "Tôi vẫn chưa ăn cơm.",
+        "answer": [
+          "vẫn",
+          "chưa"
+        ],
+        "title": "Tô sáng",
+        "instruction": "Hãy chọn để tô sáng các phó từ trong câu sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "reflection",
+      "data": {
+        "question": "Hãy viết một câu có sử dụng phó từ chỉ sự phủ định (không, chưa, chẳng).",
+        "sampleAnswer": "Hôm nay em không đi học.",
+        "title": "Vận dụng",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "1. Phó từ đứng trước động từ, tính từ",
+            "icon": "⬅️",
+            "active": true,
+            "content": {
+              "items": [
+                {
+                  "type": "common",
+                  "label": "Chỉ quan hệ thời gian",
+                  "definition": "Bổ sung ý nghĩa về thời gian cho hành động, trạng thái.",
+                  "examples": [
+                    "đã, đang, sẽ, sắp, vừa, mới"
+                  ]
+                },
+                {
+                  "type": "common",
+                  "label": "Chỉ mức độ",
+                  "definition": "Bổ sung ý nghĩa về mức độ.",
+                  "examples": [
+                    "rất, hơi, khá, vô cùng"
+                  ]
+                },
+                {
+                  "type": "common",
+                  "label": "Chỉ sự tiếp diễn tương tự",
+                  "definition": "Sự việc tiếp tục diễn ra như trước.",
+                  "examples": [
+                    "cũng, vẫn, cứ, lại"
+                  ]
+                },
+                {
+                  "type": "common",
+                  "label": "Chỉ sự phủ định / mệnh lệnh",
+                  "definition": "Phủ định sự việc hoặc khuyên can.",
+                  "examples": [
+                    "không, chưa, chẳng (phủ định)",
+                    "hãy, đừng, chớ (mệnh lệnh)"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "2. Phó từ đứng sau động từ, tính từ",
+            "icon": "➡️",
+            "active": false,
+            "content": {
+              "items": [
+                {
+                  "type": "common",
+                  "label": "Chỉ mức độ",
+                  "definition": "Bổ sung mức độ cao cho đặc điểm, tính chất.",
+                  "examples": [
+                    "lắm, quá, cực kỳ"
+                  ]
+                },
+                {
+                  "type": "common",
+                  "label": "Chỉ khả năng hoặc kết quả",
+                  "definition": "Biểu thị khả năng hoặc kết quả của hành động.",
+                  "examples": [
+                    "được, mất, xong, ra"
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Phân loại phó từ",
+        "score": 0
+      }
+    },
+    {
+      "id": "step08",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trong câu 'Hoa nở đẹp quá', từ 'quá' là phó từ chỉ gì?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Khả năng"
+          },
+          {
+            "id": "B",
+            "text": "Mức độ"
+          },
+          {
+            "id": "C",
+            "text": "Thời gian"
+          },
+          {
+            "id": "D",
+            "text": "Sự phủ định"
+          }
+        ],
+        "answer": "B",
+        "title": "Lựa chọn",
+        "score": 1
+      }
+    },
+    {
+      "id": "step09",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "đang",
+          "không",
+          "cũng",
+          "đừng"
+        ],
+        "right": [
+          "Thời gian",
+          "Sự phủ định",
+          "Sự tiếp diễn tương tự",
+          "Mệnh lệnh"
+        ],
+        "answer": {
+          "đang": "Thời gian",
+          "không": "Sự phủ định",
+          "cũng": "Sự tiếp diễn tương tự",
+          "đừng": "Mệnh lệnh"
+        },
+        "title": "Nối từ",
+        "instruction": "Ghép các phó từ với ý nghĩa tương ứng.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step10",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "rất",
+          "sẽ",
+          "đẹp",
+          "không",
+          "chạy",
+          "nhanh",
+          "vẫn"
+        ],
+        "targets": [
+          "Phó từ",
+          "Không phải phó từ"
+        ],
+        "answer": {
+          "rất": "Phó từ",
+          "sẽ": "Phó từ",
+          "không": "Phó từ",
+          "vẫn": "Phó từ",
+          "đẹp": "Không phải phó từ",
+          "chạy": "Không phải phó từ",
+          "nhanh": "Không phải phó từ"
+        },
+        "title": "Kéo và thả",
+        "instruction": "Hãy kéo và thả các từ vào đúng danh mục.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step11",
+      "type": "flashcard",
+      "data": {
+        "front": "Phó từ",
+        "back": "Phó từ là những từ chuyên đi kèm động từ, tính từ để bổ sung ý nghĩa cho động từ, tính từ (về thời gian, mức độ, phủ định...).",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "tu-loai",
+    "difficulty": "reference",
+    "xp": 100,
+    "stars": 3,
+    "description": "Nhận biết và sử dụng phó từ trong tiếng Việt.",
+    "prerequisite": null,
+    "unlock": null,
+    "reviewMode": "instant",
+    "durationMinutes": 15
+  }
+}

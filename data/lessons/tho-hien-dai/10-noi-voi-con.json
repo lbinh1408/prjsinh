@@ -1,0 +1,16 @@
+{
+    "id": "tho-hien-dai.10-noi-voi-con",
+    "title": "Nói với con",
+    "module": "tho-hien-dai",
+    "steps": [
+        {
+            "id": "intro",
+            "type": "observe",
+            "data": {
+                "title": "Nói với con",
+                "subtitle": "Y Phương",
+                "content": "Nội dung bài học đang được cập nhật."
+            }
+        }
+    ]
+}

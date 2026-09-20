@@ -1,0 +1,601 @@
+/* ==========================================================
+   TS10 Learning Platform
+   Sprint 2
+   lesson.css
+========================================================== */
+
+/* ==========================================================
+   LESSON
+========================================================== */
+
+.lesson {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+
+}
+
+/* ==========================================================
+   LESSON HEADER
+========================================================== */
+
+.lesson-header {
+
+    background: #fff;
+
+    border-radius: 16px;
+
+    padding: 10px 5px;
+
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .06);
+
+    border: 1px solid #ececec;
+
+}
+
+.lesson-topic {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    background: #eef5ff;
+
+    color: #2563eb;
+
+    padding: 6px 12px;
+
+    border-radius: 999px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    margin-bottom: 12px;
+
+}
+
+.lesson-name {
+
+    font-size: 26px;
+
+    font-weight: 700;
+
+    color: #222;
+
+    margin-bottom: 8px;
+
+}
+
+.lesson-description {
+
+    font-size: 15px;
+
+    color: #666;
+
+    line-height: 1.6;
+
+    margin-bottom: 8px;
+    padding-left: 20px;
+
+}
+
+/* ==========================================================
+   PROGRESS
+========================================================== */
+
+.lesson-progress {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 12px;
+
+    font-weight: 600;
+
+}
+
+.lesson-progress-bar {
+
+    width: 100%;
+
+    height: 10px;
+
+    background: #ececec;
+
+    border-radius: 999px;
+
+    overflow: hidden;
+
+}
+
+.lesson-progress-fill {
+
+    height: 100%;
+
+    width: 0;
+
+    background: #2563eb;
+
+    transition: .35s;
+
+}
+
+/* ==========================================================
+   STEP
+========================================================== */
+
+.lesson-step {
+
+    background: #fff;
+
+    border-radius: 16px;
+
+    border: 1px solid #ececec;
+
+    padding: 10px;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .05);
+
+}
+
+.step-header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 0px;
+
+}
+
+.step-icon {
+
+    width: 50px;
+
+    height: 50px;
+
+    border-radius: 50%;
+
+    background: #eef5ff;
+
+    color: #2563eb;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 28px;
+
+}
+
+.step-title {
+
+    font-size: 26px;
+
+    font-weight: 700;
+
+}
+
+.step-subtitle {
+
+    margin-top: 6px;
+
+    color: #666;
+
+}
+
+/* ==========================================================
+   CONTENT
+========================================================== */
+
+.lesson-content {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 28px;
+
+}
+
+/* ==========================================================
+   QUESTION
+========================================================== */
+
+.question {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+
+}
+
+.question-title {
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    color: #222;
+    text-indent: 60px;
+
+}
+
+.question-text {
+
+    color: #555;
+
+    line-height: 1.9;
+
+}
+
+/* ==========================================================
+   ANSWER
+========================================================== */
+
+.answer-box {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 16px;
+
+}
+
+.answer-box input {
+
+    font-size: 18px;
+
+}
+
+.answer-box textarea {
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+}
+
+/* ==========================================================
+   WORD LIST
+========================================================== */
+
+.word-list {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+}
+
+.word {
+
+    padding: 10px 18px;
+
+    background: #eef5ff;
+
+    color: #2563eb;
+
+    border-radius: 10px;
+
+    font-weight: 600;
+
+    transition: .25s;
+
+}
+
+.word:hover {
+
+    transform: translateY(-2px);
+
+}
+
+/* ==========================================================
+   OPTION
+========================================================== */
+
+.options {
+
+    display: grid;
+
+    gap: 16px;
+
+}
+
+.option {
+
+    padding: 18px 22px;
+
+    border: 2px solid #e8e8e8;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    transition: .2s;
+
+    background: #fff;
+
+}
+
+.option:hover {
+
+    border-color: #2563eb;
+
+    background: #f7fbff;
+
+}
+
+.option.selected {
+
+    border-color: #2563eb;
+
+    background: #eef5ff;
+
+}
+
+.option.correct {
+
+    border-color: #16a34a;
+
+    background: #eaf8ef;
+
+}
+
+.option.wrong {
+
+    border-color: #dc2626;
+
+    background: #fff0f0;
+
+}
+
+/* ==========================================================
+   CHECKLIST
+========================================================== */
+
+.checkbox-group {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 16px;
+
+}
+
+.checkbox-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    cursor: pointer;
+
+}
+
+.checkbox-item input {
+
+    width: 18px;
+
+    height: 18px;
+
+}
+
+/* ==========================================================
+   IMAGE
+========================================================== */
+
+.lesson-image {
+
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    border: 1px solid #ececec;
+
+}
+
+.lesson-image img {
+
+    width: 100%;
+
+    display: block;
+
+}
+
+/* ==========================================================
+   EXAMPLE
+========================================================== */
+
+.example-box {
+
+    background: #f8fafc;
+
+    border-left: 5px solid #2563eb;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    line-height: 1.9;
+
+}
+
+/* ==========================================================
+   HINT
+========================================================== */
+
+.lesson-hint {
+
+    max-width: 700px;
+
+    background: #fff;
+
+    border-radius: 16px;
+
+    padding: 30px;
+
+}
+
+.lesson-hint-title {
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+    margin-bottom: 16px;
+
+    color: #d97706;
+
+}
+
+/* ==========================================================
+   ACTION
+========================================================== */
+
+.lesson-action {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 14px;
+
+    margin-top: 28px;
+
+}
+
+/* ==========================================================
+   SUMMARY
+========================================================== */
+
+.lesson-summary {
+
+    background: #fff;
+
+    border-radius: 16px;
+
+    padding: 40px;
+
+    text-align: center;
+
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .06);
+
+}
+
+.lesson-summary h2 {
+
+    margin-bottom: 20px;
+
+}
+
+.lesson-summary ul {
+
+    margin-top: 24px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 16px;
+
+}
+
+.lesson-summary li {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 14px 18px;
+
+    background: #f8fafc;
+
+    border-radius: 10px;
+
+}
+
+/* ==========================================================
+   BREADCRUMB
+========================================================== */
+
+#breadcrumb {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 24px;
+
+    color: #666;
+
+    font-size: 14px;
+
+}
+
+#breadcrumb span {
+
+    color: #2563eb;
+
+    font-weight: 600;
+
+}
+
+/* ==========================================================
+   COMPLETED
+========================================================== */
+
+.step-completed {
+
+    border-left: 6px solid #16a34a;
+
+}
+
+.step-current {
+
+    border-left: 6px solid #2563eb;
+
+}
+
+.step-locked {
+
+    opacity: .6;
+
+}
+
+/* ==========================================================
+   EMPTY
+========================================================== */
+
+.lesson-empty {
+
+    text-align: center;
+
+    padding: 80px 20px;
+
+    color: #888;
+
+}

@@ -1,0 +1,381 @@
+{
+  "id": "ptbd.06-nghi-luan",
+  "title": "Nghị luận",
+  "version": "1.0",
+  "enabled": true,
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "format": "essay",
+        "content": "Mỗi người đều có trách nhiệm bảo vệ môi trường sống của mình. Chỉ cần một hành động nhỏ như bỏ rác đúng nơi quy định hay hạn chế sử dụng túi ni-lông cũng góp phần làm cho Trái Đất xanh hơn. Nếu ai cũng thờ ơ, môi trường sẽ ngày càng ô nhiễm và chính con người sẽ phải gánh chịu hậu quả. Vì vậy, ngay từ hôm nay, mỗi chúng ta hãy bắt đầu bằng những việc làm thiết thực để giữ gìn môi trường sạch đẹp.",
+        "guide": [
+          "Các từ ngữ thể hiện thái độ, quan điểm",
+          "Lí lẽ và dẫn chứng",
+          "Lời kêu gọi, khẳng định"
+        ],
+        "hint": "Từ ngữ: cần, nên, phải, không nên...; Lí lẽ, dẫn chứng; Lời kêu gọi, khẳng định...",
+        "title": "Quan sát",
+        "instruction": "Hãy đọc đoạn văn sau:",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Sau khi đọc đoạn văn, em thấy người viết muốn làm gì?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Kể một câu chuyện về môi trường."
+          },
+          {
+            "id": "B",
+            "text": "Giới thiệu chung về môi trường."
+          },
+          {
+            "id": "C",
+            "text": "Thuyết phục mọi người cùng bảo vệ môi trường."
+          },
+          {
+            "id": "D",
+            "text": "Bộc lộ tình cảm với thiên nhiên."
+          }
+        ],
+        "answer": "C",
+        "title": "Nhận xét",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Những câu nào cho thấy người viết đang muốn thuyết phục người đọc?",
+        "sampleAnswer": [
+          "Mỗi người đều có trách nhiệm...",
+          "Nếu ai cũng thờ ơ...",
+          "Vì vậy, ngay từ hôm nay, mỗi chúng ta hãy bắt đầu..."
+        ],
+        "title": "Phân tích",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Mục đích",
+            "icon": "⚖️",
+            "active": true,
+            "content": {
+              "text": "Dùng để:\n- Nêu ý kiến\n- Trình bày quan điểm\n- Thuyết phục người đọc đồng tình",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Dấu hiệu nhận biết",
+            "icon": "🔍",
+            "active": false,
+            "content": {
+              "text": "Thường có ý kiến rõ ràng, đi kèm lí lẽ, dẫn chứng và lời kêu gọi hoặc kết luận.",
+              "examples": [
+                {
+                  "category": "Từ ngữ thường gặp",
+                  "word": "vì, bởi vì, do đó, vì vậy, tuy nhiên, cần, nên, phải, không nên, hãy...",
+                  "emoji": "💡"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-3",
+            "title": "Mẹo nhận biết",
+            "icon": "💡",
+            "active": false,
+            "content": {
+              "text": "Nếu sau khi đọc xong, em cảm thấy tác giả đang muốn làm THAY ĐỔI SUY NGHĨ hoặc HÀNH ĐỘNG của mình, thì phương thức chính thường là nghị luận.",
+              "examples": []
+            }
+          }
+        ],
+        "title": "Kiến thức trọng tâm",
+        "instruction": "Phương thức nghị luận dùng để nêu ý kiến, trình bày quan điểm, dùng lí lẽ và dẫn chứng để thuyết phục người đọc.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "fillBlank",
+      "validator": "fillBlankValidator",
+      "data": {
+        "question": "Điền từ thích hợp",
+        "sentence": "Mỗi học sinh ___ có ý thức giữ gìn vệ sinh trường lớp.",
+        "answer": "cần",
+        "title": "Điền khuyết",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "reflection",
+      "data": {
+        "question": "Theo em, vì sao học sinh nên đọc sách mỗi ngày? Hãy viết 3–4 câu nêu ý kiến và giải thích ngắn gọn.",
+        "sampleAnswer": "Theo em, học sinh nên đọc sách mỗi ngày vì sách mang lại nhiều lợi ích. Đọc sách giúp chúng ta mở rộng hiểu biết và rèn luyện tư duy. Vì vậy, mỗi người nên duy trì thói quen tốt này.",
+        "title": "Vận dụng",
+        "score": 2
+      }
+    },
+    {
+      "id": "step07",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Đoạn văn nào dưới đây có phương thức biểu đạt chính là nghị luận?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Buổi sáng, tôi rảo bước trên con đường làng quen thuộc để đến trường."
+          },
+          {
+            "id": "B",
+            "text": "Mặt hồ phẳng lặng như một tấm gương khổng lồ phản chiếu bầu trời."
+          },
+          {
+            "id": "C",
+            "text": "Gạo là lương thực chính của nhiều quốc gia châu Á, chứa nhiều tinh bột."
+          },
+          {
+            "id": "D",
+            "text": "Lười biếng là kẻ thù của thành công, do đó chúng ta cần phải luôn nỗ lực."
+          }
+        ],
+        "answer": "D",
+        "title": "Trắc nghiệm",
+        "score": 1
+      }
+    },
+    {
+      "id": "step08",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Nhận định nào sau đây là SAI về phương thức nghị luận?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Nhằm mục đích thuyết phục người đọc."
+          },
+          {
+            "id": "B",
+            "text": "Thường nêu lên ý kiến và quan điểm cá nhân."
+          },
+          {
+            "id": "C",
+            "text": "Chỉ dùng để kể lại sự việc một cách khách quan."
+          },
+          {
+            "id": "D",
+            "text": "Sử dụng các lí lẽ và dẫn chứng để củng cố quan điểm."
+          }
+        ],
+        "answer": "C",
+        "title": "Đúng hay Sai?",
+        "score": 1
+      }
+    },
+    {
+      "id": "step09",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Nên đọc sách mỗi ngày.",
+          "Cần trồng nhiều cây xanh.",
+          "Không nên xả rác bừa bãi.",
+          "Nên tập thể dục thường xuyên."
+        ],
+        "right": [
+          "Sách giúp mở rộng hiểu biết.",
+          "Cây xanh giúp làm sạch không khí.",
+          "Rác gây ô nhiễm môi trường.",
+          "Giúp cơ thể khỏe mạnh và dẻo dai."
+        ],
+        "answer": {
+          "Nên đọc sách mỗi ngày.": "Sách giúp mở rộng hiểu biết.",
+          "Cần trồng nhiều cây xanh.": "Cây xanh giúp làm sạch không khí.",
+          "Không nên xả rác bừa bãi.": "Rác gây ô nhiễm môi trường.",
+          "Nên tập thể dục thường xuyên.": "Giúp cơ thể khỏe mạnh và dẻo dai."
+        },
+        "title": "Ghép thông tin",
+        "instruction": "Ghép ý kiến với lí lẽ giải thích phù hợp:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step10",
+      "type": "ordering",
+      "validator": "orderValidator",
+      "data": {
+        "items": [
+          "Theo em, đọc sách là một việc làm rất cần thiết.",
+          "Vì đọc sách giúp mở rộng hiểu biết và rèn luyện tư duy.",
+          "Vì vậy, mỗi học sinh nên duy trì thói quen đọc sách hằng ngày."
+        ],
+        "answer": [
+          "Theo em, đọc sách là một việc làm rất cần thiết.",
+          "Vì đọc sách giúp mở rộng hiểu biết và rèn luyện tư duy.",
+          "Vì vậy, mỗi học sinh nên duy trì thói quen đọc sách hằng ngày."
+        ],
+        "title": "Sắp xếp câu",
+        "instruction": "Sắp xếp các ý sau để tạo thành một đoạn văn nghị luận hợp lí:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step11",
+      "type": "highlight",
+      "data": {
+        "content": "Chúng ta cần tiết kiệm nước vì nguồn nước sạch ngày càng khan hiếm. Mỗi người hãy bắt đầu bằng những việc làm nhỏ như khóa vòi nước sau khi sử dụng.",
+        "answer": [
+          "cần",
+          "vì",
+          "hãy",
+          "bắt đầu"
+        ],
+        "title": "Tô sáng từ ngữ",
+        "instruction": "Tô đậm những từ thể hiện LỜI KÊU GỌI hoặc NÊU Ý KIẾN trong đoạn sau:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step12",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Học sinh cần trung thực trong học tập.",
+          "Mỗi người hãy tiết kiệm điện.",
+          "Hoa phượng nở đỏ rực góc sân trường.",
+          "Hôm qua lớp em đi tham quan."
+        ],
+        "right": [
+          "Câu nghị luận 1",
+          "Câu nghị luận 2",
+          "Câu miêu tả",
+          "Câu tự sự"
+        ],
+        "answer": {
+          "Học sinh cần trung thực trong học tập.": "Câu nghị luận 1",
+          "Mỗi người hãy tiết kiệm điện.": "Câu nghị luận 2",
+          "Hoa phượng nở đỏ rực góc sân trường.": "Câu miêu tả",
+          "Hôm qua lớp em đi tham quan.": "Câu tự sự"
+        },
+        "title": "Phân loại câu",
+        "instruction": "Ghép từng câu văn vào đúng nhóm phương thức biểu đạt:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step13",
+      "type": "ordering",
+      "validator": "orderValidator",
+      "data": {
+        "items": [
+          "Nêu ý kiến",
+          "Đưa lí lẽ",
+          "Có thể bổ sung dẫn chứng",
+          "Khẳng định hoặc kêu gọi"
+        ],
+        "answer": [
+          "Nêu ý kiến",
+          "Đưa lí lẽ",
+          "Có thể bổ sung dẫn chứng",
+          "Khẳng định hoặc kêu gọi"
+        ],
+        "title": "Quy trình nghị luận",
+        "instruction": "Sắp xếp theo đúng quy trình tạo một đoạn văn nghị luận:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step14",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Tự sự",
+          "Miêu tả",
+          "Biểu cảm",
+          "Thuyết minh",
+          "Nghị luận"
+        ],
+        "right": [
+          "Kể lại một chuyến tham quan bảo tàng.",
+          "Tái hiện lại bức tranh cánh đồng mùa gặt.",
+          "Bày tỏ lòng biết ơn vô bờ bến đối với mẹ.",
+          "Giới thiệu cấu tạo và hoạt động của chiếc xe đạp.",
+          "Đưa ra lí lẽ về tầm quan trọng của việc bảo vệ môi trường."
+        ],
+        "answer": {
+          "Tự sự": "Kể lại một chuyến tham quan bảo tàng.",
+          "Miêu tả": "Tái hiện lại bức tranh cánh đồng mùa gặt.",
+          "Biểu cảm": "Bày tỏ lòng biết ơn vô bờ bến đối với mẹ.",
+          "Thuyết minh": "Giới thiệu cấu tạo và hoạt động của chiếc xe đạp.",
+          "Nghị luận": "Đưa ra lí lẽ về tầm quan trọng của việc bảo vệ môi trường."
+        },
+        "title": "Ôn tập tổng hợp",
+        "instruction": "Kéo các đoạn văn vào đúng phương thức biểu đạt chính:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step15",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Bản đồ tư duy 5 phương thức",
+            "icon": "🧠",
+            "active": true,
+            "content": {
+              "text": "Người viết muốn...\n\n- Kể lại sự việc ➡️ **Tự sự**\n- Làm hiện lên hình ảnh ➡️ **Miêu tả**\n- Bộc lộ cảm xúc ➡️ **Biểu cảm**\n- Giới thiệu, giải thích tri thức ➡️ **Thuyết minh**\n- Thuyết phục người đọc ➡️ **Nghị luận**",
+              "examples": []
+            }
+          }
+        ],
+        "title": "Góc ghi nhớ",
+        "instruction": "Bảng tổng hợp để nhận diện phương thức biểu đạt bằng mục đích giao tiếp:",
+        "score": 0
+      }
+    },
+    {
+      "id": "step16",
+      "type": "flashcard",
+      "data": {
+        "front": "Phương thức nghị luận là gì?",
+        "back": "Dùng để nêu ý kiến, trình bày lí lẽ và thuyết phục người đọc đồng ý với một quan điểm.",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "ptbd",
+    "difficulty": 2,
+    "xp": 80,
+    "stars": 3,
+    "description": "Nhận biết và sử dụng phương thức nghị luận trong văn bản.",
+    "durationMinutes": 25
+  }
+}

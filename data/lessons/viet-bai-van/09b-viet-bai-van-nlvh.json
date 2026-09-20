@@ -1,0 +1,1481 @@
+{
+  "id": "viet-bai-van-nghi-luan-van-hoc-09b",
+  "title": "Viết bài văn nghị luận văn học",
+  "type": "skill",
+  "version": "1.0.0",
+  "meta": {
+    "module": "viet-bai-van",
+    "lessonNumber": 7,
+    "durationMinutes": 420,
+    "difficulty": "intermediate",
+    "skill": "viet-bai-van-nghi-luan-van-hoc",
+    "description": "Học cách dùng bằng chứng từ tác phẩm để xây dựng lập luận, phân tích ý nghĩa và viết bài văn nghị luận văn học có chiều sâu."
+  },
+  "learningGoals": [
+    "Hiểu bản chất của nghị luận văn học và phân biệt với nghị luận xã hội.",
+    "Biết xác định đúng vấn đề cần nghị luận trong đề văn học.",
+    "Biết lựa chọn bằng chứng phù hợp từ tác phẩm.",
+    "Phân biệt được kể lại nội dung với phân tích văn học.",
+    "Biết đi từ chi tiết văn học đến ý nghĩa và nhận xét.",
+    "Biết tổ chức các đoạn thân bài theo từng dạng đề nghị luận văn học.",
+    "Biết kết nối bằng chứng, phân tích và nhận xét thành một mạch lập luận.",
+    "Viết được bài văn nghị luận văn học có luận điểm, bằng chứng và phân tích rõ ràng."
+  ],
+  "coreSkillMap": {
+    "title": "BẢN ĐỒ KĨ NĂNG NGHỊ LUẬN VĂN HỌC",
+    "steps": [
+      {
+        "order": 1,
+        "icon": "📖",
+        "title": "ĐỌC ĐỀ",
+        "question": "Đề đang yêu cầu em làm rõ điều gì?"
+      },
+      {
+        "order": 2,
+        "icon": "🎯",
+        "title": "XÁC ĐỊNH VẤN ĐỀ",
+        "question": "Em phải tập trung vào nhân vật, tâm trạng, hình ảnh, nghệ thuật, đoạn thơ hay một nhận định?"
+      },
+      {
+        "order": 3,
+        "icon": "🔎",
+        "title": "CHỌN BẰNG CHỨNG",
+        "question": "Chi tiết nào trong tác phẩm giúp em chứng minh điều mình đang nói?"
+      },
+      {
+        "order": 4,
+        "icon": "💭",
+        "title": "PHÂN TÍCH",
+        "question": "Chi tiết ấy cho em hiểu gì?"
+      },
+      {
+        "order": 5,
+        "icon": "💡",
+        "title": "GIẢI THÍCH Ý NGHĨA",
+        "question": "Chi tiết ấy nói gì về nhân vật, hình ảnh, cảm xúc hoặc tác phẩm?"
+      },
+      {
+        "order": 6,
+        "icon": "🌿",
+        "title": "NHẬN XÉT",
+        "question": "Qua đó, em có thể nhận xét gì về tác phẩm hoặc cách viết của tác giả?"
+      },
+      {
+        "order": 7,
+        "icon": "🔗",
+        "title": "KẾT NỐI",
+        "question": "Phân tích này góp phần làm sáng tỏ vấn đề của đề bài như thế nào?"
+      },
+      {
+        "order": 8,
+        "icon": "✍️",
+        "title": "VIẾT",
+        "question": "Làm thế nào biến các ý trên thành những đoạn văn liên kết với nhau?"
+      }
+    ],
+    "mantra": "🔎 Đừng chỉ nói tác phẩm có gì. Hãy nói chi tiết ấy cho em hiểu gì."
+  },
+  "essayTypes": [
+    {
+      "id": "character",
+      "icon": "👤",
+      "title": "Phân tích nhân vật",
+      "structure": [
+        "Giới thiệu nhân vật và vấn đề",
+        "Đặc điểm 1",
+        "Đặc điểm 2",
+        "Đặc điểm 3 nếu cần",
+        "Nghệ thuật xây dựng nhân vật",
+        "Đánh giá"
+      ]
+    },
+    {
+      "id": "emotion",
+      "icon": "❤️",
+      "title": "Phân tích tâm trạng / tình cảm",
+      "structure": [
+        "Hoàn cảnh",
+        "Biểu hiện 1",
+        "Biểu hiện 2",
+        "Diễn biến / phát triển",
+        "Ý nghĩa"
+      ]
+    },
+    {
+      "id": "image_detail",
+      "icon": "🌿",
+      "title": "Phân tích hình ảnh / chi tiết",
+      "structure": [
+        "Sự xuất hiện",
+        "Đặc điểm",
+        "Ý nghĩa",
+        "Tác dụng nghệ thuật",
+        "Giá trị"
+      ]
+    },
+    {
+      "id": "art",
+      "icon": "🎨",
+      "title": "Phân tích nghệ thuật",
+      "structure": [
+        "Biện pháp / thủ pháp",
+        "Biểu hiện",
+        "Tác dụng",
+        "Ý nghĩa"
+      ]
+    },
+    {
+      "id": "excerpt",
+      "icon": "📖",
+      "title": "Phân tích đoạn thơ / đoạn văn",
+      "structure": [
+        "Nội dung đoạn 1",
+        "Nội dung đoạn 2",
+        "Nội dung đoạn 3 nếu cần",
+        "Nghệ thuật",
+        "Đánh giá"
+      ]
+    },
+    {
+      "id": "statement",
+      "icon": "💡",
+      "title": "Làm sáng tỏ nhận định",
+      "structure": [
+        "Giải thích nhận định",
+        "Phân tích tác phẩm để chứng minh",
+        "Nghệ thuật",
+        "Đánh giá"
+      ]
+    }
+  ],
+  "completion": {
+    "requiredSections": [
+      "story",
+      "observe",
+      "discover",
+      "teach",
+      "guidedPractice",
+      "miniChallenge",
+      "reflection",
+      "cheatSheet",
+      "finalChallenge"
+    ],
+    "action": "completeLesson",
+    "message": "🎉 Em không chỉ kể lại tác phẩm. Em đã biết dùng chính tác phẩm để xây dựng một lập luận văn học."
+  },
+  "steps": [
+    {
+      "id": "story_01",
+      "type": "story",
+      "data": {
+        "title": "Đọc văn nhưng viết mãi vẫn thành kể chuyện?",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "split_compare",
+          "layout": "two_columns",
+          "question": "Đoạn nào thực sự đang phân tích văn học?"
+        },
+        "content": {
+          "prompt": "Cùng nói về một chi tiết trong tác phẩm, nhưng cách viết nào giúp người đọc hiểu sâu hơn?",
+          "title": "Chi tiết ông Hai cúi gằm mặt khi nghe tin làng theo giặc.",
+          "left": {
+            "label": "CÁCH VIẾT A",
+            "paragraph": "Ông Hai nghe tin làng theo giặc. Ông rất buồn và xấu hổ. Ông cúi gằm mặt xuống rồi đi về nhà. Ông rất đau khổ."
+          },
+          "right": {
+            "label": "CÁCH VIẾT B",
+            "paragraph": "Khi nghe tin làng theo giặc, ông Hai “cúi gằm mặt mà đi”, một hành động cho thấy nỗi đau đớn và tủi hổ của người nông dân vốn luôn tự hào về quê hương. Cái cúi mặt ấy không chỉ thể hiện sự xấu hổ trước tin dữ mà còn cho thấy tình yêu làng sâu nặng của ông đã bị tổn thương."
+          }
+        },
+        "interaction": {
+          "type": "choice",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Cách viết A",
+              "correct": false
+            },
+            {
+              "id": "b",
+              "text": "Cách viết B",
+              "correct": true
+            }
+          ],
+          "feedback": {
+            "correct": "✓ Đúng. Cách B dùng bằng chứng rồi giải thích chi tiết ấy cho thấy gì về nhân vật.",
+            "incorrect": "△ Cả hai đều nói đúng nội dung, nhưng hãy xem cách nào trả lời được câu hỏi: “Chi tiết ấy cho em hiểu gì?”"
+          }
+        },
+        "reveal": {
+          "title": "💡 Bản chất của nghị luận văn học",
+          "text": "Nghị luận văn học không dừng ở việc kể tác phẩm có gì. Người viết phải dùng bằng chứng từ tác phẩm để làm sáng tỏ một vấn đề và phân tích ý nghĩa của bằng chứng ấy."
+        }
+      }
+    },
+    {
+      "id": "observe_01",
+      "type": "observe",
+      "data": {
+        "title": "Kể và phân tích khác nhau ở đâu?",
+        "durationSeconds": 150,
+        "ui": {
+          "component": "paragraph_highlight",
+          "interaction": "tap_sentence",
+          "question": "Hãy nhấn vào từng câu để xem câu đó đang kể hay đang phân tích."
+        },
+        "content": {
+          "prompt": "Đọc đoạn văn sau.",
+          "paragraph": [
+            {
+              "id": "s1",
+              "text": "Ông Hai nghe tin làng theo giặc.",
+              "role": "context",
+              "roleLabel": "📖 KỂ HOÀN CẢNH",
+              "feedback": "🟢 Câu này cung cấp hoàn cảnh để người đọc hiểu chi tiết."
+            },
+            {
+              "id": "s2",
+              "text": "Ông “cúi gằm mặt mà đi”.",
+              "role": "evidence",
+              "roleLabel": "🔎 BẰNG CHỨNG",
+              "feedback": "🔵 Đây là chi tiết trực tiếp từ tác phẩm."
+            },
+            {
+              "id": "s3",
+              "text": "Hành động ấy cho thấy ông Hai đau đớn và tủi hổ.",
+              "role": "analysis",
+              "roleLabel": "💭 PHÂN TÍCH",
+              "feedback": "🟡 Câu này giải thích ý nghĩa của hành động."
+            },
+            {
+              "id": "s4",
+              "text": "Bởi với ông, làng quê không chỉ là nơi sinh sống mà còn là niềm tự hào sâu sắc.",
+              "role": "meaning",
+              "roleLabel": "💡 GIẢI THÍCH",
+              "feedback": "🟠 Câu này đi sâu hơn để giải thích vì sao chi tiết lại có ý nghĩa như vậy."
+            },
+            {
+              "id": "s5",
+              "text": "Qua đó, Kim Lân làm nổi bật tình yêu làng sâu nặng của ông Hai.",
+              "role": "comment",
+              "roleLabel": "🌿 NHẬN XÉT",
+              "feedback": "🟣 Câu này đưa phân tích trở lại nhận xét chung về nhân vật và tác phẩm."
+            }
+          ]
+        },
+        "reveal": {
+          "title": "Chuỗi phân tích",
+          "text": "Một bằng chứng văn học chỉ thực sự có giá trị khi nó được giải thích và phân tích. Hãy tập phản xạ: Bằng chứng → Chi tiết ấy cho thấy gì? → Vì sao? → Qua đó hiểu gì về nhân vật / tác phẩm?"
+        }
+      }
+    },
+    {
+      "id": "discover_01",
+      "type": "discover",
+      "data": {
+        "title": "Một bằng chứng có thể nói được bao nhiêu điều?",
+        "durationSeconds": 150,
+        "ui": {
+          "component": "card_to_slot",
+          "interaction": "tap_to_place"
+        },
+        "content": {
+          "prompt": "Hãy nối từng phần với đúng nhiệm vụ.",
+          "slots": [
+            {
+              "id": "evidence",
+              "label": "🔎 BẰNG CHỨNG",
+              "question": "Tác giả viết / nhân vật làm gì?",
+              "hint": "Chi tiết cụ thể trong tác phẩm."
+            },
+            {
+              "id": "analysis",
+              "label": "💭 PHÂN TÍCH",
+              "question": "Chi tiết ấy cho thấy gì?",
+              "hint": "Giải thích biểu hiện."
+            },
+            {
+              "id": "meaning",
+              "label": "💡 Ý NGHĨA",
+              "question": "Điều đó nói gì sâu hơn?",
+              "hint": "Liên hệ với nhân vật, cảm xúc hoặc chủ đề."
+            },
+            {
+              "id": "comment",
+              "label": "🌿 NHẬN XÉT",
+              "question": "Qua đó có thể nhận xét gì?",
+              "hint": "Đưa trở lại vấn đề nghị luận."
+            }
+          ],
+          "cards": [
+            {
+              "id": "c1",
+              "target": "evidence",
+              "correct": true,
+              "slotText": "Ông Hai “cúi gằm mặt mà đi”.",
+              "feedback": "✓ Đây là bằng chứng trực tiếp từ tác phẩm.",
+              "label": "🔎 Chi tiết"
+            },
+            {
+              "id": "c2",
+              "target": "analysis",
+              "correct": true,
+              "slotText": "Hành động ấy cho thấy ông đau đớn và tủi hổ.",
+              "feedback": "✓ Em đã bắt đầu giải thích chi tiết.",
+              "label": "💭 Phân tích"
+            },
+            {
+              "id": "c3",
+              "target": "meaning",
+              "correct": true,
+              "slotText": "Nỗi đau ấy bắt nguồn từ việc niềm tự hào về quê hương của ông bị tổn thương.",
+              "feedback": "✓ Em đã đi sâu vào nguyên nhân và ý nghĩa.",
+              "label": "💡 Ý nghĩa"
+            },
+            {
+              "id": "c4",
+              "target": "comment",
+              "correct": true,
+              "slotText": "Qua đó, nhân vật hiện lên là một người có tình yêu làng sâu nặng.",
+              "feedback": "✓ Phân tích đã được kết nối trở lại với vấn đề.",
+              "label": "🌿 Nhận xét"
+            },
+            {
+              "id": "c5",
+              "target": null,
+              "correct": false,
+              "slotText": "Sau đó ông Hai trở về nhà.",
+              "feedback": "△ Đây mới chỉ là kể lại diễn biến.",
+              "label": "📖 Kể lại"
+            }
+          ]
+        },
+        "reveal": {
+          "title": "🔎 Em vừa phát hiện ra",
+          "text": "Câu hỏi quan trọng nhất của nghị luận văn học là: “Chi tiết này cho em hiểu gì?”"
+        }
+      }
+    },
+    {
+      "id": "teach_01",
+      "type": "teach",
+      "data": {
+        "title": "BẢN ĐỒ TƯ DUY CỦA NGHỊ LUẬN VĂN HỌC",
+        "durationSeconds": 300,
+        "ui": {
+          "component": "vertical_map",
+          "interaction": "click_node",
+          "center": "BẰNG CHỨNG"
+        },
+        "prompt": "Hãy khám phá từng tầng của một lập luận văn học.",
+        "nodes": [
+          {
+            "id": "problem",
+            "icon": "🎯",
+            "title": "VẤN ĐỀ",
+            "short": "Đề yêu cầu gì?",
+            "question": "Em cần làm rõ điều gì?",
+            "example": "Phân tích vẻ đẹp của nhân vật Phương Định."
+          },
+          {
+            "id": "evidence",
+            "icon": "🔎",
+            "title": "BẰNG CHỨNG",
+            "short": "Tác phẩm có gì?",
+            "question": "Chi tiết nào giúp em chứng minh?",
+            "example": "Những suy nghĩ, hành động và cảm xúc của Phương Định trong chiến đấu."
+          },
+          {
+            "id": "analysis",
+            "icon": "💭",
+            "title": "PHÂN TÍCH",
+            "short": "Chi tiết cho thấy gì?",
+            "question": "Em hiểu gì từ chi tiết đó?",
+            "example": "Qua sự bình tĩnh và dũng cảm trước hiểm nguy, Phương Định hiện lên là một cô gái giàu lòng yêu nước."
+          },
+          {
+            "id": "meaning",
+            "icon": "💡",
+            "title": "Ý NGHĨA",
+            "short": "Vì sao đáng chú ý?",
+            "question": "Chi tiết ấy nói gì sâu hơn?",
+            "example": "Vẻ đẹp ấy cho thấy thế hệ trẻ trong chiến tranh vừa hồn nhiên vừa giàu lí tưởng."
+          },
+          {
+            "id": "comment",
+            "icon": "🌿",
+            "title": "NHẬN XÉT",
+            "short": "Tác giả muốn nói gì?",
+            "question": "Qua đó có thể nhận xét gì về tác phẩm?",
+            "example": "Lê Minh Khuê đã xây dựng nhân vật bằng cách kết hợp vẻ đẹp anh hùng với đời sống tâm hồn trẻ trung."
+          },
+          {
+            "id": "connection",
+            "icon": "🔗",
+            "title": "KẾT NỐI",
+            "short": "Trở lại đề",
+            "question": "Phân tích này làm sáng tỏ vấn đề nào?",
+            "example": "Qua nhân vật Phương Định, vẻ đẹp của tuổi trẻ Việt Nam trong chiến tranh được thể hiện rõ nét."
+          }
+        ],
+        "importantNote": "Không phải mọi đoạn văn đều phải có đúng sáu câu tương ứng với sáu tầng. Đây là khung tư duy giúp người viết biết phải đào sâu bằng chứng như thế nào."
+      }
+    },
+    {
+      "id": "guidedPractice_01",
+      "type": "guidedPractice",
+      "data": {
+        "title": "Luyện biến bằng chứng thành phân tích",
+        "durationSeconds": 180,
+        "ui": {
+          "component": "builder",
+          "interaction": "type_to_place"
+        },
+        "prompt": "Phân tích vẻ đẹp của nhân vật Phương Định trong một đoạn văn.",
+        "instruction": "Hãy sắp xếp các ý từ bằng chứng đến nhận xét.",
+        "content": {
+          "slots": [
+            {
+              "id": "evidence",
+              "label": "🔎 BẰNG CHỨNG"
+            },
+            {
+              "id": "analysis",
+              "label": "💭 PHÂN TÍCH"
+            },
+            {
+              "id": "meaning",
+              "label": "💡 Ý NGHĨA"
+            },
+            {
+              "id": "comment",
+              "label": "🌿 NHẬN XÉT"
+            }
+          ],
+          "cards": [
+            {
+              "correct": true,
+              "feedback": "✓ Bằng chứng: trong lúc phá bom, Phương Định vẫn giữ được sự bình tĩnh và tập trung.",
+              "label": "Bằng chứng",
+              "id": "c1",
+              "target": "evidence",
+              "slotText": "Trong lúc phá bom, Phương Định vẫn giữ được sự bình tĩnh và tập trung."
+            },
+            {
+              "correct": true,
+              "feedback": "✓ Nhận xét: sự bình tĩnh ấy cho thấy cô có bản lĩnh và lòng dũng cảm trước hiểm nguy.",
+              "label": "Phân tích",
+              "id": "c2",
+              "target": "analysis",
+              "slotText": "Sự bình tĩnh ấy cho thấy cô có bản lĩnh và lòng dũng cảm trước hiểm nguy."
+            },
+            {
+              "correct": true,
+              "feedback": "✓ Nhận xét: vẻ đẹp của nhân vật không chỉ nằm ở hành động chiến đấu mà còn ở sức mạnh tinh thần.",
+              "label": "Ý nghĩa",
+              "id": "c3",
+              "target": "meaning",
+              "slotText": "Qua đó, vẻ đẹp của nhân vật không chỉ nằm ở hành động chiến đấu mà còn ở sức mạnh tinh thần."
+            },
+            {
+              "correct": true,
+              "feedback": "✓ Nhận xét: vẻ đẹp của nhân vật không chỉ nằm ở hành động chiến đấu mà còn ở sức mạnh tinh thần.",
+              "label": "Nhận xét",
+              "id": "c4",
+              "target": "comment",
+              "slotText": "Phương Định vì thế hiện lên là hình ảnh tiêu biểu của tuổi trẻ Việt Nam trong những năm tháng chiến tranh."
+            }
+          ]
+        },
+        "completion": {
+          "button": "Kiểm tra mạch phân tích",
+          "feedback": {
+            "correct": "✓ Tốt! Em đã biết đưa bằng chứng vào lập luận thay vì để dẫn chứng đứng riêng.",
+            "partial": "△ Hãy kiểm tra xem sau bằng chứng đã có câu trả lời cho “Chi tiết ấy cho thấy gì?” chưa.",
+            "wrong": "△ Hãy bắt đầu bằng bằng chứng rồi mới giải thích và nhận xét."
+          }
+        }
+      }
+    },
+    {
+      "id": "miniChallenge_01",
+      "type": "miniChallenge",
+      "data": {
+        "title": "Câu nào đang phân tích?",
+        "durationSeconds": 120,
+        "ui": {
+          "layout": "single_choice"
+        },
+        "prompt": "Câu nào giúp làm sâu ý nghĩa của bằng chứng?",
+        "question": "Trong truyện, nhân vật đã im lặng rất lâu. Câu nào dưới đây là phân tích?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Sau đó nhân vật im lặng rất lâu.",
+            "correct": false
+          },
+          {
+            "id": "b",
+            "text": "Nhân vật không nói gì và nhìn ra ngoài cửa sổ.",
+            "correct": false
+          },
+          {
+            "id": "c",
+            "text": "Sự im lặng ấy cho thấy nhân vật đang giằng co giữa mong muốn nói ra sự thật và nỗi sợ làm tổn thương người khác.",
+            "correct": true
+          }
+        ],
+        "feedback": {
+          "correct": "✓ Đúng. Câu này không kể thêm sự việc mà giải thích ý nghĩa của chi tiết.",
+          "incorrect": "△ Hãy tìm câu trả lời được câu hỏi: “Sự im lặng ấy cho thấy điều gì?”"
+        }
+      }
+    },
+    {
+      "id": "reflection_01",
+      "type": "reflection",
+      "data": {
+        "title": "Khi viết văn học, em thường mắc lỗi gì?",
+        "durationSeconds": 150,
+        "ui": {
+          "component": "checklist_free_text"
+        },
+        "question": "Khi đưa một chi tiết từ tác phẩm vào bài, em cần tự hỏi điều gì?",
+        "choices": [
+          {
+            "id": "problem",
+            "text": "🎯 Chi tiết này có đúng với vấn đề đề bài không?"
+          },
+          {
+            "id": "evidence",
+            "text": "🔎 Đây có phải bằng chứng cụ thể từ tác phẩm không?"
+          },
+          {
+            "id": "analysis",
+            "text": "💭 Chi tiết này cho thấy gì?"
+          },
+          {
+            "id": "meaning",
+            "text": "💡 Vì sao chi tiết ấy có ý nghĩa?"
+          },
+          {
+            "id": "comment",
+            "text": "🌿 Qua đó em nhận xét được gì?"
+          }
+        ],
+        "freeText": {
+          "label": "Câu hỏi em muốn nhớ nhất:",
+          "placeholder": "Ví dụ: Chi tiết này cho em hiểu gì?"
+        },
+        "metacognition": "Người viết tốt không chỉ nhớ nhiều chi tiết. Người viết tốt biết chọn đúng chi tiết và giải thích được vì sao chi tiết ấy có ý nghĩa."
+      }
+    },
+    {
+      "id": "cheatSheet_01",
+      "type": "cheatSheet",
+      "data": {
+        "title": "GHI NHỚ: BIẾN BẰNG CHỨNG THÀNH LẬP LUẬN",
+        "durationSeconds": 150,
+        "ui": {
+          "component": "card_list",
+          "actions": [
+            "save",
+            "download"
+          ]
+        },
+        "items": [
+          {
+            "order": 1,
+            "icon": "🎯",
+            "title": "XÁC ĐỊNH",
+            "question": "Đề đang bắt em làm rõ điều gì?"
+          },
+          {
+            "order": 2,
+            "icon": "🔎",
+            "title": "CHỌN",
+            "question": "Chi tiết nào trong tác phẩm phù hợp?"
+          },
+          {
+            "order": 3,
+            "icon": "💭",
+            "title": "PHÂN TÍCH",
+            "question": "Chi tiết ấy cho em hiểu gì?"
+          },
+          {
+            "order": 4,
+            "icon": "💡",
+            "title": "ĐÀO SÂU",
+            "question": "Vì sao chi tiết ấy có ý nghĩa?"
+          },
+          {
+            "order": 5,
+            "icon": "🌿",
+            "title": "NHẬN XÉT",
+            "question": "Qua đó có thể nhận xét gì?"
+          },
+          {
+            "order": 6,
+            "icon": "🔗",
+            "title": "KẾT NỐI",
+            "question": "Điều đó làm sáng tỏ đề bài như thế nào?"
+          }
+        ],
+        "keyMessage": "⭐ Bằng chứng không được đứng một mình. Hãy phân tích để người đọc hiểu vì sao nó quan trọng.",
+        "note": "Khung này là công cụ tư duy, không phải công thức số câu bắt buộc.",
+        "practiceButton": {
+          "label": "🛠️ Thử phân tích",
+          "action": "open_mini_practice"
+        }
+      }
+    },
+    {
+      "id": "type_character_01",
+      "type": "guidedPractice",
+      "data": {
+        "title": "👤 DẠNG 1 — PHÂN TÍCH NHÂN VẬT",
+        "durationSeconds": 240,
+        "ui": {
+          "component": "builder",
+          "interaction": "type_to_place"
+        },
+        "prompt": "Phân tích vẻ đẹp của nhân vật Phương Định trong Những ngôi sao xa xôi.",
+        "instruction": "Hãy ghép các đoạn theo một cách tổ chức thân bài phù hợp.",
+        "content": {
+          "slots": [
+            {
+              "id": "intro",
+              "label": "📖 GIỚI THIỆU"
+            },
+            {
+              "id": "trait1",
+              "label": "🌟 ĐẶC ĐIỂM 1"
+            },
+            {
+              "id": "trait2",
+              "label": "🌟 ĐẶC ĐIỂM 2"
+            },
+            {
+              "id": "art",
+              "label": "🎨 NGHỆ THUẬT"
+            },
+            {
+              "id": "comment",
+              "label": "🌿 ĐÁNH GIÁ"
+            }
+          ],
+          "cards": [
+            {
+              "feedback": "✓ Câu này giới thiệu nhân vật.",
+              "label": "Giới thiệu",
+              "correct": true,
+              "id": "p1",
+              "target": "intro",
+              "slotText": "Phương Định là một cô gái trẻ giàu lòng yêu nước, sống và chiến đấu giữa chiến trường đầy hiểm nguy."
+            },
+            {
+              "feedback": "✓ Câu này phân tích đặc điểm 1 của nhân vật.",
+              "label": "Đặc điểm 1",
+              "correct": true,
+              "id": "p2",
+              "target": "trait1",
+              "slotText": "Trước hết, cô hiện lên với vẻ đẹp dũng cảm và có bản lĩnh. Khi đối mặt với những quả bom chưa nổ, Phương Định vẫn bình tĩnh thực hiện nhiệm vụ, cho thấy tinh thần trách nhiệm và sự gan dạ của một người lính trẻ."
+            },
+            {
+              "feedback": "✓ Câu này phân tích đặc điểm 2 của nhân vật.",
+              "label": "Đặc điểm 2",
+              "correct": true,
+              "id": "p3",
+              "target": "trait2",
+              "slotText": "Bên cạnh sự dũng cảm, Phương Định vẫn giữ được tâm hồn trong sáng, trẻ trung. Cô nhạy cảm trước cái đẹp, nhớ về Hà Nội và có những rung động rất hồn nhiên của tuổi mới lớn."
+            },
+            {
+              "feedback": "✓ Câu này nhận xét về nghệ thuật xây dựng nhân vật.",
+              "label": "Nghệ thuật",
+              "correct": true,
+              "id": "p4",
+              "target": "art",
+              "slotText": "Lê Minh Khuê xây dựng nhân vật bằng sự kết hợp giữa hành động chiến đấu và những chuyển động tinh tế của đời sống nội tâm, nhờ đó nhân vật vừa có vẻ đẹp anh hùng vừa rất gần gũi."
+            },
+            {
+              "feedback": "✓ Câu này đánh giá chung về nhân vật.",
+              "label": "Đánh giá",
+              "correct": true,
+              "id": "p5",
+              "target": "comment",
+              "slotText": "Qua Phương Định, tác giả làm nổi bật vẻ đẹp của thế hệ trẻ Việt Nam trong chiến tranh: dũng cảm, giàu lí tưởng nhưng vẫn hồn nhiên và giàu cảm xúc."
+            }
+          ]
+        },
+        "completion": {
+          "button": "Kiểm tra cấu trúc",
+          "feedback": {
+            "correct": "✓ Em đã tổ chức được thân bài theo các đặc điểm của nhân vật.",
+            "partial": "△ Hãy xem mỗi đoạn đã làm rõ một đặc điểm riêng chưa.",
+            "wrong": "△ Với dạng nhân vật, em có thể triển khai theo từng đặc điểm nổi bật thay vì kể toàn bộ câu chuyện."
+          }
+        }
+      }
+    },
+    {
+      "id": "type_emotion_01",
+      "type": "guidedPractice",
+      "data": {
+        "title": "❤️ DẠNG 2 — PHÂN TÍCH TÂM TRẠNG / TÌNH CẢM",
+        "durationSeconds": 240,
+        "ui": {
+          "component": "builder",
+          "interaction": "type_to_place"
+        },
+        "prompt": "Phân tích diễn biến tâm trạng của người con trong bài thơ Nói với em.",
+        "instruction": "Hãy sắp xếp các đoạn theo diễn biến của cảm xúc.",
+        "content": {
+          "slots": [
+            {
+              "id": "context",
+              "label": "📖 HOÀN CẢNH"
+            },
+            {
+              "id": "emotion1",
+              "label": "❤️ BIỂU HIỆN 1"
+            },
+            {
+              "id": "emotion2",
+              "label": "❤️ BIỂU HIỆN 2"
+            },
+            {
+              "id": "development",
+              "label": "🌊 DIỄN BIẾN"
+            },
+            {
+              "id": "meaning",
+              "label": "🌿 Ý NGHĨA"
+            }
+          ],
+          "cards": [
+            {
+              "feedback": "✓ Câu này xác định cảm xúc trong hoàn cảnh.",
+              "label": "Cảm xúc",
+              "correct": true,
+              "id": "e1",
+              "target": "context",
+              "slotText": "Cảm xúc của nhân vật được đặt trong hoàn cảnh hồi tưởng về những người thân và những kỉ niệm gắn với quê hương."
+            },
+            {
+              "feedback": "✓ Câu này thể hiện biểu hiện 1 của cảm xúc.",
+              "label": "Biểu hiện 1",
+              "correct": true,
+              "id": "e2",
+              "target": "emotion1",
+              "slotText": "Ban đầu, cảm xúc hiện lên nhẹ nhàng qua những hình ảnh thân thuộc, gợi sự gần gũi và yêu thương."
+            },
+            {
+              "feedback": "✓ Câu này thể hiện biểu hiện 2 của cảm xúc.",
+              "label": "Biểu hiện 2",
+              "correct": true,
+              "id": "e3",
+              "target": "emotion2",
+              "slotText": "Từ những kỉ niệm cụ thể, tình cảm dần trở nên sâu sắc hơn khi nhân vật nhận ra giá trị của những điều tưởng như bình dị."
+            },
+            {
+              "feedback": "✓ Câu này phân tích sự diễn biến của cảm xúc.",
+              "label": "Diễn biến",
+              "correct": true,
+              "id": "e4",
+              "target": "development",
+              "slotText": "Mạch cảm xúc vì thế chuyển từ hồi tưởng sang suy ngẫm, từ cảm xúc riêng tư đến sự trân trọng những giá trị đã nuôi dưỡng con người."
+            },
+            {
+              "feedback": "✓ Câu này đánh giá chung về cảm xúc.",
+              "label": "Ý nghĩa",
+              "correct": true,
+              "id": "e5",
+              "target": "meaning",
+              "slotText": "Qua diễn biến ấy, tình cảm của nhân vật không chỉ được bộc lộ mà còn trở thành một cách nhìn sâu sắc về gia đình và quê hương."
+            }
+          ]
+        },
+        "completion": {
+          "button": "Kiểm tra mạch cảm xúc",
+          "feedback": {
+            "correct": "✓ Đúng. Dạng tâm trạng cần chú ý sự thay đổi và phát triển của cảm xúc.",
+            "partial": "△ Đừng chỉ liệt kê cảm xúc. Hãy chỉ ra cảm xúc chuyển biến như thế nào.",
+            "wrong": "△ Hãy bắt đầu từ hoàn cảnh rồi theo dõi cảm xúc phát triển."
+          }
+        }
+      }
+    },
+    {
+      "id": "type_image_detail_01",
+      "type": "guidedPractice",
+      "data": {
+        "title": "🌿 DẠNG 3 — PHÂN TÍCH HÌNH ẢNH / CHI TIẾT",
+        "durationSeconds": 240,
+        "ui": {
+          "component": "builder",
+          "interaction": "type_to_place"
+        },
+        "prompt": "Phân tích ý nghĩa hình ảnh 'bếp lửa' trong bài thơ Bếp lửa.",
+        "instruction": "Hãy đi từ hình ảnh cụ thể đến giá trị và ý nghĩa.",
+        "content": {
+          "slots": [
+            {
+              "id": "appearance",
+              "label": "🔥 XUẤT HIỆN"
+            },
+            {
+              "id": "feature",
+              "label": "🔎 ĐẶC ĐIỂM"
+            },
+            {
+              "id": "meaning",
+              "label": "💡 Ý NGHĨA"
+            },
+            {
+              "id": "art",
+              "label": "🎨 NGHỆ THUẬT"
+            },
+            {
+              "id": "value",
+              "label": "🌿 GIÁ TRỊ"
+            }
+          ],
+          "cards": [
+            {
+              "feedback": "✓ Câu này xác định hình ảnh cần phân tích.",
+              "label": "Hình ảnh cần phân tích",
+              "correct": true,
+              "id": "i1",
+              "target": "appearance",
+              "slotText": "Hình ảnh bếp lửa xuất hiện gắn với những năm tháng tuổi thơ và hình bóng người bà."
+            },
+            {
+              "feedback": "✓ Câu này phân tích đặc điểm của hình ảnh.",
+              "label": "Đặc điểm",
+              "correct": true,
+              "id": "i2",
+              "target": "feature",
+              "slotText": "Bếp lửa không chỉ là một hình ảnh quen thuộc của đời sống mà còn gắn với sự chăm sóc, chở che và những ngày tháng gian khó."
+            },
+            {
+              "feedback": "✓ Câu này phân tích ý nghĩa của hình ảnh.",
+              "label": "Ý nghĩa",
+              "correct": true,
+              "id": "i3",
+              "target": "meaning",
+              "slotText": "Từ một bếp lửa cụ thể, hình ảnh dần mang ý nghĩa biểu tượng cho tình bà, tình gia đình và cội nguồn yêu thương."
+            },
+            {
+              "feedback": "✓ Câu này phân tích nghệ thuật liên quan đến hình ảnh.",
+              "label": "Nghệ thuật",
+              "correct": true,
+              "id": "i4",
+              "target": "art",
+              "slotText": "Việc lặp lại hình ảnh bếp lửa giúp mạch thơ được liên kết và khiến biểu tượng ấy ngày càng có chiều sâu."
+            },
+            {
+              "feedback": "✓ Câu này đánh giá chung về hình ảnh.",
+              "label": "Giá trị",
+              "correct": true,
+              "id": "i5",
+              "target": "value",
+              "slotText": "Bếp lửa vì thế trở thành điểm hội tụ của kí ức, tình yêu và lòng biết ơn đối với người bà."
+            }
+          ]
+        },
+        "completion": {
+          "button": "Kiểm tra cách triển khai",
+          "feedback": {
+            "correct": "✓ Em đã đi từ hình ảnh cụ thể đến ý nghĩa biểu tượng.",
+            "partial": "△ Hãy thử hỏi: “Ngoài nghĩa tả thực, hình ảnh này còn gợi điều gì?”",
+            "wrong": "△ Đừng chỉ mô tả hình ảnh. Hãy tìm ý nghĩa phía sau hình ảnh."
+          }
+        }
+      }
+    },
+    {
+      "id": "type_art_01",
+      "type": "guidedPractice",
+      "data": {
+        "title": "🎨 DẠNG 4 — PHÂN TÍCH NGHỆ THUẬT",
+        "durationSeconds": 240,
+        "ui": {
+          "component": "builder",
+          "interaction": "type_to_place"
+        },
+        "prompt": "Phân tích tác dụng của một biện pháp nghệ thuật trong thơ.",
+        "instruction": "Đừng dừng ở việc gọi tên biện pháp. Hãy đi đến tác dụng và ý nghĩa.",
+        "content": {
+          "slots": [
+            {
+              "id": "device",
+              "label": "🎨 BIỆN PHÁP"
+            },
+            {
+              "id": "expression",
+              "label": "🔎 BIỂU HIỆN"
+            },
+            {
+              "id": "effect",
+              "label": "💭 TÁC DỤNG"
+            },
+            {
+              "id": "meaning",
+              "label": "💡 Ý NGHĨA"
+            }
+          ],
+          "cards": [
+            {
+              "feedback": "✓ Câu này xác định biện pháp nghệ thuật.",
+              "label": "Biện pháp nghệ thuật",
+              "correct": true,
+              "id": "a1",
+              "target": "device",
+              "slotText": "Tác giả sử dụng phép điệp trong việc lặp lại một hình ảnh chủ đạo."
+            },
+            {
+              "feedback": "✓ Câu này chỉ ra biểu hiện của biện pháp nghệ thuật.",
+              "label": "Biểu hiện",
+              "correct": true,
+              "id": "a2",
+              "target": "expression",
+              "slotText": "Hình ảnh được nhắc lại ở nhiều vị trí quan trọng, tạo thành điểm nhấn xuyên suốt đoạn thơ."
+            },
+            {
+              "feedback": "✓ Câu này phân tích tác dụng của biện pháp nghệ thuật.",
+              "label": "Tác dụng",
+              "correct": true,
+              "id": "a3",
+              "target": "effect",
+              "slotText": "Cách lặp ấy tạo nhịp điệu và làm hình ảnh trở nên nổi bật, đồng thời nhấn mạnh cảm xúc của người viết."
+            },
+            {
+              "feedback": "✓ Câu này chỉ ra ý nghĩa của biện pháp nghệ thuật.",
+              "label": "Ý nghĩa",
+              "correct": true,
+              "id": "a4",
+              "target": "meaning",
+              "slotText": "Nhờ đó, cảm xúc không chỉ được nói trực tiếp mà còn được khắc sâu qua hình thức nghệ thuật."
+            }
+          ]
+        },
+        "completion": {
+          "button": "Kiểm tra mạch phân tích",
+          "feedback": {
+            "correct": "✓ Tốt. Phân tích nghệ thuật cần trả lời: dùng gì → thể hiện thế nào → tạo hiệu quả gì → góp phần nói gì.",
+            "partial": "△ Đừng dừng ở “tác giả sử dụng biện pháp X”. Hãy nói nó làm được gì.",
+            "wrong": "△ Hãy bắt đầu bằng biện pháp rồi đi đến tác dụng và ý nghĩa."
+          }
+        }
+      }
+    },
+    {
+      "id": "type_excerpt_01",
+      "type": "guidedPractice",
+      "data": {
+        "title": "📖 DẠNG 5 — PHÂN TÍCH ĐOẠN THƠ / ĐOẠN VĂN",
+        "durationSeconds": 240,
+        "ui": {
+          "component": "builder",
+          "interaction": "type_to_place"
+        },
+        "prompt": "Phân tích một đoạn thơ có nhiều lớp nội dung.",
+        "instruction": "Hãy chia đoạn thơ thành những mạch nội dung hợp lí thay vì phân tích từng câu một cách rời rạc.",
+        "content": {
+          "slots": [
+            {
+              "id": "content1",
+              "label": "📖 NỘI DUNG ĐOẠN 1"
+            },
+            {
+              "id": "content2",
+              "label": "📖 NỘI DUNG ĐOẠN 2"
+            },
+            {
+              "id": "art",
+              "label": "🎨 NGHỆ THUẬT"
+            },
+            {
+              "id": "comment",
+              "label": "🌿 ĐÁNH GIÁ"
+            }
+          ],
+          "cards": [
+            {
+              "feedback": "✓ Câu này tóm tắt nội dung phần đầu đoạn trích.",
+              "label": "Nội dung đoạn 1",
+              "correct": true,
+              "id": "x1",
+              "target": "content1",
+              "slotText": "Những câu thơ đầu mở ra không gian quen thuộc và khơi gợi cảm xúc ban đầu của nhân vật trữ tình."
+            },
+            {
+              "feedback": "✓ Câu này phân tích nội dung phần tiếp theo của đoạn trích.",
+              "label": "Nội dung đoạn 2",
+              "correct": true,
+              "id": "x2",
+              "target": "content2",
+              "slotText": "Ở phần tiếp theo, cảm xúc được đẩy sâu hơn khi hình ảnh hiện tại gắn với những suy nghĩ và kí ức rộng lớn hơn."
+            },
+            {
+              "feedback": "✓ Câu này phân tích nghệ thuật được sử dụng trong đoạn thơ.",
+              "label": "Nghệ thuật",
+              "correct": true,
+              "id": "x3",
+              "target": "art",
+              "slotText": "Các hình ảnh giàu sức gợi, nhịp thơ linh hoạt và cách lựa chọn từ ngữ tinh tế góp phần làm nổi bật sự chuyển động của cảm xúc."
+            },
+            {
+              "feedback": "✓ Câu này đánh giá chung về đoạn thơ.",
+              "label": "Đánh giá",
+              "correct": true,
+              "id": "x4",
+              "target": "comment",
+              "slotText": "Đoạn thơ vì thế không chỉ tái hiện một cảnh vật mà còn thể hiện thế giới nội tâm của nhân vật trữ tình."
+            }
+          ]
+        },
+        "completion": {
+          "button": "Kiểm tra bố cục",
+          "feedback": {
+            "correct": "✓ Em đã biết chia đoạn thơ thành các mạch nội dung thay vì kể hoặc phân tích từng câu rời rạc.",
+            "partial": "△ Hãy tìm những nhóm câu thơ cùng làm nổi bật một nội dung.",
+            "wrong": "△ Đoạn thơ nên được phân tích theo mạch ý và cảm xúc."
+          }
+        }
+      }
+    },
+    {
+      "id": "type_statement_01",
+      "type": "guidedPractice",
+      "data": {
+        "title": "💡 DẠNG 6 — LÀM SÁNG TỎ NHẬN ĐỊNH",
+        "durationSeconds": 240,
+        "ui": {
+          "component": "builder",
+          "interaction": "type_to_place"
+        },
+        "prompt": "Làm sáng tỏ một nhận định về nhân vật văn học.",
+        "instruction": "Hãy đi từ việc hiểu nhận định đến dùng tác phẩm để chứng minh.",
+        "content": {
+          "slots": [
+            {
+              "id": "explain",
+              "label": "💡 GIẢI THÍCH NHẬN ĐỊNH"
+            },
+            {
+              "id": "prove",
+              "label": "🔎 PHÂN TÍCH TÁC PHẨM"
+            },
+            {
+              "id": "art",
+              "label": "🎨 NGHỆ THUẬT"
+            },
+            {
+              "id": "comment",
+              "label": "🌿 ĐÁNH GIÁ"
+            }
+          ],
+          "cards": [
+            {
+              "feedback": "✓ Câu này giới thiệu nhận định.",
+              "label": "Giới thiệu nhận định",
+              "correct": true,
+              "id": "s1",
+              "target": "explain",
+              "slotText": "Nhận định khẳng định rằng nhân vật văn học không chỉ là người tham gia câu chuyện mà còn là nơi nhà văn gửi gắm cách nhìn về con người."
+            },
+            {
+              "feedback": "✓ Câu này đưa dẫn chứng (trong tác phẩm) để chứng minh nhận định.",
+              "label": "Minh chứng từ tác phẩm",
+              "correct": true,
+              "id": "s2",
+              "target": "prove",
+              "slotText": "Qua những hành động, suy nghĩ và lựa chọn của nhân vật, tác phẩm cho thấy vẻ đẹp và những giằng co trong đời sống con người."
+            },
+            {
+              "feedback": "✓ Câu này phân tích nghệ thuật được sử dụng trong tác phẩm.",
+              "label": "Nghệ thuật",
+              "correct": true,
+              "id": "s3",
+              "target": "art",
+              "slotText": "Nhà văn làm nổi bật điều đó bằng cách xây dựng nhân vật qua hành động, ngôn ngữ và diễn biến nội tâm."
+            },
+            {
+              "feedback": "✓ Câu này đánh giá chung về nhận định.",
+              "label": "Đánh giá",
+              "correct": true,
+              "id": "s4",
+              "target": "comment",
+              "slotText": "Như vậy, nhân vật vừa góp phần tạo nên câu chuyện vừa trở thành phương tiện để tác giả thể hiện tư tưởng và tình cảm."
+            }
+          ]
+        },
+        "completion": {
+          "button": "Kiểm tra cách chứng minh",
+          "feedback": {
+            "correct": "✓ Em đã biết dùng tác phẩm để làm sáng tỏ nhận định thay vì chỉ giải thích nhận định.",
+            "partial": "△ Sau khi giải thích nhận định, cần quay về bằng chứng cụ thể trong tác phẩm.",
+            "wrong": "△ Hãy nhớ: nhận định phải được chứng minh bằng chính tác phẩm."
+          }
+        }
+      }
+    },
+    {
+      "id": "transfer_01",
+      "type": "miniChallenge",
+      "data": {
+        "title": "🎯 Gặp đề mới, chọn đường đi nào?",
+        "durationSeconds": 180,
+        "ui": {
+          "layout": "single_choice"
+        },
+        "prompt": "Hãy xác định dạng đề và cách triển khai phù hợp.",
+        "question": "“Phân tích ý nghĩa của hình ảnh chiếc lược ngà trong truyện ngắn Chiếc lược ngà.”",
+        "choices": [
+          {
+            "id": "character",
+            "text": "👤 Tập trung vào các đặc điểm của nhân vật",
+            "correct": false
+          },
+          {
+            "id": "emotion",
+            "text": "❤️ Theo dõi diễn biến tâm trạng",
+            "correct": false
+          },
+          {
+            "id": "image",
+            "text": "🌿 Đi từ sự xuất hiện → đặc điểm → ý nghĩa → tác dụng → giá trị",
+            "correct": true
+          },
+          {
+            "id": "statement",
+            "text": "💡 Giải thích một nhận định rồi chứng minh",
+            "correct": false
+          }
+        ],
+        "feedback": {
+          "correct": "✓ Chính xác. Đề yêu cầu phân tích một hình ảnh / chi tiết, nên cần tập trung vào ý nghĩa của chính hình ảnh ấy.",
+          "incorrect": "△ Hãy nhìn vào đối tượng mà đề yêu cầu: nhân vật, tâm trạng, hình ảnh, nghệ thuật hay nhận định."
+        }
+      }
+    },
+    {
+      "id": "transfer_02",
+      "type": "guidedPractice",
+      "data": {
+        "title": "🔗 Từ Skill Map đến cấu trúc bài văn",
+        "durationSeconds": 240,
+        "ui": {
+          "component": "builder",
+          "interaction": "type_to_place"
+        },
+        "prompt": "Đề: Phân tích vẻ đẹp của nhân vật người mẹ trong một tác phẩm truyện.",
+        "instruction": "Hãy chọn cách tổ chức các đoạn thân bài phù hợp. Không nhất thiết phải dùng tất cả các ô.",
+        "content": {
+          "slots": [
+            {
+              "id": "intro",
+              "label": "📖 GIỚI THIỆU"
+            },
+            {
+              "id": "trait1",
+              "label": "🌟 ĐẶC ĐIỂM"
+            },
+            {
+              "id": "trait2",
+              "label": "🌟 ĐẶC ĐIỂM"
+            },
+            {
+              "id": "art",
+              "label": "🎨 NGHỆ THUẬT"
+            },
+            {
+              "id": "comment",
+              "label": "🌿 ĐÁNH GIÁ"
+            }
+          ],
+          "cards": [
+            {
+              "correct": true,
+              "feedback": "✓ Giới thiệu ngắn gọn nhân vật và định hướng vấn đề cần phân tích.",
+              "label": "Giới thiệu",
+              "id": "t1",
+              "target": "intro",
+              "slotText": "Giới thiệu ngắn gọn nhân vật và định hướng vấn đề cần phân tích."
+            },
+            {
+              "correct": true,
+              "feedback": "✓ Phân tích đặc điểm nổi bật thứ nhất bằng những lời nói, hành động hoặc chi tiết phù hợp.",
+              "label": "Đặc điểm 1",
+              "id": "t2",
+              "target": "trait1",
+              "slotText": "Phân tích đặc điểm nổi bật thứ nhất bằng những lời nói, hành động hoặc chi tiết phù hợp."
+            },
+            {
+              "correct": true,
+              "feedback": "✓ Phân tích đặc điểm nổi bật thứ hai và làm rõ chiều sâu của nhân vật.",
+              "label": "Đặc điểm 2",
+              "id": "t3",
+              "target": "trait2",
+              "slotText": "Phân tích đặc điểm nổi bật thứ hai và làm rõ chiều sâu của nhân vật."
+            },
+            {
+              "correct": true,
+              "feedback": "✓ Nhận xét cách tác giả lựa chọn chi tiết và xây dựng hình tượng nhân vật.",
+              "label": "Nghệ thuật",
+              "id": "t4",
+              "target": "art",
+              "slotText": "Nhận xét cách tác giả lựa chọn chi tiết và xây dựng hình tượng nhân vật."
+            },
+            {
+              "correct": true,
+              "feedback": "✓ Đánh giá vẻ đẹp của nhân vật và ý nghĩa hình tượng.",
+              "label": "Đánh giá",
+              "id": "t5",
+              "target": "comment",
+              "slotText": "Đánh giá vẻ đẹp của nhân vật và ý nghĩa hình tượng."
+            }
+          ]
+        },
+        "completion": {
+          "button": "Kiểm tra",
+          "feedback": {
+            "correct": "✓ Tốt. Em đang dùng Skill Map để tổ chức cả bài văn, không chỉ viết từng câu.",
+            "partial": "△ Hãy xem mỗi đoạn đã có một nhiệm vụ rõ ràng chưa.",
+            "wrong": "△ Hãy bắt đầu từ vấn đề mà đề yêu cầu rồi nhóm các bằng chứng theo những ý lớn."
+          }
+        }
+      }
+    },
+    {
+      "id": "finalChallenge_02",
+      "type": "finalChallenge",
+      "data": {
+        "title": "🏆 THỬ THÁCH CUỐI: VIẾT BÀI VĂN NGHỊ LUẬN VĂN HỌC",
+        "durationSeconds": 300,
+        "ui": {
+          "component": "multi_stage_challenge",
+          "layout": "multi_stage"
+        },
+        "prompt": "Hãy viết bài văn nghị luận văn học theo đề bài dưới đây.",
+        "stages": [
+          {
+            "key": "identify",
+            "type": "single_choice",
+            "title": "🎯 Tầng 1 — Đề đang yêu cầu gì?",
+            "question": "Đề: Phân tích vẻ đẹp của nhân vật Phương Định trong truyện ngắn Những ngôi sao xa xôi.",
+            "choices": [
+              {
+                "id": "character",
+                "label": "👤 Phân tích vẻ đẹp của nhân vật Phương Định.",
+                "correct": true
+              },
+              {
+                "id": "story",
+                "label": "📖 Kể lại toàn bộ câu chuyện.",
+                "correct": false
+              },
+              {
+                "id": "war",
+                "label": "🌿 Trình bày về chiến tranh.",
+                "correct": false
+              },
+              {
+                "id": "author",
+                "label": "✍️ Giới thiệu toàn bộ sự nghiệp của tác giả.",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "key": "evidence",
+            "type": "multi_select",
+            "title": "🔎 Tầng 2 — Chọn bằng chứng",
+            "question": "Chi tiết nào phù hợp để làm rõ vẻ đẹp của Phương Định?",
+            "minSelections": 2,
+            "maxSelections": 4,
+            "options": [
+              {
+                "id": "bravery",
+                "text": "Sự bình tĩnh khi phá bom.",
+                "correct": true
+              },
+              {
+                "id": "hanoi",
+                "text": "Những hồi tưởng về Hà Nội.",
+                "correct": true
+              },
+              {
+                "id": "appearance",
+                "text": "Vẻ đẹp và sự tự ý thức của cô về ngoại hình.",
+                "correct": true
+              },
+              {
+                "id": "weather",
+                "text": "Thời tiết thay đổi trong truyện.",
+                "correct": false
+              }
+            ],
+            "feedback": {
+              "correct": "✓ Em đã chọn được những bằng chứng có khả năng làm rõ nhân vật.",
+              "partial": "△ Hãy chọn những chi tiết trực tiếp giúp em nói về vẻ đẹp của Phương Định."
+            }
+          },
+          {
+            "key": "structure",
+            "type": "card_to_slot",
+            "title": "🧩 Tầng 3 — Xây mạch thân bài",
+            "prompt": "Hãy sắp xếp các ý thành một cấu trúc thân bài hợp lí.",
+            "slots": [
+              {
+                "id": "trait1",
+                "label": "🌟 ĐẶC ĐIỂM 1",
+                "question": "Đặc điểm nổi bật thứ nhất?"
+              },
+              {
+                "id": "trait2",
+                "label": "🌟 ĐẶC ĐIỂM 2",
+                "question": "Đặc điểm nổi bật thứ hai?"
+              },
+              {
+                "id": "art",
+                "label": "🎨 NGHỆ THUẬT",
+                "question": "Tác giả xây dựng nhân vật thế nào?"
+              },
+              {
+                "id": "comment",
+                "label": "🌿 ĐÁNH GIÁ",
+                "question": "Hình tượng có ý nghĩa gì?"
+              }
+            ],
+            "cards": [
+              {
+                "id": "s1",
+                "target": "trait1",
+                "correct": true,
+                "feedback": "✓ Phân tích vẻ đẹp dũng cảm, bình tĩnh và có trách nhiệm của Phương Định trong chiến đấu.",
+                "label": "Phân tích vẻ đẹp dũng cảm, bình tĩnh và có trách nhiệm của Phương Định trong chiến đấu.",
+                "slotText": "Phân tích vẻ đẹp dũng cảm, bình tĩnh và có trách nhiệm của Phương Định trong chiến đấu."
+              },
+              {
+                "id": "s2",
+                "target": "trait2",
+                "correct": true,
+                "feedback": "✓ Phân tích vẻ đẹp trẻ trung, hồn nhiên, nhạy cảm và giàu cảm xúc của cô gái Hà Nội.",
+                "label": "Phân tích vẻ đẹp trẻ trung, hồn nhiên, nhạy cảm và giàu cảm xúc của cô gái Hà Nội.",
+                "slotText": "Phân tích vẻ đẹp trẻ trung, hồn nhiên, nhạy cảm và giàu cảm xúc của cô gái Hà Nội."
+              },
+              {
+                "id": "s3",
+                "target": "art",
+                "correct": true,
+                "feedback": "✓ Nhận xét nghệ thuật xây dựng nhân vật qua hành động, ngoại hình, lời kể và diễn biến nội tâm.",
+                "label": "Nhận xét nghệ thuật xây dựng nhân vật qua hành động, ngoại hình, lời kể và diễn biến nội tâm.",
+                "slotText": "Nhận xét nghệ thuật xây dựng nhân vật qua hành động, ngoại hình, lời kể và diễn biến nội tâm."
+              },
+              {
+                "id": "s4",
+                "target": "comment",
+                "correct": true,
+                "feedback": "✓ Đánh giá Phương Định như hình ảnh tiêu biểu cho vẻ đẹp của tuổi trẻ Việt Nam trong chiến tranh.",
+                "label": "Đánh giá Phương Định như hình ảnh tiêu biểu cho vẻ đẹp của tuổi trẻ Việt Nam trong chiến tranh.",
+                "slotText": "Đánh giá Phương Định như hình ảnh tiêu biểu cho vẻ đẹp của tuổi trẻ Việt Nam trong chiến tranh."
+              }
+            ]
+          },
+          {
+            "key": "writing",
+            "type": "editor",
+            "title": "✍️ Tầng 4 — Viết bài",
+            "placeholder": "Hãy viết bài văn nghị luận văn học của em...",
+            "minCharacters": 350,
+            "maxCharacters": 1800,
+            "submit": {
+              "label": "🚀 Nộp bài"
+            },
+            "support": {
+              "question": "Trong mỗi đoạn, hãy nhớ: bằng chứng → chi tiết ấy cho thấy gì? → ý nghĩa → nhận xét."
+            }
+          },
+          {
+            "key": "analysis",
+            "type": "analysis",
+            "title": "🧠 Tầng 5 — Hồ sơ lập luận văn học",
+            "metrics": [
+              {
+                "id": "problem",
+                "label": "Xác định đúng vấn đề",
+                "status": "detect"
+              },
+              {
+                "id": "evidence",
+                "label": "Có bằng chứng từ tác phẩm",
+                "status": "detect"
+              },
+              {
+                "id": "analysis",
+                "label": "Có phân tích bằng chứng",
+                "status": "detect"
+              },
+              {
+                "id": "meaning",
+                "label": "Có giải thích ý nghĩa",
+                "status": "detect"
+              },
+              {
+                "id": "comment",
+                "label": "Có nhận xét văn học",
+                "status": "detect"
+              },
+              {
+                "id": "coherence",
+                "label": "Các đoạn liên kết hợp lí",
+                "status": "detect"
+              }
+            ],
+            "diagnosticQuestion": "🔎 Chi tiết em vừa đưa vào cho người đọc hiểu gì?",
+            "feedbackRules": [
+              {
+                "when": "missing_problem",
+                "feedback": "△ Bài viết chưa tập trung rõ vào vấn đề mà đề yêu cầu."
+              },
+              {
+                "when": "missing_evidence",
+                "feedback": "△ Em cần đưa những chi tiết cụ thể từ tác phẩm để làm cơ sở cho nhận xét."
+              },
+              {
+                "when": "missing_analysis",
+                "feedback": "△ Em đã có bằng chứng nhưng chưa giải thích rõ chi tiết ấy cho thấy điều gì."
+              },
+              {
+                "when": "missing_meaning",
+                "feedback": "△ Hãy hỏi tiếp: Vì sao chi tiết ấy có ý nghĩa? Nó nói gì sâu hơn về nhân vật hoặc tác phẩm?"
+              },
+              {
+                "when": "missing_comment",
+                "feedback": "△ Sau khi phân tích, hãy đưa ra một nhận xét để kết nối với vấn đề chung."
+              },
+              {
+                "when": "good_argument",
+                "feedback": "✓ Bằng chứng đã được phân tích và kết nối với nhận xét văn học."
+              },
+              {
+                "when": "good_structure",
+                "feedback": "✓ Các đoạn đã được tổ chức theo những ý lớn thay vì kể lại tác phẩm."
+              }
+            ],
+            "scoreDimensions": [
+              "problem",
+              "evidence",
+              "analysis",
+              "meaning",
+              "comment",
+              "coherence"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

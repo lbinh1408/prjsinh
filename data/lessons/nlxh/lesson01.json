@@ -1,0 +1,152 @@
+{
+  "id": "nlxh.lesson01",
+  "title": "Xác định vấn đề nghị luận",
+  "version": "3.0",
+  "passage": {
+    "title": "Đề bài",
+    "content": "Từ câu chuyện về cậu bé luôn giúp đỡ mọi người dù hoàn cảnh khó khăn, hãy trình bày suy nghĩ của em về lòng nhân ái."
+  },
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "content": "Từ câu chuyện về cậu bé luôn giúp đỡ mọi người dù hoàn cảnh khó khăn, hãy trình bày suy nghĩ của em về lòng nhân ái.",
+        "title": "Đọc đề",
+        "instruction": "Đọc kỹ đề bài trước khi trả lời.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step02",
+      "type": "identify",
+      "data": {
+        "question": "Đề bài yêu cầu nghị luận về điều gì?",
+        "options": [
+          "Lòng nhân ái",
+          "Gia đình",
+          "Học tập",
+          "Môi trường"
+        ],
+        "answer": "Lòng nhân ái",
+        "title": "Xác định vấn đề",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Đề bài yêu cầu học sinh thực hiện điều gì?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Trình bày suy nghĩ về một phẩm chất."
+          },
+          {
+            "id": "B",
+            "text": "Kể lại câu chuyện."
+          },
+          {
+            "id": "C",
+            "text": "Tả cậu bé."
+          },
+          {
+            "id": "D",
+            "text": "Viết bài văn miêu tả."
+          }
+        ],
+        "answer": "A",
+        "title": "Hiểu yêu cầu",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "highlight",
+      "data": {
+        "content": "Từ câu chuyện về cậu bé luôn giúp đỡ mọi người dù hoàn cảnh khó khăn, hãy trình bày suy nghĩ của em về lòng nhân ái.",
+        "answer": [
+          "giúp đỡ mọi người",
+          "lòng nhân ái"
+        ],
+        "title": "Tìm từ khóa",
+        "instruction": "Chọn các từ khóa quan trọng trong đề.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Lòng nhân ái",
+          "Tinh thần vượt khó",
+          "Trung thực"
+        ],
+        "right": [
+          "Giúp đỡ người khác",
+          "Không bỏ cuộc",
+          "Sống thật thà"
+        ],
+        "answer": {
+          "Lòng nhân ái": "Giúp đỡ người khác",
+          "Tinh thần vượt khó": "Không bỏ cuộc",
+          "Trung thực": "Sống thật thà"
+        },
+        "title": "Ghép đề với chủ đề",
+        "instruction": "Ghép mỗi đề bài với chủ đề phù hợp.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "fillBlank",
+      "data": {
+        "question": "Điền từ còn thiếu.",
+        "sentence": "Đề bài yêu cầu nghị luận về lòng _____.",
+        "answer": "nhân ái",
+        "title": "Hoàn thành",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "reflection",
+      "data": {
+        "question": "Theo em, 'lòng nhân ái' có nghĩa là gì?",
+        "sampleAnswer": "Lòng nhân ái là sự yêu thương, quan tâm và sẵn sàng giúp đỡ người khác.",
+        "title": "Diễn đạt",
+        "score": 2
+      }
+    },
+    {
+      "id": "step08",
+      "type": "explain",
+      "data": {
+        "question": "Viết khoảng 3–5 câu nêu suy nghĩ của em về lòng nhân ái.",
+        "sampleAnswer": "Lòng nhân ái giúp con người biết yêu thương và chia sẻ với nhau. Người có lòng nhân ái luôn sẵn sàng giúp đỡ người khác khi gặp khó khăn. Đây là một phẩm chất đáng quý mà mỗi người cần rèn luyện.",
+        "title": "Viết ngắn",
+        "score": 3
+      }
+    }
+  ],
+  "meta": {
+    "module": "nlxh",
+    "difficulty": "easy",
+    "xp": 25,
+    "stars": 3,
+    "description": "Nhận biết đúng vấn đề cần nghị luận trong một đoạn văn hoặc đề bài.",
+    "prerequisite": null,
+    "unlock": "nlxh-lesson02",
+    "durationMinutes": 12
+  },
+  "learningGoals": [
+    "Hiểu thế nào là vấn đề nghị luận.",
+    "Xác định đúng yêu cầu của đề.",
+    "Phân biệt chủ đề và vấn đề nghị luận.",
+    "Biết diễn đạt lại vấn đề bằng lời của mình."
+  ]
+}

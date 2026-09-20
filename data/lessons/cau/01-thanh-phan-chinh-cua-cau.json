@@ -1,0 +1,228 @@
+{
+  "id": "cau.01-thanh-phan-chinh-cua-cau",
+  "title": "Thành phần chính của câu",
+  "version": "1.0",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "content": "<b>Con mèo</b> / <i>đang bắt chuột ngoài sân.</i>",
+        "guide": [
+          "Bộ phận nào trả lời cho câu hỏi: Ai/Con gì/Cái gì?",
+          "Bộ phận nào trả lời cho câu hỏi: Làm gì/Như thế nào/Là gì?"
+        ],
+        "hint": "'Con mèo' là Chủ ngữ. 'đang bắt chuột ngoài sân' là Vị ngữ. Đây là hai thành phần chính của câu.",
+        "title": "Quan sát",
+        "instruction": "Đọc câu sau và xác định bộ phận trả lời cho các câu hỏi bên dưới.",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Chủ ngữ (CN)",
+            "icon": "👤",
+            "active": true,
+            "content": {
+              "text": "Nêu tên sự vật, hiện tượng có hoạt động, trạng thái, đặc điểm được nói đến ở vị ngữ.",
+              "examples": [
+                {
+                  "category": "Câu hỏi: ",
+                  "word": "Ai?, Con gì?, Cái gì?, Việc gì?, Hiện tượng gì?...",
+                  "emoji": "❓"
+                },
+                {
+                  "category": "Cấu tạo: ",
+                  "word": "Thường là danh từ, đại từ, cụm danh từ.",
+                  "emoji": "📝"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Vị ngữ (VN)",
+            "icon": "🏃",
+            "active": false,
+            "content": {
+              "text": "Nêu hoạt động, trạng thái, tính chất, bản chất của sự vật, hiện tượng được nói đến ở chủ ngữ.",
+              "examples": [
+                {
+                  "category": "Câu hỏi: ",
+                  "word": "Làm gì?, Như thế nào?, Là gì?...",
+                  "emoji": "❓"
+                },
+                {
+                  "category": "Cấu tạo: ",
+                  "word": "Thường là động từ, tính từ, cụm động từ, cụm tính từ.",
+                  "emoji": "📝"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Thành phần chính của câu",
+        "instruction": "Khái niệm và đặc điểm của Chủ ngữ, Vị ngữ.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "highlight",
+      "data": {
+        "content": "Những đám mây trắng đang bồng bềnh trôi trên bầu trời.",
+        "answer": [
+          "Những đám mây trắng"
+        ],
+        "title": "Nhận biết Chủ ngữ",
+        "instruction": "Hãy tô sáng <b>Chủ ngữ</b> trong câu sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "highlight",
+      "data": {
+        "content": "Hoa phượng nở đỏ rực cả một góc sân trường.",
+        "answer": [
+          "nở đỏ rực cả một góc sân trường"
+        ],
+        "title": "Nhận biết Vị ngữ",
+        "instruction": "Hãy tô sáng phần <b>Vị ngữ</b> trong câu sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trong câu 'Quyển sách này rất hay.', từ nào là chủ ngữ?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Quyển sách"
+          },
+          {
+            "id": "B",
+            "text": "Quyển sách này"
+          },
+          {
+            "id": "C",
+            "text": "rất hay"
+          },
+          {
+            "id": "D",
+            "text": "này rất hay"
+          }
+        ],
+        "answer": "B",
+        "title": "Lựa chọn",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Mặt trời",
+          "Đàn chim",
+          "Gió mùa thu",
+          "Mẹ em"
+        ],
+        "right": [
+          "đang nấu cơm trong bếp.",
+          "thổi nhè nhẹ.",
+          "tỏa nắng rực rỡ.",
+          "bay về phương nam tránh rét."
+        ],
+        "answer": {
+          "Mặt trời": "tỏa nắng rực rỡ.",
+          "Đàn chim": "bay về phương nam tránh rét.",
+          "Gió mùa thu": "thổi nhè nhẹ.",
+          "Mẹ em": "đang nấu cơm trong bếp."
+        },
+        "title": "Nối câu",
+        "instruction": "Ghép các chủ ngữ ở cột trái với vị ngữ phù hợp ở cột phải để tạo thành câu hoàn chỉnh.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Vì sao Chủ ngữ và Vị ngữ được gọi là thành phần chính của câu?",
+        "sampleAnswer": [
+          "Bởi vì đây là những thành phần bắt buộc phải có mặt để câu có cấu trúc ngữ pháp hoàn chỉnh và diễn đạt được một ý trọn vẹn. Nếu thiếu một trong hai, câu sẽ bị coi là câu sai ngữ pháp (trừ trường hợp câu rút gọn hoặc câu đặc biệt)."
+        ],
+        "title": "Thông hiểu",
+        "score": 1
+      }
+    },
+    {
+      "id": "step08",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "Hoa (nở rất đẹp).",
+          "Tôi (đang học bài).",
+          "Ngôi nhà mới xây (rất khang trang)."
+        ],
+        "targets": [
+          "Danh từ",
+          "Đại từ",
+          "Cụm danh từ"
+        ],
+        "answer": {
+          "Hoa (nở rất đẹp).": "Danh từ",
+          "Tôi (đang học bài).": "Đại từ",
+          "Ngôi nhà mới xây (rất khang trang).": "Cụm danh từ"
+        },
+        "title": "Phân tích cấu tạo",
+        "instruction": "Xác định từ loại làm chủ ngữ trong các câu sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step09",
+      "type": "reflection",
+      "data": {
+        "question": "Hãy đặt 1 câu nói về việc học tập của em, sau đó chỉ rõ đâu là Chủ ngữ, đâu là Vị ngữ.",
+        "sampleAnswer": "Ví dụ: Em / đang làm bài tập môn Ngữ văn.\nChủ ngữ: Em. \nVị ngữ: đang làm bài tập môn Ngữ văn.",
+        "title": "Vận dụng",
+        "score": 1
+      }
+    },
+    {
+      "id": "step10",
+      "type": "flashcard",
+      "data": {
+        "front": "Thành phần chính của câu",
+        "back": "Gồm 2 phần: Chủ ngữ (trả lời Ai/Cái gì/Con gì...) nêu sự vật được nói đến; Vị ngữ (trả lời Làm gì/Như thế nào/Là gì...) nêu hoạt động, tính chất, trạng thái của sự vật đó.",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "cau",
+    "difficulty": "reference",
+    "xp": 100,
+    "stars": 3,
+    "description": "Tìm hiểu về hai thành phần nòng cốt không thể thiếu để tạo thành một câu hoàn chỉnh: Chủ ngữ và Vị ngữ.",
+    "prerequisite": null,
+    "unlock": null,
+    "reviewMode": "instant",
+    "durationMinutes": 15
+  }
+}

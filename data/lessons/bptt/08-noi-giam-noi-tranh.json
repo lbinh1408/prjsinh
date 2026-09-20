@@ -1,0 +1,305 @@
+{
+  "id": "bptt.08-noi-giam-noi-tranh",
+  "title": "Nói giảm nói tránh",
+  "version": "3.0",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "content": "Câu 1: Bác Dương thôi đã <b>thôi rồi</b> / Nước mây man mác ngậm ngùi lòng ta.<br>Câu 2: Cụ Khuyến dạo này <b>sức khỏe hơi kém</b>.",
+        "guide": [
+          "Từ 'thôi rồi' trong câu 1 có nghĩa là gì? Tại sao tác giả không nói thẳng là 'chết'?",
+          "Cụm từ 'sức khỏe hơi kém' trong câu 2 diễn đạt ý gì? Cách nói đó mang lại cảm giác gì?"
+        ],
+        "hint": "Đây là cách diễn đạt tế nhị, tránh gây cảm giác đau buồn, thô tục hoặc thiếu lịch sự.",
+        "title": "Quan sát",
+        "instruction": "Đọc kĩ các câu sau.",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Khái niệm",
+            "icon": "💬",
+            "active": true,
+            "content": {
+              "text": "Nói giảm nói tránh là một biện pháp tu từ dùng cách diễn đạt tế nhị, uyển chuyển, tránh gây cảm giác quá đau buồn, ghê sợ, nặng nề; tránh thô tục, thiếu lịch sự.",
+              "examples": [
+                {
+                  "category": "Ví dụ: ",
+                  "word": "Bác đã đi rồi sao, Bác ơi! (Từ 'đi' dùng thay cho từ 'chết').",
+                  "emoji": "🥀"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "2. Tác dụng",
+            "icon": "✨",
+            "active": false,
+            "content": {
+              "text": "Tác dụng của biện pháp tu từ này là:",
+              "examples": [
+                {
+                  "category": "Hiệu quả",
+                  "word": "Dùng cách diễn đạt tế nhị, uyển chuyển để tránh gây cảm giác quá đau buồn, ghê sợ, nặng nề, hoặc tránh sự thô tục, thiếu lịch sự.",
+                  "emoji": "🎨"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-3",
+            "title": "3. Lưu ý sử dụng",
+            "icon": "⚠️",
+            "active": false,
+            "content": {
+              "text": "Tùy thuộc vào tình huống giao tiếp mà quyết định có nên dùng nói giảm nói tránh hay không.",
+              "examples": [
+                {
+                  "category": "Không nên dùng khi: ",
+                  "word": "Cần nói thẳng, nói thật, phê phán gay gắt những thói hư tật xấu hoặc khi cần thông tin chính xác, khách quan.",
+                  "emoji": "🚫"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Khái niệm",
+        "instruction": "Biện pháp tu từ được sử dụng ở trên gọi là <i>Nói giảm nói tránh</i>.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "identify",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Câu nào dưới đây có sử dụng biện pháp nói giảm nói tránh?",
+        "options": [
+          "Anh ấy đã hi sinh trên chiến trường.",
+          "Ông ấy đã chết hôm qua.",
+          "Cậu bé đó bị mù cả hai mắt.",
+          "Bài văn của cậu viết dở tệ."
+        ],
+        "answer": "Anh ấy đã hi sinh trên chiến trường.",
+        "title": "Nhận biết",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Tại sao trong câu 'Bác Dương thôi đã thôi rồi', nhà thơ Nguyễn Khuyến lại dùng từ 'thôi rồi' thay vì từ 'chết'?",
+        "sampleAnswer": [
+          "Để giảm bớt nỗi đau thương, mất mát tột cùng của tác giả trước sự ra đi của bạn hiền.",
+          "Thể hiện sự kính trọng đối với người bạn quá cố."
+        ],
+        "title": "Thông hiểu",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "highlight",
+      "data": {
+        "content": "Dù bị khiếm thị, anh ấy vẫn luôn cố gắng học tập thật tốt.",
+        "answer": [
+          "khiếm thị"
+        ],
+        "title": "Tô sáng",
+        "instruction": "Hãy tô sáng từ ngữ mang ý nghĩa nói giảm nói tránh (chỉ khiếm khuyết cơ thể) trong câu sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "reflection",
+      "data": {
+        "question": "Thay vì chê thẳng: 'Bài hát này nghe dở quá', em có thể dùng cách nói giảm nói tránh như thế nào cho lịch sự?",
+        "sampleAnswer": "Bài hát này nghe chưa hay lắm. / Giai điệu bài hát này chưa được bắt tai cho lắm.",
+        "title": "Vận dụng",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "1. Dùng từ đồng nghĩa",
+            "icon": "🔄",
+            "active": true,
+            "content": {
+              "items": [
+                {
+                  "type": "common",
+                  "label": "Đặc điểm",
+                  "definition": "Sử dụng từ ngữ khác (thường là từ Hán Việt) có cùng nghĩa nhưng mang sắc thái trang trọng, tế nhị hơn.",
+                  "examples": [
+                    "Băng hà, quy tiên, từ trần, hi sinh, viên tịch... (thay cho 'chết').",
+                    "Khiếm thị, khiếm thính... (thay cho 'mù', 'điếc')."
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "2. Dùng cách nói phủ định",
+            "icon": "❌",
+            "active": false,
+            "content": {
+              "items": [
+                {
+                  "type": "common",
+                  "label": "Đặc điểm",
+                  "definition": "Phủ định một từ ngữ mang ý nghĩa tích cực, ngược lại với từ có ý nghĩa tiêu cực.",
+                  "examples": [
+                    "Cậu làm bài này chưa được tốt lắm. (thay vì nói: 'Cậu làm bài này dở quá').",
+                    "Sức khỏe của bác dạo này không được khỏe. (thay vì nói: 'bác đang yếu đi')."
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-3",
+            "title": "3. Dùng cách nói vòng vo",
+            "icon": "↩️",
+            "active": false,
+            "content": {
+              "items": [
+                {
+                  "type": "common",
+                  "label": "Đặc điểm",
+                  "definition": "Dùng cụm từ miêu tả vòng vo, ẩn ý để người nghe tự hiểu.",
+                  "examples": [
+                    "Anh ấy đã về với đất mẹ / Anh ấy đã đi xa rồi (chỉ cái chết).",
+                    "Chị ấy đang có tin vui (chỉ việc mang thai)."
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Các cách nói giảm nói tránh phổ biến",
+        "score": 0
+      }
+    },
+    {
+      "id": "step08",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Câu 'Kết quả học tập của cậu đợt này chưa được tốt lắm' thuộc cách nói giảm nói tránh nào?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Dùng từ đồng nghĩa."
+          },
+          {
+            "id": "B",
+            "text": "Dùng cách nói phủ định."
+          },
+          {
+            "id": "C",
+            "text": "Dùng cách nói vòng vo."
+          },
+          {
+            "id": "D",
+            "text": "Không phải nói giảm nói tránh."
+          }
+        ],
+        "answer": "B",
+        "title": "Lựa chọn",
+        "score": 1
+      }
+    },
+    {
+      "id": "step09",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Bài văn của em chưa được mạch lạc lắm.",
+          "Người phụ nữ ấy không còn trẻ nữa.",
+          "Ông ấy đã đi xa rồi."
+        ],
+        "right": [
+          "Người phụ nữ ấy đã già.",
+          "Ông ấy đã chết.",
+          "Bài văn của em viết lủng củng."
+        ],
+        "answer": {
+          "Người phụ nữ ấy không còn trẻ nữa.": "Người phụ nữ ấy đã già.",
+          "Ông ấy đã đi xa rồi.": "Ông ấy đã chết.",
+          "Bài văn của em chưa được mạch lạc lắm.": "Bài văn của em viết lủng củng."
+        },
+        "title": "Nối câu",
+        "instruction": "Ghép các câu nói giảm nói tránh với ý nghĩa thật của chúng.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step10",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "Chú bé Lượm đã hi sinh trên đường làm nhiệm vụ.",
+          "Cái áo này mặc chưa được đẹp lắm.",
+          "Bác đã lên đường theo tổ tiên, Mác - Lênin, thế giới người hiền",
+          "Cậu ấy làm bài thi không được tốt."
+        ],
+        "targets": [
+          "Dùng từ đồng nghĩa",
+          "Dùng cách nói phủ định",
+          "Dùng cách nói vòng vo"
+        ],
+        "answer": {
+          "Chú bé Lượm đã hi sinh trên đường làm nhiệm vụ.": "Dùng từ đồng nghĩa",
+          "Cái áo này mặc chưa được đẹp lắm.": "Dùng cách nói phủ định",
+          "Cậu ấy làm bài thi không được tốt.": "Dùng cách nói phủ định",
+          "Bác đã lên đường theo tổ tiên, Mác - Lênin, thế giới người hiền": "Dùng cách nói vòng vo"
+        },
+        "title": "Kéo và thả",
+        "instruction": "Hãy phân loại các câu sau vào đúng nhóm cách nói giảm nói tránh.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step11",
+      "type": "flashcard",
+      "data": {
+        "front": "Nói giảm nói tránh",
+        "back": "Nói giảm nói tránh là cách diễn đạt tế nhị, uyển chuyển, tránh gây cảm giác đau buồn, nặng nề, thô tục hay thiếu lịch sự. Có thể dùng từ đồng nghĩa, nói phủ định từ trái nghĩa hoặc nói vòng vo.",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "bptt",
+    "difficulty": "reference",
+    "xp": 100,
+    "stars": 3,
+    "description": "Nhận biết và sử dụng biện pháp tu từ nói giảm nói tránh.",
+    "prerequisite": null,
+    "unlock": null,
+    "reviewMode": "instant",
+    "durationMinutes": 15
+  }
+}

@@ -1,0 +1,252 @@
+{
+  "id": "doc-hieu.04-xac-dinh-phuong-thuc-bieu-dat",
+  "title": "Xác định phương thức biểu đạt",
+  "version": "1.0",
+  "enabled": true,
+  "steps": [
+    {
+      "id": "step01",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "1. Tự sự (Kể chuyện)",
+            "icon": "📖",
+            "active": true,
+            "content": {
+              "text": "Trình bày một chuỗi các sự việc, sự việc này dẫn đến sự việc kia, cuối cùng dẫn đến một kết thúc, thể hiện một ý nghĩa.",
+              "examples": [
+                {
+                  "category": "Dấu hiệu",
+                  "word": "Có cốt truyện, nhân vật, chuỗi sự kiện, thời gian, không gian (thường thấy ở Truyện, Tiểu thuyết, Cổ tích).",
+                  "emoji": "🔍"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "2. Miêu tả",
+            "icon": "🎨",
+            "active": false,
+            "content": {
+              "text": "Dùng ngôn ngữ làm cho người nghe, người đọc hình dung được cụ thể sự vật, sự việc như đang hiện ra trước mắt.",
+              "examples": [
+                {
+                  "category": "Dấu hiệu",
+                  "word": "Nhiều tính từ, từ láy chỉ màu sắc, hình dáng, âm thanh...",
+                  "emoji": "🔍"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-3",
+            "title": "3. Biểu cảm",
+            "icon": "❤️",
+            "active": false,
+            "content": {
+              "text": "Bộc lộ tình cảm, cảm xúc của người viết trước những sự vật, hiện tượng trong đời sống.",
+              "examples": [
+                {
+                  "category": "Dấu hiệu",
+                  "word": "Thường thấy ở Thơ, có các từ cảm thán (ôi, chao ôi, thay, biết bao...), bộc lộ trực tiếp tình cảm.",
+                  "emoji": "🔍"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-4",
+            "title": "4. Nghị luận",
+            "icon": "⚖️",
+            "active": false,
+            "content": {
+              "text": "Trình bày ý kiến, đánh giá, bàn luận của người viết nhằm thuyết phục người đọc tin vào một quan điểm, tư tưởng.",
+              "examples": [
+                {
+                  "category": "Dấu hiệu",
+                  "word": "Có luận điểm, luận cứ, lập luận logic, từ ngữ mang tính triết lý, đánh giá (Tuy nhiên, Bởi vậy, Cho nên...).",
+                  "emoji": "🔍"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-5",
+            "title": "5. Thuyết minh",
+            "icon": "ℹ️",
+            "active": false,
+            "content": {
+              "text": "Cung cấp tri thức khách quan về đặc điểm, tính chất, nguyên nhân... của một sự vật, hiện tượng.",
+              "examples": [
+                {
+                  "category": "Dấu hiệu",
+                  "word": "Cung cấp số liệu chính xác, thông tin khách quan, khoa học, lịch sử (không đan xen cảm xúc cá nhân).",
+                  "emoji": "🔍"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-6",
+            "title": "6. Hành chính - công vụ",
+            "icon": "📝",
+            "active": false,
+            "content": {
+              "text": "Giao tiếp giữa Nhà nước với nhân dân, nhân dân với cơ quan Nhà nước... theo khuôn mẫu quy định.",
+              "examples": [
+                {
+                  "category": "Dấu hiệu",
+                  "word": "Có quốc hiệu, tiêu ngữ, chữ ký (Đơn từ, Báo cáo, Thông báo...). Rất hiếm gặp trong phần Đọc hiểu thi TS10.",
+                  "emoji": "🔍"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "6 Phương thức biểu đạt",
+        "instruction": "Hãy ghi nhớ các đặc điểm nhận diện của 6 phương thức biểu đạt thường gặp:",
+        "score": 1
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Phương thức biểu đạt CHÍNH",
+            "icon": "🎯",
+            "active": true,
+            "content": {
+              "text": "Khi đề bài hỏi \"Phương thức biểu đạt CHÍNH của văn bản là gì?\", bạn CHỈ ĐƯỢC CHỌN 1 phương thức chủ đạo nhất bao trùm toàn văn bản.",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Các phương thức biểu đạt",
+            "icon": "🧩",
+            "active": false,
+            "content": {
+              "text": "Khi đề bài hỏi \"Chỉ ra CÁC phương thức biểu đạt / Những phương thức biểu đạt nào được sử dụng?\", bạn cần liệt kê từ 2 phương thức trở lên (thường là 1 chính + 1 phụ).",
+              "examples": []
+            }
+          }
+        ],
+        "title": "Lưu ý quan trọng",
+        "instruction": "Một văn bản có thể sử dụng nhiều phương thức biểu đạt, nhưng câu hỏi thường chia làm 2 dạng:",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Xác định phương thức biểu đạt chính của văn bản sau:\n\"Hùng Vương thứ mười tám có một người con gái tên là Mị Nương, người đẹp như hoa, tính nết hiền dịu. Vua cha yêu thương nàng hết mực, muốn kén cho con một người chồng thật xứng đáng.\"\n(Sơn Tinh, Thủy Tinh)",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Miêu tả"
+          },
+          {
+            "id": "B",
+            "text": "Tự sự"
+          },
+          {
+            "id": "C",
+            "text": "Biểu cảm"
+          },
+          {
+            "id": "D",
+            "text": "Thuyết minh"
+          }
+        ],
+        "answer": "B",
+        "title": "Thực hành 1",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Phương thức biểu đạt chính của đoạn trích dưới đây là gì?\n\"Tự tin là sự tin tưởng vào khả năng của chính bản thân mình. Người có sự tự tin luôn tin vào những gì mình làm, dám nghĩ dám làm và không ngại đối mặt với thử thách. Sự tự tin giúp chúng ta vượt qua sợ hãi, mạnh mẽ đứng lên sau những vấp ngã. Thiếu tự tin, con người sẽ trở nên rụt rè, nhút nhát và đánh mất nhiều cơ hội quý giá trong cuộc sống.\"",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Thuyết minh"
+          },
+          {
+            "id": "B",
+            "text": "Biểu cảm"
+          },
+          {
+            "id": "C",
+            "text": "Tự sự"
+          },
+          {
+            "id": "D",
+            "text": "Nghị luận"
+          }
+        ],
+        "answer": "D",
+        "title": "Thực hành 2",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Những phương thức biểu đạt nào được sử dụng trong khổ thơ sau?\n\"Bếp Hoàng Cầm ta dựng giữa trời\nChung bát đũa nghĩa là gia đình đấy\nVõng mắc chông chênh đường xe chạy\nLại đi, lại đi trời xanh thêm.\"\n(Phạm Tiến Duật, Bài thơ về tiểu đội xe không kính)",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Biểu cảm và Miêu tả"
+          },
+          {
+            "id": "B",
+            "text": "Tự sự và Nghị luận"
+          },
+          {
+            "id": "C",
+            "text": "Biểu cảm, Tự sự và Miêu tả"
+          },
+          {
+            "id": "D",
+            "text": "Thuyết minh và Biểu cảm"
+          }
+        ],
+        "answer": "C",
+        "title": "Thực hành 3",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "flashcard",
+      "data": {
+        "front": "Nếu đoạn văn chủ yếu bày tỏ quan điểm, đưa ra luận điểm và lý lẽ để thuyết phục người đọc, đó là phương thức gì?",
+        "back": "Nghị luận.",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "doc-hieu",
+    "difficulty": 2,
+    "xp": 70,
+    "stars": 3,
+    "description": "Nhận diện 6 phương thức biểu đạt cơ bản và cách xác định phương thức biểu đạt chính của văn bản.",
+    "durationMinutes": 25
+  }
+}

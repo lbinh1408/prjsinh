@@ -1,0 +1,223 @@
+{
+  "id": "nghia-tu.05-tu-dong-am",
+  "title": "Từ đồng âm",
+  "version": "3.0",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "content": "Kiến <b>bò</b> đĩa thịt <b>bò</b>.<br>Ruồi <b>đậu</b> mâm xôi <b>đậu</b>.",
+        "guide": [
+          "Từ 'bò' thứ nhất và thứ hai có nghĩa giống nhau không?",
+          "Tương tự với từ 'đậu'?"
+        ],
+        "hint": "Chúng phát âm giống nhau nhưng nghĩa hoàn toàn khác nhau.",
+        "title": "Quan sát",
+        "instruction": "Đọc câu văn sau.",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "1. Giống nhau về âm thanh",
+            "icon": "🗣️",
+            "active": true,
+            "content": {
+              "text": "Phát âm giống hệt nhau.",
+              "examples": [
+                {
+                  "category": "Ví dụ: ",
+                  "word": "đường (con đường) và đường (đường kính ngọt)",
+                  "emoji": "🛤️"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "2. Khác biệt hoàn toàn về nghĩa",
+            "icon": "❌",
+            "active": false,
+            "content": {
+              "text": "Giữa các nghĩa của từ đồng âm không có bất kỳ mối liên hệ nào.",
+              "examples": [
+                {
+                  "category": "Ví dụ 1: ",
+                  "word": "ruồi đậu (hoạt động dừng lại) và xôi đậu (loại hạt)",
+                  "emoji": "🫘"
+                },
+                {
+                  "category": "Ví dụ 2: ",
+                  "word": "kiến bò (di chuyển) và thịt bò (tên con vật)",
+                  "emoji": "🐄"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Từ đồng âm là gì?",
+        "instruction": "Từ đồng âm là những từ giống nhau về âm thanh (phát âm, chữ viết) nhưng nghĩa hoàn toàn khác nhau, không liên quan gì với nhau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "identify",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trong câu 'Hổ mang bò lên núi', từ 'bò' là:",
+        "options": [
+          "Động từ chỉ hoạt động di chuyển",
+          "Danh từ chỉ con vật",
+          "Chơi chữ dùng hiện tượng đồng âm",
+          "Tất cả đều sai"
+        ],
+        "answer": "Chơi chữ dùng hiện tượng đồng âm",
+        "title": "Nhận biết",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Vì sao từ 'bò' trong 'thịt bò' và 'kiến bò' là từ đồng âm chứ không phải từ nhiều nghĩa?",
+        "sampleAnswer": [
+          "Vì hai từ này chỉ giống nhau về âm thanh, không có mối liên hệ nào về nghĩa.",
+          "Thịt bò chỉ con vật, còn kiến bò chỉ hành động di chuyển."
+        ],
+        "title": "Thông hiểu",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "highlight",
+      "data": {
+        "content": "Loài mực khổng lồ sống ở vùng biển sâu tối tăm, áp suất lớn và nhiệt độ thấp.",
+        "answer": [
+          "mực"
+        ],
+        "title": "Tô sáng",
+        "instruction": "Hãy chọn để tô sáng từ có hiện tượng đồng âm.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "reflection",
+      "data": {
+        "question": "Hãy viết một câu có sử dụng từ đồng âm ",
+        "sampleAnswer": "Trên đường về nhà, em ghé mua một bịch đường.",
+        "title": "Vận dụng",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Cặp từ nào sau đây là hiện tượng từ đồng âm?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "chân (người) - chân (ghế)"
+          },
+          {
+            "id": "B",
+            "text": "mũi (người) - mũi (thuyền)"
+          },
+          {
+            "id": "C",
+            "text": "đá (viên đá) - đá (đá bóng)"
+          },
+          {
+            "id": "D",
+            "text": "chạy (chạy bộ) - chạy (đồng hồ chạy)"
+          }
+        ],
+        "answer": "C",
+        "title": "Lựa chọn",
+        "score": 1
+      }
+    },
+    {
+      "id": "step08",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Bạn em năm nay lên chín.",
+          "Cơm đã chín."
+        ],
+        "right": [
+          "Số lượng (Nghĩa đồng âm)",
+          "Trạng thái thức ăn (Nghĩa đồng âm)"
+        ],
+        "answer": {
+          "Bạn em năm nay lên chín.": "Số lượng (Nghĩa đồng âm)",
+          "Cơm đã chín.": "Trạng thái thức ăn (Nghĩa đồng âm)"
+        },
+        "title": "Nối từ",
+        "instruction": "Ghép câu với nét nghĩa tương ứng của từ 'chín'.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step09",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "<b>Cổ</b> người - <b>cổ</b> chai",
+          "<b>Bạc</b> (tiền bạc) - <b>bạc</b> (tóc bạc)",
+          "<b>Mũi</b> người - <b>mũi</b> thuyền",
+          "<b>Đậu</b> (hạt đậu) - <b>đậu</b> (thi đậu)"
+        ],
+        "targets": [
+          "Từ nhiều nghĩa",
+          "Từ đồng âm"
+        ],
+        "answer": {
+          "<b>Cổ</b> người - <b>cổ</b> chai": "Từ nhiều nghĩa",
+          "<b>Mũi</b> người - <b>mũi</b> thuyền": "Từ nhiều nghĩa",
+          "<b>Bạc</b> (tiền bạc) - <b>bạc</b> (tóc bạc)": "Từ đồng âm",
+          "<b>Đậu</b> (hạt đậu) - <b>đậu</b> (thi đậu)": "Từ đồng âm"
+        },
+        "title": "Kéo và thả",
+        "instruction": "Hãy kéo và thả các câu vào đúng nhóm để phân biệt từ đồng âm và từ nhiều nghĩa.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step10",
+      "type": "flashcard",
+      "data": {
+        "front": "Từ đồng âm",
+        "back": "Từ đồng âm là những từ có âm giống nhau nhưng nghĩa khác xa nhau, không liên quan gì với nhau.",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "nghia-tu",
+    "difficulty": "reference",
+    "xp": 100,
+    "stars": 3,
+    "description": "Nhận biết và phân biệt từ đồng âm với từ nhiều nghĩa.",
+    "prerequisite": "nghia-tu.04-tu-nhieu-nghia",
+    "unlock": null,
+    "reviewMode": "instant",
+    "durationMinutes": 15
+  }
+}

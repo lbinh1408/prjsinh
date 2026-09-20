@@ -1,0 +1,102 @@
+{
+  "id": "cau.02-thanh-phan-phu-cua-cau",
+  "title": "Giới thiệu các thành phần phụ",
+  "version": "1.0",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "format": "essay",
+        "content": "<b>Ngày hôm qua</b>, tôi đến thăm ông giáo cũ. Ông kể cho tôi nghe về cuốn sách mình vừa hoàn thành. Ông mỉm cười rồi bảo: \"<b>Cuốn sách này</b>, tôi đã mất gần hai năm mới viết xong. <b>Có lẽ</b>, đây chính là cuốn sách tôi tâm đắc nhất!\" Nhìn ánh mắt đong đầy niềm vui của ông, tôi biết rằng, chắc chắn mỗi trang sách đều được viết bằng sự kiên trì và tình yêu của ông dành cho con chữ. ",
+        "guide": [
+          "Những từ in đậm trong câu trên đóng vai trò gì?",
+          "Nếu lược bỏ chúng đi, ý nghĩa cơ bản của câu có bị mất không?"
+        ],
+        "hint": "Các từ in đậm là thành phần phụ ('Ngày mai' bổ sung thời gian) và thành phần biệt lập ('chắc chắn' bộc lộ thái độ). Dù bỏ đi, nòng cốt câu (Nam sẽ đi học) vẫn trọn vẹn.",
+        "title": "Quan sát",
+        "instruction": "Đọc câu sau và chỉ ra các thành phần không phải là nòng cốt câu (Chủ ngữ - Vị ngữ).",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Thành phần phụ",
+            "icon": "📝",
+            "active": true,
+            "content": {
+              "text": "Thành phần phụ là những bộ phận không bắt buộc phải có để câu trọn vẹn ngữ pháp, nhưng chúng giúp bổ sung các thông tin quan trọng.",
+              "examples": [
+                {
+                  "category": "Bao gồm: ",
+                  "word": "Trạng ngữ (bổ sung thời gian, nơi chốn...) và Khởi ngữ (nêu đề tài của câu).",
+                  "emoji": "🌟"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Thành phần biệt lập",
+            "icon": "🧩",
+            "active": false,
+            "content": {
+              "text": "Thành phần biệt lập là bộ phận không tham gia vào việc diễn đạt nghĩa sự việc của câu.",
+              "examples": [
+                {
+                  "category": "Bao gồm: ",
+                  "word": "Tình thái, Cảm thán, Gọi đáp, Phụ chú.",
+                  "emoji": "💡"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Tổng quan",
+        "instruction": "Các thành phần không tham gia làm nòng cốt câu.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Trạng ngữ",
+          "Khởi ngữ",
+          "Thành phần biệt lập"
+        ],
+        "right": [
+          "Nêu lên đề tài được nói đến trong câu",
+          "Bổ sung hoàn cảnh (thời gian, nơi chốn...)",
+          "Thể hiện thái độ, cảm xúc, hoặc dùng để gọi đáp"
+        ],
+        "answer": {
+          "Trạng ngữ": "Bổ sung hoàn cảnh (thời gian, nơi chốn...)",
+          "Khởi ngữ": "Nêu lên đề tài được nói đến trong câu",
+          "Thành phần biệt lập": "Thể hiện thái độ, cảm xúc, hoặc dùng để gọi đáp"
+        },
+        "title": "Phân loại sơ bộ",
+        "instruction": "Ghép tên thành phần với đặc điểm khái quát của nó.",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "cau",
+    "difficulty": "reference",
+    "xp": 50,
+    "stars": 3,
+    "description": "Cái nhìn tổng quan về các thành phần nằm ngoài nòng cốt câu: Trạng ngữ, Khởi ngữ và các Thành phần biệt lập.",
+    "prerequisite": null,
+    "unlock": null,
+    "reviewMode": "instant",
+    "durationMinutes": 10
+  }
+}

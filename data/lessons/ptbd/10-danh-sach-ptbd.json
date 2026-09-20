@@ -1,0 +1,338 @@
+{
+    "id": "so-tay-ptbd",
+    "title": "📒 Sổ tay Phương thức biểu đạt — Nhận diện và phân biệt",
+    "type": "reference",
+    "version": "1.0.0",
+    "meta": {
+        "module": "ptbd",
+        "category": "reference-tool",
+        "difficulty": "basic-to-advanced",
+        "target": "TS10-HCMC",
+        "description": "Sổ tay tra cứu nhanh giúp học sinh nhận diện chính xác 6 phương thức biểu đạt, phân biệt các phương thức dễ nhầm lẫn (Tự sự - Miêu tả, Nghị luận - Thuyết minh).",
+        "purpose": [
+            "Tra cứu nhanh khi làm phần Đọc hiểu",
+            "Nhận diện phương thức biểu đạt chính của văn bản",
+            "Phân biệt những phương thức biểu đạt dễ nhầm"
+        ]
+    },
+    "learningGoals": [
+        "Nắm vững đặc điểm nhận diện của 6 phương thức biểu đạt.",
+        "Phân biệt được Phương thức biểu đạt CHÍNH và các phương thức kết hợp.",
+        "Tránh nhầm lẫn giữa Tự sự với Miêu tả, Nghị luận với Thuyết minh."
+    ],
+    "steps": [
+        {
+            "id": "step_1",
+            "type": "reference",
+            "data": {
+                "usageGuide": {
+                    "title": "Cách dùng sổ tay",
+                    "principle": "Để xác định phương thức biểu đạt CHÍNH, hãy hỏi 'Mục đích cuối cùng của tác giả khi viết đoạn này là gì?'",
+                    "quickProcess": [
+                        "Bước 1: Đọc lướt văn bản để nắm nội dung tổng thể.",
+                        "Bước 2: Tìm các dấu hiệu đặc trưng (cốt truyện, từ bộc lộ cảm xúc, luận điểm...).",
+                        "Bước 3: Xác định mục đích chính yếu (Kể chuyện? Miêu tả? Bộc lộ tình cảm? Thuyết phục?).",
+                        "Bước 4: Loại trừ các phương thức phụ (yếu tố kết hợp)."
+                    ],
+                    "warning": "Đừng nhầm lẫn giữa phương thức biểu đạt chính (chỉ có 1) với các yếu tố miêu tả/biểu cảm xen kẽ."
+                },
+                "map": {
+                    "title": "🗺️ Bản đồ Phương thức biểu đạt",
+                    "description": "Nhìn nhanh 6 phương thức biểu đạt trong nhà trường.",
+                    "groups": [
+                        {
+                            "id": "nghe-thuat",
+                            "name": "Thường gặp trong văn học",
+                            "description": "Các phương thức thiên về cảm xúc, hình ảnh, câu chuyện.",
+                            "items": [
+                                "tu-su",
+                                "mieu-ta",
+                                "bieu-cam"
+                            ]
+                        },
+                        {
+                            "id": "thuc-dung",
+                            "name": "Thường gặp trong đời sống & khoa học",
+                            "description": "Các phương thức thiên về lý lẽ, thông tin, quy định.",
+                            "items": [
+                                "nghi-luan",
+                                "thuyet-minh",
+                                "hanh-chinh"
+                            ]
+                        }
+                    ]
+                },
+                "wordTypes": [
+                    {
+                        "id": "tu-su",
+                        "name": "Tự sự",
+                        "icon": "📖",
+                        "priority": "core",
+                        "keywords": [
+                            "kể chuyện",
+                            "diễn biến",
+                            "sự kiện",
+                            "nhân vật",
+                            "cốt truyện"
+                        ],
+                        "coreFact": "Trình bày một chuỗi các sự việc, sự kiện có mở đầu, diễn biến và kết thúc.",
+                        "essence": {
+                            "question": "Văn bản có đang KỂ lại một câu chuyện không?",
+                            "answer": "Có nhân vật, có hoàn cảnh, có sự việc xảy ra theo trình tự thời gian."
+                        },
+                        "recognition": [
+                            "Có nhân vật, bối cảnh thời gian, không gian.",
+                            "Có cốt truyện, có chuỗi sự kiện nối tiếp nhau.",
+                            "Sử dụng nhiều động từ chỉ hành động."
+                        ],
+                        "quickTest": [
+                            "Có thể tóm tắt lại thành một câu chuyện không?",
+                            "Có các sự việc nối tiếp nhau không?"
+                        ],
+                        "examples": [
+                            {
+                                "sentence": "Một hôm, mẹ Cám đưa cho Tấm và Cám mỗi người một cái giỏ sai đi bắt tép...",
+                                "word": "Tóm tắt sự việc",
+                                "analysis": "Đây là Tự sự vì có nhân vật (mẹ Cám, Tấm, Cám) và có sự kiện (đưa giỏ, sai đi bắt tép) đang diễn ra."
+                            }
+                        ],
+                        "confusableWith": [
+                            {
+                                "type": "mieu-ta",
+                                "difference": "Tự sự thiên về HÀNH ĐỘNG, SỰ KIỆN (có sự dịch chuyển thời gian). Miêu tả thiên về HÌNH ẢNH, ĐẶC ĐIỂM (như một bức tranh tĩnh)."
+                            }
+                        ],
+                        "examTips": [
+                            "Truyện ngắn, tiểu thuyết, truyện cổ tích... luôn có phương thức biểu đạt chính là Tự sự."
+                        ],
+                        "usableFor": [
+                            "nhan-dien-ptbd"
+                        ]
+                    },
+                    {
+                        "id": "mieu-ta",
+                        "name": "Miêu tả",
+                        "icon": "🎨",
+                        "priority": "core",
+                        "keywords": [
+                            "tái hiện",
+                            "hình dáng",
+                            "màu sắc",
+                            "âm thanh",
+                            "bức tranh"
+                        ],
+                        "coreFact": "Tái hiện lại những đặc điểm, tính chất nội tâm hoặc ngoại hình của con người, cảnh vật để người đọc có thể hình dung được.",
+                        "essence": {
+                            "question": "Văn bản có đang VẼ ra một bức tranh bằng ngôn từ không?",
+                            "answer": "Giúp người đọc tưởng tượng được hình dáng, màu sắc, âm thanh, tính chất của đối tượng."
+                        },
+                        "recognition": [
+                            "Sử dụng nhiều tính từ chỉ đặc điểm, màu sắc, hình dáng.",
+                            "Sử dụng nhiều từ láy gợi hình, gợi thanh.",
+                            "Có nhiều hình ảnh so sánh, nhân hóa."
+                        ],
+                        "quickTest": [
+                            "Nhắm mắt lại có tưởng tượng ra được khung cảnh, đối tượng đó không?",
+                            "Đoạn văn này giống một bức tranh (miêu tả) hay một đoạn phim (tự sự)?"
+                        ],
+                        "examples": [
+                            {
+                                "sentence": "Làn thu thủy nét xuân sơn / Hoa ghen thua thắm liễu hờn kém xanh.",
+                                "word": "Tái hiện vẻ đẹp",
+                                "analysis": "Đây là Miêu tả vì tái hiện lại vẻ đẹp nhan sắc của Thúy Kiều qua các hình ảnh ước lệ."
+                            }
+                        ],
+                        "confusableWith": [
+                            {
+                                "type": "tu-su",
+                                "difference": "Miêu tả làm hiện lên ĐẶC ĐIỂM sự vật. Tự sự kể lại DIỄN BIẾN sự việc."
+                            }
+                        ],
+                        "examTips": [
+                            "Trong văn tự sự thường xen lẫn miêu tả. Nhưng nếu câu hỏi hỏi 'PTBĐ chính' của một đoạn truyện thì vẫn là Tự sự."
+                        ],
+                        "usableFor": [
+                            "nhan-dien-ptbd"
+                        ]
+                    },
+                    {
+                        "id": "bieu-cam",
+                        "name": "Biểu cảm",
+                        "icon": "❤️",
+                        "priority": "core",
+                        "keywords": [
+                            "tình cảm",
+                            "cảm xúc",
+                            "thái độ",
+                            "bộc lộ",
+                            "tâm trạng"
+                        ],
+                        "coreFact": "Bộc lộ trực tiếp hoặc gián tiếp tình cảm, cảm xúc, thái độ của người viết trước những hiện tượng đời sống.",
+                        "essence": {
+                            "question": "Tác giả có đang bộc lộ CẢM XÚC (yêu, ghét, buồn, vui...) không?",
+                            "answer": "Mục đích lớn nhất là chia sẻ tâm tư, tình cảm."
+                        },
+                        "recognition": [
+                            "Sử dụng nhiều từ ngữ chỉ cảm xúc (vui, buồn, xót xa, thương...).",
+                            "Nhiều thán từ (ôi, than ôi, chao ôi, thay...).",
+                            "Nhiều câu cảm thán, câu hỏi tu từ bộc lộ tâm trạng."
+                        ],
+                        "quickTest": [
+                            "Đoạn văn/thơ này có chạm đến cảm xúc người đọc không?",
+                            "Tác giả có đang trực tiếp thốt lên nỗi lòng mình không?"
+                        ],
+                        "examples": [
+                            {
+                                "sentence": "Nhớ ai bổi hổi bồi hồi / Như đứng đống lửa như ngồi đống than.",
+                                "word": "Bộc lộ nỗi nhớ",
+                                "analysis": "Đây là Biểu cảm vì trực tiếp bộc lộ tâm trạng nhớ nhung da diết của nhân vật trữ tình."
+                            }
+                        ],
+                        "confusableWith": [],
+                        "examTips": [
+                            "Thơ ca (thơ trữ tình, ca dao) thường có phương thức biểu đạt CHÍNH là Biểu cảm, dù trong đó có thể kể chuyện hoặc miêu tả cảnh."
+                        ],
+                        "usableFor": [
+                            "nhan-dien-ptbd"
+                        ]
+                    },
+                    {
+                        "id": "nghi-luan",
+                        "name": "Nghị luận",
+                        "icon": "⚖️",
+                        "priority": "core",
+                        "keywords": [
+                            "bàn bạc",
+                            "ý kiến",
+                            "luận điểm",
+                            "lí lẽ",
+                            "thuyết phục"
+                        ],
+                        "coreFact": "Trình bày ý kiến, đánh giá, nhận xét (luận điểm) và dùng lí lẽ, dẫn chứng để thuyết phục người đọc tin vào ý kiến đó.",
+                        "essence": {
+                            "question": "Tác giả có đang THUYẾT PHỤC người đọc tin vào một quan điểm nào đó không?",
+                            "answer": "Đưa ra vấn đề, dùng lí lẽ và dẫn chứng để làm sáng tỏ đúng/sai, tốt/xấu."
+                        },
+                        "recognition": [
+                            "Có luận điểm rõ ràng (một câu khẳng định/phủ định).",
+                            "Có hệ thống lí lẽ (vì sao, bởi vì, do đó...).",
+                            "Có dẫn chứng thực tế để chứng minh.",
+                            "Sử dụng nhiều quan hệ từ lập luận (tuy nhiên, mặt khác, tóm lại...)."
+                        ],
+                        "quickTest": [
+                            "Đọc xong có thấy tác giả đang khuyên răn, bàn luận hay muốn mình đồng tình với một ý kiến không?"
+                        ],
+                        "examples": [
+                            {
+                                "sentence": "Học vấn không chỉ là chuyện đọc sách, nhưng đọc sách vẫn là một con đường quan trọng của học vấn.",
+                                "word": "Quan điểm",
+                                "analysis": "Đây là Nghị luận vì tác giả đang đưa ra quan điểm (luận điểm) về vai trò của việc đọc sách."
+                            }
+                        ],
+                        "confusableWith": [
+                            {
+                                "type": "thuyet-minh",
+                                "difference": "Nghị luận dùng để THUYẾT PHỤC (đúng/sai, ý kiến cá nhân). Thuyết minh dùng để CUNG CẤP THÔNG TIN (khách quan, sự thật)."
+                            }
+                        ],
+                        "examTips": [
+                            "Các bài báo bình luận, bài xã luận, bài nghị luận xã hội/văn học đều có PTBĐ chính là Nghị luận."
+                        ],
+                        "usableFor": [
+                            "nhan-dien-ptbd"
+                        ]
+                    },
+                    {
+                        "id": "thuyet-minh",
+                        "name": "Thuyết minh",
+                        "icon": "ℹ️",
+                        "priority": "core",
+                        "keywords": [
+                            "cung cấp tri thức",
+                            "giới thiệu",
+                            "khách quan",
+                            "cấu tạo",
+                            "nguồn gốc"
+                        ],
+                        "coreFact": "Cung cấp tri thức khách quan về đặc điểm, tính chất, nguyên nhân, nguồn gốc, cấu tạo... của sự vật, hiện tượng.",
+                        "essence": {
+                            "question": "Văn bản có đang GIỚI THIỆU, CUNG CẤP THÔNG TIN khoa học, chính xác không?",
+                            "answer": "Đưa ra các số liệu, nguồn gốc, cấu tạo để người đọc hiểu biết thêm về đối tượng."
+                        },
+                        "recognition": [
+                            "Ngôn ngữ chính xác, khách quan (không chêm xen cảm xúc cá nhân).",
+                            "Sử dụng nhiều số liệu, ngày tháng, định nghĩa.",
+                            "Mục đích là để HIỂU (không phải để tin/đồng tình như nghị luận)."
+                        ],
+                        "quickTest": [
+                            "Đoạn văn này có giống một mục trong từ điển hay bách khoa toàn thư không?",
+                            "Thông tin đưa ra có mang tính khách quan, khoa học không?"
+                        ],
+                        "examples": [
+                            {
+                                "sentence": "Cây dừa thuộc họ cau, thân trụ thẳng đứng, có thể cao tới 30m, lá hình lông chim...",
+                                "word": "Cung cấp thông tin",
+                                "analysis": "Đây là Thuyết minh vì nó cung cấp tri thức khách quan về cấu tạo, đặc điểm sinh học của cây dừa."
+                            }
+                        ],
+                        "confusableWith": [
+                            {
+                                "type": "nghi-luan",
+                                "difference": "Thuyết minh mang tính KHÁCH QUAN, cung cấp tri thức ai cũng công nhận. Nghị luận mang tính CHỦ QUAN, đưa ra ý kiến để thuyết phục."
+                            },
+                            {
+                                "type": "mieu-ta",
+                                "difference": "Miêu tả gợi cảm giác, cảm xúc bằng ngôn từ nghệ thuật. Thuyết minh mô tả hình dáng, cấu tạo bằng ngôn ngữ khoa học, chính xác."
+                            }
+                        ],
+                        "examTips": [
+                            "Thường gặp ở văn bản giới thiệu di tích lịch sử, danh lam thắng cảnh, tiểu sử tác giả, hướng dẫn sử dụng..."
+                        ],
+                        "usableFor": [
+                            "nhan-dien-ptbd"
+                        ]
+                    },
+                    {
+                        "id": "hanh-chinh",
+                        "name": "Hành chính - Công vụ",
+                        "icon": "📄",
+                        "priority": "support",
+                        "keywords": [
+                            "văn bản pháp lý",
+                            "quy định",
+                            "thông báo",
+                            "khuôn mẫu",
+                            "nhà nước"
+                        ],
+                        "coreFact": "Trình bày ý muốn, quyết định, quy định của cơ quan nhà nước, đoàn thể hoặc cá nhân theo những khuôn mẫu nhất định.",
+                        "essence": {
+                            "question": "Đây có phải là một văn bản giấy tờ có khuôn mẫu nhà nước không?",
+                            "answer": "Là đơn từ, thông báo, quyết định, nghị quyết..."
+                        },
+                        "recognition": [
+                            "Có cấu trúc cố định (Quốc hiệu, Tiêu ngữ, Kính gửi...).",
+                            "Ngôn ngữ chuẩn xác, rõ ràng, không dùng từ ngữ nghệ thuật hay bộc lộ cảm xúc."
+                        ],
+                        "quickTest": [
+                            "Văn bản này có dùng để quản lý, điều hành hay yêu cầu giải quyết một việc hành chính không?"
+                        ],
+                        "examples": [
+                            {
+                                "sentence": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM / Độc lập - Tự do - Hạnh phúc / ĐƠN XIN PHÉP NGHỈ HỌC...",
+                                "word": "Khuôn mẫu giấy tờ",
+                                "analysis": "Đây là phong cách hành chính - công vụ rõ nét."
+                            }
+                        ],
+                        "confusableWith": [],
+                        "examTips": [
+                            "PTBĐ này rất hiếm gặp trong đề Đọc hiểu Ngữ văn 9 thi vào 10 (thường đề cho thơ/truyện hoặc văn bản nghị luận xã hội)."
+                        ],
+                        "usableFor": [
+                            "nhan-dien-ptbd"
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}

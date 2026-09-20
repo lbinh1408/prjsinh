@@ -1,0 +1,289 @@
+{
+  "id": "tu-loai.09-than-tu",
+  "title": "Thán từ",
+  "version": "3.0",
+  "image": "assets/images/than-tu.png",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "content": "<b>Ôi</b>! Bầu trời hôm nay đẹp quá!",
+        "guide": [
+          "Chú ý từ được in đậm trong câu.",
+          "Từ đó được dùng để làm gì?"
+        ],
+        "hint": "Từ in đậm thể hiện cảm xúc ngạc nhiên, thích thú của người nói.",
+        "title": "Quan sát",
+        "instruction": "Đọc câu văn dưới đây.",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "1. Định nghĩa cốt lõi",
+            "icon": "📖",
+            "active": true,
+            "content": {
+              "text": "Thán từ là những từ dùng để bộc lộ tình cảm, cảm xúc của người nói hoặc dùng để gọi đáp.",
+              "examples": [
+                {
+                  "category": "Bộc lộ cảm xúc",
+                  "word": "ôi, than ôi, trời ơi",
+                  "emoji": "😲"
+                },
+                {
+                  "category": "Gọi đáp",
+                  "word": "này, dạ, vâng, ơi",
+                  "emoji": "🗣️"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "2. Đặc điểm ngữ pháp",
+            "icon": "🔗",
+            "active": false,
+            "content": {
+              "combination": {
+                "description": "Thường đứng ở đầu câu, nhưng cũng có thể tách ra thành một câu đặc biệt",
+                "examples": [
+                  "Chao ôi! Nước biển thật xanh.",
+                  "Dạ! Cháu sẽ làm ngay ạ"
+                ]
+              }
+            }
+          }
+        ],
+        "title": "Khái niệm",
+        "instruction": "Từ vừa tìm được chính là một <i>thán từ</i>.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "identify",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Từ nào sau đây là thán từ?",
+        "options": [
+          "bầu trời",
+          "chạy bộ",
+          "than ôi",
+          "rực rỡ"
+        ],
+        "answer": "than ôi",
+        "title": "Nhận biết",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Giải thích vì sao 'Vâng' là thán từ trong câu: 'Vâng! Cháu sẽ làm ngay ạ.'?",
+        "sampleAnswer": [
+          "Vì nó dùng để đáp lời người khác.",
+          "Vì nó thể hiện sự đồng tình, lễ phép khi đáp lời."
+        ],
+        "title": "Thông hiểu",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "highlight",
+      "data": {
+        "content": "Ôi! Bông hoa này đẹp quá!",
+        "answer": [
+          "Ôi"
+        ],
+        "title": "Tô sáng",
+        "instruction": "Hãy chọn để tô sáng các thán từ trong câu sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "reflection",
+      "data": {
+        "question": "Hãy viết một câu có sử dụng thán từ 'Chao ôi'.",
+        "sampleAnswer": "Chao ôi! Bông hoa này đẹp quá!",
+        "title": "Vận dụng",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "1. Thán từ bộc lộ tình cảm, cảm xúc",
+            "icon": "😲",
+            "active": true,
+            "content": {
+              "items": [
+                {
+                  "type": "common",
+                  "label": "Ngạc nhiên, vui mừng",
+                  "definition": "Thể hiện sự bất ngờ tích cực.",
+                  "examples": [
+                    "ôi, a, á, ồ"
+                  ]
+                },
+                {
+                  "type": "common",
+                  "label": "Đau buồn, nuối tiếc",
+                  "definition": "Thể hiện sự thất vọng, buồn bã.",
+                  "examples": [
+                    "than ôi, trời ơi, chao ôi"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "2. Thán từ gọi đáp",
+            "icon": "🗣️",
+            "active": false,
+            "content": {
+              "items": [
+                {
+                  "type": "common",
+                  "label": "Gọi",
+                  "definition": "Dùng để thu hút sự chú ý.",
+                  "examples": [
+                    "này, ê, bớ"
+                  ]
+                },
+                {
+                  "type": "common",
+                  "label": "Đáp",
+                  "definition": "Dùng để phản hồi lại lời gọi.",
+                  "examples": [
+                    "dạ, vâng, ừ, ơi"
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Phân loại thán từ",
+        "score": 0
+      }
+    },
+    {
+      "id": "step08",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trong câu 'Này, cậu đi đâu đấy?', từ 'Này' là loại thán từ gì?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Bộc lộ cảm xúc"
+          },
+          {
+            "id": "B",
+            "text": "Gọi đáp"
+          }
+        ],
+        "answer": "B",
+        "title": "Lựa chọn",
+        "score": 1
+      }
+    },
+    {
+      "id": "step09",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Vâng",
+          "Này",
+          "Ôi",
+          "Than ôi"
+        ],
+        "right": [
+          "Đáp lời",
+          "Gọi",
+          "Bộc lộ sự ngạc nhiên",
+          "Bộc lộ sự tiếc nuối"
+        ],
+        "answer": {
+          "Vâng": "Đáp lời",
+          "Này": "Gọi",
+          "Ôi": "Bộc lộ sự ngạc nhiên",
+          "Than ôi": "Bộc lộ sự tiếc nuối"
+        },
+        "title": "Nối từ",
+        "instruction": "Ghép thán từ với ý nghĩa biểu đạt tương ứng.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step10",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "ôi",
+          "dạ",
+          "vâng",
+          "ê",
+          "chạy",
+          "đẹp",
+          "trường học"
+        ],
+        "targets": [
+          "Thán từ",
+          "Không phải thán từ"
+        ],
+        "answer": {
+          "ôi": "Thán từ",
+          "dạ": "Thán từ",
+          "vâng": "Thán từ",
+          "ê": "Thán từ",
+          "chạy": "Không phải thán từ",
+          "đẹp": "Không phải thán từ",
+          "trường học": "Không phải thán từ"
+        },
+        "title": "Kéo và thả",
+        "instruction": "Hãy kéo và thả các từ vào đúng danh mục.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step11",
+      "type": "flashcard",
+      "data": {
+        "front": "Thán từ",
+        "back": "Thán từ là những từ dùng để bộc lộ tình cảm, cảm xúc của người nói hoặc dùng để gọi đáp.",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "tu-loai",
+    "difficulty": "reference",
+    "xp": 100,
+    "stars": 3,
+    "description": "Nhận biết và sử dụng thán từ trong tiếng Việt.",
+    "prerequisite": null,
+    "unlock": null,
+    "reviewMode": "instant",
+    "durationMinutes": 15
+  }
+}

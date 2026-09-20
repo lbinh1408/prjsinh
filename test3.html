@@ -1,0 +1,2652 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khám phá Danh từ</title>
+
+    <style>
+        :root {
+            --bg: #f6f8fc;
+            --surface: #ffffff;
+            --surface-soft: #f0f4fa;
+            --text: #172033;
+            --muted: #667085;
+            --primary: #4f46e5;
+            --primary-soft: #eef2ff;
+            --success: #16855b;
+            --success-soft: #eaf8f1;
+            --warning: #b7791f;
+            --warning-soft: #fff7df;
+            --danger: #c24141;
+            --danger-soft: #fff0f0;
+            --border: #e4e8f0;
+            --shadow: 0 8px 30px rgba(31, 41, 55, .07);
+            --radius: 18px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.65;
+        }
+
+        button,
+        textarea {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        .app {
+            min-height: 100vh;
+        }
+
+        /* =========================
+   TOP BAR
+========================= */
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            height: 68px;
+            background: rgba(255, 255, 255, .94);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            padding: 0 28px;
+        }
+
+        .topbar-inner {
+            width: min(1100px, 100%);
+            margin: auto;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 18px;
+            white-space: nowrap;
+        }
+
+        .lesson-name {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .progress-wrap {
+            margin-left: auto;
+            width: 240px;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: var(--muted);
+            margin-bottom: 5px;
+        }
+
+        .progress {
+            height: 6px;
+            background: #e9edf5;
+            border-radius: 99px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: var(--primary);
+            transition: width .5s ease;
+        }
+
+        /* =========================
+   MAIN
+========================= */
+
+        .main {
+            width: min(920px, calc(100% - 32px));
+            margin: 42px auto 80px;
+        }
+
+        .screen {
+            display: none;
+            animation: fadeIn .35s ease;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================
+   HERO
+========================= */
+
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-card {
+            width: min(720px, 100%);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            border-radius: 28px;
+            padding: 56px 56px 48px;
+            text-align: center;
+        }
+
+        .mission-icon {
+            width: 76px;
+            height: 76px;
+            margin: 0 auto 24px;
+            border-radius: 24px;
+            background: var(--primary-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+        }
+
+        .eyebrow {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: .04em;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 48px);
+            line-height: 1.15;
+            margin: 12px 0 18px;
+        }
+
+        .hero p {
+            color: var(--muted);
+            max-width: 570px;
+            margin: 0 auto 30px;
+        }
+
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+
+        .meta span {
+            background: var(--surface-soft);
+            padding: 7px 13px;
+            border-radius: 999px;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        /* =========================
+   BUTTON
+========================= */
+
+        .btn {
+            border: 0;
+            border-radius: 12px;
+            padding: 13px 20px;
+            font-weight: 700;
+            transition: .2s ease;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(79, 70, 229, .2);
+        }
+
+        .btn-secondary {
+            background: var(--surface-soft);
+            color: var(--text);
+        }
+
+        .btn:disabled {
+            opacity: .45;
+            cursor: not-allowed;
+        }
+
+        /* =========================
+   CONTENT CARD
+========================= */
+
+        .lesson-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 34px;
+        }
+
+        .section-kicker {
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+        }
+
+        .lesson-card h2 {
+            margin: 7px 0 10px;
+            font-size: 30px;
+            line-height: 1.25;
+        }
+
+        .description {
+            color: var(--muted);
+            margin-top: 0;
+        }
+
+        .quote {
+            margin: 24px 0;
+            padding: 22px 24px;
+            background: #fafbfe;
+            border-left: 4px solid var(--primary);
+            border-radius: 10px;
+            font-size: 18px;
+        }
+
+        .next-row {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 30px;
+        }
+
+        /* =========================
+   TEXT WORD PICKER
+========================= */
+
+        .word-picker {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 25px 0;
+        }
+
+        .word {
+            border: 1px solid var(--border);
+            background: white;
+            border-radius: 10px;
+            padding: 9px 13px;
+            transition: .2s;
+        }
+
+        .word:hover {
+            border-color: var(--primary);
+        }
+
+        .word.selected {
+            background: var(--primary-soft);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .word.correct {
+            background: var(--success-soft);
+            border-color: var(--success);
+            color: var(--success);
+        }
+
+        .word.wrong {
+            background: var(--danger-soft);
+            border-color: var(--danger);
+            color: var(--danger);
+        }
+
+        /* =========================
+   FEEDBACK
+========================= */
+
+        .feedback {
+            display: none;
+            margin-top: 22px;
+            border-radius: 14px;
+            padding: 18px;
+            animation: fadeIn .25s ease;
+        }
+
+        .feedback.show {
+            display: block;
+        }
+
+        .feedback.success {
+            background: var(--success-soft);
+            border: 1px solid #bfe8d3;
+        }
+
+        .feedback.error {
+            background: var(--danger-soft);
+            border: 1px solid #f0c7c7;
+        }
+
+        .feedback.warning {
+            background: var(--warning-soft);
+            border: 1px solid #f0db9b;
+        }
+
+        .feedback-title {
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        /* =========================
+   CATEGORY
+========================= */
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-top: 25px;
+        }
+
+        .category {
+            min-height: 190px;
+            padding: 18px;
+            border: 2px dashed #cfd5df;
+            border-radius: 16px;
+            background: #fbfcfe;
+        }
+
+        .category.dragover {
+            border-color: var(--primary);
+            background: var(--primary-soft);
+        }
+
+        .category h3 {
+            margin: 0 0 15px;
+            font-size: 15px;
+        }
+
+        .category small {
+            color: var(--muted);
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .drag-card {
+            padding: 9px 13px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: white;
+            cursor: grab;
+        }
+
+        .drag-card.used {
+            opacity: .3;
+            pointer-events: none;
+        }
+
+        /* =========================
+   TEACH
+========================= */
+
+        .definition {
+            margin-top: 25px;
+            padding: 25px;
+            border-radius: 16px;
+            background: var(--primary-soft);
+            border: 1px solid #d8dcff;
+        }
+
+        .definition strong {
+            color: var(--primary);
+            font-size: 21px;
+        }
+
+        .examples {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .example {
+            background: #fafbfc;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 15px;
+        }
+
+        .example b {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* =========================
+   CHOICE
+========================= */
+
+        .choice-list {
+            display: grid;
+            gap: 10px;
+            margin-top: 22px;
+        }
+
+        .choice {
+            padding: 15px 17px;
+            border: 1px solid var(--border);
+            background: white;
+            border-radius: 12px;
+            text-align: left;
+            transition: .2s;
+        }
+
+        .choice:hover {
+            border-color: var(--primary);
+        }
+
+        .choice.selected {
+            border-color: var(--primary);
+            background: var(--primary-soft);
+        }
+
+        .choice.correct {
+            border-color: var(--success);
+            background: var(--success-soft);
+        }
+
+        .choice.wrong {
+            border-color: var(--danger);
+            background: var(--danger-soft);
+        }
+
+        /* =========================
+   HINT
+========================= */
+
+        .hint-box {
+            margin-top: 18px;
+            display: none;
+            background: var(--warning-soft);
+            border: 1px solid #f0db9b;
+            border-radius: 14px;
+            padding: 16px;
+        }
+
+        .hint-box.show {
+            display: block;
+        }
+
+        /* =========================
+   WRITING
+========================= */
+
+        textarea {
+            width: 100%;
+            min-height: 150px;
+            resize: vertical;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 16px;
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, .08);
+        }
+
+        .requirements {
+            display: grid;
+            gap: 8px;
+            margin: 18px 0;
+        }
+
+        .requirement {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .requirement.done {
+            color: var(--success);
+            font-weight: 700;
+        }
+
+        /* =========================
+   FINAL
+========================= */
+
+        .result-card {
+            text-align: center;
+        }
+
+        .result-icon {
+            width: 84px;
+            height: 84px;
+            margin: 0 auto 18px;
+            background: var(--success-soft);
+            border-radius: 26px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+
+        .skills {
+            display: grid;
+            gap: 14px;
+            margin-top: 28px;
+            text-align: left;
+        }
+
+        .skill {
+            display: grid;
+            grid-template-columns: 180px 1fr 50px;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .skill-name {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .skill-track {
+            height: 8px;
+            background: #e9edf5;
+            border-radius: 99px;
+            overflow: hidden;
+        }
+
+        .skill-fill {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 99px;
+        }
+
+        .skill-percent {
+            text-align: right;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .next-skill {
+            margin-top: 28px;
+            background: var(--warning-soft);
+            border-radius: 14px;
+            padding: 18px;
+            text-align: left;
+        }
+
+        /* =========================
+   RESPONSIVE
+========================= */
+
+        @media (max-width: 700px) {
+
+            .topbar {
+                padding: 0 16px;
+            }
+
+            .lesson-name {
+                display: none;
+            }
+
+            .progress-wrap {
+                width: 140px;
+            }
+
+            .main {
+                width: min(100% - 20px, 920px);
+                margin-top: 20px;
+            }
+
+            .hero-card,
+            .lesson-card {
+                padding: 26px 20px;
+            }
+
+            .categories {
+                grid-template-columns: 1fr;
+            }
+
+            .examples {
+                grid-template-columns: 1fr;
+            }
+
+            .skill {
+                grid-template-columns: 1fr;
+                gap: 5px;
+            }
+
+            .skill-percent {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- =========================
+         TOP BAR
+    ========================== -->
+
+        <header class="topbar">
+            <div class="topbar-inner">
+
+                <div class="logo">Ngữ Văn 9</div>
+
+                <div class="lesson-name">
+                    Khám phá Danh từ
+                </div>
+
+                <div class="progress-wrap">
+
+                    <div class="progress-label">
+                        <span>Tiến trình</span>
+                        <span id="progressText">0%</span>
+                    </div>
+
+                    <div class="progress">
+                        <div id="progressBar" class="progress-bar">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </header>
+
+
+        <main class="main">
+
+
+            <!-- =====================================================
+             SCREEN 0 — START
+        ====================================================== -->
+
+            <section id="screen-start" class="screen active">
+
+                <div class="hero">
+
+                    <div class="hero-card">
+
+                        <div class="mission-icon">
+                            🔎
+                        </div>
+
+                        <div class="eyebrow">
+                            Nhiệm vụ khám phá
+                        </div>
+
+                        <h1>
+                            Những từ đang<br>
+                            gọi tên thế giới
+                        </h1>
+
+                        <p>
+                            Trong một đoạn văn có những từ đang
+                            gọi tên người, vật, nơi chốn, sự việc
+                            và cả những điều ta không thể cầm nắm.
+                            Em có tìm ra được chúng không?
+                        </p>
+
+                        <div class="meta">
+                            <span>⏱ 15–20 phút</span>
+                            <span>🧠 Khám phá</span>
+                            <span>✍️ Thực hành</span>
+                        </div>
+
+                        <button class="btn btn-primary" onclick="goTo('observe')">
+
+                            Bắt đầu khám phá →
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+             SCREEN 1 — OBSERVE
+        ====================================================== -->
+
+            <section id="screen-observe" class="screen">
+
+                <div class="lesson-card">
+
+                    <div class="section-kicker">
+                        👀 Quan sát
+                    </div>
+
+                    <h2>
+                        Em nhìn thấy những từ nào?
+                    </h2>
+
+                    <p class="description">
+                        Hãy chọn những từ đang làm nhiệm vụ
+                        “gọi tên” người, vật, nơi chốn,
+                        sự việc hoặc khái niệm.
+                    </p>
+
+                    <div class="quote">
+                        Buổi sáng, con đường trước nhà tôi còn
+                        vương hơi sương. Những hàng cây im lặng
+                        bên vỉa hè. Xa xa, tiếng chim gọi nhau
+                        trong khu vườn nhỏ.
+                    </div>
+
+                    <div id="wordPicker" class="word-picker">
+                    </div>
+
+                    <div id="observeFeedback" class="feedback">
+                    </div>
+
+                    <div class="next-row">
+
+                        <button id="observeNext" class="btn btn-primary" onclick="goTo('classify')">
+
+                            Tiếp tục →
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+             SCREEN 2 — CLASSIFY
+        ====================================================== -->
+
+            <section id="screen-classify" class="screen">
+
+                <div class="lesson-card">
+
+                    <div class="section-kicker">
+                        🔍 Phát hiện quy luật
+                    </div>
+
+                    <h2>
+                        Xếp những từ về đúng “ngôi nhà”
+                    </h2>
+
+                    <p class="description">
+                        Hãy kéo từng từ vào nhóm mà em cho là phù hợp.
+                        Không cần sợ sai — em có thể thử lại.
+                    </p>
+
+                    <div class="categories">
+
+                        <div class="category" data-category="noun" ondragover="allowDrop(event)"
+                            ondrop="dropCard(event)">
+
+                            <h3>🏠 GỌI TÊN</h3>
+
+                            <small>
+                                Người, vật, nơi chốn,
+                                hiện tượng, khái niệm...
+                            </small>
+
+                            <div class="drop-area"></div>
+
+                        </div>
+
+
+                        <div class="category" data-category="state" ondragover="allowDrop(event)"
+                            ondrop="dropCard(event)">
+
+                            <h3>⚡ HOẠT ĐỘNG / TRẠNG THÁI</h3>
+
+                            <small>
+                                Làm gì? Đang như thế nào?
+                            </small>
+
+                            <div class="drop-area"></div>
+
+                        </div>
+
+
+                        <div class="category" data-category="feature" ondragover="allowDrop(event)"
+                            ondrop="dropCard(event)">
+
+                            <h3>🎨 ĐẶC ĐIỂM</h3>
+
+                            <small>
+                                Đặc điểm, tính chất...
+                            </small>
+
+                            <div class="drop-area"></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div id="classifyCards" class="cards">
+                    </div>
+
+
+                    <div id="classifyFeedback" class="feedback">
+                    </div>
+
+                    <div class="next-row">
+
+                        <button id="classifyNext" class="btn btn-primary" onclick="goTo('teach')">
+
+                            Tiếp tục →
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+             SCREEN 3 — TEACH
+        ====================================================== -->
+
+            <section id="screen-teach" class="screen">
+
+                <div class="lesson-card">
+
+                    <div class="section-kicker">
+                        💡 Hình thành kiến thức
+                    </div>
+
+                    <h2>
+                        Vậy danh từ là gì?
+                    </h2>
+
+                    <p class="description">
+                        Em vừa tự phát hiện ra một quy luật.
+                        Bây giờ hãy gọi tên kiến thức đó.
+                    </p>
+
+
+                    <div class="definition">
+
+                        <strong>Danh từ</strong>
+
+                        <p>
+                            là những từ dùng để gọi tên người,
+                            sự vật, hiện tượng, đơn vị, khái niệm...
+                        </p>
+
+                    </div>
+
+
+                    <div class="examples">
+
+                        <div class="example">
+                            <b>👤 Người</b>
+                            học sinh, mẹ, bác sĩ
+                        </div>
+
+                        <div class="example">
+                            <b>🌳 Sự vật</b>
+                            cây, bàn, quyển sách
+                        </div>
+
+                        <div class="example">
+                            <b>🌧 Hiện tượng</b>
+                            mưa, gió, sấm
+                        </div>
+
+                        <div class="example">
+                            <b>💭 Khái niệm</b>
+                            tình yêu, niềm vui,
+                            lòng dũng cảm
+                        </div>
+
+                    </div>
+
+
+                    <div class="feedback show warning">
+
+                        <div class="feedback-title">
+                            ⚠️ Một điều quan trọng
+                        </div>
+
+                        Đừng chỉ học thuộc định nghĩa.
+                        Điều quan trọng hơn là nhận ra danh từ
+                        <strong>khi nó xuất hiện trong câu.</strong>
+
+                    </div>
+
+
+                    <div class="next-row">
+
+                        <button class="btn btn-primary" onclick="goTo('challenge1')">
+
+                            Thử thách tiếp theo →
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+             SCREEN 4 — CHALLENGE 1
+        ====================================================== -->
+
+            <section id="screen-challenge1" class="screen">
+
+                <div class="lesson-card">
+
+                    <div class="section-kicker">
+                        🎯 Mini challenge
+                    </div>
+
+                    <h2>
+                        Ai đang “gọi tên”?
+                    </h2>
+
+                    <p>
+                        Mẹ đặt chiếc cặp lên bàn.
+                    </p>
+
+                    <p class="description">
+                        Hãy chọn tất cả những danh từ trong câu.
+                    </p>
+
+                    <div id="choice1" class="choice-list">
+                    </div>
+
+                    <div id="challenge1Feedback" class="feedback">
+                    </div>
+
+                    <div class="next-row">
+
+                        <button id="challenge1Next" class="btn btn-primary" disabled onclick="goTo('challenge2')">
+
+                            Câu tiếp theo →
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+             SCREEN 5 — CHALLENGE 2
+        ====================================================== -->
+
+            <section id="screen-challenge2" class="screen">
+
+                <div class="lesson-card">
+
+                    <div class="section-kicker">
+                        🎯 Mini challenge
+                    </div>
+
+                    <h2>
+                        Danh từ có nhất thiết phải “cầm nắm được”?
+                    </h2>
+
+                    <p>
+                        <strong>
+                            Niềm vui của Lan khiến cả lớp mỉm cười.
+                        </strong>
+                    </p>
+
+                    <p class="description">
+                        Từ nào dưới đây là danh từ?
+                    </p>
+
+                    <div id="choice2" class="choice-list">
+                    </div>
+
+                    <div id="challenge2Feedback" class="feedback">
+                    </div>
+
+                    <div id="hint2" class="hint-box">
+
+                        💡 <strong>Gợi ý:</strong>
+                        Danh từ không chỉ gọi tên những thứ
+                        có thể nhìn thấy hoặc cầm nắm.
+                        Nó còn có thể gọi tên một khái niệm,
+                        cảm xúc hoặc điều trừu tượng.
+
+                    </div>
+
+                    <div class="next-row">
+
+                        <button id="hint2Btn" class="btn btn-secondary" onclick="showHint('hint2')">
+
+                            💡 Xin một gợi ý
+
+                        </button>
+
+                        <button id="challenge2Next" class="btn btn-primary" onclick="goTo('context')"
+                            style="margin-left:10px">
+
+                            Tiếp tục →
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+             SCREEN 6 — CONTEXT
+        ====================================================== -->
+
+            <section id="screen-context" class="screen">
+
+                <div class="lesson-card">
+
+                    <div class="section-kicker">
+                        🔎 Phân tích trong ngữ cảnh
+                    </div>
+
+                    <h2>
+                        Đừng chỉ nhìn vào từng từ
+                    </h2>
+
+                    <p class="description">
+                        Hãy nhìn xem từ đó đang làm nhiệm vụ gì
+                        trong câu.
+                    </p>
+
+                    <div class="quote">
+
+                        Mẹ <strong>yêu thương</strong> các con.<br><br>
+
+                        <strong>Tình yêu</strong> của mẹ dành cho
+                        các con rất lớn.
+
+                    </div>
+
+                    <p>
+                        Hai từ
+                        <strong>“yêu thương”</strong> và
+                        <strong>“tình yêu”</strong>
+                        có giống nhau về từ loại không?
+                    </p>
+
+                    <div id="choiceContext" class="choice-list">
+
+                        <button class="choice" onclick="contextAnswer(0)">
+
+                            Có — cả hai đều là danh từ.
+
+                        </button>
+
+                        <button class="choice" onclick="contextAnswer(1)">
+
+                            Không — “yêu thương” và
+                            “tình yêu” đang làm nhiệm vụ khác nhau.
+
+                        </button>
+
+                    </div>
+
+                    <div id="contextFeedback" class="feedback">
+                    </div>
+
+                    <div class="next-row">
+
+                        <button id="contextNext" class="btn btn-primary" disabled onclick="goTo('write')">
+
+                            Thử tự viết →
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+             SCREEN 7 — WRITING
+        ====================================================== -->
+
+            <section id="screen-write" class="screen">
+
+                <div class="lesson-card">
+
+                    <div class="section-kicker">
+                        ✍️ Vận dụng
+                    </div>
+
+                    <h2>
+                        Tự tạo một câu
+                    </h2>
+
+                    <p class="description">
+                        Viết một câu về nơi em sống.
+                        Hãy cố gắng sử dụng đủ các loại
+                        danh từ dưới đây.
+                    </p>
+
+                    <div class="requirements">
+
+                        <div id="req1" class="requirement">
+
+                            ○ Một danh từ chỉ người
+
+                        </div>
+
+                        <div id="req2" class="requirement">
+
+                            ○ Một danh từ chỉ nơi chốn
+
+                        </div>
+
+                        <div id="req3" class="requirement">
+
+                            ○ Một danh từ chỉ sự vật
+
+                        </div>
+
+                    </div>
+
+                    <textarea id="writeInput" placeholder="Ví dụ: Mẹ tôi thường mua hoa ở chợ Bến Thành."
+                        oninput="analyzeWriting()">
+                </textarea>
+
+                    <div id="writeFeedback" class="feedback">
+                    </div>
+
+                    <div class="next-row">
+
+                        <button id="writeNext" class="btn btn-primary" disabled onclick="goTo('reading')">
+
+                            Phân tích một đoạn văn →
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+             SCREEN 8 — READING
+        ====================================================== -->
+
+            <section id="screen-reading" class="screen">
+
+                <div class="lesson-card">
+
+                    <div class="section-kicker">
+                        🔎 Trong ngữ cảnh
+                    </div>
+
+                    <h2>
+                        Danh từ làm gì cho đoạn văn?
+                    </h2>
+
+                    <div class="quote">
+
+                        Chiều xuống. Con đường trước trường
+                        dần vắng người. Những hàng cây nghiêng
+                        mình trong gió. Một cơn mưa bất chợt
+                        làm sân trường ướt lạnh.
+
+                    </div>
+
+                    <p>
+                        Hãy thử nghĩ:
+                    </p>
+
+                    <div class="feedback show warning">
+
+                        Nếu bỏ những danh từ trong đoạn văn,
+                        người đọc còn xác định được đoạn văn
+                        đang nói về <strong>ai, cái gì, ở đâu</strong>
+                        hay không?
+
+                    </div>
+
+                    <textarea id="readingInput" placeholder="Viết suy nghĩ của em...">
+                </textarea>
+
+                    <div class="next-row">
+
+                        <button class="btn btn-primary" onclick="goTo('final')">
+
+                            Đến thử thách cuối →
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+             SCREEN 9 — FINAL
+        ====================================================== -->
+
+            <section id="screen-final" class="screen">
+
+                <div class="lesson-card">
+
+                    <div class="section-kicker">
+                        🌟 Thử thách cuối
+                    </div>
+
+                    <h2>
+                        Viết một đoạn thật ngắn
+                    </h2>
+
+                    <p class="description">
+
+                        Viết 3–4 câu tả một nơi em yêu thích.
+
+                        Trong đoạn viết, hãy sử dụng:
+
+                    </p>
+
+                    <div class="requirements">
+
+                        <div class="requirement">
+                            ✓ Ít nhất 5 danh từ
+                        </div>
+
+                        <div class="requirement">
+                            ✓ Ít nhất 1 danh từ chỉ khái niệm
+                        </div>
+
+                        <div class="requirement">
+                            ✓ Danh từ được sử dụng tự nhiên
+                        </div>
+
+                    </div>
+
+                    <textarea id="finalInput" placeholder="Hãy viết đoạn văn của em...">
+                </textarea>
+
+                    <div id="finalFeedback" class="feedback">
+                    </div>
+
+                    <div class="next-row">
+
+                        <button class="btn btn-primary" onclick="finishLesson()">
+
+                            Hoàn thành bài học →
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+             SCREEN 10 — SUMMARY
+        ====================================================== -->
+
+            <section id="screen-summary" class="screen">
+
+                <div class="lesson-card result-card">
+
+                    <div class="result-icon">
+                        ✓
+                    </div>
+
+                    <div class="section-kicker">
+                        🎉 Hoàn thành
+                    </div>
+
+                    <h2>
+                        Em đã khám phá được Danh từ
+                    </h2>
+
+                    <p class="description">
+
+                        Quan trọng hơn việc nhớ định nghĩa,
+                        em đã thử nhận ra và sử dụng danh từ
+                        trong ngữ cảnh.
+
+                    </p>
+
+
+                    <div class="skills">
+
+                        <div class="skill">
+
+                            <div class="skill-name">
+                                Nhận biết
+                            </div>
+
+                            <div class="skill-track">
+                                <div class="skill-fill" style="width:90%">
+                                </div>
+                            </div>
+
+                            <div class="skill-percent">
+                                90%
+                            </div>
+
+                        </div>
+
+
+                        <div class="skill">
+
+                            <div class="skill-name">
+                                Hiểu bản chất
+                            </div>
+
+                            <div class="skill-track">
+                                <div class="skill-fill" style="width:80%">
+                                </div>
+                            </div>
+
+                            <div class="skill-percent">
+                                80%
+                            </div>
+
+                        </div>
+
+
+                        <div class="skill">
+
+                            <div class="skill-name">
+                                Sử dụng
+                            </div>
+
+                            <div class="skill-track">
+                                <div class="skill-fill" style="width:70%">
+                                </div>
+                            </div>
+
+                            <div class="skill-percent">
+                                70%
+                            </div>
+
+                        </div>
+
+
+                        <div class="skill">
+
+                            <div class="skill-name">
+                                Trong ngữ cảnh
+                            </div>
+
+                            <div class="skill-track">
+                                <div class="skill-fill" style="width:60%">
+                                </div>
+                            </div>
+
+                            <div class="skill-percent">
+                                60%
+                            </div>
+
+                        </div>
+
+
+                        <div class="skill">
+
+                            <div class="skill-name">
+                                Vận dụng khi viết
+                            </div>
+
+                            <div class="skill-track">
+                                <div class="skill-fill" style="width:80%">
+                                </div>
+                            </div>
+
+                            <div class="skill-percent">
+                                80%
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="next-skill">
+
+                        <strong>
+                            🔎 Kỹ năng nên luyện tiếp
+                        </strong>
+
+                        <p>
+                            Em đã hiểu danh từ là gì.
+                            Bước tiếp theo là luyện khả năng
+                            nhận diện từ loại khi từ xuất hiện
+                            trong những ngữ cảnh dễ nhầm.
+                        </p>
+
+                        <button class="btn btn-secondary"
+                            onclick="alert('Trong hệ thống thật, nút này sẽ mở đúng skill cần luyện lại.')">
+
+                            Luyện đúng kỹ năng này →
+
+                        </button>
+
+                    </div>
+
+
+                    <div style="margin-top:30px">
+
+                        <button class="btn btn-primary" onclick="location.reload()">
+
+                            ↻ Học lại bài
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script>
+
+        /* ============================================================
+           DATA — HARD CODE
+        ============================================================ */
+
+        const lessonData = {
+
+            words: [
+                {
+                    text: "Buổi sáng",
+                    correct: false
+                },
+                {
+                    text: "con đường",
+                    correct: true
+                },
+                {
+                    text: "trước nhà",
+                    correct: true
+                },
+                {
+                    text: "vương",
+                    correct: false
+                },
+                {
+                    text: "hơi sương",
+                    correct: true
+                },
+                {
+                    text: "hàng cây",
+                    correct: true
+                },
+                {
+                    text: "im lặng",
+                    correct: false
+                },
+                {
+                    text: "vỉa hè",
+                    correct: true
+                },
+                {
+                    text: "tiếng chim",
+                    correct: true
+                },
+                {
+                    text: "khu vườn",
+                    correct: true
+                },
+                {
+                    text: "nhỏ",
+                    correct: false
+                }
+            ],
+
+            categories: [
+                {
+                    text: "con đường",
+                    type: "noun"
+                },
+                {
+                    text: "hơi sương",
+                    type: "noun"
+                },
+                {
+                    text: "hàng cây",
+                    type: "noun"
+                },
+                {
+                    text: "vỉa hè",
+                    type: "noun"
+                },
+                {
+                    text: "tiếng chim",
+                    type: "noun"
+                },
+                {
+                    text: "khu vườn",
+                    type: "noun"
+                },
+                {
+                    text: "im lặng",
+                    type: "state"
+                },
+                {
+                    text: "vương",
+                    type: "state"
+                },
+                {
+                    text: "nhỏ",
+                    type: "feature"
+                }
+            ],
+
+            choice1: [
+                {
+                    text: "Mẹ",
+                    correct: true
+                },
+                {
+                    text: "đặt",
+                    correct: false
+                },
+                {
+                    text: "chiếc cặp",
+                    correct: true
+                },
+                {
+                    text: "lên",
+                    correct: false
+                },
+                {
+                    text: "bàn",
+                    correct: true
+                }
+            ],
+
+            choice2: [
+                {
+                    text: "Niềm vui",
+                    correct: true
+                },
+                {
+                    text: "của",
+                    correct: false
+                },
+                {
+                    text: "Lan",
+                    correct: true
+                },
+                {
+                    text: "khiến",
+                    correct: false
+                }
+            ]
+
+        };
+
+
+        /* ============================================================
+           STATE
+        ============================================================ */
+
+        const state = {
+
+            currentScreen: "start",
+
+            completed: {
+                observe: false,
+                classify: false,
+                teach: false,
+                challenge1: false,
+                challenge2: false,
+                context: false,
+                write: false,
+                reading: false,
+                final: false
+            },
+
+            selectedObserve: [],
+
+            classifyResults: {},
+
+            challenge1Selected: [],
+
+            challenge2Selected: [],
+
+            writingReady: false
+
+        };
+
+
+        /* ============================================================
+           PROGRESS
+        ============================================================ */
+
+        const screenOrder = [
+            "start",
+            "observe",
+            "classify",
+            "teach",
+            "challenge1",
+            "challenge2",
+            "context",
+            "write",
+            "reading",
+            "final",
+            "summary"
+        ];
+
+        function updateProgress() {
+
+            const index =
+                screenOrder.indexOf(state.currentScreen);
+
+            const total =
+                screenOrder.length - 1;
+
+            const percent =
+                Math.round((index / total) * 100);
+
+            document
+                .getElementById("progressBar")
+                .style.width = percent + "%";
+
+            document
+                .getElementById("progressText")
+                .textContent = percent + "%";
+        }
+
+
+        /* ============================================================
+           NAVIGATION
+        ============================================================ */
+
+        function goTo(screen) {
+
+            document
+                .querySelectorAll(".screen")
+                .forEach(el => {
+
+                    el.classList.remove("active");
+
+                });
+
+            const target =
+                document.getElementById("screen-" + screen);
+
+            if (!target) return;
+
+            target.classList.add("active");
+
+            state.currentScreen = screen;
+
+            updateProgress();
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+
+            if (screen === "observe") {
+                renderWordPicker();
+            }
+
+            if (screen === "classify") {
+                renderClassifyCards();
+            }
+
+            if (screen === "challenge1") {
+                renderChoice(
+                    "choice1",
+                    lessonData.choice1,
+                    handleChoice1
+                );
+            }
+
+            if (screen === "challenge2") {
+                renderChoice(
+                    "choice2",
+                    lessonData.choice2,
+                    handleChoice2
+                );
+            }
+
+        }
+
+
+        /* ============================================================
+           OBSERVE
+        ============================================================ */
+
+        function renderWordPicker() {
+
+            const container =
+                document.getElementById("wordPicker");
+
+            container.innerHTML = "";
+
+            lessonData.words.forEach((word, index) => {
+
+                const button =
+                    document.createElement("button");
+
+                button.className = "word";
+
+                button.textContent = word.text;
+
+                button.onclick = () => {
+
+                    if (
+                        state.selectedObserve
+                            .includes(index)
+                    ) {
+
+                        state.selectedObserve =
+                            state.selectedObserve
+                                .filter(i => i !== index);
+
+                        button.classList.remove("selected");
+
+                    } else {
+
+                        state.selectedObserve.push(index);
+
+                        button.classList.add("selected");
+
+                    }
+
+                    checkObserve();
+
+                };
+
+                container.appendChild(button);
+
+            });
+
+        }
+
+
+        function checkObserve() {
+
+            const correctIndexes =
+                lessonData.words
+                    .map((word, index) =>
+                        word.correct ? index : null
+                    )
+                    .filter(index => index !== null);
+
+            const selected =
+                [...state.selectedObserve]
+                    .sort()
+                    .join(",");
+
+            const correct =
+                [...correctIndexes]
+                    .sort()
+                    .join(",");
+
+            const feedback =
+                document.getElementById(
+                    "observeFeedback"
+                );
+
+            if (selected === correct) {
+
+                feedback.className =
+                    "feedback show success";
+
+                feedback.innerHTML = `
+            <div class="feedback-title">
+                ✓ Em đã tìm đúng các từ.
+            </div>
+
+            Hãy chú ý: chúng không chỉ là những
+            đồ vật nhìn thấy được. Một số từ đang
+            gọi tên nơi chốn, hiện tượng hoặc sự vật.
+            <br><br>
+            <strong>
+            Em vừa bắt đầu phát hiện ra quy luật.
+            </strong>
+        `;
+
+                document
+                    .getElementById("observeNext")
+                    .disabled = false;
+
+                state.completed.observe = true;
+
+            } else {
+
+                feedback.className =
+                    "feedback show warning";
+
+                feedback.innerHTML = `
+            <div class="feedback-title">
+                🔎 Chưa cần vội xem đáp án.
+            </div>
+
+            Hãy tự hỏi:
+            <strong>
+            “Từ này đang gọi tên cái gì?”
+            </strong>
+        `;
+
+            }
+
+        }
+
+
+        /* ============================================================
+           CLASSIFY
+        ============================================================ */
+
+        function renderClassifyCards() {
+
+            const container =
+                document.getElementById("classifyCards");
+
+            container.innerHTML = "";
+
+            lessonData.categories.forEach(
+                (item, index) => {
+
+                    const card =
+                        document.createElement("div");
+
+                    card.className = "drag-card";
+
+                    card.draggable = true;
+
+                    card.textContent = item.text;
+
+                    card.dataset.index = index;
+
+                    card.ondragstart =
+                        event => {
+
+                            event.dataTransfer
+                                .setData(
+                                    "text/plain",
+                                    index
+                                );
+
+                        };
+
+                    container.appendChild(card);
+
+                }
+            );
+
+        }
+
+
+        function allowDrop(event) {
+
+            event.preventDefault();
+
+            event.currentTarget
+                .classList
+                .add("dragover");
+
+        }
+
+
+        document.addEventListener(
+            "dragleave",
+            event => {
+
+                if (
+                    event.target.classList
+                        ?.contains("category")
+                ) {
+
+                    event.target
+                        .classList
+                        .remove("dragover");
+
+                }
+
+            }
+        );
+
+
+        function dropCard(event) {
+
+            event.preventDefault();
+
+            const category =
+                event.currentTarget
+                    .dataset
+                    .category;
+
+            event.currentTarget
+                .classList
+                .remove("dragover");
+
+            const index =
+                event.dataTransfer
+                    .getData("text/plain");
+
+            const item =
+                lessonData.categories[index];
+
+            if (!item) return;
+
+
+            if (item.type === category) {
+
+                const card =
+                    document.querySelector(
+                        `.drag-card[data-index="${index}"]`
+                    );
+
+                if (card) {
+
+                    card.classList.add("used");
+
+                    const clone =
+                        document.createElement("span");
+
+                    clone.className = "drag-card";
+
+                    clone.textContent =
+                        item.text;
+
+                    clone.style.cursor =
+                        "default";
+
+                    event.currentTarget
+                        .querySelector(".drop-area")
+                        .appendChild(clone);
+
+                }
+
+                state.classifyResults[index] =
+                    true;
+
+                showClassifyFeedback(true);
+
+                checkClassificationComplete();
+
+            } else {
+
+                showClassifyFeedback(
+                    false,
+                    item
+                );
+
+            }
+
+        }
+
+
+        function showClassifyFeedback(
+            correct,
+            item
+        ) {
+
+            const feedback =
+                document.getElementById(
+                    "classifyFeedback"
+                );
+
+            feedback.className =
+                correct
+                    ? "feedback show success"
+                    : "feedback show error";
+
+            if (correct) {
+
+                feedback.innerHTML = `
+            <div class="feedback-title">
+                ✓ Chính xác
+            </div>
+
+            Em đang phân loại dựa trên
+            <strong>chức năng của từ</strong>.
+        `;
+
+            } else {
+
+                feedback.innerHTML = `
+            <div class="feedback-title">
+                🔎 Chưa đúng lắm
+            </div>
+
+            Hãy thử hỏi:
+            <strong>
+            “Từ này đang gọi tên cái gì?”
+            </strong>
+
+            <br><br>
+
+            Ví dụ, <strong>${item.text}</strong>
+            không phải là tên của một sự vật
+            mà đang thể hiện một
+            hoạt động/trạng thái hoặc đặc điểm.
+        `;
+
+            }
+
+        }
+
+
+        function checkClassificationComplete() {
+
+            const total =
+                lessonData.categories.length;
+
+            const done =
+                Object.keys(
+                    state.classifyResults
+                ).length;
+
+            if (done === total) {
+
+                document
+                    .getElementById("classifyNext")
+                    .disabled = false;
+
+                state.completed.classify = true;
+
+                showClassifyFeedback(true);
+
+                document
+                    .getElementById(
+                        "classifyFeedback"
+                    )
+                    .innerHTML = `
+
+            <div class="feedback-title">
+                ✨ Em vừa phát hiện ra quy luật.
+            </div>
+
+            Những từ như
+            <strong>con đường, hàng cây,
+            khu vườn, tiếng chim</strong>
+            đang dùng để gọi tên sự vật,
+            nơi chốn hoặc hiện tượng.
+
+            <br><br>
+
+            Bây giờ chúng ta sẽ gọi tên
+            nhóm từ này.
+
+        `;
+
+            }
+
+        }
+
+
+        /* ============================================================
+           CHOICE ENGINE
+        ============================================================ */
+
+        function renderChoice(
+            containerId,
+            choices,
+            handler
+        ) {
+
+            const container =
+                document.getElementById(containerId);
+
+            container.innerHTML = "";
+
+            choices.forEach(
+                (item, index) => {
+
+                    const button =
+                        document.createElement("button");
+
+                    button.className = "choice";
+
+                    button.textContent =
+                        item.text;
+
+                    button.onclick =
+                        () => handler(index, button);
+
+                    container.appendChild(button);
+
+                }
+            );
+
+        }
+
+
+        /* ============================================================
+           CHALLENGE 1
+        ============================================================ */
+
+        function handleChoice1(
+            index,
+            button
+        ) {
+
+            const item =
+                lessonData.choice1[index];
+
+            if (
+                state.challenge1Selected
+                    .includes(index)
+            ) return;
+
+            state.challenge1Selected
+                .push(index);
+
+            if (item.correct) {
+
+                button.classList.add("correct");
+
+            } else {
+
+                button.classList.add("wrong");
+
+            }
+
+
+            const correctCount =
+                lessonData.choice1
+                    .filter(x => x.correct)
+                    .length;
+
+            const selectedCorrect =
+                state.challenge1Selected
+                    .filter(i =>
+                        lessonData
+                            .choice1[i]
+                            .correct
+                    )
+                    .length;
+
+
+            if (
+                selectedCorrect === correctCount &&
+                state.challenge1Selected.length === correctCount
+            ) {
+
+                const feedback =
+                    document.getElementById(
+                        "challenge1Feedback"
+                    );
+
+                feedback.className =
+                    "feedback show success";
+
+                feedback.innerHTML = `
+            <div class="feedback-title">
+                ✓ Chính xác
+            </div>
+
+            <strong>Mẹ</strong>,
+            <strong>chiếc cặp</strong> và
+            <strong>bàn</strong>
+            đều là danh từ vì chúng dùng để
+            gọi tên người hoặc sự vật.
+        `;
+
+                document
+                    .getElementById(
+                        "challenge1Next"
+                    )
+                    .disabled = false;
+
+                state.completed.challenge1 = true;
+
+            } else if (!item.correct) {
+
+                const feedback =
+                    document.getElementById(
+                        "challenge1Feedback"
+                    );
+
+                feedback.className =
+                    "feedback show error";
+
+                feedback.innerHTML = `
+            <div class="feedback-title">
+                🔎 Từ này chưa phải danh từ.
+            </div>
+
+            Hãy thử hỏi:
+            <strong>
+            “Từ này đang gọi tên cái gì?”
+            </strong>
+        `;
+
+            }
+
+        }
+
+
+        /* ============================================================
+           CHALLENGE 2
+        ============================================================ */
+
+        function handleChoice2(
+            index,
+            button
+        ) {
+
+            const item =
+                lessonData.choice2[index];
+
+            if (
+                state.challenge2Selected
+                    .includes(index)
+            ) return;
+
+            state.challenge2Selected
+                .push(index);
+
+            if (item.correct) {
+
+                button.classList.add("correct");
+
+            } else {
+
+                button.classList.add("wrong");
+
+            }
+
+
+            const correctCount =
+                lessonData.choice2
+                    .filter(x => x.correct)
+                    .length;
+
+            const selectedCorrect =
+                state.challenge2Selected
+                    .filter(i =>
+                        lessonData
+                            .choice2[i]
+                            .correct
+                    )
+                    .length;
+
+
+            if (
+                selectedCorrect === correctCount &&
+                state.challenge2Selected.length === correctCount
+            ) {
+
+                const feedback =
+                    document.getElementById(
+                        "challenge2Feedback"
+                    );
+
+                feedback.className =
+                    "feedback show success";
+
+                feedback.innerHTML = `
+            <div class="feedback-title">
+                ✨ Chính xác!
+            </div>
+
+            <strong>Niềm vui</strong> và
+            <strong>Lan</strong> đều là danh từ.
+
+            <br><br>
+
+            “Niềm vui” không phải vật có thể
+            cầm nắm, nhưng nó vẫn là một danh từ
+            vì nó gọi tên một
+            <strong>khái niệm/cảm xúc</strong>.
+        `;
+
+                document
+                    .getElementById(
+                        "challenge2Next"
+                    )
+                    .disabled = false;
+
+                state.completed.challenge2 = true;
+
+            }
+
+        }
+
+
+        /* ============================================================
+           HINT
+        ============================================================ */
+
+        function showHint(id) {
+
+            const hint =
+                document.getElementById(id);
+
+            hint.classList.add("show");
+
+        }
+
+
+        /* ============================================================
+           CONTEXT
+        ============================================================ */
+
+        function contextAnswer(index) {
+
+            const buttons =
+                document
+                    .querySelectorAll(
+                        "#choiceContext .choice"
+                    );
+
+            buttons.forEach(
+                button =>
+                    button.classList.remove(
+                        "selected",
+                        "correct",
+                        "wrong"
+                    )
+            );
+
+            buttons[index]
+                .classList
+                .add(
+                    index === 1
+                        ? "correct"
+                        : "wrong"
+                );
+
+
+            const feedback =
+                document.getElementById(
+                    "contextFeedback"
+                );
+
+            feedback.className =
+                "feedback show " +
+                (index === 1
+                    ? "success"
+                    : "error");
+
+
+            if (index === 1) {
+
+                feedback.innerHTML = `
+            <div class="feedback-title">
+                ✓ Chính xác
+            </div>
+
+            “yêu thương” đang chỉ hoạt động/trạng thái,
+            còn “tình yêu” đang gọi tên một khái niệm.
+
+            <br><br>
+
+            💡 Vì vậy, khi xác định từ loại,
+            đừng chỉ nhìn vào hình thức của từ.
+            Hãy xem <strong>từ đó đang làm nhiệm vụ gì
+            trong câu.</strong>
+        `;
+
+                document
+                    .getElementById(
+                        "contextNext"
+                    )
+                    .disabled = false;
+
+                state.completed.context = true;
+
+            } else {
+
+                feedback.innerHTML = `
+            <div class="feedback-title">
+                🔎 Hãy nhìn lại vai trò của từng từ.
+            </div>
+
+            “yêu thương” đang thể hiện một
+            hoạt động/trạng thái, còn
+            “tình yêu” đang gọi tên một khái niệm.
+        `;
+
+            }
+
+        }
+
+
+        /* ============================================================
+           WRITING
+        ============================================================ */
+
+        function analyzeWriting() {
+
+            const value =
+                document
+                    .getElementById(
+                        "writeInput"
+                    )
+                    .value
+                    .trim();
+
+            if (!value) return;
+
+
+            /*
+               Demo đơn giản:
+               Trong hệ thống thật,
+               đây sẽ là validator / NLP layer.
+            */
+
+            const hasPerson =
+                /mẹ|cha|bố|ba|ông|bà|anh|chị|em|thầy|cô|bạn|tôi/i
+                    .test(value);
+
+            const hasPlace =
+                /nhà|trường|làng|phố|chợ|quận|thành phố|quê|công viên/i
+                    .test(value);
+
+            const hasThing =
+                /hoa|sách|cây|bàn|ghế|cặp|đường|xe|bút/i
+                    .test(value);
+
+
+            updateRequirement(
+                "req1",
+                hasPerson,
+                "Một danh từ chỉ người"
+            );
+
+            updateRequirement(
+                "req2",
+                hasPlace,
+                "Một danh từ chỉ nơi chốn"
+            );
+
+            updateRequirement(
+                "req3",
+                hasThing,
+                "Một danh từ chỉ sự vật"
+            );
+
+
+            if (
+                hasPerson &&
+                hasPlace &&
+                hasThing
+            ) {
+
+                const feedback =
+                    document.getElementById(
+                        "writeFeedback"
+                    );
+
+                feedback.className =
+                    "feedback show success";
+
+                feedback.innerHTML = `
+            <div class="feedback-title">
+                ✓ Câu của em đã đáp ứng yêu cầu.
+            </div>
+
+            Hệ thống nhận ra các nhóm danh từ
+            cần thiết. Bây giờ hãy thử nhìn danh từ
+            trong một đoạn văn thật.
+        `;
+
+                document
+                    .getElementById(
+                        "writeNext"
+                    )
+                    .disabled = false;
+
+                state.completed.write = true;
+
+            }
+
+        }
+
+
+        function updateRequirement(
+            id,
+            done,
+            text
+        ) {
+
+            const el =
+                document.getElementById(id);
+
+            if (done) {
+
+                el.classList.add("done");
+
+                el.textContent =
+                    "✓ " + text;
+
+            } else {
+
+                el.classList.remove("done");
+
+                el.textContent =
+                    "○ " + text;
+
+            }
+
+        }
+
+
+        /* ============================================================
+           FINISH
+        ============================================================ */
+
+        function finishLesson() {
+
+            const finalText =
+                document
+                    .getElementById(
+                        "finalInput"
+                    )
+                    .value
+                    .trim();
+
+            const feedback =
+                document.getElementById(
+                    "finalFeedback"
+                );
+
+            if (!finalText) {
+
+                feedback.className =
+                    "feedback show warning";
+
+                feedback.innerHTML = `
+            <div class="feedback-title">
+                ✍️ Hãy thử viết vài câu.
+            </div>
+
+            Không cần hoàn hảo.
+            Đây là nơi em thử sử dụng kiến thức
+            vừa khám phá.
+        `;
+
+                return;
+
+            }
+
+
+            state.completed.final = true;
+
+            goTo("summary");
+
+        }
+
+
+        /* ============================================================
+           INIT
+        ============================================================ */
+
+        updateProgress();
+
+    </script>
+
+</body>
+
+</html>

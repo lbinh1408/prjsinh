@@ -1,0 +1,193 @@
+{
+  "id": "doc-hieu.09-thong-diep",
+  "title": "Xác định thông điệp",
+  "version": "1.0",
+  "enabled": true,
+  "steps": [
+    {
+      "id": "step01",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Khái niệm",
+            "icon": "💌",
+            "active": true,
+            "content": {
+              "text": "Thông điệp là bài học, lời khuyên, tư tưởng hoặc quan niệm nhân sinh mà tác giả muốn gửi gắm, truyền tải đến người đọc thông qua tác phẩm.",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Ý nghĩa",
+            "icon": "🌟",
+            "active": false,
+            "content": {
+              "text": "Một văn bản có thể có nhiều thông điệp khác nhau tùy vào cảm nhận của người đọc, nhưng luôn hướng con người tới những giá trị tốt đẹp (Chân - Thiện - Mỹ).",
+              "examples": []
+            }
+          }
+        ],
+        "title": "Thông điệp là gì?",
+        "instruction": "Mỗi tác phẩm văn học đều là một bức thư tác giả gửi đến chúng ta. Thông điệp chính là nội dung của bức thư đó.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Bước 1: Hiểu nội dung",
+            "icon": "📖",
+            "active": true,
+            "content": {
+              "text": "Tóm tắt xem câu chuyện kể về ai, sự việc gì đã xảy ra, kết quả cuối cùng ra sao.",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Bước 2: Tìm bài học",
+            "icon": "💡",
+            "active": false,
+            "content": {
+              "text": "Tự đặt câu hỏi: Tác giả khen ngợi, đồng tình với điều gì? Phê phán điều gì? Qua số phận nhân vật, ta rút ra được lời khuyên gì cho bản thân?",
+              "examples": []
+            }
+          }
+        ],
+        "title": "Cách xác định thông điệp",
+        "instruction": "Làm thế nào để tìm ra thông điệp chính của một văn bản?",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "observe",
+      "data": {
+        "format": "essay",
+        "content": "Vì thói kiêu ngạo, hay trêu chọc mọi người của Dế Mèn, Dế Choắt đã bị chị Cốc mổ đến chết. Trước khi nhắm mắt, Dế Choắt thoi thóp khuyên: \"Ở đời mà có thói hung hăng bậy bạ, có óc mà không biết nghĩ, sớm muộn rồi cũng mang vạ vào mình đấy\".",
+        "guide": [
+          "Dế Mèn đã phạm phải sai lầm gì?",
+          "Lời khuyên của Dế Choắt mang thông điệp gì?"
+        ],
+        "hint": "- Thông điệp 1: Phê phán thói kiêu ngạo, xốc nổi, bắt nạt người yếu thế.\n- Thông điệp 2: Khuyên con người phải biết suy nghĩ cẩn thận trước khi hành động, biết yêu thương và cảm thông.",
+        "title": "Ví dụ minh họa",
+        "instruction": "Đọc đoạn trích sau và phân tích bài học được rút ra:",
+        "score": 0
+      }
+    },
+    {
+      "id": "step04",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Câu chuyện \"Ông lão đánh cá và con cá vàng\" phê phán thói hư tật xấu nào của mụ vợ, từ đó gửi gắm thông điệp gì?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Phê phán sự lười biếng; khuyên con người chăm chỉ làm việc."
+          },
+          {
+            "id": "B",
+            "text": "Phê phán lòng tham không đáy và sự bội bạc; khuyên con người biết sống biết điều, trân trọng những gì mình đang có."
+          },
+          {
+            "id": "C",
+            "text": "Phê phán sự độc ác; khuyên con người không nên làm hại động vật."
+          },
+          {
+            "id": "D",
+            "text": "Phê phán sự nhu nhược; khuyên con người phải mạnh mẽ."
+          }
+        ],
+        "answer": "B",
+        "title": "Thực hành 1",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "format": "essay",
+        "content": "Đừng bao giờ từ bỏ ước mơ, dù cho con đường phía trước có chông gai đến mấy. Giống như bông hoa dại vẫn kiên cường nở trên vách đá khô cằn, bạn cũng có thể tỏa sáng nếu không ngừng nỗ lực.",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Khuyên con người nên trồng hoa trên vách đá."
+          },
+          {
+            "id": "B",
+            "text": "Miêu tả vẻ đẹp của những bông hoa dại."
+          },
+          {
+            "id": "C",
+            "text": "Cổ vũ ý chí kiên cường, nghị lực vươn lên và không bao giờ từ bỏ ước mơ."
+          },
+          {
+            "id": "D",
+            "text": "Chứng minh rằng cuộc sống luôn đầy rẫy khó khăn."
+          }
+        ],
+        "answer": "C",
+        "title": "Thực hành 2",
+        "instruction": "Thông điệp chính của đoạn văn là gì?",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Câu chuyện Rùa và Thỏ",
+          "Câu chuyện Bó đũa",
+          "Thánh Gióng",
+          "Sơn Tinh, Thủy Tinh"
+        ],
+        "right": [
+          "Sức mạnh của tinh thần đoàn kết",
+          "Lòng yêu nước, chống giặc ngoại xâm",
+          "Không được chủ quan, kiêu ngạo; cần kiên trì",
+          "Khát vọng chinh phục thiên nhiên, phòng chống thiên tai"
+        ],
+        "answer": {
+          "Câu chuyện Rùa và Thỏ": "Không được chủ quan, kiêu ngạo; cần kiên trì",
+          "Câu chuyện Bó đũa": "Sức mạnh của tinh thần đoàn kết",
+          "Thánh Gióng": "Lòng yêu nước, chống giặc ngoại xâm",
+          "Sơn Tinh, Thủy Tinh": "Khát vọng chinh phục thiên nhiên, phòng chống thiên tai"
+        },
+        "title": "Ghép nối thông điệp",
+        "instruction": "Nối tên tác phẩm (hoặc câu chuyện) với thông điệp nổi bật nhất của nó:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step07",
+      "type": "flashcard",
+      "data": {
+        "front": "Thông điệp của văn bản là gì?",
+        "back": "Là bài học, lời khuyên, ý nghĩa nhân văn mà tác giả muốn truyền tải đến người đọc thông qua tác phẩm.",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "doc-hieu",
+    "difficulty": 3,
+    "xp": 75,
+    "stars": 3,
+    "description": "Hướng dẫn cách tìm ra bài học, lời khuyên và ý nghĩa sâu sắc mà tác giả muốn gửi gắm qua văn bản.",
+    "durationMinutes": 25
+  }
+}

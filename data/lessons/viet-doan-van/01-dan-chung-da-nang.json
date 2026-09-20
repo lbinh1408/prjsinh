@@ -1,0 +1,401 @@
+{
+  "id": "viet-doan-van-dc-01",
+  "title": "Trạm Sạc: Dẫn Chứng Đa Năng",
+  "type": "skill",
+  "version": "1.0.0",
+  "meta": {
+    "module": "viet-doan-van",
+    "lessonNumber": 1,
+    "durationMinutes": 20,
+    "difficulty": "beginner",
+    "skill": "kho-dan-chung",
+    "description": "Bỏ túi những dẫn chứng 'một mũi tên trúng nhiều đích' để giải quyết mọi đề bài Nghị luận xã hội."
+  },
+  "learningGoals": [
+    "Biết cách chọn lọc và ghi nhớ các dẫn chứng tiêu biểu, đa năng.",
+    "Biết cách lồng ghép dẫn chứng vào đoạn văn Nghị luận xã hội một cách tự nhiên."
+  ],
+  "completion": {
+    "requiredSections": [
+      "story_01",
+      "discover_01",
+      "discover_02",
+      "discover_03",
+      "observe_01",
+      "finalChallenge_01"
+    ],
+    "action": "completeLesson",
+    "message": "🎉 Em đã nạp đầy bình dẫn chứng! Hãy dùng chúng để tăng sức mạnh thuyết phục cho mọi bài NLXH nhé!"
+  },
+  "steps": [
+    {
+      "id": "story_01",
+      "type": "story",
+      "data": {
+        "title": "Sai lầm khi đưa dẫn chứng",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "split_compare",
+          "layout": "two_columns"
+        },
+        "content": {
+          "prompt": "Theo em, cách đưa dẫn chứng nào sau đây ghi điểm cao hơn trong mắt Giám khảo?",
+          "title": "Nghệ thuật Thuyết phục",
+          "left": {
+            "label": "BÀI A",
+            "paragraph": "Để thành công, con người cần có nghị lực. Ví dụ như em đã cố gắng học tập rất nhiều để thi đậu. Bạn bè em cũng cố gắng học tập. Qua đó ta thấy nghị lực rất quan trọng."
+          },
+          "right": {
+            "label": "BÀI B",
+            "paragraph": "Để thành công, con người cần có nghị lực. Điển hình như anh Nick Vujicic, dù sinh ra không có cả tay lẫn chân, nhưng bằng ý chí phi thường, anh đã trở thành diễn giả truyền cảm hứng cho hàng triệu người trên thế giới."
+          }
+        },
+        "interaction": {
+          "type": "choice",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Bài A",
+              "correct": false
+            },
+            {
+              "id": "b",
+              "text": "Bài B",
+              "correct": true
+            }
+          ],
+          "feedback": {
+            "correct": "✓ Rất chuẩn! Bài B dùng dẫn chứng 'người thật việc thật' điển hình, có tính thuyết phục cao. Còn Bài A lấy dẫn chứng bản thân quá chung chung.",
+            "incorrect": "△ Sai rồi. Dẫn chứng 'bản thân em', 'bạn em' rất chung chung, thiếu tính tiêu biểu và không thuyết phục được ai."
+          }
+        },
+        "reveal": {
+          "title": "💡 Bí kíp",
+          "text": "Trong bài NLXH, 1 dẫn chứng 'đắt giá' (người thật, việc thật, nổi tiếng) có sức nặng bằng 10 câu lý thuyết suông!"
+        }
+      }
+    },
+    {
+      "id": "discover_01",
+      "type": "cheatSheet",
+      "data": {
+        "ui": {
+          "component": "card_list"
+        },
+        "prompt": "THẺ DẪN CHỨNG ĐA NĂNG #1",
+        "items": [
+          {
+            "icon": "🦸‍♂️",
+            "title": "Nick Vujicic",
+            "question": "Sinh ra không tay không chân nhưng đã trở thành diễn giả truyền cảm hứng nổi tiếng thế giới."
+          },
+          {
+            "icon": "💡",
+            "title": "Dùng cho đề bài:",
+            "question": "Nghị lực sống, Vượt lên nghịch cảnh, Thái độ lạc quan, Sức mạnh của ý chí."
+          },
+          {
+            "icon": "🏃‍♀️",
+            "title": "Nguyễn Thị Oanh",
+            "question": "VĐV điền kinh Việt Nam, dù lịch thi đấu khắc nghiệt (2 HCV trong 30 phút) vẫn lập kỳ tích tại SEA Games."
+          },
+          {
+            "icon": "💡",
+            "title": "Dùng cho đề bài:",
+            "question": "Sự kiên trì, Lòng quyết tâm, Tinh thần cống hiến, Tự hào dân tộc."
+          },
+          {
+            "icon": "❤️",
+            "title": "Phạm Tấn Chí (Quán cơm nụ cười)",
+            "question": "Người lập ra chuỗi quán cơm 2000 đồng giúp đỡ người lao động nghèo giữa Sài Gòn."
+          },
+          {
+            "icon": "💡",
+            "title": "Dùng cho đề bài:",
+            "question": "Tình yêu thương, Sự tử tế, Cho và nhận, Lòng nhân ái."
+          }
+        ],
+        "keyMessage": "Chỉ cần thuộc 3 tấm gương này, em có thể 'cân' được 80% các đề tài Nghị luận xã hội thông dụng!",
+        "practiceButton": {
+          "label": "Xem Thẻ dẫn chứng tiếp theo →"
+        }
+      }
+    },
+    {
+      "id": "discover_02",
+      "type": "cheatSheet",
+      "data": {
+        "ui": {
+          "component": "card_list"
+        },
+        "prompt": "THẺ DẪN CHỨNG ĐA NĂNG #2 (Tình Yêu Quê Hương & Trách Nhiệm)",
+        "items": [
+          {
+            "icon": "🔥",
+            "title": "Các chiến sĩ PCCC hy sinh",
+            "question": "Những người lính cứu hỏa đã dũng cảm lao vào biển lửa cứu người, gác lại gia đình và tuổi trẻ phía sau."
+          },
+          {
+            "icon": "💡",
+            "title": "Dùng cho đề bài:",
+            "question": "Sự hy sinh thầm lặng, Tinh thần dũng cảm, Lòng yêu nước thời bình, Trách nhiệm xã hội."
+          },
+          {
+            "icon": "🥇",
+            "title": "Hoàng Xuân Vinh",
+            "question": "Xạ thủ giành HCV Olympic đầu tiên cho Thể thao Việt Nam ở tuổi 42 sau bao lần thất bại."
+          },
+          {
+            "icon": "💡",
+            "title": "Dùng cho đề bài:",
+            "question": "Khát vọng cống hiến, Bản lĩnh vượt qua áp lực, Đam mê và Thành công."
+          },
+          {
+            "icon": "🇻🇳",
+            "title": "Chuyến bay giải cứu công dân mùa dịch",
+            "question": "Những y bác sĩ, tiếp viên hàng không sẵn sàng đối mặt sinh tử để đưa đồng bào vùng dịch về nước."
+          },
+          {
+            "icon": "💡",
+            "title": "Dùng cho đề bài:",
+            "question": "Tinh thần đoàn kết, Tình đồng bào, Lòng nhân ái."
+          }
+        ],
+        "keyMessage": "Với những chủ đề lớn lao về xã hội và quốc gia, hãy dùng những tấm gương bám sát thời sự!",
+        "practiceButton": {
+          "label": "Xem Thẻ dẫn chứng tiếp theo →"
+        }
+      }
+    },
+    {
+      "id": "discover_03",
+      "type": "cheatSheet",
+      "data": {
+        "ui": {
+          "component": "card_list"
+        },
+        "prompt": "THẺ DẪN CHỨNG ĐA NĂNG #3 (Sự Tự Tin & Chấp Nhận Bản Thân)",
+        "items": [
+          {
+            "icon": "👑",
+            "title": "H'Hen Niê",
+            "question": "Cô gái Ê-đê từ chối hủ tục lấy chồng sớm, vượt lên định kiến để lọt Top 5 Miss Universe thế giới."
+          },
+          {
+            "icon": "💡",
+            "title": "Dùng cho đề bài:",
+            "question": "Sự tự tin, Dám khác biệt, Phá bỏ định kiến, Tuổi trẻ và ước mơ."
+          },
+          {
+            "icon": "🎵",
+            "title": "Nhạc sĩ khiếm thị Hà Chương",
+            "question": "Dù mất đi ánh sáng từ năm 2 tuổi nhưng bằng tình yêu âm nhạc, anh đã đỗ thủ khoa Nhạc viện."
+          },
+          {
+            "icon": "💡",
+            "title": "Dùng cho đề bài:",
+            "question": "Chấp nhận khiếm khuyết, Đam mê bùng cháy, Sống ý nghĩa."
+          },
+          {
+            "icon": "🌱",
+            "title": "Cậu bé Đỗ Nhật Nam",
+            "question": "Trở thành dịch giả, tác giả sách từ khi còn rất nhỏ nhờ phương pháp giáo dục đúng đắn và tự học."
+          },
+          {
+            "icon": "💡",
+            "title": "Dùng cho đề bài:",
+            "question": "Sự tự học, Tầm quan trọng của gia đình, Chủ động trong cuộc sống."
+          }
+        ],
+        "keyMessage": "Ghi nhớ thêm 6 dẫn chứng mới này, kho vũ khí của em giờ đã đủ sức 'xuyên phá' mọi đề tài!",
+        "practiceButton": {
+          "label": "Vào bài thực hành →"
+        }
+      }
+    },
+    {
+      "id": "observe_01",
+      "type": "observe",
+      "data": {
+        "title": "Thử tài 'Bắt mạch - Kê đơn'",
+        "durationSeconds": 150,
+        "ui": {
+          "component": "paragraph_highlight",
+          "interaction": "tap_sentence",
+          "question": "Giả sử đề bài yêu cầu chứng minh 'Sức mạnh của Lòng Nhân Ái'. Hãy chọn đoạn văn sử dụng dẫn chứng hiệu quả nhất."
+        },
+        "content": {
+          "prompt": "Lòng nhân ái mang lại điều gì?",
+          "isParagraph": true,
+          "paragraph": [
+            {
+              "id": "s1",
+              "text": "Lòng nhân ái giúp con người vươn lên mọi nghịch cảnh, như Nick Vujicic không tay không chân vẫn thành công.",
+              "role": "sai_chu_de",
+              "roleLabel": "LẠC ĐỀ",
+              "feedback": "🟡 Sai chủ đề rồi! Nick Vujicic là dẫn chứng cho Nghị lực, không phải Lòng Nhân ái."
+            },
+            {
+              "id": "s2",
+              "text": "Lòng nhân ái là ngọn lửa sưởi ấm những mảnh đời bất hạnh, như Quán cơm Nụ Cười 2000đ đã cưu mang biết bao người lao động nghèo giữa lòng thành phố.",
+              "role": "dung_chu_de",
+              "roleLabel": "ĐÚNG CHUẨN",
+              "feedback": "🟢 Tuyệt vời! Dẫn chứng Quán cơm Nụ Cười khớp hoàn hảo với đề tài Lòng Nhân ái."
+            },
+            {
+              "id": "s3",
+              "text": "Lòng nhân ái tạo ra kỳ tích, giống như Nguyễn Thị Oanh đoạt 2 HCV liên tiếp.",
+              "role": "sai_chu_de2",
+              "roleLabel": "LẠC ĐỀ",
+              "feedback": "🟡 Nguyễn Thị Oanh là biểu tượng của Sự kiên trì và Quyết tâm, không liên quan trực tiếp đến Lòng nhân ái."
+            }
+          ]
+        },
+        "reveal": {
+          "title": "Bài học rút ra",
+          "text": "Dẫn chứng đa năng không có nghĩa là dùng bừa bãi. Em phải chọn dẫn chứng có TỪ KHÓA (Keyword) trùng khớp với yêu cầu của đề bài."
+        }
+      }
+    },
+    {
+      "id": "finalChallenge_01",
+      "type": "finalChallenge",
+      "data": {
+        "title": "THỬ THÁCH: VIẾT ĐOẠN VĂN NLXH",
+        "durationSeconds": 300,
+        "ui": {
+          "component": "multi_stage_challenge",
+          "layout": "multi_stage"
+        },
+        "prompt": "Hãy viết 1 đoạn văn (khoảng 7-10 câu) bàn về sức mạnh của Ý CHÍ VÀ NGHỊ LỰC.",
+        "stages": [
+          {
+            "key": "outline",
+            "type": "card_to_slot",
+            "title": "🔍 LẬP DÀN Ý",
+            "question": "Sắp xếp cấu trúc đoạn văn của em",
+            "slots": [
+              {
+                "id": "slot1",
+                "label": "Mở đoạn",
+                "description": "Nêu vấn đề"
+              },
+              {
+                "id": "slot2",
+                "label": "Thân đoạn",
+                "description": "Giải thích & Chứng minh"
+              },
+              {
+                "id": "slot3",
+                "label": "Kết đoạn",
+                "description": "Rút ra bài học"
+              }
+            ],
+            "cards": [
+              {
+                "id": "c1",
+                "target": "slot1",
+                "correct": true,
+                "feedback": "✓ Bắt đầu bằng việc khẳng định vai trò của ý chí.",
+                "label": "Khẳng định",
+                "slotText": "Khẳng định ý chí, nghị lực là chiếc chìa khóa vạn năng mở ra cánh cửa thành công."
+              },
+              {
+                "id": "c2",
+                "target": "slot2",
+                "correct": true,
+                "feedback": "✓ Đưa dẫn chứng vào phần chứng minh.",
+                "label": "Chứng minh",
+                "slotText": "Giải thích tại sao cần ý chí và đưa dẫn chứng Nick Vujicic để làm sáng tỏ."
+              },
+              {
+                "id": "c3",
+                "target": "slot3",
+                "correct": true,
+                "feedback": "✓ Kết thúc bằng bài học thực tiễn.",
+                "label": "Bài học",
+                "slotText": "Liên hệ bản thân: Cần rèn luyện ý chí ngay từ những việc nhỏ nhất."
+              }
+            ],
+            "minCards": 3,
+            "maxCards": 3
+          },
+          {
+            "key": "writing",
+            "type": "editor",
+            "title": "✍️ VIẾT ĐOẠN VĂN HOÀN CHỈNH",
+            "question": "Em hãy viết đoạn văn dựa trên dàn ý. Nhớ sử dụng dẫn chứng trên thanh Gợi ý nhé!",
+            "instruction": "Click vào Tên nhân vật ở thanh bên phải để chèn nhanh dẫn chứng vào bài.",
+            "placeholder": "Trong cuộc sống, ý chí và nghị lực đóng vai trò...",
+            "minCharacters": 200,
+            "maxCharacters": 1000,
+            "hints": [
+              {
+                "label": "NGHỊ LỰC / VƯỢT KHÓ",
+                "words": [
+                  "Nick Vujicic",
+                  "Hoàng Xuân Vinh",
+                  "nhạc sĩ Hà Chương"
+                ]
+              },
+              {
+                "label": "TÌNH YÊU THƯƠNG / TRÁCH NHIỆM",
+                "words": [
+                  "Quán cơm Nụ Cười",
+                  "chiến sĩ PCCC",
+                  "chuyến bay giải cứu"
+                ]
+              },
+              {
+                "label": "TỰ TIN / ƯỚC MƠ",
+                "words": [
+                  "H'Hen Niê",
+                  "Đỗ Nhật Nam"
+                ]
+              },
+              {
+                "label": "TỪ CHUYỂN Ý",
+                "words": [
+                  "Thật vậy,",
+                  "Minh chứng sống động nhất là",
+                  "Qua câu chuyện trên,"
+                ]
+              }
+            ],
+            "submitLabel": "🚀 Nộp bài & Phân tích"
+          },
+          {
+            "key": "analysis",
+            "type": "analysis",
+            "title": "🧠 HỒ SƠ LẬP LUẬN",
+            "description": "Hệ thống đang quét bài viết để tìm dẫn chứng và lý lẽ.",
+            "loadingText": "Đang phân tích cấu trúc...",
+            "metrics": [
+              {
+                "id": "evidence",
+                "label": "Có sử dụng Dẫn chứng người thật việc thật",
+                "status": "detect"
+              },
+              {
+                "id": "explain",
+                "label": "Có phân tích lý lẽ tại sao lại cần ý chí",
+                "status": "detect"
+              },
+              {
+                "id": "lesson",
+                "label": "Có rút ra bài học cho bản thân",
+                "status": "detect"
+              }
+            ],
+            "diagnosticQuestion": "Dẫn chứng của em đã đủ sức nặng để thuyết phục người đọc chưa?",
+            "scoreDimensions": [
+              "persuasion",
+              "structure",
+              "vocabulary"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

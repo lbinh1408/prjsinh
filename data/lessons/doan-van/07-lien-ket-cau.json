@@ -1,0 +1,174 @@
+{
+  "id": "doan-van.07-lien-ket-cau",
+  "title": "Liên kết câu",
+  "version": "1.0",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "format": "essay",
+        "content": "Tác phẩm nghệ thuật nào cũng xây dựng bằng những vật liệu mượn ở thực tại. Nhưng nghệ sĩ không những ghi lại cái đã có rồi mà còn muốn nói một điều gì mới mẻ. Anh gửi vào tác phẩm một lá thư, một lời nhắn nhủ, anh muốn đem một phần của mình góp vào đời sống chung quanh.",
+        "guide": [
+          "Các câu trong đoạn cùng nói về đối tượng nào?",
+          "Sự sắp xếp các câu có theo trình tự hợp lý không?"
+        ],
+        "hint": "Các câu đều hướng về 'tác phẩm nghệ thuật' và 'nghệ sĩ' (người sáng tạo nghệ thuật), đồng thời được sắp xếp theo một mạch suy luận logic.",
+        "title": "Quan sát",
+        "instruction": "Đọc kĩ đoạn văn sau và trả lời các câu hỏi gợi ý.",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Liên kết nội dung",
+            "icon": "🔗",
+            "active": true,
+            "content": {
+              "text": "Liên kết nội dung bao gồm liên kết chủ đề và liên kết logic.",
+              "examples": [
+                {
+                  "category": "Liên kết chủ đề",
+                  "word": "Các câu phải phục vụ chủ đề của đoạn văn, đoạn văn phải phục vụ chủ đề của bài văn.",
+                  "emoji": "🎯"
+                },
+                {
+                  "category": "Liên kết logic",
+                  "word": "Các câu trong đoạn phải được sắp xếp theo một trình tự hợp lý (thời gian, không gian, nguyên nhân - kết quả...).",
+                  "emoji": "🧩"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Khái niệm Liên kết câu",
+        "instruction": "Các câu trong một đoạn văn không thể xếp lộn xộn hoặc nói về những chủ đề rời rạc. Chúng phải được liên kết chặt chẽ với nhau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Thế nào là liên kết chủ đề trong đoạn văn?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Các câu trong đoạn phải sử dụng cùng một loại từ ngữ."
+          },
+          {
+            "id": "B",
+            "text": "Các câu trong đoạn đều hướng về và làm sáng tỏ một chủ đề chung."
+          },
+          {
+            "id": "C",
+            "text": "Các câu trong đoạn phải có độ dài bằng nhau."
+          },
+          {
+            "id": "D",
+            "text": "Câu sau phải lặp lại toàn bộ từ ngữ của câu trước."
+          }
+        ],
+        "answer": "B",
+        "title": "Nhận biết Liên kết chủ đề",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Dấu hiệu nào cho thấy các câu trong đoạn có sự liên kết logic?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Các câu có thể đảo lộn vị trí cho nhau một cách tự do."
+          },
+          {
+            "id": "B",
+            "text": "Chỉ cần các câu cùng nói về một chủ đề, không quan tâm thứ tự."
+          },
+          {
+            "id": "C",
+            "text": "Các câu được sắp xếp theo một trình tự diễn đạt hợp lý (nguyên nhân - kết quả, thời gian, không gian...)."
+          },
+          {
+            "id": "D",
+            "text": "Trong đoạn chỉ sử dụng một loại câu duy nhất."
+          }
+        ],
+        "answer": "C",
+        "title": "Nhận biết Liên kết logic",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "ordering",
+      "validator": "orderValidator",
+      "data": {
+        "items": [
+          "Vì vậy, nước trên mặt đường nhanh chóng rút đi.",
+          "Mưa rào ập đến rất nhanh và nặng hạt.",
+          "Bầu trời đen kịt, gió thổi mạnh làm cây cối nghiêng ngả.",
+          "Chỉ một lát sau, cơn mưa tạnh hẳn, để lại bầu trời trong xanh."
+        ],
+        "answer": [
+          "Bầu trời đen kịt, gió thổi mạnh làm cây cối nghiêng ngả.",
+          "Mưa rào ập đến rất nhanh và nặng hạt.",
+          "Chỉ một lát sau, cơn mưa tạnh hẳn, để lại bầu trời trong xanh.",
+          "Vì vậy, nước trên mặt đường nhanh chóng rút đi."
+        ],
+        "title": "Sắp xếp",
+        "instruction": "Hãy sắp xếp các câu sau theo trình tự logic hợp lý (nguyên nhân - diễn biến - kết quả) để đảm bảo liên kết câu.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Theo em, nếu một đoạn văn các câu đều nói về một chủ đề nhưng lại được sắp xếp lộn xộn không theo trình tự nào thì đoạn văn đó đã mắc lỗi gì?",
+        "sampleAnswer": [
+          "Đoạn văn đó đã mắc lỗi về liên kết logic.",
+          "Tuy các câu đảm bảo được liên kết chủ đề nhưng việc sắp xếp lộn xộn làm cho người đọc không hiểu được mạch cảm xúc, mạch tư duy, phá vỡ tính hợp lý của đoạn văn."
+        ],
+        "title": "Vận dụng",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Hãy viết đoạn văn diễn dịch nói về 1 kỉ niệm với bạn bè. Lưu ý sử dụng các phép liên kết câu đã học",
+        "sampleAnswer": [
+          "Ví dụ:",
+          "Buổi sáng hôm ấy,Lan và em cùng nhau đi học. Trời se lạnh, sương sớm còn vương trên lá. Hai đứa sánh vai nhau trên con đường làng. Em trò chuyện vui vẻ với Lan về bài tập. Thỉnh thoảng, hai đứa còn cùng nhau ngân nga một bài hát quen thuộc."
+        ],
+        "title": "Sáng tạo",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "doan-van",
+    "difficulty": "basic",
+    "xp": 150,
+    "stars": 3,
+    "description": "Tìm hiểu về sự liên kết giữa các câu trong đoạn văn: khái niệm và các loại liên kết nội dung cơ bản.",
+    "prerequisite": null,
+    "unlock": null,
+    "reviewMode": "quiz",
+    "durationMinutes": 15
+  }
+}

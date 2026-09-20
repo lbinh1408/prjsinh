@@ -1,0 +1,848 @@
+< !DOCTYPE html><html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>🔬 Microscope — Sổ tay giải phẫu văn điểm cao</title><style>* {
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #f5f7fb;
+    --card: #ffffff;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --primary: #4f46e5;
+    --primary-soft: #eef2ff;
+    --green: #059669;
+    --green-soft: #ecfdf5;
+    --yellow: #d97706;
+    --yellow-soft: #fffbeb;
+    --red: #dc2626;
+    --red-soft: #fef2f2;
+    --blue: #2563eb;
+    --blue-soft: #eff6ff;
+    --purple: #7c3aed;
+    --purple-soft: #f5f3ff;
+    --shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
+    --radius: 16px;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+button,
+textarea,
+input {
+    font: inherit;
+}
+
+/* =========================
+           LAYOUT
+        ========================= */
+
+.app {
+    min-height: 100vh;
+    display: flex;
+}
+
+.sidebar {
+    width: 260px;
+    background: #111827;
+    color: white;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    padding: 22px 16px;
+    overflow-y: auto;
+}
+
+.brand {
+    padding: 8px 10px 22px;
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
+    margin-bottom: 18px;
+}
+
+.brand-title {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.brand-sub {
+    color: #9ca3af;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.nav-section {
+    margin-top: 20px;
+}
+
+.nav-title {
+    font-size: 11px;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    padding: 0 10px;
+    margin-bottom: 8px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 10px;
+    border-radius: 10px;
+    color: #d1d5db;
+    font-size: 14px;
+    cursor: pointer;
+    margin-bottom: 3px;
+}
+
+.nav-item:hover {
+    background: rgba(255, 255, 255, .06);
+}
+
+.nav-item.active {
+    background: rgba(99, 102, 241, .22);
+    color: white;
+}
+
+.lesson-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #6366f1;
+    flex: 0 0 auto;
+}
+
+.main {
+    margin-left: 260px;
+    width: calc(100% - 260px);
+}
+
+/* =========================
+           TOPBAR
+        ========================= */
+
+.topbar {
+    height: 64px;
+    background: white;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+
+.breadcrumb {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.breadcrumb strong {
+    color: var(--text);
+}
+
+.progress-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.progress {
+    width: 130px;
+    height: 7px;
+    background: #e5e7eb;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 32%;
+    height: 100%;
+    background: var(--primary);
+    border-radius: inherit;
+}
+
+/* =========================
+           CONTENT
+        ========================= */
+
+.content {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 34px 32px 80px;
+}
+
+/* =========================
+           HERO
+        ========================= */
+
+.hero {
+    background: linear-gradient(135deg,
+            #eef2ff 0%,
+            #ffffff 55%,
+            #f5f3ff 100%);
+    border: 1px solid #e0e7ff;
+    border-radius: 22px;
+    padding: 30px;
+    box-shadow: var(--shadow);
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: white;
+    border: 1px solid #e0e7ff;
+    color: var(--primary);
+    border-radius: 999px;
+    padding: 6px 11px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.hero h1 {
+    margin: 15px 0 8px;
+    font-size: 32px;
+    line-height: 1.2;
+}
+
+.hero p {
+    margin: 0;
+    max-width: 750px;
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.hero-principle {
+    margin-top: 22px;
+    background: rgba(255, 255, 255, .8);
+    border: 1px solid #e0e7ff;
+    border-radius: 14px;
+    padding: 15px 17px;
+}
+
+.hero-principle strong {
+    color: var(--primary);
+}
+
+/* =========================
+           STATS
+        ========================= */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-top: 20px;
+}
+
+.stat {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px;
+}
+
+.stat-number {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.stat-label {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 3px;
+}
+
+/* =========================
+           SECTION
+        ========================= */
+
+.section {
+    margin-top: 34px;
+}
+
+.section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 15px;
+}
+
+.section-title {
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.section-desc {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+/* =========================
+           FILTERS
+        ========================= */
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.filter {
+    border: 1px solid var(--border);
+    background: white;
+    color: var(--muted);
+    padding: 8px 13px;
+    border-radius: 999px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.filter.active {
+    color: var(--primary);
+    background: var(--primary-soft);
+    border-color: #c7d2fe;
+}
+
+/* =========================
+           TEXT CARD
+        ========================= */
+
+.text-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.text-card-head {
+    padding: 20px 22px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.text-title {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.text-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 8px;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 9px;
+    border-radius: 999px;
+    font-size: 11px;
+    background: #f3f4f6;
+    color: #4b5563;
+}
+
+.tag.green {
+    background: var(--green-soft);
+    color: var(--green);
+}
+
+.tag.blue {
+    background: var(--blue-soft);
+    color: var(--blue);
+}
+
+.tag.purple {
+    background: var(--purple-soft);
+    color: var(--purple);
+}
+
+.source-note {
+    font-size: 12px;
+    color: var(--muted);
+    text-align: right;
+}
+
+/* =========================
+           PROMPT
+        ========================= */
+
+.prompt {
+    margin: 22px;
+    padding: 16px 18px;
+    border-left: 4px solid var(--primary);
+    background: var(--primary-soft);
+    border-radius: 10px;
+}
+
+.prompt-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: var(--primary);
+    font-weight: 700;
+    letter-spacing: .06em;
+}
+
+.prompt-text {
+    margin-top: 6px;
+    font-weight: 600;
+}
+
+/* =========================
+           READING
+        ========================= */
+
+.reading {
+    padding: 0 22px 25px;
+}
+
+.paragraph {
+    margin: 22px 0;
+    line-height: 1.9;
+    font-size: 16px;
+}
+
+.paragraph-number {
+    font-size: 11px;
+    color: #9ca3af;
+    margin-bottom: 7px;
+    text-transform: uppercase;
+}
+
+.sentence {
+    display: inline;
+    padding: 3px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .2s;
+    background: #f2f5b2;
+    box-shadow: 0 0 0 2px #a5b4fc;
+}
+
+.sentence:hover {
+    background: #eef2ff;
+}
+
+.sentence.selected {
+    background: #e0e7ff;
+    box-shadow: 0 0 0 2px #a5b4fc;
+}
+
+/* =========================
+           MICROSCOPE PANEL
+        ========================= */
+
+.microscope {
+    margin: 0 22px 25px;
+    border: 1px solid #ddd6fe;
+    background: #fafaff;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.micro-head {
+    padding: 18px 20px;
+    background: linear-gradient(135deg,
+            #f5f3ff,
+            #eef2ff);
+    border-bottom: 1px solid #ddd6fe;
+}
+
+.micro-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+}
+
+.micro-sub {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.lens-tabs {
+    display: flex;
+    gap: 7px;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border);
+    background: white;
+    overflow-x: auto;
+}
+
+.lens {
+    white-space: nowrap;
+    border: 1px solid var(--border);
+    background: white;
+    padding: 8px 12px;
+    border-radius: 9px;
+    cursor: pointer;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.lens.active {
+    color: var(--purple);
+    background: var(--purple-soft);
+    border-color: #c4b5fd;
+    font-weight: 600;
+}
+
+.micro-body {
+    padding: 22px;
+}
+
+.zoom-box {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 20px;
+}
+
+.zoom-label {
+    font-size: 11px;
+    color: var(--purple);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+}
+
+.zoom-text {
+    margin-top: 10px;
+    font-size: 20px;
+    line-height: 1.7;
+    font-weight: 600;
+}
+
+.analysis-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 15px;
+}
+
+.analysis-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    padding: 17px;
+}
+
+.analysis-card h4 {
+    margin: 0 0 9px;
+    font-size: 14px;
+}
+
+.analysis-card p {
+    margin: 0;
+    color: #4b5563;
+    line-height: 1.65;
+    font-size: 13px;
+}
+
+.analysis-card.highlight {
+    background: var(--green-soft);
+    border-color: #a7f3d0;
+}
+
+.analysis-card.warning {
+    background: var(--yellow-soft);
+    border-color: #fde68a;
+}
+
+/* =========================
+           BEFORE AFTER
+        ========================= */
+
+.before-after {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 15px;
+}
+
+.ba-card {
+    border-radius: 13px;
+    padding: 17px;
+}
+
+.ba-card.before {
+    background: var(--red-soft);
+    border: 1px solid #fecaca;
+}
+
+.ba-card.after {
+    background: var(--green-soft);
+    border: 1px solid #a7f3d0;
+}
+
+.ba-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.ba-text {
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* =========================
+           TAKEAWAY
+        ========================= */
+
+.takeaway {
+    margin-top: 15px;
+    padding: 18px;
+    border-radius: 14px;
+    background: #111827;
+    color: white;
+}
+
+.takeaway-label {
+    font-size: 11px;
+    color: #a5b4fc;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.takeaway-text {
+    margin-top: 8px;
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+/* =========================
+           PRACTICE
+        ========================= */
+
+.practice-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.practice-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+}
+
+.practice-card h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.practice-card p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.choice {
+    display: block;
+    width: 100%;
+    text-align: left;
+    border: 1px solid var(--border);
+    background: white;
+    padding: 11px 13px;
+    border-radius: 10px;
+    margin-top: 8px;
+    cursor: pointer;
+    color: gray;
+}
+
+.choice:hover {
+    border-color: #a5b4fc;
+    background: #fafaff;
+}
+
+.choice.correct {
+    border-color: #6ee7b7;
+    background: var(--green-soft);
+}
+
+.choice.wrong {
+    border-color: #fca5a5;
+    background: var(--red-soft);
+}
+
+.feedback {
+    margin-top: 12px;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+textarea {
+    width: 100%;
+    min-height: 150px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 13px;
+    resize: vertical;
+    outline: none;
+}
+
+textarea:focus {
+    border-color: #818cf8;
+    box-shadow: 0 0 0 3px #eef2ff;
+}
+
+.primary-btn {
+    margin-top: 10px;
+    border: none;
+    background: var(--primary);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* =========================
+           CHEAT SHEET
+        ========================= */
+
+.cheat {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px;
+    box-shadow: var(--shadow);
+}
+
+.cheat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.cheat-item {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 15px;
+}
+
+.cheat-item strong {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.cheat-item span {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+}
+
+/* =========================
+           FOOTER
+        ========================= */
+
+.complete {
+    margin-top: 35px;
+    background: linear-gradient(135deg, #ecfdf5, #f0fdf4);
+    border: 1px solid #a7f3d0;
+    border-radius: 18px;
+    padding: 24px;
+}
+
+.complete h3 {
+    margin: 0 0 7px;
+    color: #047857;
+}
+
+.complete p {
+    margin: 0;
+    color: #065f46;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+/* =========================
+           RESPONSIVE
+        ========================= */
+
+@media (max-width: 900px) {
+    .sidebar {
+        display: none;
+    }
+
+    .main {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .practice-grid,
+    .analysis-grid,
+    .before-after {
+        grid-template-columns: 1fr;
+    }
+
+    .cheat-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .content {
+        padding: 20px 14px 50px;
+    }
+
+    .topbar {
+        padding: 0 15px;
+    }
+
+    .hero {
+        padding: 22px;
+    }
+
+    .hero h1 {
+        font-size: 25px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .text-card-head {
+        flex-direction: column;
+    }
+
+    .source-note {
+        text-align: left;
+    }
+
+    .cheat-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .progress-box {
+        display: none;
+    }
+}

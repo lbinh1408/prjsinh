@@ -1,0 +1,148 @@
+{
+  "id": "doan-van.08d-phep-lien-ket-dong-nghia-trai-nghia-lien-tuong",
+  "title": "Phép đồng nghĩa, trái nghĩa, liên tưởng",
+  "version": "3.1",
+  "enabled": true,
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "format": "essay",
+        "content": "Kẻ <b>thất bại</b> thường hay viện cớ. Người <b>thành công</b> luôn tìm giải pháp.",
+        "guide": [
+          "Hai từ 'thất bại' và 'thành công' có quan hệ nghĩa như thế nào?",
+          "Việc dùng hai từ này ở hai câu khác nhau tạo ra hiệu ứng gì?"
+        ],
+        "hint": "Đây là hai từ trái nghĩa, được đặt ở hai câu để tạo sự tương phản, qua đó liên kết hai câu lại với nhau.",
+        "title": "Quan sát",
+        "instruction": "Đọc hai câu sau và chú ý các từ in đậm.",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "1. Khái niệm",
+            "icon": "💡",
+            "active": true,
+            "content": {
+              "text": "Là cách sử dụng ở câu đứng sau các từ ngữ đồng nghĩa, trái nghĩa hoặc cùng trường liên tưởng với từ ngữ đã có ở câu trước để tạo sự liên kết.",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "2. Phân loại",
+            "icon": "📝",
+            "active": false,
+            "content": {
+              "items": [
+                {
+                  "type": "common",
+                  "label": "Phép đồng nghĩa",
+                  "definition": "Dùng từ có nghĩa giống/gần giống (ví dụ: thi sĩ - nhà thơ).",
+                  "examples": []
+                },
+                {
+                  "type": "common",
+                  "label": "Phép trái nghĩa",
+                  "definition": "Dùng từ có nghĩa trái ngược để đối lập (ví dụ: yếu - mạnh).",
+                  "examples": []
+                },
+                {
+                  "type": "common",
+                  "label": "Phép liên tưởng",
+                  "definition": "Dùng các từ cùng một trường từ vựng/chủ đề (ví dụ: trường học -> thầy giáo, bảng đen, phấn trắng...).",
+                  "examples": []
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-3",
+            "title": "3. Tác dụng",
+            "icon": "✨",
+            "active": false,
+            "content": {
+              "text": "Tác dụng chính:",
+              "examples": [
+                {
+                  "category": "Hiệu quả",
+                  "word": "Tạo ra sự phong phú, linh hoạt về mặt từ vựng; làm rõ các khía cạnh khác nhau của cùng một chủ đề (liên tưởng) hoặc tạo sự đối lập mạnh mẽ (trái nghĩa).",
+                  "emoji": "🎨"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Khái niệm",
+        "instruction": "Đây là cách sử dụng quan hệ ý nghĩa của từ vựng để liên kết câu.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "identify",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Hai câu sau liên kết với nhau bằng phép gì? 'Cảnh vật xung quanh tôi đều thay đổi. Tôi đã lớn.' (lớn - thay đổi)",
+        "options": [
+          "Phép lặp",
+          "Phép nối",
+          "Phép liên tưởng (cùng trường nghĩa)",
+          "Phép thế"
+        ],
+        "answer": "Phép liên tưởng (cùng trường nghĩa)",
+        "title": "Nhận biết",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "highlight",
+      "data": {
+        "content": "Con người ta sinh ra là để sống có ý nghĩa. Không ai muốn chết đi một cách mờ nhạt.",
+        "answer": [
+          "chết"
+        ],
+        "title": "Thực hành",
+        "instruction": "Hãy tô sáng từ ở câu sau tạo thành phép TRÁI NGHĨA với từ 'sống' ở câu trước.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "reflection",
+      "data": {
+        "question": "Hãy viết 2 câu miêu tả khu vườn, trong đó dùng phép liên tưởng (các từ cùng chủ đề cây cối).",
+        "sampleAnswer": "Khu vườn nhà em rất tươi tốt. Những nụ hồng đang e ấp, còn khóm lan thì đã bung nở rực rỡ.",
+        "title": "Vận dụng",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "flashcard",
+      "data": {
+        "front": "Phép đồng nghĩa, trái nghĩa, liên tưởng?",
+        "back": "Là sử dụng các từ có quan hệ về nghĩa (giống nhau, trái ngược nhau hoặc cùng chủ đề) ở các câu khác nhau để tạo sợi dây liên kết mạch văn.",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "doan-van",
+    "difficulty": 2,
+    "xp": 50,
+    "stars": 3,
+    "description": "Tìm hiểu chi tiết về các phép liên kết sử dụng từ đồng nghĩa, trái nghĩa và liên tưởng.",
+    "durationMinutes": 15
+  }
+}

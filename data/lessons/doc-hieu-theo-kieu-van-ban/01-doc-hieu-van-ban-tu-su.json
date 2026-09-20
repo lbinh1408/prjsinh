@@ -1,0 +1,285 @@
+{
+  "id": "doc-hieu-theo-kieu-van-ban.01-doc-hieu-van-ban-tu-su",
+  "title": "Đọc hiểu văn bản tự sự",
+  "version": "2.0",
+  "enabled": true,
+  "steps": [
+    {
+      "id": "step01",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "1. Nhân vật & Sự việc",
+            "icon": "👥",
+            "active": true,
+            "content": {
+              "text": "Truyện kể về ai? (Nhân vật chính, nhân vật phụ). Những sự kiện nào đã xảy ra với họ? Cốt truyện diễn biến ra sao?",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "2. Ngôi kể",
+            "icon": "👁️",
+            "active": false,
+            "content": {
+              "text": "Câu chuyện được kể từ góc nhìn của ai? (Ngôi thứ nhất 'tôi' hay ngôi thứ ba giấu mình). Ngôi kể ảnh hưởng đến sự khách quan/chủ quan của câu chuyện.",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-3",
+            "title": "3. Lời người kể & Lời nhân vật",
+            "icon": "🗣️",
+            "active": false,
+            "content": {
+              "text": "Đâu là lời trần thuật của tác giả? Đâu là những đoạn đối thoại/độc thoại của các nhân vật?",
+              "examples": []
+            }
+          }
+        ],
+        "title": "Đặc trưng của văn bản tự sự",
+        "instruction": "Khi bắt gặp một ngữ liệu là truyện, bạn cần nhanh chóng xác định 3 yếu tố cốt lõi sau:",
+        "score": 1
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Đặc điểm nhân vật",
+            "icon": "🎭",
+            "active": true,
+            "content": {
+              "text": "Phân tích ngoại hình, hành động, ngôn ngữ, nội tâm để rút ra vẻ đẹp phẩm chất hoặc bi kịch số phận của nhân vật.",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Chi tiết nghệ thuật",
+            "icon": "✨",
+            "active": false,
+            "content": {
+              "text": "Giải mã ý nghĩa của các chi tiết đắt giá (VD: Chiếc bóng, bát cháo hành, chiếc lược ngà, vết sẹo...).",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-3",
+            "title": "Thông điệp & Bài học",
+            "icon": "💌",
+            "active": false,
+            "content": {
+              "text": "Từ câu chuyện, tác giả muốn ngợi ca, phê phán điều gì? Người đọc rút ra bài học nhận thức và hành động ra sao?",
+              "examples": []
+            }
+          }
+        ],
+        "title": "Trọng tâm cần khai thác",
+        "instruction": "Các câu hỏi trong đề thi sẽ tập trung 'xoáy' vào 3 khía cạnh sau:",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Bản đồ các yếu tố",
+            "icon": "🗺️",
+            "active": true,
+            "content": {
+              "text": "Văn bản tự sự thường có: Nhân vật, Sự việc, Thời gian, Không gian, Tình huống, Chi tiết tiêu biểu, Ngôi kể và Ý nghĩa.",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "6 Câu hỏi vàng",
+            "icon": "🌟",
+            "active": false,
+            "content": {
+              "text": "1. Ai? (Nhân vật)\n2. Chuyện gì xảy ra? (Sự việc)\n3. Điều gì làm câu chuyện chuyển biến? (Tình huống)\n4. Chi tiết nào đáng nhớ nhất? (Chi tiết tiêu biểu)\n5. Nhân vật bộc lộ tính cách qua đâu? (Hành động, lời nói...)\n6. Tác giả muốn gửi gắm điều gì? (Thông điệp)",
+              "examples": []
+            }
+          }
+        ],
+        "title": "Bản đồ đọc truyện & 6 câu hỏi vàng",
+        "instruction": "Để không bị lạc lối khi đọc một câu chuyện, hãy mang theo tấm 'bản đồ' gồm các yếu tố cơ bản và luôn tự hỏi 6 câu hỏi vàng sau:",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Tình huống truyện",
+            "icon": "⚡",
+            "active": true,
+            "content": {
+              "text": "Đây là hoàn cảnh hoặc sự kiện làm cho câu chuyện phát triển và bộc lộ tính cách nhân vật (Ví dụ: Nhặt được chiếc ví -> Trả hay không trả?). Đây là phần rất nhiều học sinh bỏ sót.",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Chi tiết tiêu biểu",
+            "icon": "🔍",
+            "active": false,
+            "content": {
+              "text": "Không phải mọi chi tiết đều quan trọng. Hãy tìm: hành động đặc biệt, lời nói đáng nhớ, đồ vật mang ý nghĩa (VD: Chiếc lược ngà không chỉ là cái lược mà là tình cha con).",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-3",
+            "title": "Nhân vật",
+            "icon": "👤",
+            "active": false,
+            "content": {
+              "text": "Nhân vật chính/phụ. Quan sát hành động, lời nói, suy nghĩ, cảm xúc vì đây là căn cứ chính xác nhất để hiểu tính cách nhân vật.",
+              "examples": []
+            }
+          }
+        ],
+        "title": "Khám phá các yếu tố cốt lõi",
+        "instruction": "Đi sâu vào 3 yếu tố quan trọng nhất thường bị hỏi trong đề thi:",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Cách trả lời 'Ăn điểm'",
+            "icon": "✅",
+            "active": true,
+            "content": {
+              "text": "Tuyệt đối không trả lời cảm tính. CÔNG THỨC: Luôn có [Nhận xét] + [Dẫn chứng].\nVD: Qua hành động nhường áo mưa cho bạn (Dẫn chứng), An là người biết quan tâm và sẵn sàng giúp đỡ người khác (Nhận xét).",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Những lỗi 'Chết người'",
+            "icon": "❌",
+            "active": false,
+            "content": {
+              "text": "- Kể lại truyện (Đề không hỏi!).\n- Chép nguyên văn (Thiếu phân tích).\n- Trả lời không có dẫn chứng.\n- Chỉ nêu cảm nghĩ suông (Không dựa vào văn bản).",
+              "examples": []
+            }
+          }
+        ],
+        "title": "Chiến thuật & Lỗi thường gặp",
+        "instruction": "Các dạng câu hỏi thường gặp: Xác định nhân vật/sự việc/ngôi kể/tình huống, Ý nghĩa chi tiết, Phân tích nhân vật, Thông điệp, Liên hệ.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "observe",
+      "data": {
+        "content": "\"Trên đường đi học về, Nam nhặt được một chiếc ví dày cộm. Cậu mở ra, bên trong có rất nhiều tiền và giấy tờ tùy thân. Trống ngực đập thình thịch, Nam nghĩ đến chiếc xe đạp điện mơ ước bấy lâu. Nhưng rồi cậu nhớ đến vẻ mặt thất thần của người mất của. Cuối cùng, Nam mang chiếc ví đến đồn công an gần nhất.\"",
+        "guide": [
+          "Ai? Chuyện gì xảy ra? Điều gì làm câu chuyện chuyển biến (tình huống)?",
+          "Nhân vật bộc lộ tính cách qua đâu? Tác giả gửi gắm điều gì?"
+        ],
+        "hint": "- Tình huống: Nhặt được ví nhiều tiền (thử thách lòng tham).\n- Chi tiết/Suy nghĩ: Nghĩ đến xe đạp điện (thèm muốn) -> Nhớ đến vẻ mặt thất thần của người mất (đồng cảm).\n- Hành động: Mang đến đồn công an.\n=> Thông điệp: Sự trung thực và chiến thắng sự cám dỗ của bản thân.",
+        "title": "Thực hành với 6 câu hỏi vàng",
+        "instruction": "Đọc câu chuyện ngắn sau và thử áp dụng phản xạ tự hỏi:",
+        "score": 0
+      }
+    },
+    {
+      "id": "step07",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trong các yếu tố của truyện, yếu tố nào đóng vai trò tạo ra hoàn cảnh buộc nhân vật phải bộc lộ rõ nhất tính cách, bản chất của mình?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Không gian và Thời gian"
+          },
+          {
+            "id": "B",
+            "text": "Tình huống truyện"
+          },
+          {
+            "id": "C",
+            "text": "Ngôi kể"
+          },
+          {
+            "id": "D",
+            "text": "Đoạn kết thúc"
+          }
+        ],
+        "answer": "B",
+        "title": "Câu hỏi Tình huống",
+        "score": 1
+      }
+    },
+    {
+      "id": "step08",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Khi đề bài hỏi 'Nhân vật An là người như thế nào?', cách trả lời nào sau đây là MẮC LỖI cảm tính, thiếu dẫn chứng?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Qua việc sẵn sàng chia sẻ phần bánh duy nhất của mình, ta thấy An là một người vô cùng nhân hậu."
+          },
+          {
+            "id": "B",
+            "text": "Em thấy An rất tốt, em rất thích nhân vật An vì bạn ấy giống bạn thân của em."
+          },
+          {
+            "id": "C",
+            "text": "An là một cậu bé dũng cảm, điều này được thể hiện rõ qua hành động lao xuống dòng nước xiết cứu người."
+          },
+          {
+            "id": "D",
+            "text": "Lời nói 'Mình cùng chia nhau nhé' cho thấy An luôn biết sẻ chia với mọi người xung quanh."
+          }
+        ],
+        "answer": "B",
+        "title": "Lỗi diễn đạt",
+        "score": 1
+      }
+    },
+    {
+      "id": "step09",
+      "type": "flashcard",
+      "data": {
+        "front": "Hãy nhẩm lại '6 câu hỏi vàng' khi đọc hiểu văn bản tự sự.",
+        "back": "1. Ai? (Nhân vật)\n2. Chuyện gì? (Sự việc)\n3. Điều gì làm câu chuyện chuyển biến? (Tình huống)\n4. Chi tiết nào đáng nhớ nhất?\n5. Tính cách bộc lộ qua đâu?\n6. Gửi gắm điều gì? (Thông điệp)",
+        "completedWhen": "flipped",
+        "title": "Sơ đồ tư duy",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "doc-hieu-theo-kieu-van-ban",
+    "difficulty": 2,
+    "xp": 80,
+    "stars": 3,
+    "description": "Hình thành phản xạ đọc hiểu truyện thông qua '6 câu hỏi vàng' và tránh các lỗi mất điểm đáng tiếc.",
+    "durationMinutes": 25
+  }
+}

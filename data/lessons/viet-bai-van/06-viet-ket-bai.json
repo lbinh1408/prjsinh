@@ -1,0 +1,646 @@
+{
+  "id": "viet-bai-06",
+  "title": "Viết kết bài → Khép bài ra sao?",
+  "type": "skill",
+  "version": "1.0.0",
+  "meta": {
+    "module": "viet-bai-van",
+    "lessonNumber": 6,
+    "durationMinutes": 300,
+    "difficulty": "beginner",
+    "skill": "viet-ket-bai",
+    "description": "Học cách khép lại bài viết một cách tự nhiên, phù hợp với kiểu bài và để lại suy nghĩ hoặc cảm xúc cho người đọc."
+  },
+  "learningGoals": [
+    "Hiểu vai trò của kết bài trong một bài văn.",
+    "Nhận biết một kết bài phù hợp và một kết bài còn yếu.",
+    "Biết phân biệt kết bài theo các kiểu bài: tự sự, miêu tả, biểu cảm, nghị luận xã hội và nghị luận văn học.",
+    "Biết khẳng định hoặc khép lại vấn đề sau khi đã triển khai trong thân bài.",
+    "Biết tránh những lỗi thường gặp như lặp lại mở bài, đưa ý mới chưa được triển khai hoặc kết bài quá cụt.",
+    "Viết được một kết bài phù hợp với đề bài."
+  ],
+  "completion": {
+    "requiredSections": [
+      "story",
+      "observe",
+      "discover",
+      "teach",
+      "guidedPractice",
+      "miniChallenge",
+      "reflection",
+      "cheatSheet",
+      "finalChallenge"
+    ],
+    "action": "completeLesson",
+    "message": "🎉 Một bài viết hay không chỉ cần bắt đầu tốt. Hãy học cách khép lại để điều em muốn nói còn ở lại với người đọc."
+  },
+  "steps": [
+    {
+      "id": "story_01",
+      "type": "story",
+      "data": {
+        "title": "Bài văn đã hết nhưng có thật sự được khép lại chưa?",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "split_compare",
+          "layout": "two_columns",
+          "question": "Hai kết bài đều kết thúc bài viết. Nhưng kết bài nào khiến em cảm thấy bài viết được khép lại tự nhiên hơn?"
+        },
+        "content": {
+          "prompt": "Đọc hai kết bài dưới đây và chọn kết bài phù hợp hơn.",
+          "title": "Đề: Suy nghĩ về lòng nhân ái.",
+          "left": {
+            "label": "ĐOẠN A",
+            "paragraph": "Lòng nhân ái rất quan trọng. Em nghĩ mỗi người cần có lòng nhân ái. Lòng nhân ái rất tốt và rất cần thiết. Em xin hết."
+          },
+          "right": {
+            "label": "ĐOẠN B",
+            "paragraph": "Lòng nhân ái không chỉ giúp con người biết yêu thương, sẻ chia mà còn khiến cuộc sống trở nên ấm áp hơn. Vì vậy, mỗi người hãy bắt đầu từ những hành động nhỏ nhất để biết quan tâm và giúp đỡ những người xung quanh."
+          }
+        },
+        "interaction": {
+          "type": "choice",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Kết bài A",
+              "correct": false
+            },
+            {
+              "id": "b",
+              "text": "Kết bài B",
+              "correct": true
+            },
+            {
+              "id": "same",
+              "text": "Hai kết bài tương đương nhau",
+              "correct": false
+            }
+          ],
+          "feedback": {
+            "correct": "✓ Đúng. Kết bài B vừa khẳng định lại vấn đề vừa mở ra một suy nghĩ phù hợp, khiến bài viết có cảm giác được khép lại.",
+            "incorrect": "△ Hãy chú ý xem kết bài nào chỉ lặp lại ý cũ và kết bài nào thực sự giúp người đọc nhận được một suy nghĩ cuối cùng."
+          }
+        },
+        "reveal": {
+          "title": "💡 Tìm hiểu",
+          "text": "Kết bài có nhiệm vụ khép lại vấn đề. Tùy kiểu bài, em có thể khẳng định lại, mở rộng suy nghĩ, để lại cảm xúc hoặc tạo dư âm cho người đọc."
+        }
+      }
+    },
+    {
+      "id": "observe_01",
+      "type": "observe",
+      "data": {
+        "title": "Một kết bài đang làm những việc gì?",
+        "durationSeconds": 180,
+        "ui": {
+          "component": "paragraph_highlight",
+          "interaction": "tap_sentence",
+          "question": "Hãy nhấn vào từng câu và quan sát vai trò của câu đó trong kết bài."
+        },
+        "content": {
+          "prompt": "Ví dụ: Kết bài nghị luận xã hội về lòng biết ơn.",
+          "paragraph": [
+            {
+              "id": "s1",
+              "text": "Lòng biết ơn là một phẩm chất cần thiết trong cuộc sống.",
+              "role": "restate",
+              "roleLabel": "🔄 KHẲNG ĐỊNH LẠI",
+              "feedback": "🟢 Câu này khép lại vấn đề bằng cách khẳng định lại điều người viết muốn nói."
+            },
+            {
+              "id": "s2",
+              "text": "Mỗi người cần biết trân trọng những người đã yêu thương, giúp đỡ mình.",
+              "role": "lesson",
+              "roleLabel": "🌱 BÀI HỌC",
+              "feedback": "🟡 Câu này đưa ra định hướng hoặc bài học phù hợp với vấn đề đã bàn luận."
+            },
+            {
+              "id": "s3",
+              "text": "Sống biết ơn cũng là cách để con người trở nên trách nhiệm và nhân văn hơn.",
+              "role": "extension",
+              "roleLabel": "🌿 MỞ RỘNG",
+              "feedback": "🔵 Câu này mở rộng ý nghĩa của vấn đề, giúp kết bài có chiều sâu hơn."
+            }
+          ]
+        },
+        "reveal": {
+          "title": "Em vừa nhìn thấy gì?",
+          "text": "Một kết bài có thể gồm nhiều lớp: khẳng định lại vấn đề, nêu bài học, mở rộng ý nghĩa hoặc tạo dư âm. Không phải bài nào cũng cần đủ tất cả các lớp."
+        }
+      }
+    },
+    {
+      "id": "discover_01",
+      "type": "discover",
+      "data": {
+        "title": "Kết bài thay đổi theo kiểu bài như thế nào?",
+        "durationSeconds": 180,
+        "ui": {
+          "component": "card_to_slot",
+          "interaction": "tap_to_place"
+        },
+        "reveal": {
+          "title": "🔎 Em vừa phát hiện ra",
+          "text": "Không có một mẫu kết bài dùng cho mọi bài văn. Kết bài phải phù hợp với điều bài viết vừa triển khai và đặc điểm của kiểu bài."
+        },
+        "content": {
+          "prompt": "Ghép mỗi kết bài với đúng kiểu bài.",
+          "slots": [
+            {
+              "id": "narrative",
+              "label": "📖 TỰ SỰ",
+              "question": "Kết bài nào khép lại một câu chuyện?",
+              "hint": "Có thể nhấn vào sự việc, bài học hoặc dư âm của câu chuyện."
+            },
+            {
+              "id": "descriptive",
+              "label": "🌿 MIÊU TẢ",
+              "question": "Kết bài nào khép lại một bài miêu tả?",
+              "hint": "Thường trở lại với hình ảnh, cảm giác hoặc ấn tượng về đối tượng."
+            },
+            {
+              "id": "emotional",
+              "label": "❤️ BIỂU CẢM",
+              "question": "Kết bài nào thể hiện cảm xúc?",
+              "hint": "Có thể để lại tình cảm hoặc dư âm."
+            },
+            {
+              "id": "social",
+              "label": "💭 NGHỊ LUẬN XÃ HỘI",
+              "question": "Kết bài nào khẳng định vấn đề và mở ra bài học?",
+              "hint": "Thường có khẳng định, bài học hoặc định hướng hành động."
+            },
+            {
+              "id": "literary",
+              "label": "📚 NGHỊ LUẬN VĂN HỌC",
+              "question": "Kết bài nào khẳng định giá trị của tác phẩm?",
+              "hint": "Có thể khẳng định lại nhận xét về nhân vật, hình ảnh, nội dung hoặc nghệ thuật."
+            }
+          ],
+          "cards": [
+            {
+              "id": "narrative_card",
+              "target": "narrative",
+              "correct": true,
+              "slotText": "Câu chuyện đã khép lại, nhưng bài học về sự sẻ chia mà nó để lại có lẽ sẽ còn theo em trong những ngày tháng sau này.",
+              "feedback": "✓ Kết bài phù hợp với tự sự: khép lại câu chuyện và để lại bài học, dư âm.",
+              "label": "📖 Dư âm câu chuyện."
+            },
+            {
+              "id": "descriptive_card",
+              "target": "descriptive",
+              "correct": true,
+              "slotText": "Chiều đã buông xuống trên cánh đồng, nhưng hình ảnh những bông lúa nghiêng mình trong nắng cuối ngày vẫn còn in đậm trong tâm trí em.",
+              "feedback": "✓ Kết bài quay trở lại với hình ảnh và ấn tượng về đối tượng được miêu tả.",
+              "label": "🌿 Hình ảnh và ấn tượng."
+            },
+            {
+              "id": "emotional_card",
+              "target": "emotional",
+              "correct": true,
+              "slotText": "Dù thời gian có trôi qua, tình yêu dành cho mẹ vẫn sẽ luôn là một phần dịu dàng và sâu sắc trong trái tim em.",
+              "feedback": "✓ Kết bài biểu cảm tập trung vào cảm xúc và dư âm tình cảm.",
+              "label": "❤️ Dư âm cảm xúc."
+            },
+            {
+              "id": "social_card",
+              "target": "social",
+              "correct": true,
+              "slotText": "Vì vậy, mỗi người cần biết sống có trách nhiệm với lời nói và hành động của mình, bởi những điều nhỏ bé hôm nay có thể tạo nên giá trị lớn cho cộng đồng ngày mai.",
+              "feedback": "✓ Kết bài nghị luận xã hội khẳng định và mở ra định hướng sống.",
+              "label": "💭 Khẳng định và bài học."
+            },
+            {
+              "id": "literary_card",
+              "target": "literary",
+              "correct": true,
+              "slotText": "Qua nhân vật ông Hai, Kim Lân không chỉ làm nổi bật tình yêu làng tha thiết mà còn cho thấy sự gắn bó sâu sắc giữa tình yêu quê hương với tình yêu đất nước.",
+              "feedback": "✓ Kết bài nghị luận văn học khẳng định lại giá trị nội dung và ý nghĩa của tác phẩm.",
+              "label": "📚 Khẳng định giá trị văn học."
+            },
+            {
+              "id": "wrong_card",
+              "target": null,
+              "correct": false,
+              "slotText": "Hôm nay em đã hoàn thành bài văn này.",
+              "feedback": "△ Câu này chỉ thông báo việc hoàn thành bài viết, chưa tạo ra một kết luận có ý nghĩa.",
+              "label": "△ Thông báo không phù hợp."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "teach_01",
+      "type": "teach",
+      "data": {
+        "title": "XÂY DỰNG MỘT KẾT BÀI",
+        "durationSeconds": 300,
+        "ui": {
+          "component": "vertical_map",
+          "interaction": "click_node",
+          "center": "KHÉP VẤN ĐỀ"
+        },
+        "prompt": "Một kết bài cơ bản có thể được xây dựng từ những lớp nào?",
+        "nodes": [
+          {
+            "id": "restate",
+            "icon": "🔄",
+            "title": "KHẲNG ĐỊNH LẠI",
+            "short": "Khép vấn đề",
+            "question": "Bài viết vừa làm rõ điều gì?",
+            "example": "Lòng nhân ái là một phẩm chất đẹp, giúp con người biết yêu thương và sẻ chia với nhau.",
+            "important": "Không nhất thiết lặp nguyên câu mở bài. Hãy diễn đạt lại bằng cách tự nhiên hơn."
+          },
+          {
+            "id": "lesson",
+            "icon": "🌱",
+            "title": "BÀI HỌC / ĐỊNH HƯỚNG",
+            "short": "Điều cần làm",
+            "question": "Sau khi bàn luận, em muốn nhắn gửi điều gì?",
+            "example": "Mỗi người cần biết quan tâm đến người khác từ những hành động nhỏ trong cuộc sống.",
+            "important": "Đặc biệt phù hợp với nghị luận xã hội, nhưng không phải kết bài nào cũng bắt buộc phải có."
+          },
+          {
+            "id": "extension",
+            "icon": "🌿",
+            "title": "MỞ RỘNG Ý NGHĨA",
+            "short": "Làm sâu",
+            "question": "Vấn đề này còn có ý nghĩa gì?",
+            "example": "Khi lòng nhân ái được lan tỏa, không chỉ người nhận được giúp đỡ mà cả cộng đồng cũng trở nên gắn kết hơn.",
+            "important": "Mở rộng phải liên quan trực tiếp đến vấn đề đã triển khai, không đưa một luận điểm hoàn toàn mới."
+          },
+          {
+            "id": "emotion",
+            "icon": "❤️",
+            "title": "CẢM XÚC / DƯ ÂM",
+            "short": "Khép cảm xúc",
+            "question": "Em muốn người đọc còn nhớ hoặc cảm thấy điều gì?",
+            "example": "Có lẽ chính những điều tử tế nhỏ bé ấy sẽ khiến cuộc sống của mỗi người trở nên ấm áp hơn.",
+            "important": "Phù hợp với biểu cảm, tự sự, miêu tả và nhiều kiểu bài khác khi cần tạo dư âm."
+          },
+          {
+            "id": "literary_value",
+            "icon": "📚",
+            "title": "GIÁ TRỊ VĂN HỌC",
+            "short": "Khẳng định tác phẩm",
+            "question": "Tác phẩm hoặc hình tượng vừa phân tích có ý nghĩa gì?",
+            "example": "Qua nhân vật ông Hai, Kim Lân đã khắc họa cảm động tình yêu quê hương hòa quyện với tình yêu đất nước.",
+            "important": "Phù hợp với nghị luận văn học. Không cần biến kết bài thành một phân tích mới."
+          }
+        ],
+        "diagnosticQuestion": "Câu cuối này đang giúp em khép lại điều gì?",
+        "importantNote": "Không phải kết bài nào cũng cần đủ các lớp trên. Đây là những cách tư duy để lựa chọn cách khép bài phù hợp với kiểu bài và nội dung đã triển khai."
+      }
+    },
+    {
+      "id": "guidedPractice_01",
+      "type": "guidedPractice",
+      "data": {
+        "title": "Lắp một kết bài hoàn chỉnh",
+        "durationSeconds": 180,
+        "ui": {
+          "component": "builder",
+          "interaction": "type_to_place"
+        },
+        "prompt": "Đề: Viết bài văn trình bày suy nghĩ về giá trị của sự tử tế.",
+        "instruction": "Hãy đưa từng câu vào đúng vị trí để tạo thành một kết bài hợp lí.",
+        "content": {
+          "prompt": "Xây dựng kết bài cho đề về sự tử tế.",
+          "slots": [
+            {
+              "id": "restate",
+              "label": "🔄 KHẲNG ĐỊNH",
+              "question": "Câu nào khép lại vấn đề?",
+              "hint": "Khẳng định lại giá trị của sự tử tế."
+            },
+            {
+              "id": "lesson",
+              "label": "🌱 BÀI HỌC",
+              "question": "Câu nào đưa ra định hướng?",
+              "hint": "Điều mỗi người nên làm."
+            },
+            {
+              "id": "extension",
+              "label": "🌿 MỞ RỘNG",
+              "question": "Câu nào mở rộng ý nghĩa?",
+              "hint": "Nêu ý nghĩa rộng hơn nhưng vẫn liên quan."
+            }
+          ],
+          "cards": [
+            {
+              "id": "restate",
+              "target": "restate",
+              "correct": true,
+              "slotText": "Sự tử tế là một giá trị đẹp giúp con người biết quan tâm và làm cho cuộc sống trở nên tốt đẹp hơn.",
+              "feedback": "✓ Câu này khẳng định lại vấn đề chính.",
+              "label": "🔄 Khẳng định."
+            },
+            {
+              "id": "lesson",
+              "target": "lesson",
+              "correct": true,
+              "slotText": "Mỗi người hãy bắt đầu từ những hành động nhỏ như biết lắng nghe, chia sẻ và giúp đỡ người khác khi có thể.",
+              "feedback": "✓ Câu này đưa ra định hướng hành động phù hợp.",
+              "label": "🌱 Bài học."
+            },
+            {
+              "id": "extension",
+              "target": "extension",
+              "correct": true,
+              "slotText": "Khi sự tử tế được lan tỏa, những điều nhỏ bé cũng có thể tạo nên một môi trường sống ấm áp và nhân văn hơn.",
+              "feedback": "✓ Câu này mở rộng ý nghĩa của vấn đề.",
+              "label": "🌿 Mở rộng."
+            }
+          ]
+        },
+        "completion": {
+          "button": "Kiểm tra kết bài",
+          "feedback": {
+            "correct": "✓ Tốt! Em đã biết khép vấn đề bằng cách khẳng định, định hướng và mở rộng.",
+            "partial": "△ Một số câu chưa đúng vai trò. Hãy thử hỏi: câu này đang khẳng định, định hướng hay mở rộng?",
+            "wrong": "△ Hãy bắt đầu bằng việc xác định điều bài viết vừa làm rõ."
+          }
+        }
+      }
+    },
+    {
+      "id": "miniChallenge_01",
+      "type": "miniChallenge",
+      "data": {
+        "title": "Kết bài nào phù hợp hơn?",
+        "durationSeconds": 120,
+        "ui": {
+          "layout": "single_choice"
+        },
+        "prompt": "Đề: Phân tích tình yêu quê hương của nhân vật ông Hai trong truyện ngắn Làng.",
+        "question": "Kết bài nào phù hợp nhất với đề?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Ông Hai rất yêu làng. Ông là một người tốt. Em xin hết bài.",
+            "correct": false
+          },
+          {
+            "id": "b",
+            "text": "Qua nhân vật ông Hai, Kim Lân đã khắc họa sâu sắc tình yêu quê hương gắn bó với tình yêu đất nước, qua đó làm nổi bật vẻ đẹp của người nông dân trong kháng chiến.",
+            "correct": true
+          },
+          {
+            "id": "c",
+            "text": "Trong cuộc sống, chúng ta cần luôn cố gắng học tập thật tốt để trở thành người có ích cho xã hội.",
+            "correct": false
+          },
+          {
+            "id": "d",
+            "text": "Làng là một truyện ngắn rất hay và em rất thích truyện này.",
+            "correct": false
+          }
+        ],
+        "feedback": {
+          "correct": "✓ Chính xác. Kết bài văn học cần quay trở lại với vấn đề đã phân tích và có thể khẳng định giá trị của hình tượng hoặc tác phẩm.",
+          "a": "△ Câu này quá đơn giản và kết thúc đột ngột.",
+          "c": "△ Đây là một bài học chung nhưng không trực tiếp khép lại vấn đề nghị luận văn học.",
+          "d": "△ Chỉ nêu cảm nhận chung mà chưa khẳng định điều bài viết đã phân tích."
+        }
+      }
+    },
+    {
+      "id": "reflection_01",
+      "type": "reflection",
+      "data": {
+        "title": "Kết bài của em đã thật sự khép bài chưa?",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "checklist_free_text"
+        },
+        "question": "Trước khi kết thúc một bài văn, em sẽ tự kiểm tra điều gì?",
+        "choices": [
+          {
+            "id": "restate",
+            "text": "🔄 Em đã khép lại đúng vấn đề chưa?"
+          },
+          {
+            "id": "repeat",
+            "text": "🚫 Em có đang lặp nguyên mở bài không?"
+          },
+          {
+            "id": "newIdea",
+            "text": "🚫 Em có đưa một ý mới chưa được triển khai không?"
+          },
+          {
+            "id": "fit",
+            "text": "🎯 Kết bài có phù hợp với kiểu bài không?"
+          },
+          {
+            "id": "echo",
+            "text": "🌿 Câu cuối có để lại một suy nghĩ hoặc cảm xúc phù hợp không?"
+          }
+        ],
+        "freeText": {
+          "label": "Em sẽ tự hỏi...",
+          "placeholder": "Ví dụ: Em sẽ xem câu cuối đã khẳng định lại đúng điều mình muốn nói chưa..."
+        },
+        "metacognition": "Một kết bài tốt không nhất thiết phải thật dài. Điều quan trọng là nó khiến người đọc cảm thấy vấn đề đã được khép lại và điều người viết muốn nói vẫn còn dư âm."
+      }
+    },
+    {
+      "id": "cheatSheet_01",
+      "type": "cheatSheet",
+      "data": {
+        "title": "GHI NHỚ: VIẾT KẾT BÀI",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "card_list",
+          "actions": [
+            "save",
+            "download"
+          ]
+        },
+        "items": [
+          {
+            "order": 1,
+            "icon": "🎯",
+            "title": "NHÌN LẠI VẤN ĐỀ",
+            "question": "Bài viết vừa làm rõ điều gì?"
+          },
+          {
+            "order": 2,
+            "icon": "🔄",
+            "title": "KHẲNG ĐỊNH LẠI",
+            "question": "Em muốn người đọc nhớ điều gì?"
+          },
+          {
+            "order": 3,
+            "icon": "🌱",
+            "title": "BÀI HỌC / ĐỊNH HƯỚNG",
+            "question": "Nếu phù hợp, em muốn nhắn gửi điều gì?"
+          },
+          {
+            "order": 4,
+            "icon": "🌿",
+            "title": "MỞ RỘNG / DƯ ÂM",
+            "question": "Có thể để lại một suy nghĩ hoặc cảm xúc nào?"
+          },
+          {
+            "order": 5,
+            "icon": "🎯",
+            "title": "KHÉP LẠI",
+            "question": "Câu cuối có khiến bài viết hoàn chỉnh không?"
+          }
+        ],
+        "keyMessage": "⭐ Kết bài không phải là viết cho hết. Kết bài là cách em khép lại điều mình muốn nói.",
+        "note": "Không có một công thức kết bài duy nhất. Hãy lựa chọn cách khép phù hợp với kiểu bài và những gì em đã triển khai.",
+        "commonMistakes": [
+          "❌ Kết bài quá cụt.",
+          "❌ Lặp nguyên mở bài.",
+          "❌ Đưa luận điểm mới chưa được phân tích.",
+          "❌ Chuyển sang một bài học chung chung không liên quan.",
+          "❌ Kết bài không phù hợp với kiểu bài."
+        ],
+        "practiceButton": {
+          "label": "🛠️ Thử viết kết bài",
+          "action": "open_mini_practice"
+        }
+      }
+    },
+    {
+      "id": "finalChallenge_01",
+      "type": "finalChallenge",
+      "data": {
+        "title": "THỬ THÁCH: KHÉP LẠI MỘT BÀI VĂN",
+        "durationSeconds": 300,
+        "ui": {
+          "component": "multi_stage_challenge",
+          "layout": "multi_stage"
+        },
+        "prompt": "Hãy viết một kết bài phù hợp với đề được giao.",
+        "stages": [
+          {
+            "key": "identify",
+            "type": "single_choice",
+            "title": "🎯 XÁC ĐỊNH KIỂU BÀI",
+            "question": "Đề này thuộc kiểu bài nào?",
+            "choices": [
+              {
+                "id": "social",
+                "label": "💭 Nghị luận xã hội"
+              },
+              {
+                "id": "literary",
+                "label": "📚 Nghị luận văn học"
+              },
+              {
+                "id": "emotional",
+                "label": "❤️ Biểu cảm"
+              }
+            ],
+            "correct": "social"
+          },
+          {
+            "key": "plan",
+            "type": "scaffold",
+            "title": "🧩 TRƯỚC KHI VIẾT",
+            "question": "Em muốn khép bài bằng cách nào?",
+            "scaffold": [
+              {
+                "id": "restate",
+                "label": "KHẲNG ĐỊNH LẠI",
+                "hint": "Em muốn khẳng định lại điều gì?"
+              },
+              {
+                "id": "lesson",
+                "label": "BÀI HỌC / ĐỊNH HƯỚNG",
+                "hint": "Em muốn nhắn gửi điều gì?"
+              },
+              {
+                "id": "echo",
+                "label": "DƯ ÂM",
+                "hint": "Em muốn để lại suy nghĩ gì?"
+              }
+            ]
+          },
+          {
+            "key": "writing",
+            "type": "editor",
+            "title": "✍️ VIẾT KẾT BÀI",
+            "placeholder": "Viết kết bài của em...",
+            "minCharacters": 60,
+            "maxCharacters": 250,
+            "submit": {
+              "label": "🚀 Nộp kết bài"
+            }
+          },
+          {
+            "key": "analysis",
+            "type": "analysis",
+            "title": "🧠 KIỂM TRA KẾT BÀI",
+            "metrics": [
+              {
+                "id": "closure",
+                "label": "Khép đúng vấn đề",
+                "status": "detect"
+              },
+              {
+                "id": "fit",
+                "label": "Phù hợp kiểu bài",
+                "status": "detect"
+              },
+              {
+                "id": "repetition",
+                "label": "Không lặp máy móc",
+                "status": "detect"
+              },
+              {
+                "id": "new_idea",
+                "label": "Không đưa ý mới chưa triển khai",
+                "status": "detect"
+              },
+              {
+                "id": "echo",
+                "label": "Có suy nghĩ / dư âm phù hợp",
+                "status": "detect"
+              }
+            ],
+            "diagnosticQuestion": "Câu cuối này đang giúp em khép lại điều gì?",
+            "feedbackRules": [
+              {
+                "when": "missing_closure",
+                "feedback": "△ Kết bài chưa quay lại đúng vấn đề mà bài viết đã triển khai."
+              },
+              {
+                "when": "wrong_type",
+                "feedback": "△ Cách kết bài chưa thật sự phù hợp với kiểu bài của đề."
+              },
+              {
+                "when": "repetition",
+                "feedback": "△ Em đang lặp lại mở bài quá nhiều. Hãy thử diễn đạt lại điều mình muốn khẳng định."
+              },
+              {
+                "when": "new_idea",
+                "feedback": "△ Em đang đưa vào một ý mới chưa được triển khai ở thân bài. Hãy tránh mở thêm vấn đề ở câu cuối."
+              },
+              {
+                "when": "too_short",
+                "feedback": "△ Kết bài hơi đột ngột. Hãy thử thêm một câu khẳng định hoặc suy nghĩ phù hợp."
+              },
+              {
+                "when": "good_closure",
+                "feedback": "✓ Tốt! Kết bài đã khép đúng vấn đề và để lại một suy nghĩ phù hợp."
+              }
+            ],
+            "scoreDimensions": [
+              "closure",
+              "fit",
+              "coherence",
+              "originality",
+              "echo"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

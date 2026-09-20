@@ -1,0 +1,293 @@
+{
+  "id": "bptt.03-an-du",
+  "title": "Ẩn dụ",
+  "version": "3.0",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "format": "poem",
+        "content": "Anh đội viên nhìn Bác<br>Càng nhìn lại càng thương<br><b>Người Cha</b> mái tóc bạc<br>Đốt lửa cho anh nằm.",
+        "guide": [
+          "Cụm từ in đậm 'Người Cha' trong đoạn thơ chỉ ai?",
+          "Vì sao tác giả lại ví người đó như 'Người Cha'?"
+        ],
+        "hint": "Người đó và 'Người Cha' có những nét tương đồng về tình yêu thương, sự chăm sóc.",
+        "title": "Quan sát",
+        "instruction": "Đọc đoạn thơ sau.",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Khái niệm",
+            "icon": "🎭",
+            "active": true,
+            "content": {
+              "text": "Ẩn dụ là gọi tên sự vật, hiện tượng này bằng tên sự vật, hiện tượng khác có nét tương đồng với nó.",
+              "examples": [
+                {
+                  "category": "Ví dụ 1: ",
+                  "word": "Người Cha mái tóc bạc (Người Cha = Bác Hồ).",
+                  "emoji": "👴"
+                },
+                {
+                  "category": "Ví dụ 2: ",
+                  "word": "Mặt trời của bắp thì nằm trên đồi / Mặt trời của mẹ, em nằm trên lưng (Mặt trời của mẹ = Em bé).",
+                  "emoji": "☀️"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Tác dụng",
+            "icon": "✨",
+            "active": false,
+            "content": {
+              "text": "Tăng sức gợi hình, gợi cảm cho sự diễn đạt, làm câu văn, câu thơ thêm hàm súc, sinh động.",
+              "examples": [
+                {
+                  "category": "Lưu ý: ",
+                  "word": "Ẩn dụ thực chất là một phép so sánh ngầm (lược bỏ vế A và từ so sánh, chỉ giữ lại vế B).",
+                  "emoji": "💡"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Khái niệm",
+        "instruction": "Biện pháp tu từ được sử dụng ở trên gọi là <i>Ẩn dụ</i>.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "identify",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trong câu 'Thuyền về có nhớ bến chăng / Bến thì một dạ khăng khăng đợi thuyền', hình ảnh 'bến' và 'thuyền' ẩn dụ cho ai?",
+        "options": [
+          "Người đi và người ở lại (người con trai và người con gái).",
+          "Con thuyền và bến sông.",
+          "Người đi buôn và quê hương.",
+          "Người mẹ và người con."
+        ],
+        "answer": "Người đi và người ở lại (người con trai và người con gái).",
+        "title": "Nhận biết",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Vì sao tác giả gọi Bác Hồ là 'Người Cha'?",
+        "sampleAnswer": [
+          "Vì Bác Hồ và người cha có nét tương đồng về tuổi tác.",
+          "Vì tình yêu thương, sự chăm lo ân cần của Bác đối với bộ đội giống như tình cảm của một người cha dành cho con."
+        ],
+        "title": "Thông hiểu",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "highlight",
+      "data": {
+        "content": "Mặt trời của bắp thì nằm trên đồi<br>[[Mặt trời]] [[của]] [[mẹ]], [[em]] [[nằm]] [[trên]] [[lưng]].",
+        "answer": [
+          "Mặt trời"
+        ],
+        "title": "Tô sáng",
+        "instruction": "Hãy chọn để tô sáng từ ngữ mang ý nghĩa ẩn dụ chỉ em bé trong câu thơ sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "reflection",
+      "data": {
+        "question": "Hãy đặt một câu có sử dụng biện pháp ẩn dụ.",
+        "sampleAnswer": "Người lái đò đang đưa những mầm non tương lai sang bờ tri thức.",
+        "title": "Vận dụng",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "1. Ẩn dụ hình thức",
+            "icon": "🖼️",
+            "active": true,
+            "content": {
+              "items": [
+                {
+                  "type": "common",
+                  "label": "Đặc điểm",
+                  "definition": "Dựa trên sự tương đồng về hình thức giữa các sự vật.",
+                  "examples": [
+                    "Về thăm quê Bác làng Sen / Có hàng râm bụt 'thắp' lên lửa hồng ('thắp' gợi hình ảnh hoa râm bụt nở trông như ngọn lửa)."
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "2. Ẩn dụ phẩm chất",
+            "icon": "❤️",
+            "active": false,
+            "content": {
+              "items": [
+                {
+                  "type": "common",
+                  "label": "Đặc điểm",
+                  "definition": "Dựa trên sự tương đồng về phẩm chất, đặc tính giữa các sự vật.",
+                  "examples": [
+                    "Người Cha mái tóc bạc (Tương đồng về tình yêu thương, sự chăm sóc ân cần)."
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-3",
+            "title": "3. Ẩn dụ chuyển đổi cảm giác",
+            "icon": "👁️",
+            "active": false,
+            "content": {
+              "items": [
+                {
+                  "type": "common",
+                  "label": "Đặc điểm",
+                  "definition": "Chuyển từ cảm giác này sang cảm giác khác (Ví dụ: từ thị giác sang thính giác, vị giác...).",
+                  "examples": [
+                    "Trời hôm nay nắng 'giòn tan' (Cảm nhận cái nắng bằng vị giác/thính giác thay vì xúc giác)."
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Các kiểu ẩn dụ thường gặp",
+        "score": 0
+      }
+    },
+    {
+      "id": "step08",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Cụm từ 'nắng giòn tan' sử dụng kiểu ẩn dụ nào?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Ẩn dụ hình thức."
+          },
+          {
+            "id": "B",
+            "text": "Ẩn dụ phẩm chất."
+          },
+          {
+            "id": "C",
+            "text": "Ẩn dụ chuyển đổi cảm giác."
+          },
+          {
+            "id": "D",
+            "text": "Ẩn dụ cách thức."
+          }
+        ],
+        "answer": "C",
+        "title": "Lựa chọn",
+        "score": 1
+      }
+    },
+    {
+      "id": "step09",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Người Cha mái tóc bạc.",
+          "Tiếng chim hót lảnh lót 'rơi' vào tai tôi.",
+          "Hàng râm bụt 'thắp' lên lửa hồng."
+        ],
+        "right": [
+          "Ẩn dụ phẩm chất",
+          "Ẩn dụ chuyển đổi cảm giác",
+          "Ẩn dụ hình thức"
+        ],
+        "answer": {
+          "Người Cha mái tóc bạc.": "Ẩn dụ phẩm chất",
+          "Tiếng chim hót lảnh lót 'rơi' vào tai tôi.": "Ẩn dụ chuyển đổi cảm giác",
+          "Hàng râm bụt 'thắp' lên lửa hồng.": "Ẩn dụ hình thức"
+        },
+        "title": "Nối câu",
+        "instruction": "Ghép mỗi câu với kiểu ẩn dụ tương ứng.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step10",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "Người Cha",
+          "Thuyền",
+          "Bến",
+          "Mặt trời của mẹ"
+        ],
+        "targets": [
+          "Bác Hồ",
+          "Người đi xa",
+          "Người ở lại",
+          "Em bé"
+        ],
+        "answer": {
+          "Người Cha": "Bác Hồ",
+          "Thuyền": "Người đi xa",
+          "Bến": "Người ở lại",
+          "Mặt trời của mẹ": "Em bé"
+        },
+        "title": "Kéo và thả",
+        "instruction": "Kéo và thả các hình ảnh ẩn dụ vào đúng đối tượng mà nó ngầm chỉ.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step11",
+      "type": "flashcard",
+      "data": {
+        "front": "Ẩn dụ",
+        "back": "Ẩn dụ là gọi tên sự vật, hiện tượng này bằng tên sự vật, hiện tượng khác có nét tương đồng với nó nhằm tăng sức gợi hình, gợi cảm cho sự diễn đạt.",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "bptt",
+    "difficulty": "reference",
+    "xp": 100,
+    "stars": 3,
+    "description": "Nhận biết và sử dụng biện pháp tu từ ẩn dụ.",
+    "prerequisite": null,
+    "unlock": null,
+    "reviewMode": "instant",
+    "durationMinutes": 15
+  }
+}

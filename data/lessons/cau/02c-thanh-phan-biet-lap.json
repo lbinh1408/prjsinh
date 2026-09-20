@@ -1,0 +1,238 @@
+{
+  "id": "cau.02c-thanh-phan-biet-lap",
+  "title": "Thành phần biệt lập",
+  "version": "1.0",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "content": "Ngày mai, <b>chắc chắn</b> Nam / sẽ đi học.<br><b>Nam ơi</b>, con quên mua vở rồi à ? <br> Thằng bé này - <b>con ông gác cổng</b> - rất thông minh.",
+        "guide": [
+          "Phần in đậm 'chắc chắn', 'Nam ơi', 'con ông gác cổng' có làm chủ ngữ hay vị ngữ không?",
+          "Nếu bỏ từ 'Chắc chắn' đi, sự việc 'ngày mai Nam sẽ đi học' có thay đổi không?"
+        ],
+        "hint": "Từ 'Chắc chắn' không tham gia vào cấu trúc ngữ pháp C-V của câu, nó chỉ thể hiện thái độ tin tưởng của người nói. Đây là một thành phần biệt lập.",
+        "title": "Quan sát",
+        "instruction": "Đọc câu sau và nhận xét về phần in đậm.",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Tình thái & Cảm thán",
+            "icon": "🎭",
+            "active": true,
+            "content": {
+              "text": "- Tình thái: Thể hiện cách nhìn của người nói đối với sự việc (Có lẽ, chắc chắn, dường như, hình như...)\n- Cảm thán: Bộc lộ tâm lý, cảm xúc của người nói (Ôi, chao ôi, than ôi, trời ơi...).",
+              "examples": [
+                {
+                  "category": "Ví dụ: ",
+                  "word": "Chắc chắn ngày mai trời sẽ nắng. (Tình thái)\nÔi, bông hoa đẹp quá! (Cảm thán)",
+                  "emoji": "☀️"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Gọi đáp & Phụ chú",
+            "icon": "🗣️",
+            "active": false,
+            "content": {
+              "text": "- Gọi đáp: Dùng để tạo lập hoặc duy trì quan hệ giao tiếp (Này, ơi, vâng, dạ, thưa...)\n- Phụ chú: Dùng để bổ sung một số chi tiết, giải thích cho nội dung chính của câu.",
+              "examples": [
+                {
+                  "category": "Ví dụ: ",
+                  "word": "Nam ơi, lại đây! (Gọi đáp)\nLan - lớp trưởng lớp tôi - rất ngoan. (Phụ chú)",
+                  "emoji": "💬"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-3",
+            "title": "3. Tác dụng",
+            "icon": "✨",
+            "active": false,
+            "content": {
+              "text": "Tác dụng là:",
+              "examples": [
+                {
+                  "category": "Hiệu quả",
+                  "word": "Bộc lộ thái độ, cảm xúc, thiết lập quan hệ giao tiếp, hoặc bổ sung thông tin giải thích thêm cho sự việc trong câu mà không tham gia vào cấu trúc ngữ pháp chính (chủ - vị).",
+                  "emoji": "🎨"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Khái niệm",
+        "instruction": "Thành phần biệt lập là những bộ phận không tham gia vào việc diễn đạt sự việc của câu.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "highlight",
+      "data": {
+        "content": "Có lẽ chiều nay anh ấy sẽ không về kịp.",
+        "answer": [
+          "Có lẽ"
+        ],
+        "title": "Tô sáng",
+        "instruction": "Tô sáng <b>Thành phần tình thái</b> trong câu sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "Dường như",
+          "Trời ơi",
+          "Vâng",
+          "người con gái quê Nam Định"
+        ],
+        "targets": [
+          "Thành phần tình thái",
+          "Thành phần cảm thán",
+          "Thành phần gọi đáp",
+          "Thành phần phụ chú"
+        ],
+        "answer": {
+          "Dường như": "Thành phần tình thái",
+          "Trời ơi": "Thành phần cảm thán",
+          "Vâng": "Thành phần gọi đáp",
+          "người con gái quê Nam Định": "Thành phần phụ chú"
+        },
+        "title": "Phân loại",
+        "instruction": "Xếp các thành phần biệt lập in đậm vào đúng loại.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trong câu: 'Chao ôi, mùa xuân đã về thật rồi!', cụm từ 'Chao ôi' là thành phần gì?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Thành phần tình thái"
+          },
+          {
+            "id": "B",
+            "text": "Thành phần cảm thán"
+          },
+          {
+            "id": "C",
+            "text": "Thành phần gọi đáp"
+          },
+          {
+            "id": "D",
+            "text": "Khởi ngữ"
+          }
+        ],
+        "answer": "B",
+        "title": "Lựa chọn",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "highlight",
+      "data": {
+        "content": "Bác Hồ (vị cha già kính yêu của dân tộc Việt Nam) đã hy sinh cả cuộc đời vì nước.",
+        "answer": [
+          "(vị cha già kính yêu của dân tộc Việt Nam)"
+        ],
+        "title": "Tô sáng",
+        "instruction": "Tô sáng <b>Thành phần phụ chú</b> trong câu sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Vì sao 4 loại thành phần (Tình thái, Cảm thán, Gọi đáp, Phụ chú) lại được gọi chung là 'thành phần biệt lập'?",
+        "sampleAnswer": [
+          "Vì chúng tách biệt với câu.",
+          "Vì lược bỏ chúng, ý nghĩa sự việc cốt lõi của câu vẫn không bị thay đổi, chỉ mất đi sắc thái biểu cảm hoặc giải thích thêm."
+        ],
+        "title": "Thông hiểu",
+        "score": 1
+      }
+    },
+    {
+      "id": "step08",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Chắc là",
+          "Này",
+          "Than ôi",
+          "- một người hiền lành -"
+        ],
+        "right": [
+          "Tình thái",
+          "Gọi đáp",
+          "Cảm thán",
+          "Phụ chú"
+        ],
+        "answer": {
+          "Chắc là": "Tình thái",
+          "Này": "Gọi đáp",
+          "Than ôi": "Cảm thán",
+          "- một người hiền lành -": "Phụ chú"
+        },
+        "title": "Nối câu",
+        "instruction": "Ghép các cụm từ sau với loại thành phần biệt lập tương ứng.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step09",
+      "type": "reflection",
+      "data": {
+        "question": "Hãy viết 1 câu có sử dụng thành phần gọi đáp để thưa gửi lễ phép với người lớn tuổi.",
+        "sampleAnswer": "Ví dụ: Thưa bà, cháu vừa đi học về ạ.",
+        "title": "Vận dụng",
+        "score": 1
+      }
+    },
+    {
+      "id": "step10",
+      "type": "flashcard",
+      "data": {
+        "front": "Thành phần biệt lập",
+        "back": "Gồm 4 loại: Tình thái (nhìn nhận sự việc), Cảm thán (bộc lộ cảm xúc), Gọi đáp (duy trì giao tiếp), Phụ chú (giải thích bổ sung). Tất cả đều không tham gia làm nòng cốt câu.",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "cau",
+    "difficulty": "reference",
+    "xp": 150,
+    "stars": 3,
+    "description": "Tìm hiểu chi tiết về 4 loại thành phần biệt lập: tình thái, cảm thán, gọi đáp và phụ chú.",
+    "prerequisite": null,
+    "unlock": null,
+    "reviewMode": "instant",
+    "durationMinutes": 20
+  }
+}

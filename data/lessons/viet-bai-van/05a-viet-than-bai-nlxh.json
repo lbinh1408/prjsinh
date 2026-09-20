@@ -1,0 +1,744 @@
+{
+  "id": "viet-bai-van.05a-viet-than-bai-nlxh",
+  "title": "Viết bài văn nghị luận xã hội",
+  "type": "skill",
+  "version": "1.0.0",
+  "meta": {
+    "module": "viet-bai",
+    "lessonNumber": 8,
+    "durationMinutes": 300,
+    "difficulty": "intermediate",
+    "skill": "viet-bai-nghi-luan-xa-hoi",
+    "description": "Học cách biến một vấn đề trong đời sống thành một bài văn nghị luận có bố cục rõ ràng, lí lẽ hợp lí và dẫn chứng phù hợp."
+  },
+  "learningGoals": [
+    "Nhận biết đặc điểm cơ bản của bài văn nghị luận xã hội.",
+    "Đọc đề và xác định đúng vấn đề cần nghị luận.",
+    "Biết lựa chọn các phương diện phù hợp để triển khai thân bài.",
+    "Biết xây dựng thân bài theo trình tự hợp lí thay vì viết lan man.",
+    "Biết kết hợp lí lẽ, dẫn chứng và phân tích để làm sáng tỏ vấn đề.",
+    "Biết điều chỉnh cấu trúc thân bài tùy theo dạng đề.",
+    "Viết được một bài văn nghị luận xã hội có bố cục rõ ràng và lập luận tương đối chặt chẽ."
+  ],
+  "completion": {
+    "requiredSections": [
+      "story",
+      "observe",
+      "discover",
+      "teach",
+      "guidedPractice",
+      "miniChallenge",
+      "reflection",
+      "cheatSheet",
+      "finalChallenge"
+    ],
+    "action": "completeLesson",
+    "message": "🎯 Một bài nghị luận tốt không phải là bài viết thật nhiều. Đó là bài biết mình đang bàn điều gì, bàn theo những phương diện nào và dùng lí lẽ, dẫn chứng để làm sáng tỏ vấn đề."
+  },
+  "steps": [
+    {
+      "id": "story_01",
+      "type": "story",
+      "data": {
+        "title": "Biết vấn đề nhưng viết mãi vẫn lan man?",
+        "durationSeconds": 180,
+        "ui": {
+          "component": "split_compare",
+          "layout": "two_columns",
+          "question": "Hai cách triển khai đều nói về tác hại của trì hoãn. Cách nào giúp người đọc dễ theo dõi hơn?"
+        },
+        "content": {
+          "prompt": "Hãy đọc hai cách triển khai dưới đây.",
+          "title": "Đề: Suy nghĩ về thói quen trì hoãn của học sinh.",
+          "left": {
+            "label": "CÁCH A",
+            "paragraph": "Trì hoãn là một thói quen không tốt. Học sinh không nên trì hoãn. Trì hoãn làm chúng ta lười biếng. Có nhiều bạn thường trì hoãn việc học. Điều đó không tốt và cần phải thay đổi."
+          },
+          "right": {
+            "label": "CÁCH B",
+            "paragraph": "Trước hết, cần hiểu trì hoãn là việc cố tình kéo dài hoặc dời một công việc dù biết mình cần hoàn thành nó. Trong học tập, thói quen này thường biểu hiện ở việc học sinh liên tục để bài tập đến sát hạn mới làm hoặc luôn tự nhủ rằng ngày mai sẽ bắt đầu. Nếu kéo dài, trì hoãn khiến công việc dồn lại, làm giảm hiệu quả học tập và tạo ra tâm lí căng thẳng. Vì vậy, mỗi học sinh cần biết chia nhỏ nhiệm vụ và chủ động hoàn thành công việc đúng thời hạn."
+          }
+        },
+        "interaction": {
+          "type": "choice",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Cách A",
+              "correct": false
+            },
+            {
+              "id": "b",
+              "text": "Cách B",
+              "correct": true
+            },
+            {
+              "id": "same",
+              "text": "Hai cách tương đương nhau",
+              "correct": false
+            }
+          ],
+          "feedback": {
+            "correct": "✓ Đúng. Cách B chia vấn đề thành các phương diện rõ ràng: giải thích → biểu hiện → tác hại → giải pháp.",
+            "incorrect": "△ Hãy xem cách nào giúp người đọc biết từng phần của vấn đề đang được bàn đến."
+          }
+        },
+        "reveal": {
+          "title": "💡 Điều quan trọng",
+          "text": "Khi viết bài nghị luận xã hội, em không nên nghĩ đơn giản rằng “cứ nói thật nhiều về vấn đề”. Em cần chia vấn đề thành những phương diện có nhiệm vụ rõ ràng."
+        }
+      }
+    },
+    {
+      "id": "observe_01",
+      "type": "observe",
+      "data": {
+        "title": "Một bài nghị luận xã hội được xây như thế nào?",
+        "durationSeconds": 180,
+        "ui": {
+          "component": "paragraph_highlight",
+          "interaction": "tap_sentence",
+          "question": "Hãy nhấn vào từng phần để xem nó đang làm nhiệm vụ gì."
+        },
+        "content": {
+          "prompt": "Quan sát cấu trúc của một bài văn nghị luận xã hội.",
+          "paragraph": [
+            {
+              "id": "s1",
+              "text": "Trong cuộc sống, mỗi người đều có những công việc cần hoàn thành đúng lúc. Tuy nhiên, thói quen trì hoãn đang khiến nhiều học sinh gặp khó khăn trong học tập và cuộc sống.",
+              "role": "introduction",
+              "roleLabel": "🌱 MỞ BÀI",
+              "feedback": "🟢 Mở bài dẫn vào vấn đề và giới thiệu rõ vấn đề cần nghị luận: thói quen trì hoãn."
+            },
+            {
+              "id": "s2",
+              "text": "Trì hoãn là việc cố tình kéo dài hoặc dời một công việc dù biết mình cần hoàn thành nó.",
+              "role": "explanation",
+              "roleLabel": "💡 GIẢI THÍCH",
+              "feedback": "🟡 Phần này giúp người đọc hiểu khái niệm đang được bàn luận."
+            },
+            {
+              "id": "s3",
+              "text": "Ở học sinh, trì hoãn có thể biểu hiện qua việc để bài tập đến sát hạn mới làm, học bài vào phút cuối hoặc liên tục tự nhủ rằng ngày mai sẽ bắt đầu.",
+              "role": "manifestation",
+              "roleLabel": "🔎 BIỂU HIỆN",
+              "feedback": "🔵 Phần này đưa vấn đề về những biểu hiện cụ thể trong đời sống."
+            },
+            {
+              "id": "s4",
+              "text": "Nếu kéo dài, thói quen ấy khiến công việc bị dồn lại, chất lượng học tập giảm sút và con người dễ rơi vào trạng thái căng thẳng.",
+              "role": "consequence",
+              "roleLabel": "⚠️ TÁC HẠI",
+              "feedback": "🟠 Phần này phân tích hậu quả để cho thấy vì sao vấn đề đáng quan tâm."
+            },
+            {
+              "id": "s5",
+              "text": "Để khắc phục, học sinh cần xác định việc quan trọng, chia nhiệm vụ thành những phần nhỏ và chủ động hoàn thành từng phần thay vì chờ đến phút cuối.",
+              "role": "solution",
+              "roleLabel": "🛠️ GIẢI PHÁP",
+              "feedback": "🟣 Phần này hướng tới cách giải quyết vấn đề, giúp bài viết không chỉ dừng ở phê phán."
+            },
+            {
+              "id": "s6",
+              "text": "Mỗi người cần rèn luyện sự chủ động và biết chịu trách nhiệm với thời gian của mình để học tập và sống hiệu quả hơn.",
+              "role": "lesson",
+              "roleLabel": "🎯 BÀI HỌC",
+              "feedback": "🟢 Phần này rút ra bài học nhận thức và hành động."
+            }
+          ]
+        },
+        "reveal": {
+          "title": "Em vừa nhìn thấy gì?",
+          "text": "Thân bài nghị luận xã hội thường được chia thành nhiều đoạn. Mỗi đoạn đảm nhiệm một phương diện của vấn đề chứ không phải đoạn nào cũng nói tất cả mọi thứ."
+        }
+      }
+    },
+    {
+      "id": "discover_01",
+      "type": "discover",
+      "data": {
+        "title": "Mỗi dạng đề cần những phương diện nào?",
+        "durationSeconds": 240,
+        "ui": {
+          "component": "card_to_slot",
+          "interaction": "tap_to_place"
+        },
+        "reveal": {
+          "title": "🔎 Em vừa phát hiện ra",
+          "text": "Không có một dàn ý duy nhất áp dụng máy móc cho mọi đề nghị luận xã hội. Hãy đọc xem đề đang yêu cầu em bàn về điều gì rồi chọn những phương diện phù hợp."
+        },
+        "content": {
+          "prompt": "Ghép phương diện triển khai phù hợp với từng dạng đề.",
+          "slots": [
+            {
+              "id": "concept",
+              "label": "💡 GIẢI THÍCH",
+              "question": "Vấn đề này có nghĩa là gì?",
+              "hint": "Làm rõ khái niệm hoặc nội dung của vấn đề."
+            },
+            {
+              "id": "manifestation",
+              "label": "🔎 BIỂU HIỆN / THỰC TRẠNG",
+              "question": "Vấn đề xuất hiện như thế nào?",
+              "hint": "Đưa vấn đề vào đời sống cụ thể."
+            },
+            {
+              "id": "cause",
+              "label": "🧩 NGUYÊN NHÂN",
+              "question": "Vì sao vấn đề xuất hiện?",
+              "hint": "Tìm nguyên nhân phù hợp."
+            },
+            {
+              "id": "consequence",
+              "label": "⚠️ Ý NGHĨA / TÁC HẠI",
+              "question": "Điều đó dẫn đến điều gì?",
+              "hint": "Phân tích giá trị, ý nghĩa hoặc hậu quả."
+            },
+            {
+              "id": "solution",
+              "label": "🛠️ GIẢI PHÁP",
+              "question": "Cần làm gì?",
+              "hint": "Đề xuất cách giải quyết hoặc phát huy."
+            },
+            {
+              "id": "lesson",
+              "label": "🎯 BÀI HỌC",
+              "question": "Bản thân cần nhận thức và hành động thế nào?",
+              "hint": "Rút ra bài học phù hợp."
+            }
+          ],
+          "cards": [
+            {
+              "id": "card1",
+              "target": "concept",
+              "correct": true,
+              "slotText": "Giải thích thế nào là trì hoãn.",
+              "feedback": "✓ Đúng. Trước hết cần giúp người đọc hiểu vấn đề.",
+              "label": "💡 Khái niệm"
+            },
+            {
+              "id": "card2",
+              "target": "manifestation",
+              "correct": true,
+              "slotText": "Nêu những biểu hiện của thói quen trì hoãn ở học sinh.",
+              "feedback": "✓ Đúng. Đây là cách đưa vấn đề vào thực tế.",
+              "label": "🔎 Biểu hiện"
+            },
+            {
+              "id": "card3",
+              "target": "cause",
+              "correct": true,
+              "slotText": "Phân tích vì sao con người dễ hình thành thói quen trì hoãn.",
+              "feedback": "✓ Đúng. Đây là phương diện nguyên nhân.",
+              "label": "🧩 Nguyên nhân"
+            },
+            {
+              "id": "card4",
+              "target": "consequence",
+              "correct": true,
+              "slotText": "Phân tích những hậu quả của việc thường xuyên trì hoãn.",
+              "feedback": "✓ Đúng. Phần này cho thấy mức độ đáng quan tâm của vấn đề.",
+              "label": "⚠️ Hậu quả"
+            },
+            {
+              "id": "card5",
+              "target": "solution",
+              "correct": true,
+              "slotText": "Đề xuất cách để học sinh hạn chế thói quen trì hoãn.",
+              "feedback": "✓ Đúng. Một bài nghị luận xã hội thường cần hướng tới hành động.",
+              "label": "🛠️ Giải pháp"
+            },
+            {
+              "id": "card6",
+              "target": "lesson",
+              "correct": true,
+              "slotText": "Rút ra bài học về việc sử dụng thời gian có trách nhiệm.",
+              "feedback": "✓ Đúng. Đây là bước đưa vấn đề trở lại nhận thức và hành động của bản thân.",
+              "label": "🎯 Bài học"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "teach_01",
+      "type": "teach",
+      "data": {
+        "title": "KIẾN TRÚC MỘT BÀI NGHỊ LUẬN XÃ HỘI",
+        "durationSeconds": 300,
+        "ui": {
+          "component": "vertical_map",
+          "interaction": "click_node",
+          "center": "VẤN ĐỀ NGHỊ LUẬN"
+        },
+        "prompt": "Ví dụ: Suy nghĩ về thói quen trì hoãn.",
+        "nodes": [
+          {
+            "id": "intro",
+            "icon": "🌱",
+            "title": "MỞ BÀI",
+            "short": "Giới thiệu vấn đề",
+            "question": "Đề đang yêu cầu bàn về điều gì?",
+            "example": "Trong cuộc sống, mỗi người đều cần biết sử dụng thời gian hợp lí. Tuy nhiên, thói quen trì hoãn đang khiến nhiều học sinh gặp khó khăn trong học tập và cuộc sống."
+          },
+          {
+            "id": "explanation",
+            "icon": "💡",
+            "title": "GIẢI THÍCH",
+            "short": "Làm rõ vấn đề",
+            "question": "Vấn đề đó có nghĩa là gì?",
+            "example": "Trì hoãn là việc cố tình kéo dài hoặc dời một công việc dù biết mình cần hoàn thành nó."
+          },
+          {
+            "id": "manifestation",
+            "icon": "🔎",
+            "title": "BIỂU HIỆN / THỰC TRẠNG",
+            "short": "Đưa vào đời sống",
+            "question": "Vấn đề biểu hiện như thế nào?",
+            "example": "Trong học tập, trì hoãn thể hiện ở việc để bài tập đến sát hạn mới làm, học bài vào phút cuối hoặc liên tục tự nhủ rằng ngày mai sẽ bắt đầu."
+          },
+          {
+            "id": "analysis",
+            "icon": "🧩",
+            "title": "PHÂN TÍCH",
+            "short": "Làm rõ nguyên nhân / ý nghĩa / tác hại",
+            "question": "Vì sao vấn đề xảy ra và nó dẫn đến điều gì?",
+            "example": "Trì hoãn có thể xuất phát từ tâm lí ngại khó, thiếu kế hoạch hoặc thích những hoạt động đem lại cảm giác thoải mái trước mắt. Khi công việc bị dồn lại, con người dễ căng thẳng và khó đạt được kết quả tốt."
+          },
+          {
+            "id": "evidence",
+            "icon": "📌",
+            "title": "DẪN CHỨNG",
+            "short": "Minh họa",
+            "question": "Có sự việc hoặc hiện tượng nào làm rõ điều em nói?",
+            "example": "Chẳng hạn, một học sinh thường xuyên để bài tập đến tối trước ngày nộp mới làm sẽ khó có đủ thời gian suy nghĩ, sửa lỗi và hoàn thiện bài."
+          },
+          {
+            "id": "solution",
+            "icon": "🛠️",
+            "title": "GIẢI PHÁP",
+            "short": "Hướng giải quyết",
+            "question": "Cần làm gì để thay đổi?",
+            "example": "Để khắc phục, học sinh có thể lập danh sách công việc, chia nhiệm vụ lớn thành những phần nhỏ và đặt thời hạn cụ thể cho từng phần."
+          },
+          {
+            "id": "lesson",
+            "icon": "🎯",
+            "title": "BÀI HỌC",
+            "short": "Nhận thức và hành động",
+            "question": "Bản thân cần thay đổi điều gì?",
+            "example": "Mỗi người cần rèn luyện tính chủ động, biết trân trọng thời gian và chịu trách nhiệm với những việc mình lựa chọn."
+          },
+          {
+            "id": "conclusion",
+            "icon": "🌿",
+            "title": "KẾT BÀI",
+            "short": "Khẳng định",
+            "question": "Em muốn khép lại vấn đề bằng suy nghĩ gì?",
+            "example": "Từ bỏ trì hoãn không phải là thay đổi trong một ngày, mà là quá trình rèn luyện sự chủ động mỗi ngày."
+          }
+        ],
+        "diagnosticQuestion": "Nếu đề thay đổi, em có biết đoạn nào cần giữ, đoạn nào cần thay đổi không?",
+        "importantNote": "Đây là khung tư duy chứ không phải công thức bắt buộc. Không phải đề nghị luận xã hội nào cũng cần đủ tất cả các phương diện trên. Hãy căn cứ vào yêu cầu của đề.<br>Giải thích = làm cho người đọc hiểu.<br>Bàn luận = làm cho người đọc hiểu sâu.<br>Chứng minh – phân tích = làm cho người đọc thấy có cơ sở để tin.<br>Mở rộng – phản biện = làm cho người đọc thấy vấn đề không đơn giản, một chiều.<br>Bài học – hành động = biến nhận thức thành điều mình cần làm."
+      }
+    },
+    {
+      "id": "guidedPractice_01",
+      "type": "guidedPractice",
+      "data": {
+        "title": "Lắp ráp thân bài theo yêu cầu của đề",
+        "durationSeconds": 240,
+        "ui": {
+          "component": "builder",
+          "interaction": "type_to_place"
+        },
+        "prompt": "Đề: Hãy viết bài văn trình bày suy nghĩ về ý nghĩa của việc biết nói lời xin lỗi.",
+        "instruction": "Hãy đưa từng ý vào phương diện phù hợp để tạo thành dàn ý thân bài.",
+        "content": {
+          "prompt": "Ý nghĩa của lời xin lỗi.",
+          "slots": [
+            {
+              "id": "explanation",
+              "label": "💡 GIẢI THÍCH",
+              "question": "Lời xin lỗi là gì?",
+              "hint": "Làm rõ khái niệm."
+            },
+            {
+              "id": "meaning",
+              "label": "🌿 Ý NGHĨA",
+              "question": "Vì sao biết xin lỗi lại quan trọng?",
+              "hint": "Phân tích giá trị."
+            },
+            {
+              "id": "example",
+              "label": "🔎 MINH HỌA",
+              "question": "Có tình huống nào cho thấy điều đó?",
+              "hint": "Một ví dụ gần gũi."
+            },
+            {
+              "id": "lesson",
+              "label": "🎯 BÀI HỌC",
+              "question": "Bản thân cần làm gì?",
+              "hint": "Nhận thức và hành động."
+            }
+          ],
+          "cards": [
+            {
+              "id": "c1",
+              "target": "explanation",
+              "correct": true,
+              "slotText": "Xin lỗi là lời bày tỏ sự nhận thức về lỗi lầm của mình và mong muốn được tha thứ hoặc sửa chữa lỗi ấy.",
+              "feedback": "✓ Đây là phần giải thích khái niệm.",
+              "label": "GIẢI THÍCH"
+            },
+            {
+              "id": "c2",
+              "target": "meaning",
+              "correct": true,
+              "slotText": "Biết xin lỗi giúp con người thể hiện sự tôn trọng người khác, đồng thời tạo cơ hội để sửa chữa những tổn thương do mình gây ra.",
+              "feedback": "✓ Đây là phần phân tích ý nghĩa.",
+              "label": "Ý NGHĨA"
+            },
+            {
+              "id": "c3",
+              "target": "example",
+              "correct": true,
+              "slotText": "Khi vô tình làm bạn buồn, một lời xin lỗi chân thành có thể giúp hai người hiểu nhau và giải quyết khúc mắc.",
+              "feedback": "✓ Đây là minh họa cụ thể.",
+              "label": "MINH HỌA"
+            },
+            {
+              "id": "c4",
+              "target": "lesson",
+              "correct": true,
+              "slotText": "Mỗi người cần biết nhận lỗi khi mình sai và nói lời xin lỗi bằng thái độ chân thành thay vì tìm cách đổ lỗi cho người khác.",
+              "feedback": "✓ Đây là bài học nhận thức và hành động.",
+              "label": "BÀI HỌC"
+            }
+          ]
+        },
+        "completion": {
+          "button": "Kiểm tra cấu trúc",
+          "feedback": {
+            "correct": "✓ Tốt! Em đã biết chọn các phương diện phù hợp thay vì cố nhét một dàn ý duy nhất vào mọi đề.",
+            "partial": "△ Hãy xem lại nhiệm vụ của từng đoạn: giải thích, phân tích, minh họa hay rút ra bài học?",
+            "wrong": "△ Hãy đọc lại đề và tự hỏi: đề đang yêu cầu em làm rõ điều gì?"
+          }
+        }
+      }
+    },
+    {
+      "id": "miniChallenge_01",
+      "type": "miniChallenge",
+      "data": {
+        "title": "Đề này cần triển khai thân bài thế nào?",
+        "durationSeconds": 150,
+        "ui": {
+          "layout": "single_choice"
+        },
+        "prompt": "Đề: Hãy trình bày suy nghĩ về hiện tượng học sinh sử dụng điện thoại quá nhiều.",
+        "question": "Cách triển khai nào phù hợp nhất?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Chỉ giải thích điện thoại là gì rồi kết bài.",
+            "correct": false
+          },
+          {
+            "id": "b",
+            "text": "Giải thích → thực trạng/biểu hiện → nguyên nhân → hậu quả → giải pháp.",
+            "correct": true
+          },
+          {
+            "id": "c",
+            "text": "Kể một câu chuyện dài về chiếc điện thoại của em.",
+            "correct": false
+          },
+          {
+            "id": "d",
+            "text": "Chỉ đưa thật nhiều dẫn chứng mà không cần phân tích.",
+            "correct": false
+          }
+        ],
+        "feedback": {
+          "correct": "✓ Đúng. Đây là dạng đề về một hiện tượng đời sống nên cần nhìn vấn đề qua nhiều phương diện.",
+          "a": "△ Giải thích mới chỉ là bước đầu. Em còn cần phân tích hiện tượng.",
+          "c": "△ Câu chuyện có thể làm dẫn chứng nhưng không thay thế được lập luận.",
+          "d": "△ Dẫn chứng chỉ có giá trị khi được dùng để làm rõ lập luận."
+        }
+      }
+    },
+    {
+      "id": "reflection_01",
+      "type": "reflection",
+      "data": {
+        "title": "Nếu bị bí thân bài thì làm gì?",
+        "durationSeconds": 150,
+        "ui": {
+          "component": "checklist_free_text"
+        },
+        "question": "Khi gặp một đề nghị luận xã hội mới, em sẽ tự hỏi những câu nào để tìm các đoạn thân bài?",
+        "choices": [
+          {
+            "id": "what",
+            "text": "💡 Vấn đề này là gì?"
+          },
+          {
+            "id": "manifestation",
+            "text": "🔎 Nó biểu hiện / xuất hiện như thế nào?"
+          },
+          {
+            "id": "why",
+            "text": "🧩 Vì sao nó xảy ra?"
+          },
+          {
+            "id": "impact",
+            "text": "⚠️ Nó có ý nghĩa hoặc tác hại gì?"
+          },
+          {
+            "id": "solution",
+            "text": "🛠️ Cần làm gì?"
+          }
+        ],
+        "freeText": {
+          "label": "Bộ câu hỏi cứu bí của em",
+          "placeholder": "Ví dụ: Em sẽ đọc đề rồi tự hỏi vấn đề này là gì, biểu hiện thế nào, vì sao xảy ra..."
+        },
+        "metacognition": "Khi bí ý, đừng cố nghĩ ngay câu văn. Hãy chuyển vấn đề thành những câu hỏi nhỏ. Mỗi câu hỏi có thể trở thành một phương diện để triển khai một đoạn."
+      }
+    },
+    {
+      "id": "cheatSheet_01",
+      "type": "cheatSheet",
+      "data": {
+        "title": "GHI NHỚ — XÂY THÂN BÀI NGHỊ LUẬN XÃ HỘI",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "card_list",
+          "actions": [
+            "save",
+            "download"
+          ]
+        },
+        "items": [
+          {
+            "order": 1,
+            "icon": "🎯",
+            "title": "ĐỌC ĐỀ",
+            "question": "Đề đang yêu cầu bàn về điều gì?"
+          },
+          {
+            "order": 2,
+            "icon": "💡",
+            "title": "GIẢI THÍCH",
+            "question": "Vấn đề này nghĩa là gì?"
+          },
+          {
+            "order": 3,
+            "icon": "🔎",
+            "title": "BIỂU HIỆN / THỰC TRẠNG",
+            "question": "Nó xuất hiện như thế nào?"
+          },
+          {
+            "order": 4,
+            "icon": "🧩",
+            "title": "NGUYÊN NHÂN / Ý NGHĨA / TÁC HẠI",
+            "question": "Vì sao? Điều đó dẫn đến hoặc đem lại điều gì?"
+          },
+          {
+            "order": 5,
+            "icon": "📌",
+            "title": "DẪN CHỨNG",
+            "question": "Có sự việc nào làm điều em nói cụ thể hơn?"
+          },
+          {
+            "order": 6,
+            "icon": "🛠️",
+            "title": "GIẢI PHÁP",
+            "question": "Cần làm gì?"
+          },
+          {
+            "order": 7,
+            "icon": "🎯",
+            "title": "BÀI HỌC",
+            "question": "Bản thân cần nhận thức và hành động thế nào?"
+          }
+        ],
+        "keyMessage": "⭐ Không có một thân bài dùng cho mọi đề. Hãy để yêu cầu của đề quyết định các phương diện em cần bàn.",
+        "note": "Một số đề có thể không cần tất cả các phần. Điều quan trọng là mỗi đoạn phải có một nhiệm vụ rõ ràng và cùng hướng tới việc làm sáng tỏ vấn đề.",
+        "practiceButton": {
+          "label": "🛠️ Thử xây thân bài",
+          "action": "open_mini_practice"
+        }
+      }
+    },
+    {
+      "id": "finalChallenge_01",
+      "type": "finalChallenge",
+      "data": {
+        "title": "THỬ THÁCH: KIẾN TRÚC SƯ BÀI NGHỊ LUẬN XÃ HỘI",
+        "durationSeconds": 300,
+        "ui": {
+          "layout": "boss",
+          "showStrategyBeforeWriting": true,
+          "showAiAnalysis": true
+        },
+        "prompt": "Hãy viết bài văn trình bày suy nghĩ của em về vấn đề: 'Biết chịu trách nhiệm với lựa chọn của bản thân'.",
+        "flow": [
+          "Đọc đề",
+          "Xác định vấn đề",
+          "Chọn các phương diện triển khai",
+          "Lập dàn ý",
+          "Viết bài",
+          "AI phân tích"
+        ],
+        "strategyQuestion": "Trước khi viết, em hãy chọn những phương diện phù hợp để triển khai thân bài.",
+        "choices": [
+          {
+            "id": "explanation",
+            "text": "💡 Giải thích thế nào là chịu trách nhiệm với lựa chọn của bản thân.",
+            "correct": true
+          },
+          {
+            "id": "manifestation",
+            "text": "🔎 Biểu hiện của người biết chịu trách nhiệm.",
+            "correct": true
+          },
+          {
+            "id": "meaning",
+            "text": "🌿 Ý nghĩa của việc sống có trách nhiệm với lựa chọn.",
+            "correct": true
+          },
+          {
+            "id": "example",
+            "text": "📌 Dẫn chứng / tình huống minh họa.",
+            "correct": true
+          },
+          {
+            "id": "solution",
+            "text": "🛠️ Cách rèn luyện tinh thần trách nhiệm.",
+            "correct": true
+          },
+          {
+            "id": "random",
+            "text": "📖 Kể toàn bộ một câu chuyện dài không liên quan trực tiếp đến vấn đề.",
+            "correct": false
+          }
+        ],
+        "builder": {
+          "title": "🧩 XÂY DÀN Ý",
+          "instruction": "Sắp xếp các phương diện thành một mạch triển khai hợp lí.",
+          "slots": [
+            {
+              "id": "intro",
+              "label": "MỞ BÀI"
+            },
+            {
+              "id": "body1",
+              "label": "THÂN BÀI — GIẢI THÍCH"
+            },
+            {
+              "id": "body2",
+              "label": "THÂN BÀI — PHÂN TÍCH"
+            },
+            {
+              "id": "body3",
+              "label": "THÂN BÀI — MINH HỌA"
+            },
+            {
+              "id": "body4",
+              "label": "THÂN BÀI — GIẢI PHÁP / BÀI HỌC"
+            },
+            {
+              "id": "conclusion",
+              "label": "KẾT BÀI"
+            }
+          ]
+        },
+        "editor": {
+          "title": "✍️ VIẾT BÀI",
+          "placeholder": "Hãy viết bài văn hoàn chỉnh của em...",
+          "minCharacters": 500,
+          "maxCharacters": 1500,
+          "submit": {
+            "label": "🚀 Nộp bài & phân tích"
+          }
+        },
+        "analysis": {
+          "title": "🧠 HỒ SƠ BÀI NGHỊ LUẬN XÃ HỘI",
+          "metrics": [
+            {
+              "id": "problem",
+              "label": "Xác định đúng vấn đề",
+              "status": "detect"
+            },
+            {
+              "id": "structure",
+              "label": "Bố cục",
+              "status": "detect"
+            },
+            {
+              "id": "reasoning",
+              "label": "Lí lẽ / phân tích",
+              "status": "detect"
+            },
+            {
+              "id": "evidence",
+              "label": "Dẫn chứng",
+              "status": "detect"
+            },
+            {
+              "id": "coherence",
+              "label": "Mạch lập luận",
+              "status": "detect"
+            },
+            {
+              "id": "lesson",
+              "label": "Bài học / hành động",
+              "status": "detect"
+            }
+          ],
+          "diagnosticQuestion": "Mỗi đoạn trong bài đang giúp làm sáng tỏ vấn đề như thế nào?",
+          "feedbackRules": [
+            {
+              "when": "missing_problem",
+              "feedback": "△ Bài viết chưa xác định thật rõ vấn đề cần nghị luận. Hãy quay lại yêu cầu của đề."
+            },
+            {
+              "when": "weak_structure",
+              "feedback": "△ Các ý đang xuất hiện nhưng chưa được chia thành những phương diện rõ ràng. Hãy xem mỗi đoạn đang làm nhiệm vụ gì."
+            },
+            {
+              "when": "weak_reasoning",
+              "feedback": "△ Bài viết có ý nhưng cần giải thích sâu hơn: Vì sao? Điều đó có ý nghĩa hoặc hậu quả gì?"
+            },
+            {
+              "when": "weak_evidence",
+              "feedback": "△ Hãy thêm một dẫn chứng hoặc tình huống cụ thể để làm cho lập luận bớt chung chung."
+            },
+            {
+              "when": "weak_coherence",
+              "feedback": "△ Các đoạn cần liên kết để cùng làm sáng tỏ một vấn đề, tránh mỗi đoạn nói một ý rời rạc."
+            },
+            {
+              "when": "missing_lesson",
+              "feedback": "△ Hãy cho thấy từ vấn đề trên, con người cần nhận thức hoặc hành động như thế nào."
+            },
+            {
+              "when": "good_structure",
+              "feedback": "✓ Bài viết có cấu trúc rõ: xác định vấn đề → triển khai các phương diện → dẫn chứng → bài học."
+            }
+          ],
+          "scoreDimensions": [
+            "problem",
+            "structure",
+            "reasoning",
+            "evidence",
+            "coherence",
+            "lesson"
+          ]
+        }
+      }
+    }
+  ]
+}

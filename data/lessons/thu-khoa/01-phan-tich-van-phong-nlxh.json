@@ -1,0 +1,1301 @@
+{
+    "id": "thu-khoa.01-phan-tich-van-phong-nlxh",
+    "title": "Sổ tay Văn phong Thủ khoa NLXH",
+    "type": "microscope",
+    "version": "1.0.0",
+    "meta": {
+        "module": "thu-khoa",
+        "category": "microscope-tool",
+        "difficulty": "advanced",
+        "target": "TS10-HCMC"
+    },
+    "learningGoals": [
+        "Sử dụng từ vựng có tính triết lý và sức gợi cao.",
+        "Biết cách chuyển ý mượt mà không dùng khuôn mẫu sáo rỗng.",
+        "Tạo được điểm nhấn cảm xúc trong đoạn văn nghị luận xã hội."
+    ],
+    "steps": [
+        {
+            "id": "step_1",
+            "type": "microscope",
+            "data": {
+                "hero": {
+                    "eyebrow": "🔬 SỔ TAY GIẢI PHẪU VĂN",
+                    "title": "Microscope — Văn phong NLXH Điểm 10",
+                    "description": "Không cần dùng từ ngữ hoa mỹ khó hiểu. Sức mạnh của bài văn điểm tuyệt đối nằm ở khả năng dùng từ đắt giá, lập luận sắc sảo và tạo được sự đồng cảm.",
+                    "principle": "Hãy viết như một người từng trải, thay vì chỉ là một học sinh đang làm bài thi."
+                },
+                "stats": [
+                    {
+                        "number": 1,
+                        "label": "Văn bản mẫu"
+                    },
+                    {
+                        "number": 4,
+                        "label": "Điểm Microscope"
+                    },
+                    {
+                        "number": 3,
+                        "label": "Kĩ thuật đã học"
+                    }
+                ],
+                "filters": [
+                    "Tất cả",
+                    "Nghị luận xã hội",
+                    "Kính từ ngữ",
+                    "Kính lập luận"
+                ],
+                "texts": [
+                    {
+                        "id": "text-1",
+                        "title": "🔬 Tuổi trẻ và sự vấp ngã",
+                        "tags": [
+                            {
+                                "label": "Nghị luận xã hội",
+                                "color": "blue"
+                            },
+                            {
+                                "label": "Phân tích lập luận",
+                                "color": "purple"
+                            },
+                            {
+                                "label": "Điểm 10",
+                                "color": "green"
+                            }
+                        ],
+                        "sourceNote": "Đoạn văn minh họa<br>Phong cách thủ khoa",
+                        "prompt": "Suy nghĩ của em về ý nghĩa của những vấp ngã trong tuổi trẻ.",
+                        "paragraphs": [
+                            {
+                                "id": "p1",
+                                "number": "Đoạn 1",
+                                "content": "Nếu tuổi trẻ là một bản nháp, ta có quyền được tẩy xóa và viết lại. Nhưng hãy nhớ rằng, thời gian {highlight:cuc-tay} không phải là cục tẩy vô hạn."
+                            },
+                            {
+                                "id": "p2",
+                                "number": "Đoạn 2",
+                                "content": "Đôi khi, chính những vết sẹo từ sự vấp ngã lại làm nên hình hài trưởng thành của một con người. Thay vì sợ hãi những vết xước, hãy can đảm đối diện với sự {highlight:chenh-chao} chênh chao của tuổi trẻ, bởi chỉ khi {highlight:giong-bao} đi qua giông bão, ta mới trân quý sự bình lặng của bầu trời."
+                            }
+                        ],
+                        "highlights": {
+                            "cuc-tay": {
+                                "text": "không phải là cục tẩy vô hạn",
+                                "lenses": [
+                                    {
+                                        "id": "lap-luan",
+                                        "name": "🧠 Kính lập luận",
+                                        "zoom": "“Nhưng hãy nhớ rằng, thời gian không phải là cục tẩy vô hạn.”",
+                                        "observation": "Người viết sử dụng cấu trúc lật ngược vấn đề (nhượng bộ rồi phản biện ngầm).",
+                                        "effect": "Khẳng định tuổi trẻ được sai, nhưng ngay lập tức kéo người đọc về thực tại: thời gian có hạn. Lập luận trở nên chặt chẽ và sâu sắc hơn.",
+                                        "simple": "“Tuổi trẻ được quyền sai nhưng cũng không nên sai nhiều vì thời gian trôi nhanh.” Cách diễn đạt này đúng nhưng thiếu sức nặng.",
+                                        "technique": "Phản biện lật ngược vấn đề bằng hình ảnh ẩn dụ (cục tẩy vô hạn)."
+                                    }
+                                ],
+                                "beforeAfter": {
+                                    "before": "Tuổi trẻ được quyền sai nhưng cũng không nên sai nhiều vì thời gian trôi nhanh.",
+                                    "after": "Nếu tuổi trẻ là một bản nháp, ta có quyền được tẩy xóa và viết lại. Nhưng hãy nhớ rằng, thời gian không phải là cục tẩy vô hạn."
+                                },
+                                "takeaway": "Hãy khen cái tốt nhưng phải chỉ ra giới hạn của nó. Lập luận sẽ trở nên đa chiều."
+                            },
+                            "chenh-chao": {
+                                "text": "chênh chao",
+                                "lenses": [
+                                    {
+                                        "id": "tu-ngu",
+                                        "name": "🔤 Kính từ ngữ",
+                                        "zoom": "“sự chênh chao của tuổi trẻ”",
+                                        "observation": "Sử dụng từ láy 'chênh chao' thay vì các tính từ quen thuộc như 'khó khăn', 'bấp bênh'.",
+                                        "effect": "Từ 'chênh chao' gợi lên sự mất phương hướng nhưng không quá bi lụy, rất đúng với tâm trạng nhạy cảm của tuổi mới lớn.",
+                                        "simple": "“Đối diện với sự khó khăn của tuổi trẻ” - Câu văn thiếu đi chất thơ và sự đồng cảm.",
+                                        "technique": "Dùng từ láy miêu tả trạng thái tinh thần để bơm cảm xúc vào bài."
+                                    }
+                                ],
+                                "takeaway": "Nâng cấp từ phổ thông thành từ có sức gợi cảm (buồn -> sầu muộn/khắc khoải; lo lắng -> bất an/thấp thỏm)."
+                            },
+                            "giong-bao": {
+                                "text": "đi qua giông bão, ta mới trân quý sự bình lặng của bầu trời",
+                                "lenses": [
+                                    {
+                                        "id": "diem-cao",
+                                        "name": "⭐ Kính điểm cao",
+                                        "zoom": "“chỉ khi đi qua giông bão, ta mới trân quý sự bình lặng của bầu trời”",
+                                        "observation": "Kết đoạn bằng một cặp hình ảnh đối lập mang tính triết lý (giông bão - bình lặng).",
+                                        "effect": "Tạo dư âm mạnh mẽ, đúc kết lại toàn bộ thông điệp của đoạn văn một cách hình tượng hóa.",
+                                        "simple": "“Sau khi vượt qua khó khăn, ta sẽ thấy trân trọng cuộc sống hơn.”",
+                                        "technique": "Quy nạp ý nghĩa bài học thành một chân lý nhân sinh thông qua hình ảnh thiên nhiên."
+                                    }
+                                ],
+                                "beforeAfter": {
+                                    "before": "Sau khi vượt qua khó khăn, ta sẽ thấy trân trọng cuộc sống hơn.",
+                                    "after": "Bởi chỉ khi đi qua giông bão, ta mới trân quý sự bình lặng của bầu trời."
+                                }
+                            }
+                        },
+                        "practice": [
+                            {
+                                "type": "multiple-choice",
+                                "title": "🔍 Bài 1 — Phản biện sắc sảo",
+                                "question": "Cách lật ngược vấn đề nào sau đây sắc sảo nhất khi bàn về 'Sự tự tin'?",
+                                "choices": [
+                                    {
+                                        "text": "A. Tự tin là tốt, nhưng đừng tự tin quá đà.",
+                                        "isCorrect": false
+                                    },
+                                    {
+                                        "text": "B. Tự tin là chìa khóa thành công. Nhưng nếu sự tự tin đi quá giới hạn, nó sẽ biến thành chiếc rào cản mang tên kiêu ngạo.",
+                                        "isCorrect": true,
+                                        "feedback": "Chính xác. Cách B dùng ẩn dụ (chìa khóa - rào cản) để làm rõ ranh giới mỏng manh của tự tin."
+                                    },
+                                    {
+                                        "text": "C. Tự tin giúp ta làm được nhiều việc, nhưng nhiều người lại hay kiêu căng.",
+                                        "isCorrect": false
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "writing",
+                                "title": "✍️ Bài 2 — Nâng cấp từ vựng",
+                                "question": "Hãy nâng cấp câu: 'Khám phá bản thân là một hành trình rất khó.'",
+                                "placeholder": "Gợi ý: Dùng các từ khóa như 'bản ngã', 'nhân sinh'...",
+                                "modelAnswer": "Thay vì nói 'khám phá bản thân', hãy thử: 'Khám phá bản ngã của chính mình là hành trình gian nan nhất của đời người.'"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "text-nlxh-01",
+                        "title": "🔬 Nghị lực không phải là không biết mệt",
+                        "tags": [
+                            {
+                                "label": "Nghị luận xã hội",
+                                "color": "blue"
+                            },
+                            {
+                                "label": "Phân tích lập luận",
+                                "color": "purple"
+                            },
+                            {
+                                "label": "Điểm cao",
+                                "color": "green"
+                            }
+                        ],
+                        "sourceNote": "Đoạn văn minh họa<br>Phong cách viết giàu lập luận",
+                        "prompt": "Suy nghĩ của em về nghị lực trong cuộc sống.",
+                        "paragraphs": [
+                            {
+                                "id": "p1",
+                                "number": "Đoạn 1",
+                                "content": "Trong cuộc sống, không phải ai cũng đủ mạnh mẽ để bước qua nghịch cảnh ngay từ lần đầu tiên. {highlight:nghi-luc-01}Nghị lực không phải là việc ta chưa từng mỏi mệt, mà là khả năng tự nhắc mình bước tiếp ngay cả khi đôi chân đã muốn dừng lại."
+                            },
+                            {
+                                "id": "p2",
+                                "number": "Đoạn 2",
+                                "content": "Người có nghị lực không phủ nhận khó khăn mà nhìn thẳng vào nó để tìm cách vượt qua. {highlight:nghi-luc-02}Bởi vậy, giá trị của nghị lực không nằm ở việc con người chưa bao giờ thất bại, mà nằm ở cách họ đứng dậy sau mỗi lần vấp ngã."
+                            },
+                            {
+                                "id": "p3",
+                                "number": "Đoạn 3",
+                                "content": "Thầy giáo Nguyễn Ngọc Ký là một minh chứng tiêu biểu. Dù bị liệt hai tay, thầy vẫn kiên trì tập viết bằng chân và tiếp tục con đường học tập. {highlight:nghi-luc-03}Điều đáng khâm phục ở Nguyễn Ngọc Ký không chỉ là việc ông vượt qua một khiếm khuyết của cơ thể, mà còn là cách ông biến hoàn cảnh tưởng như giới hạn thành động lực để khẳng định giá trị của chính mình."
+                            },
+                            {
+                                "id": "p4",
+                                "number": "Đoạn 4",
+                                "content": "{highlight:nghi-luc-04}Nếu khó khăn là một bức tường, nghị lực chính là sức mạnh giúp con người tìm thấy cánh cửa thay vì chỉ đứng trước bức tường ấy và than phiền."
+                            }
+                        ],
+                        "highlights": {
+                            "nghi-luc-01": {
+                                "text": "Nghị lực không phải là việc ta chưa từng mỏi mệt, mà là khả năng tự nhắc mình bước tiếp ngay cả khi đôi chân đã muốn dừng lại.",
+                                "lenses": [
+                                    {
+                                        "id": "tu-ngu",
+                                        "name": "🔤 Kính từ ngữ",
+                                        "zoom": "“mỏi mệt”, “bước tiếp”, “đôi chân đã muốn dừng lại”",
+                                        "observation": "Người viết không dùng cách nói khô cứng như “nghị lực là sự cố gắng”, mà lựa chọn những từ ngữ gợi trạng thái và hành động.",
+                                        "effect": "Khái niệm nghị lực trở nên gần gũi, có hình ảnh và dễ đồng cảm hơn.",
+                                        "simple": "Nghị lực là cố gắng vượt qua khó khăn.",
+                                        "technique": "Cụ thể hóa khái niệm trừu tượng bằng từ ngữ chỉ trạng thái và hành động."
+                                    },
+                                    {
+                                        "id": "cau-van",
+                                        "name": "🧩 Kính câu văn",
+                                        "zoom": "“Nghị lực không phải là..., mà là...”",
+                                        "observation": "Câu văn sử dụng cấu trúc phủ định – khẳng định.",
+                                        "effect": "Người viết trước hết loại bỏ một cách hiểu chưa đầy đủ rồi đưa ra cách hiểu sâu hơn.",
+                                        "simple": "Nghị lực là khả năng vượt qua khó khăn.",
+                                        "technique": "Cấu trúc “không phải..., mà là...” để định nghĩa có chiều sâu."
+                                    },
+                                    {
+                                        "id": "lap-luan",
+                                        "name": "🧠 Kính lập luận",
+                                        "zoom": "“Nghị lực không phải là... mà là...”",
+                                        "observation": "Người viết không chấp nhận cách hiểu đơn giản rằng người có nghị lực là người luôn mạnh mẽ.",
+                                        "effect": "Lập luận có tính phản biện và thể hiện sự hiểu bản chất vấn đề.",
+                                        "simple": "Người có nghị lực là người mạnh mẽ.",
+                                        "technique": "Phản biện một quan niệm đơn giản để đưa ra nhận định chính xác hơn."
+                                    },
+                                    {
+                                        "id": "phan-tich",
+                                        "name": "🔎 Kính phân tích",
+                                        "zoom": "“tự nhắc mình bước tiếp ngay cả khi đôi chân đã muốn dừng lại”",
+                                        "observation": "Người viết làm rõ nghị lực bằng một tình huống cụ thể: con người mệt mỏi nhưng vẫn tiếp tục.",
+                                        "effect": "Người đọc hiểu nghị lực được biểu hiện trong chính thời điểm khó khăn nhất.",
+                                        "simple": "Nghị lực giúp ta vượt qua khó khăn.",
+                                        "technique": "Từ khái niệm → biểu hiện cụ thể → bản chất."
+                                    },
+                                    {
+                                        "id": "lien-ket",
+                                        "name": "🔗 Kính liên kết",
+                                        "zoom": "“không phải là... mà là...”",
+                                        "observation": "Hai vế câu được đặt trong quan hệ đối lập và bổ sung.",
+                                        "effect": "Ý trước mở đường để ý sau trở thành kết luận chính.",
+                                        "simple": "Nghị lực giúp con người cố gắng.",
+                                        "technique": "Liên kết bằng quan hệ đối lập để tạo mạch tư duy."
+                                    },
+                                    {
+                                        "id": "diem-cao",
+                                        "name": "⭐ Kính điểm cao",
+                                        "zoom": "“Nghị lực không phải là việc ta chưa từng mỏi mệt, mà là khả năng tự nhắc mình bước tiếp...”",
+                                        "observation": "Câu văn vừa giải thích khái niệm vừa tạo ra một góc nhìn riêng.",
+                                        "effect": "Không dừng ở định nghĩa thuộc lòng mà biến kiến thức thành nhận xét có dấu ấn cá nhân.",
+                                        "simple": "Nghị lực là sự cố gắng.",
+                                        "technique": "Định nghĩa bằng một phát hiện giàu tính trải nghiệm."
+                                    },
+                                    {
+                                        "id": "tu-duy",
+                                        "name": "💭 Kính tư duy",
+                                        "zoom": "“ngay cả khi đôi chân đã muốn dừng lại”",
+                                        "observation": "Người viết nhận ra rằng nghị lực có ý nghĩa nhất không phải khi con người đang thuận lợi, mà khi họ đã mệt mỏi.",
+                                        "effect": "Góc nhìn chuyển từ “nghị lực = cố gắng” sang “nghị lực = tiếp tục trong lúc muốn bỏ cuộc”.",
+                                        "simple": "Nghị lực giúp ta không bỏ cuộc.",
+                                        "technique": "Tìm bản chất vấn đề bằng cách đặt nó vào thời điểm thử thách nhất."
+                                    }
+                                ],
+                                "beforeAfter": {
+                                    "before": "Nghị lực là sự cố gắng vượt qua khó khăn.",
+                                    "after": "Nghị lực không phải là việc ta chưa từng mỏi mệt, mà là khả năng tự nhắc mình bước tiếp ngay cả khi đôi chân đã muốn dừng lại."
+                                },
+                                "takeaway": "Muốn câu giải thích sâu hơn, đừng chỉ hỏi “Nghị lực là gì?” mà hãy hỏi “Nghị lực được thể hiện rõ nhất khi nào?”"
+                            },
+                            "nghi-luc-02": {
+                                "text": "Bởi vậy, giá trị của nghị lực không nằm ở việc con người chưa bao giờ thất bại, mà nằm ở cách họ đứng dậy sau mỗi lần vấp ngã.",
+                                "lenses": [
+                                    {
+                                        "id": "tu-ngu",
+                                        "name": "🔤 Kính từ ngữ",
+                                        "zoom": "“đứng dậy”, “vấp ngã”",
+                                        "observation": "Người viết dùng hình ảnh hành động thay cho những từ trừu tượng như “cố gắng” hay “thành công”.",
+                                        "effect": "Câu văn có sức gợi và làm cho ý nghị luận trở nên trực quan.",
+                                        "simple": "Nghị lực thể hiện ở việc vượt qua thất bại.",
+                                        "technique": "Dùng động từ và hình ảnh ẩn dụ để tăng sức gợi."
+                                    },
+                                    {
+                                        "id": "cau-van",
+                                        "name": "🧩 Kính câu văn",
+                                        "zoom": "“không nằm ở..., mà nằm ở...”",
+                                        "observation": "Cấu trúc song song tạo sự cân đối giữa hai vế.",
+                                        "effect": "Ý chính được nhấn mạnh rõ ràng và dễ ghi nhớ.",
+                                        "simple": "Nghị lực thể hiện khi ta vượt qua thất bại.",
+                                        "technique": "Cấu trúc song hành kết hợp đối lập."
+                                    },
+                                    {
+                                        "id": "lap-luan",
+                                        "name": "🧠 Kính lập luận",
+                                        "zoom": "“chưa bao giờ thất bại” ↔ “đứng dậy sau mỗi lần vấp ngã”",
+                                        "observation": "Người viết bác bỏ tiêu chuẩn sai rằng người có nghị lực là người không thất bại.",
+                                        "effect": "Lập luận chuyển từ kết quả sang cách ứng xử trước thất bại.",
+                                        "simple": "Người nghị lực là người thành công.",
+                                        "technique": "Đảo tiêu chí đánh giá để làm nổi bật bản chất nghị lực."
+                                    },
+                                    {
+                                        "id": "phan-tich",
+                                        "name": "🔎 Kính phân tích",
+                                        "zoom": "“cách họ đứng dậy sau mỗi lần vấp ngã”",
+                                        "observation": "Người viết chỉ ra biểu hiện cụ thể để chứng minh nhận định về nghị lực.",
+                                        "effect": "Khái niệm được kéo xuống đời sống thay vì chỉ tồn tại ở mức lý thuyết.",
+                                        "simple": "Nghị lực giúp ta vượt qua thất bại.",
+                                        "technique": "Khái niệm → biểu hiện → kết luận."
+                                    },
+                                    {
+                                        "id": "lien-ket",
+                                        "name": "🔗 Kính liên kết",
+                                        "zoom": "“Bởi vậy”",
+                                        "observation": "Cụm từ báo hiệu câu sau là kết luận được rút ra từ lập luận trước.",
+                                        "effect": "Đoạn văn có quan hệ nhân – quả rõ ràng.",
+                                        "simple": "Nghị lực giúp con người vượt qua thất bại.",
+                                        "technique": "Dùng từ nối để biến các ý thành một chuỗi lập luận."
+                                    },
+                                    {
+                                        "id": "diem-cao",
+                                        "name": "⭐ Kính điểm cao",
+                                        "zoom": "“giá trị của nghị lực không nằm ở việc... mà nằm ở cách...”",
+                                        "observation": "Câu văn không chỉ khẳng định phẩm chất mà còn đưa ra tiêu chí đánh giá phẩm chất ấy.",
+                                        "effect": "Lập luận có chiều sâu hơn một lời khen chung chung.",
+                                        "simple": "Nghị lực rất quan trọng.",
+                                        "technique": "Chuyển từ nhận xét chung sang tiêu chí cụ thể."
+                                    },
+                                    {
+                                        "id": "tu-duy",
+                                        "name": "💭 Kính tư duy",
+                                        "zoom": "“không nằm ở việc con người chưa bao giờ thất bại”",
+                                        "observation": "Người viết nhìn thất bại không phải là đối lập với nghị lực mà là môi trường để nghị lực được bộc lộ.",
+                                        "effect": "Tạo ra một cách nhìn trưởng thành về thành công và thất bại.",
+                                        "simple": "Người có nghị lực sẽ vượt qua thất bại.",
+                                        "technique": "Đặt phẩm chất trong nghịch cảnh để tìm ra bản chất."
+                                    }
+                                ],
+                                "beforeAfter": {
+                                    "before": "Nghị lực giúp con người vượt qua thất bại.",
+                                    "after": "Bởi vậy, giá trị của nghị lực không nằm ở việc con người chưa bao giờ thất bại, mà nằm ở cách họ đứng dậy sau mỗi lần vấp ngã."
+                                },
+                                "takeaway": "Một câu nghị luận mạnh thường không chỉ nói phẩm chất tốt mà còn chỉ ra tiêu chí để nhận diện phẩm chất ấy."
+                            },
+                            "nghi-luc-03": {
+                                "text": "Điều đáng khâm phục ở Nguyễn Ngọc Ký không chỉ là việc ông vượt qua một khiếm khuyết của cơ thể, mà còn là cách ông biến hoàn cảnh tưởng như giới hạn thành động lực để khẳng định giá trị của chính mình.",
+                                "lenses": [
+                                    {
+                                        "id": "tu-ngu",
+                                        "name": "🔤 Kính từ ngữ",
+                                        "zoom": "“biến hoàn cảnh tưởng như giới hạn thành động lực”",
+                                        "observation": "Động từ “biến” tạo cảm giác chủ động và mạnh mẽ.",
+                                        "effect": "Dẫn chứng không còn chỉ kể về hoàn cảnh khó khăn mà nhấn mạnh năng lực chủ động của nhân vật.",
+                                        "simple": "Ông đã vượt qua hoàn cảnh khó khăn.",
+                                        "technique": "Dùng động từ mạnh để nâng cấp cách diễn đạt."
+                                    },
+                                    {
+                                        "id": "cau-van",
+                                        "name": "🧩 Kính câu văn",
+                                        "zoom": "“không chỉ là..., mà còn là...”",
+                                        "observation": "Câu văn mở rộng ý nghĩa của dẫn chứng từ một thành quả bên ngoài sang giá trị bên trong.",
+                                        "effect": "Phân tích trở nên nhiều tầng.",
+                                        "simple": "Nguyễn Ngọc Ký vượt qua khó khăn và rất đáng khâm phục.",
+                                        "technique": "Cấu trúc “không chỉ... mà còn...” để đào sâu dẫn chứng."
+                                    },
+                                    {
+                                        "id": "lap-luan",
+                                        "name": "🧠 Kính lập luận",
+                                        "zoom": "“không chỉ... mà còn...”",
+                                        "observation": "Người viết không dừng ở việc kể thành tích mà tiếp tục giải thích ý nghĩa của hành động.",
+                                        "effect": "Dẫn chứng được chuyển hóa thành lập luận.",
+                                        "simple": "Nguyễn Ngọc Ký là người nghị lực.",
+                                        "technique": "Dẫn chứng → phân tích → ý nghĩa."
+                                    },
+                                    {
+                                        "id": "phan-tich",
+                                        "name": "🔎 Kính phân tích",
+                                        "zoom": "“biến hoàn cảnh tưởng như giới hạn thành động lực để khẳng định giá trị của chính mình”",
+                                        "observation": "Người viết trả lời câu hỏi “Dẫn chứng này cho ta hiểu gì về nghị lực?”.",
+                                        "effect": "Dẫn chứng trở thành bằng chứng cho luận điểm thay vì một câu chuyện đứng riêng.",
+                                        "simple": "Nguyễn Ngọc Ký rất nghị lực.",
+                                        "technique": "Không kể lại dẫn chứng; rút ra ý nghĩa từ dẫn chứng."
+                                    },
+                                    {
+                                        "id": "lien-ket",
+                                        "name": "🔗 Kính liên kết",
+                                        "zoom": "“không chỉ là việc... mà còn là cách...”",
+                                        "observation": "Hai tầng phân tích được nối với nhau theo hướng từ biểu hiện bên ngoài đến ý nghĩa bên trong.",
+                                        "effect": "Đoạn văn phát triển tự nhiên và không bị rời rạc.",
+                                        "simple": "Ông vượt qua khó khăn và chứng minh bản thân.",
+                                        "technique": "Liên kết các tầng ý nghĩa của cùng một dẫn chứng."
+                                    },
+                                    {
+                                        "id": "diem-cao",
+                                        "name": "⭐ Kính điểm cao",
+                                        "zoom": "“Điều đáng khâm phục... không chỉ... mà còn...”",
+                                        "observation": "Câu văn thể hiện rõ người viết đã phân tích dẫn chứng chứ không chỉ kể dẫn chứng.",
+                                        "effect": "Đây là điểm khác biệt quan trọng giữa đoạn văn có dẫn chứng và đoạn văn biết sử dụng dẫn chứng.",
+                                        "simple": "Nguyễn Ngọc Ký là một người rất nghị lực.",
+                                        "technique": "Sau dẫn chứng phải có câu trả lời: “Dẫn chứng này chứng minh điều gì?”."
+                                    },
+                                    {
+                                        "id": "tu-duy",
+                                        "name": "💭 Kính tư duy",
+                                        "zoom": "“biến hoàn cảnh tưởng như giới hạn thành động lực”",
+                                        "observation": "Người viết nhìn nhân vật không chỉ ở khả năng chịu đựng khó khăn mà ở khả năng chủ động chuyển hóa khó khăn.",
+                                        "effect": "Dẫn chứng được nâng từ câu chuyện cá nhân thành một nhận xét có giá trị khái quát.",
+                                        "simple": "Người nghị lực có thể vượt qua hoàn cảnh.",
+                                        "technique": "Tìm tầng nghĩa sâu hơn phía sau sự việc."
+                                    }
+                                ],
+                                "beforeAfter": {
+                                    "before": "Nguyễn Ngọc Ký rất nghị lực vì ông vượt qua hoàn cảnh khó khăn.",
+                                    "after": "Điều đáng khâm phục ở Nguyễn Ngọc Ký không chỉ là việc ông vượt qua một khiếm khuyết của cơ thể, mà còn là cách ông biến hoàn cảnh tưởng như giới hạn thành động lực để khẳng định giá trị của chính mình."
+                                },
+                                "takeaway": "Dẫn chứng chỉ là nguyên liệu. Điểm sáng của đoạn nghị luận nằm ở câu văn giải thích dẫn chứng ấy chứng minh điều gì."
+                            },
+                            "nghi-luc-04": {
+                                "text": "Nếu khó khăn là một bức tường, nghị lực chính là sức mạnh giúp con người tìm thấy cánh cửa thay vì chỉ đứng trước bức tường ấy và than phiền.",
+                                "lenses": [
+                                    {
+                                        "id": "tu-ngu",
+                                        "name": "🔤 Kính từ ngữ",
+                                        "zoom": "“bức tường”, “cánh cửa”",
+                                        "observation": "Hai danh từ cụ thể được dùng để biểu tượng hóa khó khăn và cơ hội.",
+                                        "effect": "Một ý tưởng trừu tượng trở thành hình ảnh dễ hình dung.",
+                                        "simple": "Khó khăn có thể vượt qua nếu ta cố gắng.",
+                                        "technique": "Ẩn dụ hóa khái niệm bằng hình ảnh tương phản."
+                                    },
+                                    {
+                                        "id": "cau-van",
+                                        "name": "🧩 Kính câu văn",
+                                        "zoom": "“Nếu... là..., ... chính là...”",
+                                        "observation": "Câu văn xây dựng một phép so sánh xuyên suốt.",
+                                        "effect": "Thông điệp được cô đọng và dễ nhớ.",
+                                        "simple": "Nghị lực giúp con người vượt qua khó khăn.",
+                                        "technique": "Mô hình giả định – đối chiếu bằng ẩn dụ."
+                                    },
+                                    {
+                                        "id": "lap-luan",
+                                        "name": "🧠 Kính lập luận",
+                                        "zoom": "“tìm thấy cánh cửa thay vì chỉ đứng trước bức tường ấy và than phiền”",
+                                        "observation": "Người viết tạo thế đối lập giữa hành động tìm giải pháp và thái độ than phiền.",
+                                        "effect": "Làm rõ nghị lực không chỉ là chịu đựng mà còn là chủ động hành động.",
+                                        "simple": "Người nghị lực sẽ tìm cách giải quyết khó khăn.",
+                                        "technique": "Đặt hai cách ứng xử đối lập để làm nổi bật luận điểm."
+                                    },
+                                    {
+                                        "id": "phan-tich",
+                                        "name": "🔎 Kính phân tích",
+                                        "zoom": "“tìm thấy cánh cửa”",
+                                        "observation": "Hình ảnh này được dùng để diễn giải hành động chủ động tìm lối đi.",
+                                        "effect": "Nghị lực được hiểu như một năng lực hành động chứ không chỉ là sự chịu đựng.",
+                                        "simple": "Nghị lực giúp ta tìm cách giải quyết vấn đề.",
+                                        "technique": "Dùng hình ảnh ẩn dụ để mở rộng ý nghĩa của luận điểm."
+                                    },
+                                    {
+                                        "id": "lien-ket",
+                                        "name": "🔗 Kính liên kết",
+                                        "zoom": "“thay vì”",
+                                        "observation": "Từ nối tạo quan hệ lựa chọn giữa hai cách ứng xử.",
+                                        "effect": "Lập luận trở nên rõ ràng và có tính định hướng.",
+                                        "simple": "Ta nên cố gắng thay vì than phiền.",
+                                        "technique": "Dùng quan hệ lựa chọn để tạo thế đối chiếu."
+                                    },
+                                    {
+                                        "id": "diem-cao",
+                                        "name": "⭐ Kính điểm cao",
+                                        "zoom": "“tìm thấy cánh cửa thay vì chỉ đứng trước bức tường ấy và than phiền”",
+                                        "observation": "Câu văn không chỉ ca ngợi nghị lực mà còn chỉ ra thái độ trái ngược cần tránh.",
+                                        "effect": "Thông điệp có chiều sâu và tính định hướng.",
+                                        "simple": "Có nghị lực thì sẽ vượt qua khó khăn.",
+                                        "technique": "Khẳng định phẩm chất bằng cách đối lập với thái độ tiêu cực."
+                                    },
+                                    {
+                                        "id": "tu-duy",
+                                        "name": "💭 Kính tư duy",
+                                        "zoom": "“tìm thấy cánh cửa”",
+                                        "observation": "Người viết không xem nghị lực đơn thuần là sức chịu đựng mà là khả năng tìm kiếm giải pháp.",
+                                        "effect": "Làm cho khái niệm nghị lực trở nên chủ động và thực tế hơn.",
+                                        "simple": "Nghị lực giúp ta vượt qua khó khăn.",
+                                        "technique": "Thay đổi góc nhìn: từ “chịu đựng” sang “tìm lối đi”."
+                                    }
+                                ],
+                                "beforeAfter": {
+                                    "before": "Nghị lực giúp con người vượt qua khó khăn.",
+                                    "after": "Nếu khó khăn là một bức tường, nghị lực chính là sức mạnh giúp con người tìm thấy cánh cửa thay vì chỉ đứng trước bức tường ấy và than phiền."
+                                },
+                                "takeaway": "Một ẩn dụ tốt không chỉ làm câu văn đẹp hơn; nó phải giúp người đọc nhìn vấn đề theo một cách mới."
+                            }
+                        },
+                        "practice": [
+                            {
+                                "type": "multiple-choice",
+                                "title": "🔍 Bài 1 — Nhìn ra câu phân tích",
+                                "question": "Trong các câu sau, câu nào biến dẫn chứng Nguyễn Ngọc Ký thành lập luận?",
+                                "choices": [
+                                    {
+                                        "text": "A. Nguyễn Ngọc Ký bị liệt hai tay từ nhỏ.",
+                                        "isCorrect": false
+                                    },
+                                    {
+                                        "text": "B. Ông kiên trì tập viết bằng chân.",
+                                        "isCorrect": false
+                                    },
+                                    {
+                                        "text": "C. Điều đáng khâm phục ở Nguyễn Ngọc Ký không chỉ là việc ông vượt qua một khiếm khuyết của cơ thể, mà còn là cách ông biến hoàn cảnh tưởng như giới hạn thành động lực để khẳng định giá trị của chính mình.",
+                                        "isCorrect": true,
+                                        "feedback": "Đúng. Câu C không kể lại sự việc mà giải thích ý nghĩa của dẫn chứng đối với luận điểm về nghị lực."
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "multiple-choice",
+                                "title": "🔍 Bài 2 — Nhận ra chiều sâu lập luận",
+                                "question": "Điểm mạnh của câu “giá trị của nghị lực không nằm ở việc con người chưa bao giờ thất bại, mà nằm ở cách họ đứng dậy...” là gì?",
+                                "choices": [
+                                    {
+                                        "text": "A. Dùng nhiều từ khó.",
+                                        "isCorrect": false
+                                    },
+                                    {
+                                        "text": "B. Đưa ra một cách nhìn sâu hơn về thất bại và nghị lực.",
+                                        "isCorrect": true,
+                                        "feedback": "Đúng. Câu văn chuyển tiêu chí đánh giá từ “không thất bại” sang “cách đứng dậy sau thất bại”."
+                                    },
+                                    {
+                                        "text": "C. Có câu văn dài.",
+                                        "isCorrect": false
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "writing",
+                                "title": "✍️ Bài 3 — Biến dẫn chứng thành phân tích",
+                                "question": "Hãy viết một câu phân tích sau dẫn chứng: “Một học sinh nhiều lần thi trượt nhưng vẫn tiếp tục học và thử lại.”",
+                                "placeholder": "Hãy trả lời câu hỏi: Dẫn chứng này cho em hiểu gì về nghị lực?",
+                                "modelAnswer": "Điều đáng quý ở bạn học sinh ấy không nằm ở việc em chưa từng thất bại, mà ở chỗ em vẫn đủ kiên trì để đứng dậy và thử lại sau mỗi lần vấp ngã."
+                            }
+                        ]
+                    },
+                    {
+                        "id": "text-nlxh-02",
+                        "title": "🔬 Lòng nhân ái bắt đầu từ việc nhìn thấy người khác",
+                        "tags": [
+                            {
+                                "label": "Nghị luận xã hội",
+                                "color": "blue"
+                            },
+                            {
+                                "label": "Phân tích dẫn chứng",
+                                "color": "purple"
+                            },
+                            {
+                                "label": "Điểm cao",
+                                "color": "green"
+                            }
+                        ],
+                        "sourceNote": "Đoạn văn minh họa<br>Phong cách nghị luận giàu suy ngẫm",
+                        "prompt": "Suy nghĩ của em về lòng nhân ái trong cuộc sống.",
+                        "paragraphs": [
+                            {
+                                "id": "p1",
+                                "number": "Đoạn 1",
+                                "content": "Lòng nhân ái không phải là điều gì quá xa vời. {highlight:nhan-ai-01}Đôi khi, nhân ái chỉ bắt đầu từ khoảnh khắc ta nhận ra rằng nỗi đau của người khác cũng đáng được lắng nghe như nỗi đau của chính mình."
+                            },
+                            {
+                                "id": "p2",
+                                "number": "Đoạn 2",
+                                "content": "Trong cuộc sống, một lời hỏi han, một bàn tay giúp đỡ hay một hành động bảo vệ đúng lúc đều có thể trở thành biểu hiện của tình người. {highlight:nhan-ai-02}Giá trị của lòng nhân ái không nằm ở việc ta làm được điều lớn lao đến đâu, mà ở chỗ ta có sẵn sàng đưa tay về phía người đang cần mình hay không."
+                            },
+                            {
+                                "id": "p3",
+                                "number": "Đoạn 3",
+                                "content": "Câu chuyện về cô giáo Hoàng Thị Hiền là một minh chứng xúc động. Khi một em nhỏ chạy về phía đường và có nguy cơ gặp xe tải, cô đã lập tức lao theo để đưa em ra khỏi nguy hiểm, dù bản thân sau đó bị thương rất nặng. {highlight:nhan-ai-03}Hành động ấy cho thấy lòng nhân ái không chỉ nằm trong sự thương cảm, mà trở nên có ý nghĩa nhất khi tình thương được chuyển hóa thành hành động đúng lúc."
+                            },
+                            {
+                                "id": "p4",
+                                "number": "Đoạn 4",
+                                "content": "{highlight:nhan-ai-04}Một xã hội chỉ thật sự ấm áp khi con người không bước qua nỗi đau của nhau như những người xa lạ."
+                            }
+                        ],
+                        "highlights": {
+                            "nhan-ai-01": {
+                                "text": "Đôi khi, nhân ái chỉ bắt đầu từ khoảnh khắc ta nhận ra rằng nỗi đau của người khác cũng đáng được lắng nghe như nỗi đau của chính mình.",
+                                "lenses": [
+                                    {
+                                        "id": "tu-ngu",
+                                        "name": "🔤 Kính từ ngữ",
+                                        "zoom": "“nhận ra”, “nỗi đau”, “lắng nghe”",
+                                        "observation": "Các từ ngữ thiên về cảm nhận và đồng cảm.",
+                                        "effect": "Lòng nhân ái được diễn đạt như khả năng thấu hiểu trước khi hành động.",
+                                        "simple": "Nhân ái là biết yêu thương người khác.",
+                                        "technique": "Dùng động từ cảm nhận để cụ thể hóa phẩm chất."
+                                    },
+                                    {
+                                        "id": "cau-van",
+                                        "name": "🧩 Kính câu văn",
+                                        "zoom": "“nỗi đau của người khác cũng đáng được lắng nghe như nỗi đau của chính mình”",
+                                        "observation": "Câu văn sử dụng phép so sánh ngang bằng.",
+                                        "effect": "Đặt mình vào vị trí của người khác, từ đó làm nổi bật sự đồng cảm.",
+                                        "simple": "Ta cần biết đồng cảm với người khác.",
+                                        "technique": "So sánh để tạo điểm nhìn từ người khác về chính mình."
+                                    },
+                                    {
+                                        "id": "lap-luan",
+                                        "name": "🧠 Kính lập luận",
+                                        "zoom": "“nhân ái chỉ bắt đầu từ khoảnh khắc ta nhận ra...”",
+                                        "observation": "Người viết không định nghĩa nhân ái bằng những hành động lớn mà tìm điểm khởi đầu của nó.",
+                                        "effect": "Lập luận trở nên gần gũi và có tính thuyết phục.",
+                                        "simple": "Nhân ái là giúp đỡ người khác.",
+                                        "technique": "Tìm điểm khởi nguồn của phẩm chất thay vì chỉ nêu biểu hiện."
+                                    },
+                                    {
+                                        "id": "phan-tich",
+                                        "name": "🔎 Kính phân tích",
+                                        "zoom": "“nỗi đau của người khác cũng đáng được lắng nghe như nỗi đau của chính mình”",
+                                        "observation": "Câu văn giải thích nền tảng tâm lí của lòng nhân ái: biết coi cảm xúc của người khác là điều đáng quan tâm.",
+                                        "effect": "Phẩm chất được phân tích từ bên trong thay vì chỉ kể hành động.",
+                                        "simple": "Người nhân ái biết quan tâm đến người khác.",
+                                        "technique": "Phân tích từ biểu hiện bên ngoài → nền tảng bên trong."
+                                    },
+                                    {
+                                        "id": "lien-ket",
+                                        "name": "🔗 Kính liên kết",
+                                        "zoom": "“không phải là điều gì quá xa vời” → “chỉ bắt đầu từ...”",
+                                        "observation": "Câu trước phá bỏ khoảng cách, câu sau đưa khái niệm về một hành động tâm lí gần gũi.",
+                                        "effect": "Mạch lập luận đi từ phủ định quan niệm xa vời đến cách hiểu cụ thể.",
+                                        "simple": "Nhân ái rất quan trọng.",
+                                        "technique": "Thu hẹp khái niệm trừu tượng về một trải nghiệm gần gũi."
+                                    },
+                                    {
+                                        "id": "diem-cao",
+                                        "name": "⭐ Kính điểm cao",
+                                        "zoom": "“nhân ái chỉ bắt đầu từ khoảnh khắc ta nhận ra...”",
+                                        "observation": "Người viết đưa ra một cách nhìn riêng về điểm bắt đầu của lòng nhân ái.",
+                                        "effect": "Câu văn có chiều sâu suy ngẫm thay vì là lời khẳng định quen thuộc.",
+                                        "simple": "Mỗi người cần sống nhân ái.",
+                                        "technique": "Tạo một nhận định có tính phát hiện."
+                                    },
+                                    {
+                                        "id": "tu-duy",
+                                        "name": "💭 Kính tư duy",
+                                        "zoom": "“nhận ra rằng nỗi đau của người khác...”",
+                                        "observation": "Người viết xác định nhân ái không bắt đầu từ tiền bạc hay hành động lớn, mà bắt đầu từ khả năng nhìn thấy người khác.",
+                                        "effect": "Khái niệm nhân ái được đặt trên nền tảng của sự đồng cảm.",
+                                        "simple": "Nhân ái là yêu thương.",
+                                        "technique": "Tìm “gốc” của phẩm chất thay vì chỉ mô tả “ngọn”."
+                                    }
+                                ],
+                                "beforeAfter": {
+                                    "before": "Nhân ái là biết yêu thương và giúp đỡ người khác.",
+                                    "after": "Đôi khi, nhân ái chỉ bắt đầu từ khoảnh khắc ta nhận ra rằng nỗi đau của người khác cũng đáng được lắng nghe như nỗi đau của chính mình."
+                                },
+                                "takeaway": "Muốn giải thích một phẩm chất sâu, hãy thử tìm xem phẩm chất ấy bắt đầu từ suy nghĩ hay nhận thức nào bên trong con người."
+                            },
+                            "nhan-ai-02": {
+                                "text": "Giá trị của lòng nhân ái không nằm ở việc ta làm được điều lớn lao đến đâu, mà ở chỗ ta có sẵn sàng đưa tay về phía người đang cần mình hay không.",
+                                "lenses": [
+                                    {
+                                        "id": "tu-ngu",
+                                        "name": "🔤 Kính từ ngữ",
+                                        "zoom": "“đưa tay về phía người đang cần mình”",
+                                        "observation": "Hình ảnh “đưa tay” cụ thể hóa hành động giúp đỡ.",
+                                        "effect": "Lòng nhân ái trở nên sống động và có tính hành động.",
+                                        "simple": "Ta nên giúp đỡ người khác.",
+                                        "technique": "Dùng hình ảnh cụ thể thay cho khái niệm trừu tượng."
+                                    },
+                                    {
+                                        "id": "cau-van",
+                                        "name": "🧩 Kính câu văn",
+                                        "zoom": "“không nằm ở việc... mà ở chỗ...”",
+                                        "observation": "Cấu trúc đối chiếu hai tiêu chí.",
+                                        "effect": "Nhấn mạnh điều quan trọng nhất của lòng nhân ái.",
+                                        "simple": "Nhân ái không cần phải là việc lớn.",
+                                        "technique": "Đối chiếu quy mô hành động với thái độ sẵn sàng."
+                                    },
+                                    {
+                                        "id": "lap-luan",
+                                        "name": "🧠 Kính lập luận",
+                                        "zoom": "“làm được điều lớn lao” ↔ “sẵn sàng đưa tay”",
+                                        "observation": "Người viết chuyển tiêu chí từ mức độ lớn nhỏ của hành động sang sự chủ động giúp đỡ.",
+                                        "effect": "Lập luận tránh quan niệm rằng chỉ những việc lớn mới đáng gọi là nhân ái.",
+                                        "simple": "Nhân ái có thể thể hiện qua việc nhỏ.",
+                                        "technique": "Phản biện cách đánh giá phẩm chất bằng quy mô hành động."
+                                    },
+                                    {
+                                        "id": "phan-tich",
+                                        "name": "🔎 Kính phân tích",
+                                        "zoom": "“sẵn sàng đưa tay về phía người đang cần mình”",
+                                        "observation": "Người viết chỉ ra yếu tố quyết định của lòng nhân ái là sự chủ động.",
+                                        "effect": "Câu văn giải thích được bản chất thay vì chỉ ca ngợi.",
+                                        "simple": "Người nhân ái luôn giúp đỡ người khác.",
+                                        "technique": "Từ hành động → thái độ → phẩm chất."
+                                    },
+                                    {
+                                        "id": "lien-ket",
+                                        "name": "🔗 Kính liên kết",
+                                        "zoom": "“không nằm ở... mà ở...”",
+                                        "observation": "Hai vế liên kết bằng quan hệ điều chỉnh tiêu chí.",
+                                        "effect": "Mạch tư duy rõ ràng.",
+                                        "simple": "Nhân ái không cần phải lớn lao.",
+                                        "technique": "Liên kết bằng cấu trúc phủ định – khẳng định."
+                                    },
+                                    {
+                                        "id": "diem-cao",
+                                        "name": "⭐ Kính điểm cao",
+                                        "zoom": "“giá trị của lòng nhân ái...”",
+                                        "observation": "Người viết không chỉ nói nhân ái tốt mà còn đặt ra tiêu chí để nhận diện giá trị của nó.",
+                                        "effect": "Câu văn có tính lập luận rõ.",
+                                        "simple": "Lòng nhân ái rất quan trọng.",
+                                        "technique": "Đánh giá phẩm chất bằng tiêu chí cụ thể."
+                                    },
+                                    {
+                                        "id": "tu-duy",
+                                        "name": "💭 Kính tư duy",
+                                        "zoom": "“sẵn sàng đưa tay về phía người đang cần mình”",
+                                        "observation": "Người viết nhận ra giá trị của nhân ái nằm ở khả năng phản ứng trước nhu cầu của người khác.",
+                                        "effect": "Nhân ái được nhìn như một lựa chọn chủ động.",
+                                        "simple": "Nhân ái là giúp người.",
+                                        "technique": "Chuyển góc nhìn từ “làm gì” sang “có sẵn sàng làm hay không”."
+                                    }
+                                ],
+                                "beforeAfter": {
+                                    "before": "Lòng nhân ái không cần phải thể hiện bằng những việc lớn.",
+                                    "after": "Giá trị của lòng nhân ái không nằm ở việc ta làm được điều lớn lao đến đâu, mà ở chỗ ta có sẵn sàng đưa tay về phía người đang cần mình hay không."
+                                },
+                                "takeaway": "Muốn nâng cấp lập luận, hãy biến một lời nhận xét chung thành một tiêu chí đánh giá cụ thể."
+                            },
+                            "nhan-ai-03": {
+                                "text": "Hành động ấy cho thấy lòng nhân ái không chỉ nằm trong sự thương cảm, mà trở nên có ý nghĩa nhất khi tình thương được chuyển hóa thành hành động đúng lúc.",
+                                "lenses": [
+                                    {
+                                        "id": "tu-ngu",
+                                        "name": "🔤 Kính từ ngữ",
+                                        "zoom": "“chuyển hóa thành hành động”",
+                                        "observation": "Động từ “chuyển hóa” cho thấy sự vận động từ cảm xúc sang hành động.",
+                                        "effect": "Câu phân tích có chiều sâu hơn cách nói “cô rất nhân ái”.",
+                                        "simple": "Cô giáo đã thể hiện lòng nhân ái bằng hành động.",
+                                        "technique": "Dùng động từ chỉ sự chuyển đổi để diễn tả quá trình."
+                                    },
+                                    {
+                                        "id": "cau-van",
+                                        "name": "🧩 Kính câu văn",
+                                        "zoom": "“không chỉ nằm trong... mà...”",
+                                        "observation": "Câu văn mở rộng từ cảm xúc sang hành động.",
+                                        "effect": "Tạo hai tầng ý nghĩa.",
+                                        "simple": "Cô thương em bé nên đã cứu em.",
+                                        "technique": "Cấu trúc mở rộng tầng nghĩa."
+                                    },
+                                    {
+                                        "id": "lap-luan",
+                                        "name": "🧠 Kính lập luận",
+                                        "zoom": "“thương cảm” → “hành động đúng lúc”",
+                                        "observation": "Người viết phân biệt cảm xúc nhân ái với hành động nhân ái.",
+                                        "effect": "Lập luận trở nên chính xác hơn.",
+                                        "simple": "Cô rất yêu thương học sinh.",
+                                        "technique": "Phân biệt cảm xúc và hành động để làm rõ bản chất."
+                                    },
+                                    {
+                                        "id": "phan-tich",
+                                        "name": "🔎 Kính phân tích",
+                                        "zoom": "“tình thương được chuyển hóa thành hành động đúng lúc”",
+                                        "observation": "Đây là câu trả lời cho câu hỏi: dẫn chứng chứng minh điều gì về lòng nhân ái?",
+                                        "effect": "Dẫn chứng được nối trực tiếp với luận điểm.",
+                                        "simple": "Cô giáo có lòng nhân ái.",
+                                        "technique": "Dẫn chứng → hành động → phẩm chất → ý nghĩa."
+                                    },
+                                    {
+                                        "id": "lien-ket",
+                                        "name": "🔗 Kính liên kết",
+                                        "zoom": "“Hành động ấy cho thấy...”",
+                                        "observation": "Cụm từ này báo hiệu chuyển từ kể dẫn chứng sang phân tích.",
+                                        "effect": "Người đọc nhận ra ngay câu sau đang làm nhiệm vụ lý giải.",
+                                        "simple": "Cô giáo đã cứu em bé.",
+                                        "technique": "Dùng tín hiệu ngôn ngữ để chuyển từ bằng chứng sang phân tích."
+                                    },
+                                    {
+                                        "id": "diem-cao",
+                                        "name": "⭐ Kính điểm cao",
+                                        "zoom": "“không chỉ... mà trở nên có ý nghĩa nhất khi...”",
+                                        "observation": "Câu văn không dừng ở phẩm chất mà chỉ ra điều kiện để phẩm chất tạo ra giá trị.",
+                                        "effect": "Dẫn chứng được nâng thành một nhận xét có tính khái quát.",
+                                        "simple": "Lòng nhân ái cần được thể hiện bằng hành động.",
+                                        "technique": "Phân tích điều kiện để một phẩm chất tạo ra giá trị thực tế."
+                                    },
+                                    {
+                                        "id": "tu-duy",
+                                        "name": "💭 Kính tư duy",
+                                        "zoom": "“tình thương được chuyển hóa thành hành động đúng lúc”",
+                                        "observation": "Người viết nhìn nhân ái không chỉ là cảm xúc mà là trách nhiệm hành động.",
+                                        "effect": "Tạo một tầng suy nghĩ sâu hơn về ý nghĩa của lòng nhân ái.",
+                                        "simple": "Thương người thì nên giúp đỡ họ.",
+                                        "technique": "Nâng từ cảm xúc → hành động → trách nhiệm."
+                                    }
+                                ],
+                                "beforeAfter": {
+                                    "before": "Cô giáo có lòng nhân ái vì đã cứu em bé.",
+                                    "after": "Hành động ấy cho thấy lòng nhân ái không chỉ nằm trong sự thương cảm, mà trở nên có ý nghĩa nhất khi tình thương được chuyển hóa thành hành động đúng lúc."
+                                },
+                                "takeaway": "Sau dẫn chứng, hãy tránh câu “Điều đó cho thấy nhân vật rất tốt”. Hãy nói rõ hành động ấy làm sáng tỏ bản chất nào của vấn đề."
+                            },
+                            "nhan-ai-04": {
+                                "text": "Một xã hội chỉ thật sự ấm áp khi con người không bước qua nỗi đau của nhau như những người xa lạ.",
+                                "lenses": [
+                                    {
+                                        "id": "tu-ngu",
+                                        "name": "🔤 Kính từ ngữ",
+                                        "zoom": "“bước qua nỗi đau của nhau”",
+                                        "observation": "Động từ “bước qua” được dùng theo nghĩa ẩn dụ.",
+                                        "effect": "Gợi hình ảnh con người vô cảm trước nỗi đau của người khác.",
+                                        "simple": "Con người không nên thờ ơ.",
+                                        "technique": "Ẩn dụ hóa thái độ vô cảm."
+                                    },
+                                    {
+                                        "id": "cau-van",
+                                        "name": "🧩 Kính câu văn",
+                                        "zoom": "“chỉ thật sự ấm áp khi...”",
+                                        "observation": "Câu văn đưa ra điều kiện để một xã hội trở nên tốt đẹp.",
+                                        "effect": "Thông điệp được nâng từ cá nhân lên cộng đồng.",
+                                        "simple": "Xã hội cần có lòng nhân ái.",
+                                        "technique": "Cấu trúc điều kiện để khái quát hóa."
+                                    },
+                                    {
+                                        "id": "lap-luan",
+                                        "name": "🧠 Kính lập luận",
+                                        "zoom": "“một xã hội... khi con người...”",
+                                        "observation": "Người viết mở rộng luận điểm từ phẩm chất cá nhân đến ý nghĩa xã hội.",
+                                        "effect": "Đoạn văn có bước nâng tầm hợp lý.",
+                                        "simple": "Nhân ái giúp xã hội tốt đẹp hơn.",
+                                        "technique": "Cá nhân → cộng đồng → ý nghĩa xã hội."
+                                    },
+                                    {
+                                        "id": "phan-tich",
+                                        "name": "🔎 Kính phân tích",
+                                        "zoom": "“không bước qua nỗi đau của nhau”",
+                                        "observation": "Người viết làm rõ biểu hiện đối lập với lòng nhân ái là sự thờ ơ.",
+                                        "effect": "Thông điệp có chiều sâu hơn lời kêu gọi chung chung.",
+                                        "simple": "Không nên vô cảm.",
+                                        "technique": "Làm rõ phẩm chất bằng cách chỉ ra điều trái ngược."
+                                    },
+                                    {
+                                        "id": "lien-ket",
+                                        "name": "🔗 Kính liên kết",
+                                        "zoom": "“Một xã hội...”",
+                                        "observation": "Câu văn chuyển từ hành động của một cá nhân sang tác động đối với cộng đồng.",
+                                        "effect": "Tạo bước chuyển tự nhiên sang phần khái quát.",
+                                        "simple": "Mỗi người cần nhân ái.",
+                                        "technique": "Mở rộng phạm vi từ cá nhân → xã hội."
+                                    },
+                                    {
+                                        "id": "diem-cao",
+                                        "name": "⭐ Kính điểm cao",
+                                        "zoom": "“Một xã hội chỉ thật sự ấm áp khi...”",
+                                        "observation": "Câu văn tạo một kết luận có tính khái quát.",
+                                        "effect": "Đoạn nghị luận không kết thúc bằng lời khuyên đơn giản mà để lại một hình ảnh và thông điệp.",
+                                        "simple": "Nhân ái giúp xã hội tốt đẹp.",
+                                        "technique": "Khái quát luận điểm thành một nhận định giàu hình ảnh."
+                                    },
+                                    {
+                                        "id": "tu-duy",
+                                        "name": "💭 Kính tư duy",
+                                        "zoom": "“không bước qua nỗi đau của nhau như những người xa lạ”",
+                                        "observation": "Người viết xem lòng nhân ái như nền tảng tạo nên mối liên hệ giữa con người.",
+                                        "effect": "Vấn đề cá nhân được nâng thành vấn đề về cách con người cùng tồn tại.",
+                                        "simple": "Con người nên yêu thương nhau.",
+                                        "technique": "Khái quát từ phẩm chất cá nhân thành giá trị cộng đồng."
+                                    }
+                                ],
+                                "beforeAfter": {
+                                    "before": "Lòng nhân ái giúp xã hội trở nên tốt đẹp hơn.",
+                                    "after": "Một xã hội chỉ thật sự ấm áp khi con người không bước qua nỗi đau của nhau như những người xa lạ."
+                                },
+                                "takeaway": "Câu khái quát tốt thường nâng vấn đề lên một tầng rộng hơn nhưng vẫn giữ đúng mạch lập luận."
+                            }
+                        },
+                        "practice": [
+                            {
+                                "type": "multiple-choice",
+                                "title": "🔍 Bài 1 — Phân tích hay kể?",
+                                "question": "Câu nào dưới đây thực sự phân tích dẫn chứng về cô giáo Hoàng Thị Hiền?",
+                                "choices": [
+                                    {
+                                        "text": "A. Cô giáo Hoàng Thị Hiền đã cứu một em nhỏ.",
+                                        "isCorrect": false
+                                    },
+                                    {
+                                        "text": "B. Cô giáo đã lao theo em nhỏ khi em chạy ra đường.",
+                                        "isCorrect": false
+                                    },
+                                    {
+                                        "text": "C. Hành động ấy cho thấy lòng nhân ái không chỉ nằm trong sự thương cảm, mà trở nên có ý nghĩa nhất khi tình thương được chuyển hóa thành hành động đúng lúc.",
+                                        "isCorrect": true,
+                                        "feedback": "Đúng. Câu C giải thích ý nghĩa của hành động đối với luận điểm."
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "writing",
+                                "title": "✍️ Bài 2 — Viết câu nâng ý",
+                                "question": "Hãy viết một câu phân tích sau dẫn chứng: “Một bạn học sinh thường xuyên giúp đỡ bạn bè khi họ gặp khó khăn.”",
+                                "placeholder": "Đừng chỉ viết “Bạn ấy rất nhân ái”. Hãy trả lời: hành động ấy cho em hiểu gì về lòng nhân ái?",
+                                "modelAnswer": "Hành động ấy cho thấy lòng nhân ái không nhất thiết bắt đầu từ những việc lớn lao mà có thể được thể hiện qua sự chủ động quan tâm đến người đang cần mình."
+                            }
+                        ]
+                    },
+                    {
+                        "id": "text-nlxh-03",
+                        "title": "🔬 Thất bại không phải dấu chấm hết",
+                        "tags": [
+                            {
+                                "label": "Nghị luận xã hội",
+                                "color": "blue"
+                            },
+                            {
+                                "label": "Phản biện quan niệm",
+                                "color": "purple"
+                            },
+                            {
+                                "label": "Điểm cao",
+                                "color": "green"
+                            }
+                        ],
+                        "sourceNote": "Đoạn văn minh họa<br>Phong cách nghị luận có chiều sâu",
+                        "prompt": "Suy nghĩ của em về ý nghĩa của thất bại trong cuộc sống.",
+                        "paragraphs": [
+                            {
+                                "id": "p1",
+                                "number": "Đoạn 1",
+                                "content": "Nhiều người sợ thất bại vì họ nhìn nó như một dấu hiệu của sự kém cỏi. {highlight:that-bai-01}Nhưng thất bại đôi khi không phải là lời tuyên án dành cho năng lực của một con người, mà chỉ là lời nhắc rằng cách đi hiện tại chưa đưa ta đến nơi mình muốn."
+                            },
+                            {
+                                "id": "p2",
+                                "number": "Đoạn 2",
+                                "content": "Vì thế, điều đáng sợ không phải là một lần vấp ngã mà là việc ta biến lần vấp ngã ấy thành lý do để không đứng dậy nữa. {highlight:that-bai-02}Một thất bại chỉ thực sự trở thành thất bại cuối cùng khi con người từ chối học bất cứ điều gì từ nó."
+                            },
+                            {
+                                "id": "p3",
+                                "number": "Đoạn 3",
+                                "content": "Thomas Edison từng trải qua rất nhiều lần thử nghiệm không thành công trước khi hoàn thiện bóng đèn điện. {highlight:that-bai-03}Điều đáng học hỏi ở Edison không nằm ở việc ông chưa từng thất bại, mà ở khả năng biến mỗi lần thử sai thành một dữ liệu để tiếp tục tìm kiếm cách làm tốt hơn."
+                            },
+                            {
+                                "id": "p4",
+                                "number": "Đoạn 4",
+                                "content": "{highlight:that-bai-04}Nếu thành công cho ta một câu trả lời, thì thất bại thường cho ta biết mình cần đặt lại câu hỏi như thế nào."
+                            }
+                        ],
+                        "highlights": {
+                            "that-bai-01": {
+                                "text": "Nhưng thất bại đôi khi không phải là lời tuyên án dành cho năng lực của một con người, mà chỉ là lời nhắc rằng cách đi hiện tại chưa đưa ta đến nơi mình muốn.",
+                                "lenses": [
+                                    {
+                                        "id": "tu-ngu",
+                                        "name": "🔤 Kính từ ngữ",
+                                        "zoom": "“lời tuyên án” ↔ “lời nhắc”",
+                                        "observation": "Hai hình ảnh được đặt đối lập để thay đổi cách nhìn về thất bại.",
+                                        "effect": "Thất bại từ một điều mang tính kết tội trở thành thông tin giúp con người điều chỉnh.",
+                                        "simple": "Thất bại không có nghĩa là ta kém cỏi.",
+                                        "technique": "Ẩn dụ đối lập để tái định nghĩa khái niệm."
+                                    },
+                                    {
+                                        "id": "cau-van",
+                                        "name": "🧩 Kính câu văn",
+                                        "zoom": "“không phải là..., mà chỉ là...”",
+                                        "observation": "Câu văn phủ định cách hiểu tiêu cực rồi thay bằng cách hiểu tích cực hơn.",
+                                        "effect": "Tạo cảm giác lập luận có phản biện.",
+                                        "simple": "Thất bại chỉ là một bài học.",
+                                        "technique": "Phủ định – tái định nghĩa."
+                                    },
+                                    {
+                                        "id": "lap-luan",
+                                        "name": "🧠 Kính lập luận",
+                                        "zoom": "“lời tuyên án” → “lời nhắc”",
+                                        "observation": "Người viết trực tiếp đối thoại với một quan niệm phổ biến: thất bại chứng minh con người kém cỏi.",
+                                        "effect": "Đoạn văn có tính phản biện và không một chiều.",
+                                        "simple": "Thất bại giúp ta trưởng thành.",
+                                        "technique": "Nêu quan niệm phổ biến → phản biện → đưa ra cách hiểu mới."
+                                    },
+                                    {
+                                        "id": "phan-tich",
+                                        "name": "🔎 Kính phân tích",
+                                        "zoom": "“cách đi hiện tại chưa đưa ta đến nơi mình muốn”",
+                                        "observation": "Người viết phân biệt giữa “con người thất bại” và “cách làm chưa phù hợp”.",
+                                        "effect": "Giảm cách nhìn tuyệt đối hóa thất bại và mở ra khả năng điều chỉnh.",
+                                        "simple": "Thất bại cho ta kinh nghiệm.",
+                                        "technique": "Tách con người khỏi kết quả nhất thời để phân tích bản chất."
+                                    },
+                                    {
+                                        "id": "lien-ket",
+                                        "name": "🔗 Kính liên kết",
+                                        "zoom": "“Nhưng”",
+                                        "observation": "Từ nối báo hiệu sự chuyển hướng lập luận.",
+                                        "effect": "Ý sau trực tiếp phản biện nhận định tiêu cực ở câu trước.",
+                                        "simple": "Thất bại không đáng sợ.",
+                                        "technique": "Dùng từ nối chuyển hướng để tạo thế phản biện."
+                                    },
+                                    {
+                                        "id": "diem-cao",
+                                        "name": "⭐ Kính điểm cao",
+                                        "zoom": "“thất bại đôi khi không phải là lời tuyên án... mà chỉ là lời nhắc...”",
+                                        "observation": "Người viết không chỉ khuyên “đừng sợ thất bại” mà đưa ra một cách định nghĩa lại thất bại.",
+                                        "effect": "Lập luận có dấu ấn tư duy.",
+                                        "simple": "Đừng sợ thất bại.",
+                                        "technique": "Tái định nghĩa vấn đề thay vì chỉ đưa lời khuyên."
+                                    },
+                                    {
+                                        "id": "tu-duy",
+                                        "name": "💭 Kính tư duy",
+                                        "zoom": "“cách đi hiện tại chưa đưa ta đến nơi mình muốn”",
+                                        "observation": "Người viết xem thất bại như phản hồi về phương pháp chứ không phải bản án về giá trị con người.",
+                                        "effect": "Đây là góc nhìn tích cực nhưng không sáo rỗng.",
+                                        "simple": "Thất bại giúp ta tiến bộ.",
+                                        "technique": "Thay đổi điểm nhìn từ đánh giá bản thân → đánh giá phương pháp."
+                                    }
+                                ],
+                                "beforeAfter": {
+                                    "before": "Thất bại không có nghĩa là ta kém cỏi.",
+                                    "after": "Nhưng thất bại đôi khi không phải là lời tuyên án dành cho năng lực của một con người, mà chỉ là lời nhắc rằng cách đi hiện tại chưa đưa ta đến nơi mình muốn."
+                                },
+                                "takeaway": "Một cách rất mạnh để nâng lập luận là thay đổi cách nhìn về chính khái niệm đang nghị luận."
+                            },
+                            "that-bai-02": {
+                                "text": "Một thất bại chỉ thực sự trở thành thất bại cuối cùng khi con người từ chối học bất cứ điều gì từ nó.",
+                                "lenses": [
+                                    {
+                                        "id": "tu-ngu",
+                                        "name": "🔤 Kính từ ngữ",
+                                        "zoom": "“thất bại cuối cùng”, “từ chối học”",
+                                        "observation": "Các từ ngữ tạo cảm giác quyết định nằm ở thái độ của con người.",
+                                        "effect": "Nhấn mạnh yếu tố chủ động của con người trước thất bại.",
+                                        "simple": "Nếu không học từ thất bại thì ta sẽ không tiến bộ.",
+                                        "technique": "Dùng từ ngữ có sắc thái mạnh để tạo điểm nhấn."
+                                    },
+                                    {
+                                        "id": "cau-van",
+                                        "name": "🧩 Kính câu văn",
+                                        "zoom": "“chỉ thực sự... khi...”",
+                                        "observation": "Cấu trúc điều kiện làm thay đổi cách xác định “thất bại cuối cùng”.",
+                                        "effect": "Câu văn tạo cảm giác như một nguyên tắc.",
+                                        "simple": "Không học từ thất bại thì sẽ thất bại.",
+                                        "technique": "Cấu trúc điều kiện để tạo nhận định có tính khái quát."
+                                    },
+                                    {
+                                        "id": "lap-luan",
+                                        "name": "🧠 Kính lập luận",
+                                        "zoom": "“thất bại” → “từ chối học”",
+                                        "observation": "Người viết chuyển nguyên nhân quyết định từ sự việc bên ngoài sang lựa chọn của con người.",
+                                        "effect": "Tư duy nghị luận trở nên chủ động và có trách nhiệm.",
+                                        "simple": "Thất bại có thể giúp ta trưởng thành.",
+                                        "technique": "Đặt trọng tâm vào thái độ sau sự việc."
+                                    },
+                                    {
+                                        "id": "phan-tich",
+                                        "name": "🔎 Kính phân tích",
+                                        "zoom": "“từ chối học bất cứ điều gì từ nó”",
+                                        "observation": "Người viết chỉ ra điều khiến thất bại trở nên vô nghĩa: không rút kinh nghiệm.",
+                                        "effect": "Thông điệp cụ thể hơn lời khuyên “hãy học từ thất bại”.",
+                                        "simple": "Cần rút kinh nghiệm sau thất bại.",
+                                        "technique": "Chỉ ra điều kiện biến một trải nghiệm thành bài học."
+                                    },
+                                    {
+                                        "id": "lien-ket",
+                                        "name": "🔗 Kính liên kết",
+                                        "zoom": "“Vì thế” → “Một thất bại...”",
+                                        "observation": "Câu sau là sự kết tinh của lập luận trước.",
+                                        "effect": "Mạch văn từ giải thích chuyển sang khái quát.",
+                                        "simple": "Ta cần học từ thất bại.",
+                                        "technique": "Từ lập luận → kết luận khái quát."
+                                    },
+                                    {
+                                        "id": "diem-cao",
+                                        "name": "⭐ Kính điểm cao",
+                                        "zoom": "“một thất bại chỉ thực sự trở thành thất bại cuối cùng...”",
+                                        "observation": "Câu văn tạo ra một nghịch lý có sức suy ngẫm.",
+                                        "effect": "Gây ấn tượng và giúp thông điệp dễ nhớ.",
+                                        "simple": "Thất bại không đáng sợ nếu ta biết rút kinh nghiệm.",
+                                        "technique": "Nghịch lý lập luận để tạo chiều sâu."
+                                    },
+                                    {
+                                        "id": "tu-duy",
+                                        "name": "💭 Kính tư duy",
+                                        "zoom": "“thất bại cuối cùng”",
+                                        "observation": "Người viết đặt câu hỏi ngầm: điều gì mới thực sự khiến thất bại trở thành dấu chấm hết?",
+                                        "effect": "Câu trả lời không phải bản thân thất bại mà là thái độ từ bỏ việc học hỏi.",
+                                        "simple": "Không nên bỏ cuộc.",
+                                        "technique": "Đặt lại tiêu chí xác định “thất bại” để tạo phát hiện."
+                                    }
+                                ],
+                                "beforeAfter": {
+                                    "before": "Ta cần học hỏi từ thất bại.",
+                                    "after": "Một thất bại chỉ thực sự trở thành thất bại cuối cùng khi con người từ chối học bất cứ điều gì từ nó."
+                                },
+                                "takeaway": "Câu văn điểm cao thường biến một lời khuyên thành một nhận định có tính quy luật."
+                            },
+                            "that-bai-03": {
+                                "text": "Điều đáng học hỏi ở Edison không nằm ở việc ông chưa từng thất bại, mà ở khả năng biến mỗi lần thử sai thành một dữ liệu để tiếp tục tìm kiếm cách làm tốt hơn.",
+                                "lenses": [
+                                    {
+                                        "id": "tu-ngu",
+                                        "name": "🔤 Kính từ ngữ",
+                                        "zoom": "“biến mỗi lần thử sai thành một dữ liệu”",
+                                        "observation": "Từ “dữ liệu” mang sắc thái tư duy khoa học.",
+                                        "effect": "Dẫn chứng Edison được phân tích theo hướng học hỏi từ thử nghiệm.",
+                                        "simple": "Edison rút kinh nghiệm từ thất bại.",
+                                        "technique": "Lựa chọn từ ngữ phù hợp với bản chất của dẫn chứng."
+                                    },
+                                    {
+                                        "id": "cau-van",
+                                        "name": "🧩 Kính câu văn",
+                                        "zoom": "“không nằm ở..., mà ở...”",
+                                        "observation": "Câu văn chuyển trọng tâm từ số lần thất bại sang cách sử dụng thất bại.",
+                                        "effect": "Dẫn chứng được đào sâu.",
+                                        "simple": "Edison không bỏ cuộc.",
+                                        "technique": "Đối chiếu để xác định giá trị thực sự của dẫn chứng."
+                                    },
+                                    {
+                                        "id": "lap-luan",
+                                        "name": "🧠 Kính lập luận",
+                                        "zoom": "“chưa từng thất bại” ↔ “biến mỗi lần thử sai thành một dữ liệu”",
+                                        "observation": "Người viết bác bỏ cách đánh giá Edison bằng số lần thất bại.",
+                                        "effect": "Làm nổi bật cách ứng xử với thất bại.",
+                                        "simple": "Edison rất kiên trì.",
+                                        "technique": "Dẫn chứng → phản biện cách hiểu đơn giản → rút ra phẩm chất."
+                                    },
+                                    {
+                                        "id": "phan-tich",
+                                        "name": "🔎 Kính phân tích",
+                                        "zoom": "“biến mỗi lần thử sai thành một dữ liệu”",
+                                        "observation": "Câu văn giải thích thất bại có thể cung cấp thông tin để điều chỉnh phương pháp.",
+                                        "effect": "Dẫn chứng tạo ra một bài học cụ thể.",
+                                        "simple": "Thất bại giúp ta có kinh nghiệm.",
+                                        "technique": "Giải thích cơ chế mà thất bại tạo ra bài học."
+                                    },
+                                    {
+                                        "id": "lien-ket",
+                                        "name": "🔗 Kính liên kết",
+                                        "zoom": "“Điều đáng học hỏi ở Edison...”",
+                                        "observation": "Cụm từ mở đầu báo hiệu câu văn đang chuyển từ dẫn chứng sang bài học.",
+                                        "effect": "Ranh giới giữa kể và phân tích được rõ ràng.",
+                                        "simple": "Edison đã thử nghiệm nhiều lần.",
+                                        "technique": "Dùng tín hiệu phân tích để kết nối dẫn chứng với luận điểm."
+                                    },
+                                    {
+                                        "id": "diem-cao",
+                                        "name": "⭐ Kính điểm cao",
+                                        "zoom": "“biến mỗi lần thử sai thành một dữ liệu”",
+                                        "observation": "Câu văn không chỉ ca ngợi sự kiên trì mà chỉ ra cách tư duy đằng sau sự kiên trì.",
+                                        "effect": "Dẫn chứng trở thành một phát hiện có giá trị.",
+                                        "simple": "Edison rất kiên trì.",
+                                        "technique": "Đi sâu từ phẩm chất → cơ chế tư duy tạo nên phẩm chất."
+                                    },
+                                    {
+                                        "id": "tu-duy",
+                                        "name": "💭 Kính tư duy",
+                                        "zoom": "“thử sai” → “dữ liệu”",
+                                        "observation": "Người viết nhìn thất bại dưới góc độ thông tin thay vì mất mát.",
+                                        "effect": "Đây là góc nhìn mới giúp bài nghị luận tránh sáo mòn.",
+                                        "simple": "Thất bại cho ta kinh nghiệm.",
+                                        "technique": "Tái diễn giải thất bại dưới một hệ quy chiếu mới."
+                                    }
+                                ],
+                                "beforeAfter": {
+                                    "before": "Edison là người kiên trì vì ông không bỏ cuộc.",
+                                    "after": "Điều đáng học hỏi ở Edison không nằm ở việc ông chưa từng thất bại, mà ở khả năng biến mỗi lần thử sai thành một dữ liệu để tiếp tục tìm kiếm cách làm tốt hơn."
+                                },
+                                "takeaway": "Khi dùng dẫn chứng, hãy tìm một nét đáng học hỏi cụ thể thay vì chỉ gắn cho nhân vật một phẩm chất."
+                            },
+                            "that-bai-04": {
+                                "text": "Nếu thành công cho ta một câu trả lời, thì thất bại thường cho ta biết mình cần đặt lại câu hỏi như thế nào.",
+                                "lenses": [
+                                    {
+                                        "id": "tu-ngu",
+                                        "name": "🔤 Kính từ ngữ",
+                                        "zoom": "“câu trả lời” ↔ “đặt lại câu hỏi”",
+                                        "observation": "Hai hình ảnh thuộc cùng trường nghĩa nhận thức được đặt đối lập.",
+                                        "effect": "Tạo cảm giác triết lý và cô đọng.",
+                                        "simple": "Thất bại giúp ta suy nghĩ lại.",
+                                        "technique": "Ẩn dụ hóa quá trình học hỏi bằng hình ảnh câu hỏi – câu trả lời."
+                                    },
+                                    {
+                                        "id": "cau-van",
+                                        "name": "🧩 Kính câu văn",
+                                        "zoom": "“Nếu... thì...”",
+                                        "observation": "Cấu trúc song hành tạo thế đối chiếu giữa thành công và thất bại.",
+                                        "effect": "Hai khái niệm được đặt trong cùng một hệ quy chiếu.",
+                                        "simple": "Thành công và thất bại đều có ý nghĩa.",
+                                        "technique": "Cấu trúc đối xứng để tạo điểm nhấn."
+                                    },
+                                    {
+                                        "id": "lap-luan",
+                                        "name": "🧠 Kính lập luận",
+                                        "zoom": "“thành công” ↔ “thất bại”",
+                                        "observation": "Người viết không xem hai trạng thái là đối lập tuyệt đối mà cho thấy cả hai đều cung cấp bài học.",
+                                        "effect": "Quan điểm trở nên cân bằng và đa chiều.",
+                                        "simple": "Thất bại cũng có ích.",
+                                        "technique": "Đặt hai mặt đối lập vào cùng một hệ giá trị."
+                                    },
+                                    {
+                                        "id": "phan-tich",
+                                        "name": "🔎 Kính phân tích",
+                                        "zoom": "“đặt lại câu hỏi như thế nào”",
+                                        "observation": "Thất bại được phân tích như một cơ hội xem xét lại cách suy nghĩ và phương pháp.",
+                                        "effect": "Bài học từ thất bại trở nên cụ thể hơn.",
+                                        "simple": "Thất bại giúp ta sửa sai.",
+                                        "technique": "Chuyển thất bại thành cơ hội tự vấn."
+                                    },
+                                    {
+                                        "id": "lien-ket",
+                                        "name": "🔗 Kính liên kết",
+                                        "zoom": "“Nếu... thì...”",
+                                        "observation": "Hai vế tạo quan hệ tương ứng.",
+                                        "effect": "Câu văn có tính cân đối và dễ ghi nhớ.",
+                                        "simple": "Thành công và thất bại đều dạy ta điều gì đó.",
+                                        "technique": "Liên kết bằng cấu trúc điều kiện – kết quả."
+                                    },
+                                    {
+                                        "id": "diem-cao",
+                                        "name": "⭐ Kính điểm cao",
+                                        "zoom": "“Nếu thành công cho ta một câu trả lời, thì thất bại thường cho ta biết mình cần đặt lại câu hỏi như thế nào.”",
+                                        "observation": "Câu văn khép lại vấn đề bằng một hình ảnh tư duy thay vì một lời khuyên trực tiếp.",
+                                        "effect": "Tạo dư âm và mở ra suy ngẫm cho người đọc.",
+                                        "simple": "Thất bại giúp ta sửa chữa sai lầm.",
+                                        "technique": "Khái quát bài học thành một hình ảnh nhận thức."
+                                    },
+                                    {
+                                        "id": "tu-duy",
+                                        "name": "💭 Kính tư duy",
+                                        "zoom": "“đặt lại câu hỏi”",
+                                        "observation": "Người viết không chỉ nói thất bại cho ta đáp án mới mà cho rằng nó có thể khiến ta xem xét lại chính vấn đề ban đầu.",
+                                        "effect": "Đưa lập luận từ mức “rút kinh nghiệm” lên mức “thay đổi cách đặt vấn đề”.",
+                                        "simple": "Thất bại giúp ta nhìn lại.",
+                                        "technique": "Nâng cấp bài học từ sửa đáp án → xem lại cách đặt câu hỏi."
+                                    }
+                                ],
+                                "beforeAfter": {
+                                    "before": "Thất bại giúp ta nhận ra sai lầm.",
+                                    "after": "Nếu thành công cho ta một câu trả lời, thì thất bại thường cho ta biết mình cần đặt lại câu hỏi như thế nào."
+                                },
+                                "takeaway": "Câu kết hay không nhất thiết phải đưa ra lời khuyên; đôi khi chỉ cần mở ra một cách nhìn khiến người đọc tiếp tục suy nghĩ."
+                            }
+                        },
+                        "practice": [
+                            {
+                                "type": "multiple-choice",
+                                "title": "🔍 Bài 1 — Nhận ra phản biện",
+                                "question": "Câu nào dưới đây có tính phản biện rõ nhất?",
+                                "choices": [
+                                    {
+                                        "text": "A. Thất bại giúp chúng ta trưởng thành.",
+                                        "isCorrect": false
+                                    },
+                                    {
+                                        "text": "B. Nhưng thất bại đôi khi không phải là lời tuyên án dành cho năng lực của một con người, mà chỉ là lời nhắc rằng cách đi hiện tại chưa đưa ta đến nơi mình muốn.",
+                                        "isCorrect": true,
+                                        "feedback": "Đúng. Câu B bác bỏ cách hiểu thất bại đồng nghĩa với kém cỏi và đưa ra cách nhìn mới."
+                                    },
+                                    {
+                                        "text": "C. Vì vậy, chúng ta không nên sợ thất bại.",
+                                        "isCorrect": false
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "writing",
+                                "title": "✍️ Bài 2 — Biến lời khuyên thành lập luận",
+                                "question": "Hãy nâng cấp câu: “Chúng ta cần học hỏi từ thất bại.”",
+                                "placeholder": "Hãy thử trả lời: Khi nào một thất bại trở thành có ích?",
+                                "modelAnswer": "Một thất bại chỉ thực sự trở nên có ích khi con người biết nhìn lại nguyên nhân, rút ra bài học và điều chỉnh cách mình bước tiếp."
+                            }
+                        ]
+                    }
+                ],
+                "cheatSheet": {
+                    "title": "📌 Sổ tay bỏ túi — Kỹ năng NLXH Điểm 10",
+                    "description": "Các bí quyết cốt lõi để nâng điểm bài nghị luận xã hội.",
+                    "items": [
+                        {
+                            "title": "💎 Từ khóa triết lý",
+                            "content": "Thay 'bản thân' bằng 'bản ngã'. Thay 'cuộc đời' bằng 'hành trình nhân sinh'."
+                        },
+                        {
+                            "title": "🌊 Từ láy gợi hình",
+                            "content": "Bơm cảm xúc vào bài bằng các từ láy như 'chênh chao', 'khắc khoải', 'thổn thức'."
+                        },
+                        {
+                            "title": "⚖️ Phản biện lật ngược",
+                            "content": "Dùng cấu trúc: '...Nhưng nếu đi quá giới hạn, nó sẽ biến thành...'"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

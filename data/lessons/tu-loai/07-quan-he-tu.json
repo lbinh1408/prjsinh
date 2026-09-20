@@ -1,0 +1,338 @@
+{
+  "id": "tu-loai.07-quan-he-tu",
+  "title": "Quan hệ từ",
+  "version": "3.0",
+  "image": "assets/images/quan-he-tu.png",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "content": "Lan <b>và</b> Mai cùng đến trường <b>bằng</b> xe đạp.",
+        "guide": [
+          "Chú ý các từ được in đậm trong câu",
+          "Các từ đó có tác dụng gì trong câu?"
+        ],
+        "hint": "Các từ in đậm dùng để nối các từ, cụm từ với nhau.",
+        "title": "Quan sát",
+        "instruction": "Đọc câu văn dưới đây.",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "1. Định nghĩa cốt lõi",
+            "icon": "📖",
+            "active": true,
+            "content": {
+              "text": "Quan hệ từ là từ nối các từ ngữ hoặc các câu, nhằm thể hiện mối quan hệ giữa những từ ngữ hoặc những câu ấy với nhau:",
+              "examples": [
+                {
+                  "category": "Sở hữu",
+                  "word": "của",
+                  "emoji": "🔗"
+                },
+                {
+                  "category": "Đồng thời, liệt kê",
+                  "word": "và, với, cùng",
+                  "emoji": "➕"
+                },
+                {
+                  "category": "Nguyên nhân",
+                  "word": "vì, do, bởi",
+                  "emoji": "🤔"
+                },
+                {
+                  "category": "Điều kiện",
+                  "word": "nếu, hễ, giá",
+                  "emoji": "⚖️"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "2. Đặc điểm sử dụng",
+            "icon": "🔗",
+            "active": false,
+            "content": {
+              "roles": [
+                "Nối các từ trong một cụm từ (VD: sách của tôi)",
+                "Nối các cụm từ trong câu (VD: học giỏi và hát hay)",
+                "Nối các vế trong câu ghép (VD: Vì trời mưa nên đường ướt)"
+              ]
+            }
+          }
+        ],
+        "title": "Khái niệm",
+        "instruction": "Các từ vừa tìm được chính là các <i>quan hệ từ</i>.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "identify",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Từ nào sau đây là quan hệ từ?",
+        "options": [
+          "chạy",
+          "và",
+          "xinh đẹp",
+          "bầu trời"
+        ],
+        "answer": "và",
+        "title": "Nhận biết",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Giải thích vì sao 'và' là quan hệ từ trong câu 'Lan và Mai là bạn thân'?",
+        "sampleAnswer": [
+          "Vì nó nằm giữa 'Lan' và 'Mai'.",
+          "Vì nó không phải là danh từ hay tính từ.",
+          "Vì nó dùng để nối hai danh từ 'Lan' và 'Mai'."
+        ],
+        "title": "Thông hiểu",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "highlight",
+      "data": {
+        "content": "Tôi thích ăn táo nhưng lại ghét ăn lê.",
+        "answer": [
+          "nhưng"
+        ],
+        "title": "Tô sáng",
+        "instruction": "Hãy chọn để tô sáng các quan hệ từ trong câu sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "reflection",
+      "data": {
+        "question": "Hãy viết một câu có sử dụng quan hệ từ 'vì'.",
+        "sampleAnswer": "Vì trời mưa nên tôi nghỉ học.",
+        "title": "Vận dụng",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "1. Các quan hệ từ đơn",
+            "icon": "🔗",
+            "active": true,
+            "content": {
+              "items": [
+                {
+                  "type": "common",
+                  "label": "Biểu thị quan hệ liệt kê, đồng thời",
+                  "definition": "Nối các thành phần có vai trò tương đương nhau.",
+                  "examples": [
+                    "và, với, cùng, hay, hoặc"
+                  ]
+                },
+                {
+                  "type": "common",
+                  "label": "Biểu thị quan hệ sở hữu",
+                  "definition": "Chỉ sự sở hữu.",
+                  "examples": [
+                    "của"
+                  ]
+                },
+                {
+                  "type": "common",
+                  "label": "Biểu thị quan hệ tương phản",
+                  "definition": "Nối các thành phần có ý nghĩa trái ngược nhau.",
+                  "examples": [
+                    "nhưng, song, tuy nhiên"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "2. Các cặp quan hệ từ",
+            "icon": "🎭",
+            "active": false,
+            "content": {
+              "items": [
+                {
+                  "type": "abstract",
+                  "label": "Biểu thị quan hệ nguyên nhân - kết quả",
+                  "definition": "Nêu nguyên nhân và kết quả tương ứng.",
+                  "examples": [
+                    "Vì ... nên ...",
+                    "Do ... nên ...",
+                    "Nhờ ... mà ..."
+                  ]
+                },
+                {
+                  "type": "abstract",
+                  "label": "Biểu thị quan hệ điều kiện - kết quả, giả thiết - kết quả",
+                  "definition": "Nêu điều kiện và kết quả có thể xảy ra.",
+                  "examples": [
+                    "Nếu ... thì ...",
+                    "Hễ ... thì ...",
+                    "Giá ... thì ..."
+                  ]
+                },
+                {
+                  "type": "abstract",
+                  "label": "Biểu thị quan hệ tương phản",
+                  "definition": "Nêu hai sự việc trái ngược nhau.",
+                  "examples": [
+                    "Tuy ... nhưng ...",
+                    "Mặc dù ... nhưng ..."
+                  ]
+                },
+                {
+                  "type": "abstract",
+                  "label": "Biểu thị quan hệ tăng tiến",
+                  "definition": "Mức độ của sự việc sau cao hơn sự việc trước.",
+                  "examples": [
+                    "Không những ... mà còn ...",
+                    "Không chỉ ... mà còn ..."
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Phân loại quan hệ từ",
+        "score": 0
+      }
+    },
+    {
+      "id": "step08",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trong các từ sau, đâu là một cặp quan hệ từ?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "bầu trời và mặt đất"
+          },
+          {
+            "id": "B",
+            "text": "Vì ... nên ..."
+          },
+          {
+            "id": "C",
+            "text": "chạy và nhảy"
+          },
+          {
+            "id": "D",
+            "text": "rất, lắm"
+          }
+        ],
+        "answer": "B",
+        "title": "Lựa chọn",
+        "score": 1
+      }
+    },
+    {
+      "id": "step09",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Vì ... nên ...",
+          "Nếu ... thì ...",
+          "Tuy ... nhưng ...",
+          "Không những ... mà còn ..."
+        ],
+        "right": [
+          "Nguyên nhân - kết quả",
+          "Điều kiện - kết quả",
+          "Tương phản",
+          "Tăng tiến"
+        ],
+        "answer": {
+          "Vì ... nên ...": "Nguyên nhân - kết quả",
+          "Nếu ... thì ...": "Điều kiện - kết quả",
+          "Tuy ... nhưng ...": "Tương phản",
+          "Không những ... mà còn ...": "Tăng tiến"
+        },
+        "title": "Nối từ",
+        "instruction": "Ghép cặp quan hệ từ với ý nghĩa phù hợp.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step10",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "và",
+          "với",
+          "chạy",
+          "đẹp",
+          "của",
+          "bởi vì",
+          "quyển sách",
+          "thông minh"
+        ],
+        "targets": [
+          "Quan hệ từ",
+          "Không phải quan hệ từ"
+        ],
+        "answer": {
+          "và": "Quan hệ từ",
+          "với": "Quan hệ từ",
+          "của": "Quan hệ từ",
+          "bởi vì": "Quan hệ từ",
+          "chạy": "Không phải quan hệ từ",
+          "đẹp": "Không phải quan hệ từ",
+          "quyển sách": "Không phải quan hệ từ",
+          "thông minh": "Không phải quan hệ từ"
+        },
+        "title": "Kéo và thả",
+        "instruction": "Hãy kéo và thả các từ vào đúng danh mục.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step11",
+      "type": "flashcard",
+      "data": {
+        "front": "Quan hệ từ",
+        "back": "Quan hệ từ là từ nối các từ ngữ hoặc các câu, nhằm thể hiện mối quan hệ giữa những từ ngữ hoặc những câu ấy với nhau.",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "tu-loai",
+    "difficulty": "reference",
+    "xp": 100,
+    "stars": 3,
+    "description": "Nhận biết và sử dụng quan hệ từ trong tiếng Việt.",
+    "prerequisite": null,
+    "unlock": null,
+    "reviewMode": "instant",
+    "durationMinutes": 15
+  }
+}

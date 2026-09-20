@@ -1,0 +1,207 @@
+{
+  "id": "tu-loai.12-on-tu-loai",
+  "title": "Ôn tập tổng hợp: Các từ loại",
+  "version": "1.0",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "format": "essay",
+        "content": "Mùa xuân đã về. Những bông hoa đào tươi thắm đang nở rộ trong vườn. Ôi, cảnh sắc thật tuyệt vời làm sao! Mọi người đều háo hức đón chào năm mới. Chính những cơn mưa phùn đã mang lại sức sống cho cây cối. Ba con chim én chao lượn trên bầu trời xanh. Chúng hót líu lo, như muốn báo tin vui cho tất cả.",
+        "title": "Quan sát",
+        "instruction": "Đọc đoạn văn sau và chú ý đến sự đa dạng của các từ loại được sử dụng để miêu tả vẻ đẹp của mùa xuân."
+      }
+    },
+    {
+      "id": "step02",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "mùa xuân",
+          "nở rộ",
+          "tươi thắm",
+          "chao lượn",
+          "bầu trời",
+          "xanh"
+        ],
+        "targets": [
+          "Danh từ",
+          "Động từ",
+          "Tính từ"
+        ],
+        "answer": {
+          "mùa xuân": "Danh từ",
+          "bầu trời": "Danh từ",
+          "nở rộ": "Động từ",
+          "chao lượn": "Động từ",
+          "tươi thắm": "Tính từ",
+          "xanh": "Tính từ"
+        },
+        "title": "Thực từ (Phần 1)",
+        "instruction": "Dựa vào đoạn văn trên, hãy xếp các từ sau vào đúng cột từ loại.",
+        "score": 3
+      }
+    },
+    {
+      "id": "step03",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Chúng",
+          "Ba",
+          "trong",
+          "đã",
+          "Chính"
+        ],
+        "right": [
+          "Đại từ",
+          "Số từ",
+          "Quan hệ từ",
+          "Phó từ",
+          "Trợ từ"
+        ],
+        "answer": {
+          "Chúng": "Đại từ",
+          "Ba": "Số từ",
+          "trong": "Quan hệ từ",
+          "đã": "Phó từ",
+          "Chính": "Trợ từ"
+        },
+        "title": "Nhận diện từ loại",
+        "instruction": "Ghép các từ in đậm trong đoạn văn với từ loại tương ứng của chúng.",
+        "score": 3
+      }
+    },
+    {
+      "id": "step04",
+      "type": "highlight",
+      "data": {
+        "content": "Ôi, cảnh sắc thật tuyệt vời làm sao!",
+        "answer": [
+          "Ôi",
+          "làm sao"
+        ],
+        "title": "Tìm Thán từ và Tình thái từ",
+        "instruction": "Hãy chọn để tô sáng 1 thán từ và 1 tình thái từ trong câu sau.",
+        "score": 2
+      }
+    },
+    {
+      "id": "step05",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trong câu 'Mọi người đều háo hức đón chào năm mới.', từ 'Mọi' thuộc từ loại nào?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Số từ"
+          },
+          {
+            "id": "B",
+            "text": "Đại từ"
+          },
+          {
+            "id": "C",
+            "text": "Phó từ"
+          },
+          {
+            "id": "D",
+            "text": "Tính từ"
+          }
+        ],
+        "answer": "B",
+        "title": "Đại từ và Số từ",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Từ loại nào có chức năng nối các từ ngữ hoặc các câu với nhau nhằm thể hiện mối quan hệ giữa chúng?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Trợ từ"
+          },
+          {
+            "id": "B",
+            "text": "Phó từ"
+          },
+          {
+            "id": "C",
+            "text": "Quan hệ từ"
+          },
+          {
+            "id": "D",
+            "text": "Tình thái từ"
+          }
+        ],
+        "answer": "C",
+        "title": "Chức năng của từ loại",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Trong câu 'Chính những cơn mưa phùn đã mang lại sức sống cho cây cối.', từ 'Chính' có tác dụng gì và thuộc từ loại nào?",
+        "sampleAnswer": [
+          "Từ 'Chính' là trợ từ, có tác dụng nhấn mạnh vào đối tượng 'những cơn mưa phùn' là tác nhân mang lại sức sống cho cây cối."
+        ],
+        "title": "Thông hiểu",
+        "score": 2
+      }
+    },
+    {
+      "id": "step08",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "Danh từ",
+          "Quan hệ từ",
+          "Động từ",
+          "Trợ từ",
+          "Tính từ",
+          "Thán từ",
+          "Phó từ"
+        ],
+        "targets": [
+          "Thực từ",
+          "Hư từ"
+        ],
+        "answer": {
+          "Danh từ": "Thực từ",
+          "Động từ": "Thực từ",
+          "Tính từ": "Thực từ",
+          "Quan hệ từ": "Hư từ",
+          "Trợ từ": "Hư từ",
+          "Thán từ": "Hư từ",
+          "Phó từ": "Hư từ"
+        },
+        "title": "Tổng hợp: Thực từ và Hư từ",
+        "instruction": "Hãy phân loại các từ loại sau vào hai nhóm: Thực từ (có ý nghĩa từ vựng độc lập) và Hư từ (không có ý nghĩa từ vựng độc lập, chủ yếu làm chức năng ngữ pháp).",
+        "score": 3
+      }
+    }
+  ],
+  "meta": {
+    "module": "tu-loai",
+    "difficulty": "challenge",
+    "xp": 150,
+    "stars": 3,
+    "description": "Hệ thống hóa và ôn tập lại toàn bộ 10 từ loại trong Tiếng Việt thông qua chủ đề Mùa xuân.",
+    "prerequisite": "tu-loai.11-on-tap-so-pho-tro-than-tinh-thai-tu",
+    "unlock": null,
+    "reviewMode": "instant",
+    "durationMinutes": 30
+  }
+}

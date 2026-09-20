@@ -1,0 +1,371 @@
+{
+  "id": "ptbd.07-hanh-chinh-cong-vu",
+  "title": "Hành chính - công vụ",
+  "version": "1.0",
+  "enabled": true,
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "format": "essay",
+        "content": "Để chuẩn bị cho Ngày hội đọc sách, nhà trường tổ chức quyên góp sách từ ngày 10 đến ngày 15 tháng 9. Học sinh có thể mang sách đến thư viện vào giờ ra chơi buổi sáng. Mọi thắc mắc vui lòng liên hệ giáo viên chủ nhiệm hoặc cán bộ thư viện. Đề nghị các lớp thực hiện nghiêm túc để hoạt động diễn ra đúng kế hoạch.",
+        "guide": [
+          "Thông tin về công việc (thời gian, địa điểm, nội dung...) "
+        ],
+        "hint": "10 đến ngày 15 tháng 9, thư viện, quyên góp sách",
+        "title": "Quan sát",
+        "instruction": "Hãy đọc thông báo sau:",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Đoạn văn trên được viết nhằm mục đích gì?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Kể một câu chuyện về Ngày hội đọc sách."
+          },
+          {
+            "id": "B",
+            "text": "Bộc lộ cảm xúc về việc quyên góp sách."
+          },
+          {
+            "id": "C",
+            "text": "Thông báo một công việc cụ thể."
+          },
+          {
+            "id": "D",
+            "text": "Miêu tả không gian thư viện."
+          }
+        ],
+        "answer": "C",
+        "title": "Nhận xét",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Trong thông báo trên, người viết đã cung cấp những thông tin quan trọng nào?",
+        "sampleAnswer": [
+          "Nội dung: quyên góp sách",
+          "Thời gian: từ ngày 10 đến 15 tháng 9",
+          "Địa điểm: thư viện",
+          "Người liên hệ: GVCN hoặc cán bộ thư viện"
+        ],
+        "title": "Phân tích",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Mục đích",
+            "icon": "📋",
+            "active": true,
+            "content": {
+              "text": "Dùng để:\n- Thông báo\n- Hướng dẫn\n- Yêu cầu, đề nghị\n- Trao đổi công việc chính thức",
+              "examples": [
+                {
+                  "category": "Văn bản thường gặp",
+                  "word": "Thông báo, đơn xin phép, giấy mời, nội quy, biên bản...",
+                  "emoji": "📌"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Đặc điểm",
+            "icon": "✒️",
+            "active": false,
+            "content": {
+              "text": "Trình bày theo mẫu quy định chung.",
+              "examples": [
+                {
+                  "category": "Ngôn ngữ",
+                  "word": "Rõ ràng, chính xác, ngắn gọn và trang trọng.",
+                  "emoji": "💡"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-3",
+            "title": "Mẹo nhận biết",
+            "icon": "💡",
+            "active": false,
+            "content": {
+              "text": "Nếu văn bản nhằm THÔNG BÁO hoặc GIẢI QUYẾT CÔNG VIỆC, thường có nêu rõ thời gian, địa điểm, đối tượng và yêu cầu, thì đó thường là phương thức hành chính – công vụ.",
+              "examples": []
+            }
+          }
+        ],
+        "title": "Kiến thức trọng tâm",
+        "instruction": "Phương thức hành chính – công vụ dùng để thông báo, hướng dẫn, yêu cầu hoặc giải quyết công việc chính thức.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "fillBlank",
+      "validator": "fillBlankValidator",
+      "data": {
+        "question": "Điền loại văn bản thích hợp",
+        "sentence": "___: Học sinh toàn trường tham gia tổng vệ sinh vào chiều thứ Sáu.",
+        "answer": "Thông báo",
+        "title": "Điền khuyết",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "reflection",
+      "data": {
+        "question": "Em hãy viết 2–3 câu thông báo với các bạn về việc lớp sẽ tổ chức trồng cây vào cuối tuần (trình bày rõ thời gian và địa điểm).",
+        "sampleAnswer": "THÔNG BÁO: Cuối tuần này (Sáng Chủ nhật), lớp chúng ta sẽ tổ chức trồng cây xanh. Đề nghị các bạn tập trung tại sân trường lúc 7h00 và mang theo dụng cụ được phân công.",
+        "title": "Vận dụng",
+        "score": 2
+      }
+    },
+    {
+      "id": "step07",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Đoạn văn nào dưới đây thuộc phương thức hành chính – công vụ?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Để thực hiện tốt phòng chống dịch, nhà trường yêu cầu tất cả học sinh đeo khẩu trang khi đến trường."
+          },
+          {
+            "id": "B",
+            "text": "Hôm qua, Lan nhặt được một chiếc ví trên đường và đã mang đến nộp cho đồn công an."
+          },
+          {
+            "id": "C",
+            "text": "Sân trường rợp bóng cây cổ thụ mát mẻ trong những ngày hè oi ả."
+          },
+          {
+            "id": "D",
+            "text": "Trời ơi, em nhớ da diết những tháng ngày học trò hồn nhiên và vô tư ấy!"
+          }
+        ],
+        "answer": "A",
+        "title": "Trắc nghiệm",
+        "score": 1
+      }
+    },
+    {
+      "id": "step08",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Nhận định nào sau đây là SAI về văn bản hành chính?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Thường trình bày rõ thông tin thời gian, địa điểm, đối tượng."
+          },
+          {
+            "id": "B",
+            "text": "Yêu cầu ngôn ngữ phải chính xác, rõ ràng, trang trọng."
+          },
+          {
+            "id": "C",
+            "text": "Thường dùng nhiều hình ảnh phong phú, giàu cảm xúc."
+          },
+          {
+            "id": "D",
+            "text": "Thường được viết theo mẫu có sẵn (đơn, biên bản, thông báo...)."
+          }
+        ],
+        "answer": "C",
+        "title": "Đúng hay Sai?",
+        "score": 1
+      }
+    },
+    {
+      "id": "step09",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Thông báo",
+          "Đơn xin phép",
+          "Giấy mời",
+          "Nội quy"
+        ],
+        "right": [
+          "Báo tin cho nhiều người cùng biết",
+          "Trình bày nguyện vọng, đề nghị của cá nhân",
+          "Mời người khác đến tham dự một sự kiện",
+          "Đưa ra những quy định bắt buộc phải thực hiện"
+        ],
+        "answer": {
+          "Thông báo": "Báo tin cho nhiều người cùng biết",
+          "Đơn xin phép": "Trình bày nguyện vọng, đề nghị của cá nhân",
+          "Giấy mời": "Mời người khác đến tham dự một sự kiện",
+          "Nội quy": "Đưa ra những quy định bắt buộc phải thực hiện"
+        },
+        "title": "Ghép loại văn bản",
+        "instruction": "Ghép loại văn bản hành chính với mục đích tương ứng:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step10",
+      "type": "ordering",
+      "validator": "orderValidator",
+      "data": {
+        "items": [
+          "Tiêu đề: THÔNG BÁO VỀ VIỆC NGHỈ HỌC.",
+          "Nội dung: Nhà trường cho học sinh nghỉ học ngày mai để phòng chống bão.",
+          "Thời gian: Ngày 20 tháng 10 năm 2023.",
+          "Đề nghị: Yêu cầu phụ huynh quản lý con em ở nhà an toàn."
+        ],
+        "answer": [
+          "Tiêu đề: THÔNG BÁO VỀ VIỆC NGHỈ HỌC.",
+          "Nội dung: Nhà trường cho học sinh nghỉ học ngày mai để phòng chống bão.",
+          "Thời gian: Ngày 20 tháng 10 năm 2023.",
+          "Đề nghị: Yêu cầu phụ huynh quản lý con em ở nhà an toàn."
+        ],
+        "title": "Sắp xếp thông báo",
+        "instruction": "Sắp xếp các ý sau để tạo thành một thông báo hoàn chỉnh:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step11",
+      "type": "highlight",
+      "data": {
+        "content": "THÔNG BÁO: Học sinh khối 9 tập trung tại sân trường lúc 7 giờ 00 ngày 15 tháng 9 để tham gia lễ khai giảng.",
+        "answer": [
+          "THÔNG BÁO",
+          "Học sinh khối 9",
+          "sân trường",
+          "7 giờ 00",
+          "15 tháng 9"
+        ],
+        "title": "Tô sáng thông tin",
+        "instruction": "Tô đậm những thông tin quan trọng nhất trong thông báo sau (thời gian, đối tượng, địa điểm):",
+        "score": 2
+      }
+    },
+    {
+      "id": "step12",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Thông báo họp phụ huynh toàn trường.",
+          "Đơn xin nghỉ học do bị ốm.",
+          "Bày tỏ lòng biết ơn sâu sắc đối với thầy cô.",
+          "Kể về chuyến đi dã ngoại cuối tuần qua."
+        ],
+        "right": [
+          "Hành chính – công vụ 1",
+          "Hành chính – công vụ 2",
+          "Không phải hành chính – công vụ 1",
+          "Không phải hành chính – công vụ 2"
+        ],
+        "answer": {
+          "Thông báo họp phụ huynh toàn trường.": "Hành chính – công vụ 1",
+          "Đơn xin nghỉ học do bị ốm.": "Hành chính – công vụ 2",
+          "Bày tỏ lòng biết ơn sâu sắc đối với thầy cô.": "Không phải hành chính – công vụ 1",
+          "Kể về chuyến đi dã ngoại cuối tuần qua.": "Không phải hành chính – công vụ 2"
+        },
+        "title": "Phân loại văn bản",
+        "instruction": "Kéo từng câu vào đúng nhóm:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step13",
+      "type": "ordering",
+      "validator": "orderValidator",
+      "data": {
+        "items": [
+          "Xác định mục đích thông báo hoặc giải quyết công việc",
+          "Xác định đối tượng (người nhận)",
+          "Trình bày thông tin cốt lõi thật rõ ràng, chính xác",
+          "Kết thúc bằng các yêu cầu hoặc đề nghị cụ thể"
+        ],
+        "answer": [
+          "Xác định mục đích thông báo hoặc giải quyết công việc",
+          "Xác định đối tượng (người nhận)",
+          "Trình bày thông tin cốt lõi thật rõ ràng, chính xác",
+          "Kết thúc bằng các yêu cầu hoặc đề nghị cụ thể"
+        ],
+        "title": "Quy trình tạo văn bản",
+        "instruction": "Sắp xếp theo quy trình tạo một văn bản hành chính đơn giản:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step14",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Kể lại hành trình tham quan bảo tàng.",
+          "Tái hiện vẻ đẹp của cây phượng vĩ.",
+          "Bộc lộ tình yêu tha thiết với quê hương.",
+          "Giới thiệu cấu tạo của chiếc xe đạp.",
+          "Kêu gọi mọi người chung tay bảo vệ môi trường.",
+          "Thông báo lịch sinh hoạt Đội của trường."
+        ],
+        "right": [
+          "Tự sự",
+          "Miêu tả",
+          "Biểu cảm",
+          "Thuyết minh",
+          "Nghị luận",
+          "Hành chính – công vụ"
+        ],
+        "answer": {
+          "Kể lại hành trình tham quan bảo tàng.": "Tự sự",
+          "Tái hiện vẻ đẹp của cây phượng vĩ.": "Miêu tả",
+          "Bộc lộ tình yêu tha thiết với quê hương.": "Biểu cảm",
+          "Giới thiệu cấu tạo của chiếc xe đạp.": "Thuyết minh",
+          "Kêu gọi mọi người chung tay bảo vệ môi trường.": "Nghị luận",
+          "Thông báo lịch sinh hoạt Đội của trường.": "Hành chính – công vụ"
+        },
+        "title": "Ôn tập tổng hợp",
+        "instruction": "Kéo các đoạn văn vào đúng phương thức biểu đạt chính:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step15",
+      "type": "flashcard",
+      "data": {
+        "front": "Phương thức hành chính – công vụ là gì?",
+        "back": "Dùng để thông báo, hướng dẫn hoặc giải quyết công việc chính thức bằng ngôn ngữ rõ ràng, chính xác và trang trọng.",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "ptbd",
+    "difficulty": 1,
+    "xp": 70,
+    "stars": 3,
+    "description": "Nhận biết và sử dụng phương thức hành chính – công vụ trong các văn bản giao tiếp chính thức.",
+    "durationMinutes": 20
+  }
+}

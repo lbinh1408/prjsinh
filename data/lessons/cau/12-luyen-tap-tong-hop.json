@@ -1,0 +1,238 @@
+{
+  "id": "cau.08-luyen-tap-tong-hop",
+  "title": "Đánh giá tổng hợp: Câu",
+  "version": "1.0",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trong câu 'Sáng nay, mẹ tôi đi chợ.', từ 'Sáng nay' đóng vai trò là thành phần gì?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Chủ ngữ"
+          },
+          {
+            "id": "B",
+            "text": "Vị ngữ"
+          },
+          {
+            "id": "C",
+            "text": "Trạng ngữ"
+          },
+          {
+            "id": "D",
+            "text": "Khởi ngữ"
+          }
+        ],
+        "answer": "C",
+        "title": "Thành phần câu",
+        "score": 1
+      }
+    },
+    {
+      "id": "step02",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Trời mưa to nên đường rất trơn.",
+          "Mặt trời tỏa nắng rực rỡ.",
+          "Một đêm mùa đông.",
+          "Đi đâu đấy?"
+        ],
+        "right": [
+          "Câu đơn",
+          "Câu ghép",
+          "Câu đặc biệt",
+          "Câu rút gọn"
+        ],
+        "answer": {
+          "Mặt trời tỏa nắng rực rỡ.": "Câu đơn",
+          "Trời mưa to nên đường rất trơn.": "Câu ghép",
+          "Một đêm mùa đông.": "Câu đặc biệt",
+          "Đi đâu đấy?": "Câu rút gọn"
+        },
+        "title": "Phân loại câu theo cấu tạo",
+        "instruction": "Ghép các câu sau với đúng loại câu tương ứng.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "Trời ơi!",
+          "Hà Nội. Mùa thu.",
+          "Lan ơi!",
+          "Tiếng cười. Tiếng reo hò."
+        ],
+        "targets": [
+          "Bộc lộ cảm xúc",
+          "Gọi đáp",
+          "Xác định thời gian, nơi chốn",
+          "Liệt kê, thông báo sự tồn tại"
+        ],
+        "answer": {
+          "Trời ơi!": "Bộc lộ cảm xúc",
+          "Lan ơi!": "Gọi đáp",
+          "Hà Nội. Mùa thu.": "Xác định thời gian, nơi chốn",
+          "Tiếng cười. Tiếng reo hò.": "Liệt kê, thông báo sự tồn tại"
+        },
+        "title": "Tác dụng của câu đặc biệt",
+        "instruction": "Sắp xếp các câu đặc biệt vào đúng tác dụng của chúng.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Hai vế trong câu ghép 'Vì Nam chăm chỉ nên bạn ấy đạt điểm cao.' có quan hệ ý nghĩa gì?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Quan hệ điều kiện - kết quả"
+          },
+          {
+            "id": "B",
+            "text": "Quan hệ nguyên nhân - kết quả"
+          },
+          {
+            "id": "C",
+            "text": "Quan hệ tương phản"
+          },
+          {
+            "id": "D",
+            "text": "Quan hệ tăng tiến"
+          }
+        ],
+        "answer": "B",
+        "title": "Quan hệ trong câu ghép",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "highlight",
+      "data": {
+        "content": "Nam hớn hở khoe: \" Mẹ ơi, hôm nay con được điểm 10 môn Toán! \"",
+        "answer": [
+          "\"",
+          "\""
+        ],
+        "title": "Tô sáng",
+        "instruction": "Tô sáng <b>dấu câu</b> dùng để đánh dấu lời dẫn trực tiếp trong đoạn sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Vì sao ta cần tránh lạm dụng câu rút gọn khi nói chuyện với người lớn tuổi?",
+        "sampleAnswer": [
+          "Vì người lớn tuổi sẽ không hiều được.",
+          "Vì sử dụng câu thiếu đầy đủ khi nói chuyện với người lớn tuổi sẽ thiếu sự lễ phép, kính trọng trong giao tiếp."
+        ],
+        "title": "Thông hiểu",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "Dấu chấm phẩy (;)",
+          "Dấu chấm hỏi (?)",
+          "Dấu ngoặc kép (\"\")",
+          "Dấu chấm than (!)"
+        ],
+        "targets": [
+          "Sao con không học bài",
+          "Cảm ơn bạn nhé",
+          "Tôi rất thích tác phẩm ...Qua Đèo Ngang ... của Bà Huyện Thanh Quan",
+          "Mỗi người có những việc phải làm: An quét nhà, lau nhà... Hà rửa bát, nấu cơm ... Nghi phơi đồ, tưới cây."
+        ],
+        "answer": {
+          "Ngăn cách các vế trong câu ghép phức tạp": "Dấu chấm phẩy (;)",
+          "Sao con không học bài": "Dấu chấm hỏi (?)",
+          "Tôi rất thích tác phẩm ...Qua Đèo Ngang ... của Bà Huyện Thanh Quan": "Dấu ngoặc kép (\"\")",
+          "Cảm ơn bạn nhé": "Dấu chấm than (!)"
+        },
+        "title": "Dấu câu",
+        "instruction": "Kéo câu phù hợp với dấu câu.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step08",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trong hội thoại sau: '- Cậu đi đâu thế? / - Đi chơi.', câu 'Đi chơi.' là loại câu gì?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Câu đơn"
+          },
+          {
+            "id": "B",
+            "text": "Câu ghép"
+          },
+          {
+            "id": "C",
+            "text": "Câu đặc biệt"
+          },
+          {
+            "id": "D",
+            "text": "Câu rút gọn"
+          }
+        ],
+        "answer": "D",
+        "title": "Phân biệt câu",
+        "score": 1
+      }
+    },
+    {
+      "id": "step09",
+      "type": "reflection",
+      "data": {
+        "question": "Hãy viết 1 câu ghép nói về chủ đề học tập, trong đó có sử dụng cặp quan hệ từ 'Nếu ... thì ...'.",
+        "sampleAnswer": "Ví dụ: Nếu em chăm chỉ học bài thì em sẽ đạt kết quả cao trong kỳ thi sắp tới.",
+        "title": "Vận dụng",
+        "score": 1
+      }
+    },
+    {
+      "id": "step10",
+      "type": "flashcard",
+      "data": {
+        "front": "Hoàn thành xuất sắc!",
+        "back": "Em đã nắm vững cấu tạo câu (thành phần chính, phụ), phân loại câu (câu đơn, ghép, rút gọn, đặc biệt) và cách sử dụng dấu câu. Việc sử dụng câu linh hoạt sẽ giúp em diễn đạt chính xác và biểu cảm tốt hơn.",
+        "completedWhen": "flipped",
+        "title": "Tổng kết Module Câu",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "cau",
+    "difficulty": "practice",
+    "xp": 200,
+    "stars": 3,
+    "description": "Bài tập tổng hợp để kiểm tra và củng cố kiến thức về thành phần câu, phân loại câu (câu đơn, câu ghép, câu đặc biệt, câu rút gọn) và dấu câu.",
+    "prerequisite": null,
+    "unlock": null,
+    "reviewMode": "quiz",
+    "durationMinutes": 25
+  }
+}

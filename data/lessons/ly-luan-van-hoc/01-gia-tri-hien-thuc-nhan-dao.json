@@ -1,0 +1,71 @@
+{
+    "id": "ly-luan-van-hoc.01-gia-tri-hien-thuc-nhan-dao",
+    "title": "Giá trị hiện thực & Nhân đạo",
+    "module": "ly-luan-van-hoc",
+    "steps": [
+        {
+            "id": "intro",
+            "type": "observe",
+            "data": {
+                "title": "Giá trị hiện thực và nhân đạo",
+                "subtitle": "Hai thước đo của một kiệt tác văn học",
+                "content": "Một tác phẩm văn học chân chính bao giờ cũng bám rễ sâu vào mảnh đất hiện thực và nở ra những bông hoa của tình yêu thương con người."
+            }
+        },
+        {
+            "id": "gia-tri-hien-thuc",
+            "type": "observe",
+            "data": {
+                "title": "Giá trị hiện thực là gì?",
+                "content": "### Khái niệm\nGiá trị hiện thực là toàn bộ bức tranh đời sống xã hội mà nhà văn phản ánh vào trong tác phẩm của mình.\n\n### Biểu hiện\n- Phản ánh chân thực, sinh động bức tranh thời đại (VD: Nạn đói năm 1945 trong *Vợ nhặt*, xã hội thực dân nửa phong kiến tàn ác trong *Chí Phèo* hoặc *Tắt đèn*).\n- Khắc họa chân dung những con người điển hình trong hoàn cảnh điển hình."
+            }
+        },
+        {
+            "id": "gia-tri-nhan-dao",
+            "type": "observe",
+            "data": {
+                "title": "Giá trị nhân đạo là gì?",
+                "content": "### Khái niệm\nGiá trị nhân đạo là thái độ, tình cảm của nhà văn dành cho con người được thể hiện qua tác phẩm. Đây là cốt lõi của văn học chân chính.\n\n### 4 biểu hiện chính:\n1. **Tố cáo** những thế lực tàn bạo chà đạp lên con người.\n2. **Đồng cảm, xót thương** trước những nỗi khổ đau của con người.\n3. **Trân trọng, ngợi ca** những phẩm chất tốt đẹp của họ.\n4. **Chỉ ra lối thoát**, đồng tình với khát vọng hạnh phúc chính đáng của con người."
+            }
+        },
+        {
+            "id": "quiz-01",
+            "validator": "choiceValidator",
+            "type": "choice",
+            "data": {
+                "question": "Biểu hiện nào sau đây KHÔNG thuộc về 'Giá trị nhân đạo'?",
+                "options": [
+                    {
+                        "id": "a",
+                        "text": "Phơi bày, tố cáo tội ác của giai cấp thống trị bóc lột.",
+                        "isCorrect": false,
+                        "feedback": "Đây là biểu hiện thứ nhất của giá trị nhân đạo."
+                    },
+                    {
+                        "id": "b",
+                        "text": "Ngợi ca vẻ đẹp hình thức và tâm hồn của người phụ nữ.",
+                        "isCorrect": false,
+                        "feedback": "Đây là biểu hiện trân trọng, ngợi ca (biểu hiện thứ 3)."
+                    },
+                    {
+                        "id": "c",
+                        "text": "Ghi chép lại chính xác các sự kiện lịch sử qua các năm.",
+                        "isCorrect": true,
+                        "feedback": "Chính xác! Đây là đặc điểm của sách lịch sử, không phải giá trị nhân đạo của văn học."
+                    }
+                ],
+                "answer": "c",
+                "title": "Lựa chọn",
+                "score": 1
+            }
+        },
+        {
+            "id": "hoan-thanh",
+            "type": "observe",
+            "data": {
+                "title": "Hoàn thành bài học!",
+                "content": "Em đã hiểu rõ 2 khái niệm lý luận quan trọng nhất. Hãy sử dụng những từ khóa 'đồng cảm, xót thương', 'tố cáo', 'ngợi ca' để phân tích sâu hơn về tác phẩm nhé."
+            }
+        }
+    ]
+}

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TS10 Learning</title>
+
+    <!-- Fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="css/app.css">
+
+    <link rel="stylesheet" href="css/layout.css">
+
+    <link rel="stylesheet" href="css/sidebar.css">
+
+    <link rel="stylesheet" href="css/lesson.css">
+
+    <link rel="stylesheet" href="css/component.css">
+
+    <link rel="stylesheet" href="css/feedback.css">
+
+    <link rel="stylesheet" href="css/animation.css">
+
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <link rel="stylesheet" href="css/microscope.css">
+
+</head>
+
+<body>
+
+    <div id="app">
+
+        <!-- ===================================== -->
+        <!-- Header -->
+        <!-- ===================================== -->
+
+        <header id="app-header">
+
+            <div class="logo">
+
+                TS10 Learning
+
+            </div>
+
+            <div class="header-center">
+
+                <span id="today-topic">
+
+                    Đang tải...
+
+                </span>
+
+            </div>
+
+            <div class="header-right">
+
+                <button id="btn-home">
+
+                    Trang chủ
+
+                </button>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ===================================== -->
+        <!-- Main -->
+        <!-- ===================================== -->
+
+        <main id="main-layout">
+
+            <!-- Sidebar -->
+
+            <aside id="sidebar">
+
+                <section class="card">
+
+                    <h3>
+
+                        📚 Hệ thống ngữ văn
+
+                    </h3>
+
+                    <div id="roadmap-panel">
+
+                    </div>
+
+                </section>
+
+                <section class="card">
+
+                    <h3>
+
+                        📈 Tiến độ
+
+                    </h3>
+
+                    <div id="progress-panel">
+
+                    </div>
+
+                </section>
+
+            </aside>
+
+
+
+            <!-- Content -->
+
+            <section id="content">
+
+                <div id="breadcrumb">
+
+                </div>
+
+                <div id="lesson-container">
+
+                </div>
+
+            </section>
+
+        </main>
+
+        <!-- ===================================== -->
+        <!-- Footer -->
+        <!-- ===================================== -->
+
+        <footer id="footer">
+
+            <button id="btn-prev">
+
+                ← Quay lại
+
+            </button>
+
+            <button id="btn-hint">
+
+                💡 Gợi ý
+
+            </button>
+
+            <button id="btn-retry">
+
+                🔄 Làm lại
+
+            </button>
+
+            <button id="btn-check" style="display: none;">
+
+                ✅ Kiểm tra
+
+            </button>
+
+            <button id="btn-next">
+
+                Tiếp →
+
+            </button>
+
+        </footer>
+
+    </div>
+
+
+
+    <!-- ===================================== -->
+    <!-- Overlay -->
+    <!-- ===================================== -->
+
+    <div id="loading-screen">
+
+        <div class="loading-box">
+
+            <div class="spinner"></div>
+
+            <p>
+
+                Đang tải bài học...
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <div id="popup-layer"></div>
+
+    <div id="toast"></div>
+
+
+
+    <!-- ===================================== -->
+    <!-- Template -->
+    <!-- ===================================== -->
+
+    <template id="card-template">
+
+        <div class="card"></div>
+
+    </template>
+
+    <template id="button-template">
+
+        <button class="btn"></button>
+
+    </template>
+
+
+
+    <!-- ===================================== -->
+    <!-- Application -->
+    <!-- ===================================== -->
+
+    <script type="module" src="js/app.js">
+    </script>
+
+</body>
+
+</html>

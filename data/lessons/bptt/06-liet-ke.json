@@ -1,0 +1,297 @@
+{
+  "id": "bptt.06-liet-ke",
+  "title": "Liệt kê",
+  "version": "3.0",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "content": "Khu vườn mùa xuân bừng tỉnh với muôn ngàn sắc hoa: <b>hoa đào hồng thắm, hoa mai vàng rực, hoa cúc tươi tắn, hoa hồng kiêu sa</b>...",
+        "guide": [
+          "Những từ ngữ in đậm trong đoạn văn có chung đặc điểm gì?",
+          "Việc kể tên liên tiếp các loài hoa như vậy nhằm mục đích gì?"
+        ],
+        "hint": "Việc kể ra hàng loạt loài hoa nhằm làm nổi bật vẻ đẹp phong phú, rực rỡ của khu vườn mùa xuân.",
+        "title": "Quan sát",
+        "instruction": "Đọc câu văn sau.",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Khái niệm",
+            "icon": "📝",
+            "active": true,
+            "content": {
+              "text": "Liệt kê là sắp xếp nối tiếp hàng loạt từ hay cụm từ cùng loại để diễn tả được đầy đủ hơn, sâu sắc hơn những khía cạnh khác nhau của thực tế hay của tư tưởng, tình cảm.",
+              "examples": [
+                {
+                  "category": "Ví dụ: ",
+                  "word": "Kẻ đâm phu, người phu xe, kẻ buôn lậu, người cày thuê... (liệt kê các hạng người nghèo khổ trong xã hội).",
+                  "emoji": "👥"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Tác dụng",
+            "icon": "✨",
+            "active": false,
+            "content": {
+              "text": "Nhấn mạnh ý, thể hiện sự phong phú, đa dạng của sự vật, hiện tượng hoặc bộc lộ cảm xúc mạnh mẽ.",
+              "examples": [
+                {
+                  "category": "Hiệu quả: ",
+                  "word": "Giúp người đọc hình dung một cách toàn diện và chi tiết nhất về bức tranh đời sống.",
+                  "emoji": "🎨"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Khái niệm",
+        "instruction": "Biện pháp tu từ được sử dụng ở trên gọi là <i>Liệt kê</i>.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "identify",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Câu nào dưới đây có sử dụng biện pháp liệt kê?",
+        "options": [
+          "Sân trường thật ồn ào và náo nhiệt.",
+          "Dưới sân trường, tiếng nói, tiếng cười, tiếng bước chân, tiếng trống trường vang lên rộn rã.",
+          "Hôm nay là một ngày thật đẹp trời.",
+          "Mặt trời từ từ nhô lên khỏi rặng tre."
+        ],
+        "answer": "Dưới sân trường, tiếng nói, tiếng cười, tiếng bước chân, tiếng trống trường vang lên rộn rã.",
+        "title": "Nhận biết",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Trong câu 'Tre, nứa, mai, vầu giúp người hàng nghìn công việc khác nhau', tác giả liệt kê để làm gì?",
+        "sampleAnswer": [
+          "Để nhấn mạnh sự phong phú, đa dạng của họ nhà tre.",
+          "Cho thấy sự gắn bó chặt chẽ và vai trò to lớn của các loại tre nứa đối với đời sống con người."
+        ],
+        "title": "Thông hiểu",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "highlight",
+      "data": {
+        "content": "[[Khu vườn]] [[nhà]] [[bà]] [[trồng]] [[rất]] [[nhiều]] [[loại]] [[cây ăn quả]]: [[na]], [[ổi]], [[xoài]], [[mít]], [[nhãn]].",
+        "answer": [
+          "na",
+          "ổi",
+          "xoài",
+          "mít",
+          "nhãn"
+        ],
+        "title": "Tô sáng",
+        "instruction": "Hãy chọn để tô sáng đoạn chứa phép liệt kê trong câu sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "reflection",
+      "data": {
+        "question": "Hãy viết một câu có sử dụng biện pháp liệt kê để miêu tả các đồ dùng học tập của em.",
+        "sampleAnswer": "Trong chiếc cặp nhỏ của em có đủ thứ: sách giáo khoa, vở ghi, hộp bút, thước kẻ và cả một chiếc compa.",
+        "title": "Vận dụng",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "1. Phân loại theo cấu tạo",
+            "icon": "🧩",
+            "active": true,
+            "content": {
+              "items": [
+                {
+                  "type": "common",
+                  "label": "Liệt kê theo từng từ/cụm từ",
+                  "definition": "Không có cặp từ nối.",
+                  "examples": [
+                    "Tre, nứa, mai, vầu..."
+                  ]
+                },
+                {
+                  "type": "common",
+                  "label": "Liệt kê theo từng cặp",
+                  "definition": "Các thành phần được nối với nhau bằng các quan hệ từ (và, cùng, hay...).",
+                  "examples": [
+                    "Tre với người, trúc với người, nứa với người..."
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "2. Phân loại theo ý nghĩa",
+            "icon": "📖",
+            "active": false,
+            "content": {
+              "items": [
+                {
+                  "type": "common",
+                  "label": "Liệt kê tăng tiến",
+                  "definition": "Các thành phần được sắp xếp theo mức độ tăng dần (về quy mô, tính chất, cảm xúc...).",
+                  "examples": [
+                    "Gia đình, bạn bè, đồng bào, và cả nhân loại..."
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-3",
+            "title": "3. Phân loại theo ý nghĩa (tiếp)",
+            "icon": "📖",
+            "active": false,
+            "content": {
+              "items": [
+                {
+                  "type": "common",
+                  "label": "Liệt kê không tăng tiến",
+                  "definition": "Các thành phần có vai trò ngang nhau, việc đảo vị trí không làm thay đổi ý nghĩa chính.",
+                  "examples": [
+                    "Sách, vở, bút, thước..."
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Các kiểu liệt kê",
+        "score": 0
+      }
+    },
+    {
+      "id": "step08",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Câu 'Thể điệu ca Huế có sôi nổi, tươi vui, có buồn cảm, bâng khuâng, có tiếc thương ai oán' thuộc kiểu liệt kê nào xét về ý nghĩa?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Liệt kê tăng tiến"
+          },
+          {
+            "id": "B",
+            "text": "Liệt kê không tăng tiến"
+          },
+          {
+            "id": "C",
+            "text": "Liệt kê theo từng cặp"
+          },
+          {
+            "id": "D",
+            "text": "Không phải liệt kê"
+          }
+        ],
+        "answer": "B",
+        "title": "Lựa chọn",
+        "score": 1
+      }
+    },
+    {
+      "id": "step09",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Trời lấm tấm mưa, rồi mưa rào, rồi mưa như trút nước.",
+          "Trong phòng có bàn, ghế, tủ, giường.",
+          "Ông bà, cha mẹ, anh chị em cùng quây quần."
+        ],
+        "right": [
+          "Liệt kê theo từng từ/cụm từ (theo cấu tạo)",
+          "Liệt kê tăng tiến (theo ý nghĩa)",
+          "Liệt kê không tăng tiến (theo ý nghĩa)"
+        ],
+        "answer": {
+          "Trời lấm tấm mưa, rồi mưa rào, rồi mưa như trút nước.": "Liệt kê tăng tiến (theo ý nghĩa)",
+          "Trong phòng có bàn, ghế, tủ, giường.": "Liệt kê không tăng tiến (theo ý nghĩa)",
+          "Ông bà, cha mẹ, anh chị em cùng quây quần.": "Liệt kê theo từng từ/cụm từ (theo cấu tạo)"
+        },
+        "title": "Nối câu",
+        "instruction": "Ghép mỗi câu với kiểu liệt kê tương ứng.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step10",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "tinh thần và lực lượng, tính mạng và của cải",
+          "ông với bà, cha với mẹ, anh với em",
+          "tre, nứa, mai, vầu",
+          "bàn, ghế, sách, vở"
+        ],
+        "targets": [
+          "Liệt kê theo từng cặp",
+          "Liệt kê theo từng từ/cụm từ"
+        ],
+        "answer": {
+          "tinh thần và lực lượng, tính mạng và của cải": "Liệt kê theo từng cặp",
+          "ông với bà, cha với mẹ, anh với em": "Liệt kê theo từng cặp",
+          "tre, nứa, mai, vầu": "Liệt kê theo từng từ/cụm từ",
+          "bàn, ghế, sách, vở": "Liệt kê theo từng từ/cụm từ"
+        },
+        "title": "Kéo và thả",
+        "instruction": "Hãy phân loại các ví dụ sau vào đúng nhóm kiểu liệt kê theo cấu tạo.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step11",
+      "type": "flashcard",
+      "data": {
+        "front": "Liệt kê",
+        "back": "Liệt kê là sắp xếp nối tiếp hàng loạt từ, cụm từ cùng loại để diễn tả đầy đủ, sâu sắc hơn. Các kiểu: theo cấu tạo (từng từ/cụm từ, từng cặp) và theo ý nghĩa (tăng tiến, không tăng tiến).",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "bptt",
+    "difficulty": "reference",
+    "xp": 100,
+    "stars": 3,
+    "description": "Nhận biết và sử dụng biện pháp tu từ liệt kê.",
+    "prerequisite": null,
+    "unlock": null,
+    "reviewMode": "instant",
+    "durationMinutes": 15
+  }
+}

@@ -1,0 +1,16 @@
+{
+    "id": "tho-hien-dai.07-mua-xuan-nho-nho",
+    "title": "Mùa xuân nho nhỏ",
+    "module": "tho-hien-dai",
+    "steps": [
+        {
+            "id": "intro",
+            "type": "observe",
+            "data": {
+                "title": "Mùa xuân nho nhỏ",
+                "subtitle": "Thanh Hải",
+                "content": "Nội dung bài học đang được cập nhật."
+            }
+        }
+    ]
+}

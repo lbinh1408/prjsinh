@@ -1,0 +1,389 @@
+{
+  "id": "tu-loai.01-danh-tu",
+  "title": "Danh từ",
+  "version": "3.0",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "content": "<b>Con mèo</b> đang ngủ trên <b>ghế đá</b> dưới <b>ánh nắng</b> dịu nhẹ.",
+      "guide": [
+        "Chú ý các từ được in đậm trong câu",
+        "Các từ đó có điểm chung gì không ? "
+      ],
+      "hint": "Các từ in đậm đều chỉ sự vật như con vật, đồ vật, hiện tượng, con người, ...",
+      "data": {
+        "title": "Quan sát",
+        "instruction": "Đọc câu văn dưới đây.",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "contents": [
+        {
+          "id": "card-1",
+          "title": "1. Định nghĩa cốt lõi",
+          "icon": "📖",
+          "active": true,
+          "content": {
+            "text": "Danh từ là những từ dùng để gọi tên:",
+            "examples": [
+              {
+                "category": "Người",
+                "word": "Âu Cơ",
+                "emoji": "👑"
+              },
+              {
+                "category": "Sự vật",
+                "word": "trường, cây",
+                "emoji": "🏫"
+              },
+              {
+                "category": "Hiện tượng",
+                "word": "bão, nắng",
+                "emoji": "⚡"
+              },
+              {
+                "category": "Khái niệm",
+                "word": "tình yêu",
+                "emoji": "❤️"
+              }
+            ]
+          }
+        },
+        {
+          "id": "card-2",
+          "title": "2. Phân loại: Riêng & Chung",
+          "icon": "🏷️",
+          "active": false,
+          "content": {
+            "items": [
+              {
+                "type": "common",
+                "label": "Danh từ chung",
+                "definition": "Tên chung của loài vật, thực vật, đồ vật, hiện tượng...",
+                "examples": [
+                  "mèo",
+                  "cây",
+                  "ghế",
+                  "bão"
+                ]
+              },
+              {
+                "type": "proper",
+                "label": "Danh từ riêng",
+                "definition": "Tên riêng của người, địa danh, tổ chức (luôn viết hoa).",
+                "examples": [
+                  "Âu Cơ",
+                  "Hà Nội",
+                  "Công ty ABC"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "card-3",
+          "title": "3. Phân loại: Cụ thể & Trừu tượng",
+          "icon": "✨",
+          "active": false,
+          "content": {
+            "items": [
+              {
+                "type": "concrete",
+                "label": "Danh từ cụ thể",
+                "definition": "Tên các sự vật mà ta có thể cảm nhận bằng giác quan (nhìn, nghe, sờ, ngửi, nếm).",
+                "examples": [
+                  "cái bàn",
+                  "vị ngọt",
+                  "âm thanh",
+                  "mùi hương"
+                ]
+              },
+              {
+                "type": "abstract",
+                "label": "Danh từ trừu tượng",
+                "definition": "Tên của khái niệm không có hình khối vật chất.",
+                "examples": [
+                  "hạnh phúc",
+                  "tình yêu",
+                  "hòa bình"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "card-4",
+          "title": "4. Đặc điểm ngữ pháp & Khả năng kết hợp",
+          "icon": "🔗",
+          "active": false,
+          "content": {
+            "combination": {
+              "description": "Có thể đi kèm với từ chỉ số lượng ở trước và từ chỉ định ở sau.",
+              "examples": [
+                "một con mèo",
+                "những cái ghế",
+                "con gấu đó"
+              ]
+            },
+            "roles": [
+              "Chủ ngữ",
+              "Vị ngữ",
+              "Bổ ngữ",
+              "Trung tâm của cụm danh từ"
+            ]
+          }
+        }
+      ],
+      "data": {
+        "title": "Khái niệm ",
+        "instruction": "Các từ vừa tìm được chính là các <i>danh từ</i>. <br>Hiểu đơn giản: Danh từ là tên gọi của tất cả mọi thứ xung quanh chúng ta<br>Cứ cái gì nhìn thấy được, sờ được, cầm được hoặc gọi tên được thì đó chính là danh từ.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "identify",
+      "options": [
+        "mèo",
+        "đang",
+        "ngủ",
+        "trên"
+      ],
+      "answer": "mèo",
+      "validator": "choiceValidator",
+      "data": {
+        "title": "Nhận biết",
+        "score": 1,
+        "question": "Từ nào là danh từ ?"
+      }
+    },
+    {
+      "id": "step04",
+      "type": "explain",
+      "sampleAnswer": [
+        "Vì mèo là từ chỉ con vật.",
+        " Vì đó là từ chỉ có 1 tiếng.",
+        "Vì đó là từ rất hay."
+      ],
+      "validator": "textValidator",
+      "data": {
+        "title": "Thông hiểu",
+        "score": 1,
+        "question": "Giải thích vì sao từ đó là danh từ?"
+      }
+    },
+    {
+      "id": "step05",
+      "type": "fillBlank",
+      "sentence": "Con _____ đang ngủ.",
+      "answer": "mèo",
+      "data": {
+        "title": "Vận dụng",
+        "score": 1,
+        "question": "Điền vào chỗ trống"
+      }
+    },
+    {
+      "id": "step06",
+      "type": "reflection",
+      "sampleAnswer": "Con chó chạy trong sân.",
+      "data": {
+        "title": "Vận dụng cao",
+        "score": 1,
+        "question": "Hãy viết một câu chứa ít nhất hai danh từ."
+      }
+    },
+    {
+      "id": "step07",
+      "type": "choice",
+      "choices": [
+        {
+          "id": "A",
+          "text": "học sinh"
+        },
+        {
+          "id": "B",
+          "text": "đẹp"
+        },
+        {
+          "id": "C",
+          "text": "nhanh"
+        },
+        {
+          "id": "D",
+          "text": "chạy"
+        }
+      ],
+      "answer": "A",
+      "validator": "choiceValidator",
+      "data": {
+        "title": "Lựa chọn",
+        "score": 1,
+        "question": "Trong các từ sau, từ nào là danh từ?"
+      }
+    },
+    {
+      "id": "step08",
+      "type": "trueFalse",
+      "answer": true,
+      "data": {
+        "title": "Đúng Sai",
+        "score": 1,
+        "question": "'Bút' là danh từ."
+      }
+    },
+    {
+      "id": "step09",
+      "type": "matching",
+      "left": [
+        "Lan",
+        "mèo",
+        "cây"
+      ],
+      "right": [
+        "Danh từ chung",
+        "Danh từ riêng"
+      ],
+      "answer": {
+        "Lan": "Danh từ riêng",
+        "mèo": "Danh từ chung",
+        "cây": "Danh từ chung"
+      },
+      "validator": "matchValidator",
+      "data": {
+        "title": "Nối từ",
+        "instruction": "Ghép mỗi từ với từ loại của nó.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step10",
+      "type": "ordering",
+      "items": [
+        "đang",
+        "Con mèo",
+        "ngủ"
+      ],
+      "answer": [
+        "Con mèo",
+        "đang",
+        "ngủ"
+      ],
+      "validator": "orderValidator",
+      "data": {
+        "title": "Sắp xếp ",
+        "instruction": "Hãy sắp xếp các từ theo thứ tự để tạo thành câu đúng.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step11",
+      "type": "highlight",
+      "content": "Lan mang chiếc cặp đến trường.",
+      "answer": [
+        "Lan",
+        "chiếc cặp",
+        "trường"
+      ],
+      "data": {
+        "title": "Tô sáng",
+        "instruction": "Hãy chọn để tô sáng các danh từ trong câu sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step12",
+      "type": "dragDrop",
+      "draggables": [
+        "mèo",
+        "đẹp",
+        "chạy",
+        "hoa",
+        "hương thơm",
+        "cánh buồm",
+        "mệt mỏi",
+        "uống",
+        "tiếng hát",
+        "biển",
+        "hòa bình"
+      ],
+      "targets": [
+        "Danh từ",
+        "Không phải danh từ"
+      ],
+      "answer": {
+        "mèo": "Danh từ",
+        "đẹp": "Không phải danh từ",
+        "chạy": "Không phải danh từ",
+        "hoa": "Danh từ",
+        "hương thơm": "Danh từ",
+        "cánh buồm": "Danh từ",
+        "mệt mỏi": "Không phải danh từ",
+        "uống": "Không phải danh từ",
+        "tiếng hát": "Danh từ",
+        "biển": "Danh từ",
+        "hòa bình": "Danh từ"
+      },
+      "validator": "dragValidator",
+      "data": {
+        "title": "Kéo và thả",
+        "instruction": "Hãy kéo và thả các từ vào đúng danh mục.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step13",
+      "type": "timeline",
+      "events": [
+        {
+          "id": "A",
+          "label": "Năm 2020"
+        },
+        {
+          "id": "B",
+          "label": "Năm 2018"
+        },
+        {
+          "id": "C",
+          "label": "Năm 2019"
+        }
+      ],
+      "answer": [
+        "B",
+        "C",
+        "A"
+      ],
+      "data": {
+        "title": "Dòng thời gian",
+        "instruction": "Hãy sắp xếp các sự kiện theo thứ tự thời gian.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step14",
+      "type": "flashcard",
+      "front": "Danh từ",
+      "back": "Danh từ là từ dùng để gọi tên người, sự vật, hiện tượng hoặc khái niệm.",
+      "completedWhen": "flipped",
+      "data": {
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "tu-loai",
+    "difficulty": "reference",
+    "xp": 100,
+    "stars": 3,
+    "description": "Nhận biết và sử dụng danh từ trong tiếng Việt.",
+    "prerequisite": null,
+    "unlock": null,
+    "reviewMode": "instant",
+    "durationMinutes": 15
+  }
+}

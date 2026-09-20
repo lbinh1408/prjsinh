@@ -1,0 +1,198 @@
+{
+  "id": "tu-loai.04-on-tap-danh-dong-tinh-dai-tu",
+  "title": "Ôn Danh, Động, Tính, Đại từ",
+  "version": "3.0",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "niềm vui",
+          "chạy bộ",
+          "xanh biếc",
+          "chúng tôi"
+        ],
+        "right": [
+          "Danh từ",
+          "Động từ",
+          "Tính từ",
+          "Đại từ"
+        ],
+        "answer": {
+          "niềm vui": "Danh từ",
+          "chạy bộ": "Động từ",
+          "xanh biếc": "Tính từ",
+          "chúng tôi": "Đại từ"
+        },
+        "title": "Khởi động: Phân biệt từ loại",
+        "instruction": "Ghép mỗi từ sau với từ loại tương ứng của nó.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step02",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "bác sĩ",
+          "đẹp đẽ",
+          "nhảy múa",
+          "họ",
+          "chiếc xe",
+          "nhỏ nhắn",
+          "suy nghĩ",
+          "này"
+        ],
+        "targets": [
+          "Danh từ",
+          "Động từ",
+          "Tính từ",
+          "Đại từ"
+        ],
+        "answer": {
+          "bác sĩ": "Danh từ",
+          "chiếc xe": "Danh từ",
+          "nhảy múa": "Động từ",
+          "suy nghĩ": "Động từ",
+          "đẹp đẽ": "Tính từ",
+          "nhỏ nhắn": "Tính từ",
+          "họ": "Đại từ",
+          "này": "Đại từ"
+        },
+        "title": "Phân loại từ",
+        "instruction": "Kéo các từ vào đúng cột từ loại.",
+        "score": 2
+      }
+    },
+    {
+      "id": "step03",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trong câu 'Mùa xuân, cây cối đâm chồi nảy lộc.', từ 'đâm chồi' thuộc từ loại nào?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Danh từ"
+          },
+          {
+            "id": "B",
+            "text": "Động từ"
+          },
+          {
+            "id": "C",
+            "text": "Tính từ"
+          },
+          {
+            "id": "D",
+            "text": "Đại từ"
+          }
+        ],
+        "answer": "B",
+        "title": "Nhận diện trong ngữ cảnh",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Từ nào sau đây là đại từ dùng để xưng hô?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "cái bàn"
+          },
+          {
+            "id": "B",
+            "text": "chúng ta"
+          },
+          {
+            "id": "C",
+            "text": "rực rỡ"
+          },
+          {
+            "id": "D",
+            "text": "ca hát"
+          }
+        ],
+        "answer": "B",
+        "title": "Nhận diện Đại từ",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "highlight",
+      "data": {
+        "content": "Bầu trời hôm nay rất cao và xanh.",
+        "answer": [
+          "cao",
+          "xanh"
+        ],
+        "title": "Tô sáng Tính từ",
+        "instruction": "Hãy chọn để tô sáng các tính từ trong câu sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Xác định từ loại của từ được gạch chân trong câu: 'Sự _hy sinh_ của các anh hùng liệt sĩ không bao giờ bị lãng quên.'",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Danh từ"
+          },
+          {
+            "id": "B",
+            "text": "Động từ"
+          },
+          {
+            "id": "C",
+            "text": "Tính từ"
+          },
+          {
+            "id": "D",
+            "text": "Đại từ"
+          }
+        ],
+        "answer": "A",
+        "title": "Vận dụng: Chọn từ loại đúng",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Chỉ ra 3 đại từ trong câu: 'Tôi tặng bạn cuốn sách này.'",
+        "sampleAnswer": [
+          "Tôi",
+          "bạn",
+          "này"
+        ],
+        "title": "Thông hiểu",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "tu-loai",
+    "difficulty": "practice",
+    "xp": 100,
+    "stars": 3,
+    "description": "Ôn tập và thực hành phân biệt danh từ, động từ, tính từ, đại từ.",
+    "prerequisite": null,
+    "unlock": null,
+    "reviewMode": "instant",
+    "durationMinutes": 20
+  }
+}

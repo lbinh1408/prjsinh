@@ -1,0 +1,145 @@
+{
+  "id": "ptbd.02-tu-su",
+  "title": "Tự sự",
+  "version": "1.0",
+  "enabled": true,
+  "steps": [
+    {
+      "id": "step01",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Tự sự dùng để làm gì?",
+            "icon": "🎯",
+            "active": true,
+            "content": {
+              "text": "Phương thức tự sự thường được dùng với mục đích chính là:\n- Kể người\n- Kể việc\n- Kể sự kiện",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Dấu hiệu nhận biết",
+            "icon": "🔍",
+            "active": false,
+            "content": {
+              "text": "Một văn bản tự sự thường có đầy đủ các yếu tố sau:",
+              "examples": [
+                {
+                  "category": "Các yếu tố",
+                  "word": "1. Có nhân vật.\n2. Có sự việc.\n3. Có thời gian.\n4. Có địa điểm.\n5. Có diễn biến.\n6. Có kết quả.",
+                  "emoji": "📌"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Mục tiêu và Dấu hiệu",
+        "instruction": "Biết nhận ra văn bản tự sự thông qua mục đích và các dấu hiệu sau:",
+        "score": 1
+      }
+    },
+    {
+      "id": "step02",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "format": "essay",
+        "content": "Ngày xưa, có hai vợ chồng ông lão đánh cá ở với nhau trong một túp lều nát trên bờ biển. Ngày ngày chồng đi thả lưới, vợ ở nhà kéo sợi.",
+        "left": [
+          "Nhân vật",
+          "Sự việc",
+          "Thời gian, địa điểm"
+        ],
+        "right": [
+          "Hai vợ chồng ông lão",
+          "Đánh cá, thả lưới, kéo sợi",
+          "Ngày xưa, bờ biển"
+        ],
+        "answer": {
+          "Nhân vật": "Hai vợ chồng ông lão",
+          "Sự việc": "Đánh cá, thả lưới, kéo sợi",
+          "Thời gian, địa điểm": "Ngày xưa, bờ biển"
+        },
+        "title": "Ví dụ 1: Ông lão đánh cá",
+        "instruction": "Đọc đoạn văn và ghép nối các yếu tố tự sự cho phù hợp:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step03",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "format": "essay",
+        "content": "Sáng chủ nhật, lớp em tổ chức đi dã ngoại ở Thảo Cầm Viên. Chúng em cùng nhau dựng trại, chơi trò chơi và ăn trưa dưới bóng cây. Đến chiều, cả lớp lên xe ra về trong niềm vui sướng.",
+        "left": [
+          "Nhân vật",
+          "Sự việc chính",
+          "Diễn biến"
+        ],
+        "right": [
+          "Học sinh lớp em",
+          "Tổ chức đi dã ngoại",
+          "Dựng trại, chơi trò chơi ➡️ Ra về"
+        ],
+        "answer": {
+          "Nhân vật": "Học sinh lớp em",
+          "Sự việc chính": "Tổ chức đi dã ngoại",
+          "Diễn biến": "Dựng trại, chơi trò chơi ➡️ Ra về"
+        },
+        "title": "Ví dụ 2: Buổi dã ngoại",
+        "instruction": "Đọc đoạn văn và ghép nối các yếu tố tự sự:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step04",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "format": "essay",
+        "content": "Một viên quan đi dò la người tài. Tới một cánh đồng, quan thấy hai cha con đang cày ruộng liền ra câu đố. Người cha chưa biết trả lời sao thì cậu bé đã nhanh trí vặn lại, khiến viên quan nể phục.",
+        "left": [
+          "Nhân vật",
+          "Sự việc",
+          "Diễn biến"
+        ],
+        "right": [
+          "Viên quan và hai cha con",
+          "Quan ra câu đố tìm người tài",
+          "Quan ra đố ➡️ Cậu bé giải ➡️ Quan nể phục"
+        ],
+        "answer": {
+          "Nhân vật": "Viên quan và hai cha con",
+          "Sự việc": "Quan ra câu đố tìm người tài",
+          "Diễn biến": "Quan ra đố ➡️ Cậu bé giải ➡️ Quan nể phục"
+        },
+        "title": "Ví dụ 3: Em bé thông minh",
+        "instruction": "Đọc đoạn văn và xác định các yếu tố:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step05",
+      "type": "flashcard",
+      "data": {
+        "front": "Cấu trúc (sơ đồ) cơ bản của một chuỗi sự việc trong văn bản tự sự là gì?",
+        "back": "Mở đầu ➡️ Diễn biến ➡️ Kết thúc",
+        "completedWhen": "flipped",
+        "title": "Sơ đồ tự sự",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "ptbd",
+    "difficulty": 1,
+    "xp": 40,
+    "stars": 3,
+    "description": "Tìm hiểu mục tiêu, dấu hiệu và cách nhận diện văn bản tự sự.",
+    "durationMinutes": 15
+  }
+}

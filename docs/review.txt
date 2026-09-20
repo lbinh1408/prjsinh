@@ -1,0 +1,458 @@
+Tôi thấy phương án này rất đúng hướng, và  mục tiêu  là giữ architecture gọn, tái sử dụng được cho nhiều lesson.
+Chỉ có vài điểm tôi muốn chỉnh trước khi bạn code để sau này đỡ phải sửa lần 2.
+
+1. MultiStageChallenge → Orchestrator: tôi hoàn toàn đồng ý
+
+Đây là thay đổi quan trọng nhất.
+
+Nó không còn là:
+
+MultiStageChallenge
+= một UI Final Challenge cố định
+
+mà trở thành:
+
+MultiStageChallenge
+        │
+        ├── đọc stages[]
+        │
+        ├── render stage hiện tại
+        │
+        ├── lưu context
+        │
+        └── chuyển stage
+
+Ví dụ:
+
+context = {
+    emotion: "Nhớ nhung",
+    details: [
+        "Chiếc ghế cũ",
+        "Một câu nói quen thuộc"
+    ],
+    structure: {
+        emotion: "...",
+        detail: "...",
+        reflection: "...",
+        deepen: "..."
+    },
+    text: "..."
+}
+
+Sau đó analysis chỉ cần nhận:
+
+renderAnalysis(context)
+
+→ rất sạch.
+
+2. Anh đề nghị đừng tạo .msc-stage cho tất cả rồi render hết
+
+Ý tưởng của em đúng, nhưng anh sẽ làm:
+
+msc
+│
+├── msc-stage[data-index="0"]
+├── msc-stage[data-index="1"]
+├── msc-stage[data-index="2"]
+└── ...
+
+nhưng chỉ render stage hiện tại nếu component con có state phức tạp.
+
+Tức là:
+
+renderStage(index)
+
+thay vì:
+
+renderAllStages()
+
+Lý do rất thực tế:
+
+SlotBuilder, textarea, drag/drop... đều có state riêng.
+
+Nếu render cả 5 stage rồi hide/show, sau này rất dễ xảy ra:
+
+DOM cũ
+   ↓
+event listener cũ
+   ↓
+state cũ
+   ↓
+render lại
+   ↓
+bug
+
+Với lesson hiện tại chưa sao, nhưng về sau sẽ khá đau đầu.
+
+Tôi thích:
+
+Stage 1
+  ↓
+save context
+  ↓
+destroy/render Stage 2
+  ↓
+save context
+  ↓
+destroy/render Stage 3
+
+hơn.
+
+3. context là cực kỳ quan trọng — nên làm ngay từ đầu
+
+Tôi thậm chí sẽ tách rõ:
+
+this.state = {
+    currentStageIndex: 0,
+    context: {},
+    completedStages: []
+};
+
+Ví dụ stage 1:
+
+context.emotion = "Nhớ nhung";
+
+stage 2:
+
+context.details = [...]
+
+stage 3:
+
+context.structure = {...};
+
+stage 4:
+
+context.text = "...";
+
+stage 5:
+
+context.analysis = {...};
+
+Như vậy sau này nếu AI analysis cần:
+
+context.emotion
+context.details
+context.structure
+context.text
+
+thì không phải lấy ngược dữ liệu từ DOM.
+
+Đây là điểm tôi cực kỳ khuyến khích.
+
+DOM chỉ để hiển thị. context mới là source of truth.
+
+4. SlotBuilder → isEmbedded: true: ĐÚNG, nhưng anh muốn đổi tên
+
+Ý tưởng này:
+
+SlotBuilder.render({
+    data: stage,
+    isEmbedded: true
+})
+
+là đúng.
+
+Nhưng tôi thích API rõ hơn:
+
+SlotBuilder.render({
+    data: stage,
+    mode: "stage"
+})
+
+hoặc:
+
+SlotBuilder.render({
+    data: stage,
+    embedded: true
+})
+
+Vì isEmbedded nói về vị trí UI, còn vấn đề thật sự của chúng ta là behavior.
+
+Ví dụ:
+
+mode: "stage"
+
+thì SlotBuilder hiểu:
+
+mode = lesson
+→ window.engine.next()
+
+mode = stage
+→ MultiStageChallenge.nextStage()
+
+Đây là abstraction đẹp hơn.
+
+Quan trọng:
+
+SlotBuilder không được tự gọi MultiStageChallenge.
+
+Nó chỉ nên phát event:
+
+onComplete(result)
+
+hoặc:
+
+onChange(result)
+
+rồi MultiStageChallenge quyết định đi đâu.
+
+Như vậy dependency sẽ là:
+
+MultiStageChallenge
+        ↓
+    SlotBuilder
+        ↓
+      result
+        ↑
+MultiStageChallenge xử lý
+
+chứ không phải:
+
+SlotBuilder
+   ↓
+window.engine
+   ↓
+MultiStageChallenge
+5. multi_select: hãy chọn 2 thẻ tối thiểu
+
+Với bài biểu cảm, ta sẽ để:
+
+{
+  "type": "multi_select",
+  "minSelections": 2,
+  "maxSelections": 3
+}
+
+và UI nên hiện ngay:
+
+Chọn 2–3 chi tiết có thể giúp em gợi ra cảm xúc.
+
+Khi chọn:
+
+1/3
+
+nút:
+
+Tiếp tục
+
+bị disabled.
+
+Đủ:
+
+2/3
+
+→ enabled.
+
+Quá 3:
+
+→ không cho chọn thêm.
+
+Nhưng có một điểm quan trọng:
+
+Không nên chỉ validate:
+
+selected.length >= 2
+
+Mà stage nên có:
+
+"minSelections": 2,
+"maxSelections": 3
+
+để component generic.
+
+6. single_choice cũng nên trả result thống nhất
+
+Ví dụ:
+
+{
+    type: "single_choice",
+    value: "remember"
+}
+
+multi_select:
+
+{
+    type: "multi_select",
+    values: ["detail01", "detail03"]
+}
+
+card_to_slot:
+
+{
+    type: "card_to_slot",
+    slots: {
+        emotion: "card01",
+        detail: "card03",
+        reflection: "card04",
+        deepen: "card02"
+    }
+}
+
+editor:
+
+{
+    type: "editor",
+    text: "..."
+}
+
+Như vậy Orchestrator có thể xử lý rất thống nhất:
+
+const result = stageInstance.getValue();
+
+this.context[stage.key] = result;
+
+this.nextStage();
+7. Ta sẽ thêm key cho từng stage
+
+Cái này rất đáng thêm.
+
+Đừng để context phụ thuộc vào index:
+
+context[0]
+context[1]
+context[2]
+
+Mà:
+
+{
+  "key": "emotion",
+  "type": "single_choice"
+}
+{
+  "key": "details",
+  "type": "multi_select"
+}
+{
+  "key": "structure",
+  "type": "card_to_slot"
+}
+{
+  "key": "writing",
+  "type": "editor"
+}
+
+Sau đó:
+
+context[stage.key] = result;
+
+Thế là cực kỳ dễ đọc:
+
+context.emotion
+context.details
+context.structure
+context.writing
+8. analysis nên là stage đặc biệt
+
+Ta không cho analysis có nút Next.
+
+Flow:
+
+EDITOR
+  │
+  │ Nộp bài
+  ↓
+ANALYSIS
+  │
+  ├── loading
+  │
+  ├── analyzing
+  │
+  └── result
+
+Tức là:
+
+if (stage.type === "editor") {
+    saveEditor();
+    runAnalysis();
+}
+
+Nhưng về mặt architecture, vẫn coi nó là:
+
+stage.type === "analysis"
+
+→ UI nhất quán.
+
+9. JSON bài 07 cũng nên migrate luôn
+
+Tôi đồng ý hoàn toàn với cấu trúc:
+
+"finalChallenge": {
+  "type": "multi_stage",
+  "stages": [...]
+}
+
+thay vì:
+
+"finalChallenge": {
+    "scaffold": {},
+    "editor": {},
+    "analysis": {}
+}
+
+Và bài 08 sẽ chứng minh ngay rằng architecture mới có hoạt động không:
+
+Bài 07
+scaffold
+→ editor
+→ analysis
+
+Bài 08
+single_choice
+→ multi_select
+→ card_to_slot
+→ editor
+→ analysis
+
+Nếu cùng một MultiStageChallenge chạy được cả hai, thì mình biết abstraction này đã đúng.
+
+10. Một thay đổi nhỏ nữa tôi rất khuyến khích
+
+Thêm:
+
+"stageId": "choose_emotion"
+
+hoặc chỉ:
+
+"key": "emotion"
+
+Tôi thích key hơn vì vừa làm ID vừa map context.
+
+Cấu trúc cuối cùng:
+
+{
+  "type": "multi_stage",
+  "stages": [
+    {
+      "key": "emotion",
+      "type": "single_choice"
+    },
+    {
+      "key": "details",
+      "type": "multi_select",
+      "minSelections": 2,
+      "maxSelections": 3
+    },
+    {
+      "key": "structure",
+      "type": "card_to_slot"
+    },
+    {
+      "key": "writing",
+      "type": "editor"
+    },
+    {
+      "key": "analysis",
+      "type": "analysis"
+    }
+  ]
+}
+Chốt lại
+
+Tôi đánh giá kế hoạch của bạn khoảng 9/10. Chỉ cần chỉnh 4 điểm:
+
+MultiStageChallenge = Orchestrator ✅
+context là source of truth ✅
+SlotBuilder dùng mode: "stage" và trả result, không tự gọi engine.next() ⭐
+Mỗi stage có key + minSelections/maxSelections ⭐
+
+Nếu làm theo hướng này thì bài biểu cảm không còn là lý do để tạo thêm một đống component nữa. Ngược lại, nó sẽ là bài test rất tốt để chứng minh MultiStageChallenge mới đủ generic cho toàn bộ hệ thống.

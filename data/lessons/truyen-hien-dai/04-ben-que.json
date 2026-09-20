@@ -1,0 +1,16 @@
+{
+    "id": "truyen-hien-dai.04-ben-que",
+    "title": "Bến quê",
+    "module": "truyen-hien-dai",
+    "steps": [
+        {
+            "id": "intro",
+            "type": "observe",
+            "data": {
+                "title": "Bến quê",
+                "subtitle": "Nguyễn Minh Châu",
+                "content": "Nội dung bài học đang được cập nhật."
+            }
+        }
+    ]
+}

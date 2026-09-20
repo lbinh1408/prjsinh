@@ -1,0 +1,706 @@
+{
+  "id": "viet-doan-van-07",
+  "title": "Viết đoạn văn kiểu nghị luận",
+  "type": "skill",
+  "version": "1.0.0",
+  "meta": {
+    "module": "viet-doan-van",
+    "lessonNumber": 7,
+    "durationMinutes": 300,
+    "difficulty": "beginner",
+    "skill": "viet-doan-van-bieu-cam",
+    "description": "Biết chọn cảm xúc, chi tiết và suy nghĩ để đoạn văn trở nên chân thật"
+  },
+  "learningGoals": [
+    "Nhận biết đặc điểm cơ bản của đoạn văn biểu cảm.",
+    "Biết cách chọn chi tiết gợi cảm xúc.",
+    "Biết phát triển mạch cảm xúc (Cảm xúc -> Chi tiết -> Suy nghĩ -> Chốt).",
+    "Viết được một đoạn văn biểu cảm hoàn chỉnh."
+  ],
+  "completion": {
+    "requiredSections": [
+      "story",
+      "observe",
+      "discover",
+      "teach",
+      "guidedPractice",
+      "miniChallenge",
+      "reflection",
+      "cheatSheet",
+      "finalChallenge",
+      "vocab_01"
+    ],
+    "action": "completeLesson",
+    "message": "🎉 🎯 Nói ra tình cảm thôi chưa đủ. Hãy làm cho người đọc thấy, hiểu và rung động theo cảm xúc của em."
+  },
+  "steps": [
+    {
+      "id": "story_01",
+      "type": "story",
+      "data": {
+        "title": "Đọc và cảm nhận",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "split_compare",
+          "layout": "two_columns",
+          "question": "Cùng nói về một người, nhưng cảm giác người đọc nhận được lại khác nhau."
+        },
+        "content": {
+          "prompt": "Cùng nói về một người, nhưng cảm giác người đọc nhận được lại khác nhau.",
+          "title": "Sao câu này nghe... chưa có cảm xúc?",
+          "left": {
+            "label": "ĐOẠN A",
+            "paragraph": "Mẹ em rất tốt. Em rất yêu mẹ. Mẹ là người quan trọng nhất với em."
+          },
+          "right": {
+            "label": "ĐOẠN B",
+            "paragraph": "Mỗi khi nghĩ về mẹ, lòng em lại thấy yên bình và ấp áp lạ thường. Mỗi sáng, mẹ thường gọi em dậy bằng một giọng nói rất nhẹ. Có những hôm em còn ngái ngủ, chỉ nghe tiếng mẹ từ ngoài cửa cũng thấy căn phòng nhỏ trở nên ấm áp hơn. Có lẽ vì thế mà sau này, dù đi đâu, em vẫn nhớ nhất âm thanh quen thuộc ấy."
+          }
+        },
+        "interaction": {
+          "type": "choice",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Đoạn A",
+              "correct": false
+            },
+            {
+              "id": "b",
+              "text": "Đoạn B",
+              "correct": true
+            },
+            {
+              "id": "same",
+              "text": "Hai đoạn cảm xúc như nhau",
+              "correct": false
+            }
+          ],
+          "feedback": {
+            "correct": "✓ Đúng. Đoạn B không nói trực tiếp quá nhiều rằng “em yêu mẹ”, nhưng những chi tiết cụ thể khiến người đọc tự cảm nhận được tình cảm ấy.",
+            "incorrect": "△ Hãy đọc kĩ lại xem đoạn nào có chi tiết cụ thể hơn."
+          }
+        },
+        "reveal": {
+          "title": "💡 Tìm hiểu",
+          "text": "Đoạn B không nói trực tiếp quá nhiều rằng “em yêu mẹ”, nhưng những chi tiết cụ thể khiến người đọc tự cảm nhận được tình cảm ấy."
+        }
+      }
+    },
+    {
+      "id": "observe_01",
+      "type": "observe",
+      "data": {
+        "title": "Cảm xúc nằm ở đâu?",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "paragraph_highlight",
+          "interaction": "tap_sentence",
+          "question": "Hãy nhấn vào từng câu để xem vai trò của nó."
+        },
+        "content": {
+          "prompt": "Ví dụ: Cảm xúc nằm ở đâu?",
+          "paragraph": [
+            {
+              "id": "s0",
+              "text": "Trong những kí ức tuổi thơ của tôi, hình ảnh bà luôn là một hình ảnh thân thương và ấm áp nhất.",
+              "role": "cam_xuc",
+              "roleLabel": "CẢM XÚC",
+              "feedback": "🟢 Đây là cảm xúc bao quát, bao trùm lên toàn bộ đoạn văn."
+            },
+            {
+              "id": "s1",
+              "text": "Chiều nào bà cũng ngồi trước hiên nhà chờ tôi đi học về.",
+              "role": "chi_tiet",
+              "roleLabel": "CHI TIẾT CỤ THỂ",
+              "feedback": "🟢 Chi tiết này cho thấy sự chờ đợi và tình cảm của bà dành cho người cháu."
+            },
+            {
+              "id": "s2",
+              "text": "Mái tóc bà đã bạc nhiều hơn trước.",
+              "role": "chi_tiet_goi_cam",
+              "roleLabel": "CHI TIẾT GỢI CẢM",
+              "feedback": "🟢 Chi tiết này khiến người viết nhận ra thời gian đang trôi và bà đã già đi."
+            },
+            {
+              "id": "s3",
+              "text": "Vậy mà mỗi khi thấy tôi từ xa, bà vẫn nở một nụ cười thật hiền.",
+              "role": "cam_xuc",
+              "roleLabel": "CẢM XÚC",
+              "feedback": "🟢 Nụ cười của bà làm tình cảm yêu thương trở nên gần gũi và tự nhiên."
+            },
+            {
+              "id": "s3",
+              "text": "Có lẽ sau này dù lớn lên và đi xa, tôi vẫn sẽ luôn nhớ mãi dáng bà ngồi trước hiên nhà và nụ cười hiền hậu dành cho tôi.",
+              "role": "closing",
+              "roleLabel": "KẾT ĐOẠN",
+              "feedback": "🟢 Đây là lời chốt. Nó cho thấy sự gắn bó và cảm xúc lưu luyến của người viết."
+            }
+          ]
+        },
+        "reveal": {
+          "title": "Em vừa nhìn thấy gì?",
+          "text": "Cảm xúc không chỉ là nói thẳng ra, mà còn được khơi gợi qua chi tiết, kỉ niệm và suy ngẫm."
+        }
+      }
+    },
+    {
+      "id": "discover_01",
+      "type": "discover",
+      "data": {
+        "title": "Ý kiến cần được *đỡ* bằng gì?",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "card_to_slot",
+          "interaction": "tap_to_place"
+        },
+        "reveal": {
+          "title": "🔎 Em vừa phát hiện ra",
+          "text": "Muốn phát triển cảm xúc, hãy thử hỏi: “CHi tiết nào gợi nên cảm xúc đó?” và “Điều gì khiến cảm xúc ấy trở nên sâu sắc hơn?”"
+        },
+        "content": {
+          "prompt": "Ví dụ: Nỗi nhớ về mái trường cũ.",
+          "slots": [
+            {
+              "id": "emotion",
+              "label": "🎯 CẢM XÚC",
+              "question": "Câu nào thể hiện cảm xúc của em?",
+              "hint": "Câu thể hiện cảm xúc"
+            },
+            {
+              "id": "detail",
+              "label": "💡 Chi tiết cụ thể gợi đến cảm xúc",
+              "question": "Chi tiết ấy gợi cho em cảm xúc hay suy nghĩ gì?",
+              "hint": "Câu đưa ra hình ảnh, sự việc tác động tạo cảm xúc"
+            },
+            {
+              "id": "reflection",
+              "label": "� Suy ngẫm",
+              "question": "Câu nào thể hiện suy nghĩ của em về cảm xúc đó?",
+              "hint": "Câu đưa suy nghĩ, cảm nhận"
+            },
+            {
+              "id": "deepen",
+              "label": " Làm sâu cảm xúc",
+              "question": "Câu nào giúp làm sâu sắc thêm cảm xúc?",
+              "hint": "Câu giúp cảm xúc thêm sâu sắc"
+            },
+            {
+              "id": "close",
+              "label": "🎯 CHỐT ĐOẠN",
+              "question": "Câu nào chốt ý kiến?",
+              "hint": "Câu khẳng định cảm xúc và dư âm của nó"
+            }
+          ],
+          "cards": [
+            {
+              "id": "idea",
+              "target": "emotion",
+              "correct": true,
+              "slotText": "Mỗi lần nhớ về mái trường cũ, lòng em lại bâng khuâng, xao xuyến",
+              "feedback": "✓ Mỗi lần nhớ về mái trường cũ, lòng em lại bâng khuâng, xao xuyến",
+              "label": "🎯 Cảm xúc chính ."
+            },
+            {
+              "id": "reason1",
+              "target": "detail",
+              "correct": true,
+              "slotText": "Em nhớ hàng cây nghiêng mình trong gió, sân trường ngập nắng và những lớp học thân quen đã gắn bó với em.",
+              "feedback": "✓ Câu này nêu chi tiết/ hình ãnh dẫn đến cảm xúc.",
+              "label": "💡 Chi tiết/ hình ảnh gợi ra cảm xúc"
+            },
+            {
+              "id": "reflection",
+              "target": "reflection",
+              "correct": true,
+              "slotText": "Những hình ảnh ấy đưa em trở về với tiếng cười của bạn bè, ánh mắt dịu dàng của thầy cô và những tháng ngày học trò vô tư, trong trẻo.",
+              "feedback": "✓ Câu này phân tích sâu chi tiết/ hình ảnh gợi ra cảm xúc.",
+              "label": "🔵 Phân tích sâu chi tiết"
+            },
+            {
+              "id": "analysic",
+              "target": "deepen",
+              "correct": true,
+              "slotText": "Càng nhớ, em càng thấy thương mái trường và tiếc những ngày tháng không thể quay lại.",
+              "feedback": "✓ Câu này làm sâu thêm cảm xúc.",
+              "label": "🎯 Làm sâu cảm xúc"
+            },
+            {
+              "id": "close",
+              "target": "close",
+              "correct": true,
+              "slotText": "Dẫu thời gian có trôi đi, em tin rằng mái trường ấy vẫn sẽ là một khoảng trời ký ức dịu dàng, nơi trái tim em luôn muốn tìm về.",
+              "feedback": "✓ Câu chốt ý: khẳng định lại ý trên là đúng.",
+              "label": "🎯 Chốt đoạn"
+            },
+            {
+              "id": "wrong1",
+              "target": null,
+              "correct": false,
+              "slotText": "Hôm qua em đọc một cuốn sách.",
+              "feedback": "△ Câu này chưa trực tiếp nâng đỡ ý kiến.",
+              "label": "△ Hôm qua em đọc một cuốn sách."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "teach_01",
+      "type": "teach",
+      "data": {
+        "title": "XÂY DỰNG MỘT ĐOẠN VĂN",
+        "durationSeconds": 300,
+        "ui": {
+          "component": "vertical_map",
+          "interaction": "click_node",
+          "center": "TÌNH CẢM"
+        },
+        "prompt": "Ví dụ: Viết đoạn văn nói về tình yêu đất nước.",
+        "nodes": [
+          {
+            "id": "emotion",
+            "icon": "❤️",
+            "title": "CẢM XÚC",
+            "question": "Em đang cảm thấy gì?",
+            "example": "Mỗi lần nghe hai tiếng Tổ quốc, trong lòng tôi lại dâng lên một niềm xúc động khó gọi thành tên."
+          },
+          {
+            "id": "detail",
+            "icon": "👀",
+            "title": "CHI TIẾT",
+            "question": "Điều gì gợi cảm xúc ấy?",
+            "example": "Tôi như đang thấy màu cờ đỏ thắm giữa trời, thấy dáng những người lính lặng thầm nơi biên cương và những con người bình dị đang góp sức cho quê hương."
+          },
+          {
+            "id": "reflection",
+            "icon": "💭",
+            "title": "CẢM NHẬN",
+            "question": "Chi tiết ấy khiến em nghĩ hoặc nhớ điều gì?",
+            "example": "Từ những hình ảnh ấy, tôi nghĩ về bao thế hệ đã gửi lại tuổi xuân nơi đất mẹ để hôm nay chúng ta được sống trong hòa bình."
+          },
+          {
+            "id": "deepen",
+            "icon": "❤️",
+            "title": "LÀM SÂU CẢM XÚC",
+            "question": "Cảm xúc ấy trở nên như thế nào?",
+            "example": "Càng nghĩ, tôi càng thấy yêu hơn mảnh đất đã nuôi mình lớn lên và biết ơn những người đã gìn giữ nó bằng cả máu xương."
+          },
+          {
+            "id": "close",
+            "icon": "🎯",
+            "title": "CHỐT",
+            "question": "Mong muốn của em hoặc Dư âm của cảm xúc ấy như thế nào?",
+            "example": "Có lẽ tình yêu nước không cần những lời lớn lao; đôi khi, nó chỉ là một trái tim biết tự hào, biết biết ơn và biết sống xứng đáng với quê hương mình."
+          }
+        ],
+        "diagnosticQuestion": "Câu sau đang làm nhiệm vụ gì trong lập luận?",
+        "importantNote": "Không phải đoạn nào cũng phải có đủ năm lớp thành năm câu riêng biệt. Đây là khung tư duy giúp người viết biết mình cần làm rõ ý kiến bằng cách nào."
+      }
+    },
+    {
+      "id": "guidedPractice_01",
+      "type": "guidedPractice",
+      "data": {
+        "title": "Xây từng lớp của một đoạn văn biểu cảm",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "builder",
+          "interaction": "type_to_place"
+        },
+        "prompt": "Viết đoạn văn nêu cảm nghĩ của em về ngày khai trường",
+        "instruction": "Hãy đưa từng câu vào đúng vị trí để tạo thành một mạch lập luận.",
+        "content": {
+          "prompt": "Viết đoạn văn nêu cảm nghĩ của em về ngày khai trường",
+          "slots": [
+            {
+              "id": "emotion",
+              "label": "🎯 CẢM XÚC CHÍNH",
+              "question": "Câu nào thể hiện cảm xúc chính ?",
+              "hint": "Câu mở đầu đoạn văn"
+            },
+            {
+              "id": "detail",
+              "label": "💡 CHI TIẾT GỢI TỚI CẢM XÚC",
+              "question": "Chi tiết/hình ảnh nào gợi tới cảm xúc đó?",
+              "hint": "Câu giải thích vì sao."
+            },
+            {
+              "id": "reflection",
+              "label": "🔵 SUY NGHĨ CỦA EM",
+              "question": "Em nghĩ gì về hình ảnh đó?",
+              "hint": "Câu mở rộng ý kiến, cảm nhận."
+            },
+            {
+              "id": "deepen",
+              "label": "🔵 ĐÀO SÂU CẢM XÚC",
+              "question": "Cảm xúc của em trở nên như thế nào?",
+              "hint": "Câu mở rộng ý kiến, cảm nhận."
+            },
+            {
+              "id": "close",
+              "label": "🔵 CHỐT Ý",
+              "question": "Câu nào chốt ý lại ?",
+              "hint": "Câu chốt lại cảm xúc, nêu ước muốn hoặc dư âm của cảm xúc."
+            }
+          ],
+          "cards": [
+            {
+              "id": "emotion",
+              "target": "emotion",
+              "correct": true,
+              "slotText": "Hôm nay, trong lòng em dâng lên một niềm háo hức khi ngày khai trường đã đến.",
+              "feedback": "✓ Câu này đưa ra cảm xúc chính.",
+              "label": "🎯 Cảm xúc chính."
+            },
+            {
+              "id": "detail",
+              "target": "detail",
+              "correct": true,
+              "slotText": "Sân trường rộn ràng tiếng cười nói, những tà áo trắng tung bay trong nắng và tiếng trống khai trường vang lên giòn giã.",
+              "feedback": "✓ Câu này đưa chi tiết gợi cảm xúc.",
+              "label": "💡 Chi tiết gợi cảm xúc."
+            },
+            {
+              "id": "reflection",
+              "target": "reflection",
+              "correct": true,
+              "slotText": "Nhìn những gương mặt hớn hở, em chợt nhận ra mình đã yêu mến và gắn bó với bạn bè, với ngôi trường này biết bao.",
+              "feedback": "✓ Câu này đưa suy nghĩ và cảm nhận",
+              "label": "💡 Suy nghĩ về cảm xúc."
+            },
+            {
+              "id": "deepen",
+              "target": "deepen",
+              "correct": true,
+              "slotText": "Những ngày tháng sắp tới chắc chắn sẽ thật đáng nhớ và ý nghĩa khi em được học tập, vui chơi cùng bè bạn.",
+              "feedback": "✓ Câu này đào sâu cảm xúc.",
+              "label": "💡 Đào sâu cảm xúc."
+            },
+            {
+              "id": "close",
+              "target": "close",
+              "correct": true,
+              "slotText": "Em tự nhủ sẽ cố gắng học tập thật tốt để những ngày tháng phía trước trở thành những kỉ niệm đẹp của tuổi học trò.",
+              "feedback": "✓ Câu này chốt ý.",
+              "label": "✓ Câu chốt"
+            }
+          ]
+        },
+        "completion": {
+          "button": "Kiểm tra cấu trúc",
+          "feedback": {
+            "correct": "✓ Tốt! Em đã tạo được mạch cảm xúc cảm xúc chủ đạo → chi tiết gợi cảm → suy nghĩ về tình cảm → đào sâu cảm xúc-> chốt mạch cảm xúc.",
+            "partial": "△ Một số câu chưa đúng vai trò. Hãy thử hỏi: câu này đã đủ sức gợi cảm xúc chưa ?",
+            "wrong": "△ Hãy bắt đầu bằng câu nêu cảm xúc chủ đạo."
+          }
+        }
+      }
+    },
+    {
+      "id": "miniChallenge_01",
+      "type": "miniChallenge",
+      "data": {
+        "title": "Đoạn này đang thiếu yếu tố nào để làm rõ cảm xúc hơn ?",
+        "durationSeconds": 120,
+        "ui": {
+          "layout": "single_choice"
+        },
+        "prompt": "Đoạn này đang thiếu gì?",
+        "question": "Mỗi khi nghĩ về cha, lòng tôi lại dâng lên một niềm yêu thương và kính trọng. Tôi nhớ những năm tháng cha luôn âm thầm chăm lo và che chở cho tôi. Càng nghĩ về cha, tôi càng hiểu và trân trọng những hi sinh mà cha đã dành cho gia đình.",
+        "choices": [
+          {
+            "id": "detail",
+            "text": "🔎 Chi tiết/ hình ảnh gợi cảm xúc",
+            "correct": true
+          },
+          {
+            "id": "opinion",
+            "text": "🎯 Cảm xúc bao quát",
+            "correct": false
+          },
+          {
+            "id": "reason",
+            "text": "💡 Làm sâu sắc cảm xúc",
+            "correct": false
+          }
+        ],
+        "feedback": {
+          "correct": "✓ Đúng. Đoạn đã có ý kiến và suy nghĩ nhưng chưa có chi tiết/ hình ảnh cụ thể khơi gợi cảm xúc.<br> Bạn có thể thêm vào: Tôi nhớ dáng cha lặng lẽ trở về sau một ngày làm việc, đôi bàn tay chai sần vẫn nhẹ nhàng đặt lên vai tôi và hỏi: 'Hôm nay con học có vui không?'",
+          "opinion": "△ Cảm xúc bao quát đã có ở câu đầu.",
+          "reason": "△ Làm sâu sắc cảm xúc đã có ở câu thứ hai."
+        }
+      }
+    },
+    {
+      "id": "reflection_01",
+      "type": "reflection",
+      "data": {
+        "title": "Đoạn văn chưa đủ cảm xúc cần phải làm sao ?",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "checklist_free_text"
+        },
+        "question": "Khi đoạn văn chưa đủ gợi cảm xúc, em sẽ kiểm tra điều gì?",
+        "choices": [
+          {
+            "id": "emotion",
+            "text": "🎯 Có nêu rõ cảm xúc chưa ?"
+          },
+          {
+            "id": "detail",
+            "text": "💡 Có chi tiết cụ thể nào để gợi nên cảm xúc đó chưa ?"
+          },
+          {
+            "id": "reflection",
+            "text": "🔎 Đã có nêu suy nghĩ về chi tiết/ hình ảnh đó chưa?"
+          },
+          {
+            "id": "deepen",
+            "text": "🧩 Có câu nào làm sâu thêm cảm xúc chưa?"
+          }
+        ],
+        "freeText": {
+          "label": "Em sẽ kiểm tra...",
+          "placeholder": "Ví dụ: Em sẽ xem có mình đã dùng chi tiết cụ thể nào để khơi gợi cảm xúc không?"
+        },
+        "metacognition": "Biết tự hỏi “Mình đã dùng chi tiết cụ thể nào để khơi gợi cảm xúc không?”"
+      }
+    },
+    {
+      "id": "cheatSheet_01",
+      "type": "cheatSheet",
+      "data": {
+        "title": "GHI NHỚ CẤU TRÚC CỦA MỘT ĐOẠN VĂN BIỂU CẢM",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "card_list",
+          "actions": [
+            "save",
+            "download"
+          ]
+        },
+        "items": [
+          {
+            "order": 1,
+            "icon": "🎯",
+            "title": "CẢM XÚC CHỦ ĐẠO",
+            "question": "Em muốn nói lên cảm xúc gì?"
+          },
+          {
+            "order": 2,
+            "icon": "💡",
+            "title": "CHI TIẾT GỢI CẢM XÚC",
+            "question": "Chi tiết nào gợi tới cảm xúc đó?"
+          },
+          {
+            "order": 3,
+            "icon": "🔎",
+            "title": "SUY NGHĨ/ CẢM NHẬN",
+            "question": "Em suy nghĩ/ cảm nhận gì về chi tiết ấy?"
+          },
+          {
+            "order": 4,
+            "icon": "🧩",
+            "title": "ĐÀO SÂU CẢM XÚC",
+            "question": "Làm sâu sắc thêm cảm xúc"
+          },
+          {
+            "order": 5,
+            "icon": "🎯",
+            "title": "CHỐT",
+            "question": "Khẳng định / mở rộng."
+          }
+        ],
+        "keyMessage": "⭐ CẢM XÚC không phải chỉ nói ra trực tiếp. Hãy làm cho người đọc cảm nhận được nó.",
+        "note": "Đây là khung sườn để em tư duy, không phải công thức bắt buộc năm câu mà có thể dài hơn hoặc ngắn hơn.",
+        "practiceButton": {
+          "label": "🛠️ Thử viết",
+          "action": "open_mini_practice"
+        }
+      }
+    },
+    {
+      "id": "vocab_01",
+      "type": "cheatSheet",
+      "data": {
+        "ui": {
+          "component": "card_list"
+        },
+        "prompt": "Túi bảo bối từ vựng Biểu cảm",
+        "items": [
+          {
+            "icon": "😢",
+            "title": "Cảm xúc buồn, nuối tiếc",
+            "question": "rưng rưng, nghẹn ngào, bâng khuâng, xót xa, tái tê, bùi ngùi"
+          },
+          {
+            "icon": "😄",
+            "title": "Cảm xúc vui vẻ, háo hức",
+            "question": "hân hoan, rạo rực, khấp khởi, hồ hởi"
+          },
+          {
+            "icon": "✨",
+            "title": "Từ tượng hình (gợi tả)",
+            "question": "heo hút, mờ ảo, hun hút, chót vót, ngoằn ngoèo"
+          }
+        ],
+        "keyMessage": "Để bài văn biểu cảm không bị khô khan, em hãy 'bỏ túi' ngay những từ láy và tính từ gợi cảm xúc này nhé!",
+        "practiceButton": {
+          "label": "Vào thử thách viết →"
+        }
+      }
+    },
+    {
+      "id": "finalChallenge_01",
+      "type": "finalChallenge",
+      "data": {
+        "title": "THỬ THÁCH: VIẾT ĐOẠN VĂN HOÀN CHỈNH",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "multi_stage_challenge",
+          "layout": "multi_stage"
+        },
+        "prompt": "Hãy viết một đoạn văn trình bày cảm nghĩ của em về bài thơ 'Bếp lửa'.",
+        "stages": [
+          {
+            "key": "scaffold",
+            "type": "scaffold",
+            "title": "🧩 TRƯỚC KHI VIẾT",
+            "question": "Trước khi viết, hãy thử trả lời: Bài thơ đã gợi cho em cảm xúc gì? Những chi tiết nào trong bài gợi em cảm xúc đó.",
+            "scaffold": [
+              {
+                "id": "emotion",
+                "label": "CẢM XÚC",
+                "hint": "Bài thơ gợi cho em cảm xúc gì chủ yếu về ai/ điều gì ?"
+              },
+              {
+                "id": "detail",
+                "label": "CHI TIẾT",
+                "hint": "Chi tiết/ hình ảnh  nào gợi cho em cảm xúc đó?"
+              },
+              {
+                "id": "reflection",
+                "label": "SUY NGHĨ",
+                "hint": "Chi tiết đó gợi cho em những suy nghĩ gì?"
+              },
+              {
+                "id": "deepen",
+                "label": "ĐÀO SÂU CẢM XÚC",
+                "hint": "Mở rộng cảm xúc: vd càng nghĩ em càng ..., nghĩ về điền đó em không khỏi ..., từ đó em càng hiểu.."
+              },
+              {
+                "id": "close",
+                "label": "CHỐT",
+                "hint": "Khẳng định cảm xúc"
+              }
+            ]
+          },
+          {
+            "key": "writing",
+            "type": "editor",
+            "title": "Viết đoạn văn",
+            "placeholder": "Viết đoạn văn của em...",
+            "minCharacters": 120,
+            "maxCharacters": 500,
+            "submit": {
+              "label": "🚀 Nộp & phân tích"
+            },
+            "hints": [
+              {
+                "label": "Cảm xúc buồn",
+                "words": [
+                  "rưng rưng",
+                  "nghẹn ngào",
+                  "bâng khuâng",
+                  "xót xa"
+                ]
+              },
+              {
+                "label": "Cảm xúc vui",
+                "words": [
+                  "hân hoan",
+                  "rạo rực",
+                  "khấp khởi",
+                  "hồ hởi"
+                ]
+              },
+              {
+                "label": "Từ tượng hình",
+                "words": [
+                  "heo hút",
+                  "mờ ảo",
+                  "hun hút",
+                  "chót vót",
+                  "ngoằn ngoèo"
+                ]
+              }
+            ]
+          },
+          {
+            "key": "analysis",
+            "type": "analysis",
+            "title": "🧠 HỒ SƠ LẬP LUẬN",
+            "metrics": [
+              {
+                "id": "emotion",
+                "label": "Cảm xúc",
+                "status": "detect"
+              },
+              {
+                "id": "detail",
+                "label": "Chi tiết",
+                "status": "detect"
+              },
+              {
+                "id": "reflection",
+                "label": "Suy nghĩ",
+                "status": "detect"
+              },
+              {
+                "id": "deepen",
+                "label": "tăng cường cảm xúc",
+                "status": "detect"
+              },
+              {
+                "id": "close",
+                "label": "Chốt",
+                "status": "detect"
+              }
+            ],
+            "diagnosticQuestion": "Chi tiết này đang làm rõ ý kiến như thế nào?",
+            "feedbackRules": [
+              {
+                "when": "missing_emotion",
+                "feedback": "△ Đoạn văn chưa thể hiện rõ cảm xúc chủ đạo. Hãy thử viết một câu nêu cảm xúc."
+              },
+              {
+                "when": "missing_detail",
+                "feedback": "△ Em đã có cảm xúc nhưng chưa chưa đưa ra chi tiết/hình ảnh cụ thể khiến em có cảm xúc đó khiến cảm xúc còn mơ hồ."
+              },
+              {
+                "when": "missing_reflection",
+                "feedback": "△ Hãy thêm suy nghĩ, cảm nhận của em về chi tiết đó.."
+              },
+              {
+                "when": "missing_deepen",
+                "feedback": "△ Sau suy nghĩ, hãy mở rộng cảm xúc thêm: càng nghĩ em càng ..., từ đó em chợt nhận ra ..."
+              },
+              {
+                "when": "good_structure",
+                "feedback": "✓ Đoạn văn đã có mạch cảm xúc khá tốt: cảm xúc chủ đạo → hình ảnh gợi tới cảm xúc →suy nghĩ của em -> tăng cường cảm xúc → chốt."
+              }
+            ],
+            "scoreDimensions": [
+              "emotion",
+              "detail",
+              "reflection",
+              "deepen",
+              "close"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

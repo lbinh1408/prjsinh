@@ -1,0 +1,570 @@
+{
+  "id": "van-xuoi-01",
+  "title": "Văn xuôi → Một câu chuyện được kể như thế nào?",
+  "type": "knowledge",
+  "version": "1.0.0",
+  "meta": {
+    "module": "doc-hieu-van-ban-van-hoc",
+    "lessonNumber": 3,
+    "durationMinutes": 240,
+    "difficulty": "beginner",
+    "skill": "nhan-dien-va-phan-tich-truyen",
+    "description": "Giúp học sinh nhận biết đặc điểm hình thức của văn xuôi và các yếu tố cấu thành một câu chuyện (nhân vật, cốt truyện, người kể chuyện, bối cảnh)."
+  },
+  "learningGoals": [
+    "Hiểu sự khác biệt về hình thức giữa văn xuôi và thơ.",
+    "Nhận biết được văn xuôi tổ chức theo câu và đoạn văn.",
+    "Nhận biết các yếu tố cơ bản của truyện: cốt truyện, nhân vật, bối cảnh, người kể chuyện.",
+    "Phân biệt được người kể chuyện ngôi thứ nhất và ngôi thứ ba.",
+    "Biết cách quan sát các chi tiết miêu tả nhân vật và sự việc."
+  ],
+  "completion": {
+    "requiredSections": [
+      "story",
+      "observe",
+      "discover",
+      "teach",
+      "guidedPractice",
+      "miniChallenge",
+      "reflection",
+      "cheatSheet",
+      "finalChallenge"
+    ],
+    "action": "completeLesson",
+    "message": "🎉 Tuyệt vời! Em đã nắm được những \"viên gạch\" cơ bản để xây dựng và phân tích một câu chuyện."
+  },
+  "steps": [
+    {
+      "id": "story_01",
+      "type": "story",
+      "data": {
+        "title": "Văn xuôi khác thơ như thế nào?",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "split_compare",
+          "layout": "two_columns",
+          "question": "Hai cách viết cùng kể về một buổi chiều. Cách nào là văn xuôi?"
+        },
+        "content": {
+          "prompt": "Đọc hai cách viết dưới đây.",
+          "left": {
+            "label": "CÁCH A",
+            "paragraph": "Chiều thu gió lạnh thổi về\nLá vàng rơi rụng tràn trề lối đi\nBước chân ai vội vã về\nMong sao ấm áp một bề đoàn viên"
+          },
+          "right": {
+            "label": "CÁCH B",
+            "paragraph": "Trời chớm thu, gió lạnh bắt đầu thổi từng cơn qua phố. Những chiếc lá vàng rơi lác đác trên vỉa hè. Mọi người đều bước đi vội vã hơn, ai cũng muốn mau chóng trở về nhà để tận hưởng sự ấm áp bên gia đình."
+          }
+        },
+        "interaction": {
+          "type": "choice",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Cách A là văn xuôi",
+              "correct": false
+            },
+            {
+              "id": "b",
+              "text": "Cách B là văn xuôi",
+              "correct": true
+            },
+            {
+              "id": "same",
+              "text": "Cả hai đều là văn xuôi",
+              "correct": false
+            }
+          ],
+          "feedback": {
+            "correct": "✓ Đúng. Cách B được viết tự do, tổ chức thành các câu liên tục nối tiếp nhau tạo thành đoạn văn, không gò bó vần nhịp như cách A (thơ).",
+            "incorrect": "△ Hãy chú ý xem cách nào bị gò bó bởi số tiếng mỗi dòng và cách gieo vần."
+          }
+        },
+        "reveal": {
+          "title": "💡 Nhận diện văn xuôi",
+          "text": "Văn xuôi không bị giới hạn bởi vần điệu hay số tiếng, số dòng. Đơn vị cơ bản của nó là CÂU và ĐOẠN VĂN."
+        }
+      }
+    },
+    {
+      "id": "observe_01",
+      "type": "observe",
+      "data": {
+        "title": "Quan sát các yếu tố trong truyện",
+        "durationSeconds": 180,
+        "ui": {
+          "component": "paragraph_highlight",
+          "interaction": "tap_sentence",
+          "question": "Hãy nhấn vào từng câu để xem truyện được tạo nên từ những yếu tố nào."
+        },
+        "content": {
+          "title": "Một đoạn truyện ngắn",
+          "paragraph": [
+            {
+              "id": "l1",
+              "text": "Buổi sáng hôm ấy, mặt trời chưa ló dạng khỏi rặng tre, sương mù vẫn giăng kín cánh đồng.",
+              "role": "setting",
+              "roleLabel": "🌄 BỐI CẢNH",
+              "feedback": "🟢 Bối cảnh (không gian và thời gian) làm phông nền cho câu chuyện diễn ra."
+            },
+            {
+              "id": "l2",
+              "text": "Thằng Tí đã thức dậy từ sớm, khoác chiếc áo cộc tay cũ kỹ, bước vội ra bờ ao.",
+              "role": "character",
+              "roleLabel": "👤 NHÂN VẬT",
+              "feedback": "👤 Nhân vật là đối tượng chính mà câu chuyện hướng tới (Thằng Tí)."
+            },
+            {
+              "id": "l3",
+              "text": "Nó loay hoay mãi mới gỡ được chiếc rọ cua mà chiều qua nó đã cất công thả xuống.",
+              "role": "plot",
+              "roleLabel": "🎬 SỰ VIỆC",
+              "feedback": "🎬 Chuỗi các hành động, sự việc tạo nên cốt truyện."
+            },
+            {
+              "id": "l4",
+              "text": "Tôi đứng từ xa nhìn nó, chợt thấy sống mũi mình cay cay.",
+              "role": "narrator",
+              "roleLabel": "🎙️ NGƯỜI KỂ",
+              "feedback": "🎙️ Người kể chuyện ('Tôi') là người đang dẫn dắt, kể lại và bộc lộ cảm xúc về câu chuyện."
+            }
+          ]
+        },
+        "reveal": {
+          "title": "Em vừa quan sát được gì?",
+          "text": "Truyện không chỉ là tập hợp các câu văn. Nó được dệt nên từ Nhân vật, Bối cảnh, Sự việc (Cốt truyện) và được dẫn dắt bởi Người kể chuyện."
+        }
+      }
+    },
+    {
+      "id": "discover_01",
+      "type": "discover",
+      "data": {
+        "title": "Các mảnh ghép của một câu chuyện",
+        "durationSeconds": 180,
+        "ui": {
+          "component": "card_to_slot",
+          "interaction": "tap_to_place"
+        },
+        "reveal": {
+          "title": "🔎 Em vừa ghép nối xong",
+          "text": "Đây chính là 4 yếu tố then chốt nhất em cần đi tìm khi đọc hiểu bất kì tác phẩm truyện nào."
+        },
+        "content": {
+          "prompt": "Ghép mỗi đặc điểm với khái niệm phù hợp.",
+          "slots": [
+            {
+              "id": "character",
+              "label": "👤 NHÂN VẬT",
+              "question": "Ai là người thực hiện hành động?",
+              "hint": "Con người, con vật..."
+            },
+            {
+              "id": "plot",
+              "label": "🎬 CỐT TRUYỆN",
+              "question": "Điều gì đã xảy ra?",
+              "hint": "Chuỗi sự việc diễn ra."
+            },
+            {
+              "id": "setting",
+              "label": "🌄 BỐI CẢNH",
+              "question": "Sự việc xảy ra ở đâu, khi nào?",
+              "hint": "Không gian, thời gian."
+            },
+            {
+              "id": "narrator",
+              "label": "🎙️ NGƯỜI KỂ",
+              "question": "Ai đang kể lại câu chuyện này?",
+              "hint": "Người xưng 'tôi' hoặc người kể giấu mặt."
+            }
+          ],
+          "cards": [
+            {
+              "id": "character1",
+              "target": "character",
+              "correct": true,
+              "slotText": "Người, con vật hoặc đồ vật được nhắc tới và thực hiện hành động.",
+              "feedback": "✓ Chính xác. Nhân vật là linh hồn của tác phẩm.",
+              "label": "👤 Nhân vật"
+            },
+            {
+              "id": "plot1",
+              "target": "plot",
+              "correct": true,
+              "slotText": "Chuỗi các sự việc, biến cố diễn ra trong truyện.",
+              "feedback": "✓ Đúng. Cốt truyện giúp câu chuyện phát triển và hấp dẫn.",
+              "label": "🎬 Cốt truyện"
+            },
+            {
+              "id": "setting1",
+              "target": "setting",
+              "correct": true,
+              "slotText": "Thời gian và không gian mà các sự việc diễn ra.",
+              "feedback": "✓ Đúng. Bối cảnh làm phông nền cho câu chuyện.",
+              "label": "🌄 Bối cảnh"
+            },
+            {
+              "id": "narrator1",
+              "target": "narrator",
+              "correct": true,
+              "slotText": "Nhân vật hoặc giọng điệu đứng ra kể lại các sự việc.",
+              "feedback": "✓ Chính xác. Người kể chuyện dẫn dắt chúng ta đi vào tác phẩm.",
+              "label": "🎙️ Người kể chuyện"
+            },
+            {
+              "id": "wrong1",
+              "target": null,
+              "correct": false,
+              "slotText": "Số lượng chữ trong một trang.",
+              "feedback": "△ Đây không phải là yếu tố cấu thành nên câu chuyện.",
+              "label": "△ Thông tin bên lề"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "teach_01",
+      "type": "teach",
+      "data": {
+        "title": "TÌM HIỂU NGƯỜI KỂ CHUYỆN",
+        "durationSeconds": 240,
+        "ui": {
+          "component": "vertical_map",
+          "interaction": "click_node",
+          "center": "NGÔI KỂ"
+        },
+        "prompt": "Một câu chuyện luôn có người kể. Vậy người kể ấy đứng ở đâu?",
+        "nodes": [
+          {
+            "id": "ngoi1",
+            "icon": "🙋‍♂️",
+            "title": "NGÔI THỨ NHẤT",
+            "short": "Xưng 'Tôi'",
+            "question": "Đặc điểm là gì?",
+            "example": "'Tôi đi học. Sáng nay mẹ nắm tay tôi dẫn đi trên con đường làng dài và hẹp.'",
+            "note": "Người kể trực tiếp xưng 'tôi', thường là nhân vật trong truyện. Giúp bộc lộ cảm xúc sâu sắc, chân thực nhưng tầm nhìn bị giới hạn."
+          },
+          {
+            "id": "ngoi3",
+            "icon": "👁️",
+            "title": "NGÔI THỨ BA",
+            "short": "Giấu mặt",
+            "question": "Đặc điểm là gì?",
+            "example": "'Thằng bé đi học. Sáng nay mẹ nó nắm tay nó dẫn đi trên con đường làng.'",
+            "note": "Người kể không xưng 'tôi' mà gọi tên các nhân vật. Người kể như có mặt ở khắp nơi, biết mọi thứ về nhân vật (người kể toàn tri)."
+          }
+        ],
+        "diagnosticQuestion": "Người kể chuyện ngôi thứ nhất và ngôi thứ ba khác nhau rõ nhất ở điểm nào?",
+        "importantNote": "Khi phân tích truyện, em luôn cần xác định ngôi kể đầu tiên, vì nó quyết định cách chúng ta tiếp nhận câu chuyện."
+      }
+    },
+    {
+      "id": "guidedPractice_01",
+      "type": "guidedPractice",
+      "data": {
+        "title": "Nhận diện ngôi kể chuyện",
+        "durationSeconds": 180,
+        "ui": {
+          "component": "builder",
+          "interaction": "tap_to_classify"
+        },
+        "prompt": "Đọc các đoạn trích sau và xác định ngôi kể.",
+        "items": [
+          {
+            "id": "item1",
+            "text": "Bởi tôi ăn uống điều độ và làm việc có chừng mực nên tôi chóng lớn lắm.",
+            "choices": [
+              "Ngôi thứ nhất",
+              "Ngôi thứ ba"
+            ],
+            "correct": "Ngôi thứ nhất",
+            "explanation": "Người kể tự xưng là 'tôi'."
+          },
+          {
+            "id": "item2",
+            "text": "Sơn khép nép tới gần chị, ngập ngừng không dám bước vào.",
+            "choices": [
+              "Ngôi thứ nhất",
+              "Ngôi thứ ba"
+            ],
+            "correct": "Ngôi thứ ba",
+            "explanation": "Người kể giấu mặt, gọi thẳng tên nhân vật 'Sơn', 'chị'."
+          },
+          {
+            "id": "item3",
+            "text": "Chúng tôi ngồi lặng im trên bãi cỏ, nhìn mặt trời lặn.",
+            "choices": [
+              "Ngôi thứ nhất",
+              "Ngôi thứ ba"
+            ],
+            "correct": "Ngôi thứ nhất",
+            "explanation": "Xưng 'chúng tôi' cũng thuộc nhóm ngôi thứ nhất số nhiều."
+          }
+        ],
+        "completion": {
+          "button": "Kiểm tra",
+          "feedback": {
+            "correct": "✓ Tốt! Em đã biết cách phân biệt ngôi kể qua đại từ nhân xưng.",
+            "partial": "△ Hãy chú ý xem có từ 'tôi', 'chúng tôi' hay người kể gọi thẳng tên nhân vật.",
+            "wrong": "△ Chú ý: Nếu người kể lộ diện xưng 'Tôi' là ngôi một, giấu mặt là ngôi ba."
+          }
+        }
+      }
+    },
+    {
+      "id": "miniChallenge_01",
+      "type": "miniChallenge",
+      "data": {
+        "title": "Vì sao phải tìm hiểu nhân vật?",
+        "durationSeconds": 150,
+        "ui": {
+          "layout": "single_choice"
+        },
+        "prompt": "Khi phân tích một nhân vật trong truyện, em không nên làm gì?",
+        "question": "Điều nào dưới đây là sai lầm khi đọc hiểu nhân vật?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Tìm kiếm các chi tiết miêu tả ngoại hình, lời nói, hành động",
+            "correct": false
+          },
+          {
+            "id": "b",
+            "text": "Chỉ đọc lướt qua để biết cốt truyện mà bỏ qua cảm xúc, suy nghĩ của nhân vật",
+            "correct": true
+          },
+          {
+            "id": "c",
+            "text": "Nhận xét về tính cách của nhân vật thông qua cách họ đối xử với người khác",
+            "correct": false
+          }
+        ],
+        "feedback": {
+          "correct": "✓ Đúng. Nhân vật là trung tâm của truyện, nếu bỏ qua nội tâm và tính cách thì em chưa thực sự hiểu câu chuyện.",
+          "a": "△ Đây là việc NÊN làm để hiểu nhân vật.",
+          "c": "△ Nhận xét tính cách qua hành động là cách phân tích rất chính xác."
+        }
+      }
+    },
+    {
+      "id": "reflection_01",
+      "type": "reflection",
+      "data": {
+        "title": "Làm thế nào để 'bóc tách' một câu chuyện?",
+        "durationSeconds": 150,
+        "ui": {
+          "component": "checklist_free_text"
+        },
+        "question": "Khi đọc một tác phẩm văn xuôi (truyện), em sẽ chú ý tìm kiếm những gì?",
+        "choices": [
+          {
+            "id": "plot",
+            "text": "🎬 Các sự kiện chính tạo nên cốt truyện"
+          },
+          {
+            "id": "character",
+            "text": "👤 Ngoại hình, hành động, nội tâm của nhân vật"
+          },
+          {
+            "id": "narrator",
+            "text": "🎙️ Ai là người kể chuyện (Ngôi thứ mấy)"
+          },
+          {
+            "id": "setting",
+            "text": "🌄 Hoàn cảnh, không gian, thời gian"
+          },
+          {
+            "id": "message",
+            "text": "💡 Thông điệp tác giả gửi gắm"
+          }
+        ],
+        "freeText": {
+          "label": "Em sẽ bắt đầu bằng việc...",
+          "placeholder": "Ví dụ: Em sẽ xác định ngôi kể trước, sau đó theo dõi chuỗi sự việc và chú ý đến nhân vật chính..."
+        },
+        "metacognition": "Đọc truyện không chỉ là xem 'kết cục ra sao', mà là quá trình thưởng thức cách tác giả xây dựng nhân vật và kể lại câu chuyện đó."
+      }
+    },
+    {
+      "id": "cheatSheet_01",
+      "type": "cheatSheet",
+      "data": {
+        "title": "GHI NHỚ: ĐỌC TRUYỆN CẦN CHÚ Ý ĐIỀU GÌ?",
+        "durationSeconds": 150,
+        "ui": {
+          "component": "card_list",
+          "actions": [
+            "save",
+            "download"
+          ]
+        },
+        "items": [
+          {
+            "order": 1,
+            "icon": "🎙️",
+            "title": "NGƯỜI KỂ CHUYỆN",
+            "question": "Ngôi thứ nhất (Tôi) hay ngôi thứ ba (giấu mặt)?"
+          },
+          {
+            "order": 2,
+            "icon": "🎬",
+            "title": "CỐT TRUYỆN",
+            "question": "Có những sự việc chính nào xảy ra? Sự việc nào quan trọng nhất?"
+          },
+          {
+            "order": 3,
+            "icon": "👤",
+            "title": "NHÂN VẬT",
+            "question": "Ngoại hình, lời nói, hành động và suy nghĩ của họ thể hiện tính cách gì?"
+          },
+          {
+            "order": 4,
+            "icon": "🌄",
+            "title": "BỐI CẢNH",
+            "question": "Truyện diễn ra ở đâu, vào lúc nào?"
+          },
+          {
+            "order": 5,
+            "icon": "💡",
+            "title": "CHỦ ĐỀ & THÔNG ĐIỆP",
+            "question": "Thông qua câu chuyện, tác giả muốn gửi gắm điều gì?"
+          }
+        ],
+        "keyMessage": "⭐ Nắm vững 5 yếu tố này, em có thể tự tin đọc hiểu bất kì tác phẩm truyện nào.",
+        "note": "Hãy gạch chân các chi tiết miêu tả nhân vật trong sách khi đọc để dễ dàng phân tích hơn.",
+        "practiceButton": {
+          "label": "🛠️ Thử phân tích một đoạn truyện",
+          "action": "open_mini_practice"
+        }
+      }
+    },
+    {
+      "id": "finalChallenge_01",
+      "type": "finalChallenge",
+      "data": {
+        "title": "THỬ THÁCH: BÓC TÁCH MỘT ĐOẠN TRUYỆN",
+        "durationSeconds": 240,
+        "ui": {
+          "component": "multi_stage_challenge",
+          "layout": "multi_stage"
+        },
+        "prompt": "Hãy đọc đoạn trích sau và thực hiện các nhiệm vụ.",
+        "stages": [
+          {
+            "key": "narrator",
+            "type": "single_choice",
+            "title": "🎙️ NGƯỜI KỂ CHUYỆN",
+            "question": "Đoạn trích dưới đây sử dụng ngôi kể thứ mấy?",
+            "text": "'Tôi đi dọc theo con đường làng quen thuộc. Gió chiều thổi nhẹ làm những ngọn cỏ ven đường rung rinh. Lòng tôi bỗng trào lên một niềm vui khó tả khi thấy bóng dáng thân quen của bà ngoại đang đứng đợi ở đầu ngõ.'",
+            "choices": [
+              {
+                "id": "ngoi1",
+                "text": "🙋‍♂️ Ngôi thứ nhất",
+                "correct": true
+              },
+              {
+                "id": "ngoi3",
+                "text": "👁️ Ngôi thứ ba",
+                "correct": false
+              }
+            ],
+            "feedback": {
+              "correct": "✓ Đúng. Đại từ xưng 'tôi' cho thấy đây là ngôi kể thứ nhất.",
+              "incorrect": "△ Hãy tìm xem người kể xưng hô như thế nào trong đoạn trích."
+            }
+          },
+          {
+            "key": "elements",
+            "type": "multi_select",
+            "title": "🔎 TÌM KIẾM CHI TIẾT",
+            "question": "Trong đoạn trích trên có những yếu tố nào xuất hiện?",
+            "minSelections": 2,
+            "maxSelections": 4,
+            "choices": [
+              {
+                "id": "setting",
+                "text": "🌄 Bối cảnh (con đường làng, buổi chiều)"
+              },
+              {
+                "id": "feeling",
+                "text": "❤️ Cảm xúc nội tâm của nhân vật (niềm vui khó tả)"
+              },
+              {
+                "id": "dialogue",
+                "text": "💬 Lời thoại trực tiếp giữa hai nhân vật"
+              },
+              {
+                "id": "character",
+                "text": "👤 Nhân vật khác xuất hiện (bà ngoại)"
+              }
+            ],
+            "correctValues": [
+              "setting",
+              "feeling",
+              "character"
+            ],
+            "feedback": {
+              "correct": "✓ Tốt. Trong đoạn này có bối cảnh, cảm xúc và nhân vật phụ, nhưng chưa có đoạn hội thoại nào trực tiếp cất lên.",
+              "incorrect": "△ Hãy đọc kĩ lại xem có nhân vật nào đang lên tiếng nói chuyện không nhé."
+            }
+          },
+          {
+            "key": "effect",
+            "type": "editor",
+            "title": "🎨 PHÂN TÍCH",
+            "question": "Việc tác giả chọn ngôi kể thứ nhất (xưng 'tôi') mang lại tác dụng gì cho đoạn trích này?",
+            "placeholder": "Ví dụ: Giúp bộc lộ rõ hơn cảm xúc của nhân vật...",
+            "minCharacters": 20,
+            "maxCharacters": 200,
+            "submit": {
+              "label": "✓ Hoàn thành"
+            }
+          },
+          {
+            "key": "summary",
+            "type": "analysis",
+            "title": "🧠 HỒ SƠ ĐỌC VĂN XUÔI",
+            "metrics": [
+              {
+                "id": "narrator",
+                "label": "Xác định ngôi kể",
+                "status": "detect"
+              },
+              {
+                "id": "elements",
+                "label": "Nhận diện yếu tố truyện",
+                "status": "detect"
+              },
+              {
+                "id": "effect",
+                "label": "Đánh giá tác dụng ngôi kể",
+                "status": "detect"
+              }
+            ],
+            "diagnosticQuestion": "Em đã cảm thấy tự tin hơn khi phân tích các yếu tố của một câu chuyện chưa?",
+            "feedbackRules": [
+              {
+                "when": "identified_narrator",
+                "feedback": "✓ Em đã xác định đúng ngôi kể chuyện – bước đi đầu tiên vô cùng quan trọng."
+              },
+              {
+                "when": "found_elements",
+                "feedback": "✓ Khả năng 'soi' chi tiết bối cảnh và cảm xúc của em rất tốt."
+              },
+              {
+                "when": "good_analysis",
+                "feedback": "✓ Em đã bắt đầu biết lý giải tại sao tác giả lại chọn cách kể chuyện như vậy. Rất đáng khen!"
+              }
+            ],
+            "scoreDimensions": [
+              "narrator",
+              "elements",
+              "effect"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

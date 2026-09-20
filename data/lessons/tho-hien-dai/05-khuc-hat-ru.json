@@ -1,0 +1,16 @@
+{
+    "id": "tho-hien-dai.05-khuc-hat-ru",
+    "title": "Khúc hát ru những em bé lớn trên lưng mẹ",
+    "module": "tho-hien-dai",
+    "steps": [
+        {
+            "id": "intro",
+            "type": "observe",
+            "data": {
+                "title": "Khúc hát ru những em bé lớn trên lưng mẹ",
+                "subtitle": "Nguyễn Khoa Điềm",
+                "content": "Nội dung bài học đang được cập nhật."
+            }
+        }
+    ]
+}

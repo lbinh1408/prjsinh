@@ -1,0 +1,1286 @@
+{
+  "id": "viet-doan-van-06",
+  "title": "Liên kết câu trong đoạn văn",
+  "type": "skill",
+  "version": "1.0.0",
+  "meta": {
+    "module": "viet-doan-van",
+    "lessonNumber": 6,
+    "durationMinutes": 30,
+    "difficulty": "beginner",
+    "skill": "lien-ket",
+    "description": "Học cách nhận biết và sử dụng các phép liên kết để các câu trong đoạn văn gắn kết, mạch lạc và thống nhất."
+  },
+  "learningGoals": [
+    "Nhận biết sự liên kết giữa các câu",
+    "Phát hiện chỗ đoạn văn bị đứt mạch",
+    "Nhận biết phép lặp",
+    "Nhận biết phép thế",
+    "Nhận biết phép nối",
+    "Nhận biết phép liên tưởng",
+    "Biết lựa chọn cách liên kết phù hợp",
+    "Biết tự sửa đoạn văn thiếu liên kết"
+  ],
+  "completion": {
+    "requiredSections": [
+      "story",
+      "observe",
+      "discover",
+      "teach",
+      "guided_practice",
+      "mini_challenge",
+      "reflection",
+      "cheat_sheet",
+      "final_challenge"
+    ],
+    "action": "completeLesson",
+    "message": "🎉 Em đã hoàn thành bài Liên kết câu trong đoạn văn!"
+  },
+  "steps": [
+    {
+      "id": "story_01",
+      "type": "story",
+      "data": {
+        "title": "Sao đoạn văn nghe kỳ vậy?",
+        "duration": "1 phút",
+        "ui": {
+          "layout": "connection_lab"
+        },
+        "content": {
+          "hook": "Các câu đều đúng. Nhưng khi ghép lại, đoạn văn lại nghe rất kỳ.",
+          "question": {
+            "text": "Em thấy đoạn văn này có gì đó... kỳ kỳ không?",
+            "options": [
+              {
+                "id": "normal",
+                "label": "Không có gì bất thường"
+              },
+              {
+                "id": "fragmented",
+                "label": "Các câu hơi rời rạc"
+              },
+              {
+                "id": "connection_problem",
+                "label": "Một số câu chưa nối được với nhau"
+              },
+              {
+                "id": "unknown",
+                "label": "Không hiểu vì sao"
+              }
+            ]
+          }
+        },
+        "visualReveal": {
+          "enabledAfterInteraction": true,
+          "diagram": [
+            "Câu 1 ────── ? ────── Câu 2",
+            "Câu 2 ────── ? ────── Câu 3",
+            "Câu 3 ────── ? ────── Câu 4"
+          ]
+        },
+        "reveal": {
+          "title": "💡 Một đoạn văn không chỉ cần những câu đúng",
+          "text": "Các câu còn phải có quan hệ với nhau. Khi các câu được liên kết tốt, người đọc sẽ dễ dàng theo dõi mạch ý của đoạn văn."
+        },
+        "transition": {
+          "text": "Vậy điều gì khiến các câu trong một đoạn văn trở nên liền mạch?",
+          "action": "Tìm hiểu"
+        },
+        "connectionData": {
+          "layoutDirection": "vertical",
+          "sentences": [
+            {
+              "id": "s1",
+              "text": "Em rất thích đọc sách."
+            },
+            {
+              "id": "s2",
+              "text": "Lan thường đọc sách mỗi tối."
+            },
+            {
+              "id": "s3",
+              "text": "Vì vậy, Minh có rất nhiều kiến thức."
+            },
+            {
+              "id": "s4",
+              "text": "Quyển sách giúp em hiểu thêm về cuộc sống."
+            }
+          ],
+          "links": [
+            {
+              "id": "l1",
+              "from": "s1",
+              "to": "s2",
+              "type": "unknown",
+              "status": "interactive",
+              "label": "?",
+              "interactiveConfig": {
+                "question": "Hai câu này có thật sự nối với nhau không?",
+                "options": [
+                  "Có",
+                  "Không"
+                ],
+                "correctAnswer": "Không",
+                "actionOnCorrect": "break"
+              }
+            },
+            {
+              "id": "l2",
+              "from": "s2",
+              "to": "s3",
+              "type": "unknown",
+              "status": "interactive",
+              "label": "?",
+              "interactiveConfig": {
+                "question": "Hai câu này có thật sự nối với nhau không?",
+                "options": [
+                  "Có",
+                  "Không"
+                ],
+                "correctAnswer": "Không",
+                "actionOnCorrect": "break"
+              }
+            },
+            {
+              "id": "l3",
+              "from": "s3",
+              "to": "s4",
+              "type": "unknown",
+              "status": "interactive",
+              "label": "?",
+              "interactiveConfig": {
+                "question": "Hai câu này có thật sự nối với nhau không?",
+                "options": [
+                  "Có",
+                  "Không"
+                ],
+                "correctAnswer": "Không",
+                "actionOnCorrect": "break"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "observe_01",
+      "type": "observe",
+      "data": {
+        "title": "Một đoạn bị đứt, một đoạn liền mạch",
+        "duration": "2 phút",
+        "ui": {
+          "layout": "connection_lab"
+        },
+        "content": {
+          "instruction": "Đọc hai đoạn và chạm vào những từ khiến em thấy các câu được nối với nhau.",
+          "paragraphs": [
+            {
+              "id": "A",
+              "label": "ĐOẠN A",
+              "status": "fragmented",
+              "sentences": [
+                {
+                  "id": "a1",
+                  "text": "Minh rất thích đọc sách."
+                },
+                {
+                  "id": "a2",
+                  "text": "Lan thường đọc sách mỗi tối."
+                },
+                {
+                  "id": "a3",
+                  "text": "Vì vậy, Minh hiểu thêm nhiều điều."
+                },
+                {
+                  "id": "a4",
+                  "text": "Những cuốn sách rất bổ ích."
+                }
+              ]
+            },
+            {
+              "id": "B",
+              "label": "ĐOẠN B",
+              "status": "connected",
+              "sentences": [
+                {
+                  "id": "b1",
+                  "text": "Minh rất thích đọc sách."
+                },
+                {
+                  "id": "b2",
+                  "text": "Bạn thường đọc sách mỗi tối."
+                },
+                {
+                  "id": "b3",
+                  "text": "Nhờ vậy, Minh hiểu thêm nhiều điều."
+                },
+                {
+                  "id": "b4",
+                  "text": "Những cuốn sách ấy còn giúp Minh mở rộng vốn từ."
+                }
+              ]
+            }
+          ]
+        },
+        "question": {
+          "text": "Điều gì khiến đoạn B có cảm giác liền mạch hơn?",
+          "options": [
+            "Các câu dài hơn",
+            "Các câu có sự liên kết với nhau",
+            "Đoạn B có nhiều từ hơn",
+            "Đoạn B có nhiều ý hơn"
+          ],
+          "correct": 1
+        },
+        "teacherNote": {
+          "text": "Chưa gọi tên phép lặp, phép thế, phép nối hay phép liên tưởng."
+        },
+        "connectionData": {
+          "A": {
+            "layoutDirection": "vertical",
+            "sentences": [
+              {
+                "id": "a1",
+                "text": "Minh rất thích đọc sách."
+              },
+              {
+                "id": "a2",
+                "text": "Lan thường đọc sách mỗi tối."
+              },
+              {
+                "id": "a3",
+                "text": "Vì vậy, Minh hiểu thêm nhiều điều."
+              },
+              {
+                "id": "a4",
+                "text": "Những cuốn sách rất bổ ích."
+              }
+            ],
+            "links": [
+              {
+                "id": "la1",
+                "from": "a1",
+                "to": "a2",
+                "type": "unknown",
+                "status": "broken",
+                "label": "?"
+              },
+              {
+                "id": "la2",
+                "from": "a2",
+                "to": "a3",
+                "type": "unknown",
+                "status": "broken",
+                "label": "?"
+              },
+              {
+                "id": "la3",
+                "from": "a3",
+                "to": "a4",
+                "type": "unknown",
+                "status": "broken",
+                "label": "?"
+              }
+            ]
+          },
+          "B": {
+            "layoutDirection": "vertical",
+            "sentences": [
+              {
+                "id": "b1",
+                "text": "Minh rất thích đọc sách."
+              },
+              {
+                "id": "b2",
+                "text": "Bạn thường đọc sách mỗi tối."
+              },
+              {
+                "id": "b3",
+                "text": "Nhờ vậy, Minh hiểu thêm nhiều điều."
+              },
+              {
+                "id": "b4",
+                "text": "Những cuốn sách ấy còn giúp Minh mở rộng vốn từ."
+              }
+            ],
+            "links": [
+              {
+                "id": "lb1",
+                "from": "b1",
+                "to": "b2",
+                "type": "substitution",
+                "status": "interactive",
+                "label": "Bạn",
+                "interactiveConfig": {
+                  "question": "“Bạn” đang thay thế cho từ nào?",
+                  "options": [
+                    "Minh",
+                    "Lan",
+                    "Sách"
+                  ],
+                  "correctAnswer": "Minh"
+                }
+              },
+              {
+                "id": "lb2",
+                "from": "b2",
+                "to": "b3",
+                "type": "connective",
+                "status": "interactive",
+                "label": "Nhờ vậy",
+                "interactiveConfig": {
+                  "question": "Từ ngữ này đang thể hiện quan hệ gì?",
+                  "options": [
+                    "Kết quả",
+                    "Nguyên nhân",
+                    "Tương phản"
+                  ],
+                  "correctAnswer": "Kết quả"
+                }
+              },
+              {
+                "id": "lb3",
+                "from": "b3",
+                "to": "b4",
+                "type": "association",
+                "status": "interactive",
+                "label": "Những cuốn sách ấy",
+                "interactiveConfig": {
+                  "question": "Cụm từ sau có quan hệ thế nào với cụm từ trước?",
+                  "options": [
+                    "Nhắc lại và thay thế bằng cách mở rộng",
+                    "Lặp lại hoàn toàn",
+                    "Không liên quan"
+                  ],
+                  "correctAnswer": "Nhắc lại và thay thế bằng cách mở rộng"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "discover_01",
+      "type": "discover",
+      "data": {
+        "title": "Các câu đang nối với nhau bằng cách nào?",
+        "duration": "3 phút",
+        "ui": {
+          "layout": "connection_lab"
+        },
+        "content": {
+          "instruction": "Quan sát câu sau và tìm xem nó đang nối với câu trước bằng cách nào."
+        },
+        "activities": [
+          {
+            "id": "discover-01",
+            "connectionData": {
+              "layoutDirection": "vertical",
+              "sentences": [
+                {
+                  "id": "d1",
+                  "text": "Lan rất yêu cây xanh."
+                },
+                {
+                  "id": "d2",
+                  "text": "Những loài cây ấy làm sân trường trở nên mát mẻ."
+                }
+              ],
+              "links": [
+                {
+                  "id": "l1",
+                  "from": "d1",
+                  "to": "d2",
+                  "status": "interactive",
+                  "label": "?",
+                  "interactiveConfig": {
+                    "question": "“Những loài cây ấy” đang liên kết với câu trước bằng cách nào?",
+                    "options": [
+                      "Phép lặp",
+                      "Phép thế",
+                      "Từ nối",
+                      "none"
+                    ],
+                    "correctAnswer": "Phép thế"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "id": "discover-02",
+            "connectionData": {
+              "layoutDirection": "vertical",
+              "sentences": [
+                {
+                  "id": "d1",
+                  "text": "Nam chăm chỉ đọc sách."
+                },
+                {
+                  "id": "d2",
+                  "text": "Vì vậy, vốn hiểu biết của bạn ngày càng rộng."
+                }
+              ],
+              "links": [
+                {
+                  "id": "l1",
+                  "from": "d1",
+                  "to": "d2",
+                  "status": "interactive",
+                  "label": "?",
+                  "interactiveConfig": {
+                    "question": "“Vì vậy” đang làm nhiệm vụ gì?",
+                    "options": [
+                      "Phép lặp",
+                      "Phép thế",
+                      "Từ nối",
+                      "Liên tưởng"
+                    ],
+                    "correctAnswer": "Từ nối"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "id": "discover-03",
+            "connectionData": {
+              "layoutDirection": "vertical",
+              "sentences": [
+                {
+                  "id": "d1",
+                  "text": "Mẹ rất yêu hoa."
+                },
+                {
+                  "id": "d2",
+                  "text": "Những bông hồng trước sân luôn được mẹ chăm sóc cẩn thận."
+                }
+              ],
+              "links": [
+                {
+                  "id": "l1",
+                  "from": "d1",
+                  "to": "d2",
+                  "status": "interactive",
+                  "label": "?",
+                  "interactiveConfig": {
+                    "question": "“Hoa” và “những bông hồng” có quan hệ như thế nào?",
+                    "options": [
+                      "Phép lặp",
+                      "Phép thế",
+                      "Từ nối",
+                      "Liên tưởng"
+                    ],
+                    "correctAnswer": "Liên tưởng"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "id": "discover-04",
+            "connectionData": {
+              "layoutDirection": "vertical",
+              "sentences": [
+                {
+                  "id": "d1",
+                  "text": "Mai rất thích sách."
+                },
+                {
+                  "id": "d2",
+                  "text": "Những cuốn sách giúp Mai mở rộng hiểu biết."
+                }
+              ],
+              "links": [
+                {
+                  "id": "l1",
+                  "from": "d1",
+                  "to": "d2",
+                  "status": "interactive",
+                  "label": "?",
+                  "interactiveConfig": {
+                    "question": "Từ “sách” được sử dụng lại trong câu sau. Đây là cách liên kết nào?",
+                    "options": [
+                      "Phép lặp",
+                      "Phép thế",
+                      "Từ nối",
+                      "Liên tưởng"
+                    ],
+                    "correctAnswer": "Phép lặp"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "reveal": {
+          "title": "💡 Em vừa phát hiện 4 cách nối câu",
+          "items": [
+            {
+              "icon": "🔁",
+              "label": "Lặp"
+            },
+            {
+              "icon": "🔄",
+              "label": "Thế"
+            },
+            {
+              "icon": "➡️",
+              "label": "Nối"
+            },
+            {
+              "icon": "🌱",
+              "label": "Liên tưởng"
+            }
+          ],
+          "text": "Điều quan trọng không phải chỉ nhớ tên. Hãy nhìn xem câu sau đang dựa vào câu trước bằng cách nào."
+        }
+      }
+    },
+    {
+      "id": "teach_01",
+      "type": "teach",
+      "data": {
+        "title": "Bộ công cụ nối câu",
+        "duration": "4 phút",
+        "ui": {
+          "layout": "connection_lab"
+        },
+        "content": {
+          "title": "🔗 CONNECTION MAP",
+          "methods": [
+            {
+              "id": "phep_lap",
+              "name": "Phép lặp",
+              "icon": "🔁",
+              "definition": "Lặp lại từ ngữ đã xuất hiện ở câu trước để tạo sự liên kết.",
+              "pattern": "Từ A → Từ A",
+              "example": {
+                "sentence1": "Mai rất thích sách.",
+                "sentence2": "Những cuốn sách ấy giúp Mai mở rộng hiểu biết."
+              },
+              "whenToUse": "Khi cần duy trì một từ ngữ hoặc ý quan trọng xuyên suốt đoạn văn."
+            },
+            {
+              "id": "phep_the",
+              "name": "Phép thế",
+              "icon": "🔄",
+              "definition": "Dùng từ ngữ khác để thay thế cho từ ngữ đã xuất hiện trước đó.",
+              "pattern": "A → từ thay thế A",
+              "example": {
+                "sentence1": "Mai có một chú mèo.",
+                "sentence2": "Nó thường nằm bên cửa sổ."
+              },
+              "whenToUse": "Khi muốn tránh lặp từ quá nhiều nhưng vẫn giữ được mối liên hệ."
+            },
+            {
+              "id": "phep_noi",
+              "name": "Phép nối",
+              "icon": "➡️",
+              "definition": "Sử dụng từ ngữ nối để thể hiện quan hệ giữa các câu hoặc các ý.",
+              "pattern": "Ý 1 → từ nối → Ý 2",
+              "example": {
+                "sentence1": "Mai chăm chỉ đọc sách.",
+                "sentence2": "Vì vậy, vốn hiểu biết của bạn ngày càng rộng."
+              },
+              "whenToUse": "Khi cần thể hiện rõ quan hệ nguyên nhân, kết quả, tương phản, bổ sung hoặc trình tự."
+            },
+            {
+              "id": "phep_lien_tuong",
+              "name": "Phép liên tưởng",
+              "icon": "🌱",
+              "definition": "Sử dụng các từ ngữ có quan hệ liên tưởng để tạo sự gắn kết về nội dung.",
+              "pattern": "A → từ ngữ có quan hệ liên tưởng với A",
+              "example": {
+                "sentence1": "Mẹ rất yêu hoa.",
+                "sentence2": "Những bông hồng trước sân luôn được mẹ chăm sóc cẩn thận."
+              },
+              "whenToUse": "Khi muốn mở rộng hoặc phát triển chủ đề bằng các từ ngữ cùng trường liên tưởng."
+            }
+          ],
+          "diagnosticQuestion": {
+            "title": "🧠 Câu hỏi quan trọng nhất",
+            "text": "Câu sau đang nối với câu trước bằng cách nào?",
+            "diagnosticData": {
+              "sentences": [
+                "Mai có một chú mèo.",
+                "Nó thường nằm bên cửa sổ."
+              ],
+              "options": [
+                "Phép lặp",
+                "Phép thế",
+                "Từ nối",
+                "Liên tưởng"
+              ],
+              "correctOption": "Phép thế",
+              "explanation": "“Nó” thay thế / quy chiếu về thông tin “chú mèo” đã xuất hiện trước đó.",
+              "followUp": {
+                "question": "Nếu bỏ đường nối này, điều gì xảy ra?",
+                "connectedText": "Mai có một chú mèo.\nNó thường nằm bên cửa sổ.",
+                "brokenText": "Mai có một chú mèo.\nCon chó thường nằm bên cửa sổ."
+              }
+            }
+          }
+        },
+        "connectionData": {
+          "layoutDirection": "vertical",
+          "sentences": [
+            {
+              "id": "t1",
+              "text": "LIÊN KẾT CÂU"
+            },
+            {
+              "id": "t2",
+              "text": ""
+            }
+          ],
+          "links": [
+            {
+              "id": "l1",
+              "from": "t1",
+              "to": "t2",
+              "type": "repetition",
+              "status": "default",
+              "label": "LẶP"
+            },
+            {
+              "id": "l2",
+              "from": "t1",
+              "to": "t2",
+              "type": "substitution",
+              "status": "default",
+              "label": "THẾ"
+            },
+            {
+              "id": "l3",
+              "from": "t1",
+              "to": "t2",
+              "type": "connective",
+              "status": "default",
+              "label": "NỐI"
+            },
+            {
+              "id": "l4",
+              "from": "t1",
+              "to": "t2",
+              "type": "association",
+              "status": "default",
+              "label": "LIÊN TƯỞNG"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "guided_practice_01",
+      "type": "guided_practice",
+      "data": {
+        "title": "Repair the Paragraph",
+        "duration": "6 phút",
+        "ui": {
+          "layout": "repair_lab"
+        },
+        "task": {
+          "title": "🛠️ Sửa đoạn văn bị đứt",
+          "instruction": "Đoạn văn này đang có vài “đường nối” bị đứt. Em hãy tìm và sửa chúng."
+        },
+        "connectionData": {
+          "layoutDirection": "vertical",
+          "sentences": [
+            {
+              "id": "s1",
+              "text": "Minh rất thích đọc sách."
+            },
+            {
+              "id": "s2",
+              "text": "Lan thường đọc sách mỗi tối."
+            },
+            {
+              "id": "s3",
+              "text": "Minh hiểu thêm nhiều điều."
+            },
+            {
+              "id": "s4",
+              "text": "Quyển sách giúp Minh mở rộng vốn từ."
+            }
+          ],
+          "links": [
+            {
+              "id": "l1",
+              "from": "s1",
+              "to": "s2",
+              "status": "weak",
+              "label": "Lan",
+              "interactiveConfig": {
+                "type": "edit_word",
+                "currentText": "Lan",
+                "options": [
+                  "Lặp: Lan",
+                  "Thế: Cậu",
+                  "Nối: Vì vậy",
+                  "Liên tưởng: Gia đình"
+                ],
+                "correctText": "Thế: Cậu",
+                "correctSentence": "Cậu thường đọc sách mỗi tối."
+              }
+            },
+            {
+              "id": "l2",
+              "from": "s2",
+              "to": "s3",
+              "status": "weak",
+              "label": "?",
+              "interactiveConfig": {
+                "type": "edit_word",
+                "currentText": "Vì vậy",
+                "options": [
+                  "Lặp: Cậu",
+                  "Thế: Em ấy",
+                  "Nối: Vì vậy",
+                  "Liên tưởng: bút"
+                ],
+                "correctText": "Nối: Vì vậy",
+                "correctSentence": "Vì vậy, Minh hiểu thêm nhiều điều."
+              }
+            },
+            {
+              "id": "l3",
+              "from": "s3",
+              "to": "s4",
+              "status": "weak",
+              "label": "Quyển sách",
+              "interactiveConfig": {
+                "type": "edit_word",
+                "currentText": "Quyển sách",
+                "options": [
+                  "Lặp: Những cuốn sách ấy",
+                  "Thế: Bạn ấy",
+                  "Nối: Vì vậy",
+                  "Liên tưởng: bút"
+                ],
+                "correctText": "Lặp: Những cuốn sách ấy",
+                "correctSentence": "Những cuốn sách ấy giúp Minh mở rộng vốn từ."
+              }
+            }
+          ]
+        },
+        "finalReflection": {
+          "question": "Bây giờ đoạn văn đã liền mạch hơn chưa? Vì sao?",
+          "options": [
+            "Vì các câu đều ngắn hơn.",
+            "Vì các câu có những đường nối với nhau.",
+            "Vì đoạn văn có nhiều từ hơn.",
+            "Vì câu cuối hay hơn."
+          ],
+          "correct": "Vì các câu có những đường nối với nhau."
+        }
+      }
+    },
+    {
+      "id": "mini_challenge_01",
+      "type": "miniChallenge",
+      "data": {
+        "title": "Cứu đoạn văn",
+        "duration": "5 phút",
+        "ui": {
+          "layout": "repair_studio"
+        },
+        "task": {
+          "prompt": "Hãy chỉnh sửa đoạn văn để các câu liên kết với nhau tốt hơn."
+        },
+        "studentActions": {
+          "can": [
+            "edit_sentence",
+            "add_connection_word",
+            "replace_word",
+            "reorder_sentence"
+          ]
+        },
+        "submission": {
+          "button": "🚀 Nộp bài",
+          "acceptedTexts": [
+            "Mùa hè là mùa em yêu thích nhất.",
+            "Trời rất nóng, vì vậy em thường đi bơi.",
+            "Trời rất nóng nên em thường đi bơi.",
+            "Ở bể bơi có rất nhiều người.",
+            "Bể bơi có rất nhiều người.",
+            "Em cảm thấy rất vui khi được bơi.",
+            "Nhờ đó, em cảm thấy rất vui.",
+            "Em cảm thấy rất vui."
+          ]
+        },
+        "aiFeedback": {
+          "title": "🔗 ĐỘ LIÊN KẾT",
+          "evaluate": [
+            "topic_consistency",
+            "sentence_connection",
+            "repetition",
+            "replacement",
+            "connectors",
+            "association",
+            "logical_flow"
+          ],
+          "display": {
+            "showStrengths": true,
+            "showWeaknesses": true,
+            "showSuggestions": true,
+            "showConnectionMap": true
+          },
+          "example": {
+            "strengths": [
+              "Các câu vẫn tập trung vào chủ đề mùa hè.",
+              "Có sử dụng phép lặp."
+            ],
+            "weaknesses": [
+              "Quan hệ giữa câu 3 và câu 4 chưa rõ."
+            ],
+            "suggestion": "Hãy thử dùng một từ ngữ nối để thể hiện quan hệ giữa việc đi bơi và bể bơi."
+          }
+        },
+        "connectionData": {
+          "layoutDirection": "vertical",
+          "sentences": [
+            {
+              "id": "s1",
+              "text": "Mùa hè là mùa em yêu thích nhất."
+            },
+            {
+              "id": "s2",
+              "text": "Trời rất nóng."
+            },
+            {
+              "id": "s3",
+              "text": "Em thường đi bơi."
+            },
+            {
+              "id": "s4",
+              "text": "Bể bơi có nhiều người."
+            },
+            {
+              "id": "s5",
+              "text": "Em cảm thấy rất vui."
+            }
+          ],
+          "links": [
+            {
+              "id": "l1",
+              "from": "s1",
+              "to": "s2",
+              "status": "weak",
+              "interactiveConfig": {
+                "type": "add_link",
+                "options": [
+                  "vì vậy",
+                  "tuy nhiên",
+                  "nhờ đó",
+                  "ngoài ra"
+                ]
+              }
+            },
+            {
+              "id": "l2",
+              "from": "s2",
+              "to": "s3",
+              "status": "weak",
+              "interactiveConfig": {
+                "type": "add_link",
+                "options": [
+                  "vì vậy",
+                  "tuy nhiên",
+                  "nhờ đó",
+                  "ngoài ra"
+                ]
+              }
+            },
+            {
+              "id": "l3",
+              "from": "s3",
+              "to": "s4",
+              "status": "weak",
+              "interactiveConfig": {
+                "type": "add_link",
+                "options": [
+                  "vì vậy",
+                  "tuy nhiên",
+                  "nhờ đó",
+                  "ngoài ra"
+                ]
+              }
+            },
+            {
+              "id": "l4",
+              "from": "s4",
+              "to": "s5",
+              "status": "weak",
+              "interactiveConfig": {
+                "type": "add_link",
+                "options": [
+                  "vì vậy",
+                  "tuy nhiên",
+                  "nhờ đó",
+                  "ngoài ra"
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "reflection_01",
+      "type": "reflection",
+      "data": {
+        "title": "Đoạn văn bị đứt ở đâu?",
+        "duration": "2 phút",
+        "ui": {
+          "layout": "reflection_card",
+          "showScore": false,
+          "showCorrectAnswer": false
+        },
+        "questions": [
+          {
+            "id": "reflection-01",
+            "type": "multi_select",
+            "question": "Khi đọc một đoạn văn, điều gì khiến em cảm thấy các câu chưa liên kết?",
+            "options": [
+              {
+                "id": "unrelated",
+                "label": "Câu sau không liên quan câu trước"
+              },
+              {
+                "id": "repetition",
+                "label": "Từ ngữ bị lặp quá nhiều"
+              },
+              {
+                "id": "missing_connector",
+                "label": "Thiếu từ nối"
+              },
+              {
+                "id": "unclear_reference",
+                "label": "Không biết câu sau đang nói về điều gì"
+              }
+            ]
+          },
+          {
+            "id": "reflection-02",
+            "type": "free_text",
+            "question": "Nếu đoạn văn của em bị rời rạc, em sẽ kiểm tra điều gì trước?",
+            "placeholder": "Em sẽ kiểm tra..."
+          }
+        ],
+        "metacognition": {
+          "enabled": true,
+          "feedback": {
+            "title": "🧠 Người viết biết tự kiểm tra",
+            "text": "Khi đoạn văn nghe “kỳ kỳ”, em sẽ: <br>① 🔗 Kiểm tra câu sau có liên quan câu trước không.<br> ② 🔍 Kiểm tra các từ ngữ đang được nhắc lại / thay thế.<br>③ ➡️ Kiểm tra quan hệ giữa các ý.<br> ④ 🌱 Kiểm tra xem các câu có cùng hướng về chủ đề không. "
+          }
+        },
+        "completion": {
+          "button": "✓ Hoàn thành"
+        }
+      }
+    },
+    {
+      "id": "cheat_sheet_01",
+      "type": "cheatSheet",
+      "data": {
+        "title": "🔗 Bộ công cụ nối câu",
+        "duration": "1 phút",
+        "ui": {
+          "layout": "connection_card",
+          "interactive": true,
+          "clickToExpand": true
+        },
+        "methods": [
+          {
+            "id": "repeat",
+            "icon": "🔁",
+            "name": "LẶP",
+            "shortRule": "Lặp lại từ ngữ quan trọng.",
+            "example": "Sách → Những cuốn sách"
+          },
+          {
+            "id": "replace",
+            "icon": "🔄",
+            "name": "THẾ",
+            "shortRule": "Dùng từ khác thay thế.",
+            "example": "Minh → Bạn → Cậu ấy"
+          },
+          {
+            "id": "connect",
+            "icon": "➡️",
+            "name": "NỐI",
+            "shortRule": "Dùng từ ngữ thể hiện quan hệ.",
+            "example": "Vì vậy → kết quả"
+          },
+          {
+            "id": "association",
+            "icon": "🌱",
+            "name": "LIÊN TƯỞNG",
+            "shortRule": "Dùng từ ngữ có quan hệ liên tưởng.",
+            "example": "Hoa → hoa hồng → cánh hoa"
+          }
+        ],
+        "diagnostic": {
+          "icon": "⭐",
+          "title": "Câu hỏi vàng",
+          "text": "Câu sau đang nối với câu trước bằng cách nào?"
+        },
+        "testQuestion": {
+          "text": "Mai rất thích đọc sách.<br>Những cuốn sách ấy giúp Mai mở rộng hiểu biết.<br><br>Câu sau đang liên kết với câu trước bằng cách nào?",
+          "options": [
+            {
+              "id": "repeat",
+              "label": "🔁 Lặp"
+            },
+            {
+              "id": "replace",
+              "label": "🔄 Thế"
+            },
+            {
+              "id": "connect",
+              "label": "➡️ Nối"
+            },
+            {
+              "id": "association",
+              "label": "🌱 Liên tưởng"
+            }
+          ],
+          "correct": "repeat"
+        },
+        "takeaway": {
+          "title": "🔗 Muốn đoạn văn liền mạch",
+          "steps": [
+            "Kiểm tra mạch ý",
+            "Tìm quan hệ giữa các câu",
+            "Chọn cách liên kết phù hợp",
+            "Đọc lại toàn đoạn"
+          ]
+        },
+        "actions": [
+          {
+            "id": "save",
+            "label": "🔖 Lưu"
+          },
+          {
+            "id": "download",
+            "label": "⬇️ Tải"
+          }
+        ]
+      }
+    },
+    {
+      "id": "final_challenge_01",
+      "type": "final_challenge",
+      "data": {
+        "title": "🏆 Paragraph Repair Boss",
+        "duration": "10 phút",
+        "ui": {
+          "layout": "connection_boss",
+          "showHints": false,
+          "showModelAnswer": false,
+          "showProgress": true
+        },
+        "intro": {
+          "title": "🏆 FINAL BOSS",
+          "subtitle": "Không còn gợi ý. Hãy tìm chỗ bị đứt, sửa và giải thích cách em đã liên kết các câu.",
+          "action": {
+            "label": "🚀 Bắt đầu"
+          }
+        },
+        "task": {
+          "title": "🔗 Cứu đoạn văn",
+          "instruction": "Đoạn văn dưới đây có một số chỗ liên kết chưa tốt. Hãy phát hiện và sửa lại.",
+          "paragraph": {
+            "sentences": [
+              {
+                "id": "s1",
+                "text": "Đọc sách mang lại nhiều lợi ích."
+              },
+              {
+                "id": "s2",
+                "text": "Lan đọc sách mỗi ngày."
+              },
+              {
+                "id": "s3",
+                "text": "Vì vậy, những cuốn sách rất bổ ích."
+              },
+              {
+                "id": "s4",
+                "text": "Minh cũng thích đọc sách."
+              },
+              {
+                "id": "s5",
+                "text": "Những điều này làm em hiểu hơn về cuộc sống."
+              }
+            ]
+          }
+        },
+        "stage1": {
+          "id": "detect",
+          "title": "🔍 TẦNG 1 — PHÁT HIỆN",
+          "question": "Hãy tìm những chỗ đoạn văn chưa liên kết tốt.",
+          "interaction": {
+            "type": "sentence_select",
+            "allowMultiple": true
+          }
+        },
+        "stage2": {
+          "id": "repair",
+          "title": "🛠️ TẦNG 2 — SỬA",
+          "instruction": "Chỉnh sửa những câu khiến mạch văn bị đứt.",
+          "workspace": {
+            "type": "paragraph_editor",
+            "features": [
+              "edit_sentence",
+              "replace_word",
+              "add_connector",
+              "reorder_sentence"
+            ]
+          }
+        },
+        "stage3": {
+          "id": "explain",
+          "title": "🧠 TẦNG 3 — GIẢI THÍCH",
+          "question": "Em đã dùng những cách nào để liên kết các câu?",
+          "options": [
+            {
+              "id": "repeat",
+              "label": "☐ Phép lặp"
+            },
+            {
+              "id": "replace",
+              "label": "☐ Phép thế"
+            },
+            {
+              "id": "connect",
+              "label": "☐ Phép nối"
+            },
+            {
+              "id": "association",
+              "label": "☐ Phép liên tưởng"
+            }
+          ],
+          "allowMultiple": true
+        },
+        "stage4": {
+          "id": "ai_analysis",
+          "title": "🤖 TẦNG 4 — AI PHÂN TÍCH",
+          "analysis": {
+            "detectedMethods": [
+              "repeat",
+              "replace",
+              "connect",
+              "association"
+            ],
+            "criteria": [
+              "topic_consistency",
+              "sentence_connection",
+              "reference_clarity",
+              "connector_usage",
+              "logical_flow",
+              "overall_cohesion"
+            ]
+          },
+          "display": {
+            "connectionProfile": true,
+            "sentenceHighlights": true,
+            "connectionLines": true,
+            "strengths": true,
+            "improvements": true,
+            "suggestions": true
+          },
+          "exampleResult": {
+            "title": "🔗 HỒ SƠ LIÊN KẾT",
+            "methods": [
+              {
+                "name": "Phép lặp",
+                "status": "good"
+              },
+              {
+                "name": "Phép thế",
+                "status": "good"
+              },
+              {
+                "name": "Phép nối",
+                "status": "good"
+              },
+              {
+                "name": "Phép liên tưởng",
+                "status": "developing"
+              }
+            ],
+            "score": {
+              "value": 82,
+              "max": 100
+            },
+            "strengths": [
+              "Chủ đề được duy trì xuyên suốt.",
+              "Các câu đã có nhiều dấu hiệu liên kết."
+            ],
+            "improvements": [
+              "Một số đại từ hoặc từ thay thế chưa có đối tượng tham chiếu thật rõ."
+            ],
+            "suggestion": "Hãy kiểm tra xem từ “những điều này” đang thay thế cho nội dung nào.",
+            "linkMap": [
+              {
+                "from": "Câu 1",
+                "to": "Câu 2",
+                "method": "Phép lặp",
+                "icon": "🔁",
+                "status": "good"
+              },
+              {
+                "from": "Câu 2",
+                "to": "Câu 3",
+                "method": "Phép nối",
+                "icon": "➡️",
+                "status": "good"
+              },
+              {
+                "from": "Câu 3",
+                "to": "Câu 4",
+                "method": "Chưa rõ",
+                "icon": "❓",
+                "status": "bad"
+              },
+              {
+                "from": "Câu 4",
+                "to": "Câu 5",
+                "method": "Phép thế",
+                "icon": "🔄",
+                "status": "neutral"
+              }
+            ]
+          }
+        },
+        "scorecard": {
+          "title": "🏆 HỒ SƠ NGƯỜI SỬA ĐOẠN VĂN",
+          "criteria": [
+            {
+              "id": "detect",
+              "label": "🔍 Phát hiện lỗi liên kết"
+            },
+            {
+              "id": "repair",
+              "label": "🛠️ Sửa đoạn văn"
+            },
+            {
+              "id": "identify_method",
+              "label": "🧠 Nhận diện phép liên kết"
+            },
+            {
+              "id": "cohesion",
+              "label": "🔗 Tạo mạch văn liền mạch"
+            }
+          ]
+        },
+        "completion": {
+          "title": "🎉 Hoàn thành Final Boss",
+          "message": "Em không chỉ biết tên các phép liên kết. Em đã biết phát hiện, sửa và kiểm tra sự liên kết giữa các câu trong đoạn văn."
+        }
+      }
+    }
+  ]
+}

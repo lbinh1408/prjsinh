@@ -1,0 +1,229 @@
+{
+  "id": "nghia-tu.04-tu-nhieu-nghia",
+  "title": "Từ nhiều nghĩa",
+  "version": "3.0",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "content": "Bé bị đau <b>chân</b>.<br>Chúng tôi cắm trại dưới <b>chân</b> núi.<br>Chiếc bàn bị gãy một <b>chân</b>.",
+        "guide": [
+          "Từ 'chân' xuất hiện nhiều lần.",
+          "Các nghĩa của từ 'chân' trong ba câu có liên hệ với nhau không?"
+        ],
+        "hint": "Một từ có thể mang một nghĩa gốc và một hoặc một số nghĩa chuyển.",
+        "title": "Quan sát",
+        "instruction": "Đọc các câu sau.",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "1. Có từ chỉ có một nghĩa gốc, không có nghĩa chuyển -> không phải từ đa nghĩa",
+            "icon": "📖",
+            "active": true,
+            "content": {
+              "items": [
+                {
+                  "type": "common",
+                  "label": "Đơn nghĩa",
+                  "definition": "Chỉ có nghĩa gốc",
+                  "examples": [
+                    "Xe máy, oxi, cầu vồng, ..."
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "2. Có từ có nhiều nghĩa gồm nghĩa gốc và ít nhất một nghĩa chuyển -> từ đa nghĩa",
+            "icon": "🔗",
+            "active": false,
+            "content": {
+              "items": [
+                {
+                  "type": "common",
+                  "label": "Từ nhiều nghĩa:",
+                  "definition": "Có cả nghĩa gốc và nghĩa chuyển ",
+                  "examples": [
+                    "chân (người/ động vật)-> chân núi, chân bàn<br>Miệng: miệng người → miệng giếng, miệng chai"
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Từ nhiều nghĩa là gì?",
+        "instruction": "Từ nhiều nghĩa là từ có một nghĩa gốc và một hay một số nghĩa chuyển.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "identify",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trong câu 'Bác sĩ đang khám <b>mắt</b> cho bệnh nhân' và 'Quả dứa có nhiều <b>mắt</b>', từ 'mắt' là:",
+        "options": [
+          "Từ đồng nghĩa",
+          "Từ nhiều nghĩa",
+          "Từ trái nghĩa",
+          "Từ đồng âm"
+        ],
+        "answer": "Từ nhiều nghĩa",
+        "title": "Nhận biết",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Vì sao từ 'chân' trong 'chân người' và 'chân núi' lại được coi là từ nhiều nghĩa?",
+        "sampleAnswer": [
+          "Vì chúng đều chỉ vị trí dưới cùng",
+          "Vì hai từ này có thể đổi chỗ cho nhau ",
+          "Vì hai nghĩa này có mối liên hệ với nhau, 'chân núi' được chuyển nghĩa từ nghĩa gốc là 'chân người'."
+        ],
+        "title": "Thông hiểu",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "highlight",
+      "data": {
+        "content": "[[Con]] [[đường]] [[đất]] [[đỏ]] [[chạy]] [[quanh]] [[đỉnh]] [[đồi]].",
+        "answer": [
+          "chạy"
+        ],
+        "title": "Tô sáng",
+        "instruction": "Hãy chọn để tô sáng từ nhiều nghĩa trong câu sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "reflection",
+      "data": {
+        "question": "Hãy viết một câu sử dụng từ 'đầu' theo nghĩa chuyển.",
+        "sampleAnswer": "Đầu làng có một cây đa cổ thụ.",
+        "title": "Vận dụng",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Dòng nào dưới đây chỉ gồm các từ nhiều nghĩa?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "bàn, ghế, sách, vở"
+          },
+          {
+            "id": "B",
+            "text": "chạy, đi, đứng, ngồi"
+          },
+          {
+            "id": "C",
+            "text": "mắt, chân, đầu, tay"
+          },
+          {
+            "id": "D",
+            "text": "chó, mèo, lợn, gà"
+          }
+        ],
+        "answer": "C",
+        "title": "Lựa chọn",
+        "score": 1
+      }
+    },
+    {
+      "id": "step08",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Em bé có cái mũi rất xinh",
+          "Mũi thuyền rẽ sóng",
+          "Mẹ đang canh từng mũi kim để sửa lại cái áo cho em.",
+          "Con tàu đã tới mũi Cà Mau."
+        ],
+        "right": [
+          "Cơ quan dùng để thở và ngửi của người hoặc động vật (Nghĩa gốc)",
+          "Phần đầu nhọn của chiếc thuyền (Nghĩa chuyển)",
+          "Mẹ đang canh từng mũi kim để sửa lại cái áo cho em. (Nghĩa chuyển)",
+          "Phần đất nhô ra biển. (Nghĩa chuyển)"
+        ],
+        "answer": {
+          "Em bé có cái mũi rất xinh": "Cơ quan dùng để thở và ngửi của người hoặc động vật (Nghĩa gốc)",
+          "Mũi thuyền rẽ sóng": "Phần đầu nhọn của chiếc thuyền (Nghĩa chuyển)",
+          "Mẹ đang canh từng mũi kim để sửa lại cái áo cho em.": "Đầu nhọn của cây kim (Nghĩa chuyển)",
+          "Con tàu đã tới mũi Cà Mau.": "Phần đất nhô ra biển. (Nghĩa chuyển)"
+        },
+        "title": "Nối từ",
+        "instruction": "Ghép cụm từ với nghĩa của từ 'ngọt' tương ứng.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step09",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "Mọi người đang <b>chạy</b> marathon.",
+          "Đồng hồ này <b>chạy</b> rất chính xác.",
+          "Chiếc xe máy <b>chạy</b> bon bon trên đường.",
+          "Bệnh nhân đang <b>chạy</b> chữa khắp nơi."
+        ],
+        "targets": [
+          "Từ 'chạy' mang nghĩa gốc",
+          "Từ 'chạy' mang nghĩa chuyển"
+        ],
+        "answer": {
+          "Mọi người đang <b>chạy</b> marathon.": "Từ 'chạy' mang nghĩa gốc",
+          "Đồng hồ này <b>chạy</b> rất chính xác.": "Từ 'chạy' mang nghĩa chuyển",
+          "Chiếc xe máy <b>chạy</b> bon bon trên đường.": "Từ 'chạy' mang nghĩa chuyển",
+          "Bệnh nhân đang <b>chạy</b> chữa khắp nơi.": "Từ 'chạy' mang nghĩa chuyển"
+        },
+        "title": "Kéo và thả",
+        "instruction": "Hãy kéo và thả các câu vào đúng nhóm.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step10",
+      "type": "flashcard",
+      "data": {
+        "front": "Từ nhiều nghĩa",
+        "back": "Từ nhiều nghĩa là từ có một nghĩa gốc và một hay một số nghĩa chuyển. Các nghĩa của từ bao giờ cũng có mối liên hệ với nhau.",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "nghia-tu",
+    "difficulty": "reference",
+    "xp": 100,
+    "stars": 3,
+    "description": "Nhận biết từ nhiều nghĩa và phân biệt các nghĩa khác nhau của cùng một từ.",
+    "prerequisite": "nghia-tu.03-nghia-chuyen",
+    "unlock": null,
+    "reviewMode": "instant",
+    "durationMinutes": 15
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "id": "viet-doan-van.01-phan-tich-de-va-tim-y",
+  "title": "Phân tích đề và Tìm ý",
+  "version": "1.0",
+  "enabled": true,
+  "steps": [
+    {
+      "id": "step01",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Xác định Yêu cầu",
+            "icon": "🎯",
+            "active": true,
+            "content": {
+              "text": "Đề yêu cầu viết kiểu đoạn văn gì? (Tự sự, miêu tả hay nghị luận?). Dung lượng bao nhiêu chữ/dòng?",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Gạch chân Từ khóa",
+            "icon": "🖍️",
+            "active": false,
+            "content": {
+              "text": "Tìm ngay những từ khoá trọng tâm trong đề bài. Từ khóa chính là chiếc 'la bàn' giúp bạn không bao giờ đi chệch hướng.",
+              "examples": []
+            }
+          }
+        ],
+        "title": "Bước 1: Phân tích đề",
+        "instruction": "Nhiều bạn vừa đọc đề xong đã cầm bút viết ngay dẫn đến lạc đề. Hãy dành ra 2 phút để:",
+        "score": 1
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Đặt câu hỏi",
+            "icon": "❓",
+            "active": true,
+            "content": {
+              "text": "Tự đặt các câu hỏi xung quanh từ khóa: Cái gì? Ai? Như thế nào? Vì sao? Bài học là gì?",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Ghi chép nhanh (Nháp)",
+            "icon": "📝",
+            "active": false,
+            "content": {
+              "text": "Ghi vắn tắt TẤT CẢ những ý nảy ra trong đầu ra giấy nháp. Lúc này không cần quan tâm đúng sai, câu cú thế nào, có ý nào cứ ghi ra hết.",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-3",
+            "title": "Chọn ý phù hợp",
+            "icon": "✂️",
+            "active": false,
+            "content": {
+              "text": "Nhìn lại danh sách vừa nháp, gạch bỏ những ý trùng lặp, ý thừa, ý đi xa khỏi đề bài. Giữ lại những ý tinh túy và sát sườn nhất.",
+              "examples": []
+            }
+          }
+        ],
+        "title": "Bước 2: Tìm ý (Brainstorming)",
+        "instruction": "Khi đã hiểu đề, đừng vội viết. Hãy để não bộ 'nhảy múa' tạo ra ý tưởng:",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "observe",
+      "data": {
+        "content": "<b>Đề bài:</b> Hãy viết đoạn văn (khoảng 10-12 câu) kể về một người em yêu quý.",
+        "guide": [
+          "Phân tích đề: Kiểu bài gì? Chủ đề là gì?",
+          "Tìm ý: Cần trả lời những câu hỏi nào?"
+        ],
+        "hint": "- Phân tích: Đoạn văn Tự sự (kể). Chủ đề: 'người em yêu quý'.\n- Tìm ý:\n+ Người đó là ai? (Bà nội).\n+ Vì sao em yêu quý? (Bà hiền từ, hay nấu ăn ngon, luôn chiều chuộng).\n+ Kỷ niệm nào đáng nhớ nhất? (Hôm bị ốm, bà thức cả đêm quạt cho).\n+ Bài học/Tình cảm rút ra? (Biết ơn, hứa sẽ ngoan ngoãn).",
+        "title": "Ví dụ thực tế",
+        "instruction": "Cùng xem cách phân tích và tìm ý cho một đề bài cụ thể:",
+        "score": 0
+      }
+    },
+    {
+      "id": "step04",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Với đề bài: 'Viết đoạn văn (15-20 câu) trình bày suy nghĩ của em về tầm quan trọng của việc đọc sách', từ khóa nào KHÔNG ĐÚNG trọng tâm?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Suy nghĩ (Nghị luận)"
+          },
+          {
+            "id": "B",
+            "text": "Viết đoạn văn (15-20 câu)"
+          },
+          {
+            "id": "C",
+            "text": "Tầm quan trọng của việc đọc sách"
+          },
+          {
+            "id": "D",
+            "text": "Kể lại một cuốn sách em yêu thích"
+          }
+        ],
+        "answer": "D",
+        "title": "Thực hành Phân tích đề",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Sau khi brainstorm tìm ý cho đề 'Tầm quan trọng của việc đọc sách', ý nào sau đây NÊN GẠCH BỎ vì không phù hợp/lạc đề?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Sách cung cấp tri thức khổng lồ về mọi lĩnh vực."
+          },
+          {
+            "id": "B",
+            "text": "Sách giúp bồi dưỡng tâm hồn, dạy ta cách làm người."
+          },
+          {
+            "id": "C",
+            "text": "Ngày nay có rất nhiều trang web chiếu phim miễn phí chất lượng cao để giải trí."
+          },
+          {
+            "id": "D",
+            "text": "Đọc sách giúp rèn luyện khả năng tư duy và ngôn ngữ."
+          }
+        ],
+        "answer": "C",
+        "title": "Thực hành Chọn ý",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "flashcard",
+      "data": {
+        "front": "2 việc sống còn TRƯỚC KHI viết?",
+        "back": "1. Phân tích đề (Yêu cầu, Từ khóa)\n2. Tìm ý (Nháp câu hỏi, Chọn ý sát nhất)",
+        "completedWhen": "flipped",
+        "title": "Bí kíp bỏ túi",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "viet-doan-van",
+    "difficulty": 1,
+    "xp": 60,
+    "stars": 3,
+    "description": "Bước đệm vững chắc nhất trước khi đặt bút viết: Hiểu đúng đề và khơi nguồn ý tưởng dồi dào.",
+    "durationMinutes": 20
+  }
+}

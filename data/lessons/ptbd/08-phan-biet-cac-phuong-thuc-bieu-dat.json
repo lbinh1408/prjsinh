@@ -1,0 +1,376 @@
+{
+  "id": "ptbd.08-phan-biet",
+  "title": "Phân biệt",
+  "version": "1.0",
+  "enabled": true,
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "format": "essay",
+        "content": "Sáng thứ Hai, tiếng trống trường vang lên báo hiệu giờ chào cờ. Sân trường ngập nắng, những hàng phượng xanh rì tỏa bóng mát. Nhìn lá cờ đỏ tung bay trong gió, em cảm thấy vô cùng tự hào về mái trường của mình. Sau buổi lễ, cô giáo giới thiệu thư viện mới với hơn ba nghìn đầu sách phục vụ việc học tập. Cô cũng nhắc nhở học sinh cần giữ gìn sách và tích cực đọc sách mỗi ngày. Cuối buổi, nhà trường thông báo lịch tổ chức Ngày hội đọc sách vào tuần tới.",
+        "guide": [
+          "Phương thức tự sự",
+          "Phương thức miêu tả",
+          "Phương thức biểu cảm",
+          "Phương thức thuyết minh",
+          "Phương thức nghị luận",
+          "Phương thức hành chính – công vụ"
+        ],
+        "hint": "Câu 1: Tự sự (kể sự việc). Câu 2: Miêu tả (tả khung cảnh). Câu 3: Biểu cảm (cảm xúc). Câu 4: Thuyết minh (giới thiệu sách). Câu 5: Nghị luận (quan điểm). Câu 6: Hành chính – công vụ (thông báo).",
+        "title": "Quan sát",
+        "instruction": "Hãy đọc văn bản sau (Chủ đề: Một ngày ở trường):",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trong đoạn văn trên xuất hiện những phương thức biểu đạt nào?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Chỉ có tự sự"
+          },
+          {
+            "id": "B",
+            "text": "Tự sự và miêu tả"
+          },
+          {
+            "id": "C",
+            "text": "Tự sự, miêu tả, biểu cảm, thuyết minh, nghị luận, hành chính"
+          },
+          {
+            "id": "D",
+            "text": "Chỉ có nghị luận"
+          }
+        ],
+        "answer": "C",
+        "title": "Nhận xét",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Tiếng trống vang lên...",
+          "Sân trường ngập nắng...",
+          "Em cảm thấy vô cùng tự hào...",
+          "Thư viện có hơn ba nghìn đầu sách...",
+          "Cần giữ gìn sách...",
+          "Nhà trường thông báo lịch tổ chức..."
+        ],
+        "right": [
+          "Tự sự",
+          "Miêu tả",
+          "Biểu cảm",
+          "Thuyết minh",
+          "Nghị luận",
+          "Hành chính – công vụ"
+        ],
+        "answer": {
+          "Tiếng trống vang lên...": "Tự sự",
+          "Sân trường ngập nắng...": "Miêu tả",
+          "Em cảm thấy vô cùng tự hào...": "Biểu cảm",
+          "Thư viện có hơn ba nghìn đầu sách...": "Thuyết minh",
+          "Cần giữ gìn sách...": "Nghị luận",
+          "Nhà trường thông báo lịch tổ chức...": "Hành chính – công vụ"
+        },
+        "title": "Phân tích đoạn văn",
+        "instruction": "Ghép từng câu trong đoạn văn với phương thức biểu đạt tương ứng:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step04",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Quy luật cốt lõi",
+            "icon": "⚖️",
+            "active": true,
+            "content": {
+              "text": "Một văn bản có thể có NHIỀU phương thức biểu đạt kết hợp với nhau.\n\nNhưng khi làm bài đọc hiểu, chỉ chọn PHƯƠNG THỨC BIỂU ĐẠT CHÍNH.",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Mẹo xác định phương thức chính",
+            "icon": "💡",
+            "active": false,
+            "content": {
+              "text": "- Đọc toàn văn.\n- Xác định **mục đích lớn nhất** của người viết.\n- Không chọn theo số lượng câu.\n- Không chọn theo câu đầu hoặc câu cuối.\n- Chọn phương thức CHI PHỐI toàn bộ văn bản.",
+              "examples": []
+            }
+          }
+        ],
+        "title": "Quy tắc quan trọng",
+        "instruction": "Không có kiến thức mới, chỉ có một quy tắc duy nhất cần nhớ kỹ khi đi thi:",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "fillBlank",
+      "validator": "fillBlankValidator",
+      "data": {
+        "question": "Điền từ còn thiếu",
+        "sentence": "Một văn bản có thể kết hợp nhiều phương thức biểu đạt, nhưng khi làm bài thường xác định phương thức biểu đạt ___.",
+        "answer": "chính",
+        "title": "Điền khuyết",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "reflection",
+      "data": {
+        "question": "Nếu em viết bài văn \"Ngày khai trường\", em sẽ sử dụng những phương thức biểu đạt nào? Theo em, phương thức nào sẽ là chính? Vì sao?",
+        "sampleAnswer": "Em sẽ kết hợp Tự sự (kể quá trình đi khai giảng), Miêu tả (tả quang cảnh sân trường), Biểu cảm (cảm xúc háo hức). Phương thức chính sẽ là Tự sự vì mục đích chính của bài là KỂ lại những sự kiện diễn ra trong ngày lễ đó.",
+        "title": "Vận dụng",
+        "score": 2
+      }
+    },
+    {
+      "id": "step07",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Đoạn văn sau có xen lẫn miêu tả, nhưng PHƯƠNG THỨC CHÍNH là gì?\n\"Cây tre có thân cao vút, chia thành nhiều đốt, lá mỏng và nhọn. Từ ngàn đời nay, tre đã gắn bó mật thiết với đời sống của người nông dân Việt Nam. Tre được dùng để làm đũa, rổ rá, nong nia và cất nhà. Trong kháng chiến, tre còn là vũ khí đánh giặc.\"",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Tự sự (vì kể chuyện đánh giặc)"
+          },
+          {
+            "id": "B",
+            "text": "Miêu tả (vì tả thân cao, lá mỏng)"
+          },
+          {
+            "id": "C",
+            "text": "Thuyết minh (vì giới thiệu đặc điểm, công dụng của cây tre)"
+          },
+          {
+            "id": "D",
+            "text": "Biểu cảm (vì nói về sự gắn bó ngàn đời)"
+          }
+        ],
+        "answer": "C",
+        "title": "Chọn phương thức chính",
+        "score": 1
+      }
+    },
+    {
+      "id": "step08",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Nhận định nào sau đây là SAI?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Một văn bản có thể kết hợp nhiều phương thức biểu đạt."
+          },
+          {
+            "id": "B",
+            "text": "Phương thức chính thể hiện mục đích chủ yếu của người viết."
+          },
+          {
+            "id": "C",
+            "text": "Chỉ cần thấy có một câu miêu tả thì phương thức chính chắc chắn là miêu tả."
+          },
+          {
+            "id": "D",
+            "text": "Không nên chỉ dựa vào câu đầu tiên để kết luận phương thức chính."
+          }
+        ],
+        "answer": "C",
+        "title": "Đúng hay Sai?",
+        "score": 1
+      }
+    },
+    {
+      "id": "step09",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Kể về chuyến tham quan",
+          "Tả cảnh cơn mưa rào",
+          "Nói lên lòng biết ơn mẹ",
+          "Giới thiệu về chiếc nón lá",
+          "Kêu gọi bảo vệ rừng",
+          "Thông báo lịch họp lớp"
+        ],
+        "right": [
+          "Tự sự",
+          "Miêu tả",
+          "Biểu cảm",
+          "Thuyết minh",
+          "Nghị luận",
+          "Hành chính"
+        ],
+        "answer": {
+          "Kể về chuyến tham quan": "Tự sự",
+          "Tả cảnh cơn mưa rào": "Miêu tả",
+          "Nói lên lòng biết ơn mẹ": "Biểu cảm",
+          "Giới thiệu về chiếc nón lá": "Thuyết minh",
+          "Kêu gọi bảo vệ rừng": "Nghị luận",
+          "Thông báo lịch họp lớp": "Hành chính"
+        },
+        "title": "Ghép nối",
+        "instruction": "Ghép đoạn văn (nội dung chủ yếu) với phương thức biểu đạt chính:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step10",
+      "type": "ordering",
+      "validator": "orderValidator",
+      "data": {
+        "items": [
+          "Kể lại quá trình tham quan thư viện (Tự sự).",
+          "Giới thiệu các loại sách có trong thư viện (Thuyết minh).",
+          "Bày tỏ cảm nghĩ thích thú sau chuyến đi (Biểu cảm).",
+          "Đưa ra lời kêu gọi cùng nhau giữ gìn sách (Nghị luận)."
+        ],
+        "answer": [
+          "Kể lại quá trình tham quan thư viện (Tự sự).",
+          "Giới thiệu các loại sách có trong thư viện (Thuyết minh).",
+          "Bày tỏ cảm nghĩ thích thú sau chuyến đi (Biểu cảm).",
+          "Đưa ra lời kêu gọi cùng nhau giữ gìn sách (Nghị luận)."
+        ],
+        "title": "Sắp xếp cấu trúc",
+        "instruction": "Sắp xếp các ý để tạo thành một bài văn có sự kết hợp phương thức hợp lí:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step11",
+      "type": "highlight",
+      "data": {
+        "content": "Hôm qua lớp em tham quan bảo tàng. Những hiện vật cổ được trưng bày rất đẹp và khoa học. Em cảm thấy vô cùng tự hào về truyền thống dân tộc. Bảo tàng hiện lưu giữ hơn mười nghìn hiện vật quý. Vì vậy, mỗi người nên có ý thức gìn giữ các giá trị lịch sử.",
+        "answer": [
+          "Vì vậy, mỗi người nên có ý thức gìn giữ các giá trị lịch sử."
+        ],
+        "title": "Tô sáng từ ngữ",
+        "instruction": "Tô đậm những CÂU NGHỊ LUẬN (chứa ý kiến, lời khuyên) nằm xen kẽ trong đoạn văn sau:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step12",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Cô ấy đang nhặt rác trên bãi biển.",
+          "Ánh nắng vàng xuyên qua kẽ lá.",
+          "Trái tim tôi rung lên vì xúc động.",
+          "Nước sôi ở 100 độ C.",
+          "Chúng ta cần học tập chăm chỉ.",
+          "THÔNG BÁO nghỉ Tết Dương lịch."
+        ],
+        "right": [
+          "Tự sự",
+          "Miêu tả",
+          "Biểu cảm",
+          "Thuyết minh",
+          "Nghị luận",
+          "Hành chính – công vụ"
+        ],
+        "answer": {
+          "Cô ấy đang nhặt rác trên bãi biển.": "Tự sự",
+          "Ánh nắng vàng xuyên qua kẽ lá.": "Miêu tả",
+          "Trái tim tôi rung lên vì xúc động.": "Biểu cảm",
+          "Nước sôi ở 100 độ C.": "Thuyết minh",
+          "Chúng ta cần học tập chăm chỉ.": "Nghị luận",
+          "THÔNG BÁO nghỉ Tết Dương lịch.": "Hành chính – công vụ"
+        },
+        "title": "Phân loại câu",
+        "instruction": "Kéo từng câu vào đúng nhóm phương thức:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step13",
+      "type": "ordering",
+      "validator": "orderValidator",
+      "data": {
+        "items": [
+          "Đọc toàn bộ văn bản",
+          "Xác định mục đích lớn nhất của người viết",
+          "Tìm phương thức chiếm ưu thế chi phối toàn văn bản",
+          "Kiểm tra các phương thức kết hợp",
+          "Kết luận phương thức biểu đạt chính"
+        ],
+        "answer": [
+          "Đọc toàn bộ văn bản",
+          "Xác định mục đích lớn nhất của người viết",
+          "Tìm phương thức chiếm ưu thế chi phối toàn văn bản",
+          "Kiểm tra các phương thức kết hợp",
+          "Kết luận phương thức biểu đạt chính"
+        ],
+        "title": "Quy trình xác định",
+        "instruction": "Kéo thả để sắp xếp quy trình xác định phương thức biểu đạt CHÍNH khi làm bài thi:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step14",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Văn bản giới thiệu về lịch sử hồ Hoàn Kiếm.",
+          "Bài văn kêu gọi toàn dân chống dịch COVID-19.",
+          "Đoạn văn kể lại kỉ niệm ngày đầu tiên đi học.",
+          "Bài thơ thể hiện nỗi nhớ quê hương da diết."
+        ],
+        "right": [
+          "Thuyết minh",
+          "Nghị luận",
+          "Tự sự",
+          "Biểu cảm"
+        ],
+        "answer": {
+          "Văn bản giới thiệu về lịch sử hồ Hoàn Kiếm.": "Thuyết minh",
+          "Bài văn kêu gọi toàn dân chống dịch COVID-19.": "Nghị luận",
+          "Đoạn văn kể lại kỉ niệm ngày đầu tiên đi học.": "Tự sự",
+          "Bài thơ thể hiện nỗi nhớ quê hương da diết.": "Biểu cảm"
+        },
+        "title": "Ai là phương thức chính?",
+        "instruction": "Xác định phương thức biểu đạt CHÍNH của từng đoạn văn:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step15",
+      "type": "flashcard",
+      "data": {
+        "front": "Phương thức biểu đạt chính",
+        "back": "Hãy xác định MỤC ĐÍCH chủ yếu của người viết. Phương thức phục vụ mục đích đó là phương thức biểu đạt chính.",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "ptbd",
+    "difficulty": 2,
+    "xp": 90,
+    "stars": 3,
+    "description": "Biết cách nhận diện và chọn phương thức biểu đạt chính trong văn bản kết hợp.",
+    "durationMinutes": 30
+  }
+}

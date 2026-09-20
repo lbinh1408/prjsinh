@@ -1,0 +1,203 @@
+{
+  "id": "doc-hieu-theo-kieu-van-ban.07",
+  "title": "Chiến lược làm bài",
+  "version": "1.0",
+  "enabled": true,
+  "steps": [
+    {
+      "id": "step01",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "1. Đọc CÂU HỎI trước khi đọc NGỮ LIỆU",
+            "icon": "👀",
+            "active": true,
+            "content": {
+              "text": "Đừng lao vào đọc đoạn trích ngay! Hãy lướt qua các câu hỏi trước để não bộ biết mình cần tìm kiếm thông tin gì. Tránh việc đọc xong ngữ liệu, đọc câu hỏi lại phải quay lên tìm từ đầu.",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "2. Quản lý thời gian vàng",
+            "icon": "⏳",
+            "active": false,
+            "content": {
+              "text": "Phần Đọc hiểu thường chiếm 3-4 điểm. TUYỆT ĐỐI không dành quá 20 - 25 phút cho phần này. Nếu có câu khó, hãy chừa giấy lại và làm phần Làm văn trước.",
+              "examples": []
+            }
+          }
+        ],
+        "title": "Nguyên tắc tối thượng",
+        "instruction": "Trước khi bước vào phòng thi, hãy khắc cốt ghi tâm 2 nguyên tắc sinh tử này:",
+        "score": 1
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Bước 1: Quét câu hỏi",
+            "icon": "📡",
+            "active": true,
+            "content": {
+              "text": "Xác định nhanh số lượng câu hỏi, các từ khóa yêu cầu (chỉ ra, nêu tác dụng, theo anh/chị...) và xác định kiểu văn bản của ngữ liệu.",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Bước 2: Đọc & Gạch chân",
+            "icon": "🖍️",
+            "active": false,
+            "content": {
+              "text": "Đọc ngữ liệu, vừa đọc vừa dùng bút chì gạch chân ngay những câu/từ ngữ chứa đáp án cho các câu hỏi nhận biết đã quét ở Bước 1.",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-3",
+            "title": "Bước 3 & 4: Viết & Rà soát",
+            "icon": "✍️",
+            "active": false,
+            "content": {
+              "text": "Trả lời trực tiếp vào tờ giấy thi. Làm từ dễ đến khó. Trình bày rõ ràng bằng các gạch đầu dòng (với câu hỏi nhiều ý). Cuối cùng, soát lại xem đã trả lời đủ vế chưa.",
+              "examples": []
+            }
+          }
+        ],
+        "title": "Quy trình 4 Bước Vàng",
+        "instruction": "Áp dụng đúng quy trình sau để không bỏ sót điểm nào:",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Hỏi gì đáp nấy, không lan man",
+            "icon": "🎯",
+            "active": true,
+            "content": {
+              "text": "Đừng bao giờ viết một đoạn văn dài lê thê cho câu hỏi Nhận biết (0.5 điểm). Hãy trả lời thẳng vào trọng tâm. VD: 'Phương thức biểu đạt chính là: Tự sự'.",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Tách ý rõ ràng",
+            "icon": "📝",
+            "active": false,
+            "content": {
+              "text": "Với câu hỏi có 2 vế (VD: Chỉ ra và nêu tác dụng), HÃY TÁCH thành 2 gạch đầu dòng rõ rệt (+ Chỉ ra: ... / + Tác dụng: ...).",
+              "examples": []
+            }
+          }
+        ],
+        "title": "Chiến thuật Trình bày",
+        "instruction": "Trình bày đúng cách giúp giám khảo dễ chấm và bạn dễ lấy điểm tuyệt đối:",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "observe",
+      "data": {
+        "content": "\"Em thưa thầy cô, sau khi đọc kĩ đoạn trích, em thấy tác giả đã sử dụng phương thức biểu đạt chính là tự sự. Ngoài ra, đoạn trích miêu tả vẻ đẹp của dòng sông Hương trong sương mù và thể hiện tình yêu quê hương đất nước thiết tha của tác giả.\"",
+        "guide": [
+          "Cách trả lời trên mắc lỗi gì về chiến thuật trình bày?",
+          "Nếu là bạn, bạn sẽ sửa lại như thế nào để ăn điểm tối đa?"
+        ],
+        "hint": "- Lỗi: Dài dòng, viết thành một đoạn văn lộn xộn, có những từ ngữ thừa ('Em thưa thầy cô', 'sau khi đọc kĩ...'), giám khảo khó nhìn thấy ý.\n- Sửa lại: Dùng dấu cộng tách ý rõ ràng:\n+ Phương thức biểu đạt chính: Tự sự.\n+ Nội dung đoạn trích: Vẻ đẹp của sông Hương và tình yêu quê hương của tác giả.",
+        "title": "Phân tích tình huống lỗi",
+        "instruction": "Xem xét cách trả lời của bạn học sinh A với câu hỏi: 'Xác định phương thức biểu đạt chính và nêu nội dung của đoạn trích':",
+        "score": 0
+      }
+    },
+    {
+      "id": "step05",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Khi làm bài thi môn Ngữ Văn (thời gian 120 phút), chiến lược phân bổ thời gian hợp lý nhất cho phần Đọc hiểu (thường 3 điểm) là gì?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Làm càng nhanh càng tốt, chỉ cần 5-10 phút để còn thời gian viết văn."
+          },
+          {
+            "id": "B",
+            "text": "Dành 20 - 25 phút. Đọc kĩ, trả lời nắn nót, đúng trọng tâm để lấy trọn 3 điểm vì đây là phần dễ lấy điểm nhất."
+          },
+          {
+            "id": "C",
+            "text": "Làm phần Nghị luận văn học trước, Đọc hiểu để làm cuối cùng cho đỡ tốn thời gian."
+          },
+          {
+            "id": "D",
+            "text": "Dành 45 - 50 phút phân tích thật sâu, viết thật dài để giám khảo thấy mình hiểu bài."
+          }
+        ],
+        "answer": "B",
+        "title": "Tối ưu hóa điểm số",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trong lúc làm phần Đọc hiểu, nếu bạn gặp một câu hỏi quá khó (Ví dụ câu Vận dụng cao) và nghĩ mãi chưa ra đáp án, bạn nên làm gì?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Dừng lại, nhất quyết phải nghĩ ra bằng được mới làm tiếp các câu sau."
+          },
+          {
+            "id": "B",
+            "text": "Bỏ trống hoàn toàn không thèm quan tâm đến nó nữa."
+          },
+          {
+            "id": "C",
+            "text": "Chừa ra khoảng 5-7 dòng giấy thi, tiếp tục làm các câu hỏi khác hoặc phần Làm văn. Khi nào rảnh rỗi hoặc có ý tưởng sẽ quay lại điền sau."
+          },
+          {
+            "id": "D",
+            "text": "Gạch chéo toàn bộ phần Đọc hiểu và xin giấy làm lại từ đầu."
+          }
+        ],
+        "answer": "C",
+        "title": "Xử lý câu hỏi khó",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "flashcard",
+      "data": {
+        "front": "Thần chú trước khi làm Đọc hiểu là gì?",
+        "back": "Đọc câu hỏi trước ➔ Gạch chân từ khóa ➔ Trình bày tách ý ➔ Không quá 25 phút!",
+        "completedWhen": "flipped",
+        "title": "Bí kíp bỏ túi",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "doc-hieu-theo-kieu-van-ban",
+    "difficulty": 2,
+    "xp": 70,
+    "stars": 3,
+    "description": "Nắm trọn bí kíp quản lý thời gian, cách trình bày và 4 bước vàng để xử lý gọn gàng mọi đề Đọc hiểu.",
+    "durationMinutes": 20
+  }
+}

@@ -1,0 +1,16 @@
+{
+    "id": "tho-hien-dai.04-bep-lua",
+    "title": "Bếp lửa",
+    "module": "tho-hien-dai",
+    "steps": [
+        {
+            "id": "intro",
+            "type": "observe",
+            "data": {
+                "title": "Bếp lửa",
+                "subtitle": "Bằng Việt",
+                "content": "Nội dung bài học đang được cập nhật."
+            }
+        }
+    ]
+}

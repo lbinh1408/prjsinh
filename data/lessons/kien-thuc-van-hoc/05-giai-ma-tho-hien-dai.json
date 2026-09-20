@@ -1,0 +1,226 @@
+{
+  "id": "kien-thuc-05",
+  "title": "Giải mã Thơ Hiện Đại (GDPT 2018)",
+  "type": "skill",
+  "version": "1.0.0",
+  "meta": {
+    "module": "kien-thuc-van-hoc",
+    "lessonNumber": 5,
+    "durationMinutes": 30,
+    "difficulty": "intermediate",
+    "skill": "giai-ma-tho-hien-dai",
+    "description": "Nắm vững bộ công cụ 4 bước để bẻ khóa bất kỳ bài thơ hiện đại lạ nào nằm ngoài SGK."
+  },
+  "learningGoals": [
+    "Biết áp dụng công thức 4 bước: Hình thức -> Nhân vật -> Điểm sáng -> Thông điệp.",
+    "Tự tin phân tích một ngữ liệu thơ mới hoàn toàn."
+  ],
+  "completion": {
+    "requiredSections": [
+      "story_01",
+      "discover_01",
+      "observe_01",
+      "finalChallenge_01"
+    ],
+    "action": "completeLesson",
+    "message": "🎉 Tuyệt vời! Từ nay em không cần học vẹt văn mẫu nữa, em đã có 'chìa khóa vạn năng' để mở mọi bài thơ lạ!"
+  },
+  "steps": [
+    {
+      "id": "story_01",
+      "type": "story",
+      "data": {
+        "title": "Bí kíp đối phó ngữ liệu lạ",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "split_compare",
+          "layout": "two_columns"
+          },
+        "content": {
+          "prompt": "Gặp một bài thơ hoàn toàn lạ trong phòng thi, em sẽ làm gì?",
+          "title": "Đối mặt với Đề thi mới",
+          "left": {
+            "label": "CÁCH 1",
+            "paragraph": "Cắn bút, hoang mang vì chưa được thầy cô dạy bài này bao giờ. Cố gắng chép lại vài câu lý thuyết chung chung cho có chữ để chống điểm liệt."
+          },
+          "right": {
+            "label": "CÁCH 2",
+            "paragraph": "Bình tĩnh rút 'Bộ công cụ giải mã' ra: Đếm số chữ/câu để tìm thể thơ, xác định xem ai đang nói gì, khoanh tròn các từ láy và biện pháp tu từ, rồi từ đó suy ra cảm xúc tác giả."
+          }
+        },
+        "interaction": {
+          "type": "choice",
+          "choices": [
+            { "id": "a", "text": "Cách 1", "correct": false },
+            { "id": "b", "text": "Cách 2", "correct": true }
+          ],
+          "feedback": {
+            "correct": "✓ Rất chuẩn! Đề thi GDPT 2018 sẽ không bao giờ ra bài trong SGK. Em phải có công cụ phân tích để tự bẻ khóa bài thơ.",
+            "incorrect": "△ Sai rồi. Từ năm 2024, đề thi sẽ lấy ngữ liệu NGOÀI SGK. Cách 1 là tự sát!"
+          }
+        },
+        "reveal": {
+          "title": "💡 Chìa khóa vạn năng",
+          "text": "Phân tích thơ không phải là học thuộc lòng. Đó là việc dùng CÔNG CỤ: Quét hình thức -> Tìm Nhân vật trữ tình -> Soi điểm sáng nghệ thuật -> Chốt thông điệp."
+        }
+      }
+    },
+    {
+      "id": "discover_01",
+      "type": "cheatSheet",
+      "data": {
+        "ui": { "component": "card_list" },
+        "prompt": "BỘ CÔNG CỤ 4 BƯỚC GIẢI MÃ THƠ",
+        "items": [
+            { "icon": "📏", "title": "BƯỚC 1: Quét Hình thức", "question": "Thể thơ gì? (Lục bát, tự do, 5 chữ...). Nhịp điệu và vần gieo thế nào?" },
+            { "icon": "👤", "title": "BƯỚC 2: Định vị Nhân vật", "question": "Nhân vật trữ tình là ai? (Anh bộ đội, người con, hay chính tác giả ẩn danh 'tôi'/'ta'?). Đang ở hoàn cảnh nào?" },
+            { "icon": "✨", "title": "BƯỚC 3: Soi Điểm sáng", "question": "Tìm ngay các 'từ nhãn' (từ đắt giá, từ láy, động từ mạnh) và Biện pháp tu từ (So sánh, nhân hóa, ẩn dụ)." },
+            { "icon": "💌", "title": "BƯỚC 4: Chốt Thông điệp", "question": "Qua 3 bước trên, tác giả muốn bộc lộ cảm xúc gì và gửi gắm bài học gì?" }
+        ],
+        "keyMessage": "Chỉ cần bám sát 4 bước này, mọi bài thơ dù lạ đến mấy cũng sẽ hiện nguyên hình!",
+        "practiceButton": { "label": "Vào bài thực hành →" }
+      }
+    },
+    {
+      "id": "observe_01",
+      "type": "observe",
+      "data": {
+        "title": "Thực hành Bước 1 & 2",
+        "durationSeconds": 150,
+        "ui": {
+          "component": "paragraph_highlight",
+          "interaction": "tap_sentence",
+          "question": "Hãy đọc bài thơ ngoài SGK này và bấm vào câu thơ cho thấy RÕ NHẤT hoàn cảnh của nhân vật trữ tình."
+        },
+        "content": {
+          "prompt": "Bài thơ: TIẾNG GÀ TRƯA (Trích) - Xuân Quỳnh",
+          "isParagraph": true,
+          "paragraph": [
+            {
+              "id": "s1",
+              "text": "Trên đường hành quân xa",
+              "role": "hoan_canh",
+              "roleLabel": "HOÀN CẢNH",
+              "feedback": "🟢 Rất chính xác! Ngay câu đầu tiên đã cho biết Nhân vật trữ tình (người lính) đang trên đường hành quân xa."
+            },
+            {
+              "id": "s2",
+              "text": "Dừng chân bên xóm nhỏ",
+              "role": "hoan_canh2",
+              "roleLabel": "HOÀN CẢNH",
+              "feedback": "🟢 Cũng đúng! Người lính đang nghỉ chân thì nghe thấy tiếng gà."
+            },
+            {
+              "id": "s3",
+              "text": "Tiếng gà ai nhảy ổ: / 'Cục... cục tác cục ta'",
+              "role": "am_thanh",
+              "roleLabel": "ÂM THANH",
+              "feedback": "🟡 Đây là âm thanh kích thích nỗi nhớ, không phải hoàn cảnh."
+            },
+            {
+              "id": "s4",
+              "text": "Nghe xao động nắng trưa / Nghe bàn chân đỡ mỏi / Nghe gọi về tuổi thơ",
+              "role": "cam_xuc",
+              "roleLabel": "CẢM XÚC",
+              "feedback": "🔵 Đây là cảm xúc, điệp ngữ 'Nghe' bộc lộ tâm trạng xao xuyến."
+            }
+          ]
+        },
+        "reveal": {
+          "title": "Em vừa áp dụng công cụ",
+          "text": "Chỉ với cái nhìn lướt qua, em đã làm xong Bước 1 (thơ 5 chữ, nhịp nhanh) và Bước 2 (Nhân vật là người lính đang hành quân nhớ quê)."
+        }
+      }
+    },
+    {
+      "id": "finalChallenge_01",
+      "type": "finalChallenge",
+      "data": {
+        "title": "THỬ THÁCH: BẺ KHÓA NGỮ LIỆU",
+        "durationSeconds": 300,
+        "ui": {
+          "component": "multi_stage_challenge",
+          "layout": "multi_stage"
+        },
+        "prompt": "Vận dụng Bước 3 (Soi điểm sáng) để phân tích Khổ thơ sau:",
+        "stages": [
+          {
+            "key": "outline",
+            "type": "card_to_slot",
+            "title": "🔍 SOI ĐIỂM SÁNG NGHỆ THUẬT",
+            "question": "Hãy tìm đúng điểm sáng nghệ thuật trong đoạn thơ sau: 'Nghe xao động nắng trưa / Nghe bàn chân đỡ mỏi / Nghe gọi về tuổi thơ'",
+            "slots": [
+              {
+                "id": "slot1",
+                "label": "Biện pháp tu từ chính",
+                "description": "Biện pháp nào được dùng nổi bật nhất?"
+              },
+              {
+                "id": "slot2",
+                "label": "Tác dụng",
+                "description": "Biện pháp đó có tác dụng gì?"
+              }
+            ],
+            "cards": [
+              {
+                "id": "c1",
+                "target": "slot1",
+                "correct": true,
+                "feedback": "✓ Đúng. Điệp từ 'Nghe' lặp lại 3 lần.",
+                "label": "Biện pháp",
+                "slotText": "Điệp ngữ 'Nghe' kết hợp với ẩn dụ chuyển đổi cảm giác."
+              },
+              {
+                "id": "c2",
+                "target": "slot2",
+                "correct": true,
+                "feedback": "✓ Đúng. Nó nhấn mạnh sự xúc động.",
+                "label": "Tác dụng",
+                "slotText": "Nhấn mạnh sự lay động mãnh liệt của tiếng gà tới tâm hồn người lính."
+              },
+              {
+                "id": "c3",
+                "target": "slot1",
+                "correct": false,
+                "feedback": "△ Sai. Đoạn này không có So sánh.",
+                "label": "Biện pháp",
+                "slotText": "So sánh 'nắng trưa' như 'tuổi thơ'"
+              }
+            ],
+            "minCards": 2,
+            "maxCards": 2
+          },
+          {
+            "key": "writing",
+            "type": "editor",
+            "title": "✍️ BƯỚC 4: CHỐT THÔNG ĐIỆP (VIẾT ĐOẠN)",
+            "question": "Hãy viết 1 đoạn văn (khoảng 5-7 câu) phân tích cái hay của 3 câu thơ trên, áp dụng dàn ý em vừa lập.",
+            "instruction": "Nhớ dùng các từ chỉ mạch cảm xúc để bài mượt mà hơn nhé.",
+            "placeholder": "Viết đoạn văn phân tích của em...",
+            "minCharacters": 100,
+            "maxCharacters": 800,
+            "hints": [
+              { "label": "TỪ NỐI", "words": ["Có thể thấy", "Hơn thế nữa", "Đặc biệt là", "Qua đó"] },
+              { "label": "ĐÁNH GIÁ", "words": ["Độc đáo", "Sâu sắc", "Tinh tế", "Gợi cảm"] }
+            ],
+            "submitLabel": "🚀 Nộp bài & Phân tích"
+          },
+          {
+            "key": "analysis",
+            "type": "analysis",
+            "title": "🧠 HỒ SƠ PHÂN TÍCH",
+            "description": "Hệ thống đang kiểm tra xem em có nắm được phương pháp 'Giải mã' không.",
+            "loadingText": "Đang phân tích lập luận...",
+            "metrics": [
+              { "id": "point", "label": "Chỉ ra được Biện pháp Điệp ngữ", "status": "detect" },
+              { "id": "effect", "label": "Phân tích được tác dụng", "status": "detect" },
+              { "id": "emotion", "label": "Chốt được cảm xúc nhân vật", "status": "detect" }
+            ],
+            "diagnosticQuestion": "Đoạn văn của em có giống văn mẫu không, hay tự em đã giải mã được?",
+            "scoreDimensions": [ "accuracy", "depth", "coherence" ]
+          }
+        ]
+      }
+    }
+  ]
+}

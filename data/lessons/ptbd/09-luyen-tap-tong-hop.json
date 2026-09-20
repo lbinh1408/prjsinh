@@ -1,0 +1,351 @@
+{
+  "id": "ptbd.09-luyen-tap-tong-hop",
+  "title": "Luyện tập tổng hợp",
+  "version": "1.0",
+  "enabled": true,
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "format": "essay",
+        "content": "Sáng nay, tôi đến trường sớm hơn mọi ngày để trực nhật. (1)\nSân trường lúc này còn vắng lặng, những chiếc lá phượng vĩ rụng lấm tấm trên mặt sân xám xịt, sương sớm vẫn còn đọng lại mát rượi trên các cành cây. (2)\nÔi, tôi yêu biết bao cái khoảnh khắc bình yên và trong trẻo này của buổi sớm mai! (3)\nTôi rảo bước về phía thư viện. Thư viện trường tôi được xây dựng từ năm 2015, có diện tích hơn 200 mét vuông với hàng ngàn đầu sách các loại, từ sách giáo khoa đến truyện thiếu nhi. (4)\nThật vậy, trường học không chỉ là nơi để học kiến thức mà còn là ngôi nhà thứ hai nuôi dưỡng tâm hồn chúng ta. Mỗi học sinh cần có ý thức giữ gìn vệ sinh, bảo vệ tài sản chung để trường lớp luôn sạch đẹp. (5)",
+        "guide": [],
+        "hint": "",
+        "title": "Quan sát",
+        "instruction": "Hãy đọc văn bản sau (Chủ đề: Một ngày ở trường):",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Đoạn văn trên có kết hợp bao nhiêu phương thức biểu đạt?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "2"
+          },
+          {
+            "id": "B",
+            "text": "3"
+          },
+          {
+            "id": "C",
+            "text": "4"
+          },
+          {
+            "id": "D",
+            "text": "5"
+          }
+        ],
+        "answer": "D",
+        "title": "Nhận xét",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Sáng nay, tôi đến trường sớm hơn... (1)",
+          "Sân trường lúc này còn vắng lặng... (2)",
+          "Ôi, tôi yêu biết bao cái khoảnh khắc... (3)",
+          "Thư viện trường tôi có diện tích... (4)",
+          "Mỗi học sinh cần có ý thức giữ gìn... (5)"
+        ],
+        "right": [
+          "Tự sự",
+          "Miêu tả",
+          "Biểu cảm",
+          "Thuyết minh",
+          "Nghị luận"
+        ],
+        "answer": {
+          "Sáng nay, tôi đến trường sớm hơn... (1)": "Tự sự",
+          "Sân trường lúc này còn vắng lặng... (2)": "Miêu tả",
+          "Ôi, tôi yêu biết bao cái khoảnh khắc... (3)": "Biểu cảm",
+          "Thư viện trường tôi có diện tích... (4)": "Thuyết minh",
+          "Mỗi học sinh cần có ý thức giữ gìn... (5)": "Nghị luận"
+        },
+        "title": "Phân tích đoạn văn",
+        "instruction": "Ghép từng câu/đoạn trong văn bản trên với phương thức biểu đạt tương ứng:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step04",
+      "type": "fillBlank",
+      "validator": "fillBlankValidator",
+      "data": {
+        "question": "Điền tên phương thức còn thiếu (Tự sự, Biểu cảm, Thuyết minh, Nghị luận...)",
+        "sentence": "Kể lại sự việc là Tự sự, Bộc lộ cảm xúc là ___, Giới thiệu tri thức là Thuyết minh.",
+        "answer": "Biểu cảm",
+        "title": "Điền khuyết",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "reflection",
+      "data": {
+        "question": "Nếu em viết về chủ đề \"Ngày khai trường\", theo em đoạn nào nên Kể sự việc, đoạn nào nên Tả cảnh và đoạn nào nên Bày tỏ cảm xúc?",
+        "sampleAnswer": "Đầu tiên em sẽ tả cảnh sân trường nhộn nhịp cờ hoa. Sau đó em kể lại các sự kiện diễn ra trong buổi lễ (đón học sinh lớp 1, đánh trống trường). Cuối cùng em bày tỏ cảm xúc háo hức và quyết tâm trong năm học mới.",
+        "title": "Vận dụng",
+        "score": 2
+      }
+    },
+    {
+      "id": "step06",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Đoạn văn sau có nhiều phương thức, nhưng PHƯƠNG THỨC CHÍNH là gì?\n\"Thật xót xa khi thấy rác thải nhựa ngập tràn trên các bãi biển. Chúng ta không thể vô cảm trước cảnh tượng này. Cần phải hành động ngay lập tức bằng cách giảm thiểu sử dụng đồ nhựa một lần để cứu lấy đại dương xanh.\"",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Biểu cảm (vì có từ xót xa)"
+          },
+          {
+            "id": "B",
+            "text": "Nghị luận (vì mục đích chính là kêu gọi hành động)"
+          },
+          {
+            "id": "C",
+            "text": "Miêu tả (vì tả cảnh rác thải ngập tràn)"
+          },
+          {
+            "id": "D",
+            "text": "Thuyết minh (vì nói về đại dương)"
+          }
+        ],
+        "answer": "B",
+        "title": "Phương thức chính",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Nhận định nào sau đây là SAI khi nói về các phương thức biểu đạt?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Một văn bản có thể kết hợp nhiều phương thức khác nhau."
+          },
+          {
+            "id": "B",
+            "text": "Tuy có nhiều phương thức, nhưng ta chỉ chọn phương thức CHÍNH dựa vào mục đích lớn nhất."
+          },
+          {
+            "id": "C",
+            "text": "Nghị luận thường dùng lí lẽ, thuyết minh thường cung cấp tri thức."
+          },
+          {
+            "id": "D",
+            "text": "Một văn bản tự sự thì tuyệt đối không được sử dụng miêu tả hay biểu cảm."
+          }
+        ],
+        "answer": "D",
+        "title": "Đúng hay Sai?",
+        "score": 1
+      }
+    },
+    {
+      "id": "step08",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Kể sự việc",
+          "Làm hiện lên hình ảnh",
+          "Bộc lộ tình cảm",
+          "Giới thiệu tri thức",
+          "Thuyết phục",
+          "Thông báo công việc"
+        ],
+        "right": [
+          "Tự sự",
+          "Miêu tả",
+          "Biểu cảm",
+          "Thuyết minh",
+          "Nghị luận",
+          "Hành chính"
+        ],
+        "answer": {
+          "Kể sự việc": "Tự sự",
+          "Làm hiện lên hình ảnh": "Miêu tả",
+          "Bộc lộ tình cảm": "Biểu cảm",
+          "Giới thiệu tri thức": "Thuyết minh",
+          "Thuyết phục": "Nghị luận",
+          "Thông báo công việc": "Hành chính"
+        },
+        "title": "Mục đích - Phương thức",
+        "instruction": "Ghép Mục đích giao tiếp với Phương thức biểu đạt tương ứng:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step09",
+      "type": "ordering",
+      "validator": "orderValidator",
+      "data": {
+        "items": [
+          "Đọc thông báo kế hoạch tuần tới (Hành chính).",
+          "Kể lại hoạt động nổi bật của lớp tuần qua (Tự sự).",
+          "Khen ngợi, biểu dương và bày tỏ sự tự hào (Biểu cảm).",
+          "Nêu ý kiến, đề xuất giải pháp khắc phục (Nghị luận).",
+          "Kết thúc buổi sinh hoạt."
+        ],
+        "answer": [
+          "Đọc thông báo kế hoạch tuần tới (Hành chính).",
+          "Kể lại hoạt động nổi bật của lớp tuần qua (Tự sự).",
+          "Khen ngợi, biểu dương và bày tỏ sự tự hào (Biểu cảm).",
+          "Nêu ý kiến, đề xuất giải pháp khắc phục (Nghị luận).",
+          "Kết thúc buổi sinh hoạt."
+        ],
+        "title": "Sắp xếp cấu trúc",
+        "instruction": "Sắp xếp các bước để tạo thành một kịch bản sinh hoạt lớp hợp lí có kết hợp các phương thức:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step10",
+      "type": "highlight",
+      "data": {
+        "content": "Sáng sớm, tôi bước ra vườn. Những giọt sương mai lấp lánh đọng trên tán lá xanh mướt. Đột nhiên, tiếng chim hót vang lên làm tôi giật mình. Cả khu vườn như bừng tỉnh.",
+        "answer": [
+          "lấp lánh",
+          "xanh mướt",
+          "vang lên",
+          "bừng tỉnh"
+        ],
+        "title": "Tô sáng từ ngữ",
+        "instruction": "Tô đậm những CỤM TỪ MIÊU TẢ trong đoạn văn kể chuyện sau:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step11",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Sáng nay, tôi đi học sớm hơn mọi ngày.",
+          "Hôm qua, Lan nhặt được ví rơi trên đường.",
+          "Hoa phượng nở đỏ rực cả một góc sân trường.",
+          "Sân trường hình chữ nhật, rộng và rợp bóng cây.",
+          "Em rất yêu mái trường thân thương này.",
+          "Chao ôi, nhớ làm sao những ngày tháng ấy!",
+          "Cây tre có thân rỗng, chia thành nhiều đốt.",
+          "Khẩu trang y tế gồm ba lớp vải lọc.",
+          "Mỗi người cần có ý thức bảo vệ môi trường.",
+          "Học sinh nên rèn luyện thói quen đọc sách.",
+          "Hội thao sẽ diễn ra vào 7h00 sáng Chủ nhật.",
+          "Đơn xin phép nghỉ học do ốm."
+        ],
+        "right": [
+          "📖 Kể chuyện (1)",
+          "📖 Kể chuyện (2)",
+          "🎨 Miêu tả (1)",
+          "🎨 Miêu tả (2)",
+          "❤️ Cảm xúc (1)",
+          "❤️ Cảm xúc (2)",
+          "📚 Giới thiệu (1)",
+          "📚 Giới thiệu (2)",
+          "⚖️ Thuyết phục (1)",
+          "⚖️ Thuyết phục (2)",
+          "📢 Thông báo (1)",
+          "📢 Thông báo (2)"
+        ],
+        "answer": {
+          "Sáng nay, tôi đi học sớm hơn mọi ngày.": "📖 Kể chuyện (1)",
+          "Hôm qua, Lan nhặt được ví rơi trên đường.": "📖 Kể chuyện (2)",
+          "Hoa phượng nở đỏ rực cả một góc sân trường.": "🎨 Miêu tả (1)",
+          "Sân trường hình chữ nhật, rộng và rợp bóng cây.": "🎨 Miêu tả (2)",
+          "Em rất yêu mái trường thân thương này.": "❤️ Cảm xúc (1)",
+          "Chao ôi, nhớ làm sao những ngày tháng ấy!": "❤️ Cảm xúc (2)",
+          "Cây tre có thân rỗng, chia thành nhiều đốt.": "📚 Giới thiệu (1)",
+          "Khẩu trang y tế gồm ba lớp vải lọc.": "📚 Giới thiệu (2)",
+          "Mỗi người cần có ý thức bảo vệ môi trường.": "⚖️ Thuyết phục (1)",
+          "Học sinh nên rèn luyện thói quen đọc sách.": "⚖️ Thuyết phục (2)",
+          "Hội thao sẽ diễn ra vào 7h00 sáng Chủ nhật.": "📢 Thông báo (1)",
+          "Đơn xin phép nghỉ học do ốm.": "📢 Thông báo (2)"
+        },
+        "title": "Mini Game: Nhà xuất bản",
+        "instruction": "Kéo các thẻ câu văn vào đúng 6 ngăn tài liệu (Kể, Tả, Cảm xúc, Giới thiệu, Thuyết phục, Thông báo):",
+        "score": 3
+      }
+    },
+    {
+      "id": "step12",
+      "type": "ordering",
+      "validator": "orderValidator",
+      "data": {
+        "items": [
+          "Có ý tưởng và xác định đối tượng.",
+          "Xác định mục đích giao tiếp lớn nhất.",
+          "Chọn phương thức biểu đạt chính.",
+          "Viết bài và kết hợp các phương thức.",
+          "Kiểm tra và chỉnh sửa."
+        ],
+        "answer": [
+          "Có ý tưởng và xác định đối tượng.",
+          "Xác định mục đích giao tiếp lớn nhất.",
+          "Chọn phương thức biểu đạt chính.",
+          "Viết bài và kết hợp các phương thức.",
+          "Kiểm tra và chỉnh sửa."
+        ],
+        "title": "Quy trình tạo lập",
+        "instruction": "Phương thức biểu đạt là công cụ để viết. Sắp xếp quá trình viết một bài văn:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step13",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Cấu trúc 6 phương thức",
+            "icon": "🧠",
+            "active": true,
+            "content": {
+              "text": "1. Tự sự (Kể sự kiện)\n2. Miêu tả (Tả hình ảnh)\n3. Biểu cảm (Bộc lộ cảm xúc)\n4. Thuyết minh (Giới thiệu tri thức)\n5. Nghị luận (Thuyết phục ý kiến)\n6. Hành chính (Thông báo, quy định)",
+              "examples": []
+            }
+          }
+        ],
+        "title": "Bản đồ tư duy 6 phương thức",
+        "instruction": "Bài tổng kết module: Nắm chắc 6 phương thức biểu đạt",
+        "score": 0
+      }
+    },
+    {
+      "id": "step14",
+      "type": "flashcard",
+      "data": {
+        "front": "Làm thế nào để xác định chính xác Phương thức biểu đạt CHÍNH?",
+        "back": "Hãy xác định MỤC ĐÍCH lớn nhất của người viết, rồi dựa vào mục đích đó để chọn phương thức biểu đạt.",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "ptbd",
+    "difficulty": 3,
+    "xp": 100,
+    "stars": 3,
+    "description": "Phân biệt 6 phương thức biểu đạt và chọn đúng phương thức chính cho văn bản.",
+    "durationMinutes": 35
+  }
+}

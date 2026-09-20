@@ -1,0 +1,264 @@
+{
+  "id": "cau.03-cau-don",
+  "title": "Câu đơn",
+  "version": "1.0",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "content": "Trời / mưa.",
+        "guide": [
+          "Câu trên có mấy cụm Chủ ngữ - Vị ngữ?",
+          "Cấu tạo như vậy được gọi là câu gì?"
+        ],
+        "hint": "Câu trên chỉ có 1 cụm Chủ ngữ ('Trời') - Vị ngữ ('mưa'). Đây là đặc điểm của một câu đơn.",
+        "title": "Quan sát",
+        "instruction": "Xác định Chủ ngữ và Vị ngữ trong câu sau.",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Đặc điểm của câu đơn",
+            "icon": "1️⃣",
+            "active": true,
+            "content": {
+              "text": "Câu đơn là câu do MỘT cụm chủ - vị (C - V) tạo thành. Cụm chủ - vị này đóng vai trò là nòng cốt câu.",
+              "examples": [
+                {
+                  "category": "Ví dụ: ",
+                  "word": "Mùa xuân (CN) / đã về (VN).",
+                  "emoji": "🌸"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Lưu ý về Chủ ngữ, Vị ngữ",
+            "icon": "⚠️",
+            "active": false,
+            "content": {
+              "text": "Trong câu đơn, chủ ngữ hoặc vị ngữ có thể là những cụm từ phức tạp, hoặc có thể có nhiều chủ ngữ cùng chung một vị ngữ (và ngược lại), nhưng chúng vẫn chỉ tạo thành MỘT nòng cốt câu.",
+              "examples": [
+                {
+                  "category": "Ví dụ: ",
+                  "word": "Lan và Hoa (2 CN) / đang học bài (1 VN). -> Vẫn là câu đơn.",
+                  "emoji": "👯"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Khái niệm Câu đơn",
+        "instruction": "Câu đơn là loại câu có cấu tạo đơn giản nhất.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trong các câu sau, câu nào là câu đơn?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Vì trời mưa to nên đường rất trơn."
+          },
+          {
+            "id": "B",
+            "text": "Gió thổi mạnh, lá cây rơi lả tả."
+          },
+          {
+            "id": "C",
+            "text": "Ngoài sân, mấy chú chim chích chòe đang hót líu lo."
+          },
+          {
+            "id": "D",
+            "text": "Mẹ đi làm, còn em đi học."
+          }
+        ],
+        "answer": "C",
+        "title": "Nhận biết",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "Tôi đi học.",
+          "Trời rải mây trắng nhạt.",
+          "Gió lên, nước biển đổi màu.",
+          "Tuy nhà xa nhưng Nam vẫn đi học đúng giờ."
+        ],
+        "targets": [
+          "Câu đơn",
+          "Không phải câu đơn"
+        ],
+        "answer": {
+          "Tôi đi học.": "Câu đơn",
+          "Trời rải mây trắng nhạt.": "Câu đơn",
+          "Gió lên, nước biển đổi màu.": "Không phải câu đơn",
+          "Tuy nhà xa nhưng Nam vẫn đi học đúng giờ.": "Không phải câu đơn"
+        },
+        "title": "Phân tích cấu tạo",
+        "instruction": "Sắp xếp các câu sau vào đúng nhóm: Câu đơn hoặc Không phải câu đơn.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "highlight",
+      "data": {
+        "content": "Bố, mẹ và anh trai đều rất tự hào về thành tích của em.",
+        "answer": [
+          "Bố mẹ và anh trai"
+        ],
+        "title": "Tô sáng",
+        "instruction": "Tô sáng <b>toàn bộ Chủ ngữ</b> trong câu đơn sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Câu 'Buổi sáng, sương đọng trên những nhánh cỏ non.' có cấu trúc như thế nào?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Trạng ngữ, Vị ngữ - Chủ ngữ."
+          },
+          {
+            "id": "B",
+            "text": "Chủ ngữ - Vị ngữ, Trạng ngữ."
+          },
+          {
+            "id": "C",
+            "text": "Trạng ngữ, Chủ ngữ - Vị ngữ."
+          },
+          {
+            "id": "D",
+            "text": "2 cụm Chủ ngữ - Vị ngữ."
+          }
+        ],
+        "answer": "C",
+        "title": "Lựa chọn",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Dù có thêm Trạng ngữ ở đầu câu, vì sao câu 'Ngày mai, tôi sẽ đi du lịch.' vẫn được xếp vào loại câu đơn?",
+        "sampleAnswer": [
+          "Vì trạng ngữ 'Ngày mai' bổ sung ý nghĩa về thời gian",
+          "Vì câu này vẫn chỉ có một cụm Chủ ngữ - Vị ngữ.",
+          "Vì câu vẫn còn ngắn."
+        ],
+        "title": "Thông hiểu",
+        "score": 1
+      }
+    },
+    {
+      "id": "step08",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Em bé đang ngủ.",
+          "Lan và Hoa đang đọc sách.",
+          "Chú chó vừa sủa vừa chạy vòng quanh."
+        ],
+        "right": [
+          "1 CN - Nhiều VN",
+          "1 CN - 1 VN",
+          "Nhiều CN - 1 VN"
+        ],
+        "answer": {
+          "Em bé đang ngủ.": "1 CN - 1 VN",
+          "Lan và Hoa đang đọc sách.": "Nhiều CN - 1 VN",
+          "Chú chó vừa sủa vừa chạy vòng quanh.": "1 CN - Nhiều VN"
+        },
+        "title": "Nối câu",
+        "instruction": "Xác định xem các câu đơn sau thuộc loại câu có 1 hay nhiều chủ ngữ/vị ngữ.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step09",
+      "type": "reflection",
+      "data": {
+        "question": "Hãy đặt 1 câu đơn miêu tả về thời tiết ngày hôm nay.",
+        "sampleAnswer": "Ví dụ: Trời rất trong xanh và mát mẻ.",
+        "title": "Vận dụng",
+        "score": 1
+      }
+    },
+    {
+      "id": "step10",
+      "type": "reflection",
+      "data": {
+        "question": "Hãy đặt 1 câu đơn nói về một thói quen của em có dùng trạng ngữ.",
+        "sampleAnswer": "Ví dụ: Hàng ngày em đều dậy sớm.",
+        "title": "Vận dụng",
+        "score": 1
+      }
+    },
+    {
+      "id": "step11",
+      "type": "reflection",
+      "data": {
+        "question": "Hãy đặt 1 câu đơn nói về một nhân vật em thích có dùng thành phần biệt lập.",
+        "sampleAnswer": "Ví dụ: Bác Nam, hàng xóm của em, rất tốt bụng.",
+        "title": "Vận dụng",
+        "score": 1
+      }
+    },
+    {
+      "id": "step11",
+      "type": "reflection",
+      "data": {
+        "question": "Hãy đặt 1 câu đơn nói về mẹ em, có dùng khởi ngữ.",
+        "sampleAnswer": "Ví dụ: Đối với em, mẹ là người tuyệt vời nhất.",
+        "title": "Vận dụng",
+        "score": 1
+      }
+    },
+    {
+      "id": "step12",
+      "type": "flashcard",
+      "data": {
+        "front": "Câu đơn",
+        "back": "Là câu do duy nhất MỘT cụm Chủ ngữ - Vị ngữ tạo thành. Trong câu đơn, có thể có thêm trạng ngữ hoặc có nhiều chủ ngữ/vị ngữ đồng đẳng nhưng nòng cốt vẫn chỉ là 1 cụm C-V.",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "cau",
+    "difficulty": "reference",
+    "xp": 100,
+    "stars": 3,
+    "description": "Tìm hiểu đặc điểm cấu tạo của câu đơn (chỉ có một cụm chủ ngữ - vị ngữ nòng cốt) và tác dụng của câu đơn trong giao tiếp.",
+    "prerequisite": null,
+    "unlock": null,
+    "reviewMode": "instant",
+    "durationMinutes": 15
+  }
+}

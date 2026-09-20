@@ -1,0 +1,357 @@
+{
+  "id": "ptbd.04-bieu-cam",
+  "title": "Biểu cảm",
+  "version": "1.0",
+  "enabled": true,
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "format": "essay",
+        "content": "Chiều nào tan học, em cũng thấy bà ngồi trước hiên nhà chờ mình. Mái tóc bà đã bạc trắng theo năm tháng, đôi bàn tay gầy guộc vẫn đan từng chiếc áo len cho cháu. Mỗi lần nhìn thấy nụ cười hiền hậu của bà, em lại cảm thấy lòng mình thật ấm áp. Em chỉ mong bà luôn khỏe mạnh để mỗi buổi chiều, khi cánh cổng mở ra, em lại được chạy đến ôm bà thật chặt.",
+        "guide": [
+          "Các từ ngữ thể hiện cảm xúc",
+          "Lời tâm sự, bộc bạch"
+        ],
+        "hint": "Từ ngữ: ấm áp, yêu thương, mong... Lời tâm sự, bộc bạch...",
+        "title": "Quan sát",
+        "instruction": "Hãy đọc đoạn văn sau:",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Sau khi đọc đoạn văn, em cảm nhận điều gì nổi bật nhất?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Đoạn văn kể lại một sự việc."
+          },
+          {
+            "id": "B",
+            "text": "Đoạn văn giới thiệu về bà."
+          },
+          {
+            "id": "C",
+            "text": "Đoạn văn bộc lộ tình cảm của người cháu dành cho bà."
+          },
+          {
+            "id": "D",
+            "text": "Đoạn văn giải thích vì sao bà đan áo len."
+          }
+        ],
+        "answer": "C",
+        "title": "Nhận xét",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Những câu văn nào giúp em biết người viết đang bộc lộ cảm xúc?",
+        "sampleAnswer": [
+          "Em lại cảm thấy lòng mình thật ấm áp.",
+          "Em chỉ mong bà luôn khỏe mạnh..."
+        ],
+        "title": "Phân tích",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Mục đích",
+            "icon": "❤️",
+            "active": true,
+            "content": {
+              "text": "Bộc lộ:\n- Tình cảm\n- Cảm xúc\n- Suy nghĩ\n- Thái độ",
+              "examples": [
+                {
+                  "category": "Cảm xúc thường gặp",
+                  "word": "Yêu thương, nhớ nhung, biết ơn, tự hào, xúc động, vui mừng, tiếc nuối, lo lắng, hi vọng...",
+                  "emoji": "📌"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Dấu hiệu nhận biết",
+            "icon": "🔍",
+            "active": false,
+            "content": {
+              "text": "Thường xuất hiện các từ ngữ chỉ cảm xúc, câu cảm thán, hoặc lời tâm sự bộc bạch.",
+              "examples": [
+                {
+                  "category": "Từ ngữ & Câu",
+                  "word": "- Từ cảm xúc: yêu, nhớ, thương, quý, mong, xúc động, biết ơn...\n- Câu cảm thán: Ôi!, Chao ôi!, Biết bao!, Làm sao...",
+                  "emoji": "💡"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-3",
+            "title": "Mẹo nhận biết",
+            "icon": "💡",
+            "active": false,
+            "content": {
+              "text": "Nếu sau khi đọc xong, bạn cảm thấy tác giả đang muốn CHIA SẺ CẢM XÚC nhiều hơn là kể chuyện, miêu tả hay giải thích, thì biểu cảm thường là phương thức biểu đạt chính.",
+              "examples": []
+            }
+          }
+        ],
+        "title": "Kiến thức trọng tâm",
+        "instruction": "Khi người viết muốn bày tỏ tình cảm, cảm xúc, thái độ trước con người, sự vật hoặc cuộc sống thì thường sử dụng phương thức biểu cảm.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "fillBlank",
+      "validator": "fillBlankValidator",
+      "data": {
+        "question": "Điền vào chỗ trống",
+        "sentence": "Em luôn ___ những người đã giúp đỡ mình.",
+        "answer": "biết ơn",
+        "title": "Điền khuyết",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "reflection",
+      "data": {
+        "question": "Em hãy viết 2–3 câu bày tỏ tình cảm của mình với một người thân (Chỉ cần có cảm xúc thật).",
+        "sampleAnswer": "Mẹ là người em yêu thương nhất trên đời. Bàn tay ấm áp của mẹ luôn chăm sóc em không quản ngày đêm.",
+        "title": "Vận dụng",
+        "score": 2
+      }
+    },
+    {
+      "id": "step07",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Đoạn văn nào dưới đây sử dụng phương thức biểu cảm là chính?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Sáng nay, em thức dậy lúc 6 giờ, đánh răng rửa mặt rồi đi học."
+          },
+          {
+            "id": "B",
+            "text": "Trời trong xanh, từng đám mây trắng nhởn nhơ trôi trên cao."
+          },
+          {
+            "id": "C",
+            "text": "Quê hương là chùm khế ngọt, cho con trèo hái mỗi ngày. Quê hương là đường đi học..."
+          },
+          {
+            "id": "D",
+            "text": "Nước là chất lỏng không màu, không mùi, không vị."
+          }
+        ],
+        "answer": "C",
+        "title": "Trắc nghiệm",
+        "score": 1
+      }
+    },
+    {
+      "id": "step08",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Nhận định nào sau đây là ĐÚNG về phương thức biểu cảm?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Chỉ dùng để kể chuyện."
+          },
+          {
+            "id": "B",
+            "text": "Giúp bộc lộ cảm xúc của người viết."
+          },
+          {
+            "id": "C",
+            "text": "Văn bản biểu cảm không bao giờ có miêu tả."
+          },
+          {
+            "id": "D",
+            "text": "Chỉ cung cấp thông tin, không đan xen cảm xúc."
+          }
+        ],
+        "answer": "B",
+        "title": "Đúng hay Sai?",
+        "score": 1
+      }
+    },
+    {
+      "id": "step09",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Nhớ thương",
+          "Tự hào",
+          "Biết ơn",
+          "Mong nhớ"
+        ],
+        "right": [
+          "Em nhớ mãi tiếng ru của mẹ.",
+          "Em vô cùng tự hào về quê hương mình.",
+          "Em biết ơn thầy cô đã dạy dỗ em.",
+          "Em mong một ngày được trở lại mái trường cũ."
+        ],
+        "answer": {
+          "Nhớ thương": "Em nhớ mãi tiếng ru của mẹ.",
+          "Tự hào": "Em vô cùng tự hào về quê hương mình.",
+          "Biết ơn": "Em biết ơn thầy cô đã dạy dỗ em.",
+          "Mong nhớ": "Em mong một ngày được trở lại mái trường cũ."
+        },
+        "title": "Ghép cảm xúc",
+        "instruction": "Ghép cảm xúc phù hợp với câu văn:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step10",
+      "type": "ordering",
+      "validator": "orderValidator",
+      "data": {
+        "items": [
+          "Mẹ luôn âm thầm hi sinh vì em.",
+          "Mỗi khi gặp khó khăn, em lại nhớ đến mẹ.",
+          "Tình yêu của mẹ là nguồn động lực giúp em trưởng thành.",
+          "Em luôn biết ơn những lời dạy bảo của mẹ."
+        ],
+        "answer": [
+          "Mẹ luôn âm thầm hi sinh vì em.",
+          "Mỗi khi gặp khó khăn, em lại nhớ đến mẹ.",
+          "Tình yêu của mẹ là nguồn động lực giúp em trưởng thành.",
+          "Em luôn biết ơn những lời dạy bảo của mẹ."
+        ],
+        "title": "Sắp xếp câu",
+        "instruction": "Sắp xếp các câu sau để tạo thành một đoạn văn biểu cảm hợp lí:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step11",
+      "type": "highlight",
+      "data": {
+        "content": "Mỗi lần nghe tiếng trống trường, em lại thấy lòng mình rộn ràng và háo hức. Em yêu biết bao mái trường thân thương này!",
+        "answer": [
+          "rộn ràng",
+          "háo hức",
+          "yêu biết bao",
+          "thân thương"
+        ],
+        "title": "Tô sáng từ ngữ",
+        "instruction": "Tô đậm những từ hoặc cụm từ thể hiện cảm xúc trong đoạn sau:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step12",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Em vô cùng biết ơn thầy cô.",
+          "Cây phượng vĩ cao khoảng mười mét.",
+          "Hôm qua lớp em đi tham quan dã ngoại."
+        ],
+        "right": [
+          "Câu biểu cảm",
+          "Câu miêu tả",
+          "Câu tự sự"
+        ],
+        "answer": {
+          "Em vô cùng biết ơn thầy cô.": "Câu biểu cảm",
+          "Cây phượng vĩ cao khoảng mười mét.": "Câu miêu tả",
+          "Hôm qua lớp em đi tham quan dã ngoại.": "Câu tự sự"
+        },
+        "title": "Phân loại câu",
+        "instruction": "Ghép từng câu văn vào đúng nhóm phương thức biểu đạt:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step13",
+      "type": "ordering",
+      "validator": "orderValidator",
+      "data": {
+        "items": [
+          "Quan sát sự vật",
+          "Nảy sinh cảm xúc",
+          "Bộc lộ suy nghĩ",
+          "Gửi gắm tình cảm"
+        ],
+        "answer": [
+          "Quan sát sự vật",
+          "Nảy sinh cảm xúc",
+          "Bộc lộ suy nghĩ",
+          "Gửi gắm tình cảm"
+        ],
+        "title": "Trình tự hình thành",
+        "instruction": "Sắp xếp theo đúng trình tự hình thành một đoạn văn biểu cảm:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step14",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Tự sự",
+          "Miêu tả",
+          "Biểu cảm"
+        ],
+        "right": [
+          "Kể lại một chuyến đi du lịch Đà Lạt.",
+          "Tái hiện lại bức tranh cánh đồng lúa chín.",
+          "Bày tỏ tình yêu tha thiết với quê hương."
+        ],
+        "answer": {
+          "Tự sự": "Kể lại một chuyến đi du lịch Đà Lạt.",
+          "Miêu tả": "Tái hiện lại bức tranh cánh đồng lúa chín.",
+          "Biểu cảm": "Bày tỏ tình yêu tha thiết với quê hương."
+        },
+        "title": "Ôn tập tổng hợp",
+        "instruction": "Kéo các đoạn văn vào đúng phương thức biểu đạt chính:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step15",
+      "type": "flashcard",
+      "data": {
+        "front": "Phương thức biểu cảm là gì?",
+        "back": "Dùng để bộc lộ tình cảm, cảm xúc hoặc thái độ của người viết trước con người, sự vật và cuộc sống.",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "ptbd",
+    "difficulty": 2,
+    "xp": 80,
+    "stars": 3,
+    "description": "Nhận biết và sử dụng phương thức biểu cảm trong văn bản.",
+    "durationMinutes": 25
+  }
+}

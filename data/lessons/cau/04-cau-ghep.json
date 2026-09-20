@@ -1,0 +1,251 @@
+{
+  "id": "cau.04-cau-ghep",
+  "title": "Câu ghép",
+  "version": "1.0",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "content": "Trời / mưa to <b>nên</b> đường / rất trơn.",
+        "guide": [
+          "Câu trên có mấy cụm Chủ - Vị độc lập với nhau?",
+          "Các cụm C-V đó được nối với nhau bằng từ nào?"
+        ],
+        "hint": "Câu có 2 cụm C-V ('Trời / mưa to' và 'đường / rất trơn') được nối với nhau bằng quan hệ từ 'nên'. Đây là một câu ghép.",
+        "title": "Quan sát",
+        "instruction": "Đọc câu sau và xác định số lượng cụm Chủ - Vị.",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Đặc điểm của câu ghép",
+            "icon": "🔗",
+            "active": true,
+            "content": {
+              "text": "Câu ghép là câu do TỪ HAI cụm chủ - vị (C-V) trở lên tạo thành. Mỗi cụm C-V được gọi là một vế câu.",
+              "examples": [
+                {
+                  "category": "Lưu ý: ",
+                  "word": "Các cụm C-V trong câu ghép không bao chứa nhau (tức là không cụm C-V nào làm thành phần cho cụm C-V khác).",
+                  "emoji": "⚠️"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Cách nối các vế câu ghép",
+            "icon": "🧩",
+            "active": false,
+            "content": {
+              "text": "Các vế câu ghép có thể được nối với nhau bằng nhiều cách khác nhau.",
+              "examples": [
+                {
+                  "category": "Dùng từ nối: ",
+                  "word": "Dùng 1 quan hệ từ (và, rồi, thì, nhưng, hay, hoặc...) hoặc cặp quan hệ từ (vì... nên..., nếu... thì..., tuy... nhưng...).",
+                  "emoji": "➕"
+                },
+                {
+                  "category": "Không dùng từ nối: ",
+                  "word": "Dùng dấu phẩy (,), dấu chấm phẩy (;) hoặc dấu hai chấm (:).",
+                  "emoji": "📝"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Khái niệm Câu ghép (bổ sung sau câu ghép chính phụ và đẳng lập)",
+        "instruction": "Câu ghép là gì và cách nối các vế câu ghép.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trong các câu sau, câu nào là câu ghép?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Dưới ánh nắng chói chang, đàn trâu đang thong thả gặm cỏ."
+          },
+          {
+            "id": "B",
+            "text": "Lan và Hoa rủ nhau đi chơi công viên vào cuối tuần."
+          },
+          {
+            "id": "C",
+            "text": "Gió thổi mạnh, lá cây rơi lả tả xuống mặt đường."
+          },
+          {
+            "id": "D",
+            "text": "Mùa xuân, trăm hoa đua nở rực rỡ."
+          }
+        ],
+        "answer": "C",
+        "title": "Nhận biết",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "Chẳng những hoa sen đẹp mà nó còn có mùi hương rất thơm.",
+          "Tuy nhà xa nhưng Nam vẫn đến lớp đúng giờ.",
+          "Nếu em chăm chỉ thì em sẽ đạt điểm cao.",
+          "Mẹ đi chợ còn bố ở nhà dọn dẹp."
+        ],
+        "targets": [
+          "Điều kiện - Kết quả",
+          "Tương phản",
+          "Đồng thời / Nối tiếp",
+          "Tăng tiến"
+        ],
+        "answer": {
+          "Chẳng những hoa sen đẹp mà nó còn có mùi hương rất thơm.": "Tăng tiến",
+          "Nếu em chăm chỉ thì em sẽ đạt điểm cao.": "Điều kiện - Kết quả",
+          "Tuy nhà xa nhưng Nam vẫn đến lớp đúng giờ.": "Tương phản",
+          "Mẹ đi chợ còn bố ở nhà dọn dẹp.": "Đồng thời / Nối tiếp"
+        },
+        "title": "Xác định quan hệ ý nghĩa",
+        "instruction": "Sắp xếp các câu ghép vào đúng mối quan hệ ý nghĩa giữa các vế câu.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "highlight",
+      "data": {
+        "content": "Vì trời mưa to nên chúng tôi nghỉ học.",
+        "answer": [
+          "Vì",
+          "nên"
+        ],
+        "title": "Tô sáng",
+        "instruction": "Tô sáng <b>cặp quan hệ từ</b> được dùng để nối các vế trong câu ghép sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Vì Lan thức khuya",
+          "Dù đã cố gắng hết sức",
+          "Mặt trời vừa lên"
+        ],
+        "right": [
+          "nhưng đội bóng của chúng ta vẫn thất bại.",
+          "nên sáng nay bạn ấy đi học muộn.",
+          "thì những giọt sương cũng tan dần."
+        ],
+        "answer": {
+          "Vì Lan thức khuya": "nên sáng nay bạn ấy đi học muộn.",
+          "Dù đã cố gắng hết sức": "nhưng đội bóng của chúng ta vẫn thất bại.",
+          "Mặt trời vừa lên": "thì những giọt sương cũng tan dần."
+        },
+        "title": "Nối câu",
+        "instruction": "Ghép các vế câu để tạo thành câu ghép hoàn chỉnh và có ý nghĩa.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Làm thế nào để phân biệt một câu ghép không dùng từ nối với một đoạn văn gồm nhiều câu đơn?",
+        "sampleAnswer": [
+          "Dựa vào dấu câu.",
+          "Câu ghép không từ nối, các vế câu có thể quan hệ với nhau, còn đoạn văn gồm nhiều câu đơn là độc lập."
+        ],
+        "title": "Thông hiểu",
+        "score": 1
+      }
+    },
+    {
+      "id": "step08",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Câu 'Thầy giáo giảng bài, học sinh chăm chú lắng nghe.' sử dụng cách nối nào?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Nối bằng quan hệ từ."
+          },
+          {
+            "id": "B",
+            "text": "Nối bằng cặp quan hệ từ."
+          },
+          {
+            "id": "C",
+            "text": "Nối trực tiếp không dùng từ nối."
+          },
+          {
+            "id": "D",
+            "text": "Nối bằng đại từ."
+          }
+        ],
+        "answer": "C",
+        "title": "Lựa chọn",
+        "score": 1
+      }
+    },
+    {
+      "id": "step09",
+      "type": "reflection",
+      "data": {
+        "question": "Hãy đặt 1 câu ghép có sử dụng cặp quan hệ từ 'Tuy ... nhưng ...'.",
+        "sampleAnswer": "Ví dụ: Tuy thời tiết rất lạnh nhưng các bác nông dân vẫn ra đồng làm việc.",
+        "title": "Vận dụng",
+        "score": 1
+      }
+    },
+    {
+      "id": "step09",
+      "type": "reflection",
+      "data": {
+        "question": "Hãy đặt 1 câu ghép có sử dụng quan hệ từ và 1 trạng ngữ.",
+        "sampleAnswer": "Ví dụ: Sáng nay, vì trời mưa to nên em đi học muộn.",
+        "title": "Vận dụng",
+        "score": 1
+      }
+    },
+    {
+      "id": "step10",
+      "type": "flashcard",
+      "data": {
+        "front": "Câu ghép",
+        "back": "Là câu do từ hai cụm C-V độc lập trở lên tạo thành. Các vế câu có thể nối với nhau bằng từ nối (quan hệ từ, cặp quan hệ từ) hoặc không dùng từ nối (dấu phẩy, dấu chấm phẩy, dấu hai chấm).",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "cau",
+    "difficulty": "reference",
+    "xp": 100,
+    "stars": 3,
+    "description": "Tìm hiểu về câu ghép, các cách nối các vế câu và mối quan hệ ý nghĩa giữa các vế trong câu ghép.",
+    "prerequisite": null,
+    "unlock": null,
+    "reviewMode": "instant",
+    "durationMinutes": 20
+  }
+}

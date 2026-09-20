@@ -1,0 +1,190 @@
+{
+  "id": "doc-hieu-theo-kieu-van-ban.06",
+  "title": "Các dạng câu hỏi đọc hiểu",
+  "version": "1.0",
+  "enabled": true,
+  "steps": [
+    {
+      "id": "step01",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Biết dạng = Biết công thức",
+            "icon": "🧠",
+            "active": true,
+            "content": {
+              "text": "Mỗi dạng câu hỏi (Ví dụ: 'Nêu tác dụng') đều có một 'mẫu' trả lời chuẩn. Khi biết nó là dạng nào, bạn sẽ không bao giờ bị trả lời lan man hay thiếu ý.",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "4 Cấp độ câu hỏi",
+            "icon": "📈",
+            "active": false,
+            "content": {
+              "text": "1. Nhận biết (Chép từ văn bản).\n2. Thông hiểu (Giải thích bằng lời mình).\n3. Vận dụng (Nêu tác dụng, đánh giá).\n4. Vận dụng cao (Liên hệ bản thân, rút bài học).",
+              "examples": []
+            }
+          }
+        ],
+        "title": "Tại sao phải phân loại câu hỏi?",
+        "instruction": "Đề thi Đọc hiểu thường xoay quanh 4 cấp độ nhận thức. Việc nhận diện đúng dạng sẽ giúp bạn định hình ngay công thức trả lời.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Thơ & Tự sự",
+            "icon": "🎭",
+            "active": true,
+            "content": {
+              "text": "- Thơ: Chỉ ra/Nêu tác dụng Biện pháp tu từ; Mạch cảm xúc.\n- Tự sự: Ý nghĩa chi tiết, Tình huống truyện, Đặc điểm nhân vật.",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Nghị luận & Thông tin",
+            "icon": "📝",
+            "active": false,
+            "content": {
+              "text": "- Nghị luận: Xác định Luận điểm, Vấn đề; Tác dụng của lý lẽ/dẫn chứng.\n- Thông tin/Thuyết minh: Tìm kiếm dữ liệu cụ thể (5W1H); Tác dụng của hình ảnh, biểu đồ, số liệu.",
+              "examples": []
+            }
+          }
+        ],
+        "title": "Dạng câu hỏi đặc thù theo văn bản",
+        "instruction": "Mỗi kiểu văn bản lại có những 'đặc sản' câu hỏi riêng mà bạn chắc chắn sẽ gặp:",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "observe",
+      "data": {
+        "content": "Câu hỏi: <i>\"Chỉ ra và nêu tác dụng của biện pháp tu từ nhân hóa được sử dụng trong hai câu thơ trên.\"</i>",
+        "guide": [
+          "Câu hỏi này yêu cầu làm mấy việc?",
+          "Đây thuộc dạng câu hỏi gì và cấp độ nào?"
+        ],
+        "hint": "- Yêu cầu làm 2 việc: (1) Chỉ ra (gọi tên BPTT và từ ngữ) và (2) Nêu tác dụng.\n- Thuộc dạng: Phân tích nghệ thuật. Cấp độ: Thông hiểu & Vận dụng (Cần trả lời đủ ý gợi hình và biểu cảm theo mẫu).",
+        "title": "Ví dụ nhận diện",
+        "instruction": "Hãy quan sát câu hỏi sau trong một đề thi thật:",
+        "score": 0
+      }
+    },
+    {
+      "id": "step04",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Câu hỏi: \"Theo đoạn trích (Nghị luận), nguyên nhân nào giúp nhân vật thành công?\" thuộc cấp độ nhận thức nào và cần làm gì?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Thông hiểu - đòi hỏi phải tự suy luận ý nghĩa từ các gợi ý."
+          },
+          {
+            "id": "B",
+            "text": "Vận dụng cao - liên hệ bản thân xem mình sẽ làm gì để thành công."
+          },
+          {
+            "id": "C",
+            "text": "Nhận biết - chỉ cần dùng mắt quét trong văn bản có chữ 'nguyên nhân' hoặc nội dung tương tự và chép lại nguyên văn."
+          },
+          {
+            "id": "D",
+            "text": "Vận dụng - phân tích nghệ thuật lập luận của đoạn trích."
+          }
+        ],
+        "answer": "C",
+        "title": "Thực hành 1",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Khi gặp câu hỏi dạng \"Anh/chị hiểu như thế nào về câu nói...\" (thường xuất hiện trong văn Nghị luận), công thức trả lời chuẩn nhất là gì?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Chép lại y nguyên câu nói đó vào bài thi."
+          },
+          {
+            "id": "B",
+            "text": "Giải thích nghĩa đen (của các từ khóa) và suy ra nghĩa bóng (thông điệp, ngụ ý) của toàn bộ câu nói đó."
+          },
+          {
+            "id": "C",
+            "text": "Chỉ ra biện pháp nghệ thuật trong câu nói."
+          },
+          {
+            "id": "D",
+            "text": "Nêu rõ quan điểm cá nhân là đồng tình hay phản đối câu nói đó."
+          }
+        ],
+        "answer": "B",
+        "title": "Thực hành 2",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Phân tích tác dụng của yếu tố miêu tả nhân vật trong đoạn...",
+          "Biểu đồ cột trong bản tin có vai trò gì?",
+          "Chỉ ra luận điểm chính được tác giả bảo vệ.",
+          "Biện pháp ẩn dụ trong khổ thơ gợi cho em cảm xúc gì?"
+        ],
+        "right": [
+          "Văn bản Tự sự",
+          "Văn bản Thông tin",
+          "Văn bản Nghị luận",
+          "Văn bản Thơ"
+        ],
+        "answer": {
+          "Phân tích tác dụng của yếu tố miêu tả nhân vật trong đoạn...": "Văn bản Tự sự",
+          "Biểu đồ cột trong bản tin có vai trò gì?": "Văn bản Thông tin",
+          "Chỉ ra luận điểm chính được tác giả bảo vệ.": "Văn bản Nghị luận",
+          "Biện pháp ẩn dụ trong khổ thơ gợi cho em cảm xúc gì?": "Văn bản Thơ"
+        },
+        "title": "Ghép câu hỏi với Dạng đặc thù",
+        "instruction": "Nối các câu hỏi thi sau với kiểu văn bản đặc trưng thường xuất hiện chúng:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step07",
+      "type": "flashcard",
+      "data": {
+        "front": "Quy tắc vàng TRƯỚC KHI đặt bút trả lời 1 câu Đọc hiểu?",
+        "back": "Phải tự hỏi: 'Đây là cấp độ câu hỏi gì (Nhận biết/Thông hiểu...)?' và 'Đây là dạng bài đặc thù của kiểu văn bản nào?' để áp dụng CÔNG THỨC chuẩn.",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "doc-hieu-theo-kieu-van-ban",
+    "difficulty": 2,
+    "xp": 70,
+    "stars": 3,
+    "description": "Nhận diện và nắm bắt công thức trả lời cho các dạng câu hỏi đặc thù theo từng kiểu văn bản.",
+    "durationMinutes": 20
+  }
+}

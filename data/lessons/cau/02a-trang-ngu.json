@@ -1,0 +1,162 @@
+{
+  "id": "cau.02a-trang-ngu",
+  "title": "Trạng ngữ",
+  "version": "1.0",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "content": "<b>Sáng nay</b>, <b>tại sân trường</b>, các bạn học sinh đang tập thể dục.",
+        "guide": [
+          "Phần in đậm bổ sung ý nghĩa gì cho câu (thời gian, địa điểm, nguyên nhân...)?",
+          "Nếu bỏ phần in đậm đi, câu có còn ý nghĩa hoàn chỉnh không?"
+        ],
+        "hint": "Phần in đậm là Trạng ngữ - một thành phần phụ của câu. Nó bổ sung thông tin về thời gian ('Sáng nay') và địa điểm ('tại sân trường').",
+        "title": "Quan sát",
+        "instruction": "Đọc câu sau và cho biết phần in đậm có tác dụng gì.",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Đặc điểm của Trạng ngữ",
+            "icon": "📝",
+            "active": true,
+            "content": {
+              "text": "Trạng ngữ là thành phần phụ của câu, được thêm vào câu để xác định thời gian, nơi chốn, nguyên nhân, mục đích, phương tiện, cách thức diễn ra sự việc nêu trong câu.",
+              "examples": [
+                {
+                  "category": "Vị trí: ",
+                  "word": "Thường đứng đầu câu, nhưng cũng có thể đứng giữa hoặc cuối câu. Giữa trạng ngữ với chủ ngữ và vị ngữ thường có một quãng nghỉ (khi nói) hoặc dấu phẩy (khi viết).",
+                  "emoji": "📍"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Các loại trạng ngữ thường gặp",
+            "icon": "🔍",
+            "active": false,
+            "content": {
+              "text": "Có nhiều loại trạng ngữ khác nhau dựa vào ý nghĩa mà chúng bổ sung.",
+              "examples": [
+                {
+                  "category": "Ví dụ: ",
+                  "word": "Trạng ngữ chỉ thời gian (Hôm qua), nơi chốn (Ngoài đình), nguyên nhân (Vì mưa), mục đích (Để học tốt), phương tiện (Bằng xe đạp).",
+                  "emoji": "💡"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-3",
+            "title": "3. Tác dụng",
+            "icon": "✨",
+            "active": false,
+            "content": {
+              "text": "Tác dụng là:",
+              "examples": [
+                {
+                  "category": "Hiệu quả",
+                  "word": "Xác định hoàn cảnh, điều kiện, thời gian, không gian... diễn ra sự việc nêu trong câu; giúp câu văn cụ thể, rõ ràng và có vai trò liên kết các câu trong đoạn văn.",
+                  "emoji": "🎨"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Khái niệm",
+        "instruction": "Trạng ngữ là thành phần phụ quan trọng nhất của câu.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "highlight",
+      "data": {
+        "content": "Dưới bóng cây xanh, tôi ngồi nghỉ mát.",
+        "answer": [
+          "Dưới bóng cây xanh"
+        ],
+        "title": "Nhận biết",
+        "instruction": "Hãy tô sáng <b>Trạng ngữ</b> trong câu sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "Năm ngoái",
+          "Trên cành cây",
+          "Để bảo vệ môi trường",
+          "Vì mải chơi"
+        ],
+        "targets": [
+          "Nguyên nhân",
+          "Thời gian",
+          "Nơi chốn",
+          "Mục đích"
+        ],
+        "answer": {
+          "Năm ngoái": "Thời gian",
+          "Trên cành cây": "Nơi chốn",
+          "Vì mải chơi": "Nguyên nhân",
+          "Để bảo vệ môi trường": "Mục đích"
+        },
+        "title": "Phân loại",
+        "instruction": "Xếp các trạng ngữ sau vào đúng nhóm phân loại của chúng.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trạng ngữ 'Bằng giọng nói truyền cảm' trong câu 'Bằng giọng nói truyền cảm, cô giáo đã cuốn hút học sinh vào bài học.' thuộc loại trạng ngữ gì?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Trạng ngữ chỉ nguyên nhân"
+          },
+          {
+            "id": "B",
+            "text": "Trạng ngữ chỉ mục đích"
+          },
+          {
+            "id": "C",
+            "text": "Trạng ngữ chỉ phương tiện, cách thức"
+          },
+          {
+            "id": "D",
+            "text": "Trạng ngữ chỉ thời gian"
+          }
+        ],
+        "answer": "C",
+        "title": "Lựa chọn",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "cau",
+    "difficulty": "reference",
+    "xp": 100,
+    "stars": 3,
+    "description": "Tìm hiểu chi tiết về Trạng ngữ: khái niệm, các loại trạng ngữ (thời gian, nơi chốn, nguyên nhân, mục đích...) và tác dụng.",
+    "prerequisite": null,
+    "unlock": null,
+    "reviewMode": "instant",
+    "durationMinutes": 15
+  }
+}

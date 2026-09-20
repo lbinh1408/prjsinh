@@ -1,0 +1,759 @@
+{
+  "id": "viet-bai-van-02",
+  "title": "Tìm ý — Mình có gì để nói?",
+  "type": "skill",
+  "version": "1.0.0",
+  "meta": {
+    "module": "viet-bai-van",
+    "lessonNumber": 2,
+    "durationMinutes": 45,
+    "difficulty": "beginner",
+    "skill": "tim-y-mo-rong-y",
+    "description": "Học cách dùng câu hỏi để gọi ra ý tưởng, mở rộng một ý lớn thành những ý nhỏ và chọn những ý phù hợp để chuẩn bị cho bước lập dàn ý."
+  },
+  "learningGoals": [
+    "Hiểu rằng tìm ý là bước tạo nguyên liệu trước khi lập dàn ý.",
+    "Biết dùng câu hỏi để gọi ra ý tưởng.",
+    "Biết mở rộng một ý lớn thành các ý nhỏ.",
+    "Biết tìm chất liệu từ trải nghiệm, cảm xúc, suy nghĩ và chi tiết cụ thể.",
+    "Phân biệt ý chung chung với ý có chất liệu để phát triển.",
+    "Biết chọn những ý phù hợp và có giá trị đối với đề bài."
+  ],
+  "completion": {
+    "requiredSections": [
+      "story",
+      "observe",
+      "discover",
+      "teach",
+      "guidedPractice",
+      "miniChallenge",
+      "reflection",
+      "cheatSheet",
+      "finalChallenge"
+    ],
+    "action": "completeLesson",
+    "message": "💡 Không biết viết gì? Hãy hỏi thêm một câu. Một câu hỏi đúng có thể mở ra cả một ý tưởng."
+  },
+  "steps": [
+    {
+      "id": "story_01",
+      "type": "story",
+      "data": {
+        "title": "Trang giấy trắng đáng sợ đến vậy sao?",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "split_compare",
+          "layout": "two_columns",
+          "question": "Bạn nào đã tìm được nhiều chất liệu hơn để bắt đầu viết?"
+        },
+        "content": {
+          "prompt": "Đề bài: Kể lại một trải nghiệm đáng nhớ đã giúp em trưởng thành hơn.",
+          "left": {
+            "label": "BẠN A",
+            "paragraph": "Em không biết viết gì. Em đã có nhiều trải nghiệm nhưng không biết chọn chuyện nào. Em ngồi nhìn trang giấy rất lâu."
+          },
+          "right": {
+            "label": "BẠN B",
+            "paragraph": "Em tự hỏi: Chuyện gì từng khiến mình nhớ mãi? Khi đó chuyện gì xảy ra? Mình đã cảm thấy thế nào? Sau chuyện đó mình thay đổi điều gì? Từ những câu hỏi ấy, em nhớ ra lần mình làm mất chiếc điện thoại của mẹ."
+          }
+        },
+        "interaction": {
+          "type": "choice",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Bạn A",
+              "correct": false
+            },
+            {
+              "id": "b",
+              "text": "Bạn B",
+              "correct": true
+            },
+            {
+              "id": "same",
+              "text": "Hai bạn có cách tìm ý giống nhau",
+              "correct": false
+            }
+          ],
+          "feedback": {
+            "correct": "✓ Đúng. Bạn B không chờ ý tưởng tự xuất hiện mà dùng câu hỏi để gọi lại trải nghiệm và mở rộng nó.",
+            "incorrect": "△ Hãy chú ý cách bạn B liên tục đặt câu hỏi để tìm ra sự việc, cảm xúc và bài học."
+          }
+        },
+        "reveal": {
+          "title": "💡 Tìm ý không phải ngồi chờ ý tưởng",
+          "text": "Khi chưa biết viết gì, hãy đặt câu hỏi. Câu hỏi đúng sẽ giúp em nhớ lại trải nghiệm, tìm chi tiết và phát triển ý tưởng."
+        }
+      }
+    },
+    {
+      "id": "observe_01",
+      "type": "observe",
+      "data": {
+        "title": "Một ý nhỏ có thể lớn lên như thế nào?",
+        "durationSeconds": 180,
+        "ui": {
+          "component": "paragraph_highlight",
+          "interaction": "tap_sentence",
+          "question": "Hãy nhấn vào từng câu hỏi để xem nó giúp mở ra điều gì."
+        },
+        "content": {
+          "prompt": "Ý ban đầu: Em rất yêu mẹ.",
+          "paragraph": [
+            {
+              "id": "s1",
+              "text": "Em rất yêu mẹ.",
+              "role": "idea",
+              "roleLabel": "💡 Ý BAN ĐẦU",
+              "feedback": "🟢 Đây là một ý đúng nhưng còn rất chung chung. Nếu viết ngay, em sẽ nhanh chóng bí."
+            },
+            {
+              "id": "s2",
+              "text": "Vì sao em yêu mẹ?",
+              "role": "question_why",
+              "roleLabel": "🔎 HỎI VÌ SAO",
+              "feedback": "🟡 Câu hỏi này giúp em tìm nguyên nhân và những điều khiến tình cảm xuất hiện."
+            },
+            {
+              "id": "s3",
+              "text": "Mẹ đã làm điều gì khiến em nhớ nhất?",
+              "role": "question_detail",
+              "roleLabel": "🔎 TÌM CHI TIẾT",
+              "feedback": "🔵 Câu hỏi này kéo ý tưởng từ điều chung chung về một sự việc hoặc chi tiết cụ thể."
+            },
+            {
+              "id": "s4",
+              "text": "Khi đó em cảm thấy thế nào?",
+              "role": "question_feeling",
+              "roleLabel": "❤️ TÌM CẢM XÚC",
+              "feedback": "🟣 Cảm xúc giúp ý tưởng trở nên cá nhân và có chiều sâu hơn."
+            },
+            {
+              "id": "s5",
+              "text": "Sau chuyện đó, em nhận ra điều gì?",
+              "role": "question_thought",
+              "roleLabel": "💭 TÌM SUY NGHĨ",
+              "feedback": "🟠 Câu hỏi này giúp em tìm ra suy nghĩ hoặc điều mình nhận ra từ trải nghiệm."
+            }
+          ]
+        },
+        "reveal": {
+          "title": "Em vừa nhìn thấy gì?",
+          "text": "Một ý chung chung có thể được mở rộng bằng những câu hỏi phù hợp: Vì sao? Điều gì cụ thể? Em cảm thấy gì? Em nhận ra điều gì?"
+        }
+      }
+    },
+    {
+      "id": "discover_01",
+      "type": "discover",
+      "data": {
+        "title": "Không biết viết gì? Hỏi thêm một câu!",
+        "durationSeconds": 180,
+        "ui": {
+          "component": "card_to_slot",
+          "interaction": "tap_to_place"
+        },
+        "reveal": {
+          "title": "🔎 Em vừa phát hiện ra",
+          "text": "Tìm ý có thể bắt đầu bằng việc đặt câu hỏi. Mỗi câu hỏi mở ra một hướng suy nghĩ khác nhau."
+        },
+        "content": {
+          "prompt": "Ghép câu hỏi với loại ý mà nó giúp em tìm ra.",
+          "slots": [
+            {
+              "id": "event",
+              "label": "📖 SỰ VIỆC / TRẢI NGHIỆM",
+              "question": "Chuyện gì đã xảy ra?",
+              "hint": "Tìm một sự việc cụ thể."
+            },
+            {
+              "id": "detail",
+              "label": "🔎 CHI TIẾT",
+              "question": "Điều gì khiến em nhớ nhất?",
+              "hint": "Tìm một chi tiết nổi bật."
+            },
+            {
+              "id": "feeling",
+              "label": "❤️ CẢM XÚC",
+              "question": "Em cảm thấy thế nào?",
+              "hint": "Tìm cảm xúc của bản thân."
+            },
+            {
+              "id": "thought",
+              "label": "💭 SUY NGHĨ",
+              "question": "Em nhận ra điều gì?",
+              "hint": "Tìm suy nghĩ hoặc bài học."
+            }
+          ],
+          "cards": [
+            {
+              "id": "event",
+              "target": "event",
+              "correct": true,
+              "slotText": "Lần đầu em đứng trước lớp để thuyết trình.",
+              "feedback": "✓ Đây là một sự việc cụ thể có thể phát triển thành chất liệu viết.",
+              "label": "📖 Sự việc"
+            },
+            {
+              "id": "detail",
+              "target": "detail",
+              "correct": true,
+              "slotText": "Bàn tay em run lên khi cầm tờ giấy.",
+              "feedback": "✓ Một chi tiết cụ thể giúp câu chuyện trở nên rõ và có hình ảnh hơn.",
+              "label": "🔎 Chi tiết"
+            },
+            {
+              "id": "feeling",
+              "target": "feeling",
+              "correct": true,
+              "slotText": "Ban đầu em rất lo lắng, nhưng sau đó cảm thấy tự tin hơn.",
+              "feedback": "✓ Cảm xúc giúp người đọc hiểu trải nghiệm có ý nghĩa với em như thế nào.",
+              "label": "❤️ Cảm xúc"
+            },
+            {
+              "id": "thought",
+              "target": "thought",
+              "correct": true,
+              "slotText": "Em nhận ra rằng chỉ khi dám thử, mình mới biết mình có thể làm được.",
+              "feedback": "✓ Đây là suy nghĩ được rút ra sau trải nghiệm.",
+              "label": "💭 Suy nghĩ"
+            },
+            {
+              "id": "wrong",
+              "target": null,
+              "correct": false,
+              "slotText": "Cuộc sống rất quan trọng.",
+              "feedback": "△ Ý này quá chung chung và chưa cung cấp nhiều chất liệu để viết.",
+              "label": "△ Ý chung chung"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "teach_01",
+      "type": "teach",
+      "data": {
+        "title": "BỘ MÁY TÌM Ý",
+        "durationSeconds": 300,
+        "ui": {
+          "component": "vertical_map",
+          "interaction": "click_node",
+          "center": "Ý BAN ĐẦU"
+        },
+        "prompt": "Khi có một ý ban đầu, đừng vội viết. Hãy hỏi thêm để làm nó lớn lên.",
+        "nodes": [
+          {
+            "id": "idea",
+            "icon": "💡",
+            "title": "Ý BAN ĐẦU",
+            "short": "Mình nghĩ gì?",
+            "question": "Ý tưởng đầu tiên của em là gì?",
+            "example": "Em rất yêu ngôi trường của mình."
+          },
+          {
+            "id": "event",
+            "icon": "📖",
+            "title": "SỰ VIỆC",
+            "short": "Chuyện gì?",
+            "question": "Có chuyện gì cụ thể liên quan đến ý này?",
+            "example": "Ngày hội văn nghệ của trường là một kỉ niệm em nhớ mãi."
+          },
+          {
+            "id": "detail",
+            "icon": "🔎",
+            "title": "CHI TIẾT",
+            "short": "Điều gì nổi bật?",
+            "question": "Điều gì khiến em nhớ nhất?",
+            "example": "Cả sân trường sáng lên dưới những dây đèn nhỏ khi chương trình bắt đầu."
+          },
+          {
+            "id": "feeling",
+            "icon": "❤️",
+            "title": "CẢM XÚC",
+            "short": "Em cảm thấy gì?",
+            "question": "Sự việc đó khiến em cảm thấy thế nào?",
+            "example": "Em vừa hồi hộp vừa vui sướng khi đứng giữa sân trường cùng bạn bè."
+          },
+          {
+            "id": "thought",
+            "icon": "💭",
+            "title": "SUY NGHĨ",
+            "short": "Em nhận ra gì?",
+            "question": "Sau đó em nghĩ gì hoặc nhận ra điều gì?",
+            "example": "Em nhận ra những kỉ niệm bình dị ở trường có thể trở thành những điều mình nhớ nhất."
+          },
+          {
+            "id": "selection",
+            "icon": "✂️",
+            "title": "CHỌN Ý",
+            "short": "Ý nào đáng giữ?",
+            "question": "Ý nào phù hợp với đề và có đủ chất liệu để phát triển?",
+            "example": "Ưu tiên những ý cụ thể, liên quan trực tiếp đến đề và khiến em có điều thật sự muốn nói."
+          }
+        ],
+        "diagnosticQuestion": "💡 Nếu chưa biết viết gì, em có thể hỏi thêm câu nào?",
+        "importantNote": "Không phải câu hỏi nào cũng cần trả lời. Hãy chọn những câu hỏi giúp em tìm được chất liệu phù hợp với đề."
+      }
+    },
+    {
+      "id": "guidedPractice_01",
+      "type": "guidedPractice",
+      "data": {
+        "title": "Đào một ý thành chất liệu viết",
+        "durationSeconds": 300,
+        "ui": {
+          "component": "builder",
+          "interaction": "type_to_place"
+        },
+        "prompt": "Đề bài: Kể lại một lần em mắc lỗi và nhận ra điều gì đó quan trọng.",
+        "instruction": "Hãy đưa các ý vào đúng bước để biến một ý ban đầu thành chất liệu cụ thể.",
+        "content": {
+          "prompt": "Ý ban đầu: Em từng mắc lỗi với một người bạn.",
+          "slots": [
+            {
+              "id": "event",
+              "label": "📖 SỰ VIỆC",
+              "question": "Chuyện gì xảy ra?",
+              "hint": "Một sự việc cụ thể."
+            },
+            {
+              "id": "detail",
+              "label": "🔎 CHI TIẾT",
+              "question": "Điều gì khiến em nhớ?",
+              "hint": "Một hình ảnh, câu nói hoặc hành động."
+            },
+            {
+              "id": "feeling",
+              "label": "❤️ CẢM XÚC",
+              "question": "Em cảm thấy gì?",
+              "hint": "Cảm xúc trước, trong hoặc sau sự việc."
+            },
+            {
+              "id": "thought",
+              "label": "💭 SUY NGHĨ",
+              "question": "Em nhận ra điều gì?",
+              "hint": "Điều em hiểu ra sau trải nghiệm."
+            }
+          ],
+          "cards": [
+            {
+              "id": "event",
+              "target": "event",
+              "correct": true,
+              "slotText": "Em đã nói một câu khiến người bạn thân buồn rồi bỏ đi mà không nhận ra.",
+              "feedback": "✓ Đây là sự việc cụ thể.",
+              "label": "📖 Sự việc"
+            },
+            {
+              "id": "detail",
+              "target": "detail",
+              "correct": true,
+              "slotText": "Bạn im lặng rất lâu rồi chỉ nói: “Mình tưởng cậu hiểu mình.”",
+              "feedback": "✓ Chi tiết cụ thể giúp sự việc trở nên đáng nhớ.",
+              "label": "🔎 Chi tiết"
+            },
+            {
+              "id": "feeling",
+              "target": "feeling",
+              "correct": true,
+              "slotText": "Em thấy ân hận và khó chịu với chính mình.",
+              "feedback": "✓ Cảm xúc giúp làm rõ trải nghiệm có ý nghĩa như thế nào.",
+              "label": "❤️ Cảm xúc"
+            },
+            {
+              "id": "thought",
+              "target": "thought",
+              "correct": true,
+              "slotText": "Em nhận ra trước khi nói điều gì, mình cần nghĩ đến cảm xúc của người khác.",
+              "feedback": "✓ Đây là điều em nhận ra sau trải nghiệm.",
+              "label": "💭 Suy nghĩ"
+            },
+            {
+              "id": "wrong",
+              "target": null,
+              "correct": false,
+              "slotText": "Tình bạn rất quan trọng trong cuộc sống.",
+              "feedback": "△ Đây là một ý chung chung. Nó chưa giúp kể cụ thể trải nghiệm của em.",
+              "label": "△ Ý chung chung"
+            }
+          ]
+        },
+        "completion": {
+          "button": "Kiểm tra chất liệu",
+          "feedback": {
+            "correct": "✓ Rất tốt! Em đã biến một ý chung thành sự việc → chi tiết → cảm xúc → suy nghĩ.",
+            "partial": "△ Một số ý chưa đúng loại. Hãy tự hỏi: “Đây là chuyện xảy ra, chi tiết, cảm xúc hay suy nghĩ?”",
+            "wrong": "△ Hãy bắt đầu từ một sự việc cụ thể thay vì một nhận xét quá rộng."
+          }
+        }
+      }
+    },
+    {
+      "id": "miniChallenge_01",
+      "type": "miniChallenge",
+      "data": {
+        "title": "Ý nào có nhiều chất liệu để viết hơn?",
+        "durationSeconds": 180,
+        "ui": {
+          "layout": "single_choice"
+        },
+        "prompt": "Đề bài: Kể về một người đã giúp em thay đổi suy nghĩ.",
+        "question": "Ý nào dưới đây có khả năng phát triển thành một bài viết tốt hơn?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Em biết nhiều người tốt.",
+            "correct": false
+          },
+          {
+            "id": "b",
+            "text": "Cô giáo chủ nhiệm từng nói với em rằng một lần thất bại không có nghĩa là em không thể làm được.",
+            "correct": true
+          },
+          {
+            "id": "c",
+            "text": "Mọi người đều quan trọng.",
+            "correct": false
+          },
+          {
+            "id": "d",
+            "text": "Em rất quý những người xung quanh.",
+            "correct": false
+          }
+        ],
+        "feedback": {
+          "correct": "✓ Đúng. Ý B có một người cụ thể, một sự việc/câu nói cụ thể và một hướng để phát triển suy nghĩ.",
+          "incorrect": "△ Hãy tìm ý nào có người, sự việc hoặc chi tiết cụ thể để em còn có chất liệu phát triển."
+        }
+      }
+    },
+    {
+      "id": "reflection_01",
+      "type": "reflection",
+      "data": {
+        "title": "Khi bí ý, em sẽ làm gì?",
+        "durationSeconds": 180,
+        "ui": {
+          "component": "checklist_free_text"
+        },
+        "question": "Nếu đọc đề xong mà chưa biết viết gì, em có thể làm gì để gọi ý ra?",
+        "choices": [
+          {
+            "id": "question",
+            "text": "🔎 Đặt thêm câu hỏi."
+          },
+          {
+            "id": "event",
+            "text": "📖 Nhớ lại một sự việc cụ thể."
+          },
+          {
+            "id": "detail",
+            "text": "🔎 Tìm một chi tiết đáng nhớ."
+          },
+          {
+            "id": "feeling",
+            "text": "❤️ Nhớ lại cảm xúc của mình."
+          },
+          {
+            "id": "thought",
+            "text": "💭 Nghĩ xem mình đã nhận ra điều gì."
+          }
+        ],
+        "freeText": {
+          "label": "Câu thần chú của em...",
+          "placeholder": "Ví dụ: Khi bí ý, em sẽ hỏi thêm: Chuyện gì xảy ra? Điều gì khiến em nhớ? Em cảm thấy gì?..."
+        },
+        "metacognition": "Bí ý không có nghĩa là không có gì để nói. Có thể em chưa biết cách đặt câu hỏi để tìm ra điều mình muốn nói."
+      }
+    },
+    {
+      "id": "cheatSheet_01",
+      "type": "cheatSheet",
+      "data": {
+        "title": "BỘ CÂU HỎI GỌI Ý",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "card_list",
+          "actions": [
+            "save",
+            "download"
+          ]
+        },
+        "items": [
+          {
+            "order": 1,
+            "icon": "📖",
+            "title": "CHUYỆN GÌ?",
+            "question": "Có sự việc hoặc trải nghiệm cụ thể nào?"
+          },
+          {
+            "order": 2,
+            "icon": "🔎",
+            "title": "ĐIỀU GÌ ĐÁNG NHỚ?",
+            "question": "Chi tiết, hình ảnh, câu nói hoặc hành động nào nổi bật?"
+          },
+          {
+            "order": 3,
+            "icon": "❤️",
+            "title": "EM CẢM THẤY GÌ?",
+            "question": "Cảm xúc của em trước, trong và sau sự việc là gì?"
+          },
+          {
+            "order": 4,
+            "icon": "💭",
+            "title": "EM NGHĨ GÌ?",
+            "question": "Em nhận ra, hiểu ra hoặc thay đổi điều gì?"
+          },
+          {
+            "order": 5,
+            "icon": "✂️",
+            "title": "Ý NÀO ĐÁNG GIỮ?",
+            "question": "Ý nào vừa phù hợp với đề vừa có đủ chất liệu để phát triển?"
+          }
+        ],
+        "keyMessage": "💡 Không biết viết gì? Hãy hỏi thêm một câu.",
+        "note": "Tìm ý là tạo nguyên liệu. Chưa cần sắp xếp các ý thành dàn ý ở bước này.",
+        "practiceButton": {
+          "label": "🛠️ Thử tìm ý",
+          "action": "open_mini_practice"
+        }
+      }
+    },
+    {
+      "id": "finalChallenge_01",
+      "type": "finalChallenge",
+      "data": {
+        "title": "🏆 FINAL BOSS — MÌNH CÓ GÌ ĐỂ NÓI?",
+        "durationSeconds": 600,
+        "ui": {
+          "component": "multi_stage_challenge",
+          "layout": "multi_stage"
+        },
+        "prompt": "Cho một đề hoàn toàn mới, hãy tự tìm và mở rộng những ý có thể dùng để viết.",
+        "stages": [
+          {
+            "key": "topic",
+            "type": "single_choice",
+            "title": "💡 TẦNG 1 — CHỌN HƯỚNG",
+            "question": "Đề bài: Kể lại một lần em mắc lỗi và nhận ra điều gì đó quan trọng. Hướng nào dưới đây có nhiều khả năng phát triển thành một câu chuyện cụ thể?",
+            "prompt": "Đây chỉ là bước chọn hướng, chưa cần viết bài. Hãy chọn hướng có nhiều khả năng phát triển thành một câu chuyện cụ thể.",
+            "choices": [
+              {
+                "id": "a",
+                "label": "Em từng làm bạn buồn vì một câu nói thiếu suy nghĩ.",
+                "correct": true
+              },
+              {
+                "id": "b",
+                "label": "Con người ai cũng mắc lỗi.",
+                "correct": false
+              },
+              {
+                "id": "c",
+                "label": "Cuộc sống có rất nhiều bài học.",
+                "correct": false
+              },
+              {
+                "id": "d",
+                "label": "Lỗi lầm là điều không tốt.",
+                "correct": false
+              }
+            ],
+            "feedback": {
+              "correct": "✓ Đúng. Hướng A có một sự việc cụ thể và có thể đào sâu thành câu chuyện.",
+              "incorrect": "△ Hãy chọn một ý có khả năng dẫn đến một sự việc cụ thể, thay vì một nhận xét quá chung."
+            }
+          },
+          {
+            "key": "material",
+            "type": "multi_select",
+            "title": "🔎 TẦNG 2 — ĐÀO CHẤT LIỆU",
+            "question": "Từ ý “Em từng làm bạn buồn vì một câu nói thiếu suy nghĩ”, hãy chọn những chất liệu có ích để phát triển câu chuyện.",
+            "minSelections": 2,
+            "maxSelections": 4,
+            "cards": [
+              {
+                "id": "event",
+                "text": "📖 Chuyện gì đã xảy ra?"
+              },
+              {
+                "id": "detail",
+                "text": "🔎 Bạn đã nói hoặc làm gì sau đó?"
+              },
+              {
+                "id": "feeling",
+                "text": "❤️ Em cảm thấy thế nào?"
+              },
+              {
+                "id": "thought",
+                "text": "💭 Em nhận ra điều gì?"
+              },
+              {
+                "id": "generic",
+                "text": "🌍 Tình bạn rất quan trọng trong cuộc sống."
+              }
+            ],
+            "feedback": {
+              "correct": "✓ Chính xác. Những câu hỏi này giúp em tìm được chất liệu cụ thể thay vì chỉ nói chung chung.",
+              "incorrect": "△ Hãy ưu tiên những câu hỏi giúp em tìm sự việc, chi tiết, cảm xúc và suy nghĩ cụ thể."
+            }
+          },
+          {
+            "key": "material_build",
+            "type": "card_to_slot",
+            "title": "🧩 TẦNG 3 — BIẾN Ý THÀNH CHẤT LIỆU",
+            "prompt": "Ghép những mảnh ý vào đúng nhóm để tạo thành nguyên liệu viết.",
+            "slots": [
+              {
+                "id": "event",
+                "label": "📖 SỰ VIỆC",
+                "question": "Chuyện gì đã xảy ra?",
+                "hint": "Sự việc cụ thể."
+              },
+              {
+                "id": "detail",
+                "label": "🔎 CHI TIẾT",
+                "question": "Điều gì khiến em nhớ?",
+                "hint": "Một câu nói, hành động hoặc hình ảnh."
+              },
+              {
+                "id": "feeling",
+                "label": "❤️ CẢM XÚC",
+                "question": "Em cảm thấy gì?",
+                "hint": "Cảm xúc của em."
+              },
+              {
+                "id": "thought",
+                "label": "💭 SUY NGHĨ",
+                "question": "Em nhận ra gì?",
+                "hint": "Điều em hiểu ra."
+              }
+            ],
+            "cards": [
+              {
+                "id": "event",
+                "target": "event",
+                "correct": true,
+                "slotText": "Em đã nói đùa về điểm kiểm tra của bạn trước mặt cả nhóm.",
+                "feedback": "✓ Đây là sự việc cụ thể.",
+                "label": "📖 Sự việc"
+              },
+              {
+                "id": "detail",
+                "target": "detail",
+                "correct": true,
+                "slotText": "Bạn im lặng và cất bài kiểm tra vào cặp.",
+                "feedback": "✓ Đây là chi tiết cho thấy phản ứng của người bạn.",
+                "label": "🔎 Chi tiết"
+              },
+              {
+                "id": "feeling",
+                "target": "feeling",
+                "correct": true,
+                "slotText": "Em thấy ngượng và ân hận khi nhận ra mình đã làm bạn tổn thương.",
+                "feedback": "✓ Đây là cảm xúc của người viết.",
+                "label": "❤️ Cảm xúc"
+              },
+              {
+                "id": "thought",
+                "target": "thought",
+                "correct": true,
+                "slotText": "Em nhận ra một câu nói tưởng như vô hại cũng có thể khiến người khác tổn thương.",
+                "feedback": "✓ Đây là suy nghĩ được rút ra từ trải nghiệm.",
+                "label": "💭 Suy nghĩ"
+              },
+              {
+                "id": "wrong",
+                "target": null,
+                "correct": false,
+                "slotText": "Tình bạn đẹp khiến cuộc sống hạnh phúc hơn.",
+                "feedback": "△ Ý này không sai nhưng quá chung chung và chưa cung cấp chất liệu cụ thể cho câu chuyện.",
+                "label": "△ Ý chung chung"
+              }
+            ]
+          },
+          {
+            "key": "idea_profile",
+            "type": "editor",
+            "title": "📝 TẦNG 4 — HỒ SƠ Ý TƯỞNG",
+            "question": "Hãy viết ngắn gọn những gì em muốn giữ lại để chuẩn bị cho bước lập dàn ý.",
+            "placeholder": "Sự việc: ...\nChi tiết đáng nhớ: ...\nCảm xúc: ...\nĐiều em nhận ra: ...",
+            "minCharacters": 50,
+            "maxCharacters": 400,
+            "submit": {
+              "label": "🚀 Hoàn thành hồ sơ ý tưởng"
+            }
+          },
+          {
+            "key": "final_analysis",
+            "type": "analysis",
+            "title": "🧠 HỒ SƠ TÌM Ý",
+            "metrics": [
+              {
+                "id": "event",
+                "label": "Có sự việc cụ thể",
+                "status": "detect"
+              },
+              {
+                "id": "detail",
+                "label": "Có chi tiết đáng nhớ",
+                "status": "detect"
+              },
+              {
+                "id": "feeling",
+                "label": "Có cảm xúc",
+                "status": "detect"
+              },
+              {
+                "id": "thought",
+                "label": "Có suy nghĩ / điều nhận ra",
+                "status": "detect"
+              },
+              {
+                "id": "relevance",
+                "label": "Ý phù hợp với đề",
+                "status": "detect"
+              }
+            ],
+            "diagnosticQuestion": "💡 Những ý em tìm được có đủ chất liệu để phát triển thành bài viết chưa?",
+            "feedbackRules": [
+              {
+                "when": "missing_event",
+                "feedback": "△ Ý tưởng vẫn còn chung chung. Hãy tìm một sự việc cụ thể."
+              },
+              {
+                "when": "missing_detail",
+                "feedback": "△ Hãy nhớ lại một câu nói, hành động, hình ảnh hoặc chi tiết khiến em nhớ nhất."
+              },
+              {
+                "when": "missing_feeling",
+                "feedback": "△ Hãy thử gọi tên cảm xúc của em trước, trong hoặc sau sự việc."
+              },
+              {
+                "when": "missing_thought",
+                "feedback": "△ Hãy hỏi: “Sau chuyện đó, mình nhận ra điều gì?”"
+              },
+              {
+                "when": "irrelevant_idea",
+                "feedback": "△ Ý này có thể đúng nhưng chưa phục vụ trực tiếp cho đề. Hãy chọn chất liệu liên quan hơn."
+              },
+              {
+                "when": "good_idea",
+                "feedback": "✓ Tốt! Em đã có nguyên liệu: sự việc → chi tiết → cảm xúc → suy nghĩ. Bây giờ em đã sẵn sàng chuyển sang bước lập dàn ý."
+              }
+            ],
+            "scoreDimensions": [
+              "event",
+              "detail",
+              "feeling",
+              "thought",
+              "relevance"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

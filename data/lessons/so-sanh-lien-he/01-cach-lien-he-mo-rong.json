@@ -1,0 +1,417 @@
+{
+    "id": "so-sanh-lien-he.01-cach-lien-he-mo-rong",
+    "title": "Cách liên hệ, mở rộng",
+    "type": "skill",
+    "version": "1.0.0",
+    "meta": {
+        "module": "so-sanh-lien-he",
+        "lessonNumber": 1,
+        "durationMinutes": 45,
+        "difficulty": 4,
+        "skill": "ky-nang-lien-he-mo-rong-van-hoc",
+        "description": "Học cách liên hệ, mở rộng để bài viết có chiều sâu, so sánh sự tương đồng và khác biệt giữa các tác phẩm, từ đó làm nổi bật giá trị của tác phẩm đang phân tích."
+    },
+    "learningGoals": [
+        "Hiểu thế nào là liên hệ, mở rộng trong bài văn.",
+        "Nắm được các hướng liên hệ phổ biến (cùng đề tài, cùng tác giả, cùng thời kỳ).",
+        "Hiểu nguyên tắc 'không làm lu mờ tác phẩm chính'.",
+        "Biết cách viết một đoạn liên hệ mở rộng qua 3 bước: Tương đồng, Khác biệt, Ý nghĩa."
+    ],
+    "completion": {
+        "requiredSections": [
+            "story_01",
+            "observe_01",
+            "teach_01",
+            "teach_02",
+            "guidedPractice_01",
+            "miniChallenge_01",
+            "reflection_01",
+            "cheatSheet_01"
+        ],
+        "action": "completeLesson",
+        "message": "Em đã hoàn thành bài Cách liên hệ, mở rộng. Hãy nhớ: Liên hệ không phải là kể lể nhiều tác phẩm, mà là mượn tác phẩm khác làm đòn bẩy để tôn vinh tác phẩm chính."
+    },
+    "steps": [
+        {
+            "id": "story_01",
+            "type": "story",
+            "data": {
+                "title": "Sự khác biệt của bài văn điểm cao",
+                "durationSeconds": 120,
+                "ui": {
+                    "component": "split_compare",
+                    "layout": "two_columns",
+                    "question": "Hai đoạn văn cùng phân tích vẻ đẹp người lính trong 'Đồng chí' (Chính Hữu). Đoạn nào sâu sắc hơn?"
+                },
+                "content": {
+                    "left": {
+                        "label": "Đoạn văn 1: Phân tích đơn thuần",
+                        "paragraph": "Người lính trong 'Đồng chí' hiện lên với vẻ đẹp mộc mạc, chân chất. Họ xuất thân từ nông dân, cùng chia sẻ gian khổ và có tình đồng chí gắn bó keo sơn."
+                    },
+                    "right": {
+                        "label": "Đoạn văn 2: Phân tích có liên hệ",
+                        "paragraph": "Cùng viết về người lính, nhưng nếu Phạm Tiến Duật khắc họa vẻ đẹp trẻ trung, ngang tàng của người lính lái xe thời chống Mỹ, thì Chính Hữu lại mang đến bức tranh chân thực, mộc mạc về người lính nông dân thời chống Pháp. Dù khác biệt về hoàn cảnh, họ đều sáng ngời vẻ đẹp của tình đồng chí, đồng đội thiêng liêng."
+                    }
+                },
+                "interaction": {
+                    "type": "compare",
+                    "options": [
+                        "Đoạn 1 sâu sắc hơn vì tập trung hoàn toàn vào tác phẩm.",
+                        "Hai đoạn văn sâu sắc như nhau.",
+                        "Đoạn 2 sâu sắc hơn vì đặt tác phẩm trong sự đối sánh để làm nổi bật nét riêng của nhân vật."
+                    ],
+                    "correct": 2
+                },
+                "reveal": {
+                    "title": "Sức mạnh của liên hệ mở rộng",
+                    "text": "Liên hệ mở rộng giúp bài viết có không gian nghệ thuật rộng hơn, chứng tỏ người viết có kiến thức phong phú và cái nhìn đa chiều. Đoạn văn nhờ vậy mà sâu sắc và cuốn hút hơn."
+                }
+            }
+        },
+        {
+            "id": "observe_01",
+            "type": "matching",
+            "validator": "matchValidator",
+            "data": {
+                "left": [
+                    "So sánh 'Đồng chí' và 'Bài thơ về tiểu đội xe không kính'",
+                    "So sánh 'Mùa xuân nho nhỏ' và 'Ánh trăng' (cùng sáng tác sau 1975)",
+                    "So sánh hình ảnh trăng trong 'Đồng chí' và trăng trong 'Ánh trăng' (của các tác giả khác nhau)"
+                ],
+                "right": [
+                    "Cùng đề tài (Người lính)",
+                    "Cùng giai đoạn văn học",
+                    "Cùng hình tượng nghệ thuật"
+                ],
+                "answer": {
+                    "So sánh 'Đồng chí' và 'Bài thơ về tiểu đội xe không kính'": "Cùng đề tài (Người lính)",
+                    "So sánh 'Mùa xuân nho nhỏ' và 'Ánh trăng' (cùng sáng tác sau 1975)": "Cùng giai đoạn văn học",
+                    "So sánh hình ảnh trăng trong 'Đồng chí' và trăng trong 'Ánh trăng' (của các tác giả khác nhau)": "Cùng hình tượng nghệ thuật"
+                },
+                "title": "Quan sát: Các hướng liên hệ mở rộng",
+                "instruction": "Ghép các ví dụ sau với hướng liên hệ phù hợp.",
+                "score": 1,
+                "durationSeconds": 180,
+                "content": {
+                    "cards": [
+                        {
+                            "id": "c1",
+                            "text": "So sánh 'Đồng chí' và 'Bài thơ về tiểu đội xe không kính'",
+                            "target": "s1"
+                        },
+                        {
+                            "id": "c2",
+                            "text": "So sánh 'Mùa xuân nho nhỏ' và 'Ánh trăng' (cùng sáng tác sau 1975)",
+                            "target": "s2"
+                        },
+                        {
+                            "id": "c3",
+                            "text": "So sánh hình ảnh trăng trong 'Đồng chí' và trăng trong 'Ánh trăng' (của các tác giả khác nhau)",
+                            "target": "s3"
+                        }
+                    ],
+                    "slots": [
+                        {
+                            "id": "s1",
+                            "label": "Cùng đề tài (Người lính)"
+                        },
+                        {
+                            "id": "s2",
+                            "label": "Cùng giai đoạn văn học"
+                        },
+                        {
+                            "id": "s3",
+                            "label": "Cùng hình tượng nghệ thuật"
+                        }
+                    ]
+                },
+                "interaction": {
+                    "correctMapping": {
+                        "c1": "s1",
+                        "c2": "s2",
+                        "c3": "s3"
+                    }
+                },
+                "reveal": {
+                    "title": "Nhiều điểm nhìn",
+                    "text": "Có nhiều cách để liên hệ: cùng đề tài, cùng hình tượng, cùng tác giả, hoặc cùng giai đoạn lịch sử. Quan trọng là tìm được 'điểm nối' giữa hai tác phẩm."
+                }
+            }
+        },
+        {
+            "id": "teach_01",
+            "type": "observe",
+            "data": {
+                "title": "Nguyên tắc vàng khi liên hệ",
+                "durationSeconds": 240,
+                "ui": {
+                    "component": "paragraph_highlight",
+                    "question": "Liên hệ mở rộng giống như mời thêm một vị khách, nhưng ai mới là chủ nhà?"
+                },
+                "content": {
+                    "paragraph": [
+                        {
+                            "text": "Mục đích của liên hệ là làm nổi bật tác phẩm chính, không phải để khoe kiến thức.",
+                            "type": "normal",
+                            "feedback": ""
+                        },
+                        {
+                            "text": "Xác định rõ vai trò chính - phụ:",
+                            "type": "normal",
+                            "feedback": "Tác phẩm đang phân tích là nhân vật chính (chủ nhà), tác phẩm liên hệ là nhân vật phụ (khách)."
+                        },
+                        {
+                            "text": "Tránh lan man, 'lạc đề':",
+                            "type": "normal",
+                            "feedback": "Không đi sâu phân tích chi tiết tác phẩm liên hệ, chỉ lướt qua những điểm cần thiết."
+                        },
+                        {
+                            "text": "Nguyên tắc đòn bẩy:",
+                            "type": "normal",
+                            "feedback": "Dùng tác phẩm phụ làm đòn bẩy, tôn vinh nét độc đáo, cái hay, cái đẹp của tác phẩm chính."
+                        }
+                    ],
+                    "format": "paragraph"
+                },
+                "prompt": "Nhấn vào từng dòng để hiểu các nguyên tắc cốt lõi khi viết liên hệ mở rộng."
+            }
+        },
+        {
+            "id": "teach_02",
+            "type": "observe",
+            "data": {
+                "title": "Các bước viết đoạn liên hệ mở rộng",
+                "durationSeconds": 240,
+                "ui": {
+                    "component": "paragraph_highlight",
+                    "question": "Viết liên hệ không chỉ là đặt hai tác phẩm cạnh nhau, mà phải tìm ra sự kết nối."
+                },
+                "content": {
+                    "paragraph": [
+                        {
+                            "text": "Quy trình viết một đoạn liên hệ mở rộng thường gồm 3 bước logic.",
+                            "type": "normal",
+                            "feedback": ""
+                        },
+                        {
+                            "text": "Bước 1: Tìm điểm tương đồng.",
+                            "type": "normal",
+                            "feedback": "Chỉ ra điểm giống nhau (cùng chủ đề, cùng cảm hứng...) để có cơ sở so sánh."
+                        },
+                        {
+                            "text": "Bước 2: Phân tích điểm khác biệt (nét riêng).",
+                            "type": "normal",
+                            "feedback": "Chỉ ra sự sáng tạo độc đáo của tác giả trong tác phẩm chính so với tác phẩm được liên hệ."
+                        },
+                        {
+                            "text": "Bước 3: Rút ra ý nghĩa, nhận định.",
+                            "type": "normal",
+                            "feedback": "Khẳng định tài năng của nhà văn hoặc sự phong phú của văn học qua các góc nhìn khác nhau."
+                        }
+                    ],
+                    "format": "paragraph"
+                },
+                "prompt": "Nhấn vào từng dòng để nắm vững 3 bước viết liên hệ."
+            }
+        },
+        {
+            "id": "guidedPractice_01",
+            "type": "multiChoice",
+            "data": {
+                "title": "Luyện tập 1: Bắt lỗi liên hệ",
+                "durationSeconds": 240,
+                "ui": {
+                    "component": "single_choice"
+                },
+                "content": {
+                    "questions": [
+                        {
+                            "question": "Khi đang phân tích tình bà cháu trong 'Bếp lửa' (Bằng Việt), một học sinh đã dành hẳn 1 trang giấy để phân tích chi tiết tình mẹ con trong 'Khúc hát ru những em bé lớn trên lưng mẹ' (Nguyễn Khoa Điềm). Lỗi sai ở đây là gì?",
+                            "options": [
+                                "Liên hệ sai chủ đề.",
+                                "Phân tích tác phẩm liên hệ quá sâu, làm lu mờ tác phẩm chính.",
+                                "Hai tác phẩm không có điểm tương đồng nào.",
+                                "Không có lỗi sai nào, càng phân tích nhiều càng tốt."
+                            ],
+                            "correct": 1,
+                            "explanation": "Đã vi phạm nguyên tắc 'không làm lu mờ tác phẩm chính'. Tác phẩm liên hệ chỉ nên gợi nhắc ngắn gọn."
+                        },
+                        {
+                            "question": "Trong bài viết, điểm quan trọng nhất khi đặt hai tác phẩm cạnh nhau là gì?",
+                            "options": [
+                                "Chỉ ra chúng giống hệt nhau.",
+                                "Kể tên được nhiều tác phẩm nhất có thể.",
+                                "Chỉ ra sự tương đồng và làm nổi bật sự khác biệt, độc đáo của tác phẩm chính.",
+                                "Chê tác phẩm liên hệ để khen tác phẩm chính."
+                            ],
+                            "correct": 2,
+                            "explanation": "Mục đích của liên hệ là thấy sự gặp gỡ của các tâm hồn lớn, và tôn vinh nét riêng sáng tạo của mỗi tác giả."
+                        }
+                    ]
+                },
+                "options": [
+                    {
+                        "text": "Liên hệ sai chủ đề.",
+                        "isCorrect": false,
+                        "feedback": "Tình cảm gia đình là điểm tương đồng hợp lý, nhưng lỗi nằm ở mức độ."
+                    },
+                    {
+                        "text": "Phân tích tác phẩm liên hệ quá sâu, làm lu mờ tác phẩm chính.",
+                        "isCorrect": true,
+                        "feedback": "Đã vi phạm nguyên tắc 'không làm lu mờ tác phẩm chính'. Tác phẩm liên hệ chỉ nên gợi nhắc ngắn gọn."
+                    },
+                    {
+                        "text": "Hai tác phẩm không có điểm tương đồng nào.",
+                        "isCorrect": false,
+                        "feedback": "Tình cảm gia đình là điểm tương đồng hợp lý, nhưng lỗi nằm ở mức độ."
+                    },
+                    {
+                        "text": "Không có lỗi sai nào, càng phân tích nhiều càng tốt.",
+                        "isCorrect": false,
+                        "feedback": "Đã vi phạm nguyên tắc 'không làm lu mờ tác phẩm chính'. Tác phẩm liên hệ chỉ nên gợi nhắc ngắn gọn."
+                    }
+                ]
+            },
+            "question": "Khi đang phân tích tình bà cháu trong 'Bếp lửa', một học sinh đã dành hẳn 1 trang giấy để phân tích chi tiết 'Khúc hát ru những em bé lớn trên lưng mẹ'. Lỗi sai ở đây là gì?"
+        },
+        {
+            "id": "miniChallenge_01",
+            "type": "finalChallenge",
+            "data": {
+                "title": "Thử thách: Thực hành viết liên hệ mở rộng",
+                "durationSeconds": 300,
+                "ui": {
+                    "component": "multi_stage_challenge",
+                    "layout": "multi_stage"
+                },
+                "prompt": "Bạn đang phân tích vẻ đẹp của tình đồng chí thiêng liêng, gắn bó trong gian khổ ở bài thơ 'Đồng chí' (Chính Hữu). Hãy viết một đoạn liên hệ ngắn với bài thơ 'Bài thơ về tiểu đội xe không kính' (Phạm Tiến Duật).",
+                "question": [
+                    "Chỉ ra điểm tương đồng.",
+                    "Chỉ ra điểm khác biệt.",
+                    "Rút ra nhận định."
+                ],
+                "stages": [
+                    {
+                        "key": "stage1",
+                        "type": "editor",
+                        "title": "📝 Bước 1: Sự tương đồng",
+                        "question": "Hai bài thơ gặp gỡ nhau ở điểm nào?",
+                        "placeholder": "Cùng viết về đề tài...",
+                        "minCharacters": 10,
+                        "maxCharacters": 200,
+                        "submit": {
+                            "label": "Nộp bài",
+                            "feedback": "Cả hai tác phẩm đều ngợi ca vẻ đẹp của người lính cụ Hồ và tình đồng chí, đồng đội thiêng liêng, gắn bó trong hoàn cảnh chiến tranh gian khổ."
+                        }
+                    },
+                    {
+                        "key": "stage2",
+                        "type": "editor",
+                        "title": "📝 Bước 2: Sự khác biệt (Nét riêng)",
+                        "question": "Khắc họa người lính, Chính Hữu và Phạm Tiến Duật có nét riêng nào?",
+                        "placeholder": "Tuy nhiên, nếu người lính trong 'Đồng chí' mang vẻ đẹp..., thì ở 'Bài thơ về tiểu đội xe không kính' lại mang vẻ đẹp...",
+                        "minCharacters": 10,
+                        "maxCharacters": 200,
+                        "submit": {
+                            "label": "Nộp bài",
+                            "feedback": "Nếu người lính thời chống Pháp của Chính Hữu mang vẻ đẹp mộc mạc, chân chất, sâu lắng; thì người lính lái xe thời chống Mỹ của Phạm Tiến Duật lại hiện lên với sự trẻ trung, sôi nổi và ngang tàn."
+                        }
+                    },
+                    {
+                        "key": "stage3",
+                        "type": "editor",
+                        "title": "📝 Bước 3: Đánh giá chung",
+                        "question": "Khẳng định ý nghĩa của sự khác biệt này.",
+                        "placeholder": "Sự khác biệt đó cho thấy...",
+                        "minCharacters": 10,
+                        "maxCharacters": 300,
+                        "submit": {
+                            "label": "Nộp bài",
+                            "feedback": "Sự khác biệt đó không chỉ phản ánh đặc điểm riêng của hai thế hệ người lính trong hai thời kỳ lịch sử, mà còn khẳng định dấu ấn phong cách độc đáo của mỗi nhà văn trong dòng chảy văn học cách mạng."
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "id": "reflection_01",
+            "type": "reflection",
+            "data": {
+                "title": "Tự kiểm tra: Em đã thật sự hiểu chưa?",
+                "durationSeconds": 180,
+                "ui": {
+                    "component": "checklist_free_text"
+                },
+                "question": "Chọn những điều em thấy mình đã nắm được sau bài học:",
+                "choices": [
+                    {
+                        "id": "1",
+                        "text": "Em hiểu mục đích của liên hệ là làm nổi bật tác phẩm chính.",
+                        "correct": false
+                    },
+                    {
+                        "id": "2",
+                        "text": "Em biết các hướng liên hệ: cùng chủ đề, tác giả, giai đoạn.",
+                        "correct": false
+                    },
+                    {
+                        "id": "3",
+                        "text": "Em nhớ nguyên tắc: không phân tích quá sâu tác phẩm phụ.",
+                        "correct": false
+                    },
+                    {
+                        "id": "4",
+                        "text": "Em nắm được 3 bước: Tương đồng -> Khác biệt -> Nhận định.",
+                        "correct": false
+                    }
+                ],
+                "freeText": {
+                    "label": "Trong các đề tài, em thường gặp khó khăn nhất khi liên hệ mở rộng ở mảng nào (gia đình, người lính, thiên nhiên...)?",
+                    "placeholder": "Em thường gặp khó khăn khi liên hệ về..."
+                },
+                "metacognition": "Liên hệ = Mượn một người bạn để tôn lên vẻ đẹp của chủ nhà."
+            }
+        },
+        {
+            "id": "cheatSheet_01",
+            "type": "cheatSheet",
+            "data": {
+                "title": "Sổ tay 30 giây",
+                "durationSeconds": 120,
+                "ui": {
+                    "component": "card_list",
+                    "actions": [
+                        "save",
+                        "download"
+                    ]
+                },
+                "items": [
+                    {
+                        "order": 1,
+                        "icon": "⚖️",
+                        "title": "NGUYÊN TẮC",
+                        "question": "Không làm lu mờ tác phẩm chính. Tác phẩm chính là 'chủ nhà', tác phẩm liên hệ là 'khách'."
+                    },
+                    {
+                        "order": 2,
+                        "icon": "🔗",
+                        "title": "CÁC HƯỚNG LIÊN HỆ",
+                        "question": "Cùng đề tài, cùng hình tượng, cùng tác giả, hoặc cùng giai đoạn lịch sử."
+                    },
+                    {
+                        "order": 3,
+                        "icon": "📝",
+                        "title": "BƯỚC 1: TƯƠNG ĐỒNG",
+                        "question": "Chỉ ra điểm chung giữa hai tác phẩm (Sự gặp gỡ của những tâm hồn lớn)."
+                    },
+                    {
+                        "order": 4,
+                        "icon": "✨",
+                        "title": "BƯỚC 2: KHÁC BIỆT & Ý NGHĨA",
+                        "question": "Chỉ ra nét riêng độc đáo của tác phẩm chính và khẳng định tài năng sáng tạo của tác giả."
+                    }
+                ]
+            }
+        }
+    ]
+}

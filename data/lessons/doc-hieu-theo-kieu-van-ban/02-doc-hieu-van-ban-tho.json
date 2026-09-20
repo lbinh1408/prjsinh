@@ -1,0 +1,292 @@
+{
+  "id": "doc-hieu-theo-kieu-van-ban.02",
+  "title": "Đọc hiểu văn bản thơ",
+  "version": "1.0",
+  "enabled": true,
+  "steps": [
+    {
+      "id": "step01",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "1. Hình thức & Nhịp điệu",
+            "icon": "🎵",
+            "active": true,
+            "content": {
+              "text": "Mỗi thể thơ (lục bát, tự do, 5 chữ...) có cách ngắt nhịp, gieo vần riêng, tạo nên nhạc điệu góp phần thể hiện cảm xúc.",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "2. Ngôn từ & Hình ảnh",
+            "icon": "💎",
+            "active": false,
+            "content": {
+              "text": "Ngôn ngữ thơ mang tính hàm súc, cô đọng ('ý tại ngôn ngoại'). Chú ý các 'nhãn tự' và hình ảnh giàu tính biểu tượng.",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-3",
+            "title": "3. Tính trữ tình",
+            "icon": "💖",
+            "active": false,
+            "content": {
+              "text": "Thơ là tiếng nói trực tiếp của tình cảm, cảm xúc. Nhân vật trữ tình (có thể xưng 'tôi', 'anh', 'em' hoặc ẩn danh) luôn bộc lộ một tâm trạng nhất định.",
+              "examples": []
+            }
+          }
+        ],
+        "title": "Đặc trưng của văn bản thơ",
+        "instruction": "Khi tiếp cận một bài thơ, bạn cần lưu ý 3 đặc trưng cơ bản sau:",
+        "score": 1
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Ý nghĩa từ ngữ, hình ảnh",
+            "icon": "🔍",
+            "active": true,
+            "content": {
+              "text": "Giải mã lớp nghĩa bóng, ý nghĩa biểu tượng ẩn sau những từ ngữ, hình ảnh thơ đặc sắc.",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Tác dụng của BPTT",
+            "icon": "✨",
+            "active": false,
+            "content": {
+              "text": "Phân tích sức gợi hình (làm sự vật sinh động) và sức gợi cảm (nhấn mạnh cảm xúc) của các biện pháp tu từ như nhân hóa, ẩn dụ, so sánh...",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-3",
+            "title": "Tư tưởng & Thông điệp",
+            "icon": "💌",
+            "active": false,
+            "content": {
+              "text": "Chỉ ra cảm xúc chủ đạo của bài thơ (buồn, vui, tự hào, xót xa...) và bài học nhân văn sâu sắc mà tác giả muốn gửi gắm.",
+              "examples": []
+            }
+          }
+        ],
+        "title": "Trọng tâm cần khai thác",
+        "instruction": "Các câu hỏi trong đề thi đọc hiểu thơ sẽ xoáy sâu vào 3 phương diện:",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "1. Từ ngữ & Hình ảnh",
+            "icon": "🖼️",
+            "active": true,
+            "content": {
+              "text": "Thơ rất hàm súc ('Ý tại ngôn ngoại'). Chú ý các từ láy, động từ mạnh, nhãn tự (từ đắt giá nhất) và các hình ảnh thiên nhiên, con người.",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "2. Biện pháp tu từ",
+            "icon": "✨",
+            "active": false,
+            "content": {
+              "text": "So sánh, nhân hóa, ẩn dụ, hoán dụ, điệp ngữ... Đây là công cụ đắc lực nhất để nhà thơ tạo ra sức gợi hình, gợi cảm.",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-3",
+            "title": "3. Mạch cảm xúc",
+            "icon": "❤️",
+            "active": false,
+            "content": {
+              "text": "Nhân vật trữ tình ('tôi', 'ta', 'anh', 'em' hoặc ẩn danh) đang mang tâm trạng gì? Vui, buồn, nhớ nhung, tự hào hay xót xa?",
+              "examples": []
+            }
+          }
+        ],
+        "title": "Bản đồ đọc thơ",
+        "instruction": "Không giống như truyện có cốt truyện rõ ràng, thơ là tiếng nói của cảm xúc. Để đọc hiểu thơ, hãy dựa vào 3 trụ cột sau:",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Dạng: Xác định thể thơ / PTBĐ",
+            "icon": "🔍",
+            "active": true,
+            "content": {
+              "text": "Đếm số chữ trong dòng (Lục bát, 5 chữ, 7 chữ, tự do...). Phương thức biểu đạt chính của thơ thường là Biểu cảm.",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Dạng: Nêu tác dụng BPTT",
+            "icon": "✍️",
+            "active": false,
+            "content": {
+              "text": "Công thức: Gọi tên BPTT + Chỉ ra từ ngữ chứa BPTT + Tác dụng gợi hình (làm cho hình ảnh sinh động...) + Tác dụng biểu cảm (nhấn mạnh cảm xúc gì của tác giả...).",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-3",
+            "title": "Dạng: Hiểu nội dung câu thơ",
+            "icon": "💡",
+            "active": false,
+            "content": {
+              "text": "Dịch nghĩa đen của câu thơ, sau đó suy ra nghĩa bóng (ngụ ý sâu xa). Kết luận lại tư tưởng, thái độ của nhà thơ.",
+              "examples": []
+            }
+          }
+        ],
+        "title": "Chiến thuật trả lời",
+        "instruction": "Đề thi đọc hiểu thơ thường xoay quanh các dạng câu hỏi sau:",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "observe",
+      "data": {
+        "content": "<div style='text-align:center;'>Bỗng nhận ra hương ổi<br>Phả vào trong gió se<br>Sương chùng chình qua ngõ<br>Hình như thu đã về</div>",
+        "guide": [
+          "Tìm các từ ngữ miêu tả dấu hiệu mùa thu.",
+          "Chỉ ra phép nhân hóa và tác dụng của nó."
+        ],
+        "hint": "- Dấu hiệu: hương ổi, gió se, sương chùng chình.\n- Nhân hóa: 'Sương chùng chình' -> Gợi hình ảnh sương như có linh hồn, bước đi chậm chạp, lưu luyến chưa muốn rời mùa hạ.",
+        "title": "Thực hành Đọc thơ",
+        "instruction": "Đọc kĩ khổ thơ sau (Trích 'Sang thu' - Hữu Thỉnh):",
+        "score": 0
+      }
+    },
+    {
+      "id": "step06",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trong khổ thơ trên, động từ nào thể hiện sự vận động mạnh mẽ, bất ngờ của hương ổi, làm thức tỉnh giác quan của nhà thơ?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Nhận ra"
+          },
+          {
+            "id": "B",
+            "text": "Phả"
+          },
+          {
+            "id": "C",
+            "text": "Chùng chình"
+          },
+          {
+            "id": "D",
+            "text": "Hình như"
+          }
+        ],
+        "answer": "B",
+        "title": "Xác định từ ngữ",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Từ 'Hình như' ở câu cuối thể hiện trạng thái cảm xúc gì của nhân vật trữ tình?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Sự khẳng định chắc nịch rằng mùa thu đã đến."
+          },
+          {
+            "id": "B",
+            "text": "Sự nghi ngờ, phủ nhận sự tồn tại của mùa thu."
+          },
+          {
+            "id": "C",
+            "text": "Cảm giác ngỡ ngàng, bâng khuâng, chút phỏng đoán mơ hồ trước bước chuyển mình quá nhẹ nhàng của thiên nhiên."
+          },
+          {
+            "id": "D",
+            "text": "Sự lo lắng, sợ hãi trước sự thay đổi của đất trời."
+          }
+        ],
+        "answer": "C",
+        "title": "Mạch cảm xúc",
+        "score": 1
+      }
+    },
+    {
+      "id": "step08",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "So sánh",
+          "Nhân hóa",
+          "Điệp ngữ",
+          "Câu hỏi tu từ"
+        ],
+        "right": [
+          "Làm sự vật hiện lên cụ thể, sinh động hơn qua việc đối chiếu.",
+          "Giúp sự vật vô tri trở nên có hồn, có hành động như con người.",
+          "Nhấn mạnh ý nghĩa, tạo nhịp điệu dồn dập, tha thiết cho lời thơ.",
+          "Bộc lộ cảm xúc băn khoăn, day dứt, không yêu cầu trả lời."
+        ],
+        "answer": {
+          "So sánh": "Làm sự vật hiện lên cụ thể, sinh động hơn qua việc đối chiếu.",
+          "Nhân hóa": "Giúp sự vật vô tri trở nên có hồn, có hành động như con người.",
+          "Điệp ngữ": "Nhấn mạnh ý nghĩa, tạo nhịp điệu dồn dập, tha thiết cho lời thơ.",
+          "Câu hỏi tu từ": "Bộc lộ cảm xúc băn khoăn, day dứt, không yêu cầu trả lời."
+        },
+        "title": "Chức năng các Biện pháp tu từ",
+        "instruction": "Nối biện pháp tu từ với tác dụng đặc trưng nhất của nó trong thơ:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step09",
+      "type": "flashcard",
+      "data": {
+        "front": "Từ khóa vàng khi đọc hiểu Thơ là gì?",
+        "back": "Từ ngữ (Hình ảnh) ➔ Biện pháp tu từ ➔ Mạch cảm xúc (Nhân vật trữ tình) ➔ Tư tưởng tác giả.",
+        "completedWhen": "flipped",
+        "title": "Ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "doc-hieu-theo-kieu-van-ban",
+    "difficulty": 2,
+    "xp": 80,
+    "stars": 3,
+    "description": "Nắm bắt 'linh hồn' của một bài thơ qua từ ngữ, hình ảnh, biện pháp tu từ và mạch cảm xúc.",
+    "durationMinutes": 25
+  }
+}

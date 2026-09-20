@@ -1,0 +1,1589 @@
+{
+    "id": "story_01",
+    "type": "story",
+    "title": "Có ý nhưng vẫn không viết được",
+    "purpose": "Tạo tình huống có vấn đề để học sinh nhận ra rằng có ý tưởng chưa đủ; cần biết tổ chức các ý thành một dàn ý.",
+    "content": {
+        "setting": {
+            "character": "Một học sinh",
+            "situation": "Học sinh nhận được đề bài và bắt đầu chuẩn bị viết."
+        },
+        "prompt": {
+            "text": "Viết một đoạn văn trình bày cảm nghĩ về người em yêu quý."
+        },
+        "ideas": [
+            "Mẹ rất yêu thương em",
+            "Mẹ hay dậy sớm",
+            "Mẹ chăm em khi ốm",
+            "Mẹ nấu ăn ngon",
+            "Em rất biết ơn mẹ"
+        ],
+        "problem": {
+            "thought": "Em có nhiều ý mà... sao vẫn không biết viết?",
+            "insight": [
+                "Vấn đề không phải em thiếu ý.",
+                "Em chưa biết xếp chúng thành một bộ khung."
+            ]
+        },
+        "conceptReveal": {
+            "title": "DÀN Ý",
+            "description": "Bộ khung giúp tổ chức các ý trước khi viết."
+        }
+    },
+    "visual": {
+        "layout": "immersive",
+        "character": {
+            "type": "student",
+            "expression": [
+                "thinking",
+                "confused",
+                "realization"
+            ]
+        },
+        "ideaCards": {
+            "layout": "scattered",
+            "style": "floating_cards",
+            "animation": "appear_then_scatter"
+        },
+        "conceptReveal": {
+            "icon": "blueprint",
+            "animation": "blueprint_reveal"
+        }
+    },
+    "timeline": [
+        {
+            "at": 0,
+            "action": "showPrompt"
+        },
+        {
+            "at": 5,
+            "action": "showCharacter"
+        },
+        {
+            "at": 10,
+            "action": "showIdeas"
+        },
+        {
+            "at": 20,
+            "action": "scatterIdeas"
+        },
+        {
+            "at": 30,
+            "action": "showThought",
+            "text": "Em có nhiều ý mà... sao vẫn không biết viết?"
+        },
+        {
+            "at": 40,
+            "action": "showInsight",
+            "text": "Vấn đề không phải em thiếu ý."
+        },
+        {
+            "at": 47,
+            "action": "showInsight",
+            "text": "Em chưa biết xếp chúng thành một bộ khung."
+        },
+        {
+            "at": 55,
+            "action": "revealConcept"
+        }
+    ],
+    "interaction": {
+        "enabled": false
+    },
+    "ending": {
+        "type": "curiosity",
+        "text": "Vậy làm thế nào để biến những ý tưởng rời rạc thành một bộ khung rõ ràng?",
+        "button": {
+            "text": "Tìm hiểu",
+            "action": "next"
+        }
+    }
+},
+{
+    "id": "observe_01",
+    "type": "observe",
+    "title": "Nhìn và so sánh",
+    "purpose": "Giúp học sinh quan sát sự khác biệt giữa các ý rời rạc và các ý được tổ chức theo trình tự mà không được giảng giải trước.",
+    "content": {
+        "instruction": "Hãy quan sát hai cách sắp xếp dưới đây.",
+        "comparison": {
+            "mode": "toggle",
+            "options": [
+                {
+                    "id": "A",
+                    "label": "Cách A",
+                    "content": {
+                        "type": "paragraph",
+                        "sentences": [
+                            "Mẹ rất yêu thương em.",
+                            "Em rất biết ơn mẹ.",
+                            "Mẹ có mái tóc dài.",
+                            "Có một lần mẹ chăm em khi bị ốm.",
+                            "Mẹ thường dậy sớm."
+                        ]
+                    },
+                    "visual": {
+                        "type": "scatteredText",
+                        "animation": "appear_one_by_one"
+                    }
+                },
+                {
+                    "id": "B",
+                    "label": "Cách B",
+                    "content": {
+                        "type": "structure",
+                        "nodes": [
+                            {
+                                "id": "intro",
+                                "text": "Giới thiệu mẹ"
+                            },
+                            {
+                                "id": "character",
+                                "text": "Đặc điểm / việc làm"
+                            },
+                            {
+                                "id": "memory",
+                                "text": "Kỷ niệm"
+                            },
+                            {
+                                "id": "feeling",
+                                "text": "Cảm xúc"
+                            }
+                        ]
+                    },
+                    "visual": {
+                        "type": "verticalFlow",
+                        "animation": "reveal_downward"
+                    }
+                }
+            ]
+        }
+    },
+    "ui": {
+        "layout": "comparison",
+        "header": {
+            "title": "Hai cách chuẩn bị",
+            "subtitle": "Chạm vào A hoặc B để quan sát."
+        },
+        "toggle": {
+            "type": "segmentedControl",
+            "options": [
+                {
+                    "id": "A",
+                    "label": "A"
+                },
+                {
+                    "id": "B",
+                    "label": "B"
+                }
+            ],
+            "default": "A",
+            "transition": {
+                "type": "crossfade",
+                "durationMs": 350
+            }
+        },
+        "interactionHint": {
+            "text": "Hãy thử chuyển qua lại giữa A và B.",
+            "showOnce": true
+        }
+    },
+    "observation": {
+        "allowInteraction": true,
+        "interactionType": "toggleComparison",
+        "noCorrectAnswer": true,
+        "feedback": {
+            "enabled": false
+        },
+        "explanation": {
+            "enabled": false
+        }
+    },
+    "question": {
+        "text": "Cách nào giúp em biết mình sẽ viết gì trước, gì sau?",
+        "type": "reflection",
+        "options": [
+            {
+                "id": "A",
+                "text": "Cách A"
+            },
+            {
+                "id": "B",
+                "text": "Cách B"
+            }
+        ],
+        "allowCustomAnswer": true,
+        "feedback": {
+            "enabled": false
+        },
+        "showAnswer": false
+    },
+    "ending": {
+        "type": "transition",
+        "text": "Hãy thử quan sát kỹ hơn trước khi đưa ra câu trả lời.",
+        "button": {
+            "text": "Tiếp tục",
+            "action": "next"
+        }
+    }
+},
+```json
+{
+    "id": "discover_01",
+    "type": "discover",
+    "title": "Tự tìm ra cách sắp xếp",
+    "purpose": "Cho học sinh tự khám phá rằng cùng một tập hợp ý tưởng, cách tổ chức và sắp xếp khác nhau sẽ tạo ra mức độ rõ ràng khác nhau.",
+    "content": {
+        "instruction": "Em hãy thử xem bộ khung nào giúp các ý được theo dõi dễ hơn.",
+        "ideas": [
+            {
+                "id": "idea_01",
+                "text": "Mẹ chăm em khi ốm",
+                "icon": "medicine"
+            },
+            {
+                "id": "idea_02",
+                "text": "Mẹ rất yêu thương em",
+                "icon": "heart"
+            },
+            {
+                "id": "idea_03",
+                "text": "Mẹ có mái tóc dài",
+                "icon": "person"
+            },
+            {
+                "id": "idea_04",
+                "text": "Em rất biết ơn mẹ",
+                "icon": "heart"
+            }
+        ],
+        "frameworks": [
+            {
+                "id": "A",
+                "label": "Bộ khung A",
+                "nodes": [
+                    {
+                        "id": "a_01",
+                        "text": "Cảm xúc"
+                    },
+                    {
+                        "id": "a_02",
+                        "text": "Kỷ niệm"
+                    },
+                    {
+                        "id": "a_03",
+                        "text": "Giới thiệu"
+                    },
+                    {
+                        "id": "a_04",
+                        "text": "Đặc điểm"
+                    }
+                ]
+            },
+            {
+                "id": "B",
+                "label": "Bộ khung B",
+                "nodes": [
+                    {
+                        "id": "b_01",
+                        "text": "Giới thiệu"
+                    },
+                    {
+                        "id": "b_02",
+                        "text": "Đặc điểm"
+                    },
+                    {
+                        "id": "b_03",
+                        "text": "Kỷ niệm"
+                    },
+                    {
+                        "id": "b_04",
+                        "text": "Cảm xúc"
+                    }
+                ]
+            }
+        ]
+    },
+    "ui": {
+        "layout": "discovery_workspace",
+        "header": {
+            "title": "Thử hai cách sắp xếp",
+            "subtitle": "Em không cần nhớ đáp án. Hãy quan sát và tự khám phá."
+        },
+        "ideaPool": {
+            "title": "Các ý tưởng",
+            "layout": "card_grid",
+            "draggable": false,
+            "cards": "content.ideas"
+        },
+        "frameworkComparison": {
+            "mode": "sideBySide",
+            "frameworks": "content.frameworks",
+            "interaction": {
+                "type": "selectFramework",
+                "highlightSelected": true,
+                "animation": "focus"
+            }
+        }
+    },
+    "interaction": {
+        "type": "discoveryChoice",
+        "question": {
+            "text": "Bộ khung nào giúp người đọc theo dõi dễ hơn?",
+            "type": "singleChoice",
+            "choices": [
+                {
+                    "id": "A",
+                    "text": "Bộ khung A"
+                },
+                {
+                    "id": "B",
+                    "text": "Bộ khung B"
+                }
+            ]
+        },
+        "allowChangeAnswer": true,
+        "showImmediateFeedback": false,
+        "showCorrectAnswerImmediately": false
+    },
+    "discovery": {
+        "goal": "student_inference",
+        "requiredObservation": [
+            "Có một trình tự rõ ràng",
+            "Các ý có quan hệ với nhau",
+            "Người đọc dễ hình dung tiến trình"
+        ],
+        "revealAfterAnswer": true
+    },
+    "reveal": {
+        "type": "insight",
+        "animation": "connect_the_structure",
+        "steps": [
+            {
+                "text": "Các ý tưởng không nên được đặt ngẫu nhiên."
+            },
+            {
+                "text": "Chúng cần được tổ chức thành một trình tự hợp lý."
+            },
+            {
+                "text": "Cách tổ chức đó giúp người viết biết mình sẽ viết gì trước, gì sau."
+            }
+        ],
+        "concept": {
+            "title": "DÀN Ý",
+            "definition": "Dàn ý là cách tổ chức những ý tưởng thành một trình tự hợp lý trước khi viết."
+        }
+    },
+    "ending": {
+        "type": "transition",
+        "text": "Vậy làm thế nào để tự xây được một dàn ý rõ ràng?",
+        "button": {
+            "text": "Học cách lập dàn ý",
+            "action": "next"
+        }
+    },
+    "completion": {
+        "trigger": "button",
+        "saveProgress": true,
+        "nextSection": "teach"
+    }
+},
+```json
+{
+    "id": "teach_01",
+    "type": "teach",
+    "title": "Xây dàn ý",
+    "purpose": "Giúp học sinh hiểu và ghi nhớ quy trình biến các ý tưởng rời rạc thành một dàn ý rõ ràng trước khi viết.",
+    "content": {
+        "title": "🏗️ XÂY DÀN Ý",
+        "intro": {
+            "text": "Trước khi viết, hãy biến những ý tưởng rời rạc thành một bộ khung rõ ràng."
+        },
+        "coreModel": {
+            "type": "process",
+            "title": "Từ ý tưởng đến dàn ý",
+            "steps": [
+                {
+                    "id": "ideas",
+                    "label": "Ý tưởng",
+                    "icon": "lightbulb",
+                    "description": "Những điều em muốn đưa vào đoạn văn."
+                },
+                {
+                    "id": "select",
+                    "label": "Chọn",
+                    "icon": "filter",
+                    "description": "Chọn những ý thực sự cần thiết."
+                },
+                {
+                    "id": "group",
+                    "label": "Gom",
+                    "icon": "layers",
+                    "description": "Gom những ý có nội dung gần nhau."
+                },
+                {
+                    "id": "sequence",
+                    "label": "Sắp xếp",
+                    "icon": "sort",
+                    "description": "Đặt các nhóm ý theo một trình tự hợp lý."
+                },
+                {
+                    "id": "check",
+                    "label": "Kiểm tra",
+                    "icon": "check-circle",
+                    "description": "Kiểm tra xem dàn ý có thiếu, thừa hoặc lặp ý không."
+                },
+                {
+                    "id": "outline",
+                    "label": "Dàn ý",
+                    "icon": "blueprint",
+                    "description": "Bộ khung giúp em biết mình sẽ viết gì trước, gì sau."
+                }
+            ]
+        },
+        "outlineStructure": {
+            "type": "verticalFlow",
+            "nodes": [
+                {
+                    "id": "opening",
+                    "label": "MỞ ĐOẠN",
+                    "description": "Giới thiệu đối tượng hoặc vấn đề cần trình bày."
+                },
+                {
+                    "id": "body",
+                    "label": "THÂN ĐOẠN",
+                    "description": "Triển khai các ý chính và những chi tiết cần thiết."
+                },
+                {
+                    "id": "ending",
+                    "label": "KẾT ĐOẠN",
+                    "description": "Nêu cảm xúc, nhận xét hoặc khẳng định điều muốn gửi gắm."
+                }
+            ]
+        },
+        "fourOperations": [
+            {
+                "id": "select",
+                "number": 1,
+                "title": "Chọn",
+                "shortQuestion": "Ý nào thực sự cần?",
+                "explanation": "Không phải ý tưởng nào nghĩ ra cũng cần đưa vào đoạn văn. Hãy giữ những ý phù hợp với đề và góp phần làm rõ nội dung.",
+                "keywords": [
+                    "đúng đề",
+                    "cần thiết",
+                    "phù hợp"
+                ],
+                "example": {
+                    "keep": "Mẹ chăm em khi ốm.",
+                    "remove": "Em thích màu xanh."
+                }
+            },
+            {
+                "id": "group",
+                "number": 2,
+                "title": "Gom",
+                "shortQuestion": "Ý nào thuộc cùng một nhóm?",
+                "explanation": "Những ý có nội dung gần nhau nên được đặt trong cùng một nhóm để tránh viết rời rạc.",
+                "keywords": [
+                    "cùng nội dung",
+                    "cùng nhóm",
+                    "liên quan"
+                ],
+                "example": {
+                    "groupA": [
+                        "Mẹ hay dậy sớm.",
+                        "Mẹ nấu ăn cho em."
+                    ],
+                    "groupB": [
+                        "Mẹ chăm em khi ốm.",
+                        "Mẹ luôn động viên em."
+                    ]
+                }
+            },
+            {
+                "id": "sequence",
+                "number": 3,
+                "title": "Sắp xếp",
+                "shortQuestion": "Ý nào trước, ý nào sau?",
+                "explanation": "Các nhóm ý cần được sắp xếp theo một trình tự hợp lý để người đọc dễ theo dõi.",
+                "keywords": [
+                    "trình tự",
+                    "logic",
+                    "trước - sau"
+                ],
+                "example": {
+                    "before": [
+                        "Cảm xúc",
+                        "Kỷ niệm",
+                        "Giới thiệu",
+                        "Đặc điểm"
+                    ],
+                    "after": [
+                        "Giới thiệu",
+                        "Đặc điểm",
+                        "Kỷ niệm",
+                        "Cảm xúc"
+                    ]
+                }
+            },
+            {
+                "id": "check",
+                "number": 4,
+                "title": "Kiểm tra",
+                "shortQuestion": "Có ý nào bị thiếu hoặc lặp không?",
+                "explanation": "Trước khi viết, hãy kiểm tra lại dàn ý để phát hiện ý bị thiếu, ý trùng lặp hoặc ý không phục vụ cho đề.",
+                "checklist": [
+                    "Có bám sát đề không?",
+                    "Có ý chính nào bị thiếu không?",
+                    "Có ý nào bị lặp không?",
+                    "Thứ tự các ý có hợp lý không?"
+                ]
+            }
+        ]
+    },
+    "ui": {
+        "layout": "concept_teaching",
+        "header": {
+            "title": "🏗️ XÂY DÀN Ý",
+            "subtitle": "Biến những ý tưởng rời rạc thành một bộ khung rõ ràng."
+        },
+        "mainVisualization": {
+            "type": "animatedProcess",
+            "animation": {
+                "sequence": [
+                    "showScatteredIdeas",
+                    "selectIdeas",
+                    "groupIdeas",
+                    "sequenceIdeas",
+                    "checkOutline",
+                    "buildOutline"
+                ],
+                "pauseBetweenStepsMs": 900
+            }
+        },
+        "outlineDiagram": {
+            "type": "verticalBlueprint",
+            "nodes": [
+                "MỞ ĐOẠN",
+                "THÂN ĐOẠN",
+                "KẾT ĐOẠN"
+            ],
+            "connectors": {
+                "type": "arrow"
+            }
+        },
+        "operationCards": {
+            "layout": "fourCards",
+            "interaction": {
+                "type": "clickToExplore",
+                "oneCardAtATime": true
+            },
+            "cards": "content.fourOperations"
+        }
+    },
+    "animation": {
+        "intro": {
+            "type": "scatteredIdeas",
+            "ideas": [
+                "💡",
+                "💡",
+                "💡",
+                "💡",
+                "💡"
+            ]
+        },
+        "process": [
+            {
+                "action": "select",
+                "visual": "irrelevantIdeasFadeOut"
+            },
+            {
+                "action": "group",
+                "visual": "relatedIdeasMoveTogether"
+            },
+            {
+                "action": "sequence",
+                "visual": "groupsArrangeVertically"
+            },
+            {
+                "action": "check",
+                "visual": "checkMarksAppear"
+            },
+            {
+                "action": "buildOutline",
+                "visual": "blueprintBuild"
+            }
+        ]
+    },
+    "knowledgeCheck": {
+        "enabled": true,
+        "type": "quickCheck",
+        "questions": [
+            {
+                "id": "q1",
+                "question": "Bước nào giúp loại bỏ những ý không cần thiết?",
+                "options": [
+                    "Chọn",
+                    "Gom",
+                    "Sắp xếp",
+                    "Kiểm tra"
+                ],
+                "answer": "Chọn"
+            },
+            {
+                "id": "q2",
+                "question": "Bước nào giúp xác định ý nào trước, ý nào sau?",
+                "options": [
+                    "Chọn",
+                    "Gom",
+                    "Sắp xếp",
+                    "Kiểm tra"
+                ],
+                "answer": "Sắp xếp"
+            }
+        ],
+        "feedback": {
+            "correct": "Chính xác! Em đã xác định đúng thao tác.",
+            "incorrect": "Hãy xem lại 4 thao tác và thử lại."
+        }
+    },
+    "summary": {
+        "title": "4 thao tác để xây dàn ý",
+        "steps": [
+            "① Chọn — Giữ lại những ý cần thiết.",
+            "② Gom — Nhóm những ý có liên quan.",
+            "③ Sắp xếp — Đặt các nhóm ý theo trình tự hợp lý.",
+            "④ Kiểm tra — Xem dàn ý có thiếu, thừa hoặc lặp ý không."
+        ],
+        "keyMessage": "Ý hay chưa đủ — phải đặt đúng chỗ."
+    },
+    "completion": {
+        "trigger": "knowledgeCheckCompleted",
+        "saveProgress": true,
+        "nextSection": "guidedPractice"
+    }
+},
+{
+    "id": "guided_practice_01",
+    "type": "guided_practice",
+    "title": "Tự tay xây một dàn ý",
+    "purpose": "Hướng dẫn học sinh thực hành quy trình lập dàn ý thông qua bốn thao tác: chọn ý, gom nhóm, sắp xếp và kiểm tra.",
+    "content": {
+        "task": {
+            "prompt": "Viết đoạn văn trình bày cảm nghĩ về một người em yêu quý.",
+            "target": {
+                "subject": "Mẹ",
+                "expectedStructure": [
+                    "Mở đoạn",
+                    "Đặc điểm / việc làm",
+                    "Kỷ niệm",
+                    "Cảm xúc"
+                ]
+            }
+        },
+        "steps": [
+            {
+                "id": "step_01",
+                "type": "select",
+                "title": "① CHỌN Ý",
+                "instruction": "Trong 8 ý dưới đây, hãy chọn những ý thực sự cần thiết cho đoạn văn.",
+                "availableIdeas": [
+                    {
+                        "id": "idea_01",
+                        "text": "Mẹ thường dậy sớm",
+                        "relevant": true
+                    },
+                    {
+                        "id": "idea_02",
+                        "text": "Mẹ chăm em khi ốm",
+                        "relevant": true
+                    },
+                    {
+                        "id": "idea_03",
+                        "text": "Mẹ có mái tóc dài",
+                        "relevant": true
+                    },
+                    {
+                        "id": "idea_04",
+                        "text": "Em rất biết ơn mẹ",
+                        "relevant": true
+                    },
+                    {
+                        "id": "idea_05",
+                        "text": "Nhà em có chiếc bàn học",
+                        "relevant": false
+                    },
+                    {
+                        "id": "idea_06",
+                        "text": "Mẹ luôn động viên em",
+                        "relevant": true
+                    },
+                    {
+                        "id": "idea_07",
+                        "text": "Em thích màu xanh",
+                        "relevant": false
+                    },
+                    {
+                        "id": "idea_08",
+                        "text": "Mẹ nấu món em thích",
+                        "relevant": true
+                    }
+                ],
+                "interaction": {
+                    "type": "dragAndDrop",
+                    "source": "availableIdeas",
+                    "targets": [
+                        {
+                            "id": "keep",
+                            "label": "DÙNG"
+                        },
+                        {
+                            "id": "discard",
+                            "label": "KHÔNG DÙNG"
+                        }
+                    ]
+                },
+                "feedback": {
+                    "mode": "guided",
+                    "correct": "Ý này phù hợp với đề.",
+                    "incorrect": "Hãy tự hỏi: ý này có giúp làm rõ hình ảnh người mẹ không?"
+                },
+                "completion": {
+                    "condition": "allIdeasClassified"
+                }
+            },
+            {
+                "id": "step_02",
+                "type": "group",
+                "title": "② GOM NHÓM",
+                "instruction": "Hãy kéo các ý có nội dung gần nhau vào cùng một nhóm.",
+                "groups": [
+                    {
+                        "id": "group_01",
+                        "title": "👤 ĐẶC ĐIỂM / VIỆC LÀM",
+                        "expectedIdeas": [
+                            "idea_01",
+                            "idea_03",
+                            "idea_08"
+                        ]
+                    },
+                    {
+                        "id": "group_02",
+                        "title": "❤️ TÌNH CẢM / KỶ NIỆM",
+                        "expectedIdeas": [
+                            "idea_02",
+                            "idea_06"
+                        ]
+                    },
+                    {
+                        "id": "group_03",
+                        "title": "💭 CẢM XÚC",
+                        "expectedIdeas": [
+                            "idea_04"
+                        ]
+                    }
+                ],
+                "interaction": {
+                    "type": "dragAndDrop",
+                    "source": "step_01.keep",
+                    "targets": "groups",
+                    "allowRearrange": true
+                },
+                "feedback": {
+                    "mode": "hint",
+                    "hints": [
+                        "Hãy tìm những ý đang nói về cùng một khía cạnh.",
+                        "Mẹ dậy sớm và mẹ nấu ăn đều nói về điều gì mẹ thường làm?",
+                        "Cảm xúc của em nên được đặt riêng với những việc mẹ làm."
+                    ]
+                },
+                "completion": {
+                    "condition": "allIdeasGrouped"
+                }
+            },
+            {
+                "id": "step_03",
+                "type": "outline_builder",
+                "title": "③ XÂY DÀN Ý",
+                "instruction": "Bây giờ hãy sắp xếp các nhóm ý thành một dàn ý hoàn chỉnh.",
+                "outline": {
+                    "sections": [
+                        {
+                            "id": "opening",
+                            "number": 1,
+                            "title": "MỞ ĐOẠN",
+                            "slots": [
+                                {
+                                    "id": "opening_01",
+                                    "label": "Giới thiệu mẹ"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "body",
+                            "number": 2,
+                            "title": "THÂN ĐOẠN",
+                            "slots": [
+                                {
+                                    "id": "body_01",
+                                    "label": "Đặc điểm / việc làm"
+                                },
+                                {
+                                    "id": "body_02",
+                                    "label": "Kỷ niệm"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "ending",
+                            "number": 3,
+                            "title": "KẾT ĐOẠN",
+                            "slots": [
+                                {
+                                    "id": "ending_01",
+                                    "label": "Cảm xúc"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "availableBlocks": [
+                    {
+                        "id": "block_intro",
+                        "text": "Giới thiệu mẹ",
+                        "correctSlot": "opening_01"
+                    },
+                    {
+                        "id": "block_character",
+                        "text": "Đặc điểm / việc làm",
+                        "correctSlot": "body_01"
+                    },
+                    {
+                        "id": "block_memory",
+                        "text": "Kỷ niệm",
+                        "correctSlot": "body_02"
+                    },
+                    {
+                        "id": "block_feeling",
+                        "text": "Cảm xúc",
+                        "correctSlot": "ending_01"
+                    }
+                ],
+                "interaction": {
+                    "type": "dragAndDrop",
+                    "source": "availableBlocks",
+                    "targets": "outline.sections",
+                    "allowReorder": true
+                },
+                "feedback": {
+                    "mode": "explain",
+                    "incorrect": {
+                        "message": "Hãy nghĩ về cách người đọc thường theo dõi một đoạn văn: giới thiệu → triển khai → cảm xúc."
+                    },
+                    "correct": {
+                        "message": "Rất tốt! Các ý đã tạo thành một bộ khung rõ ràng."
+                    }
+                },
+                "completion": {
+                    "condition": "allSlotsFilled"
+                }
+            },
+            {
+                "id": "step_04",
+                "type": "strength_test",
+                "title": "④ TEST ĐỘ CHẮC",
+                "instruction": "Hãy thử bỏ từng ý và xem dàn ý thay đổi thế nào.",
+                "question": "Nếu bỏ ý này, dàn ý có còn đủ rõ không?",
+                "testIdeas": [
+                    {
+                        "id": "test_01",
+                        "text": "Mẹ có mái tóc dài",
+                        "impact": "low",
+                        "result": {
+                            "message": "Dàn ý vẫn khá rõ. Đây là một chi tiết có thể bỏ nếu đoạn văn cần ngắn hơn.",
+                            "concept": "notEssential"
+                        }
+                    },
+                    {
+                        "id": "test_02",
+                        "text": "Mẹ chăm em khi ốm",
+                        "impact": "high",
+                        "result": {
+                            "message": "Dàn ý mất đi một kỷ niệm quan trọng.",
+                            "concept": "supportingDetail"
+                        }
+                    },
+                    {
+                        "id": "test_03",
+                        "text": "Em rất biết ơn mẹ",
+                        "impact": "high",
+                        "result": {
+                            "message": "Đoạn văn mất đi phần thể hiện cảm xúc của người viết.",
+                            "concept": "endingPurpose"
+                        }
+                    }
+                ],
+                "interaction": {
+                    "type": "clickToRemove",
+                    "showImpact": true,
+                    "restoreAfterTest": true
+                },
+                "feedback": {
+                    "mode": "reflective",
+                    "afterEachTest": true
+                },
+                "completion": {
+                    "condition": "allTestsCompleted"
+                }
+            }
+        ]
+    },
+    "ui": {
+        "layout": "guided_workspace",
+        "progress": {
+            "type": "stepper",
+            "steps": [
+                {
+                    "id": "step_01",
+                    "label": "Chọn"
+                },
+                {
+                    "id": "step_02",
+                    "label": "Gom"
+                },
+                {
+                    "id": "step_03",
+                    "label": "Xây"
+                },
+                {
+                    "id": "step_04",
+                    "label": "Kiểm tra"
+                }
+            ]
+        },
+        "taskPanel": {
+            "position": "top",
+            "showPrompt": true,
+            "showCurrentInstruction": true
+        },
+        "workspace": {
+            "type": "interactiveCanvas",
+            "preserveStateBetweenSteps": true,
+            "transition": {
+                "type": "slide",
+                "durationMs": 400
+            }
+        },
+        "feedbackPanel": {
+            "position": "bottom",
+            "style": "coach",
+            "showImmediately": true
+        }
+    },
+    "practiceState": {
+        "persist": true,
+        "variables": [
+            "selectedIdeas",
+            "discardedIdeas",
+            "groupedIdeas",
+            "outlineStructure",
+            "testedIdeas"
+        ]
+    },
+    "scaffolding": {
+        "enabled": true,
+        "levels": [
+            {
+                "level": 1,
+                "type": "hint"
+            },
+            {
+                "level": 2,
+                "type": "highlight"
+            },
+            {
+                "level": 3,
+                "type": "explanation"
+            }
+        ],
+        "doNotRevealAnswerImmediately": true
+    },
+    "completion": {
+        "condition": "allStepsCompleted",
+        "summary": {
+            "title": "Em vừa xây được một dàn ý!",
+            "process": [
+                "Chọn những ý cần thiết.",
+                "Gom những ý có liên quan.",
+                "Sắp xếp thành trình tự rõ ràng.",
+                "Kiểm tra và loại bỏ những ý không cần thiết."
+            ],
+            "keyMessage": "Không phải ý nào hay cũng cần giữ. Một dàn ý tốt là một dàn ý rõ ràng, vừa đủ và đúng mục tiêu."
+        },
+        "nextSection": "mini_challenge"
+    }
+},
+
+```json
+{
+    "id": "mini_challenge_01",
+    "type": "mini_challenge",
+    "title": "Tự xây dàn ý",
+    "purpose": "Kiểm tra khả năng tự lập dàn ý của học sinh sau khi đã hoàn thành phần Guided Practice.",
+    "content": {
+        "task": {
+            "type": "outline",
+            "prompt": "Lập dàn ý cho đoạn văn trình bày cảm nghĩ về một người em kính trọng.",
+            "instruction": "Hãy tự xây dựng dàn ý. Lần này em không được cung cấp sẵn các nhóm ý.",
+            "constraints": [
+                "Không có gợi ý nội dung.",
+                "Không cung cấp danh mục ý tưởng.",
+                "Không cung cấp thứ tự các ý.",
+                "Tự quyết định những ý cần đưa vào dàn ý."
+            ]
+        },
+        "outline": {
+            "type": "empty_builder",
+            "sections": [
+                {
+                    "id": "opening",
+                    "title": "MỞ ĐOẠN",
+                    "instruction": "Giới thiệu người em kính trọng.",
+                    "slots": {
+                        "min": 1,
+                        "max": 2
+                    }
+                },
+                {
+                    "id": "body",
+                    "title": "THÂN ĐOẠN",
+                    "instruction": "Triển khai những điều khiến em kính trọng người đó.",
+                    "slots": {
+                        "min": 2,
+                        "max": 5
+                    }
+                },
+                {
+                    "id": "ending",
+                    "title": "KẾT ĐOẠN",
+                    "instruction": "Nêu cảm xúc hoặc suy nghĩ của em.",
+                    "slots": {
+                        "min": 1,
+                        "max": 2
+                    }
+                }
+            ],
+            "interaction": {
+                "type": "outline_builder",
+                "allowAdd": true,
+                "allowEdit": true,
+                "allowDelete": true,
+                "allowReorder": true,
+                "placeholder": "Nhập ý của em..."
+            }
+        }
+    },
+    "ui": {
+        "layout": "challenge_workspace",
+        "header": {
+            "badge": "MINI CHALLENGE",
+            "title": "Tự xây dàn ý",
+            "subtitle": "Lần này, em tự quyết định cách tổ chức các ý."
+        },
+        "taskCard": {
+            "type": "prompt",
+            "prompt": "Lập dàn ý cho đoạn văn trình bày cảm nghĩ về một người em kính trọng.",
+            "collapsible": false
+        },
+        "outlineBuilder": {
+            "layout": "vertical",
+            "style": "clean",
+            "sections": [
+                {
+                    "id": "opening",
+                    "title": "① MỞ ĐOẠN",
+                    "addButton": {
+                        "text": "+ Thêm ý",
+                        "action": "addIdea"
+                    }
+                },
+                {
+                    "id": "body",
+                    "title": "② THÂN ĐOẠN",
+                    "addButton": {
+                        "text": "+ Thêm ý",
+                        "action": "addIdea"
+                    }
+                },
+                {
+                    "id": "ending",
+                    "title": "③ KẾT ĐOẠN",
+                    "addButton": {
+                        "text": "+ Thêm ý",
+                        "action": "addIdea"
+                    }
+                }
+            ]
+        },
+        "submit": {
+            "text": "Nộp dàn ý",
+            "enabledWhen": "minimumRequiredSlotsFilled"
+        }
+    },
+    "scaffolding": {
+        "enabled": false,
+        "hints": [],
+        "showCategories": false,
+        "showExample": false,
+        "showSuggestedIdeas": false
+    },
+    "evaluation": {
+        "type": "rubric",
+        "submitToAI": true,
+        "criteria": [
+            {
+                "id": "relevance",
+                "label": "Bám sát đề",
+                "description": "Các ý đều hướng vào người được chọn và lý do khiến người đó được kính trọng.",
+                "weight": 30
+            },
+            {
+                "id": "organization",
+                "label": "Tổ chức ý",
+                "description": "Các ý được sắp xếp thành trình tự hợp lý giữa mở đoạn, thân đoạn và kết đoạn.",
+                "weight": 30
+            },
+            {
+                "id": "development",
+                "label": "Triển khai",
+                "description": "Thân đoạn có đủ ý để làm rõ cảm nghĩ, không chỉ liệt kê thông tin.",
+                "weight": 25
+            },
+            {
+                "id": "conciseness",
+                "label": "Chọn lọc",
+                "description": "Không có quá nhiều ý vụn, trùng lặp hoặc không cần thiết.",
+                "weight": 15
+            }
+        ]
+    },
+    "aiFeedback": {
+        "enabled": true,
+        "mode": "coach",
+        "tone": "encouraging",
+        "doNotRewriteStudentAnswer": true,
+        "doNotGiveFullAnswer": true,
+        "structure": [
+            {
+                "id": "strength",
+                "title": "🌟 Em làm tốt",
+                "instruction": "Chỉ ra một hoặc hai điểm mạnh cụ thể trong dàn ý."
+            },
+            {
+                "id": "missing",
+                "title": "🔎 Em có thể bổ sung",
+                "instruction": "Chỉ ra một điểm còn thiếu hoặc chưa rõ."
+            },
+            {
+                "id": "organization",
+                "title": "🔗 Cách sắp xếp",
+                "instruction": "Nhận xét trình tự các ý và chỉ ra nếu có ý chưa đúng vị trí."
+            },
+            {
+                "id": "nextStep",
+                "title": "💡 Thử sửa",
+                "instruction": "Đưa ra một gợi ý ngắn để học sinh tự chỉnh sửa."
+            }
+        ],
+        "exampleFeedback": {
+            "strength": "Em đã giới thiệu rõ người mình kính trọng và có lý do cụ thể.",
+            "missing": "Phần thân đoạn mới có đặc điểm và việc làm, nhưng chưa có một chi tiết cụ thể cho thấy vì sao em kính trọng người đó.",
+            "organization": "Trình tự hiện tại khá rõ: giới thiệu → những điều đáng kính trọng → cảm xúc.",
+            "nextStep": "Em thử thêm một kỷ niệm hoặc việc làm cụ thể để cảm nghĩ của mình thuyết phục hơn nhé."
+        }
+    },
+    "revision": {
+        "enabled": true,
+        "afterFeedback": true,
+        "button": {
+            "text": "Chỉnh sửa dàn ý",
+            "action": "edit"
+        },
+        "allowResubmit": true,
+        "maxAttempts": 3
+    },
+    "completion": {
+        "condition": "submittedAndEvaluated",
+        "summary": {
+            "title": "Em đã tự lập được một dàn ý!",
+            "message": "Ở bài trước, em được hướng dẫn từng bước. Lần này, em đã tự quyết định chọn và tổ chức các ý.",
+            "skill": {
+                "name": "Lập dàn ý",
+                "level": "independent_practice"
+            }
+        },
+        "nextSection": "reflection"
+    }
+},
+```json
+{
+    "id": "reflection_01",
+    "type": "reflection",
+    "title": "Nhìn lại cách em lập dàn ý",
+    "purpose": "Giúp học sinh nhận diện khó khăn của bản thân và tự đánh giá cách mình lập dàn ý.",
+    "questions": [
+        {
+            "id": "difficulty",
+            "type": "single_choice",
+            "question": "Điều gì khó hơn với em?",
+            "options": [
+                {
+                    "id": "generate",
+                    "text": "💡 Nghĩ ra ý"
+                },
+                {
+                    "id": "select",
+                    "text": "🎯 Chọn ý"
+                },
+                {
+                    "id": "group",
+                    "text": "🧩 Gom ý"
+                },
+                {
+                    "id": "sequence",
+                    "text": "↕️ Sắp xếp ý"
+                },
+                {
+                    "id": "main_idea",
+                    "text": "🔎 Xác định ý chính"
+                }
+            ],
+            "required": true
+        },
+        {
+            "id": "revision",
+            "type": "free_text",
+            "question": "Nếu viết lại, em sẽ thay đổi điều gì trong dàn ý?",
+            "placeholder": "Ví dụ: Em sẽ bỏ bớt một ý bị lặp và thêm một kỷ niệm cụ thể...",
+            "required": true,
+            "minLength": 5
+        }
+    ],
+    "ui": {
+        "layout": "reflection_card",
+        "header": {
+            "icon": "🪞",
+            "title": "Nhìn lại một chút",
+            "subtitle": "Không có câu trả lời đúng hay sai."
+        },
+        "questionCards": {
+            "layout": "stack",
+            "spacing": "comfortable",
+            "showProgress": true
+        },
+        "difficultyOptions": {
+            "type": "largeChoiceCards",
+            "columns": 2,
+            "selectedState": "highlight",
+            "allowChange": true
+        },
+        "textReflection": {
+            "type": "textarea",
+            "rows": 4,
+            "autoExpand": true
+        },
+        "submit": {
+            "text": "Lưu suy nghĩ",
+            "action": "saveReflection"
+        }
+    },
+    "feedback": {
+        "enabled": false,
+        "reason": "Reflection is metacognitive rather than correctness-based."
+    },
+    "storage": {
+        "save": true,
+        "fields": [
+            "difficulty",
+            "revision"
+        ],
+        "scope": "lesson"
+    },
+    "completion": {
+        "condition": "reflectionSubmitted",
+        "message": "Mỗi lần nhìn lại, em sẽ hiểu rõ hơn cách mình học.",
+        "nextSection": "cheat_sheet"
+    }
+},
+```json
+{
+    "id": "cheat_sheet_01",
+    "type": "cheat_sheet",
+    "title": "Blueprint — Lập dàn ý",
+    "content": {
+        "title": "🏗️ LẬP DÀN Ý",
+        "steps": [
+            {
+                "number": 1,
+                "title": "CHỌN",
+                "question": "Ý nào cần dùng?"
+            },
+            {
+                "number": 2,
+                "title": "GOM",
+                "question": "Ý nào cùng nhóm?"
+            },
+            {
+                "number": 3,
+                "title": "XẾP",
+                "question": "Ý nào trước – sau?"
+            },
+            {
+                "number": 4,
+                "title": "KIỂM TRA",
+                "question": "Có thiếu / lặp không?"
+            }
+        ],
+        "keyRule": {
+            "icon": "⭐",
+            "text": "Ý đúng + thứ tự hợp lý = DÀN Ý TỐT"
+        }
+    },
+    "ui": {
+        "layout": "blueprint_card",
+        "card": {
+            "style": "clean",
+            "showBorder": true,
+            "showStepConnectors": true
+        },
+        "actions": [
+            {
+                "id": "save",
+                "label": "🔖 Lưu",
+                "action": "save"
+            },
+            {
+                "id": "download",
+                "label": "⬇️ Tải",
+                "action": "download"
+            }
+        ]
+    },
+    "completion": {
+        "condition": "viewed",
+        "nextSection": "final_challenge"
+    }
+},
+```json
+{
+    "id": "final_challenge_01",
+    "type": "final_challenge",
+    "title": "FINAL BOSS — Lập dàn ý",
+    "purpose": "Đánh giá khả năng tự tìm ý và tự tổ chức các ý thành một dàn ý hoàn chỉnh mà không có scaffold.",
+    "task": {
+        "prompt": "Hãy lập dàn ý cho một đoạn văn trình bày suy nghĩ về một người đã giúp em thay đổi theo hướng tích cực.",
+        "instruction": "Tự thực hiện toàn bộ quy trình từ tìm ý đến hoàn thiện dàn ý.",
+        "scaffolding": {
+            "showIdeaCards": false,
+            "showCategories": false,
+            "showSuggestedIdeas": false,
+            "showExample": false,
+            "showOutlineTemplateHints": false
+        }
+    },
+    "workflow": {
+        "steps": [
+            {
+                "id": "find_ideas",
+                "title": "① TÌM Ý",
+                "description": "Hãy tự ghi lại những ý tưởng em cho là phù hợp với đề.",
+                "workspace": {
+                    "type": "brainstorm",
+                    "placeholder": "Viết một ý em nghĩ ra...",
+                    "allowAdd": true,
+                    "allowEdit": true,
+                    "allowDelete": true,
+                    "allowReorder": true
+                },
+                "aiFeedback": {
+                    "enabled": false
+                }
+            },
+            {
+                "id": "build_outline",
+                "title": "② XÂY DÀN Ý",
+                "description": "Từ những ý em vừa tìm được, hãy tổ chức chúng thành một dàn ý hoàn chỉnh.",
+                "workspace": {
+                    "type": "outline_builder",
+                    "sections": [
+                        {
+                            "id": "opening",
+                            "title": "MỞ ĐOẠN",
+                            "placeholder": "Em sẽ giới thiệu điều gì?"
+                        },
+                        {
+                            "id": "body",
+                            "title": "THÂN ĐOẠN",
+                            "placeholder": "Em sẽ triển khai những ý nào?"
+                        },
+                        {
+                            "id": "ending",
+                            "title": "KẾT ĐOẠN",
+                            "placeholder": "Em muốn kết lại bằng suy nghĩ gì?"
+                        }
+                    ],
+                    "allowAdd": true,
+                    "allowEdit": true,
+                    "allowDelete": true,
+                    "allowReorder": true
+                },
+                "source": "find_ideas"
+            }
+        ]
+    },
+    "ui": {
+        "layout": "final_boss",
+        "header": {
+            "icon": "🏆",
+            "title": "FINAL BOSS",
+            "subtitle": "Không gợi ý. Không có đáp án mẫu. Em tự xây từ đầu."
+        },
+        "taskCard": {
+            "title": "ĐỀ BÀI",
+            "prompt": "Hãy lập dàn ý cho một đoạn văn trình bày suy nghĩ về một người đã giúp em thay đổi theo hướng tích cực."
+        },
+        "progress": {
+            "type": "two_stage",
+            "steps": [
+                {
+                    "id": "find_ideas",
+                    "label": "Tìm ý"
+                },
+                {
+                    "id": "build_outline",
+                    "label": "Xây dàn ý"
+                }
+            ]
+        },
+        "workspace": {
+            "type": "single_workspace",
+            "preserveState": true,
+            "transition": "slide"
+        },
+        "submit": {
+            "text": "🚀 Nộp bài",
+            "confirm": true,
+            "confirmationMessage": "Em đã kiểm tra lại dàn ý chưa?"
+        }
+    },
+    "evaluation": {
+        "type": "ai_rubric",
+        "evaluateAfter": "final_submission",
+        "criteria": [
+            {
+                "id": "idea_relevance",
+                "label": "Tìm ý phù hợp",
+                "description": "Các ý tưởng có liên quan trực tiếp đến người đã giúp em thay đổi và sự thay đổi tích cực đó.",
+                "weight": 25
+            },
+            {
+                "id": "idea_sufficiency",
+                "label": "Đủ ý",
+                "description": "Có đủ những ý cần thiết để triển khai một đoạn văn hoàn chỉnh.",
+                "weight": 20
+            },
+            {
+                "id": "organization",
+                "label": "Tổ chức dàn ý",
+                "description": "Các ý được phân bố hợp lý giữa mở đoạn, thân đoạn và kết đoạn.",
+                "weight": 25
+            },
+            {
+                "id": "logical_order",
+                "label": "Trình tự",
+                "description": "Các ý trong thân đoạn được sắp xếp theo trình tự dễ theo dõi và có quan hệ logic.",
+                "weight": 20
+            },
+            {
+                "id": "redundancy",
+                "label": "Chọn lọc",
+                "description": "Không có quá nhiều ý trùng lặp hoặc không phục vụ cho mục tiêu của đoạn văn.",
+                "weight": 10
+            }
+        ]
+    },
+    "aiFeedback": {
+        "enabled": true,
+        "mode": "coach",
+        "doNotRewriteStudentAnswer": true,
+        "doNotGenerateFullOutline": true,
+        "structure": [
+            {
+                "id": "overall",
+                "title": "🏆 Nhìn chung",
+                "instruction": "Đánh giá ngắn gọn khả năng tự lập dàn ý của học sinh."
+            },
+            {
+                "id": "strength",
+                "title": "🌟 Điểm mạnh",
+                "instruction": "Chỉ ra điều học sinh đã làm tốt."
+            },
+            {
+                "id": "weakness",
+                "title": "🔎 Điểm cần cải thiện",
+                "instruction": "Chỉ ra một vấn đề quan trọng nhất trong dàn ý."
+            },
+            {
+                "id": "skill",
+                "title": "🧠 Kỹ năng",
+                "instruction": "Cho biết học sinh đang mạnh hoặc yếu ở tìm ý, chọn ý hay tổ chức ý."
+            },
+            {
+                "id": "nextStep",
+                "title": "🚀 Bước tiếp theo",
+                "instruction": "Đưa ra một hành động cụ thể để học sinh tự cải thiện."
+            }
+        ]
+    },
+    "result": {
+        "showScore": true,
+        "scoreLabel": "Mức độ thành thạo lập dàn ý",
+        "skillLevels": [
+            {
+                "min": 0,
+                "max": 49,
+                "label": "Cần luyện thêm"
+            },
+            {
+                "min": 50,
+                "max": 74,
+                "label": "Đang hình thành"
+            },
+            {
+                "min": 75,
+                "max": 89,
+                "label": "Khá thành thạo"
+            },
+            {
+                "min": 90,
+                "max": 100,
+                "label": "Thành thạo"
+            }
+        ]
+    },
+    "retry": {
+        "enabled": true,
+        "allowImmediateRetry": false,
+        "message": "Hãy xem nhận xét và thử lập lại một dàn ý mới.",
+        "createNewAttempt": true
+    },
+    "completion": {
+        "condition": "evaluated",
+        "message": "Em vừa hoàn thành toàn bộ quy trình lập dàn ý từ đầu đến cuối.",
+        "skill": {
+            "name": "Lập dàn ý",
+            "assessed": true
+        }
+    }
+}
+```

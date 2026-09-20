@@ -1,0 +1,652 @@
+{
+  "id": "viet-doan-van-09-bai-hoc-hanh-dong",
+  "title": "Viết đoạn bài học – hành động — Hiểu rồi thì mình sẽ làm gì?",
+  "type": "skill",
+  "version": "1.0.0",
+  "meta": {
+    "module": "viet-bai-van",
+    "lessonNumber": 9,
+    "durationMinutes": 180,
+    "difficulty": "beginner",
+    "skill": "viet-doan-bai-hoc-hanh-dong-nghi-luan-xa-hoi",
+    "description": "Học cách rút ra bài học nhận thức và chuyển hóa thành những hành động cụ thể, phù hợp sau khi bàn luận một vấn đề nghị luận xã hội."
+  },
+  "learningGoals": [
+    "Hiểu đoạn bài học – hành động có nhiệm vụ rút ra điều cần nhận thức và định hướng hành động sau khi bàn luận vấn đề.",
+    "Biết phân biệt bài học nhận thức với bài học hành động.",
+    "Biết chuyển một nhận thức chung thành hành động cụ thể.",
+    "Biết tự liên hệ bản thân một cách tự nhiên, phù hợp.",
+    "Biết tránh những bài học sáo rỗng, chung chung hoặc chỉ lặp lại vấn đề.",
+    "Biết sử dụng khung câu hỏi hỗ trợ khi chưa biết viết.",
+    "Biết thoát khỏi công thức để viết bài học – hành động tự nhiên và có tính cá nhân."
+  ],
+  "completion": {
+    "requiredSections": [
+      "story",
+      "observe",
+      "discover",
+      "teach",
+      "guidedPractice",
+      "miniChallenge",
+      "reflection",
+      "cheatSheet",
+      "finalChallenge"
+    ],
+    "action": "completeLesson",
+    "message": "🌱 Hiểu một vấn đề chưa phải là điểm cuối. Điều quan trọng là biến điều mình hiểu thành cách sống và hành động cụ thể."
+  },
+  "steps": [
+    {
+      "id": "story_01",
+      "type": "story",
+      "data": {
+        "title": "Hiểu rồi, nhưng sẽ làm gì?",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "split_compare",
+          "layout": "two_columns",
+          "question": "Hai đoạn đều nói về trách nhiệm. Đoạn nào cho thấy người viết thực sự rút ra được bài học?"
+        },
+        "content": {
+          "prompt": "Đọc hai đoạn và xem cách người viết rút ra bài học.",
+          "title": "Sống có trách nhiệm",
+          "left": {
+            "label": "ĐOẠN A",
+            "paragraph": "Qua đó, chúng ta thấy sống có trách nhiệm rất quan trọng. Mỗi người cần sống có trách nhiệm và phải có ý thức hơn trong cuộc sống. Đây là điều mà ai cũng cần ghi nhớ."
+          },
+          "right": {
+            "label": "ĐOẠN B",
+            "paragraph": "Qua đó, em hiểu rằng trách nhiệm không chỉ là hoàn thành phần việc của mình mà còn là dám chịu trách nhiệm khi mắc sai lầm. Vì vậy, trong học tập và cuộc sống, em cần chủ động hoàn thành nhiệm vụ đúng thời hạn, giữ lời hứa và thẳng thắn nhận lỗi khi mình làm chưa tốt."
+          }
+        },
+        "interaction": {
+          "type": "choice",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Đoạn A",
+              "correct": false
+            },
+            {
+              "id": "b",
+              "text": "Đoạn B",
+              "correct": true
+            },
+            {
+              "id": "same",
+              "text": "Hai đoạn đều cụ thể như nhau",
+              "correct": false
+            }
+          ],
+          "feedback": {
+            "correct": "✓ Đúng. Đoạn B không chỉ nói cần sống có trách nhiệm mà còn cho thấy người viết nhận thức được điều gì và sẽ làm gì cụ thể.",
+            "incorrect": "△ Hãy xem đoạn nào chỉ nói chung chung và đoạn nào cho thấy nhận thức được chuyển thành hành động cụ thể."
+          }
+        },
+        "reveal": {
+          "title": "💡 Bài học – hành động làm nhiệm vụ gì?",
+          "text": "Đây là phần giúp người viết trả lời: “Sau khi hiểu vấn đề, mình nhận ra điều gì và cần làm gì?”"
+        }
+      }
+    },
+    {
+      "id": "observe_01",
+      "type": "observe",
+      "data": {
+        "title": "Một bài học tốt được tạo nên như thế nào?",
+        "durationSeconds": 180,
+        "ui": {
+          "component": "paragraph_highlight",
+          "interaction": "tap_sentence",
+          "question": "Nhấn vào từng câu và quan sát câu đó đang làm nhiệm vụ gì."
+        },
+        "content": {
+          "prompt": "Hãy quan sát đoạn bài học – hành động sau khi bàn luận về sự trung thực.",
+          "paragraph": [
+            {
+              "id": "s1",
+              "text": "Từ những điều trên, em hiểu rằng trung thực không chỉ là nói đúng sự thật mà còn là thái độ dám đối diện với sai lầm của chính mình.",
+              "role": "awareness",
+              "roleLabel": "🧠 BÀI HỌC NHẬN THỨC",
+              "feedback": "🟢 Câu này cho biết người viết đã hiểu sâu hơn điều gì về vấn đề."
+            },
+            {
+              "id": "s2",
+              "text": "Vì vậy, mỗi người cần hình thành thói quen sống ngay thẳng và không che giấu sai lầm bằng cách đổ lỗi cho người khác.",
+              "role": "attitude",
+              "roleLabel": "🌱 BÀI HỌC THÁI ĐỘ",
+              "feedback": "🟡 Câu này chuyển nhận thức thành thái độ sống cần có."
+            },
+            {
+              "id": "s3",
+              "text": "Trong học tập, em sẽ tự làm bài, không quay cóp và dám nhận lỗi khi kết quả chưa tốt.",
+              "role": "action",
+              "roleLabel": "🛠️ HÀNH ĐỘNG CỤ THỂ",
+              "feedback": "🔵 Câu này cho thấy người viết sẽ làm gì trong thực tế."
+            },
+            {
+              "id": "s4",
+              "text": "Em sẽ bắt đầu từ những việc nhỏ nhất thay vì chỉ nhắc nhở bản thân bằng những lời nói chung chung.",
+              "role": "self",
+              "roleLabel": "👤 TỰ LIÊN HỆ",
+              "feedback": "🟣 Câu này tạo sự gắn với bản thân và cho thấy cách bắt đầu thực hiện."
+            }
+          ]
+        },
+        "reveal": {
+          "title": "Em vừa nhìn thấy gì?",
+          "text": "Một đoạn bài học tốt thường đi từ điều mình nhận ra → thái độ cần có → việc làm cụ thể. Tự liên hệ có thể được thêm vào khi phù hợp."
+        }
+      }
+    },
+    {
+      "id": "discover_01",
+      "type": "discover",
+      "data": {
+        "title": "Từ “cần sống tốt” đến “mình sẽ làm gì”",
+        "durationSeconds": 180,
+        "ui": {
+          "component": "card_to_slot",
+          "interaction": "tap_to_place"
+        },
+        "reveal": {
+          "title": "🔎 Em vừa phát hiện ra",
+          "text": "Một bài học có sức thuyết phục hơn khi hành động đủ cụ thể để người đọc hình dung được mình sẽ làm gì."
+        },
+        "content": {
+          "prompt": "Đặt mỗi câu vào đúng bước để biến một nhận thức chung thành hành động.",
+          "slots": [
+            {
+              "id": "awareness",
+              "label": "🧠 NHẬN THỨC",
+              "question": "Mình hiểu ra điều gì?",
+              "hint": "Nêu điều em nhận ra sau khi bàn luận."
+            },
+            {
+              "id": "attitude",
+              "label": "🌱 THÁI ĐỘ",
+              "question": "Mình cần có thái độ như thế nào?",
+              "hint": "Nêu cách nhìn hoặc thái độ cần có."
+            },
+            {
+              "id": "action",
+              "label": "🛠️ HÀNH ĐỘNG",
+              "question": "Mình sẽ làm gì?",
+              "hint": "Nêu việc làm cụ thể."
+            },
+            {
+              "id": "self",
+              "label": "👤 TỰ LIÊN HỆ",
+              "question": "Bản thân có thể bắt đầu từ đâu?",
+              "hint": "Liên hệ với học tập hoặc cuộc sống của mình."
+            }
+          ],
+          "cards": [
+            {
+              "id": "c1",
+              "target": "awareness",
+              "correct": true,
+              "slotText": "Em hiểu rằng giữ lời hứa là cách mỗi người thể hiện sự tôn trọng và trách nhiệm với người khác.",
+              "feedback": "✓ Đây là điều người viết nhận ra sau khi suy nghĩ về vấn đề.",
+              "label": "🧠 Nhận thức."
+            },
+            {
+              "id": "c2",
+              "target": "attitude",
+              "correct": true,
+              "slotText": "Vì thế, mỗi người cần coi trọng lời mình đã nói và không hứa hẹn một cách tùy tiện.",
+              "feedback": "✓ Câu này thể hiện thái độ cần có.",
+              "label": "🌱 Thái độ."
+            },
+            {
+              "id": "c3",
+              "target": "action",
+              "correct": true,
+              "slotText": "Khi đã nhận lời làm một việc, em sẽ cố gắng hoàn thành đúng thời gian hoặc chủ động báo trước nếu có trở ngại.",
+              "feedback": "✓ Đây là hành động cụ thể, người đọc có thể hình dung được.",
+              "label": "🛠️ Hành động."
+            },
+            {
+              "id": "c4",
+              "target": "self",
+              "correct": true,
+              "slotText": "Trong học tập, em sẽ bắt đầu bằng việc thực hiện đúng những lời hứa với thầy cô, bạn bè và gia đình.",
+              "feedback": "✓ Đây là cách liên hệ vấn đề với chính bản thân.",
+              "label": "👤 Tự liên hệ."
+            },
+            {
+              "id": "wrong1",
+              "target": null,
+              "correct": false,
+              "slotText": "Mỗi người phải sống thật tốt để xã hội ngày càng văn minh.",
+              "feedback": "△ Câu này quá chung chung. Người đọc chưa biết “sống thật tốt” cụ thể là làm gì.",
+              "label": "△ Bài học chung chung."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "teach_01",
+      "type": "teach",
+      "data": {
+        "title": "BẢN ĐỒ TỪ NHẬN THỨC ĐẾN HÀNH ĐỘNG",
+        "durationSeconds": 300,
+        "ui": {
+          "component": "vertical_map",
+          "interaction": "click_node",
+          "center": "HIỂU VẤN ĐỀ"
+        },
+        "prompt": "Ví dụ: Sống có trách nhiệm giúp con người nhận được sự tin tưởng.",
+        "nodes": [
+          {
+            "id": "awareness",
+            "icon": "🧠",
+            "title": "NHẬN THỨC",
+            "short": "Mình hiểu gì?",
+            "question": "Sau khi bàn luận, em nhận ra điều gì?",
+            "example": "Em hiểu rằng trách nhiệm không chỉ là hoàn thành nhiệm vụ mà còn là dám chịu trách nhiệm về hành động và lựa chọn của mình."
+          },
+          {
+            "id": "attitude",
+            "icon": "🌱",
+            "title": "THÁI ĐỘ",
+            "short": "Cần nhìn thế nào?",
+            "question": "Em cần có thái độ gì đối với vấn đề?",
+            "example": "Vì vậy, mỗi người cần nghiêm túc với những việc mình đã nhận và không tìm cách né tránh lỗi lầm."
+          },
+          {
+            "id": "action",
+            "icon": "🛠️",
+            "title": "HÀNH ĐỘNG",
+            "short": "Sẽ làm gì?",
+            "question": "Em có thể thực hiện điều gì cụ thể?",
+            "example": "Trong học tập, em sẽ hoàn thành bài đúng hạn, thực hiện đầy đủ phần việc được giao và chủ động sửa chữa khi mình mắc lỗi."
+          },
+          {
+            "id": "self",
+            "icon": "👤",
+            "title": "TỰ LIÊN HỆ",
+            "short": "Bắt đầu từ đâu?",
+            "question": "Bản thân em có thể bắt đầu từ việc nào?",
+            "example": "Với bản thân em, điều đó bắt đầu từ việc giữ đúng lời hứa với thầy cô, bạn bè và gia đình, dù đó chỉ là những việc nhỏ."
+          },
+          {
+            "id": "result",
+            "icon": "🎯",
+            "title": "HƯỚNG TỚI",
+            "short": "Muốn trở thành người thế nào?",
+            "question": "Những hành động ấy hướng em đến điều gì?",
+            "example": "Từ những việc nhỏ ấy, em có thể hình thành thói quen sống đáng tin cậy và có trách nhiệm hơn."
+          }
+        ],
+        "diagnosticQuestion": "Câu này cho thấy em đã hiểu vấn đề hay đã chuyển điều hiểu đó thành hành động?",
+        "importantNote": "Đây là bản đồ tư duy hỗ trợ viết, không phải công thức bắt buộc. Không phải đoạn nào cũng cần đủ năm bước hoặc mỗi bước phải là một câu riêng."
+      }
+    },
+    {
+      "id": "guidedPractice_01",
+      "type": "guidedPractice",
+      "data": {
+        "title": "Biến bài học chung chung thành hành động cụ thể",
+        "durationSeconds": 180,
+        "ui": {
+          "component": "builder",
+          "interaction": "type_to_place"
+        },
+        "prompt": "Hãy sắp xếp các ý để tạo thành một đoạn bài học – hành động về sự tự giác.",
+        "instruction": "Đưa từng câu vào đúng vị trí để tạo thành mạch: nhận thức → thái độ → hành động → tự liên hệ.",
+        "content": {
+          "prompt": "Vấn đề: Sự tự giác trong học tập",
+          "slots": [
+            {
+              "id": "awareness",
+              "label": "🧠 NHẬN THỨC",
+              "question": "Em hiểu ra điều gì?",
+              "hint": "Nêu điều em nhận ra."
+            },
+            {
+              "id": "attitude",
+              "label": "🌱 THÁI ĐỘ",
+              "question": "Em cần có thái độ gì?",
+              "hint": "Nêu thái độ cần có."
+            },
+            {
+              "id": "action",
+              "label": "🛠️ HÀNH ĐỘNG",
+              "question": "Em sẽ làm gì cụ thể?",
+              "hint": "Nêu việc làm có thể thực hiện."
+            },
+            {
+              "id": "self",
+              "label": "👤 TỰ LIÊN HỆ",
+              "question": "Em sẽ bắt đầu từ đâu?",
+              "hint": "Liên hệ với chính mình."
+            }
+          ],
+          "cards": [
+            {
+              "id": "awareness",
+              "target": "awareness",
+              "correct": true,
+              "slotText": "Em hiểu rằng tự giác giúp mỗi người chủ động học tập thay vì chỉ làm việc khi có người nhắc nhở.",
+              "feedback": "✓ Đây là bài học nhận thức.",
+              "label": "🧠 Nhận thức."
+            },
+            {
+              "id": "attitude",
+              "target": "attitude",
+              "correct": true,
+              "slotText": "Vì vậy, mỗi học sinh cần coi việc học là trách nhiệm của chính mình.",
+              "feedback": "✓ Câu này thể hiện thái độ đúng với việc học.",
+              "label": "🌱 Thái độ."
+            },
+            {
+              "id": "action",
+              "target": "action",
+              "correct": true,
+              "slotText": "Em sẽ tự lập kế hoạch học tập, hoàn thành bài trước thời hạn và chủ động ôn lại những phần mình chưa hiểu.",
+              "feedback": "✓ Đây là những hành động cụ thể.",
+              "label": "🛠️ Hành động."
+            },
+            {
+              "id": "self",
+              "target": "self",
+              "correct": true,
+              "slotText": "Đặc biệt, em sẽ bắt đầu bằng việc dành một khoảng thời gian cố định mỗi ngày để tự học mà không chờ người khác nhắc.",
+              "feedback": "✓ Câu này làm cho bài học gắn với bản thân và có điểm bắt đầu rõ ràng.",
+              "label": "👤 Tự liên hệ."
+            }
+          ]
+        },
+        "completion": {
+          "button": "Kiểm tra mạch bài học",
+          "feedback": {
+            "correct": "✓ Tốt! Em đã biết đi từ điều nhận ra đến thái độ và hành động cụ thể.",
+            "partial": "△ Một số ý chưa đúng vai trò. Hãy thử hỏi: “Đây là điều em hiểu, thái độ em cần có hay việc em sẽ làm?”",
+            "wrong": "△ Hãy bắt đầu bằng điều em nhận ra sau khi suy nghĩ về vấn đề."
+          }
+        }
+      }
+    },
+    {
+      "id": "miniChallenge_01",
+      "type": "miniChallenge",
+      "data": {
+        "title": "Bài học nào cụ thể hơn?",
+        "durationSeconds": 120,
+        "ui": {
+          "layout": "single_choice"
+        },
+        "prompt": "Hãy chọn cách viết có khả năng trở thành bài học – hành động tốt hơn.",
+        "question": "Sau khi bàn luận về lòng biết ơn, cách viết nào phù hợp hơn?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Mỗi người cần có lòng biết ơn và sống thật tốt.",
+            "correct": false
+          },
+          {
+            "id": "b",
+            "text": "Em cần biết trân trọng những điều tốt đẹp mình nhận được và thể hiện lòng biết ơn bằng những việc cụ thể như giữ gìn sự giúp đỡ của người khác, nói lời cảm ơn và chủ động giúp đỡ khi có thể.",
+            "correct": true
+          },
+          {
+            "id": "c",
+            "text": "Lòng biết ơn là một phẩm chất rất quan trọng trong cuộc sống.",
+            "correct": false
+          }
+        ],
+        "feedback": {
+          "correct": "✓ Đúng. Câu B vừa thể hiện nhận thức vừa chuyển thành những hành động mà người viết có thể thực hiện.",
+          "a": "△ Ý đúng nhưng quá chung chung. “Sống thật tốt” chưa cho biết người viết sẽ làm gì.",
+          "c": "△ Đây mới là một nhận xét về vấn đề, chưa phải bài học – hành động."
+        }
+      }
+    },
+    {
+      "id": "reflection_01",
+      "type": "reflection",
+      "data": {
+        "title": "Nếu bài học cứ chung chung thì sao?",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "checklist_free_text"
+        },
+        "question": "Khi viết bài học – hành động, em cần tự kiểm tra điều gì để tránh viết sáo rỗng?",
+        "choices": [
+          {
+            "id": "awareness",
+            "text": "🧠 Mình đã nói rõ mình nhận ra điều gì chưa?"
+          },
+          {
+            "id": "attitude",
+            "text": "🌱 Mình đã thể hiện thái độ phù hợp chưa?"
+          },
+          {
+            "id": "action",
+            "text": "🛠️ Mình đã nêu việc làm cụ thể chưa?"
+          },
+          {
+            "id": "self",
+            "text": "👤 Có thể liên hệ với bản thân một cách tự nhiên không?"
+          },
+          {
+            "id": "realistic",
+            "text": "🎯 Hành động có thực tế và phù hợp với mình không?"
+          }
+        ],
+        "freeText": {
+          "label": "Em sẽ tự kiểm tra...",
+          "placeholder": "Ví dụ: Em sẽ xem mình đã nói rõ điều nhận ra và có nêu việc làm cụ thể hay chưa..."
+        },
+        "metacognition": "Một bài học tốt không cần thật nhiều lời khuyên. Điều quan trọng là người viết cho thấy mình đã hiểu gì và có thể bắt đầu thay đổi từ đâu."
+      }
+    },
+    {
+      "id": "cheatSheet_01",
+      "type": "cheatSheet",
+      "data": {
+        "title": "BỘ CÂU HỎI VIẾT BÀI HỌC – HÀNH ĐỘNG",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "card_list",
+          "actions": [
+            "save",
+            "download"
+          ]
+        },
+        "items": [
+          {
+            "order": 1,
+            "icon": "🧠",
+            "title": "NHẬN THỨC",
+            "question": "Sau khi bàn luận, mình hiểu ra điều gì?"
+          },
+          {
+            "order": 2,
+            "icon": "🌱",
+            "title": "THÁI ĐỘ",
+            "question": "Mình cần có thái độ như thế nào?"
+          },
+          {
+            "order": 3,
+            "icon": "🛠️",
+            "title": "HÀNH ĐỘNG",
+            "question": "Mình sẽ làm gì cụ thể?"
+          },
+          {
+            "order": 4,
+            "icon": "👤",
+            "title": "TỰ LIÊN HỆ",
+            "question": "Bản thân mình có thể bắt đầu từ đâu?"
+          },
+          {
+            "order": 5,
+            "icon": "🎯",
+            "title": "TÍNH THỰC TẾ",
+            "question": "Việc mình nói có thật sự làm được không?"
+          }
+        ],
+        "keyMessage": "⭐ Đừng chỉ viết “Em cần sống tốt hơn”. Hãy cho thấy em hiểu gì và em sẽ làm gì.",
+        "note": "Đây là bộ câu hỏi hỗ trợ tư duy, không phải công thức bắt buộc. Có đoạn chỉ cần một hoặc hai câu nhưng vẫn có thể hoàn thành tốt nhiệm vụ nếu nhận thức và hành động được thể hiện rõ.",
+        "commonMistakes": [
+          {
+            "mistake": "Lặp lại vấn đề",
+            "example": "Sống có trách nhiệm rất quan trọng nên mỗi người cần sống có trách nhiệm.",
+            "fix": "Nói rõ mình nhận ra điều gì và chuyển nó thành hành động."
+          },
+          {
+            "mistake": "Lời khuyên quá chung",
+            "example": "Mỗi người cần sống tốt, sống đẹp và có ý thức hơn.",
+            "fix": "Thay bằng một việc làm cụ thể có thể thực hiện."
+          },
+          {
+            "mistake": "Hành động quá lớn hoặc thiếu thực tế",
+            "example": "Em sẽ làm cho cả xã hội không còn vô trách nhiệm.",
+            "fix": "Bắt đầu từ những việc trong khả năng của bản thân."
+          },
+          {
+            "mistake": "Tự liên hệ gượng ép",
+            "example": "Là học sinh, em hứa sẽ trở thành người tốt nhất xã hội.",
+            "fix": "Liên hệ ngắn gọn với một hành động thực tế trong học tập và đời sống."
+          }
+        ],
+        "practiceButton": {
+          "label": "🛠️ Thử viết bài học",
+          "action": "open_mini_practice"
+        }
+      }
+    },
+    {
+      "id": "finalChallenge_01",
+      "type": "finalChallenge",
+      "data": {
+        "title": "THỬ THÁCH: VIẾT ĐOẠN BÀI HỌC – HÀNH ĐỘNG",
+        "durationSeconds": 300,
+        "ui": {
+          "component": "multi_stage_challenge",
+          "layout": "multi_stage"
+        },
+        "prompt": "Sau khi bàn luận về ý kiến “Sống có trách nhiệm giúp con người nhận được sự tin tưởng của người khác”, hãy viết một đoạn bài học – hành động.",
+        "stages": [
+          {
+            "key": "scaffold",
+            "type": "scaffold",
+            "title": "🧩 TRƯỚC KHI VIẾT",
+            "question": "Hãy thử trả lời các câu hỏi sau trước khi viết.",
+            "scaffold": [
+              {
+                "id": "awareness",
+                "label": "NHẬN THỨC",
+                "hint": "Sau khi suy nghĩ, em hiểu thêm điều gì về trách nhiệm?"
+              },
+              {
+                "id": "attitude",
+                "label": "THÁI ĐỘ",
+                "hint": "Em cần nhìn nhận trách nhiệm như thế nào?"
+              },
+              {
+                "id": "action",
+                "label": "HÀNH ĐỘNG",
+                "hint": "Em sẽ làm gì cụ thể trong học tập và cuộc sống?"
+              },
+              {
+                "id": "self",
+                "label": "TỰ LIÊN HỆ",
+                "hint": "Bản thân em có thể bắt đầu từ việc nào?"
+              }
+            ]
+          },
+          {
+            "key": "writing",
+            "type": "editor",
+            "title": "✍️ VIẾT ĐOẠN BÀI HỌC – HÀNH ĐỘNG",
+            "placeholder": "Hãy viết đoạn văn của em. Không cần dùng đủ tất cả các bước nếu em có cách diễn đạt tự nhiên hơn...",
+            "minCharacters": 100,
+            "maxCharacters": 350,
+            "submit": {
+              "label": "🚀 Nộp & phân tích"
+            }
+          },
+          {
+            "key": "analysis",
+            "type": "analysis",
+            "title": "🧠 KIỂM TRA ĐOẠN BÀI HỌC",
+            "metrics": [
+              {
+                "id": "awareness",
+                "label": "Có bài học nhận thức",
+                "status": "detect"
+              },
+              {
+                "id": "attitude",
+                "label": "Có thái độ phù hợp",
+                "status": "detect"
+              },
+              {
+                "id": "action",
+                "label": "Có hành động cụ thể",
+                "status": "detect"
+              },
+              {
+                "id": "self",
+                "label": "Có tự liên hệ phù hợp",
+                "status": "detect"
+              },
+              {
+                "id": "realistic",
+                "label": "Hành động thực tế",
+                "status": "detect"
+              },
+              {
+                "id": "natural",
+                "label": "Diễn đạt tự nhiên",
+                "status": "detect"
+              }
+            ],
+            "diagnosticQuestion": "Sau khi đọc đoạn này, người đọc có biết em đã hiểu gì và em sẽ làm gì không?",
+            "feedbackRules": [
+              {
+                "when": "only_repeat",
+                "feedback": "△ Em đang lặp lại nhận xét về vấn đề. Hãy thử hỏi: “Sau khi hiểu điều đó, mình cần thay đổi gì?”"
+              },
+              {
+                "when": "generic_lesson",
+                "feedback": "△ Bài học còn chung chung. Hãy thay “cần sống tốt hơn” bằng một hành động cụ thể."
+              },
+              {
+                "when": "no_action",
+                "feedback": "△ Em đã nêu nhận thức nhưng chưa cho thấy mình sẽ làm gì. Hãy thêm một việc có thể thực hiện."
+              },
+              {
+                "when": "unrealistic_action",
+                "feedback": "△ Hành động đang quá lớn hoặc khó kiểm chứng. Hãy đưa về một việc nhỏ, cụ thể và phù hợp với bản thân."
+              },
+              {
+                "when": "forced_self",
+                "feedback": "△ Không cần tự liên hệ dài. Chỉ cần một hành động phù hợp với bản thân là đủ."
+              },
+              {
+                "when": "good_action",
+                "feedback": "✓ Tốt! Em đã biến điều nhận ra thành những hành động cụ thể và phù hợp."
+              },
+              {
+                "when": "good_natural",
+                "feedback": "🌱 Rất tốt! Em không cần bám máy móc vào công thức nhưng vẫn thể hiện rõ bài học và hướng hành động."
+              }
+            ],
+            "scoreDimensions": [
+              "awareness",
+              "attitude",
+              "action",
+              "self",
+              "realistic",
+              "natural"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

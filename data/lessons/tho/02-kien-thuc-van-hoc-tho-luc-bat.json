@@ -1,0 +1,499 @@
+{
+  "id": "kien-thuc-van-hoc-tho-luc-bat",
+  "title": "Thơ lục bát — Nhìn một bài thơ để nhận ra thể thơ",
+  "type": "knowledge",
+  "version": "1.0.0",
+  "meta": {
+    "module": "kien-thuc-van-hoc",
+    "lessonNumber": 1,
+    "durationMinutes": 45,
+    "difficulty": "beginner",
+    "skill": "nhan-biet-the-tho-luc-bat",
+    "description": "Nhận biết thể thơ lục bát qua số tiếng, cách gieo vần, cách ngắt nhịp và cấu trúc các dòng thơ."
+  },
+  "learningGoals": [
+    "Nhận biết được thơ lục bát qua cấu tạo các dòng thơ.",
+    "Xác định được số tiếng trong dòng lục và dòng bát.",
+    "Nhận biết được cách gieo vần cơ bản của thể thơ lục bát.",
+    "Nhận biết được một số cách ngắt nhịp thường gặp.",
+    "Phân biệt được cặp dòng lục — bát với các thể thơ khác.",
+    "Có thể tự kiểm tra một đoạn thơ có phải thơ lục bát hay không."
+  ],
+  "completion": {
+    "requiredSections": [
+      "story",
+      "observe",
+      "discover",
+      "teach",
+      "guidedPractice",
+      "miniChallenge",
+      "reflection",
+      "cheatSheet",
+      "finalChallenge"
+    ],
+    "action": "completeLesson",
+    "message": "Em đã biết cách nhìn cấu tạo để nhận ra một bài thơ lục bát."
+  },
+  "steps": [
+    {
+      "id": "story_01",
+      "type": "story",
+      "data": {
+        "title": "Hai đoạn thơ nhìn có vẻ rất quen",
+        "durationSeconds": 90,
+        "ui": {
+          "component": "split_compare",
+          "layout": "two_columns",
+          "question": "Hai đoạn thơ trên có gì giống nhau?"
+        },
+        "content": {
+          "left": {
+            "label": "Đoạn A",
+            "paragraph": "Việt Nam đất nước ta ơi<br>Mênh mộng biển lúa đâu trời đẹp hơn<br>Cánh cò bay lả rập rờn<br>Mây mờ che đỉnh Trường Sơn sớm chiều."
+          },
+          "right": {
+            "label": "Đoạn B",
+            "paragraph": "Trăm năm trong cõi người ta<br>Chữ tài chữ mệnh khéo là ghét nhau<br>Trãi qua một cuộc bể dâu<br>Những điều trông thấy mà đau đớn lòng."
+          }
+        },
+        "interaction": {
+          "type": "choice",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Đều là thơ tả cảnh",
+              "correct": false
+            },
+            {
+              "id": "b",
+              "text": "Đều được tạo thành từ những cặp gồm một dòng 6 tiếng và một dòng 8 tiếng",
+              "correct": true
+            },
+            {
+              "id": "c",
+              "text": "Hai đoạn khác nhau hoàn toàn",
+              "correct": false
+            }
+          ],
+          "feedback": {
+            "correct": "✓ Đúng. Cách B được tổ chức thành các dòng thơ, có nhịp điệu và cách sắp xếp câu chữ cô đọng hơn.",
+            "incorrect": "△ Hãy chú ý cách câu chữ được chia thành từng dòng và tạo nhịp điệu."
+          }
+        },
+        "reveal": {
+          "title": "Điểm cần chú ý",
+          "text": "Cả hai đoạn A và B đều được tạo nên từ những cặp gồm một dòng 6 tiếng và một dòng 8 tiếng. Đây là dấu hiệu rất quan trọng để nhận ra thể thơ lục bát."
+        }
+      }
+    },
+    {
+      "id": "observe_01",
+      "type": "observe",
+      "data": {
+        "title": "Đếm tiếng trước khi gọi tên thể thơ",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "paragraph_highlight",
+          "question": "Hãy quan sát và đếm số tiếng ở mỗi dòng."
+        },
+        "content": {
+          "title": "Một đoạn thơ ngắn",
+          "paragraph": [
+            {
+              "id": "l1",
+              "text": "Trăm năm trong cõi người ta",
+              "role": "line",
+              "roleLabel": "📏 DÒNG 6 TIẾNG",
+              "feedback": "🟢 Đây là câu có 6 tiếng. Vần tiếng cuối câu này vần với vần tiếng thứ 6 của câu sau"
+            },
+            {
+              "id": "l2",
+              "text": "Chữ tài chữ mệnh khéo là ghét nhau",
+              "role": "line",
+              "roleLabel": "📏 DÒNG 8 TIẾNG",
+              "feedback": "🟢 Đây là câu có 8 tiếng. Vần tiếng cuối câu này vần với vần tiếng thứ 6 của câu sau"
+            }
+          ]
+        },
+        "interaction": {
+          "type": "highlight"
+        },
+        "reveal": {
+          "title": "Lục — 6, bát — 8",
+          "text": "Tên gọi 'lục bát' bắt nguồn từ cấu tạo cơ bản: một dòng 6 tiếng gọi là dòng lục, đi với một dòng 8 tiếng gọi là dòng bát."
+        }
+      }
+    },
+    {
+      "id": "discover_02",
+      "type": "matching",
+      "data": {
+        "title": "Lục bát được tạo thành như thế nào?",
+        "instruction": "Ghép nối các dòng với số tiếng tương ứng để tạo thành một cặp lục bát.",
+        "durationSeconds": 120,
+        "left": [
+          "Dòng 1",
+          "Dòng 2"
+        ],
+        "right": [
+          "8 tiếng",
+          "6 tiếng"
+        ],
+        "answer": {
+          "Dòng 1": "6 tiếng",
+          "Dòng 2": "8 tiếng"
+        },
+        "feedback": {
+          "reveal": {
+            "text": "Một cặp lục bát cơ bản gồm dòng lục 6 tiếng và dòng bát 8 tiếng. Các cặp câu có thể nối tiếp nhau để tạo thành cả bài thơ."
+          }
+        }
+      }
+    },
+    {
+      "id": "teach_01",
+      "type": "teach",
+      "data": {
+        "title": "Vần trong thơ lục bát",
+        "durationSeconds": 180,
+        "ui": {
+          "component": "vertical_map",
+          "interaction": "click_node",
+          "center": "Quan sát tiếng cuối và tiếng gieo vần trong cặp lục bát."
+        },
+        "prompt": "Quan sát tiếng cuối và tiếng gieo vần trong cặp lục bát.",
+        "nodes": [
+          {
+            "id": "issue",
+            "icon": "🎯",
+            "title": "Việt nam đất nước ta ơi",
+            "short": "Dòng lục",
+            "question": "Vần của tiếng cuối dòng lục là gì?",
+            "example": "Vần 'ơi' (ơi)"
+          },
+          {
+            "id": "issue",
+            "icon": "🎯",
+            "title": "Mênh mông biển lúa đâu trời đẹp hơn",
+            "short": "Dòng bát",
+            "question": "Vần của tiếng thứ 6 dòng bát là gì?",
+            "example": "Vần 'ơi' (trời)"
+          }
+        ],
+        "diagnosticQuestion": "Tiếng thứ 6 của dòng lục hiệp vần với tiếng thứ 6 của dòng bát.<br>Tiếng thứ 8 của dòng bát lại hiệp vần với tiếng thứ 6 của dòng lục tiếp theo.",
+        "importantNote": "Tiếng thứ 6 của dòng lục hiệp vần với tiếng thứ 6 của dòng bát.<br>Tiếng thứ 8 của dòng bát lại hiệp vần với tiếng thứ 6 của dòng lục tiếp theo."
+      }
+    },
+    {
+      "id": "teach_02",
+      "type": "teach",
+      "data": {
+        "title": "Nhịp trong thơ lục bát",
+        "durationSeconds": 150,
+        "ui": {
+          "component": "vertical_map",
+          "interaction": "click_node",
+          "center": "Nhịp 2/2/2, 4/4 trong thơ lục bát"
+        },
+        "prompt": "Nhịp 2/2/2, 4/4 trong thơ lục bát",
+        "nodes": [
+          {
+            "id": "issue",
+            "icon": "🎯",
+            "title": "Trăm năm / trong cõi / người ta",
+            "short": "Dòng lục",
+            "question": "Cách ngắt nhịp trong dòng lục?",
+            "example": "Nhịp 2/2/2"
+          },
+          {
+            "id": "issue",
+            "icon": "🎯",
+            "title": "Chữ tài chữ mệnh / khéo là ghét nhau",
+            "short": "Dòng bát",
+            "question": "Cách ngắt nhịp trong dòng bát?",
+            "example": "Nhịp 4/4"
+          }
+        ],
+        "diagnosticQuestion": "Nhịp giúp câu thơ chuyển động.<br>Lục bát thường có các cách ngắt nhịp quen thuộc như 2/2/2, 4/4 ở dòng 6 và 2/2/2/2, 4/4 ở dòng 8. Tuy nhiên, nhịp có thể thay đổi tùy câu thơ và cách biểu đạt.",
+        "importantNote": "Nhịp giúp câu thơ chuyển động.<br>Lục bát thường có các cách ngắt nhịp quen thuộc như 2/2/2, 4/4 ở dòng 6 và 2/2/2/2, 4/4 ở dòng 8. Tuy nhiên, nhịp có thể thay đổi tùy câu thơ và cách biểu đạt."
+      }
+    },
+    {
+      "id": "teach_03",
+      "type": "story",
+      "data": {
+        "title": "Không chỉ có 6 và 8",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "split_compare",
+          "layout": "two_columns",
+          "question": "Nếu chỉ nhìn số tiếng, em đã đủ chắc chắn chưa?"
+        },
+        "content": {
+          "left": {
+            "label": "Chỉ nhìn số tiếng",
+            "paragraph": "6 tiếng → 8 tiếng"
+          },
+          "right": {
+            "label": "Nhìn đầy đủ hơn",
+            "paragraph": "6 tiếng → 8 tiếng<br>↓<br>vần<br>↓<br>nhịp<br>↓<br>cấu trúc lục bát"
+          }
+        },
+        "reveal": {
+          "title": "Nhận diện cần nhiều dấu hiệu",
+          "paragraph": "6 tiếng và 8 tiếng là dấu hiệu đầu tiên, nhưng khi xác định thể thơ, em nên kiểm tra thêm cách gieo vần, nhịp và cấu trúc để có kết luận chắc chắn."
+        }
+      }
+    },
+    {
+      "id": "mini_challenge_03",
+      "type": "miniChallenge",
+      "data": {
+        "title": "Đoạn thơ này có phải lục bát không?",
+        "durationSeconds": 180,
+        "ui": {
+          "layout": "single_choice"
+        },
+        "prompt": "Mình về mình có nhớ ta<br>Mười lăm năm ấy thiết tha mặn nồng",
+        "instruction": "Hãy kiểm tra số tiếng, cách gieo vần và nhịp để xác định.",
+        "choices": [
+          {
+            "id": "yes",
+            "text": "Có",
+            "correct": true
+          },
+          {
+            "id": "no",
+            "text": "Không",
+            "correct": false
+          }
+        ],
+        "feedback": {
+          "correct": "✓ Đúng. Dòng đầu có 6 tiếng, dòng sau có 8 tiếng; cách gieo vần cũng phù hợp với cấu trúc lục bát.",
+          "incorrect": "△ Hãy đếm số tiếng ở các dòng và kiểm tra cách gieo vần."
+        }
+      }
+    },
+    {
+      "id": "guidedPractice_03",
+      "type": "miniChallenge",
+      "data": {
+        "title": "Nhận diện nhanh",
+        "durationSeconds": 150,
+        "ui": {
+          "layout": "single_choice"
+        },
+        "prompt": "Đâu là dấu hiệu quan trọng nhất để nhận ra cấu trúc lục bát?",
+        "instruction": "Đâu là dấu hiệu quan trọng nhất để nhận ra cấu trúc lục bát?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Các dòng đều có 7 tiếng",
+            "correct": false
+          },
+          {
+            "id": "b",
+            "text": "Một dòng 6 tiếng đi với một dòng 8 tiếng",
+            "correct": true
+          },
+          {
+            "id": "c",
+            "text": "Mỗi dòng đều có cùng số tiếng",
+            "correct": false
+          },
+          {
+            "id": "d",
+            "text": "Không có quy luật về số tiếng",
+            "correct": false
+          }
+        ],
+        "feedback": {
+          "correct": "✓ Đúng. Thơ lục bát đặc trưng bởi cặp dòng 6 tiếng và 8 tiếng.",
+          "incorrect": "△ Hãy nhớ lại đặc điểm số tiếng của dòng lục và dòng bát."
+        }
+      }
+    },
+    {
+      "id": "miniChallenge_01",
+      "type": "reflection",
+      "data": {
+        "title": "Hãy dùng checklist để xác định đoạn thơ có phải lục bát hay không.",
+        "durationSeconds": 180,
+        "ui": {
+          "component": "checklist_free_text"
+        },
+        "question": "Con cò mà đi ăn đêm<br>Đậu phải cành mềm lộn cổ xuống ao",
+        "choices": [
+          {
+            "id": "d1",
+            "text": "🎯 Dòng 1 có 6 tiếng"
+          },
+          {
+            "id": "d2",
+            "text": "🎯 Dòng 2 có 8 tiếng"
+          },
+          {
+            "id": "v1",
+            "text": "🎯 Có sự liên kết về vần"
+          },
+          {
+            "id": "c1",
+            "text": "🎯 Có cấu trúc lục → bát"
+          }
+        ],
+        "freeText": {
+          "label": "Đây có phải là cặp thơ lục bát không? Vì sao ?",
+          "placeholder": "Lý do Có / Không : "
+        },
+        "metacognition": "Nếu gặp một đoạn thơ trong đề đọc hiểu, Đừng đoán thể thơ bằng cảm giác. Hãy kiểm tra từng dấu hiệu."
+      }
+    },
+    {
+      "id": "cheatSheet_01",
+      "type": "cheatSheet",
+      "data": {
+        "title": "Bản đồ nhớ nhanh — Thơ lục bát",
+        "durationSeconds": 90,
+        "ui": {
+          "component": "card_list"
+        },
+        "items": [
+          {
+            "order": 1,
+            "icon": "🎯",
+            "title": "LỤC",
+            "question": "Dòng 6 tiếng"
+          },
+          {
+            "order": 2,
+            "icon": "🎯",
+            "title": "BÁT",
+            "question": "Dòng 8 tiếng"
+          },
+          {
+            "order": 3,
+            "icon": "🎯",
+            "title": "VẦN",
+            "question": "Tiếng gieo vần liên kết các dòng theo quy luật lục bát"
+          },
+          {
+            "order": 4,
+            "icon": "🎯",
+            "title": "NHỊP",
+            "question": "Cách ngắt nhịp khi đọc; thường gặp 2/2/2, 4/4 và một số biến thể"
+          },
+          {
+            "order": 5,
+            "icon": "🎯",
+            "title": "CÁCH NHẬN DIỆN",
+            "question": "Đếm tiếng → kiểm tra vần → kiểm tra nhịp → kết luận"
+          }
+        ]
+      }
+    },
+    {
+      "id": "finalChallenge_01",
+      "type": "finalChallenge",
+      "data": {
+        "title": "Thử thách cuối bài",
+        "durationSeconds": 240,
+        "ui": {
+          "component": "multi_stage_challenge",
+          "layout": "multi_stage"
+        },
+        "prompt": "Hãy tự xác định thể thơ và giải thích bằng các dấu hiệu em đã học.",
+        "stages": [
+          {
+            "prompt": "Thân em vừa trắng lại vừa tròn<br>Bảy nổi ba chìm với nước non<br>Rắn nát mặc dầu tay kẻ nặn<br>Mà em vẫn giữ tấm lòng son",
+            "key": "stage_01",
+            "type": "single_choice",
+            "title": "Thân em vừa trắng lại vừa tròn<br>Bảy nổi ba chìm với nước non<br>Rắn nát mặc dầu tay kẻ nặn<br>Mà em vẫn giữ tấm lòng son",
+            "question": "Đoạn thơ trên có phải lục bát không?",
+            "choices": [
+              {
+                "id": "yes",
+                "label": "Có",
+                "correct": false
+              },
+              {
+                "id": "no",
+                "label": "Không",
+                "correct": true
+              }
+            ],
+            "feedback": {
+              "correct": "✓ Đúng. Các dòng thơ không được tổ chức theo cặp 6 tiếng — 8 tiếng.",
+              "incorrect": "△ Hãy đếm số tiếng ở mỗi dòng thơ xem có phải một dòng 6 đi với dòng 8 không."
+            }
+          },
+          {
+            "key": "stage_02",
+            "type": "single_choice",
+            "question": "Vì sao không phải lục bát?",
+            "title": "Thân em vừa trắng lại vừa tròn<br>Bảy nổi ba chìm với nước non<br>Rắn nát mặc dầu tay kẻ nặn<br>Mà em vẫn giữ tấm lòng son",
+            "prompt": "Thân em vừa trắng lại vừa tròn<br>Bảy nổi ba chìm với nước non<br>Rắn nát mặc dầu tay kẻ nặn<br>Mà em vẫn giữ tấm lòng son",
+            "choices": [
+              {
+                "id": "a",
+                "label": "Không có dòng 6 tiếng đi với dòng 8 tiếng",
+                "correct": true
+              },
+              {
+                "id": "b",
+                "label": "Không có hình ảnh",
+                "correct": false
+              },
+              {
+                "id": "c",
+                "label": "Không có cảm xúc",
+                "correct": false
+              },
+              {
+                "id": "d",
+                "label": "Không có biện pháp tu từ",
+                "correct": false
+              }
+            ],
+            "feedback": {
+              "correct": "✓ Đúng. Tất cả các dòng đều có 7 tiếng, không tuân theo quy luật lục bát.",
+              "incorrect": "△ Hãy xem lại số lượng tiếng trong từng dòng thơ."
+            }
+          },
+          {
+            "key": "stage_03",
+            "type": "single_choice",
+            "question": "Nếu gặp một đoạn thơ mới, em nên kiểm tra theo thứ tự nào?",
+            "title": "",
+            "prompt": "",
+            "choices": [
+              {
+                "id": "a",
+                "label": "Đếm tiếng → kiểm tra vần → kiểm tra nhịp",
+                "correct": true
+              },
+              {
+                "id": "b",
+                "label": "Đoán tác giả → đoán nội dung",
+                "correct": false
+              },
+              {
+                "id": "c",
+                "label": "Tìm biện pháp tu từ trước",
+                "correct": false
+              },
+              {
+                "id": "d",
+                "label": "Học thuộc đoạn thơ",
+                "correct": false
+              }
+            ],
+            "feedback": {
+              "correct": "✓ Đúng. Đó là các bước cơ bản để nhận diện một thể thơ.",
+              "incorrect": "△ Hãy nhớ lại các bước nhận diện lục bát đã học trong bài."
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

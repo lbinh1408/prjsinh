@@ -1,0 +1,199 @@
+{
+  "id": "tu-loai.11-on-tap-so-pho-tro-than-tinh-thai-tu",
+  "title": "Ôn tập phần 2",
+  "version": "3.0",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "ba",
+          "đã",
+          "chính",
+          "ôi",
+          "nhé"
+        ],
+        "right": [
+          "Số từ",
+          "Phó từ",
+          "Trợ từ",
+          "Thán từ",
+          "Tình thái từ"
+        ],
+        "answer": {
+          "ba": "Số từ",
+          "đã": "Phó từ",
+          "chính": "Trợ từ",
+          "ôi": "Thán từ",
+          "nhé": "Tình thái từ"
+        },
+        "title": "Khởi động: Phân biệt từ loại",
+        "instruction": "Ghép mỗi từ sau với từ loại tương ứng của nó.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step02",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "mười",
+          "đang",
+          "ngay",
+          "trời ơi",
+          "ạ",
+          "những",
+          "năm",
+          "vâng"
+        ],
+        "targets": [
+          "Số từ",
+          "Phó từ",
+          "Trợ từ",
+          "Thán từ",
+          "Tình thái từ"
+        ],
+        "answer": {
+          "mười": "Số từ",
+          "năm": "Số từ",
+          "đang": "Phó từ",
+          "ngay": "Trợ từ",
+          "những": "Trợ từ",
+          "trời ơi": "Thán từ",
+          "vâng": "Thán từ",
+          "ạ": "Tình thái từ"
+        },
+        "title": "Phân loại từ",
+        "instruction": "Kéo các từ vào đúng cột từ loại.",
+        "score": 2
+      }
+    },
+    {
+      "id": "step03",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trong câu 'Bầu trời đang rất xanh.', từ nào là phó từ?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "bầu trời"
+          },
+          {
+            "id": "B",
+            "text": "đang, rất"
+          },
+          {
+            "id": "C",
+            "text": "xanh"
+          },
+          {
+            "id": "D",
+            "text": "bầu, trời"
+          }
+        ],
+        "answer": "B",
+        "title": "Nhận diện Phó từ",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "highlight",
+      "data": {
+        "content": "Chính bạn ấy đã giúp tôi.",
+        "answer": [
+          "Chính"
+        ],
+        "title": "Tô sáng Trợ từ",
+        "instruction": "Hãy chọn để tô sáng trợ từ trong câu sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Từ 'à' trong câu 'Bạn đi học à?' là từ loại gì?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Thán từ"
+          },
+          {
+            "id": "B",
+            "text": "Trợ từ"
+          },
+          {
+            "id": "C",
+            "text": "Tình thái từ"
+          },
+          {
+            "id": "D",
+            "text": "Phó từ"
+          }
+        ],
+        "answer": "C",
+        "title": "Nhận diện Tình thái từ",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trong câu 'Ôi! Đẹp quá!', từ 'Ôi' thuộc từ loại nào?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Trợ từ"
+          },
+          {
+            "id": "B",
+            "text": "Thán từ"
+          },
+          {
+            "id": "C",
+            "text": "Tình thái từ"
+          },
+          {
+            "id": "D",
+            "text": "Phó từ"
+          }
+        ],
+        "answer": "B",
+        "title": "Vận dụng: Chọn từ loại đúng",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Trong câu 'Nó ăn những ba bát cơm.', vì sao 'những' được coi là trợ từ?",
+        "sampleAnswer": [
+          "Vì nó đi kèm từ 'ba' để nhấn mạnh mức độ nhiều (ăn nhiều hơn bình thường)."
+        ],
+        "title": "Thông hiểu",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "tu-loai",
+    "difficulty": "practice",
+    "xp": 100,
+    "stars": 3,
+    "description": "Ôn tập và thực hành phân biệt số từ, phó từ, trợ từ, thán từ, tình thái từ.",
+    "prerequisite": null,
+    "unlock": null,
+    "reviewMode": "instant",
+    "durationMinutes": 20
+  }
+}

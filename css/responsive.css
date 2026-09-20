@@ -1,0 +1,523 @@
+/* ==========================================================
+   TS10 Learning Platform
+   Sprint 2
+   responsive.css
+========================================================== */
+
+
+/* ==========================================================
+   <= 1400px
+========================================================== */
+
+@media (max-width:1400px) {
+
+    :root {
+
+        --sidebar-width: 270px;
+
+    }
+
+}
+
+
+/* ==========================================================
+   <= 1200px
+========================================================== */
+
+@media (max-width:1200px) {
+
+    :root {
+
+        --sidebar-width: 240px;
+
+    }
+
+    #content {
+
+        padding: 5px;
+
+    }
+
+    .lesson-header {
+
+        padding: 28px;
+
+    }
+
+    .lesson-step {
+
+        padding: 28px;
+
+    }
+
+    .grid-4 {
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+}
+
+
+/* ==========================================================
+   <= 992px
+========================================================== */
+
+@media (max-width:992px) {
+
+    #main-layout {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    #sidebar {
+
+        display: none;
+
+    }
+
+    #content {
+
+        padding: 5px;
+
+    }
+
+    .lesson-name {
+
+        font-size: 30px;
+
+    }
+
+    .question-title {
+
+        font-size: 20px;
+
+    }
+
+    .answer-compare {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .grid-3 {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .grid-2 {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+
+/* ==========================================================
+   <= 768px
+========================================================== */
+
+@media (max-width:768px) {
+
+    :root {
+
+        --header-height: 60px;
+
+        --footer-height: 68px;
+
+    }
+
+    #app-header {
+
+        padding: 0 16px;
+
+    }
+
+    .logo {
+
+        font-size: 18px;
+
+    }
+
+    .header-center {
+
+        display: none;
+
+    }
+
+    #content {
+
+        padding: 5px;
+
+    }
+
+    .lesson-header {
+
+        padding: 22px;
+
+    }
+
+    .lesson-step {
+
+        padding: 22px;
+
+    }
+
+    .lesson-name {
+
+        font-size: 26px;
+
+    }
+
+    .step-title {
+
+        font-size: 22px;
+
+    }
+
+    .question-title {
+
+        font-size: 20px;
+
+    }
+
+    #footer {
+
+        padding: 0 12px;
+
+        gap: 10px;
+
+    }
+
+    button {
+
+        padding: 10px 18px;
+
+        font-size: 14px;
+
+    }
+
+    .component-toolbar {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+    }
+
+    .lesson-action {
+
+        flex-direction: column;
+
+    }
+
+    .action-group {
+
+        flex-direction: column;
+
+    }
+
+    .score-box {
+
+        flex-direction: column;
+
+    }
+
+}
+
+
+/* ==========================================================
+   <= 640px
+========================================================== */
+
+@media (max-width:640px) {
+
+    h1 {
+
+        font-size: 28px;
+
+    }
+
+    h2 {
+
+        font-size: 24px;
+
+    }
+
+    h3 {
+
+        font-size: 20px;
+
+    }
+
+    .lesson-topic {
+
+        font-size: 13px;
+
+    }
+
+    .question-text {
+
+        font-size: 15px;
+
+    }
+
+    .blank {
+
+        min-width: 90px;
+
+    }
+
+    .word {
+
+        font-size: 14px;
+
+    }
+
+    .option {
+
+        padding: 16px;
+
+    }
+
+    .identify-option {
+
+        padding: 10px;
+
+    }
+
+    .feedback-score {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
+    .feedback-score-value {
+
+        font-size: 34px;
+
+    }
+
+}
+
+
+/* ==========================================================
+   <= 480px
+========================================================== */
+
+@media (max-width:480px) {
+
+    #content {
+
+        padding: 5px;
+
+    }
+
+    .lesson-header {
+
+        padding: 18px;
+
+    }
+
+    .lesson-step {
+
+        padding: 18px;
+
+    }
+
+    .card {
+
+        padding: 18px;
+
+    }
+
+    .panel {
+
+        padding: 16px;
+
+    }
+
+    textarea {
+
+        min-height: 140px;
+
+    }
+
+    input {
+
+        font-size: 15px;
+
+    }
+
+    .toast {
+
+        min-width: 100%;
+
+        max-width: 100%;
+
+    }
+
+    #toast {
+
+        left: 12px;
+
+        right: 12px;
+
+        bottom: 12px;
+
+    }
+
+    .step-header {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
+    .step-icon {
+
+        width: 52px;
+
+        height: 52px;
+
+        font-size: 22px;
+
+    }
+
+    .component-header {
+
+        flex-direction: column;
+        align-items: center;
+
+        align-items: flex-start;
+        font-weight: 700;
+        font-size: large;
+
+    }
+
+}
+
+
+/* ==========================================================
+   <= 360px
+========================================================== */
+
+@media (max-width:360px) {
+
+    .logo {
+
+        font-size: 16px;
+
+    }
+
+    .lesson-name {
+
+        font-size: 22px;
+
+    }
+
+    .question-title {
+
+        font-size: 18px;
+
+    }
+
+    button {
+
+        width: 100%;
+
+    }
+
+    #footer {
+
+        flex-direction: column;
+
+        height: auto;
+
+        padding: 12px;
+
+    }
+
+}
+
+
+/* ==========================================================
+   PRINT
+========================================================== */
+
+@media print {
+
+    #app-header,
+
+    #footer,
+
+    #sidebar,
+
+    #toast,
+
+    #loading-screen,
+
+    #popup-layer {
+
+        display: none !important;
+
+    }
+
+    #main-layout {
+
+        display: block;
+
+    }
+
+    #content {
+
+        padding: 0;
+
+    }
+
+    body {
+
+        background: #fff;
+
+    }
+
+    .lesson-header,
+
+    .lesson-step,
+
+    .card {
+
+        box-shadow: none;
+
+        border: 1px solid #ccc;
+
+        break-inside: avoid;
+
+    }
+
+}
+
+
+/* ==========================================================
+   Reduced Motion
+========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    * {
+
+        animation: none !important;
+
+        transition: none !important;
+
+        scroll-behavior: auto !important;
+
+    }
+
+}

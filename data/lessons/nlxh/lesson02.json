@@ -1,0 +1,162 @@
+{
+  "id": "nlxh.lesson02",
+  "title": "Lập dàn ý cho bài nghị luận xã hội",
+  "version": "3.0",
+  "topic": {
+    "title": "Tinh thần vượt khó",
+    "instruction": "Hãy trình bày suy nghĩ của em về tinh thần vượt khó trong cuộc sống."
+  },
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "content": "Hãy trình bày suy nghĩ của em về tinh thần vượt khó trong cuộc sống.",
+        "title": "Quan sát",
+        "instruction": "Đọc đề bài.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step02",
+      "type": "identify",
+      "data": {
+        "question": "Luận điểm chính của bài viết là gì?",
+        "options": [
+          "Tinh thần vượt khó giúp con người trưởng thành.",
+          "Mùa hè rất nóng.",
+          "Gia đình rất quan trọng.",
+          "Học sinh cần mặc đồng phục."
+        ],
+        "answer": "Tinh thần vượt khó giúp con người trưởng thành.",
+        "title": "Xác định luận điểm",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Không bỏ cuộc",
+          "Kiên trì",
+          "Tin vào bản thân"
+        ],
+        "right": [
+          "Giúp đạt mục tiêu",
+          "Vượt qua thất bại",
+          "Tạo động lực"
+        ],
+        "answer": {
+          "Không bỏ cuộc": "Vượt qua thất bại",
+          "Kiên trì": "Giúp đạt mục tiêu",
+          "Tin vào bản thân": "Tạo động lực"
+        },
+        "title": "Ghép luận điểm",
+        "instruction": "Ghép luận điểm với luận cứ phù hợp.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "ordering",
+      "validator": "orderValidator",
+      "data": {
+        "items": [
+          "Kết bài",
+          "Mở bài",
+          "Thân bài"
+        ],
+        "answer": [
+          "Mở bài",
+          "Thân bài",
+          "Kết bài"
+        ],
+        "title": "Sắp xếp dàn ý",
+        "instruction": "Sắp xếp các phần theo đúng bố cục bài nghị luận.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Đâu là dẫn chứng phù hợp nhất cho tinh thần vượt khó?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Nick Vujicic vượt lên hoàn cảnh để truyền cảm hứng."
+          },
+          {
+            "id": "B",
+            "text": "Một ngày trời nắng đẹp."
+          },
+          {
+            "id": "C",
+            "text": "Một món ăn ngon."
+          },
+          {
+            "id": "D",
+            "text": "Một trận bóng đá."
+          }
+        ],
+        "answer": "A",
+        "title": "Chọn dẫn chứng",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "highlight",
+      "data": {
+        "content": "Tinh thần vượt khó giúp con người mạnh mẽ hơn, biết kiên trì và không dễ dàng bỏ cuộc trước thử thách.",
+        "answer": [
+          "mạnh mẽ hơn",
+          "kiên trì",
+          "không dễ dàng bỏ cuộc"
+        ],
+        "title": "Tìm luận cứ",
+        "instruction": "Chọn các ý có thể dùng làm luận cứ.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "reflection",
+      "data": {
+        "question": "Hãy viết ngắn gọn ba ý chính em sẽ triển khai trong bài viết.",
+        "sampleAnswer": "Giải thích tinh thần vượt khó - Ý nghĩa - Bài học và hành động.",
+        "title": "Lập dàn ý",
+        "score": 2
+      }
+    },
+    {
+      "id": "step08",
+      "type": "explain",
+      "data": {
+        "question": "Viết một đoạn mở bài khoảng 3–5 câu cho đề văn trên.",
+        "sampleAnswer": "Trong cuộc sống, mỗi người đều gặp những khó khăn và thử thách khác nhau. Chính tinh thần vượt khó sẽ giúp con người mạnh mẽ hơn, trưởng thành hơn và tiến gần đến thành công. Đây là phẩm chất cần được rèn luyện ở mỗi chúng ta.",
+        "title": "Viết mở bài",
+        "score": 3
+      }
+    }
+  ],
+  "meta": {
+    "module": "nlxh",
+    "difficulty": "medium",
+    "xp": 30,
+    "stars": 3,
+    "description": "Xây dựng luận điểm, luận cứ và sắp xếp ý trước khi viết bài.",
+    "prerequisite": "nlxh-lesson01",
+    "unlock": "nlxh-lesson03",
+    "durationMinutes": 15
+  },
+  "learningGoals": [
+    "Biết xác định luận điểm.",
+    "Biết lựa chọn luận cứ.",
+    "Biết tìm dẫn chứng phù hợp.",
+    "Biết lập dàn ý cơ bản."
+  ]
+}

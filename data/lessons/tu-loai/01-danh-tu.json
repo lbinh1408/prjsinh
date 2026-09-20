@@ -1,0 +1,466 @@
+{
+  "id": "tu-loai.01-danh-tu",
+  "title": "Danh từ",
+  "version": "3.0",
+  "image": "assets/images/danh-tu.png",
+  "steps": [
+    {
+      "id": "step00",
+      "type": "intro",
+      "title": "NHỮNG TỪ GỌI TÊN THẾ GIỚI",
+      "data": {
+        "title": "Những từ đang gọi tên thế giới",
+        "description": "rong một đoạn văn có những từ đang gọi tên người, vật, nơi chốn, sự việc và cả những điều ta không thể cầm nắm. Em có tìm ra được chúng không?",
+        "score": 0
+      }
+    },
+    {
+      "id": "step01",
+      "type": "observe",
+      "title": "QUAN SÁT",
+      "data": {
+        "icon": "👀",
+        "content": "Buổi sáng, con đường trước nhà tôi còn vương hơi sương. Những hàng cây im lặng bên vỉa hè. Xa xa, tiếng chim gọi nhau trong khu vườn nhỏ.",
+        "guide": [
+          "Chú ý các từ được in đậm trong câu",
+          "Các từ đó có điểm chung gì không ? "
+        ],
+        "hint": "Các từ in đậm đều chỉ sự vật như con vật, đồ vật, hiện tượng, con người, ...",
+        "title": "QUAN SÁT",
+        "instruction": "Em nhìn thấy những từ nào?",
+        "description": "Hãy chọn những từ đang làm nhiệm vụ “gọi tên” người, vật, nơi chốn, sự việc hoặc khái niệm.",
+        "score": 0,
+        "words": [
+          "Buổi sáng",
+          "con đường",
+          "trước nhà",
+          "hơi sương",
+          "hàng cây",
+          "im lặng",
+          "vỉa hè",
+          "tiếng chim",
+          "khu vườn",
+          "nhỏ"
+        ],
+        "feedback": "Từ này đang gọi tên cái gì?"
+      }
+    },
+    {
+      "id": "step01b",
+      "type": "dragDrop",
+      "title": "XẾP TỪ",
+      "validator": "dragValidator",
+      "validateMode": "oneByOne",
+      "data": {
+        "draggables": [
+          "con đường",
+          "hơi sương",
+          "hàng cây",
+          "im lặng",
+          "vỉa hè",
+          "tiếng chim",
+          "khu vườn",
+          "vương",
+          "nhỏ"
+        ],
+        "targets": [
+          "🏠 GỌI TÊN",
+          "⚡ HOẠT ĐỘNG / TRẠNG THÁI",
+          "🎨 ĐẶC ĐIỂM"
+        ],
+        "answer": {
+          "con đường": "🏠 GỌI TÊN",
+          "hơi sương": "🏠 GỌI TÊN",
+          "hàng cây": "🏠 GỌI TÊN",
+          "im lặng": "⚡ HOẠT ĐỘNG / TRẠNG THÁI",
+          "vỉa hè": "🏠 GỌI TÊN",
+          "tiếng chim": "🏠 GỌI TÊN",
+          "khu vườn": "🏠 GỌI TÊN",
+          "vương": "⚡ HOẠT ĐỘNG / TRẠNG THÁI",
+          "nhỏ": "🎨 ĐẶC ĐIỂM"
+        },
+        "feedback": {
+          "correct": "Chính xác. Em đang phân loại dựa trên chức năng của từ.",
+          "incorrect": "Chưa đúng lắm. Hãy thử hỏi: 'Từ này có đang gọi tên cái gì không ? Hay đang thể hiện hoạt động / đặc điểm ? '"
+        },
+        "title": "Xếp những từ về đúng “ngôi nhà”",
+        "instruction": "Hãy kéo từng từ vào nhóm mà em cho là phù hợp. Không cần sợ sai — em có thể thử lại.",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "title": "HÌNH THÀNH KIẾN THỨC",
+      "data": {
+        "icon": "💡",
+        "question": "Vậy danh từ là gì?",
+        "instruction": "Em vừa tự phát hiện ra một quy luật. Bây giờ hãy gọi tên kiến thức đó.",
+        "score": 1,
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Danh từ",
+            "text": "<b>Danh từ</b><br> là những từ dùng để gọi tên là những từ dùng để gọi tên người, sự vật, hiện tượng, đơn vị, khái niệm...",
+            "icon": "💡",
+            "active": true,
+            "content": {
+              "examples": [
+                {
+                  "category": "Người",
+                  "word": "Âu Cơ, học sinh, mẹ, bác sĩ",
+                  "emoji": "👑"
+                },
+                {
+                  "category": "Sự vật",
+                  "word": "cây, bàn, quyển sách",
+                  "emoji": "🏫"
+                },
+                {
+                  "category": "Hiện tượng",
+                  "word": "mưa, gió, sấm",
+                  "emoji": "⚡"
+                },
+                {
+                  "category": "Khái niệm",
+                  "word": "tình yêu, niềm vui, lòng dũng cảm",
+                  "emoji": "❤️"
+                }
+              ],
+              "note": "⚠️ <b>Một điều quan trọng:</b><br> Đừng chỉ học thuộc định nghĩa. Điều quan trọng hơn là nhận ra danh từ khi nó xuất hiện trong câu."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "step03",
+      "type": "identify",
+      "title": "NHẬN DIỆN",
+      "validateMode": "oneByOne",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Từ nào là danh từ ?",
+        "options": [
+          "múa",
+          "bầu trời",
+          "ngủ",
+          "bay"
+        ],
+        "answer": "bầu trời",
+        "feedback": {
+          "correct": "Chính xác! Từ này là danh từ vì nó gọi tên sự vật.",
+          "incorrect": "Từ này chưa phải danh từ. Hãy thử hỏi: “Từ này có đang gọi tên cái gì khômg ?” "
+        },
+        "title": "NHẬN BIẾT",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "highlight",
+      "title": "TÔ SÁNG DANH TỪ",
+      "validateMode": "oneByOne",
+      "data": {
+        "content": "[[Lan]] [[mang]] [[chiếc cặp]] [[đến]] [[trường]].",
+        "answer": [
+          "Lan",
+          "chiếc cặp",
+          "trường"
+        ],
+        "feedback": {
+          "correct": "Chính xác! Từ này là danh từ vì nó gọi tên sự vật.",
+          "incorrect": "Từ này chưa phải danh từ. Hãy thử hỏi: “Từ này có đang gọi tên cái gì khômg ?” "
+        },
+        "instruction": "Hãy chọn để tô sáng các danh từ trong câu sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step01",
+      "type": "multiChoice",
+      "title": "DANH TỪ CÓ NHẤT THIẾT PHẢI 'CẦM, NẮM' ĐƯỢC ?",
+      "validateMode": "oneByOne",
+      "validator": "multiChoiceValidator",
+      "data": {
+        "question": "Từ nào dưới đây là danh từ ?",
+        "instruction": "Niềm vui của Lan khiến cả lớp mỉm cười.",
+        "options": [
+          "Niềm vui",
+          "của",
+          "Lan",
+          "khiến",
+          "mỉm cười"
+        ],
+        "answer": [
+          "Niềm vui",
+          "Lan"
+        ],
+        "feedback": {
+          "correct": "Tuyệt vời! Bạn đã tìm đủ tất cả các danh từ trong câu: 'Niềm vui', 'Lan' và 'lớp'. Trong đó 'Niềm vui' là danh từ nhưng không cầm nắm được.",
+          "partial": "Chính xác! Từ này chính là danh từ. Nhưng vẫn còn danh từ khác trong câu, hãy tìm tiếp nhé!",
+          "incorrect": "Từ này chưa phải danh từ. Hãy thử hỏi: “Từ này có đang gọi tên cái gì khômg ?” "
+        },
+        "title": "DANH TỪ CÓ NHẤT THIẾT PHẢI 'CẦM, NẮM' ĐƯỢC ?",
+        "score": 1
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "title": "MỞ RỘNG KIẾN THỨC",
+      "data": {
+        "icon": "💡",
+        "question": "Danh từ có những loại nào?",
+        "instruction": "Em vừa phát hiện ra danh từ không nhất thiết phải sờ nắm được.",
+        "score": 1,
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Danh từ cụ thể và danh từ trừu tượng",
+            "text": "Tên các sự vật mà ta có thể cảm nhận bằng giác quan (nhìn, nghe, sờ, ngửi, nếm) là danh từ CỤ THỂ <br> còn tên của khái niệm không có hình khối vật chất là danh từ TRỪU TƯỢNG.",
+            "icon": "💡",
+            "active": true,
+            "content": {
+              "examples": [
+                {
+                  "category": "CỤ THỂ",
+                  "word": "cái bàn, âm thanh, mùi hương, vị ngọt, hơi nóng, ...",
+                  "emoji": "👑"
+                },
+                {
+                  "category": "TRỪU TƯỢNG",
+                  "word": "hạnh phúc, tình yêu, hòa bình, lòng dũng cảm,",
+                  "emoji": "❤️"
+                }
+              ],
+              "note": "⚠️ <b>Một điều quan trọng:</b><br>Trừu tượng là khái niệm chỉ những gì không có hình dạng vật lý cụ thể, không thể nhìn hay chạm trực tiếp bằng các giác quan, mà chỉ có thể nhận thức và khái quát hóa thông qua tư duy."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "step10",
+      "type": "dragDrop",
+      "title": "THỬ THÁCH NHỎ",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "bóng đèn",
+          "bàn ghế",
+          "lòng yêu nước",
+          "em bé",
+          "trái tim",
+          "trí tuệ",
+          "hạnh phúc",
+          "bộ quần áo",
+          "ngôi nhà",
+          "biển",
+          "hòa bình"
+        ],
+        "targets": [
+          "DANH TỪ CỤ THỂ",
+          "DANH TỪ TRỪU TƯỢNG"
+        ],
+        "answer": {
+          "bóng đèn": "DANH TỪ CỤ THỂ",
+          "bàn ghế": "DANH TỪ CỤ THỂ",
+          "em bé": "DANH TỪ CỤ THỂ",
+          "trái tim": "DANH TỪ CỤ THỂ",
+          "bộ quần áo": "DANH TỪ CỤ THỂ",
+          "ngôi nhà": "DANH TỪ CỤ THỂ",
+          "biển": "DANH TỪ CỤ THỂ",
+          "lòng yêu nước": "DANH TỪ TRỪU TƯỢNG",
+          "trí tuệ": "DANH TỪ TRỪU TƯỢNG",
+          "hạnh phúc": "DANH TỪ TRỪU TƯỢNG",
+          "hòa bình": "DANH TỪ TRỪU TƯỢNG"
+        },
+        "instruction": "Hãy kéo và thả các từ vào đúng danh mục.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step01B",
+      "type": "multiChoice",
+      "title": "DANH TỪ CÓ LÚC VIẾT THƯỜNG CÓ LÚC LẠI VIẾT HOA",
+      "validateMode": "oneByOne",
+      "validator": "multiChoiceValidator",
+      "data": {
+        "question": "Từ nào dưới đây là danh từ ?",
+        "instruction": "Nước Việt Nam là một, dân tộc Việt Nam là một. Sông có thể cạn, núi có thể mòn, song chân lý ấy không bao giờ thay đổi.",
+        "options": [
+          "Việt Nam",
+          "dân tộc",
+          "sông",
+          "cạn",
+          "núi",
+          "mòn",
+          "chân lý",
+          "thay đổi"
+        ],
+        "answer": [
+          "Việt Nam",
+          "dân tộc",
+          "sông",
+          "núi",
+          "chân lý"
+        ],
+        "feedback": {
+          "correct": "Tuyệt vời! Bạn đã tìm đủ tất cả các danh từ trong câu: 'Việt Nam', 'dân tộc', 'sông', 'núi', 'chân lý'. <b>Danh từ 'Việt Nam' được viết hoa.</b>",
+          "partial": "Chính xác! Từ này chính là danh từ. Nhưng vẫn còn danh từ khác trong câu, hãy tìm tiếp nhé!",
+          "incorrect": "Từ này chưa phải danh từ. Hãy thử hỏi: “Từ này có đang gọi tên cái gì khômg ?” "
+        },
+        "score": 1
+      }
+    },
+    {
+      "id": "step02B",
+      "type": "definition",
+      "title": "MỞ RỘNG KIẾN THỨC",
+      "data": {
+        "icon": "💡",
+        "question": "Danh từ có những loại nào?",
+        "instruction": "Em vừa thấy rằng có những danh từ luôn được viết hoa.",
+        "score": 1,
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Danh từ chung và danh từ riêng",
+            "text": " <b>Danh từ chung</b> là tên gọi chung của một nhóm sự vật cùng loại. <b>Danh từ riêng</b> là tên gọi riêng của từng cá thể để phân biệt nhau trong nhóm, thường được viết hoa.",
+            "icon": "💡",
+            "active": true,
+            "content": {
+              "examples": [
+                {
+                  "category": "DANH TỪ CHUNG",
+                  "word": "người, thành phố, con sông, ...",
+                  "emoji": "👑"
+                },
+                {
+                  "category": "DANH TỪ RIÊNG",
+                  "word": "Võ Nguyên Giáp, Hà Nội, sông Sài Gòn, ...",
+                  "emoji": "❤️"
+                }
+              ],
+              "note": "⚠️ <b>Một điều quan trọng:</b><br>Khi viết danh từ riêng, phải nhớ viết Hoa."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "step08",
+      "type": "identify",
+      "validateMode": "oneByOne",
+      "title": "VẬN DỤNG",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trong các từ sau, từ nào là danh từ riêng?",
+        "options": [
+          "học sinh",
+          "Phú Quốc",
+          "chim sẻ",
+          "làn gió"
+        ],
+        "answer": "Phú Quốc",
+        "feedback": {
+          "correct": "Hay quá! Phú Quốc đúng là danh từ riêng.",
+          "incorrect": "Chưa đúng đâu. Hãy nhớ xem danh từ riêng có đặc điểm gì nào!"
+        },
+        "score": 1
+      }
+    },
+    {
+      "id": "step09",
+      "type": "matching",
+      "validator": "matchValidator",
+      "title": "NỐI TỪ CHO ĐÚNG",
+      "validateMode": "oneByOne",
+      "data": {
+        "left": [
+          "Lan",
+          "mèo",
+          "cây",
+          "Sài Gòn",
+          "khu vui chơi",
+          "Suối Tiên"
+        ],
+        "right": [
+          "Danh từ chung",
+          "Danh từ riêng"
+        ],
+        "answer": {
+          "Lan": "Danh từ riêng",
+          "mèo": "Danh từ chung",
+          "cây": "Danh từ chung",
+          "Sài Gòn": "Danh từ riêng",
+          "khu vui chơi": "Danh từ chung",
+          "Suối Tiên": "Danh từ riêng"
+        },
+        "feedback": {
+          "correct": "Tuyệt vời! Bạn đã phân loại chính xác tất cả các danh từ.",
+          "partial": "Hay lắm! Bạn đã phân loại đúng rồi! Hãy tiếp tục nối các từ còn lại nhé!",
+          "incorrect": "Có nhầm lẫn gì không! Hãy thử lại nhé!"
+        },
+        "instruction": "Hãy ghép mỗi từ với từ loại của nó.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "reflection",
+      "title": "VẬN DỤNG",
+      "data": {
+        "ui": {
+          "layout": "text_validation"
+        },
+        "question": "Tự tạo một câu",
+        "instruction": "Viết một câu về nơi em sống. Hãy cố gắng sử dụng đủ các loại danh từ dưới đây.",
+        "requirements": [
+          {
+            "id": "req1",
+            "label": "Một danh từ chỉ người",
+            "pattern": "mẹ|cha|bố|ba|ông|bà|anh|chị|em|thầy|cô|bạn|tôi|người"
+          },
+          {
+            "id": "req2",
+            "label": "Một danh từ chỉ nơi chốn",
+            "pattern": "nhà|trường|làng|phố|chợ|quận|thành phố|quê|công viên|biển|núi"
+          },
+          {
+            "id": "req3",
+            "label": "Một danh từ chỉ sự vật",
+            "pattern": "hoa|sách|cây|bàn|ghế|cặp|đường|xe|bút|chó|mèo|chim"
+          }
+        ],
+        "feedback": {
+          "correct": "Câu của em đã đáp ứng yêu cầu. Hệ thống nhận ra các nhóm danh từ cần thiết."
+        },
+        "score": 1
+      }
+    },
+    {
+      "id": "step11",
+      "type": "flashcard",
+      "title": "GHI NHỚ",
+      "data": {
+        "front": "Danh từ",
+        "back": "Danh từ là từ dùng để gọi tên người, sự vật, hiện tượng hoặc khái niệm.",
+        "completedWhen": "flipped",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "tu-loai",
+    "difficulty": "reference",
+    "xp": 100,
+    "stars": 3,
+    "description": "Nhận biết và sử dụng danh từ trong tiếng Việt.",
+    "prerequisite": null,
+    "unlock": null,
+    "reviewMode": "instant",
+    "durationMinutes": 15
+  }
+}

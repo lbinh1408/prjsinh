@@ -1,0 +1,553 @@
+{
+  "id": "vhdg-01",
+  "title": "Thành ngữ, Tục ngữ, Ca dao → Trí tuệ và tâm hồn dân gian",
+  "type": "knowledge",
+  "version": "1.0.0",
+  "meta": {
+    "module": "doc-hieu-van-ban-van-hoc",
+    "lessonNumber": 4,
+    "durationMinutes": 240,
+    "difficulty": "beginner",
+    "skill": "nhan-dien-vhdg",
+    "description": "Giúp học sinh phân biệt được ba thể loại văn học dân gian phổ biến: thành ngữ, tục ngữ và ca dao; hiểu được giá trị của chúng trong đời sống và văn học."
+  },
+  "learningGoals": [
+    "Nhận biết và phân biệt được thành ngữ, tục ngữ, ca dao.",
+    "Hiểu thành ngữ là cụm từ cố định mang ý nghĩa bóng bẩy.",
+    "Hiểu tục ngữ là những câu đúc kết kinh nghiệm sống, bài học.",
+    "Hiểu ca dao là những bài thơ dân gian bộc lộ tâm tư, tình cảm.",
+    "Biết cách sử dụng và phân tích hiệu quả nghệ thuật của chúng trong văn bản."
+  ],
+  "completion": {
+    "requiredSections": [
+      "story",
+      "observe",
+      "discover",
+      "teach",
+      "guidedPractice",
+      "miniChallenge",
+      "reflection",
+      "cheatSheet",
+      "finalChallenge"
+    ],
+    "action": "completeLesson",
+    "message": "🎉 Tuyệt vời! Em đã nắm được chìa khóa để hiểu những lời hay ý đẹp của ông cha ta truyền lại."
+  },
+  "steps": [
+    {
+      "id": "story_01",
+      "type": "story",
+      "data": {
+        "title": "Sức mạnh của ngôn từ dân gian",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "split_compare",
+          "layout": "two_columns",
+          "question": "Hai cách nói này cùng mang một ý nghĩa. Cách nào gợi hình ảnh và ấn tượng hơn?"
+        },
+        "content": {
+          "prompt": "Đọc hai cách diễn đạt dưới đây.",
+          "left": {
+            "label": "CÁCH NÓI THÔNG THƯỜNG",
+            "paragraph": "Hai người đó lúc nào cũng cãi nhau, hoàn toàn không hợp tính, hễ gặp là sinh chuyện."
+          },
+          "right": {
+            "label": "CÁCH NÓI DÂN GIAN",
+            "paragraph": "Hai người đó lúc nào cũng như nước với lửa, hễ gặp là sinh chuyện."
+          }
+        },
+        "interaction": {
+          "type": "choice",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Cách nói thông thường dễ hiểu nên ấn tượng hơn",
+              "correct": false
+            },
+            {
+              "id": "b",
+              "text": "Cách nói dân gian dùng hình ảnh nên sinh động và ấn tượng hơn",
+              "correct": true
+            }
+          ],
+          "feedback": {
+            "correct": "✓ Đúng. Dùng cụm từ \"như nước với lửa\" tạo ra hình ảnh tương phản mạnh mẽ, giúp người nghe lập tức cảm nhận được sự đối lập gay gắt.",
+            "incorrect": "△ Hãy chú ý đến tính gợi hình của cụm từ \"như nước với lửa\" so với cách diễn đạt bình thường."
+          }
+        },
+        "reveal": {
+          "title": "💡 Lời ăn tiếng nói hằng ngày",
+          "text": "Thành ngữ, tục ngữ và ca dao không nằm trong sách vở khô khan mà vốn xuất phát từ chính lời ăn tiếng nói hằng ngày của nhân dân, mang đậm hình ảnh và cảm xúc."
+        }
+      }
+    },
+    {
+      "id": "observe_01",
+      "type": "observe",
+      "data": {
+        "title": "Phân biệt các loại hình dân gian",
+        "durationSeconds": 180,
+        "ui": {
+          "component": "paragraph_highlight",
+          "interaction": "tap_sentence",
+          "question": "Hãy nhấn vào từng câu để xem chúng thuộc thể loại gì."
+        },
+        "content": {
+          "title": "Một đoạn hội thoại",
+          "paragraph": [
+            {
+              "id": "l1",
+              "text": "Dạo này cậu học hành lề mề, thật đúng là \"chậm như rùa\".",
+              "role": "thanhngu",
+              "roleLabel": "🏷️ THÀNH NGỮ",
+              "feedback": "🏷️ 'Chậm như rùa' là một cụm từ cố định, dùng để miêu tả đặc điểm (chỉ một khái niệm)."
+            },
+            {
+              "id": "l2",
+              "text": "Cố lên, ông bà ta đã dạy: \"Có công mài sắt, có ngày nên kim\".",
+              "role": "tucngu",
+              "roleLabel": "📜 TỤC NGỮ",
+              "feedback": "📜 Đây là một câu trọn vẹn, đúc kết kinh nghiệm, khuyên nhủ con người kiên trì."
+            },
+            {
+              "id": "l3",
+              "text": "Thấy cậu buồn, tớ lại nhớ câu: \"Người buồn cảnh có vui đâu bao giờ\".",
+              "role": "cadao",
+              "roleLabel": "🎵 THƠ (TRUYỆN KIỀU)",
+              "feedback": "🎵 Đây là một câu thơ. Ca dao, thơ ca thường bộc lộ tâm trạng, tình cảm."
+            },
+            {
+              "id": "l4",
+              "text": "Thôi, buồn làm gì, lại \"tay bắt mặt mừng\" đi ăn kem với tớ nào!",
+              "role": "thanhngu2",
+              "roleLabel": "🏷️ THÀNH NGỮ",
+              "feedback": "🏷️ 'Tay bắt mặt mừng' là một thành ngữ, miêu tả trạng thái vui vẻ, hồ hởi."
+            }
+          ]
+        },
+        "reveal": {
+          "title": "Em vừa quan sát được gì?",
+          "text": "Văn học dân gian có nhiều loại: Thành ngữ (cụm từ miêu tả), Tục ngữ (câu đúc kết kinh nghiệm) và Ca dao (lời thơ bộc lộ cảm xúc)."
+        }
+      }
+    },
+    {
+      "id": "discover_02",
+      "type": "matching",
+      "data": {
+        "title": "Ghép đúng tên gọi",
+        "instruction": "Hãy ghép mỗi đặc điểm với khái  niệm phù hợp.",
+        "durationSeconds": 120,
+        "left": [
+          "Cụm từ cố định, dùng để miêu tả đặc điểm, trạng thái (ví dụ: mẹ tròn con vuông)",
+          "Câu nói ngắn gọn, đúc kết kinh nghiệm sống hoặc bài học đạo lý.",
+          "Lời thơ dân gian, thường viết theo thể lục bát, bộc lộ tình cảm."
+        ],
+        "right": [
+          "thành ngữ",
+          "tục ngữ",
+          "ca dao"
+        ],
+        "answer": {
+          "Cụm từ cố định, dùng để miêu tả đặc điểm, trạng thái (ví dụ: mẹ tròn con vuông)": "thành ngữ",
+          "Câu nói ngắn gọn, đúc kết kinh nghiệm sống hoặc bài học đạo lý.": "tục ngữ",
+          "Lời thơ dân gian, thường viết theo thể lục bát, bộc lộ tình cảm.": "ca dao"
+        },
+        "feedback": {
+          "reveal": {
+            "text": "Đây là ba thể loại chính trong văn học dân gian, mỗi loại có đặc điểm và chức năng riêng.<br>Việc phân biệt được ba khái niệm này sẽ giúp em sử dụng chúng đúng lúc, đúng chỗ trong giao tiếp và làm bài."
+          }
+        }
+      }
+    },
+    {
+      "id": "discover_01",
+      "type": "discover",
+      "data": {
+        "title": "Ghép đúng tên gọi",
+        "durationSeconds": 180,
+        "ui": {
+          "component": "card_to_slot",
+          "interaction": "tap_to_place"
+        },
+        "reveal": {
+          "title": "🔎 Em vừa ghép nối xong",
+          "text": "Việc phân biệt được ba khái niệm này sẽ giúp em sử dụng chúng đúng lúc, đúng chỗ trong giao tiếp và làm bài."
+        },
+        "content": {
+          "prompt": "Ghép mỗi đặc điểm với khái niệm phù hợp.",
+          "slots": [
+            {
+              "id": "thanhngu",
+              "label": "🏷️ THÀNH NGỮ",
+              "question": "Đặc điểm là gì?",
+              "hint": "Chỉ là một cụm từ, chưa thành câu trọn vẹn."
+            },
+            {
+              "id": "tucngu",
+              "label": "📜 TỤC NGỮ",
+              "question": "Đặc điểm là gì?",
+              "hint": "Một câu trọn vẹn mang bài học."
+            },
+            {
+              "id": "cadao",
+              "label": "🎵 CA DAO",
+              "question": "Đặc điểm là gì?",
+              "hint": "Những bài thơ ngắn có vần nhịp."
+            }
+          ],
+          "cards": [
+            {
+              "id": "c_thanhngu",
+              "target": "thanhngu",
+              "correct": true,
+              "slotText": "Cụm từ cố định, dùng để miêu tả đặc điểm, trạng thái (ví dụ: mẹ tròn con vuông).",
+              "feedback": "✓ Chính xác. Thành ngữ chưa phải là câu, thường phải ghép vào câu để sử dụng.",
+              "label": "🏷️ Cụm từ cố định"
+            },
+            {
+              "id": "c_tucngu",
+              "target": "tucngu",
+              "correct": true,
+              "slotText": "Câu nói ngắn gọn, đúc kết kinh nghiệm sống hoặc bài học đạo lý.",
+              "feedback": "✓ Đúng. Tục ngữ là một câu hoàn chỉnh về ý nghĩa.",
+              "label": "📜 Kinh nghiệm sống"
+            },
+            {
+              "id": "c_cadao",
+              "target": "cadao",
+              "correct": true,
+              "slotText": "Lời thơ dân gian, thường viết theo thể lục bát, bộc lộ tình cảm.",
+              "feedback": "✓ Đúng. Ca dao thiên về cảm xúc, tâm trạng.",
+              "label": "🎵 Thơ bộc lộ tình cảm"
+            },
+            {
+              "id": "wrong1",
+              "target": null,
+              "correct": false,
+              "slotText": "Câu chuyện kể về các vị thần.",
+              "feedback": "△ Đây là đặc điểm của Thần thoại, không phải thành ngữ/tục ngữ/ca dao.",
+              "label": "△ Truyện kể"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "teach_01",
+      "type": "story",
+      "data": {
+        "title": "TRỌNG TÂM: PHÂN BIỆT THÀNH NGỮ VÀ TỤC NGỮ",
+        "durationSeconds": 240,
+        "ui": {
+          "component": "split_compare",
+          "layout": "two_columns",
+          "question": "Nhiều người hay nhầm lẫn Thành ngữ và Tục ngữ. Hãy xem xét kĩ sự khác biệt."
+        },
+        "content": {
+          "left": {
+            "label": "🏷️ THÀNH NGỮ",
+            "paragraph": "Chó ngáp phải ruồi <br><br>Cấu tạo: CỤM TỪ (chưa hoàn chỉnh).<br> Chức năng: MIÊU TẢ.<br>Nó tương đương với một tính từ, miêu tả sự may mắn tình cờ. Em phải đặt nó vào câu: 'Cậu ta trúng thưởng đúng là chó ngáp phải ruồi'."
+          },
+          "right": {
+            "label": "📜 TỤC NGỮ",
+            "paragraph": "Có công mài sắt, có ngày nên kim.<br><br>Cấu tạo: CÂU (hoàn chỉnh).<br> Chức năng: BÀI HỌC, KINH NGHIỆM.<br>Nó đứng một mình cũng mang đầy đủ ý nghĩa khuyên nhủ. Em có thể nói thẳng câu này để khuyên người khác."
+          }
+        },
+        "interaction": {
+          "type": "choice",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Tất cả đều là thành ngữ",
+              "correct": false
+            },
+            {
+              "id": "b",
+              "text": "Nếu đọc lên thấy nó nêu lên một chân lý, lời khuyên (Gần mực thì đen, gần đèn thì rạng) thì là Tục ngữ.",
+              "correct": true
+            },
+            {
+              "id": "c",
+              "text": "Nếu đọc lên mà thấy nó miêu tả một đặc điểm (đen như cột nhà cháy) thì là Thành ngữ. ",
+              "correct": true
+            }
+          ],
+          "feedback": {
+            "correct": "✓ Thành ngữ là \"nguyên liệu\" để tạo câu (giống như viên gạch). Tục ngữ bản thân nó đã là một câu hoàn chỉnh (giống như bức tường).",
+            "incorrect": "△ Cách thử: Nếu đọc lên mà thấy nó miêu tả một đặc điểm (đen như cột nhà cháy) thì là Thành ngữ. Nếu nó nêu lên một chân lý, lời khuyên (Gần mực thì đen, gần đèn thì rạng) thì là Tục ngữ."
+          }
+        },
+        "keyIdea": "Thành ngữ là \"nguyên liệu\" để tạo câu (giống như viên gạch). Tục ngữ bản thân nó đã là một câu hoàn chỉnh (giống như bức tường).",
+        "importantNote": "Cách thử: Nếu đọc lên mà thấy nó miêu tả một đặc điểm (đen như cột nhà cháy) thì là Thành ngữ. Nếu nó nêu lên một chân lý, lời khuyên (Gần mực thì đen, gần đèn thì rạng) thì là Tục ngữ."
+      }
+    },
+    {
+      "id": "guidedPractice_01",
+      "type": "matching",
+      "data": {
+        "title": "Thử tài phân biệt",
+        "instruction": "Hãy xác định xem các câu/cụm từ sau là Thành ngữ, Tục ngữ hay Ca dao.",
+        "durationSeconds": 180,
+        "left": [
+          "Ăn quả nhớ kẻ trồng cây",
+          "Công cha như núi Thái Sơn<br>Nghĩa mẹ như nước trong nguồn chảy ra",
+          "Ếch ngồi đáy giếng"
+        ],
+        "right": [
+          "ca dao",
+          "thành ngữ",
+          "tục ngữ"
+        ],
+        "answer": {
+          "Ếch ngồi đáy giếng": "thành ngữ",
+          "Ăn quả nhớ kẻ trồng cây": "tục ngữ",
+          "Công cha như núi Thái Sơn<br>Nghĩa mẹ như nước trong nguồn chảy ra": "ca dao"
+        },
+        "feedback": {
+          "thành ngữ": "Chỉ miêu tả sự hiểu biết nông cạn, chưa thành câu khuyên răn hoàn chỉnh.",
+          "tục ngữ": "Là một câu trọn vẹn, khuyên răn về lòng biết ơn.",
+          "ca dao": "Có vần điệu (thơ lục bát), bộc lộ tình cảm sâu sắc."
+        }
+      }
+    },
+    {
+      "id": "miniChallenge_01",
+      "type": "miniChallenge",
+      "data": {
+        "title": "Vì sao Ca dao, Tục ngữ dễ thuộc?",
+        "durationSeconds": 150,
+        "ui": {
+          "layout": "single_choice"
+        },
+        "prompt": "Dù không được ghi chép trong sách vở ngày xưa, ông bà ta vẫn nhớ và truyền miệng hàng ngàn câu ca dao, tục ngữ. Yếu tố hình thức nào giúp chúng dễ nhớ đến vậy?",
+        "question": "Đặc điểm nào quan trọng nhất giúp văn học dân gian dễ lưu truyền?",
+        "choices": [
+          {
+            "id": "a",
+            "text": "Có cốt truyện phức tạp, ly kỳ",
+            "correct": false
+          },
+          {
+            "id": "b",
+            "text": "Ngắn gọn, có vần, có nhịp, giàu hình ảnh",
+            "correct": true
+          },
+          {
+            "id": "c",
+            "text": "Sử dụng nhiều từ Hán Việt cao siêu",
+            "correct": false
+          }
+        ],
+        "feedback": {
+          "correct": "✓ Đúng. Đặc tính ngắn gọn, vần điệu nhịp nhàng giống như bài hát giúp người dân lao động xưa dễ dàng ghi nhớ và truyền miệng.",
+          "a": "△ Ca dao, tục ngữ thường không có cốt truyện.",
+          "c": "△ Văn học dân gian chủ yếu dùng từ ngữ thuần Việt mộc mạc, gần gũi."
+        }
+      }
+    },
+    {
+      "id": "reflection_01",
+      "type": "reflection",
+      "data": {
+        "title": "Vận dụng vào bài viết",
+        "durationSeconds": 150,
+        "ui": {
+          "component": "checklist_free_text"
+        },
+        "question": "Khi viết một bài văn (ví dụ: văn nghị luận), việc sử dụng thành ngữ, tục ngữ, ca dao sẽ mang lại lợi ích gì?",
+        "choices": [
+          {
+            "id": "c1",
+            "text": "✍️ Làm câu văn sinh động, giàu hình ảnh hơn (Thành ngữ)"
+          },
+          {
+            "id": "c2",
+            "text": "⚖️ Tăng sức thuyết phục bằng kinh nghiệm dân gian (Tục ngữ)"
+          },
+          {
+            "id": "c3",
+            "text": "❤️ Chạm đến cảm xúc người đọc (Ca dao)"
+          },
+          {
+            "id": "c4",
+            "text": "📚 Cho thấy vốn sống và vốn từ phong phú của người viết"
+          }
+        ],
+        "freeText": {
+          "label": "Em định dùng chúng như thế nào...",
+          "placeholder": "Ví dụ: Khi khuyên bạn bè cố gắng học tập, em sẽ dùng câu tục ngữ..."
+        },
+        "metacognition": "Văn học dân gian không phải là \"đồ cổ\", chúng là vũ khí sắc bén giúp lời nói và bài viết của em trở nên ấn tượng và sâu sắc hơn."
+      }
+    },
+    {
+      "id": "cheatSheet_01",
+      "type": "cheatSheet",
+      "data": {
+        "title": "GHI NHỚ: BA HẠT NGỌC DÂN GIAN",
+        "durationSeconds": 150,
+        "ui": {
+          "component": "card_list",
+          "actions": [
+            "save",
+            "download"
+          ]
+        },
+        "items": [
+          {
+            "order": 1,
+            "icon": "🏷️",
+            "title": "THÀNH NGỮ",
+            "question": "Cụm từ cố định, chưa thành câu. Dùng để miêu tả đặc điểm, trạng thái. (VD: Nhanh như chớp)"
+          },
+          {
+            "order": 2,
+            "icon": "📜",
+            "title": "TỤC NGỮ",
+            "question": "Câu nói trọn vẹn. Dùng để đúc kết kinh nghiệm, bài học đạo lý. (VD: Ăn vóc học hay)"
+          },
+          {
+            "order": 3,
+            "icon": "🎵",
+            "title": "CA DAO",
+            "question": "Bài thơ (thường là lục bát). Dùng để bộc lộ tình cảm, tâm sự. (VD: Anh đi anh nhớ quê nhà...)"
+          }
+        ],
+        "keyMessage": "⭐ Nắm vững sự khác biệt giúp em không nhầm lẫn khi phân tích và sử dụng chúng một cách tinh tế.",
+        "note": "Một cách phân biệt nhanh: Tục ngữ khuyên ta điều gì đó, Thành ngữ chỉ vẽ ra một hình ảnh.",
+        "practiceButton": {
+          "label": "🛠️ Thử nghiệm ở phần Thử thách",
+          "action": "open_mini_practice"
+        }
+      }
+    },
+    {
+      "id": "finalChallenge_01",
+      "type": "finalChallenge",
+      "data": {
+        "title": "THỬ THÁCH: NHÀ SƯU TẦM VĂN HỌC DÂN GIAN",
+        "durationSeconds": 240,
+        "ui": {
+          "component": "multi_stage_challenge",
+          "layout": "multi_stage"
+        },
+        "prompt": "Hãy đóng vai một nhà nghiên cứu, phân tích các tài liệu dân gian sau đây.",
+        "stages": [
+          {
+            "key": "identify",
+            "prompt": "Câu 'Một con ngựa đau cả tàu bỏ cỏ' thuộc thể loại nào?",
+            "type": "single_choice",
+            "title": "🔍 PHÂN LOẠI",
+            "question": "Câu 'Một con ngựa đau cả tàu bỏ cỏ' thuộc thể loại nào?",
+            "choices": [
+              {
+                "id": "thanhngu",
+                "label": "Thành ngữ",
+                "correct": false
+              },
+              {
+                "id": "tucngu",
+                "label": "Tục ngữ",
+                "correct": true
+              },
+              {
+                "id": "cadao",
+                "label": "Ca dao",
+                "correct": false
+              }
+            ],
+            "feedback": {
+              "correct": "✓ Đúng. Đây là một câu trọn vẹn đúc kết bài học về tinh thần đoàn kết, đồng cảm.",
+              "incorrect": "△ Hãy xem nó có chứa một lời khuyên hay bài học nào không."
+            }
+          },
+          {
+            "key": "meaning",
+            "type": "multi_select",
+            "title": "💡 GIẢI MÃ Ý NGHĨA",
+            "question": "Đâu là ý nghĩa của câu tục ngữ trên?",
+            "minSelections": 1,
+            "maxSelections": 2,
+            "choices": [
+              {
+                "id": "m1",
+                "text": "Cách chăm sóc ngựa khi bị ốm"
+              },
+              {
+                "id": "m2",
+                "text": "Tình đoàn kết, yêu thương đồng loại"
+              },
+              {
+                "id": "m3",
+                "text": "Sự cảm thông khi người khác gặp hoạn nạn"
+              }
+            ],
+            "correctValues": [
+              "m2",
+              "m3"
+            ],
+            "feedback": {
+              "correct": "✓ Tốt. Tục ngữ thường mượn hình ảnh sự vật (ngựa) để nói về bài học con người.",
+              "incorrect": "△ Tục ngữ hiếm khi chỉ mang nghĩa đen, hãy tìm bài học sâu xa ẩn chứa bên trong."
+            }
+          },
+          {
+            "key": "apply",
+            "type": "editor",
+            "title": "✍️ ỨNG DỤNG",
+            "question": "Hãy viết 1-2 câu có sử dụng thành ngữ 'chân ướt chân ráo' (vừa mới đến, chưa quen thuộc).",
+            "placeholder": "Ví dụ: Hôm qua tôi mới chân ướt chân ráo lên thành phố...",
+            "minCharacters": 20,
+            "maxCharacters": 200,
+            "submit": {
+              "label": "✓ Hoàn thành"
+            }
+          },
+          {
+            "key": "summary",
+            "type": "analysis",
+            "title": "🧠 HỒ SƠ DÂN GIAN",
+            "metrics": [
+              {
+                "id": "identify",
+                "label": "Phân loại thể loại",
+                "status": "detect"
+              },
+              {
+                "id": "meaning",
+                "label": "Giải mã ý nghĩa",
+                "status": "detect"
+              },
+              {
+                "id": "apply",
+                "label": "Vận dụng thành ngữ",
+                "status": "detect"
+              }
+            ],
+            "diagnosticQuestion": "Em đã cảm thấy tự tin hơn khi sử dụng thành ngữ, tục ngữ chưa?",
+            "feedbackRules": [
+              {
+                "when": "identified_correctly",
+                "feedback": "✓ Em đã phân biệt rất tốt Tục ngữ dựa trên chức năng khuyên răn của nó."
+              },
+              {
+                "when": "found_meaning",
+                "feedback": "✓ Khả năng hiểu nghĩa bóng của văn học dân gian của em rất nhạy bén."
+              },
+              {
+                "when": "good_application",
+                "feedback": "✓ Em đã biết cách đặt thành ngữ vào câu. Hãy tiếp tục sử dụng chúng trong bài văn của mình nhé!"
+              }
+            ],
+            "scoreDimensions": [
+              "identify",
+              "meaning",
+              "apply"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

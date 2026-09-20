@@ -1,0 +1,146 @@
+{
+  "id": "nlxh.lesson03",
+  "title": "Viết đoạn văn nghị luận xã hội",
+  "version": "3.0",
+  "topic": {
+    "title": "Lòng biết ơn",
+    "instruction": "Viết đoạn văn khoảng 200 chữ trình bày suy nghĩ của em về lòng biết ơn."
+  },
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "content": "Viết đoạn văn khoảng 200 chữ trình bày suy nghĩ của em về lòng biết ơn.",
+        "title": "Đọc đề",
+        "instruction": "Đọc kỹ yêu cầu trước khi viết.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step02",
+      "type": "identify",
+      "data": {
+        "question": "Đề bài yêu cầu nghị luận về vấn đề nào?",
+        "options": [
+          "Lòng biết ơn",
+          "Gia đình",
+          "Môi trường",
+          "Học tập"
+        ],
+        "answer": "Lòng biết ơn",
+        "title": "Xác định yêu cầu",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "ordering",
+      "validator": "orderValidator",
+      "data": {
+        "items": [
+          "Bài học và hành động",
+          "Giải thích lòng biết ơn",
+          "Ý nghĩa của lòng biết ơn",
+          "Dẫn chứng"
+        ],
+        "answer": [
+          "Giải thích lòng biết ơn",
+          "Ý nghĩa của lòng biết ơn",
+          "Dẫn chứng",
+          "Bài học và hành động"
+        ],
+        "title": "Sắp xếp dàn ý",
+        "instruction": "Sắp xếp các ý theo trình tự hợp lý.",
+        "score": 2
+      }
+    },
+    {
+      "id": "step04",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Biết ơn cha mẹ",
+          "Biết ơn thầy cô",
+          "Biết ơn cộng đồng"
+        ],
+        "right": [
+          "Chăm sóc, nuôi dưỡng",
+          "Dạy dỗ, truyền đạt kiến thức",
+          "Giúp đỡ khi gặp khó khăn"
+        ],
+        "answer": {
+          "Biết ơn cha mẹ": "Chăm sóc, nuôi dưỡng",
+          "Biết ơn thầy cô": "Dạy dỗ, truyền đạt kiến thức",
+          "Biết ơn cộng đồng": "Giúp đỡ khi gặp khó khăn"
+        },
+        "title": "Ghép luận điểm",
+        "instruction": "Ghép luận điểm với dẫn chứng phù hợp.",
+        "score": 2
+      }
+    },
+    {
+      "id": "step05",
+      "type": "highlight",
+      "data": {
+        "content": "Lòng biết ơn giúp con người sống nhân văn hơn, biết trân trọng những điều tốt đẹp, xây dựng các mối quan hệ bền vững và lan tỏa những giá trị tích cực trong xã hội.",
+        "answer": [
+          "sống nhân văn hơn",
+          "trân trọng những điều tốt đẹp",
+          "xây dựng các mối quan hệ bền vững",
+          "lan tỏa những giá trị tích cực"
+        ],
+        "title": "Chọn luận cứ",
+        "instruction": "Chọn những ý có thể sử dụng trong bài nghị luận.",
+        "score": 2
+      }
+    },
+    {
+      "id": "step06",
+      "type": "reflection",
+      "data": {
+        "question": "Hãy viết dàn ý ngắn cho đoạn văn của em.",
+        "sampleAnswer": "Giải thích → Ý nghĩa → Dẫn chứng → Bài học.",
+        "title": "Lập dàn ý",
+        "score": 3
+      }
+    },
+    {
+      "id": "step07",
+      "type": "explain",
+      "data": {
+        "question": "Viết đoạn văn khoảng 200 chữ trình bày suy nghĩ của em về lòng biết ơn.",
+        "sampleAnswer": "Lòng biết ơn là một phẩm chất tốt đẹp của con người. Khi biết trân trọng những người đã giúp đỡ mình, chúng ta sẽ sống có trách nhiệm và nhân ái hơn. Lòng biết ơn được thể hiện qua lời cảm ơn, sự kính trọng và những hành động thiết thực đối với cha mẹ, thầy cô và mọi người xung quanh. Đây là giá trị cần được gìn giữ và phát huy trong cuộc sống.",
+        "title": "Viết đoạn văn",
+        "score": 6
+      }
+    },
+    {
+      "id": "step08",
+      "type": "reflection",
+      "data": {
+        "question": "Sau khi hoàn thành bài viết, em hãy tự đánh giá bài của mình theo các tiêu chí sau:\n- Đúng yêu cầu đề\n- Có luận điểm rõ ràng\n- Có dẫn chứng\n- Diễn đạt mạch lạc\n- Ít lỗi chính tả",
+        "sampleAnswer": "Em đã nêu đúng vấn đề, có luận điểm và dẫn chứng, nhưng cần cải thiện cách diễn đạt để bài viết mạch lạc hơn.",
+        "title": "Tự đánh giá",
+        "score": 3
+      }
+    }
+  ],
+  "meta": {
+    "module": "nlxh",
+    "difficulty": "hard",
+    "xp": 40,
+    "stars": 3,
+    "description": "Thực hành viết một đoạn văn nghị luận xã hội hoàn chỉnh.",
+    "prerequisite": "nlxh-lesson02",
+    "unlock": null,
+    "durationMinutes": 20
+  },
+  "learningGoals": [
+    "Biết triển khai đoạn văn nghị luận xã hội.",
+    "Biết sử dụng luận điểm, luận cứ và dẫn chứng.",
+    "Biết trình bày quan điểm cá nhân.",
+    "Biết tự đánh giá và chỉnh sửa bài viết."
+  ]
+}

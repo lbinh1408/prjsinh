@@ -1,0 +1,71 @@
+{
+    "id": "tho-hien-dai.01-dong-chi",
+    "title": "Đồng chí",
+    "module": "tho-hien-dai",
+    "steps": [
+        {
+            "id": "intro",
+            "type": "observe",
+            "data": {
+                "title": "Đồng chí",
+                "subtitle": "Chính Hữu",
+                "content": "Bài thơ ngợi ca tình đồng chí, đồng đội gắn bó keo sơn của những người lính Cụ Hồ trong thời kỳ đầu của cuộc kháng chiến chống Pháp."
+            }
+        },
+        {
+            "id": "tac-gia-tac-pham",
+            "type": "observe",
+            "data": {
+                "title": "Tác giả và tác phẩm",
+                "content": "### 1. Tác giả Chính Hữu\n- Ông là nhà thơ chiến sĩ, hầu như chỉ viết về người lính và chiến tranh.\n- Thơ ông bình dị, hàm súc, giàu hình ảnh.\n\n### 2. Tác phẩm\n- Sáng tác đầu năm 1948, sau chiến dịch Việt Bắc Thu Đông (1947).\n- Là một trong những tác phẩm tiêu biểu nhất về người lính kháng chiến chống Pháp."
+            }
+        },
+        {
+            "id": "co-so-hinh-thanh",
+            "type": "observe",
+            "data": {
+                "title": "Cơ sở hình thành tình đồng chí",
+                "content": "### 7 câu thơ đầu\n- **Chung hoàn cảnh xuất thân:** 'Quê hương anh nước mặn đồng chua / Làng tôi nghèo đất cày lên sỏi đá'. Những người lính đều xuất thân từ nông dân nghèo khổ.\n- **Chung mục tưởng, lý tưởng chiến đấu:** 'Súng bên súng, đầu sát bên đầu'.\n- **Chung gian khổ, thiếu thốn:** 'Đêm rét chung chăn thành đôi tri kỷ'. Sự chia sẻ gian khó tạo nên mối giao cảm sâu sắc.\n- **Sự kết tinh:** Dòng thơ thứ 7 chỉ có hai chữ 'Đồng chí!' vang lên như một phát hiện, một lời khẳng định thiêng liêng về tình cảm mới mẻ."
+            }
+        },
+        {
+            "id": "quiz-01",
+            "validator": "choiceValidator",
+            "type": "choice",
+            "data": {
+                "question": "Dòng thơ thứ 7 'Đồng chí!' trong bài thơ có đặc điểm gì đặc biệt về mặt nghệ thuật?",
+                "options": [
+                    {
+                        "id": "a",
+                        "text": "Là một câu thơ cảm thán dài, bộc lộ cảm xúc mãnh liệt.",
+                        "isCorrect": false,
+                        "feedback": "Câu thơ này rất ngắn gọn."
+                    },
+                    {
+                        "id": "b",
+                        "text": "Là một câu thơ chỉ gồm hai tiếng và dấu chấm than, như một cái bản lề gắn kết đoạn trước và đoạn sau.",
+                        "isCorrect": true,
+                        "feedback": "Chính xác! Hai tiếng vang lên như một sự kết tinh cảm xúc."
+                    },
+                    {
+                        "id": "c",
+                        "text": "Là một câu thơ miêu tả hình ảnh người lính đang chiến đấu.",
+                        "isCorrect": false,
+                        "feedback": "Câu thơ không mang tính miêu tả hình ảnh."
+                    }
+                ],
+                "answer": "b",
+                "title": "Lựa chọn",
+                "score": 1
+            }
+        },
+        {
+            "id": "hoan-thanh",
+            "type": "observe",
+            "data": {
+                "title": "Hoàn thành bài học!",
+                "content": "Em đã nắm được những nét chính về cơ sở hình thành tình đồng chí. Hãy ghi nhớ để phân tích 7 câu đầu của bài thơ nhé."
+            }
+        }
+    ]
+}

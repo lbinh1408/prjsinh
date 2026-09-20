@@ -1,0 +1,16 @@
+{
+    "id": "luyen-de.02-de-thi-thu-01",
+    "title": "Đề thi thử số 1",
+    "module": "luyen-de",
+    "steps": [
+        {
+            "id": "intro",
+            "type": "observe",
+            "data": {
+                "title": "Đề thi thử số 1",
+                "subtitle": "Kỹ năng nâng cao",
+                "content": "Nội dung bài học đang được cập nhật."
+            }
+        }
+    ]
+}

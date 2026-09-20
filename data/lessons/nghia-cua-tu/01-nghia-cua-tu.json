@@ -1,0 +1,218 @@
+{
+  "id": "nghia-cua-tu.01-nghia-cua-tu",
+  "title": "Nghĩa của từ",
+  "version": "3.0",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "content": "Mùa <b>xuân</b> đến, cây cối đâm chồi nảy lộc. Không khí trở nên trong lành và ấm áp.",
+        "guide": [
+          "Chú ý nghĩa của từ được in đậm.",
+          "Từ đó gợi lên hình ảnh gì?"
+        ],
+        "hint": "Từ in đậm chỉ một mùa trong năm.",
+        "title": "Quan sát",
+        "instruction": "Đọc đoạn văn sau.",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Cách giải thích nghĩa của từ",
+            "icon": "📖",
+            "active": true,
+            "content": {
+              "text": "Có thể giải thích bằng cách trình bày khái niệm mà từ biểu thị hoặc đưa ra từ đồng nghĩa/trái nghĩa với từ cần giải thích.",
+              "examples": [
+                {
+                  "category": "1. Dùng khái niệm: Nêu ra các đặc điểm, thuộc tính của sự vật, hiện tượng.",
+                  "word": "Quần đảo: Quần thể gồm nhiều đảo.",
+                  "emoji": "🪑"
+                },
+                {
+                  "category": "2. Dùng từ đồng nghĩa: Đưa ra từ có nghĩa giống hoặc gần giống.",
+                  "word": "Lẫm liệt: Hùng dũng, oai nghiêm.",
+                  "emoji": "🎨"
+                },
+                {
+                  "category": "3. Dùng từ trái nghĩa: Đưa ra từ có nghĩa ngược lại để giải thích.",
+                  "word": "Hèn nhát: Không dũng cảm.",
+                  "emoji": "🎨"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Khái niệm",
+        "instruction": "Nghĩa của từ là nội dung (sự vật, tính chất, hoạt động, quan hệ,...) mà từ biểu thị.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "identify",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Nghĩa của từ 'xuân' trong đoạn văn trên là gì?",
+        "options": [
+          "Một mùa trong năm",
+          "Tuổi trẻ",
+          "Sự vui vẻ",
+          "Một loài hoa"
+        ],
+        "answer": "Một mùa trong năm",
+        "title": "Nhận biết",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Hãy giải thích nghĩa của từ 'tập quán' bằng cách trình bày khái niệm mà từ biểu thị.",
+        "sampleAnswer": [
+          " tập quán là tập làm và quán xuyến mọi việc",
+          " tập quán là danh sách các quán ăn tại địa phương.",
+          "Tập quán là thói quen của một cộng đồng được hình thành từ lâu đời trong đời sống, được mọi người làm theo."
+        ],
+        "title": "Thông hiểu",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "highlight",
+      "data": {
+        "content": "Sáng nay, em thức dậy sớm, tập thể dục rồi đi học.",
+        "answer": [
+          "thức dậy",
+          "tập thể dục",
+          "đi học"
+        ],
+        "title": "Tô sáng",
+        "instruction": "Hãy chọn để tô sáng những từ chỉ hoạt động của con người trong câu sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "reflection",
+      "data": {
+        "question": "Hãy giải thích nghĩa của từ 'dũng cảm' bằng cách tìm một từ đồng nghĩa với nó.",
+        "sampleAnswer": "Dũng cảm nghĩa là can đảm, gan dạ.",
+        "title": "Vận dụng",
+        "score": 1
+      }
+    },
+    {
+      "id": "step08",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Cách giải thích nghĩa của từ 'thông minh' là 'sáng dạ, nhanh trí' thuộc cách giải thích nào?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Trình bày khái niệm"
+          },
+          {
+            "id": "B",
+            "text": "Dùng từ đồng nghĩa"
+          },
+          {
+            "id": "C",
+            "text": "Dùng từ trái nghĩa"
+          },
+          {
+            "id": "D",
+            "text": "Cả 3 cách trên"
+          }
+        ],
+        "answer": "B",
+        "title": "Lựa chọn",
+        "score": 1
+      }
+    },
+    {
+      "id": "step09",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "trong lành",
+          "ấm áp",
+          "nảy lộc"
+        ],
+        "right": [
+          "Có nhiệt độ dễ chịu",
+          "Bắt đầu mọc lá non",
+          "Không khí sạch, dễ chịu"
+        ],
+        "answer": {
+          "trong lành": "Không khí sạch, dễ chịu",
+          "ấm áp": "Có nhiệt độ dễ chịu",
+          "nảy lộc": "Bắt đầu mọc lá non"
+        },
+        "title": "Nối từ",
+        "instruction": "Ghép từ với nghĩa phù hợp.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step10",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "Hoảng hốt: Sợ sệt, vội vã",
+          "Na: Quả có vỏ nhiều mắt, thịt màu trắng, hạt đen",
+          "Rụt rè: Nhút nhát",
+          "Thức: Không ngủ"
+        ],
+        "targets": [
+          "Trình bày khái niệm",
+          "Dùng từ đồng nghĩa, trái nghĩa"
+        ],
+        "answer": {
+          "Hoảng hốt: Sợ sệt, vội vã": "Dùng từ đồng nghĩa, trái nghĩa",
+          "Na: Quả có vỏ nhiều mắt, thịt màu trắng, hạt đen": "Trình bày khái niệm",
+          "Rụt rè: Nhút nhát": "Dùng từ đồng nghĩa, trái nghĩa",
+          "Thức: Không ngủ": "Dùng từ đồng nghĩa, trái nghĩa"
+        },
+        "title": "Kéo và thả",
+        "instruction": "Hãy kéo và thả các cách giải thích sau vào đúng nhóm.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step11",
+      "type": "flashcard",
+      "data": {
+        "front": "Nghĩa của từ",
+        "back": "Nghĩa của từ là nội dung (sự vật, tính chất, hoạt động, quan hệ,...) mà từ biểu thị.",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "nghia-cua-tu",
+    "difficulty": "easy",
+    "xp": 20,
+    "stars": 3,
+    "description": "Nhận biết nghĩa của từ và cách giải thích nghĩa của từ.",
+    "prerequisite": null,
+    "unlock": null,
+    "reviewMode": "instant",
+    "durationMinutes": 10
+  }
+}

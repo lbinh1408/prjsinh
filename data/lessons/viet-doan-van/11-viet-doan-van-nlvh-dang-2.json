@@ -1,0 +1,624 @@
+{
+  "id": "viet-doan-van-nghi-luan-van-hoc-09",
+  "title": "Viết đoạn văn nghị luận văn học",
+  "type": "skill",
+  "version": "1.0.0",
+  "meta": {
+    "module": "viet-doan-van",
+    "lessonNumber": 9,
+    "durationMinutes": 300,
+    "difficulty": "intermediate",
+    "skill": "viet-doan-van-nghi-luan-van-hoc",
+    "description": "Học cách biến một nhận xét về tác phẩm hoặc nhân vật thành một đoạn văn nghị luận văn học có dẫn chứng, phân tích và nhận xét."
+  },
+  "learningGoals": [
+    "Nhận biết đặc điểm cơ bản của đoạn văn nghị luận văn học.",
+    "Biết xác định nhận xét hoặc luận điểm cần làm rõ.",
+    "Biết lựa chọn chi tiết, hình ảnh hoặc câu thơ phù hợp làm dẫn chứng.",
+    "Biết phân tích dẫn chứng thay vì chỉ kể lại nội dung tác phẩm.",
+    "Biết liên hệ dẫn chứng với luận điểm và đưa ra nhận xét.",
+    "Viết được một đoạn văn nghị luận văn học có mạch lập luận rõ ràng."
+  ],
+  "completion": {
+    "requiredSections": [
+      "story",
+      "observe",
+      "discover",
+      "teach",
+      "guidedPractice",
+      "miniChallenge",
+      "reflection",
+      "cheatSheet",
+      "finalChallenge"
+    ],
+    "action": "completeLesson",
+    "message": "🎉 Văn học không chỉ là kể lại tác phẩm. Hãy chọn đúng chi tiết, phân tích điều nó gợi ra và làm sáng rõ điều em muốn nói."
+  },
+  "steps": [
+    {
+      "id": "story_01",
+      "type": "story",
+      "data": {
+        "title": "Kể đúng chuyện nhưng vẫn chưa phải nghị luận?",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "split_compare",
+          "layout": "two_columns",
+          "question": "Hai đoạn đều viết về nhân vật. Nhưng đoạn nào thực sự đang phân tích?"
+        },
+        "content": {
+          "prompt": "Đọc hai đoạn văn và thử xem đoạn nào làm rõ được đặc điểm của nhân vật.",
+          "title": "Nhân vật bé Thu trong Chiếc lược ngà",
+          "left": {
+            "label": "ĐOẠN A",
+            "paragraph": "Bé Thu là con của ông Sáu. Khi ông Sáu trở về, bé Thu không nhận ông là cha. Bé Thu còn nói trống không và bỏ chạy. Sau đó, khi nhận ra cha thì ông Sáu lại phải lên đường."
+          },
+          "right": {
+            "label": "ĐOẠN B",
+            "paragraph": "Bé Thu hiện lên là một cô bé có tình yêu cha sâu sắc nhưng cũng rất bướng bỉnh, cá tính. Em nhất quyết không chịu nhận ông Sáu là cha vì trên khuôn mặt ông có vết thẹo khác với hình ảnh người cha trong tấm ảnh em vẫn nhớ. Sự cứng đầu ấy thực chất lại cho thấy tình cảm trong sáng và sự thủy chung của một đứa trẻ đối với hình ảnh người cha mà em yêu thương."
+          }
+        },
+        "interaction": {
+          "type": "choice",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Đoạn A",
+              "correct": false
+            },
+            {
+              "id": "b",
+              "text": "Đoạn B",
+              "correct": true
+            },
+            {
+              "id": "same",
+              "text": "Hai đoạn đều là nghị luận văn học như nhau",
+              "correct": false
+            }
+          ],
+          "feedback": {
+            "correct": "✓ Đúng. Đoạn B không chỉ kể lại sự việc mà còn dùng chi tiết để làm rõ đặc điểm và tình cảm của nhân vật.",
+            "incorrect": "△ Hãy thử xem đoạn nào trả lời được câu hỏi: “Chi tiết này cho thấy điều gì về nhân vật?”"
+          }
+        },
+        "reveal": {
+          "title": "💡 Tìm hiểu",
+          "text": "Nghị luận văn học không dừng ở việc kể lại tác phẩm. Người viết cần đưa ra nhận xét, chọn dẫn chứng và phân tích dẫn chứng để làm sáng rõ nhận xét đó."
+        }
+      }
+    },
+    {
+      "id": "observe_01",
+      "type": "observe",
+      "data": {
+        "title": "Một đoạn nghị luận văn học đang làm những việc gì?",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "paragraph_highlight",
+          "interaction": "tap_sentence",
+          "question": "Nhấn vào từng câu và quan sát vai trò của câu đó."
+        },
+        "content": {
+          "prompt": "Ví dụ: Phân tích vẻ đẹp của nhân vật anh thanh niên trong Lặng lẽ Sa Pa.",
+          "paragraph": [
+            {
+              "id": "s1",
+              "text": "Anh thanh niên trong Lặng lẽ Sa Pa là một người sống có trách nhiệm và tận tụy với công việc.",
+              "role": "opinion",
+              "roleLabel": "🎯 NÊU NHẬN XÉT",
+              "feedback": "🟢 Đây là nhận xét chính mà người viết muốn làm rõ về nhân vật."
+            },
+            {
+              "id": "s2",
+              "text": "Dù công việc diễn ra trong điều kiện một mình trên đỉnh Yên Sơn, anh vẫn đều đặn thực hiện nhiệm vụ đo gió, đo mưa, đo nắng và báo số liệu về trung tâm.",
+              "role": "evidence",
+              "roleLabel": "🔎 ĐƯA DẪN CHỨNG",
+              "feedback": "🔵 Chi tiết cụ thể trong tác phẩm được đưa vào để chứng minh cho nhận xét."
+            },
+            {
+              "id": "s3",
+              "text": "Những công việc tưởng như âm thầm ấy lại đòi hỏi sự chính xác và tinh thần trách nhiệm cao.",
+              "role": "analysis",
+              "roleLabel": "🧩 PHÂN TÍCH",
+              "feedback": "🟡 Người viết không chỉ kể chi tiết mà giải thích ý nghĩa của chi tiết."
+            },
+            {
+              "id": "s4",
+              "text": "Qua đó, anh thanh niên cho thấy vẻ đẹp của một con người biết đặt trách nhiệm với công việc lên trên sự cô đơn và những khó khăn của bản thân.",
+              "role": "comment",
+              "roleLabel": "💭 NHẬN XÉT",
+              "feedback": "🟣 Câu này nâng dẫn chứng lên thành nhận xét về nhân vật."
+            },
+            {
+              "id": "s5",
+              "text": "Vì vậy, anh thanh niên trở thành hình ảnh đẹp về những con người lao động thầm lặng đang cống hiến cho đất nước.",
+              "role": "close",
+              "roleLabel": "🎯 CHỐT",
+              "feedback": "🟢 Câu cuối khẳng định lại giá trị của nhân vật và mở rộng ý nghĩa."
+            }
+          ]
+        },
+        "reveal": {
+          "title": "Em vừa nhìn thấy gì?",
+          "text": "Một đoạn nghị luận văn học thường đi theo mạch: nhận xét → dẫn chứng → phân tích → nhận xét sâu hơn → chốt. Điều quan trọng nhất là dẫn chứng phải được phân tích để làm sáng rõ nhận xét."
+        }
+      }
+    },
+    {
+      "id": "discover_01",
+      "type": "discover",
+      "data": {
+        "title": "Dẫn chứng văn học dùng để làm gì?",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "card_to_slot",
+          "interaction": "tap_to_place"
+        },
+        "reveal": {
+          "title": "🔎 Em vừa phát hiện ra",
+          "text": "Dẫn chứng không phải để kể lại tác phẩm. Dẫn chứng phải giúp người đọc nhìn thấy rõ hơn điều em đang nhận xét."
+        },
+        "content": {
+          "prompt": "Hãy ghép từng câu vào đúng vai trò khi phân tích nhân vật Mị trong Vợ chồng A Phủ.",
+          "slots": [
+            {
+              "id": "opinion",
+              "label": "🎯 NHẬN XÉT",
+              "question": "Em muốn khẳng định điều gì về nhân vật?",
+              "hint": "Câu nhận xét khái quát."
+            },
+            {
+              "id": "evidence",
+              "label": "🔎 DẪN CHỨNG",
+              "question": "Chi tiết nào trong tác phẩm chứng minh điều đó?",
+              "hint": "Chọn chi tiết cụ thể."
+            },
+            {
+              "id": "analysis",
+              "label": "🧩 PHÂN TÍCH",
+              "question": "Chi tiết đó cho thấy điều gì?",
+              "hint": "Đừng chỉ kể lại."
+            },
+            {
+              "id": "close",
+              "label": "🎯 NHẬN XÉT / CHỐT",
+              "question": "Từ đó có thể nhận xét gì?",
+              "hint": "Nâng chi tiết thành ý nghĩa."
+            }
+          ],
+          "cards": [
+            {
+              "id": "idea",
+              "target": "opinion",
+              "correct": true,
+              "slotText": "Mị là một cô gái có sức sống tiềm tàng mạnh mẽ.",
+              "feedback": "✓ Đây là nhận xét khái quát về nhân vật.",
+              "label": "🎯 Nhận xét"
+            },
+            {
+              "id": "evidence1",
+              "target": "evidence",
+              "correct": true,
+              "slotText": "Trong đêm tình mùa xuân, tiếng sáo đã khiến Mị nhớ lại tuổi trẻ và muốn đi chơi.",
+              "feedback": "✓ Đây là chi tiết cụ thể trong tác phẩm.",
+              "label": "🔎 Dẫn chứng"
+            },
+            {
+              "id": "analysis1",
+              "target": "analysis",
+              "correct": true,
+              "slotText": "Chi tiết ấy cho thấy dù bị cuộc sống tù túng vùi lấp, khát vọng sống và khát vọng tự do trong Mị vẫn chưa bao giờ biến mất.",
+              "feedback": "✓ Đây mới là bước phân tích: giải thích ý nghĩa của dẫn chứng.",
+              "label": "🧩 Phân tích"
+            },
+            {
+              "id": "close",
+              "target": "close",
+              "correct": true,
+              "slotText": "Qua Mị, nhà văn đã làm nổi bật sức sống bền bỉ của con người ngay cả trong những hoàn cảnh khắc nghiệt.",
+              "feedback": "✓ Câu này nâng nhận xét từ nhân vật lên ý nghĩa của tác phẩm.",
+              "label": "🎯 Chốt"
+            },
+            {
+              "id": "wrong1",
+              "target": null,
+              "correct": false,
+              "slotText": "Mị sống ở nhà thống lí Pá Tra.",
+              "feedback": "△ Chi tiết này chưa trực tiếp giúp làm rõ nhận xét về sức sống của Mị.",
+              "label": "△ Chi tiết chưa phù hợp"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "teach_01",
+      "type": "teach",
+      "data": {
+        "title": "BỘ KHUNG PHÂN TÍCH VĂN HỌC",
+        "durationSeconds": 300,
+        "ui": {
+          "component": "vertical_map",
+          "interaction": "click_node",
+          "center": "NHẬN XÉT"
+        },
+        "prompt": "Ví dụ: Phân tích một nét đẹp của nhân vật.",
+        "nodes": [
+          {
+            "id": "opinion",
+            "icon": "🎯",
+            "title": "NHẬN XÉT",
+            "short": "Khẳng định",
+            "question": "Em muốn làm rõ điều gì?",
+            "example": "Nhân vật ông Hai là một người có tình yêu làng sâu sắc."
+          },
+          {
+            "id": "evidence",
+            "icon": "🔎",
+            "title": "DẪN CHỨNG",
+            "short": "Chọn chi tiết",
+            "question": "Chi tiết nào trong tác phẩm chứng minh điều đó?",
+            "example": "Khi nghe tin làng Chợ Dầu theo giặc, ông Hai đau đớn, tủi hổ và không dám bước chân ra ngoài."
+          },
+          {
+            "id": "analysis",
+            "icon": "🧩",
+            "title": "PHÂN TÍCH",
+            "short": "Giải thích",
+            "question": "Chi tiết đó cho thấy điều gì?",
+            "example": "Nỗi đau ấy cho thấy ông Hai không xem tình yêu làng chỉ là niềm tự hào đơn giản mà đã gắn tình yêu ấy với danh dự và lòng trung thành của mình."
+          },
+          {
+            "id": "comment",
+            "icon": "💭",
+            "title": "NHẬN XÉT",
+            "short": "Nâng ý",
+            "question": "Từ chi tiết đó, em hiểu gì sâu hơn về nhân vật?",
+            "example": "Qua nhân vật ông Hai, tình yêu quê hương hiện lên chân thành, sâu sắc và gắn bó với tình yêu đất nước."
+          },
+          {
+            "id": "close",
+            "icon": "🎯",
+            "title": "CHỐT",
+            "short": "Khẳng định",
+            "question": "Em muốn khẳng định điều gì?",
+            "example": "Nhân vật ông Hai vì thế để lại ấn tượng đẹp về một người nông dân giàu tình yêu quê hương và đất nước."
+          }
+        ],
+        "diagnosticQuestion": "Chi tiết này đang giúp em làm rõ nhận xét nào?",
+        "importantNote": "Đây là khung tư duy, không phải công thức bắt buộc. Có thể gộp hoặc mở rộng các bước tùy đề bài và dung lượng đoạn văn."
+      }
+    },
+    {
+      "id": "guidedPractice_01",
+      "type": "guidedPractice",
+      "data": {
+        "title": "Lắp mạch phân tích một chi tiết",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "builder",
+          "interaction": "type_to_place"
+        },
+        "prompt": "Phân tích chi tiết chiếc lá cuối cùng trong truyện ngắn Chiếc lá cuối cùng.",
+        "instruction": "Đưa từng câu vào đúng vị trí để tạo thành mạch nghị luận.",
+        "content": {
+          "prompt": "Chi tiết chiếc lá cuối cùng cho thấy điều gì?",
+          "slots": [
+            {
+              "id": "idea",
+              "label": "🎯 NHẬN XÉT",
+              "question": "Em muốn khẳng định điều gì?",
+              "hint": "Nhận xét khái quát."
+            },
+            {
+              "id": "evidence",
+              "label": "🔎 DẪN CHỨNG",
+              "question": "Chi tiết nào chứng minh?",
+              "hint": "Chi tiết trong tác phẩm."
+            },
+            {
+              "id": "analysis",
+              "label": "🧩 PHÂN TÍCH",
+              "question": "Chi tiết ấy cho thấy điều gì?",
+              "hint": "Giải thích ý nghĩa."
+            },
+            {
+              "id": "close",
+              "label": "🎯 CHỐT",
+              "question": "Từ đó có thể nhận xét gì?",
+              "hint": "Nâng ý nghĩa."
+            }
+          ],
+          "cards": [
+            {
+              "id": "idea",
+              "target": "idea",
+              "correct": true,
+              "slotText": "Chiếc lá cuối cùng là biểu tượng đẹp của tình yêu thương và sự hi sinh.",
+              "feedback": "✓ Đây là nhận xét chính.",
+              "label": "🎯 Nhận xét"
+            },
+            {
+              "id": "evidence",
+              "target": "evidence",
+              "correct": true,
+              "slotText": "Cụ Bơ-men đã âm thầm vẽ chiếc lá trong đêm mưa rét để Giôn-xi tin rằng chiếc lá ngoài cửa sổ vẫn còn đó.",
+              "feedback": "✓ Đây là dẫn chứng cụ thể.",
+              "label": "🔎 Dẫn chứng"
+            },
+            {
+              "id": "analysis",
+              "target": "analysis",
+              "correct": true,
+              "slotText": "Hành động ấy đã đem lại niềm tin và sự sống cho Giôn-xi, đồng thời cho thấy sự hi sinh âm thầm của cụ Bơ-men.",
+              "feedback": "✓ Em đã giải thích được ý nghĩa của dẫn chứng.",
+              "label": "🧩 Phân tích"
+            },
+            {
+              "id": "close",
+              "target": "close",
+              "correct": true,
+              "slotText": "Qua đó, chiếc lá không còn chỉ là một hình ảnh trong truyện mà trở thành biểu tượng của tình người.",
+              "feedback": "✓ Câu chốt đã nâng dẫn chứng thành ý nghĩa văn học.",
+              "label": "🎯 Chốt"
+            }
+          ]
+        },
+        "completion": {
+          "button": "Kiểm tra cấu trúc",
+          "feedback": {
+            "correct": "✓ Tốt! Em đã tạo được mạch nhận xét → dẫn chứng → phân tích → chốt.",
+            "partial": "△ Hãy kiểm tra xem câu này đang kể lại chi tiết hay thực sự giải thích ý nghĩa của nó.",
+            "wrong": "△ Hãy bắt đầu bằng nhận xét mà em muốn làm rõ."
+          }
+        }
+      }
+    },
+    {
+      "id": "miniChallenge_01",
+      "type": "miniChallenge",
+      "data": {
+        "title": "Câu nào đang thiếu?",
+        "durationSeconds": 120,
+        "ui": {
+          "layout": "single_choice"
+        },
+        "prompt": "Đoạn văn này còn thiếu điều gì để trở thành một đoạn phân tích tốt hơn?",
+        "question": "Nhân vật Mị có sức sống tiềm tàng mạnh mẽ. Trong đêm mùa xuân, nghe tiếng sáo, Mị nhớ lại tuổi trẻ và muốn đi chơi. Sau đó, Mị bị A Sử trói lại.",
+        "choices": [
+          {
+            "id": "analysis",
+            "text": "🧩 Phân tích ý nghĩa của các chi tiết",
+            "correct": true
+          },
+          {
+            "id": "evidence",
+            "text": "🔎 Dẫn chứng",
+            "correct": false
+          },
+          {
+            "id": "opinion",
+            "text": "🎯 Nhận xét",
+            "correct": false
+          }
+        ],
+        "feedback": {
+          "correct": "✓ Đúng. Đoạn đã có nhận xét và dẫn chứng nhưng đang dừng ở kể lại. Cần giải thích những chi tiết ấy cho thấy sức sống của Mị như thế nào.",
+          "analysis": "✓ Chính xác. Đây là bước biến kể lại thành phân tích.",
+          "evidence": "△ Đoạn đã có các chi tiết cụ thể về tiếng sáo, tuổi trẻ và việc Mị muốn đi chơi.",
+          "opinion": "△ Nhận xét đã xuất hiện ngay ở câu đầu."
+        }
+      }
+    },
+    {
+      "id": "reflection_01",
+      "type": "reflection",
+      "data": {
+        "title": "Đoạn văn văn học chưa thuyết phục ở đâu?",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "checklist_free_text"
+        },
+        "question": "Khi viết đoạn nghị luận văn học, em sẽ kiểm tra điều gì trước?",
+        "choices": [
+          {
+            "id": "opinion",
+            "text": "🎯 Nhận xét của mình đã rõ chưa?"
+          },
+          {
+            "id": "evidence",
+            "text": "🔎 Dẫn chứng có đúng và phù hợp không?"
+          },
+          {
+            "id": "analysis",
+            "text": "🧩 Mình đã phân tích dẫn chứng chưa?"
+          },
+          {
+            "id": "comment",
+            "text": "💭 Mình đã rút ra nhận xét gì từ chi tiết?"
+          }
+        ],
+        "freeText": {
+          "label": "Em sẽ kiểm tra...",
+          "placeholder": "Ví dụ: Em sẽ kiểm tra xem mình có chỉ kể lại tác phẩm hay đã phân tích chi tiết..."
+        },
+        "metacognition": "Biết tự hỏi “Chi tiết này giúp mình chứng minh điều gì?” thay vì chỉ kiểm tra xem mình đã kể đúng nội dung tác phẩm chưa."
+      }
+    },
+    {
+      "id": "cheatSheet_01",
+      "type": "cheatSheet",
+      "data": {
+        "title": "BỘ KHUNG VIẾT ĐOẠN NGHỊ LUẬN VĂN HỌC",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "card_list",
+          "actions": [
+            "save",
+            "download"
+          ]
+        },
+        "items": [
+          {
+            "order": 1,
+            "icon": "🎯",
+            "title": "NHẬN XÉT",
+            "question": "Em muốn làm rõ điều gì?"
+          },
+          {
+            "order": 2,
+            "icon": "🔎",
+            "title": "DẪN CHỨNG",
+            "question": "Chi tiết nào trong tác phẩm chứng minh?"
+          },
+          {
+            "order": 3,
+            "icon": "🧩",
+            "title": "PHÂN TÍCH",
+            "question": "Chi tiết đó cho thấy điều gì?"
+          },
+          {
+            "order": 4,
+            "icon": "💭",
+            "title": "NHẬN XÉT",
+            "question": "Từ chi tiết, em hiểu sâu hơn điều gì?"
+          },
+          {
+            "order": 5,
+            "icon": "🎯",
+            "title": "CHỐT",
+            "question": "Khẳng định hoặc mở rộng ý nghĩa."
+          }
+        ],
+        "keyMessage": "⭐ Đừng chỉ kể chi tiết. Hãy hỏi: “Chi tiết này cho thấy điều gì?”",
+        "note": "Đây là khung tư duy, không phải công thức bắt buộc. Một đoạn có thể linh hoạt gộp hoặc mở rộng các bước.",
+        "practiceButton": {
+          "label": "🛠️ Thử phân tích",
+          "action": "open_mini_practice"
+        }
+      }
+    },
+    {
+      "id": "finalChallenge_01",
+      "type": "finalChallenge",
+      "data": {
+        "title": "THỬ THÁCH: VIẾT ĐOẠN VĂN NGHỊ LUẬN VĂN HỌC",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "multi_stage_challenge",
+          "layout": "multi_stage"
+        },
+        "prompt": "Viết một đoạn văn khoảng 150–200 chữ phân tích một nét đẹp của nhân vật ông Hai trong truyện ngắn Làng của Kim Lân.",
+        "stages": [
+          {
+            "key": "scaffold",
+            "type": "scaffold",
+            "title": "🧩 TRƯỚC KHI VIẾT",
+            "question": "Trước khi viết, hãy xác định nhận xét và chi tiết em sẽ dùng.",
+            "scaffold": [
+              {
+                "id": "opinion",
+                "label": "NHẬN XÉT",
+                "hint": "Em muốn khẳng định nét đẹp nào của ông Hai?"
+              },
+              {
+                "id": "evidence",
+                "label": "DẪN CHỨNG",
+                "hint": "Chi tiết nào trong truyện làm rõ điều đó?"
+              },
+              {
+                "id": "analysis",
+                "label": "PHÂN TÍCH",
+                "hint": "Chi tiết ấy cho thấy điều gì?"
+              },
+              {
+                "id": "comment",
+                "label": "NHẬN XÉT SÂU",
+                "hint": "Từ đó, em hiểu gì sâu hơn về nhân vật?"
+              },
+              {
+                "id": "close",
+                "label": "CHỐT",
+                "hint": "Em muốn khẳng định điều gì về nhân vật?"
+              }
+            ]
+          },
+          {
+            "key": "writing",
+            "type": "editor",
+            "title": "✍️ VIẾT ĐOẠN VĂN",
+            "placeholder": "Viết đoạn văn nghị luận văn học của em...",
+            "minCharacters": 150,
+            "maxCharacters": 700,
+            "submit": {
+              "label": "🚀 Nộp & phân tích"
+            }
+          },
+          {
+            "key": "analysis",
+            "type": "analysis",
+            "title": "🧠 HỒ SƠ PHÂN TÍCH VĂN HỌC",
+            "metrics": [
+              {
+                "id": "opinion",
+                "label": "Nhận xét",
+                "status": "detect"
+              },
+              {
+                "id": "evidence",
+                "label": "Dẫn chứng",
+                "status": "detect"
+              },
+              {
+                "id": "analysis",
+                "label": "Phân tích",
+                "status": "detect"
+              },
+              {
+                "id": "comment",
+                "label": "Nhận xét sâu",
+                "status": "detect"
+              },
+              {
+                "id": "coherence",
+                "label": "Mạch lập luận",
+                "status": "detect"
+              }
+            ],
+            "diagnosticQuestion": "Chi tiết này đang giúp em làm rõ nhận xét nào?",
+            "feedbackRules": [
+              {
+                "when": "missing_opinion",
+                "feedback": "△ Đoạn văn chưa thể hiện rõ nhận xét về nhân vật. Hãy thử nêu một nét đẹp cụ thể."
+              },
+              {
+                "when": "missing_evidence",
+                "feedback": "△ Em cần chọn một chi tiết cụ thể trong tác phẩm để làm điểm tựa cho nhận xét."
+              },
+              {
+                "when": "missing_analysis",
+                "feedback": "△ Em đang kể lại chi tiết. Hãy trả lời: “Chi tiết này cho thấy điều gì?”"
+              },
+              {
+                "when": "missing_comment",
+                "feedback": "△ Hãy nâng từ chi tiết lên một nhận xét sâu hơn về nhân vật hoặc ý nghĩa của tác phẩm."
+              },
+              {
+                "when": "good_structure",
+                "feedback": "✓ Đoạn văn đã tạo được mạch: nhận xét → dẫn chứng → phân tích → nhận xét sâu → chốt."
+              }
+            ],
+            "scoreDimensions": [
+              "opinion",
+              "evidence",
+              "analysis",
+              "comment",
+              "coherence"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,1864 @@
+{
+  "version": "3.0",
+  "title": "Lộ trình ôn thi Tuyển sinh 10 Ngữ văn",
+  "description": "Sprint 2 Roadmap",
+  "modules": [
+    {
+      "id": "nen-tang-ngon-ngu",
+      "name": "01. NỀN TẢNG NGÔN NGỮ",
+      "subjects": [
+        {
+          "id": "tu-loai",
+          "name": "Từ loại",
+          "icon": "📝",
+          "color": "#4CAF50",
+          "description": "Nhận biết và phân tích từ loại",
+          "folder": "lessons/tu-loai/",
+          "enabled": true,
+          "lessons": [
+            {
+              "id": "tu-loai.01-danh-tu",
+              "title": "Danh từ",
+              "file": "01-danh-tu.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "tu-loai.02-dong-tu",
+              "title": "Động từ",
+              "file": "02-dong-tu.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "tu-loai.03-tinh-tu",
+              "title": "Tính từ",
+              "file": "03-tinh-tu.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "tu-loai.04-dai-tu",
+              "title": "Đại từ",
+              "file": "04-dai-tu.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "tu-loai.04-on-tap-danh-dong-tinh-dai-tu",
+              "title": "Ôn phần 1",
+              "file": "04-on-tap-danh-dong-tinh-dai-tu.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "tu-loai.07-quan-he-tu",
+              "title": "Quan hệ từ",
+              "file": "07-quan-he-tu.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "tu-loai.05-so-tu",
+              "title": "Số từ",
+              "file": "05-so-tu.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "tu-loai.06-pho-tu",
+              "title": "Phó từ",
+              "file": "06-pho-tu.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "tu-loai.08-tro-tu",
+              "title": "Trợ từ",
+              "file": "08-tro-tu.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "tu-loai.09-than-tu",
+              "title": "Thán từ",
+              "file": "09-than-tu.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "tu-loai.10-tinh-thai-tu",
+              "title": "Tình thái từ",
+              "file": "10-tinh-thai-tu.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "tu-loai.11-on-tap-so-pho-tro-than-tinh-thai-tu",
+              "title": "Ôn phần 2",
+              "file": "11-on-tap-so-pho-tro-than-tinh-thai-tu.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "tu-loai.12-tong-on",
+              "title": "Đánh giá tổng hợp",
+              "file": "12-on-tu-loai.json",
+              "difficulty": 4,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "tu-loai.13-danh-sach-tu-loai",
+              "title": "Sổ tay từ loại",
+              "file": "13-danh-sach-tu-loai.json",
+              "difficulty": 2,
+              "estimated": 15,
+              "enabled": true
+            }
+          ]
+        },
+        {
+          "id": "cau-tao-tu",
+          "name": "Cấu tạo từ",
+          "icon": "🧩",
+          "color": "#2196F3",
+          "description": "Từ đơn, từ ghép, từ láy",
+          "folder": "lessons/cau-tao-tu/",
+          "enabled": true,
+          "lessons": [
+            {
+              "id": "cau-tao-tu.01-tu-don",
+              "title": "Từ đơn",
+              "file": "01-tu-don.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "cau-tao-tu.02-tu-phuc",
+              "title": "Từ phức",
+              "file": "02-tu-phuc.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "cau-tao-tu.03-tu-ghep",
+              "title": "Từ ghép",
+              "file": "03-tu-ghep.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "cau-tao-tu.04-tu-lay",
+              "title": "Từ láy",
+              "file": "04-tu-lay.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "cau-tao-tu.05-phan-biet-ghep-lay",
+              "title": "Phân biệt từ ghép và từ láy",
+              "file": "05-phan-biet-ghep-lay.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "cau-tao-tu.06-on-tap-chung",
+              "title": "Tổng ôn Cấu tạo từ",
+              "file": "06-on-tap-chung.json",
+              "difficulty": 4,
+              "estimated": 20,
+              "enabled": true
+            }
+          ]
+        },
+        {
+          "id": "nghia-cua-tu",
+          "name": "Nghĩa của từ",
+          "icon": "📚",
+          "color": "#9C27B0",
+          "description": "Nghĩa gốc, nghĩa chuyển",
+          "folder": "lessons/nghia-cua-tu/",
+          "enabled": true,
+          "lessons": [
+            {
+              "id": "nghia-cua-tu.01-nghia-cua-tu",
+              "title": "Nghĩa của từ",
+              "file": "01-nghia-cua-tu.json",
+              "difficulty": 1,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "nghia-cua-tu.02-nghia-goc",
+              "title": "Nghĩa gốc",
+              "file": "02-nghia-goc.json",
+              "difficulty": 1,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "nghia-cua-tu.03-nghia-chuyen",
+              "title": "Nghĩa chuyển",
+              "file": "03-nghia-chuyen.json",
+              "difficulty": 1,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "nghia-cua-tu.04-tu-nhieu-nghia",
+              "title": "Từ nhiều nghĩa",
+              "file": "04-tu-nhieu-nghia.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "nghia-cua-tu.04-on-tap-nghia-goc-chuyen",
+              "title": "Ôn tập: Nghĩa gốc, Nghĩa chuyển, Từ đa nghĩa",
+              "file": "04-on-tap-nghia-goc-chuyen.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "nghia-cua-tu.05-tu-dong-am",
+              "title": "Từ đồng âm",
+              "file": "05-tu-dong-am.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "nghia-cua-tu.06-tu-dong-nghia",
+              "title": "Từ đồng nghĩa",
+              "file": "06-tu-dong-nghia.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "nghia-cua-tu.07-tu-trai-nghia",
+              "title": "Từ trái nghĩa",
+              "file": "07-tu-trai-nghia.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "nghia-cua-tu.08-cap-do-khai-quat-nghia-tu",
+              "title": "Cấp độ khái quát của nghĩa từ ngữ",
+              "file": "08-cap-do-khai-quat-nghia-tu.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "nghia-cua-tu.09-truong-tu-vung",
+              "title": "Trường từ vựng",
+              "file": "09-truong-tu-vung.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "nghia-cua-tu.10-luyen-tap-tong-hop",
+              "title": "Luyện tập tổng hợp",
+              "file": "10-luyen-tap-tong-hop.json",
+              "difficulty": 4,
+              "estimated": 20,
+              "enabled": true
+            }
+          ]
+        },
+        {
+          "id": "bptt",
+          "name": "Biện pháp tu từ",
+          "icon": "✨",
+          "color": "#FF9800",
+          "description": "Ẩn dụ, hoán dụ, so sánh...",
+          "folder": "lessons/bptt/",
+          "enabled": true,
+          "lessons": [
+            {
+              "id": "bptt.01-so-sanh",
+              "title": "So sánh",
+              "file": "01-so-sanh.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "bptt.02-an-du",
+              "title": "Ẩn dụ",
+              "file": "02-an-du.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "bptt.01-02-phan-biet-so-sanh-an-du",
+              "title": "Phân biệt so sánh và ẩn dụ",
+              "file": "01-02-phan-biet-so-sanh-an-du.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "bptt.04-hoan-du",
+              "title": "Hoán dụ",
+              "file": "04-hoan-du.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "bptt.02-04-phan-biet-an-du-hoan-du",
+              "title": "Phân biệt ẩn dụ và hoán dụ",
+              "file": "02-04-phan-biet-an-du-hoan-du.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "bptt.03-nhan-hoa",
+              "title": "Nhân hoá",
+              "file": "03-nhan-hoa.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "bptt.05-diep-ngu",
+              "title": "Điệp ngữ",
+              "file": "05-diep-ngu.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "bptt.06-liet-ke",
+              "title": "Liệt kê",
+              "file": "06-liet-ke.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "bptt.07-noi-qua",
+              "title": "Nói quá",
+              "file": "07-noi-qua.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "bptt.08-noi-giam-noi-tranh",
+              "title": "Nói giảm nói tránh",
+              "file": "08-noi-giam-noi-tranh.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "bptt.09-choi-chu",
+              "title": "Chơi chữ",
+              "file": "09-choi-chu.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "bptt.10-luyen-tap-tong-hop",
+              "title": "Luyện tập tổng hợp",
+              "file": "10-luyen-tap-tong-hop.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "bptt.11-danh-sach-bptt",
+              "title": "Sổ tay biện pháp tu từ",
+              "file": "11-danh-sach-bptt.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            }
+          ]
+        },
+        {
+          "id": "nguon-goc-cua-tu",
+          "name": "Nguồn gốc từ",
+          "icon": "🌍",
+          "color": "#4CAF50",
+          "description": "Từ thuần Việt hay từ mượn",
+          "folder": "lessons/nguon-goc-cua-tu/",
+          "enabled": true,
+          "lessons": [
+            {
+              "id": "nguon-goc-cua-tu.01-tu-thuan-viet",
+              "title": "Từ thuần Việt",
+              "file": "01-tu-thuan-viet.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "nguon-goc-cua-tu.02-tu-muon",
+              "title": "Từ mượn",
+              "file": "02-tu-muon.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "nguon-goc-cua-tu.03-tu-han-viet",
+              "title": "Từ Hán Việt",
+              "file": "03-tu-han-viet.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "nguon-goc-cua-tu.04-tu-muon-tu-cac-ngon-ngu-khac",
+              "title": "Từ mượn từ các ngôn ngữ khác",
+              "file": "04-tu-muon-tu-cac-ngon-ngu-khac.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "nguon-goc-cua-tu.05-su-dung-tu-muon-dung-cach",
+              "title": "Sử dụng từ mượn đúng cách",
+              "file": "05-su-dung-tu-muon-dung-cach.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "nguon-goc-cua-tu.06-mo-rong-von-tu",
+              "title": "Phát triển và mở rộng vốn từ",
+              "file": "06-mo-rong-von-tu.json",
+              "difficulty": 1,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "nguon-goc-cua-tu.07-luyen-tap-tong-hop",
+              "title": "Đánh giá tổng hợp",
+              "file": "07-luyen-tap-tong-hop.json",
+              "difficulty": 4,
+              "estimated": 25,
+              "enabled": true
+            }
+          ]
+        },
+        {
+          "id": "cau",
+          "name": "Câu",
+          "icon": "📖",
+          "color": "#607D8B",
+          "description": "Thành phần câu, kiểu câu",
+          "folder": "lessons/cau/",
+          "lessons": [
+            {
+              "id": "cau.00-cau",
+              "title": "Câu là gì",
+              "file": "00-cau.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "cau.01-thanh-phan-chinh-cua-cau",
+              "title": "Thành phần chính của câu",
+              "file": "01-thanh-phan-chinh-cua-cau.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "cau.02-thanh-phan-phu-cua-cau",
+              "title": "Giới thiệu các thành phần phụ",
+              "file": "02-thanh-phan-phu-cua-cau.json",
+              "difficulty": 1,
+              "estimated": 10,
+              "enabled": true
+            },
+            {
+              "id": "cau.02a-trang-ngu",
+              "title": "Trạng ngữ",
+              "file": "02a-trang-ngu.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "cau.02b-khoi-ngu",
+              "title": "Khởi ngữ",
+              "file": "02b-khoi-ngu.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "cau.02c-thanh-phan-biet-lap",
+              "title": "Thành phần biệt lập",
+              "file": "02c-thanh-phan-biet-lap.json",
+              "difficulty": 1,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "cau.02d-phan-biet-khoi-ngu-va-thanh-phan-biet-lap",
+              "title": "Phân biệt khởi ngữ và thành phần biệt lập",
+              "file": "02d-phan-biet-khoi-ngu-va-thanh-phan-biet-lap.json",
+              "difficulty": 2,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "cau.03-cau-don",
+              "title": "Câu đơn",
+              "file": "03-cau-don.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "cau.04-cau-ghep",
+              "title": "Câu ghép",
+              "file": "04-cau-ghep.json",
+              "difficulty": 1,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "cau.05-dau-cau",
+              "title": "Dấu câu",
+              "file": "05-dau-cau.json",
+              "difficulty": 1,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "cau.06-cac-kieu-cau-theo-muc-dich-noi",
+              "title": "Các kiểu câu phân theo mục đích nói",
+              "file": "06-cac-kieu-cau-theo-muc-dich-noi.json",
+              "difficulty": 1,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "cau.07-loi-dan-truc-tiep",
+              "title": "Lời dẫn trực tiếp",
+              "file": "07-loi-dan-truc-tiep.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "cau.08-loi-dan-gian-tiep",
+              "title": "Lời dẫn gián tiếp",
+              "file": "08-loi-dan-gian-tiep.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "cau.09-chuyen-doi-loi-dan",
+              "title": "Chuyển đổi lời dẫn",
+              "file": "09-chuyen-doi-loi-dan.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "cau.10-cau-rut-gon",
+              "title": "Câu rút gọn",
+              "file": "10-cau-rut-gon.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "cau.11-cau-dac-biet",
+              "title": "Câu đặc biệt",
+              "file": "11-cau-dac-biet.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "cau.12-luyen-tap-tong-hop",
+              "title": "Luyện tập tổng hợp",
+              "file": "12-luyen-tap-tong-hop.json",
+              "difficulty": 1,
+              "estimated": 25,
+              "enabled": true
+            }
+          ]
+        },
+        {
+          "id": "ptbd",
+          "name": "Phương thức biểu đạt",
+          "icon": "🎭",
+          "color": "#FFC107",
+          "description": "6 phương thức biểu đạt trong văn bản",
+          "folder": "lessons/ptbd/",
+          "enabled": true,
+          "lessons": [
+            {
+              "id": "ptbd.01-phuong-thuc-bieu-dat-la-gi",
+              "title": "Phương thức biểu đạt là gì?",
+              "file": "01-phuong-thuc-bieu-dat-la-gi.json",
+              "difficulty": 1,
+              "estimated": 10,
+              "enabled": true
+            },
+            {
+              "id": "ptbd.02-tu-su",
+              "title": "Tự sự",
+              "file": "02-tu-su.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "ptbd.03-mieu-ta",
+              "title": "Miêu tả",
+              "file": "03-mieu-ta.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "ptbd.04-bieu-cam",
+              "title": "Biểu cảm",
+              "file": "04-bieu-cam.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "ptbd.05-thuyet-minh",
+              "title": "Thuyết minh",
+              "file": "05-thuyet-minh.json",
+              "difficulty": 2,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "ptbd.06-nghi-luan",
+              "title": "Nghị luận",
+              "file": "06-nghi-luan.json",
+              "difficulty": 2,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "ptbd.07-hanh-chinh-cong-vu",
+              "title": "Hành chính - công vụ",
+              "file": "07-hanh-chinh-cong-vu.json",
+              "difficulty": 1,
+              "estimated": 10,
+              "enabled": true
+            },
+            {
+              "id": "ptbd.08-phan-biet-cac-phuong-thuc-bieu-dat",
+              "title": "Phân biệt các phương thức biểu đạt",
+              "file": "08-phan-biet-cac-phuong-thuc-bieu-dat.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "ptbd.09-luyen-tap-tong-hop",
+              "title": "Luyện tập tổng hợp",
+              "file": "09-luyen-tap-tong-hop.json",
+              "difficulty": 3,
+              "estimated": 25,
+              "enabled": true
+            },
+            {
+              "id": "ptbd.10-so-tay-phuong-thuc-bieu-dat",
+              "title": "Sổ tay phương thức biểu đạt",
+              "file": "10-danh-sach-ptbd.json",
+              "difficulty": 3,
+              "estimated": 25,
+              "enabled": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kien-thuc-van-hoc",
+      "name": "02. KIẾN THỨC VĂN HỌC",
+      "subjects": [
+        {
+          "id": "tho",
+          "name": "Thơ",
+          "icon": "🌿",
+          "description": "",
+          "folder": "lessons/tho/",
+          "enabled": true,
+          "lessons": [
+            {
+              "id": "tho.01-kien-thuc-van-hoc-ve-tho",
+              "title": "Kiến thức văn học về thơ",
+              "file": "02b-kien-thuc-van-hoc-tho.json",
+              "difficulty": 1,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "tho.02-kien-thuc-van-hoc-tho-luc-bat",
+              "title": "Thơ lục bát ",
+              "file": "02-kien-thuc-van-hoc-tho-luc-bat.json",
+              "difficulty": 1,
+              "estimated": 10,
+              "enabled": true
+            }
+          ]
+        },
+        {
+          "id": "van-xuoi",
+          "name": "Văn xuôi",
+          "icon": "📝",
+          "description": "",
+          "folder": "lessons/van-xuoi/",
+          "enabled": true,
+          "lessons": [
+            {
+              "id": "van-xuoi.03-kien-thuc-van-hoc-van-xuoi",
+              "title": "Văn xuôi ",
+              "file": "03-kien-thuc-van-hoc-van-xuoi.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            }
+          ]
+        },
+        {
+          "id": "van-hoc-dan-gian",
+          "name": "Văn học dân gian",
+          "icon": "🌾",
+          "description": "",
+          "folder": "lessons/van-hoc-dan-gian/",
+          "enabled": true,
+          "lessons": [
+            {
+              "id": "van-hoc-dan-gian.04-kien-thuc-van-hoc-thanh-ngu-tuc-ngu-ca-dao",
+              "title": "Thành ngữ, tục ngữ, ca dao",
+              "file": "04-kien-thuc-van-hoc-thanh-ngu-tuc-ngu-ca-dao.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            }
+          ]
+        },
+        {
+          "id": "kich",
+          "name": "Kịch",
+          "icon": "🎭",
+          "description": "",
+          "folder": "lessons/kich/",
+          "enabled": true,
+          "lessons": []
+        },
+        {
+          "id": "nghe-thuat",
+          "name": "Nghệ thuật",
+          "icon": "🎨",
+          "description": "",
+          "folder": "lessons/nghe-thuat/",
+          "enabled": true,
+          "lessons": []
+        },
+        {
+          "id": "khai-niem-vh",
+          "name": "Các khái niệm văn học",
+          "icon": "🔎",
+          "description": "",
+          "folder": "lessons/khai-niem/",
+          "enabled": true,
+          "lessons": []
+        },
+        {
+          "id": "giai-ma-van-ban",
+          "name": "Giải mã văn bản (GDPT 2018)",
+          "icon": "🕵️",
+          "color": "#9C27B0",
+          "description": "Bộ công cụ vạn năng để phân tích thơ và truyện ngoài SGK",
+          "folder": "lessons/kien-thuc-van-hoc/",
+          "enabled": true,
+          "lessons": [
+            {
+              "id": "kien-thuc.05-giai-ma-tho-hien-dai",
+              "title": "Giải mã Thơ hiện đại",
+              "file": "05-giai-ma-tho-hien-dai.json",
+              "difficulty": 3,
+              "estimated": 30,
+              "enabled": true
+            },
+            {
+              "id": "kien-thuc.06-giai-ma-van-xuoi",
+              "title": "Giải mã Truyện ngắn",
+              "file": "06-giai-ma-van-xuoi.json",
+              "difficulty": 3,
+              "estimated": 30,
+              "enabled": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "doc-hieu",
+      "name": "03. ĐỌC HIỂU",
+      "subjects": [
+        {
+          "id": "doc-hieu",
+          "name": "Đọc hiểu",
+          "icon": "📑",
+          "color": "#009688",
+          "description": "Các dạng câu hỏi đọc hiểu",
+          "folder": "lessons/doc-hieu/",
+          "enabled": true,
+          "lessons": [
+            {
+              "id": "doc-hieu.01-doc-hieu-la-gi",
+              "title": "Đọc hiểu là gì?",
+              "file": "01-doc-hieu-la-gi.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "doc-hieu.02-xac-dinh-noi-dung",
+              "title": "Xác định nội dung",
+              "file": "02-xac-dinh-noi-dung.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "doc-hieu.03-xac-dinh-chu-de",
+              "title": "Xác định chủ đề",
+              "file": "03-xac-dinh-chu-de.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "doc-hieu.04-xac-dinh-phuong-thuc-bieu-dat",
+              "title": "Xác định phương thức biểu đạt",
+              "file": "04-xac-dinh-phuong-thuc-bieu-dat.json",
+              "difficulty": 2,
+              "estimated": 25,
+              "enabled": true
+            },
+            {
+              "id": "doc-hieu.05-xac-dinh-ngoi-ke",
+              "title": "Xác định ngôi kể",
+              "file": "05-xac-dinh-ngoi-ke.json",
+              "difficulty": 2,
+              "estimated": 25,
+              "enabled": true
+            },
+            {
+              "id": "doc-hieu.07-loi-nguoi-ke-loi-nhan-vat",
+              "title": "Lời người kể và lời nhân vật",
+              "file": "07-xac-dinh-loi-nguoi-ke-va-loi-nhan-vat.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "doc-hieu.08-phan-tich-chi-tiet-nghe-thuat",
+              "title": "Phân tích chi tiế nghệ thuật",
+              "file": "08-phan-tich-chi-tiet-nghe-thuat.json",
+              "difficulty": 2,
+              "estimated": 25,
+              "enabled": true
+            },
+            {
+              "id": "doc-hieu.09-thong-diep",
+              "title": "Xác định thông điệp",
+              "file": "09-thong-diep.json",
+              "difficulty": 3,
+              "estimated": 25,
+              "enabled": true
+            },
+            {
+              "id": "doc-hieu.10-cac-dang-cau-hoi",
+              "title": "Các dạng câu hỏi đọc hiểu",
+              "file": "10-cac-dang-cau-hoi-doc-hieu.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "doc-hieu.11-luyen-tap-tong-hop",
+              "title": "Luyện tập tổng hợp",
+              "file": "11-luyen-tap-tong-hop.json",
+              "difficulty": 3,
+              "estimated": 25,
+              "enabled": true
+            },
+            {
+              "id": "doc-hieu.12-luyen-de-2025",
+              "title": "Luyện đề thi vào 10 (2025)",
+              "file": "12-luyen-de-2025.json",
+              "difficulty": 3,
+              "estimated": 30,
+              "enabled": true
+            }
+          ]
+        },
+        {
+          "id": "doc-hieu-theo-kieu-van-ban",
+          "name": "Đọc hiểu theo kiểu văn bản",
+          "icon": "📚",
+          "color": "#9C27B0",
+          "description": "Chiến lược xử lý từng dạng văn bản đặc thù",
+          "folder": "lessons/doc-hieu-theo-kieu-van-ban/",
+          "enabled": true,
+          "lessons": [
+            {
+              "id": "doc-hieu-theo-kieu-van-ban.01",
+              "title": "Đọc hiểu văn bản tự sự",
+              "file": "01-doc-hieu-van-ban-tu-su.json",
+              "difficulty": 2,
+              "estimated": 25,
+              "enabled": true
+            },
+            {
+              "id": "doc-hieu-theo-kieu-van-ban.02",
+              "title": "Đọc hiểu văn bản thơ",
+              "file": "02-doc-hieu-van-ban-tho.json",
+              "difficulty": 2,
+              "estimated": 25,
+              "enabled": true
+            },
+            {
+              "id": "doc-hieu-theo-kieu-van-ban.02b",
+              "title": "Kiến thức văn học về thơ",
+              "file": "02b-kien-thuc-van-hoc-tho.json",
+              "difficulty": 1,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "doc-hieu-theo-kieu-van-ban.03",
+              "title": "Đọc hiểu văn bản thuyết minh",
+              "file": "03-doc-hieu-van-ban-thuyet-minh.json",
+              "difficulty": 2,
+              "estimated": 25,
+              "enabled": true
+            },
+            {
+              "id": "doc-hieu-theo-kieu-van-ban.04",
+              "title": "Đọc hiểu văn bản nghị luận",
+              "file": "04-doc-hieu-van-ban-nghi-luan.json",
+              "difficulty": 2,
+              "estimated": 25,
+              "enabled": true
+            },
+            {
+              "id": "doc-hieu-theo-kieu-van-ban.05",
+              "title": "Đọc hiểu văn bản thông tin",
+              "file": "05-doc-hieu-van-ban-thong-tin.json",
+              "difficulty": 2,
+              "estimated": 25,
+              "enabled": true
+            },
+            {
+              "id": "doc-hieu-theo-kieu-van-ban.06",
+              "title": "Các dạng câu hỏi đọc hiểu",
+              "file": "06-cac-dang-cau-hoi-doc-hieu.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "doc-hieu-theo-kieu-van-ban.07",
+              "title": "Chiến lược làm bài",
+              "file": "07-chien-luoc-lam-bai.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "doc-hieu-theo-kieu-van-ban.08",
+              "title": "Luyện tập tổng hợp",
+              "file": "08-luyen-tap-tong-hop.json",
+              "difficulty": 3,
+              "estimated": 30,
+              "enabled": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "viet-doan-van",
+      "name": "04. VIẾT ĐOẠN VĂN",
+      "subjects": [
+        {
+          "id": "kho-dan-chung",
+          "name": "Trạm Sạc Dẫn Chứng",
+          "icon": "🔋",
+          "color": "#FF5722",
+          "description": "Kho dẫn chứng NLXH đa năng",
+          "folder": "lessons/viet-doan-van/",
+          "enabled": true,
+          "lessons": [
+            {
+              "id": "viet-doan-van.01-dan-chung-da-nang",
+              "title": "Dẫn chứng đa năng 1",
+              "file": "01-dan-chung-da-nang.json",
+              "difficulty": 1,
+              "estimated": 20,
+              "enabled": true
+            }
+          ]
+        },
+        {
+          "id": "viet-doan-van",
+          "name": "Viết đoạn văn",
+          "icon": "✍️",
+          "color": "#FF9800",
+          "description": "Nắm vững cấu trúc, cách tìm ý và triển khai thành đoạn văn mạch lạc",
+          "folder": "lessons/viet-doan-van/",
+          "enabled": true,
+          "lessons": [
+            {
+              "id": "viet-doan-van.01-phan-tich-de-va-tim-y",
+              "title": "Phân tích đề và Tìm ý",
+              "file": "00-phan-tich-de-va-tim-y.json",
+              "difficulty": 1,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "viet-doan-van.02-lap-dan-y",
+              "title": "Lập dàn ý",
+              "file": "01-lap-dan-y.json",
+              "difficulty": 1,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "viet-doan-van.03-phat-trien-y",
+              "title": "Phát triển ý",
+              "file": "02-phat-trien-y.json",
+              "difficulty": 2,
+              "estimated": 25,
+              "enabled": true
+            },
+            {
+              "id": "viet-doan-van.04-cac-cach-trinh-bay-doan-van",
+              "title": "Các cách trình bày đoạn văn",
+              "file": "03-trinh-bay-doan-van.json",
+              "difficulty": 2,
+              "estimated": 25,
+              "enabled": true
+            },
+            {
+              "id": "viet-doan-van.05-lien-ket-cau-trong-doan-van",
+              "title": "Liên kết câu trong đoạn văn",
+              "file": "04-lien-ket-cau-trong-doan.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "viet-doan-van.06-dien-dat-hay-va-tranh-loi",
+              "title": "Diễn đạt hay và tránh lỗi",
+              "file": "05-dien-dat-hay.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "viet-doan-van.07-viet-cac-kieu-doan-van",
+              "title": "Viết các kiểu đoạn văn",
+              "file": "06-viet-cac-kieu-doan-van.json",
+              "difficulty": 3,
+              "estimated": 30,
+              "enabled": true
+            },
+            {
+              "id": "viet-doan-van.08-viet-doan-van-nghi-luan",
+              "title": "Viết đoạn văn nghị luận",
+              "file": "07-viet-doan-van-nghi-luan.json",
+              "difficulty": 3,
+              "estimated": 25,
+              "enabled": true
+            },
+            {
+              "id": "viet-doan-van.08d-viet-doan-van-giai-thich",
+              "title": "Viết đoạn văn giải thích",
+              "file": "07k-viet-doan-van-giai-thich-3.json",
+              "difficulty": 3,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "viet-doan-van.08e-viet-doan-van-phan-tich-ban-luan",
+              "title": "Viết đoạn văn phân tích-bàn luận",
+              "file": "07m-viet-doan-van-phan-tich-ban-luan.json",
+              "difficulty": 3,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "viet-doan-van.08f-viet-doan-van-phan-tich-ban-luan-2",
+              "title": "Viết đoạn văn phân tích-bàn luận 2",
+              "file": "07n-viet-doan-van-phan-tich-ban-luan.json",
+              "difficulty": 3,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "viet-doan-van.08g-viet-doan-van-chung-minh",
+              "title": "Viết đoạn văn chứng minh",
+              "file": "07p-viet-doan-van-chung-minh.json",
+              "difficulty": 3,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "viet-doan-van.08h-viet-doan-van-mo-rong-phan-bien",
+              "title": "Viết đoạn văn mở rộng-phản biện",
+              "file": "07q-viet-doan-van-mo-rong-phan-bien.json",
+              "difficulty": 3,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "viet-doan-van.08j-viet-doan-van-bai-hoc-hanh-dong",
+              "title": "Viết đoạn văn bài học - hành động",
+              "file": "07r-viet-doan-van-bai-hoc-hanh-dong.json",
+              "difficulty": 3,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "viet-doan-van.8b-viet-doan-van-mieu-ta",
+              "title": "Viết đoạn văn miêu tả",
+              "file": "08b-viet-doan-van-mieu-ta.json",
+              "difficulty": 3,
+              "estimated": 25,
+              "enabled": true
+            },
+            {
+              "id": "viet-doan-van.09-viet-doan-van-bieu-cam",
+              "title": "Viết đoạn văn biểu cảm 1",
+              "file": "07b-viet-doan-van-bieu-cam.json",
+              "difficulty": 3,
+              "estimated": 25,
+              "enabled": true
+            },
+            {
+              "id": "viet-doan-van.10-viet-doan-van-bieu-cam",
+              "title": "Viết đoạn văn biểu cảm 2",
+              "file": "08-viet-doan-van-bieu-cam.json",
+              "difficulty": 3,
+              "estimated": 25,
+              "enabled": true
+            },
+            {
+              "id": "viet-doan-van.11-viet-doan-van-NLXH",
+              "title": "Viết đoạn văn nghị luận xã hội",
+              "file": "10-viet-doan-van-nlxh.json",
+              "difficulty": 3,
+              "estimated": 25,
+              "enabled": true
+            },
+            {
+              "id": "viet-doan-van.12-viet-doan-van-NLVH",
+              "title": "Viết đoạn văn nghị luận văn học 1",
+              "file": "10-viet-doan-van-nghi-luan-van-hoc.json",
+              "difficulty": 3,
+              "estimated": 25,
+              "enabled": true
+            },
+            {
+              "id": "viet-doan-van.12-viet-doan-van-NLVH2",
+              "title": "Viết đoạn văn nghị luận văn học 2",
+              "file": "11-viet-doan-van-nlvh-dang-2.json",
+              "difficulty": 3,
+              "estimated": 25,
+              "enabled": true
+            },
+            {
+              "id": "viet-doan-van.13-viet-doan-van-NLVH2",
+              "title": "Viết đoạn văn nghị luận văn học 3",
+              "file": "12-nlvh3.json",
+              "difficulty": 3,
+              "estimated": 25,
+              "enabled": true
+            }
+          ]
+        },
+        {
+          "id": "doan-van",
+          "name": "Đoạn văn",
+          "icon": "📑",
+          "color": "#009688",
+          "description": "Đoạn văn",
+          "folder": "lessons/doan-van/",
+          "enabled": true,
+          "lessons": [
+            {
+              "id": "doan-van.01-doan-van",
+              "title": "Đoạn văn",
+              "file": "01-doan-van.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "doan-van.02-cau-truc-doan",
+              "title": "Cấu trúc đoạn văn",
+              "file": "02-cau-truc-doan.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "doan-van.03-doan-dien-dich",
+              "title": "Đoạn văn diễn dịch",
+              "file": "03-doan-dien-dich.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "doan-van.04-doan-quy-nap",
+              "title": "Đoạn văn quy nạp",
+              "file": "04-doan-qui-nap.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "doan-van.05-doan-tong-phan-hop",
+              "title": "Đoạn văn tổng - phân - hợp",
+              "file": "05-doan-tong-phan-hop.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "doan-van.06-doan-song-hanh",
+              "title": "Đoạn văn song hành",
+              "file": "06-doan-song-hanh.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "doan-van.07-lien-ket-cau",
+              "title": "Liên kết câu",
+              "file": "07-lien-ket-cau.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "doan-van.08-phep-lien-ket",
+              "title": "Phép liên kết",
+              "file": "08-phep-lien-ket.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "doan-van.08a-phep-lien-ket-phep-lap",
+              "title": "Phép lặp từ ngữ",
+              "file": "08a-phep-lien-ket-phep-lap.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "doan-van.08b-phep-lien-ket-phep-the",
+              "title": "Phép thế",
+              "file": "08b-phep-lien-ket-phep-the.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "doan-van.08c-phep-lien-ket-phep-noi",
+              "title": "Phép nối",
+              "file": "08c-phep-lien-ket-phep-noi.json",
+              "difficulty": 1,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "doan-van.08d-phep-lien-ket-dong-nghia-trai-nghia-lien-tuong",
+              "title": "Phép đồng nghĩa, trái nghĩa, liên tưởng",
+              "file": "08d-phep-lien-ket-dong-nghia-trai-nghia-lien-tuong.json",
+              "difficulty": 2,
+              "estimated": 15,
+              "enabled": true
+            },
+            {
+              "id": "doan-van.09-luyen-tap-tong-hop",
+              "title": "Luyện tập tổng hợp",
+              "file": "09-luyen-tap-tong-hop.json",
+              "difficulty": 1,
+              "estimated": 25,
+              "enabled": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "viet-bai-van",
+      "name": "05. VIẾT BÀI VĂN",
+      "subjects": [
+        {
+          "id": "viet-bai-van-nlvh",
+          "name": "Viết bài văn",
+          "icon": "💬",
+          "color": "#E91E63",
+          "description": "Viết bài văn nghị luận văn học",
+          "folder": "lessons/viet-bai-van/",
+          "enabled": true,
+          "lessons": [
+            {
+              "id": "viet-bai-van.01-tim-hieu-de",
+              "title": "Tìm hiểu đề",
+              "file": "01-tim-hieu-de.json",
+              "difficulty": 3,
+              "estimated": 25,
+              "enabled": true
+            },
+            {
+              "id": "viet-bai-van.02-tim-y",
+              "title": "Tìm ý",
+              "file": "02-tim-y.json",
+              "difficulty": 3,
+              "estimated": 25,
+              "enabled": true
+            },
+            {
+              "id": "viet-bai-van.03-lap-dan-y",
+              "title": "Lập dàn ý",
+              "file": "03-lap-dan-y.json",
+              "difficulty": 3,
+              "estimated": 25,
+              "enabled": true
+            },
+            {
+              "id": "viet-bai-van.04-viet-mo-bai",
+              "title": "Viết mở bài",
+              "file": "04-viet-mo-bai.json",
+              "difficulty": 3,
+              "estimated": 25,
+              "enabled": true
+            },
+            {
+              "id": "viet-bai-van.05-viet-than-bai",
+              "title": "Viết thân bài",
+              "file": "05-viet-than-bai.json",
+              "difficulty": 3,
+              "estimated": 25,
+              "enabled": true
+            },
+            {
+              "id": "viet-bai-van.06-viet-ket-bai",
+              "title": "Viết kết bài",
+              "file": "06-viet-ket-bai.json",
+              "difficulty": 3,
+              "estimated": 25,
+              "enabled": true
+            },
+            {
+              "id": "viet-bai-van.05a-viet-than-bai-nlxh",
+              "title": "Viết thân bài nghị luận xã hội",
+              "file": "05a-viet-than-bai-nlxh.json",
+              "difficulty": 3,
+              "estimated": 25,
+              "enabled": true
+            },
+            {
+              "id": "viet-bai-van.07-viet-bai-van-nlxh",
+              "title": "Viết bài văn nghị luận xã hội",
+              "file": "07-viet-bai-van-nlxh.json",
+              "difficulty": 3,
+              "estimated": 25,
+              "enabled": true
+            },
+            {
+              "id": "viet-bai-van.08-viet-bai-van-bieu-cam",
+              "title": "Viết bài văn biểu cảm",
+              "file": "08-viet-bai-van-bieu-cam.json",
+              "difficulty": 3,
+              "estimated": 25,
+              "enabled": true
+            },
+            {
+              "id": "viet-bai-van.09-viet-bai-van-nlvh",
+              "title": "Viết bài văn nghị luận văn học",
+              "file": "09-viet-bai-van-nlvh.json",
+              "difficulty": 3,
+              "estimated": 25,
+              "enabled": true
+            },
+            {
+              "id": "viet-bai-van-nghi-luan-van-hoc-09b",
+              "title": "Viết bài văn nghị luận văn học 2",
+              "file": "09b-viet-bai-van-nlvh.json",
+              "difficulty": 3,
+              "estimated": 25,
+              "enabled": true
+            },
+            {
+              "id": "viet-bai-van.10-viet-bai-van-mieu-ta",
+              "title": "Viết bài văn miêu tả",
+              "file": "10-viet-bai-van-mieu-ta.json",
+              "difficulty": 3,
+              "estimated": 25,
+              "enabled": true
+            },
+            {
+              "id": "viet-bai-van.11-viet-bai-van-tu-su",
+              "title": "Viết bài văn tự sự",
+              "file": "11-viet-bai-van-tu-su.json",
+              "difficulty": 3,
+              "estimated": 25,
+              "enabled": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tac-pham-trong-tam",
+      "name": "06. TÁC PHẨM TRỌNG TÂM",
+      "subjects": [
+        {
+          "id": "truyen-trung-dai",
+          "name": "Truyện trung đại",
+          "icon": "📜",
+          "description": "Chuyện người con gái Nam Xương, Truyện Kiều...",
+          "folder": "lessons/truyen-trung-dai/",
+          "enabled": true,
+          "lessons": [
+            {
+              "id": "truyen-trung-dai.01-chuyen-nguoi-con-gai-nam-xuong",
+              "title": "Chuyện người con gái Nam Xương",
+              "file": "01-chuyen-nguoi-con-gai-nam-xuong.json",
+              "difficulty": 2,
+              "estimated": 30,
+              "enabled": true
+            },
+            {
+              "id": "truyen-trung-dai.02-hoang-le-nhat-thong-chi",
+              "title": "Hoàng Lê nhất thống chí",
+              "file": "02-hoang-le-nhat-thong-chi.json",
+              "difficulty": 2,
+              "estimated": 30,
+              "enabled": true
+            },
+            {
+              "id": "truyen-trung-dai.03-truyen-kieu-tac-gia-tac-pham",
+              "title": "Truyện Kiều - Tác giả & Tác phẩm",
+              "file": "03-truyen-kieu-tac-gia-tac-pham.json",
+              "difficulty": 2,
+              "estimated": 20,
+              "enabled": true
+            },
+            {
+              "id": "truyen-trung-dai.04-chi-em-thuy-kieu",
+              "title": "Chị em Thúy Kiều",
+              "file": "04-chi-em-thuy-kieu.json",
+              "difficulty": 3,
+              "estimated": 30,
+              "enabled": true
+            },
+            {
+              "id": "truyen-trung-dai.05-canh-ngay-xuan",
+              "title": "Cảnh ngày xuân",
+              "file": "05-canh-ngay-xuan.json",
+              "difficulty": 3,
+              "estimated": 30,
+              "enabled": true
+            },
+            {
+              "id": "truyen-trung-dai.06-kieu-o-lau-ngung-bich",
+              "title": "Kiều ở lầu Ngưng Bích",
+              "file": "06-kieu-o-lau-ngung-bich.json",
+              "difficulty": 3,
+              "estimated": 30,
+              "enabled": true
+            }
+          ]
+        },
+        {
+          "id": "tho-hien-dai",
+          "name": "Thơ hiện đại",
+          "icon": "🌿",
+          "description": "Đồng chí, Bài thơ về tiểu đội xe không kính, Bếp lửa...",
+          "folder": "lessons/tho-hien-dai/",
+          "enabled": true,
+          "lessons": [
+            {
+              "id": "tho-hien-dai.01-dong-chi",
+              "title": "Đồng chí",
+              "file": "01-dong-chi.json",
+              "difficulty": 2,
+              "estimated": 30,
+              "enabled": true
+            },
+            {
+              "id": "tho-hien-dai.02-bai-tho-ve-tieu-doi-xe-khong-kinh",
+              "title": "Bài thơ về tiểu đội xe không kính",
+              "file": "02-bai-tho-ve-tieu-doi-xe-khong-kinh.json",
+              "difficulty": 2,
+              "estimated": 30,
+              "enabled": true
+            },
+            {
+              "id": "tho-hien-dai.03-doan-thuyen-danh-ca",
+              "title": "Đoàn thuyền đánh cá",
+              "file": "03-doan-thuyen-danh-ca.json",
+              "difficulty": 2,
+              "estimated": 30,
+              "enabled": true
+            },
+            {
+              "id": "tho-hien-dai.04-bep-lua",
+              "title": "Bếp lửa",
+              "file": "04-bep-lua.json",
+              "difficulty": 3,
+              "estimated": 30,
+              "enabled": true
+            },
+            {
+              "id": "tho-hien-dai.05-khuc-hat-ru",
+              "title": "Khúc hát ru những em bé lớn trên lưng mẹ",
+              "file": "05-khuc-hat-ru.json",
+              "difficulty": 2,
+              "estimated": 30,
+              "enabled": true
+            },
+            {
+              "id": "tho-hien-dai.06-anh-trang",
+              "title": "Ánh trăng",
+              "file": "06-anh-trang.json",
+              "difficulty": 3,
+              "estimated": 30,
+              "enabled": true
+            },
+            {
+              "id": "tho-hien-dai.07-mua-xuan-nho-nho",
+              "title": "Mùa xuân nho nhỏ",
+              "file": "07-mua-xuan-nho-nho.json",
+              "difficulty": 2,
+              "estimated": 30,
+              "enabled": true
+            },
+            {
+              "id": "tho-hien-dai.08-vieng-lang-bac",
+              "title": "Viếng lăng Bác",
+              "file": "08-vieng-lang-bac.json",
+              "difficulty": 2,
+              "estimated": 30,
+              "enabled": true
+            },
+            {
+              "id": "tho-hien-dai.09-sang-thu",
+              "title": "Sang thu",
+              "file": "09-sang-thu.json",
+              "difficulty": 3,
+              "estimated": 30,
+              "enabled": true
+            },
+            {
+              "id": "tho-hien-dai.10-noi-voi-con",
+              "title": "Nói với con",
+              "file": "10-noi-voi-con.json",
+              "difficulty": 3,
+              "estimated": 30,
+              "enabled": true
+            }
+          ]
+        },
+        {
+          "id": "truyen-hien-dai",
+          "name": "Truyện hiện đại",
+          "icon": "📖",
+          "description": "Làng, Lặng lẽ Sa Pa, Chiếc lược ngà, Những ngôi sao xa xôi...",
+          "folder": "lessons/truyen-hien-dai/",
+          "enabled": true,
+          "lessons": [
+            {
+              "id": "truyen-hien-dai.01-lang",
+              "title": "Làng",
+              "file": "01-lang.json",
+              "difficulty": 2,
+              "estimated": 30,
+              "enabled": true
+            },
+            {
+              "id": "truyen-hien-dai.02-lang-le-sa-pa",
+              "title": "Lặng lẽ Sa Pa",
+              "file": "02-lang-le-sa-pa.json",
+              "difficulty": 2,
+              "estimated": 30,
+              "enabled": true
+            },
+            {
+              "id": "truyen-hien-dai.03-chiec-luoc-nga",
+              "title": "Chiếc lược ngà",
+              "file": "03-chiec-luoc-nga.json",
+              "difficulty": 2,
+              "estimated": 30,
+              "enabled": true
+            },
+            {
+              "id": "truyen-hien-dai.04-ben-que",
+              "title": "Bến quê",
+              "file": "04-ben-que.json",
+              "difficulty": 3,
+              "estimated": 30,
+              "enabled": true
+            },
+            {
+              "id": "truyen-hien-dai.05-nhung-ngoi-sao-xa-xoi",
+              "title": "Những ngôi sao xa xôi",
+              "file": "05-nhung-ngoi-sao-xa-xoi.json",
+              "difficulty": 2,
+              "estimated": 30,
+              "enabled": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ky-nang-nang-cao",
+      "name": "07. KỸ NĂNG NÂNG CAO",
+      "subjects": [
+        {
+          "id": "ly-luan-van-hoc",
+          "name": "Lý luận văn học",
+          "icon": "🧠",
+          "description": "Lý luận văn học cơ bản dành cho TS10",
+          "folder": "lessons/ly-luan-van-hoc/",
+          "enabled": true,
+          "lessons": [
+            {
+              "id": "ly-luan-van-hoc.01-gia-tri-hien-thuc-nhan-dao",
+              "title": "Giá trị hiện thực & Nhân đạo",
+              "file": "01-gia-tri-hien-thuc-nhan-dao.json",
+              "difficulty": 4,
+              "estimated": 40,
+              "enabled": true
+            },
+            {
+              "id": "ly-luan-van-hoc.01.2-gia-tri-hien-thuc-nhan-dao",
+              "title": "Giá trị hiện thực & Nhân đạo (2)",
+              "file": "01b-gia-tri-hien-thuc-nhan-dao 2.json",
+              "difficulty": 4,
+              "estimated": 40,
+              "enabled": true
+            },
+            {
+              "id": "ly-luan-van-hoc.02-chuc-nang-van-hoc",
+              "title": "Chức năng của văn học",
+              "file": "02-chuc-nang-van-hoc.json",
+              "difficulty": 4,
+              "estimated": 40,
+              "enabled": true
+            },
+            {
+              "id": "ly-luan-van-hoc.03-hinh-tuong-chi-tiet",
+              "title": "Hình tượng & Chi tiết nghệ thuật",
+              "file": "03-hinh-tuong-chi-tiet.json",
+              "difficulty": 4,
+              "estimated": 40,
+              "enabled": true
+            }
+          ]
+        },
+        {
+          "id": "so-sanh-lien-he",
+          "name": "So sánh & Liên hệ",
+          "icon": "🔗",
+          "description": "Kỹ năng liên hệ mở rộng trong bài nghị luận",
+          "folder": "lessons/so-sanh-lien-he/",
+          "enabled": true,
+          "lessons": [
+            {
+              "id": "so-sanh-lien-he.01-cach-lien-he-mo-rong",
+              "title": "Cách liên hệ, mở rộng",
+              "file": "01-cach-lien-he-mo-rong.json",
+              "difficulty": 4,
+              "estimated": 30,
+              "enabled": true
+            },
+            {
+              "id": "so-sanh-lien-he.02-lien-he-cung-de-tai",
+              "title": "Liên hệ tác phẩm cùng đề tài",
+              "file": "02-lien-he-cung-de-tai.json",
+              "difficulty": 4,
+              "estimated": 30,
+              "enabled": true
+            }
+          ]
+        },
+        {
+          "id": "dan-chung-nlxh",
+          "name": "Dẫn chứng NLXH",
+          "icon": "💡",
+          "description": "Ngân hàng dẫn chứng thực tế",
+          "folder": "lessons/dan-chung-nlxh/",
+          "enabled": true,
+          "lessons": [
+            {
+              "id": "dan-chung-nlxh.01-nghe-thuat-dua-dan-chung",
+              "title": "Nghệ thuật đưa dẫn chứng",
+              "file": "01-nghe-thuat-dua-dan-chung.json",
+              "difficulty": 3,
+              "estimated": 30,
+              "enabled": true
+            },
+            {
+              "id": "dan-chung-nlxh.02-ngan-hang-dan-chung",
+              "title": "Tạo dẫn chứng NLXH",
+              "file": "02-kho-dan-chung-ly-tuong.json",
+              "difficulty": 3,
+              "estimated": 30,
+              "enabled": true
+            },
+            {
+              "id": "dan-chung-nlxh.03-danh-sach-dan-chung",
+              "title": "Kho dẫn chứng NLXH",
+              "file": "03-danh-sach-dan-chung.json",
+              "difficulty": 3,
+              "estimated": 30,
+              "enabled": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "luyen-de-thuc-chien",
+      "name": "08. LUYỆN ĐỀ THỰC CHIẾN",
+      "subjects": [
+        {
+          "id": "luyen-de",
+          "name": "Luyện đề thực chiến",
+          "icon": "⏳",
+          "description": "Luyện đề và kỹ năng quản lý thời gian",
+          "folder": "lessons/luyen-de/",
+          "enabled": true,
+          "lessons": [
+            {
+              "id": "luyen-de.01-ky-nang-phong-thi",
+              "title": "Kỹ năng phòng thi & quản lý thời gian",
+              "file": "01-ky-nang-phong-thi.json",
+              "difficulty": 4,
+              "estimated": 30,
+              "enabled": true
+            },
+            {
+              "id": "luyen-de.02-ky-nang-trinh-bay-bai",
+              "title": "Kỹ năng trình bày bài thi",
+              "file": "02-ky-nang-trinh-bay-bai.json",
+              "difficulty": 4,
+              "estimated": 30,
+              "enabled": true
+            },
+            {
+              "id": "luyen-de.02-ky-nang-trinh-bay-bai-2",
+              "title": "Kỹ năng trình bày bài thi 2",
+              "file": "02b-ky-nang-trinh-bay-bai.json",
+              "difficulty": 4,
+              "estimated": 30,
+              "enabled": true
+            },
+            {
+              "id": "luyen-de.03-de-thi-thu-01",
+              "title": "Đề thi thử số 1",
+              "file": "03-de-thi-thu-01.json",
+              "difficulty": 5,
+              "estimated": 120,
+              "enabled": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "thu-khoa",
+      "name": "Tuyệt kỹ phòng thi - Hành trình 10 điểm",
+      "description": "Kho văn phong thủ khoa, phân tích bài làm đạt điểm tuyệt đối",
+      "subjects": [
+        {
+          "id": "kho-van-phong-diem-10",
+          "name": "Kho văn phong điểm 10",
+          "icon": "⏳",
+          "description": "Sổ tay Văn phong NLXH Điểm 10",
+          "folder": "lessons/thu-khoa/",
+          "enabled": true,
+          "lessons": [
+            {
+              "id": "thu-khoa.01-phan-tich-van-phong-nlxh",
+              "title": "Sổ tay Văn phong NLXH Điểm 10",
+              "file": "01-phan-tich-van-phong-nlxh.json",
+              "difficulty": 5,
+              "estimated": 45,
+              "enabled": true
+            },
+            {
+              "id": "thu-khoa.02-phan-tich-van-phong-nlvh",
+              "title": "Sổ tay Văn phong NLVH Điểm 10",
+              "file": "02-phan-tich-van-phong-nlvh.json",
+              "difficulty": 5,
+              "estimated": 45,
+              "enabled": true
+            },
+            {
+              "id": "thu-khoa.03-thu-vien-tho-hay",
+              "title": "Thư viện những bài thơ hay",
+              "file": "03-thu-vien-tho-hay.json",
+              "difficulty": 5,
+              "estimated": 45,
+              "enabled": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

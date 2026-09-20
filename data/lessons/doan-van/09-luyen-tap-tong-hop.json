@@ -1,0 +1,157 @@
+{
+  "id": "doan-van.09-luyen-tap-tong-hop",
+  "title": "Luyện tập tổng hợp: Đoạn văn",
+  "version": "1.0",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Đoạn văn có câu chủ đề nằm ở đầu đoạn được gọi là kiểu đoạn văn gì?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Đoạn quy nạp"
+          },
+          {
+            "id": "B",
+            "text": "Đoạn diễn dịch"
+          },
+          {
+            "id": "C",
+            "text": "Đoạn song hành"
+          },
+          {
+            "id": "D",
+            "text": "Đoạn tổng - phân - hợp"
+          }
+        ],
+        "answer": "B",
+        "title": "Nhận diện đoạn văn",
+        "score": 1
+      }
+    },
+    {
+      "id": "step02",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Đoạn diễn dịch",
+          "Đoạn quy nạp",
+          "Đoạn tổng - phân - hợp",
+          "Đoạn song hành"
+        ],
+        "right": [
+          "Câu chủ đề ở đầu đoạn.",
+          "Câu chủ đề ở cuối đoạn.",
+          "Câu chủ đề ở đầu và cuối đoạn.",
+          "Không có câu chủ đề."
+        ],
+        "answer": {
+          "Đoạn diễn dịch": "Câu chủ đề ở đầu đoạn.",
+          "Đoạn quy nạp": "Câu chủ đề ở cuối đoạn.",
+          "Đoạn tổng - phân - hợp": "Câu chủ đề ở đầu và cuối đoạn.",
+          "Đoạn song hành": "Không có câu chủ đề."
+        },
+        "title": "Cấu trúc các kiểu đoạn văn",
+        "instruction": "Ghép tên kiểu đoạn văn với vị trí câu chủ đề tương ứng.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "Lặp lại từ 'Mùa xuân'",
+          "Dùng từ 'Bởi vậy' để nối 2 câu",
+          "Dùng từ 'Nó' để thay thế cho 'Con chó'",
+          "Dùng các từ 'nắng', 'mưa', 'bầu trời'"
+        ],
+        "targets": [
+          "Phép lặp",
+          "Phép thế",
+          "Phép nối",
+          "Phép liên tưởng"
+        ],
+        "answer": {
+          "Lặp lại từ 'Mùa xuân'": "Phép lặp",
+          "Dùng từ 'Nó' để thay thế cho 'Con chó'": "Phép thế",
+          "Dùng từ 'Bởi vậy' để nối 2 câu": "Phép nối",
+          "Dùng các từ 'nắng', 'mưa', 'bầu trời'": "Phép liên tưởng"
+        },
+        "title": "Phân loại phép liên kết",
+        "instruction": "Kéo các ví dụ vào đúng tên phép liên kết tương ứng.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Cho đoạn văn: 'Biển luôn thay đổi màu tùy theo sắc mây trời. Trời xanh thẳm, biển cũng thẳm xanh, như dâng cao lên, chắc nịch. Trời rải mây trắng nhạt, biển mơ màng dịu hơi sương.' Đây là đoạn văn viết theo kiểu nào?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Đoạn diễn dịch"
+          },
+          {
+            "id": "B",
+            "text": "Đoạn quy nạp"
+          },
+          {
+            "id": "C",
+            "text": "Đoạn song hành"
+          },
+          {
+            "id": "D",
+            "text": "Đoạn tổng - phân - hợp"
+          }
+        ],
+        "answer": "A",
+        "title": "Phân tích đoạn văn",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Vì sao trong một đoạn văn, các câu cần phải có sự liên kết chặt chẽ với nhau cả về nội dung lẫn hình thức?",
+        "sampleAnswer": [
+          "Vì nếu không có sự liên kết, đoạn văn sẽ trở nên rời rạc, khó hiểu.",
+          "Sự liên kết giúp các câu cùng làm sáng tỏ một chủ đề (liên kết chủ đề), tạo ra một trình tự mạch lạc (liên kết logic) và giúp người đọc dễ dàng theo dõi dòng tư tưởng của người viết."
+        ],
+        "title": "Thông hiểu",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "flashcard",
+      "data": {
+        "front": "Hoàn thành xuất sắc!",
+        "back": "Em đã nắm vững cấu trúc đoạn văn, các cách trình bày đoạn văn (diễn dịch, quy nạp, song hành, tổng - phân - hợp) cũng như cách sử dụng các phép liên kết. Kỹ năng này sẽ giúp em viết văn mạch lạc, chặt chẽ và thuyết phục hơn.",
+        "completedWhen": "flipped",
+        "title": "Tổng kết Module Đoạn văn",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "doan-van",
+    "difficulty": "practice",
+    "xp": 200,
+    "stars": 3,
+    "description": "Bài tập tổng hợp để kiểm tra và củng cố kiến thức về cấu trúc đoạn văn, các kiểu đoạn văn và phép liên kết câu.",
+    "prerequisite": null,
+    "unlock": null,
+    "reviewMode": "quiz",
+    "durationMinutes": 25
+  }
+}

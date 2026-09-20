@@ -1,0 +1,471 @@
+{
+    "id": "ly-luan-van-hoc.03-hinh-tuong-chi-tiet",
+    "title": "Hình tượng & Chi tiết nghệ thuật",
+    "type": "skill",
+    "version": "1.0.0",
+    "meta": {
+        "module": "ly-luan-van-hoc",
+        "lessonNumber": 3,
+        "durationMinutes": 45,
+        "difficulty": 4,
+        "skill": "nhan-biet-va-phan-tich-hinh-tuong-chi-tiet",
+        "description": "Hiểu khái niệm hình tượng nghệ thuật và chi tiết nghệ thuật, mối quan hệ giữa chúng và cách phân tích ý nghĩa của chi tiết để làm nổi bật hình tượng."
+    },
+    "learningGoals": [
+        "Hiểu hình tượng nghệ thuật là gì.",
+        "Hiểu chi tiết nghệ thuật là gì.",
+        "Phân biệt được hình tượng và chi tiết trong một tác phẩm.",
+        "Nắm được mối quan hệ: chi tiết nhỏ làm nên hình tượng lớn.",
+        "Biết cách phân tích một chi tiết nghệ thuật tiêu biểu để làm sáng tỏ hình tượng."
+    ],
+    "completion": {
+        "requiredSections": [
+            "story_01",
+            "observe_01",
+            "teach_01",
+            "teach_02",
+            "teach_03",
+            "guidedPractice_01",
+            "miniChallenge_01",
+            "reflection_01",
+            "cheatSheet_01"
+        ],
+        "action": "completeLesson",
+        "message": "Em đã hoàn thành bài Hình tượng & Chi tiết nghệ thuật. Hãy nhớ: Hình tượng là bức tranh toàn cảnh chứa đựng cảm xúc của nhà văn, còn chi tiết là những nét vẽ tinh tế làm nên bức tranh ấy."
+    },
+    "steps": [
+        {
+            "id": "story_01",
+            "type": "story",
+            "data": {
+                "title": "Cái bóng trên tường hay một nỗi oan khuất?",
+                "durationSeconds": 120,
+                "ui": {
+                    "component": "split_compare",
+                    "layout": "two_columns",
+                    "question": "Khi đọc tác phẩm, một sự vật bình thường và một sự vật trong văn học khác nhau thế nào?"
+                },
+                "content": {
+                    "left": {
+                        "label": "Góc nhìn 1: Trong đời thực",
+                        "paragraph": "Cái bóng chỉ là một vệt tối phản chiếu trên tường khi có ánh sáng chiếu vào đồ vật hoặc con người."
+                    },
+                    "right": {
+                        "label": "Góc nhìn 2: Trong tác phẩm văn học",
+                        "paragraph": "Cái bóng (trong Chuyện người con gái Nam Xương) là hiện thân của người chồng, là niềm khao khát hạnh phúc, đồng thời cũng là nguyên nhân gây ra bi kịch oan khuất của Vũ Nương."
+                    }
+                },
+                "interaction": {
+                    "type": "compare",
+                    "options": [
+                        "Văn học chỉ miêu tả lại y hệt đời thực.",
+                        "Nhà văn dùng sự vật để gửi gắm ý nghĩa, cảm xúc sâu xa hơn.",
+                        "Trong văn học, sự vật không có ý nghĩa gì đặc biệt."
+                    ],
+                    "correct": 1
+                },
+                "reveal": {
+                    "title": "Sự hóa thân kì diệu",
+                    "text": "Trong văn học, sự vật không chỉ là chính nó. Bằng trí tưởng tượng và cảm xúc, nhà văn biến những điều bình thường thành Hình tượng nghệ thuật và những Chi tiết mang sức nặng ngàn cân."
+                }
+            }
+        },
+        {
+            "id": "observe_01",
+            "type": "matching",
+            "validator": "matchValidator",
+            "data": {
+                "left": [
+                    "Bức tranh toàn cảnh về một người lính",
+                    "Vết thẹo trên mặt nhân vật",
+                    "Tiếng khóc của đứa trẻ",
+                    "Sự khắc nghiệt của chiến tranh"
+                ],
+                "right": [
+                    "Hình tượng",
+                    "Chi tiết"
+                ],
+                "answer": {
+                    "Bức tranh toàn cảnh về một người lính": "Hình tượng",
+                    "Vết thẹo trên mặt nhân vật": "Chi tiết",
+                    "Tiếng khóc của đứa trẻ": "Chi tiết",
+                    "Sự khắc nghiệt của chiến tranh": "Hình tượng"
+                },
+                "title": "Quan sát: Phân biệt Hình tượng và Chi tiết",
+                "instruction": "Hãy ghép các yếu tố sau vào nhóm thích hợp: đâu là 'bức tranh lớn' (Hình tượng), đâu là 'nét vẽ nhỏ' (Chi tiết)?",
+                "score": 1,
+                "durationSeconds": 180,
+                "content": {
+                    "cards": [
+                        {
+                            "id": "c1",
+                            "text": "Bức tranh toàn cảnh về một người lính",
+                            "target": "s1"
+                        },
+                        {
+                            "id": "c2",
+                            "text": "Vết thẹo trên mặt nhân vật",
+                            "target": "s2"
+                        },
+                        {
+                            "id": "c3",
+                            "text": "Tiếng khóc của đứa trẻ",
+                            "target": "s2"
+                        },
+                        {
+                            "id": "c4",
+                            "text": "Sự khắc nghiệt của chiến tranh",
+                            "target": "s1"
+                        }
+                    ],
+                    "slots": [
+                        {
+                            "id": "s1",
+                            "label": "Hình tượng"
+                        },
+                        {
+                            "id": "s2",
+                            "label": "Chi tiết"
+                        }
+                    ]
+                },
+                "interaction": {
+                    "correctMapping": {
+                        "c1": "s1",
+                        "c2": "s2",
+                        "c3": "s2",
+                        "c4": "s1"
+                    }
+                },
+                "reveal": {
+                    "title": "Tổng thể và Bộ phận",
+                    "text": "Hình tượng là một thế giới nghệ thuật trọn vẹn (nhân vật, thiên nhiên...), còn chi tiết là những yếu tố nhỏ bé (lời nói, cử chỉ, đồ vật) góp phần xây dựng nên thế giới đó."
+                }
+            }
+        },
+        {
+            "id": "teach_01",
+            "type": "observe",
+            "data": {
+                "title": "Khái niệm: Hình tượng nghệ thuật",
+                "durationSeconds": 240,
+                "ui": {
+                    "component": "paragraph_highlight",
+                    "question": "Hình tượng không chỉ là 'hình ảnh', nó chứa đựng cả linh hồn và tư tưởng của nhà văn."
+                },
+                "content": {
+                    "paragraph": [
+                        {
+                            "text": "Hình tượng nghệ thuật là bức tranh về đời sống do nhà văn sáng tạo ra bằng trí tưởng tượng.",
+                            "type": "normal",
+                            "feedback": ""
+                        },
+                        {
+                            "text": "Được xây dựng bằng ngôn từ:",
+                            "type": "normal",
+                            "feedback": "Khác với hội họa dùng màu sắc, âm nhạc dùng âm thanh, văn học dùng ngôn từ để vẽ nên hình tượng."
+                        },
+                        {
+                            "text": "Vừa mang tính khách quan, vừa mang tính chủ quan:",
+                            "type": "normal",
+                            "feedback": "Phản ánh hiện thực đời sống nhưng lại thấm đẫm tình cảm, thái độ và lý tưởng của tác giả."
+                        },
+                        {
+                            "text": "Hình tượng rất đa dạng:",
+                            "type": "normal",
+                            "feedback": "Đó có thể là hình tượng nhân vật (Thúy Kiều, Lão Hạc), hình tượng thiên nhiên (sông Đà), hay hình tượng tập thể."
+                        }
+                    ],
+                    "format": "paragraph"
+                },
+                "prompt": "Nhấn vào từng dòng để hiểu rõ hơn về khái niệm Hình tượng nghệ thuật."
+            }
+        },
+        {
+            "id": "teach_02",
+            "type": "observe",
+            "data": {
+                "title": "Khái niệm: Chi tiết nghệ thuật",
+                "durationSeconds": 240,
+                "ui": {
+                    "component": "paragraph_highlight",
+                    "question": "'Chi tiết nhỏ làm nên nhà văn lớn' - vậy chi tiết có sức mạnh như thế nào?"
+                },
+                "content": {
+                    "paragraph": [
+                        {
+                            "text": "Chi tiết nghệ thuật là những yếu tố nhỏ bé, cụ thể cấu thành nên tác phẩm văn học.",
+                            "type": "normal",
+                            "feedback": ""
+                        },
+                        {
+                            "text": "Đó là những 'nét khắc', 'nét vẽ':",
+                            "type": "normal",
+                            "feedback": "Có thể là một lời nói, một cử chỉ, một hành động, một đồ vật hay một nét phong cảnh."
+                        },
+                        {
+                            "text": "Chứa đựng sức chứa lớn lao:",
+                            "type": "normal",
+                            "feedback": "Dù nhỏ bé nhưng lại thể hiện tính cách nhân vật, thúc đẩy cốt truyện phát triển và thể hiện chủ đề tác phẩm."
+                        },
+                        {
+                            "text": "Là 'nhãn tự' của tác phẩm:",
+                            "type": "normal",
+                            "feedback": "Chi tiết đắt giá như con mắt của bài thơ, câu chuyện, làm bừng sáng ý nghĩa của toàn bộ tác phẩm."
+                        }
+                    ],
+                    "format": "paragraph"
+                },
+                "prompt": "Nhấn vào từng dòng để hiểu rõ hơn về sức mạnh của Chi tiết nghệ thuật."
+            }
+        },
+        {
+            "id": "teach_03",
+            "type": "observe",
+            "data": {
+                "title": "Mối quan hệ giữa Hình tượng và Chi tiết",
+                "durationSeconds": 240,
+                "ui": {
+                    "component": "paragraph_highlight",
+                    "question": "Hình tượng và chi tiết không tồn tại tách rời mà gắn bó mật thiết với nhau."
+                },
+                "content": {
+                    "paragraph": [
+                        {
+                            "text": "Mối quan hệ như bộ phận và tổng thể.",
+                            "type": "normal",
+                            "feedback": ""
+                        },
+                        {
+                            "text": "Chi tiết làm nên hình tượng:",
+                            "type": "normal",
+                            "feedback": "Không có những chi tiết cụ thể (vết sẹo, chiếc lược) thì không thể dựng lên hình tượng người cha (anh Sáu)."
+                        },
+                        {
+                            "text": "Hình tượng mang lại ý nghĩa cho chi tiết:",
+                            "type": "normal",
+                            "feedback": "Nếu tách khỏi hình tượng tình phụ tử, 'chiếc lược' chỉ là một vật vô tri, không mang giá trị nghệ thuật."
+                        },
+                        {
+                            "text": "Khi phân tích văn học:",
+                            "type": "normal",
+                            "feedback": "Ta phải đi từ việc phân tích các chi tiết cụ thể để từ đó khái quát lên ý nghĩa của toàn bộ hình tượng."
+                        }
+                    ],
+                    "format": "paragraph"
+                },
+                "prompt": "Nhấn vào từng dòng để hiểu rõ mối quan hệ khăng khít này."
+            }
+        },
+        {
+            "id": "guidedPractice_01",
+            "type": "multiChoice",
+            "data": {
+                "title": "Luyện tập 1: Gọi đúng tên",
+                "durationSeconds": 240,
+                "ui": {
+                    "component": "single_choice"
+                },
+                "content": {
+                    "questions": [
+                        {
+                            "question": "'Bát cháo hành' trong tác phẩm Chí Phèo là một:",
+                            "options": [
+                                "Hình tượng nghệ thuật",
+                                "Chi tiết nghệ thuật",
+                                "Cốt truyện",
+                                "Chủ đề"
+                            ],
+                            "correct": 1,
+                            "explanation": "Đó là một sự vật cụ thể, nhỏ bé nhưng đánh thức tính người trong Chí Phèo, đây là một chi tiết nghệ thuật đắt giá."
+                        },
+                        {
+                            "question": "'Người lính lái xe không kính' hiên ngang, dũng cảm trong bài thơ của Phạm Tiến Duật được gọi là:",
+                            "options": [
+                                "Một chi tiết nhỏ",
+                                "Một tình huống",
+                                "Một hình tượng nghệ thuật",
+                                "Một biện pháp tu từ"
+                            ],
+                            "correct": 2,
+                            "explanation": "Đó là một bức tranh trọn vẹn, khái quát về thế hệ trẻ thời chống Mỹ, nên nó là một hình tượng."
+                        },
+                        {
+                            "question": "Khi phân tích, chúng ta nên làm gì?",
+                            "options": [
+                                "Chỉ nói về hình tượng lớn, bỏ qua các chi tiết rườm rà.",
+                                "Liệt kê tất cả các chi tiết trong bài.",
+                                "Bám sát và phân tích các chi tiết tiêu biểu để làm nổi bật hình tượng.",
+                                "Không cần nhắc đến cả hình tượng lẫn chi tiết."
+                            ],
+                            "correct": 2,
+                            "explanation": "Chi tiết là 'chìa khóa' để mở ra ý nghĩa của hình tượng. Cần chọn lọc chi tiết tiêu biểu để phân tích."
+                        }
+                    ]
+                },
+                "options": [
+                    {
+                        "text": "Hình tượng nghệ thuật",
+                        "isCorrect": false,
+                        "feedback": "Đó là một sự vật cụ thể, nhỏ bé nhưng mang ý nghĩa sâu sắc, nó là chi tiết nghệ thuật."
+                    },
+                    {
+                        "text": "Chi tiết nghệ thuật",
+                        "isCorrect": true,
+                        "feedback": "Đó là một sự vật cụ thể, nhỏ bé nhưng đánh thức tính người, đây là một chi tiết nghệ thuật đắt giá."
+                    },
+                    {
+                        "text": "Cốt truyện",
+                        "isCorrect": false,
+                        "feedback": "Đó là một sự vật cụ thể, nhỏ bé nhưng mang ý nghĩa sâu sắc, nó là chi tiết nghệ thuật."
+                    }
+                ]
+            },
+            "question": "'Bát cháo hành' trong tác phẩm Chí Phèo là một:"
+        },
+        {
+            "id": "miniChallenge_01",
+            "type": "finalChallenge",
+            "data": {
+                "title": "Thử thách: Từ chi tiết đến hình tượng",
+                "durationSeconds": 300,
+                "ui": {
+                    "component": "multi_stage_challenge",
+                    "layout": "multi_stage"
+                },
+                "prompt": "Trong truyện 'Chiếc lược ngà', có chi tiết: Khi ở khu căn cứ, anh Sáu gò lưng, tẩn mẩn khắc từng nét 'Yêu nhớ tặng thu con của ba' lên chiếc lược ngà làm từ khúc ngà voi để dành tặng bé Thu.",
+                "question": [
+                    "Phân tích hành động của nhân vật qua chi tiết.",
+                    "Khái quát lên vẻ đẹp hình tượng nhân vật.",
+                    "Rút ra ý nghĩa nghệ thuật."
+                ],
+                "stages": [
+                    {
+                        "key": "stage1",
+                        "type": "editor",
+                        "title": "📝 Phân tích chi tiết",
+                        "question": "Hành động 'gò lưng, tẩn mẩn khắc từng nét' của anh Sáu thể hiện điều gì?",
+                        "placeholder": "Hành động này cho thấy anh Sáu đã dồn hết...",
+                        "minCharacters": 10,
+                        "maxCharacters": 200,
+                        "submit": {
+                            "label": "Nộp bài",
+                            "feedback": "Hành động tỉ mỉ ấy cho thấy anh đã dồn hết tâm trí, tình yêu thương, và nỗi nhớ mong con vào việc làm chiếc lược."
+                        }
+                    },
+                    {
+                        "key": "stage2",
+                        "type": "editor",
+                        "title": "📝 Khái quát hình tượng",
+                        "question": "Từ chi tiết trên, hình tượng người cha (anh Sáu) hiện lên như thế nào?",
+                        "placeholder": "Hình tượng anh Sáu hiện lên là một người cha...",
+                        "minCharacters": 10,
+                        "maxCharacters": 200,
+                        "submit": {
+                            "label": "Nộp bài",
+                            "feedback": "Hình tượng anh Sáu hiện lên là một người cha yêu thương con tha thiết, sâu nặng dù trong hoàn cảnh chiến tranh khắc nghiệt."
+                        }
+                    },
+                    {
+                        "key": "stage3",
+                        "type": "editor",
+                        "title": "📝 Tổng hợp",
+                        "question": "Viết 1-2 câu nhận xét về vai trò của chi tiết đối với việc xây dựng hình tượng nhân vật.",
+                        "placeholder": "Qua chi tiết..., nhà văn đã khắc họa thành công hình tượng...",
+                        "minCharacters": 10,
+                        "maxCharacters": 300,
+                        "submit": {
+                            "label": "Nộp bài",
+                            "feedback": "Chỉ bằng chi tiết nhỏ về hành động tỉ mỉ làm chiếc lược, nhà văn đã khắc họa thành công hình tượng anh Sáu - biểu tượng đẹp đẽ và cảm động về tình phụ tử thiêng liêng trong chiến tranh."
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "id": "reflection_01",
+            "type": "reflection",
+            "data": {
+                "title": "Tự kiểm tra: Em đã thật sự hiểu chưa?",
+                "durationSeconds": 180,
+                "ui": {
+                    "component": "checklist_free_text"
+                },
+                "question": "Chọn những điều em thấy mình đã nắm được sau bài học:",
+                "choices": [
+                    {
+                        "id": "1",
+                        "text": "Em hiểu khái niệm hình tượng nghệ thuật.",
+                        "correct": false
+                    },
+                    {
+                        "id": "2",
+                        "text": "Em hiểu thế nào là chi tiết nghệ thuật đắt giá.",
+                        "correct": false
+                    },
+                    {
+                        "id": "3",
+                        "text": "Em phân biệt được đâu là hình tượng, đâu là chi tiết.",
+                        "correct": false
+                    },
+                    {
+                        "id": "4",
+                        "text": "Em hiểu quy luật: chi tiết xây dựng nên hình tượng.",
+                        "correct": false
+                    },
+                    {
+                        "id": "5",
+                        "text": "Khi phân tích văn học, em biết lấy chi tiết làm điểm tựa để khái quát.",
+                        "correct": false
+                    }
+                ],
+                "freeText": {
+                    "label": "Nhớ lại một tác phẩm đã học, hãy kể tên 1 hình tượng và 1 chi tiết tiêu biểu trong đó.",
+                    "placeholder": "Trong bài..., hình tượng là..., chi tiết tiêu biểu là..."
+                },
+                "metacognition": "HÌNH TƯỢNG = Bức tranh toàn cảnh<br>CHI TIẾT = Nét vẽ tinh tế"
+            }
+        },
+        {
+            "id": "cheatSheet_01",
+            "type": "cheatSheet",
+            "data": {
+                "title": "Sổ tay 30 giây",
+                "durationSeconds": 120,
+                "ui": {
+                    "component": "card_list",
+                    "actions": [
+                        "save",
+                        "download"
+                    ]
+                },
+                "items": [
+                    {
+                        "order": 1,
+                        "icon": "🖼️",
+                        "title": "HÌNH TƯỢNG NGHỆ THUẬT",
+                        "question": "Là bức tranh về đời sống (con người, thiên nhiên...) do nhà văn dùng ngôn từ sáng tạo ra, mang đậm cảm xúc và tư tưởng."
+                    },
+                    {
+                        "order": 2,
+                        "icon": "🔍",
+                        "title": "CHI TIẾT NGHỆ THUẬT",
+                        "question": "Là những yếu tố nhỏ bé, cụ thể (lời nói, cử chỉ, đồ vật) mang sức chứa lớn về nội dung và cảm xúc."
+                    },
+                    {
+                        "order": 3,
+                        "icon": "🧩",
+                        "title": "MỐI QUAN HỆ",
+                        "question": "Chi tiết nhỏ làm nên hình tượng lớn. Hình tượng bao trùm và đem lại ý nghĩa sâu sắc cho từng chi tiết."
+                    },
+                    {
+                        "order": 4,
+                        "icon": "✍️",
+                        "title": "CÁCH PHÂN TÍCH",
+                        "question": "Không liệt kê chung chung. Hãy bám vào CHI TIẾT TỪ NGỮ để mở khóa ý nghĩa của HÌNH TƯỢNG."
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,168 @@
+{
+  "id": "cau-tao-tu.06-on-tap-chung",
+  "title": "🏆 Thử thách tổng hợp - Cấu tạo từ",
+  "version": "3.1",
+  "lessonType": "challenge",
+  "guide": [
+    "Đây là thử thách cuối cùng.",
+    "Không có kiến thức mới.",
+    "Hãy vận dụng toàn bộ những gì đã học.",
+    "Muốn đạt 3 sao hãy hoàn thành trên 90%."
+  ],
+  "steps": [
+    {
+      "id": "challenge01",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Đâu là từ láy?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "xe đạp"
+          },
+          {
+            "id": "B",
+            "text": "lung linh"
+          },
+          {
+            "id": "C",
+            "text": "học sinh"
+          },
+          {
+            "id": "D",
+            "text": "bàn học"
+          }
+        ],
+        "answer": "B",
+        "title": "🔥 Thử thách 1 - Nhận biết nhanh",
+        "score": 10
+      }
+    },
+    {
+      "id": "challenge02",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "cây",
+          "xe đạp",
+          "lung linh",
+          "học sinh",
+          "lấp lánh",
+          "bút"
+        ],
+        "right": [
+          "Từ đơn",
+          "Từ ghép",
+          "Từ láy"
+        ],
+        "answer": {
+          "cây": "Từ đơn",
+          "xe đạp": "Từ ghép",
+          "lung linh": "Từ láy",
+          "học sinh": "Từ ghép",
+          "lấp lánh": "Từ láy",
+          "bút": "Từ đơn"
+        },
+        "title": "⚡ Thử thách 2 - Phân loại",
+        "instruction": "Ghép mỗi từ với loại phù hợp.",
+        "score": 20
+      }
+    },
+    {
+      "id": "challenge03",
+      "type": "highlight",
+      "data": {
+        "content": "Lan là học sinh. Ánh đèn lung linh. Dòng nước lấp lánh. Chiếc xe đạp mới rất đẹp.",
+        "answer": [
+          "lung linh",
+          "lấp lánh"
+        ],
+        "title": "🎯 Thử thách 3 - Quan sát",
+        "instruction": "Highlight tất cả các từ láy.",
+        "score": 20
+      }
+    },
+    {
+      "id": "challenge04",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "cây",
+          "bút",
+          "xe đạp",
+          "học sinh",
+          "bàn học",
+          "lung linh",
+          "xinh xinh",
+          "lấp lánh",
+          "đẹp",
+          "cao",
+          "xanh xao",
+          "nhà trường"
+        ],
+        "targets": [
+          "Từ đơn",
+          "Từ ghép",
+          "Từ láy"
+        ],
+        "answer": {
+          "cây": "Từ đơn",
+          "bút": "Từ đơn",
+          "đẹp": "Từ đơn",
+          "cao": "Từ đơn",
+          "xe đạp": "Từ ghép",
+          "học sinh": "Từ ghép",
+          "bàn học": "Từ ghép",
+          "nhà trường": "Từ ghép",
+          "lung linh": "Từ láy",
+          "xinh xinh": "Từ láy",
+          "lấp lánh": "Từ láy",
+          "xanh xao": "Từ láy"
+        },
+        "title": "🚀 Thử thách 4 - Boss Drag & Drop",
+        "instruction": "Phân loại toàn bộ các từ.",
+        "score": 30
+      }
+    },
+    {
+      "id": "challenge05",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Khẳng định nào đúng?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Từ ghép là từ có các tiếng giống nhau về âm."
+          },
+          {
+            "id": "B",
+            "text": "Từ láy luôn có các tiếng có quan hệ láy âm hoặc láy vần."
+          },
+          {
+            "id": "C",
+            "text": "Từ đơn luôn gồm hai tiếng."
+          },
+          {
+            "id": "D",
+            "text": "Mọi từ phức đều là từ láy."
+          }
+        ],
+        "answer": "B",
+        "title": "💎 Final Quiz",
+        "score": 20
+      }
+    }
+  ],
+  "meta": {
+    "module": "cau-tao-tu",
+    "difficulty": 4,
+    "xp": 150,
+    "stars": 3,
+    "description": "Vượt qua các thử thách để hoàn thành toàn bộ chuyên đề Cấu tạo từ.",
+    "durationMinutes": 20
+  }
+}

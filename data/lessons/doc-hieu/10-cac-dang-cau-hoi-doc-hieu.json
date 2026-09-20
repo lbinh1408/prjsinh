@@ -1,0 +1,200 @@
+{
+  "id": "doc-hieu.10-cac-dang-cau-hoi",
+  "title": "Các dạng câu hỏi đọc hiểu",
+  "version": "1.0",
+  "enabled": true,
+  "steps": [
+    {
+      "id": "step01",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Biết dạng = Biết công thức",
+            "icon": "🧠",
+            "active": true,
+            "content": {
+              "text": "Mỗi dạng câu hỏi (Ví dụ: 'Nêu tác dụng') đều có một 'mẫu' trả lời chuẩn. Khi biết nó là dạng nào, bạn sẽ không bao giờ bị trả lời lan man hay thiếu ý.",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Tiết kiệm thời gian",
+            "icon": "⏱️",
+            "active": false,
+            "content": {
+              "text": "Đọc xong câu hỏi, não bộ lập tức bật chế độ 'À, đây là dạng Rút ra bài học' -> Chỉ cần điền nội dung vào khung có sẵn.",
+              "examples": []
+            }
+          }
+        ],
+        "title": "Tại sao phải phân loại câu hỏi?",
+        "instruction": "Đề thi Đọc hiểu thường xoay quanh khoảng 15 dạng câu hỏi. Việc nhận diện đúng dạng sẽ giúp bạn định hình ngay công thức trả lời.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Nhóm Xác định / Chỉ ra",
+            "icon": "🔍",
+            "active": true,
+            "content": {
+              "text": "Xác định phương thức biểu đạt, ngôi kể, phép liên kết, biện pháp tu từ, từ khóa... (Thường chỉ cần trả lời ngắn gọn, lấy từ trong văn bản).",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Nhóm Giải thích / Phân tích",
+            "icon": "💬",
+            "active": false,
+            "content": {
+              "text": "'Anh/chị hiểu như thế nào về câu nói...', 'Vì sao tác giả lại cho rằng...'. Yêu cầu dùng từ ngữ của mình để làm rõ nghĩa đen và nghĩa bóng.",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-3",
+            "title": "Nhóm Đánh giá / Rút bài học",
+            "icon": "⚖️",
+            "active": false,
+            "content": {
+              "text": "Nêu tác dụng, nhận xét, đánh giá quan điểm, liên hệ bản thân, rút ra thông điệp. (Cần lập luận logic, nêu rõ lý do đồng tình hay không).",
+              "examples": []
+            }
+          }
+        ],
+        "title": "Các nhóm dạng câu hỏi cơ bản",
+        "instruction": "Dưới đây là một số dạng tiêu biểu thường gặp nhất:",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "observe",
+      "data": {
+        "content": "Câu hỏi: <i>\"Chỉ ra và nêu tác dụng của biện pháp tu từ nhân hóa được sử dụng trong hai câu thơ trên.\"</i>",
+        "guide": [
+          "Câu hỏi này yêu cầu làm mấy việc?",
+          "Đây thuộc dạng câu hỏi gì?"
+        ],
+        "hint": "- Yêu cầu làm 2 việc: (1) Chỉ ra (gọi tên BPTT và từ ngữ) và (2) Nêu tác dụng.\n- Thuộc dạng: Xác định & Nêu tác dụng (Cần trả lời đủ ý gợi hình và biểu cảm theo mẫu).",
+        "title": "Ví dụ nhận diện",
+        "instruction": "Hãy quan sát câu hỏi sau trong một đề thi thật:",
+        "score": 0
+      }
+    },
+    {
+      "id": "step04",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Câu hỏi: \"Theo đoạn trích, nguyên nhân nào giúp nhân vật thành công?\" thuộc dạng câu hỏi gì?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Dạng Giải thích (đòi hỏi phải tự suy luận ý nghĩa)"
+          },
+          {
+            "id": "B",
+            "text": "Dạng Rút ra bài học (liên hệ bản thân)"
+          },
+          {
+            "id": "C",
+            "text": "Dạng Nêu tác dụng (phân tích nghệ thuật)"
+          },
+          {
+            "id": "D",
+            "text": "Dạng Xác định chi tiết (chỉ cần tìm và chép đúng câu văn/ý trong ngữ liệu)"
+          }
+        ],
+        "answer": "D",
+        "title": "Thực hành 1",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Khi gặp câu hỏi dạng \"Anh/chị hiểu như thế nào về câu nói...\", ta cần làm gì?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Chép lại y nguyên câu nói đó vào bài thi."
+          },
+          {
+            "id": "B",
+            "text": "Giải thích nghĩa đen (từ khóa) và nghĩa bóng (thông điệp, ngụ ý) của câu nói đó."
+          },
+          {
+            "id": "C",
+            "text": "Chỉ ra biện pháp nghệ thuật trong câu nói."
+          },
+          {
+            "id": "D",
+            "text": "Nói rằng mình đồng ý hay không đồng ý với câu nói đó."
+          }
+        ],
+        "answer": "B",
+        "title": "Thực hành 2",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Xác định phương thức biểu đạt chính của đoạn trích.",
+          "Anh/chị có đồng tình với quan điểm của tác giả không? Vì sao?",
+          "Từ đoạn trích, anh/chị rút ra được bài học gì cho bản thân?",
+          "Vì sao tác giả lại ví 'thời gian như bóng câu qua cửa sổ'?"
+        ],
+        "right": [
+          "Dạng Xác định",
+          "Dạng Đánh giá / Nhận xét",
+          "Dạng Liên hệ / Rút bài học",
+          "Dạng Giải thích"
+        ],
+        "answer": {
+          "Xác định phương thức biểu đạt chính của đoạn trích.": "Dạng Xác định",
+          "Anh/chị có đồng tình với quan điểm của tác giả không? Vì sao?": "Dạng Đánh giá / Nhận xét",
+          "Từ đoạn trích, anh/chị rút ra được bài học gì cho bản thân?": "Dạng Liên hệ / Rút bài học",
+          "Vì sao tác giả lại ví 'thời gian như bóng câu qua cửa sổ'?": "Dạng Giải thích"
+        },
+        "title": "Ghép câu hỏi với Dạng",
+        "instruction": "Nối các câu hỏi thi sau với đúng Dạng của chúng:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step07",
+      "type": "flashcard",
+      "data": {
+        "front": "Quy tắc vàng khi đọc câu hỏi Đọc hiểu?",
+        "back": "Trước khi làm bài, phải tự hỏi: 'Đây là dạng câu hỏi gì?' để áp dụng đúng CÔNG THỨC trả lời.",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "doc-hieu",
+    "difficulty": 2,
+    "xp": 70,
+    "stars": 3,
+    "description": "Nhận diện 15 dạng câu hỏi thường gặp trong đề thi để có chiến thuật trả lời chính xác và ăn trọn điểm.",
+    "durationMinutes": 20
+  }
+}

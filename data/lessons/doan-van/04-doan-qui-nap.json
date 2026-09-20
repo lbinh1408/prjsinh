@@ -1,0 +1,155 @@
+{
+  "id": "doan-van.04-doan-qui-nap",
+  "title": "Đoạn quy nạp",
+  "version": "1.0",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "format": "essay",
+        "content": "Những cánh đồng lúa chín vàng ươm trải dài tít tắp. Trên cành cây, mấy chú chim chích chòe đua nhau hót líu lo chào ngày mới. Lũ trẻ con trong xóm í ới gọi nhau ra đồng thả diều. <b>Bức tranh làng quê buổi sáng thật thanh bình và tràn đầy sức sống.</b>",
+        "guide": [
+          "Các câu đầu tiên trong đoạn miêu tả những chi tiết gì?",
+          "Câu in đậm nằm ở vị trí nào và có vai trò gì so với các câu trước đó?"
+        ],
+        "hint": "Các câu đầu nêu lên các chi tiết cụ thể, câu cuối cùng tổng kết lại ý chính.",
+        "title": "Quan sát",
+        "instruction": "Đọc kĩ đoạn văn sau và xác định vị trí câu mang ý chính.",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Đặc điểm của đoạn quy nạp",
+            "icon": "📖",
+            "active": true,
+            "content": {
+              "text": "Các câu đầu tiên đưa ra những dẫn chứng, chi tiết, ví dụ cụ thể. Câu cuối cùng tổng hợp, khái quát lại thành ý chính (câu chủ đề) của toàn đoạn.",
+              "examples": [
+                {
+                  "category": "Cấu trúc",
+                  "word": "Câu 1 (Ý chi tiết 1) -> Câu 2 (Ý chi tiết 2)... -> Câu cuối (Ý khái quát)",
+                  "emoji": "📝"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Khái niệm Đoạn quy nạp",
+        "instruction": "Đoạn văn quy nạp là đoạn văn có câu chủ đề nằm ở cuối đoạn.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trong đoạn văn quy nạp, câu chủ đề nằm ở vị trí nào?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Nằm ở đầu đoạn."
+          },
+          {
+            "id": "B",
+            "text": "Nằm ở giữa đoạn."
+          },
+          {
+            "id": "C",
+            "text": "Nằm ở cuối đoạn."
+          },
+          {
+            "id": "D",
+            "text": "Nằm ở cả đầu và cuối đoạn."
+          }
+        ],
+        "answer": "C",
+        "title": "Nhận biết đoạn quy nạp",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trong đoạn văn quy nạp, các câu đi trước câu chủ đề có nhiệm vụ gì?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Đưa ra kết luận cuối cùng."
+          },
+          {
+            "id": "B",
+            "text": "Trình bày các ý cụ thể, chi tiết để dẫn dắt đến kết luận chung."
+          },
+          {
+            "id": "C",
+            "text": "Tóm tắt lại ý chính đã nêu ở câu đầu."
+          },
+          {
+            "id": "D",
+            "text": "Nêu lên ý chính mang tính khái quát cao nhất."
+          }
+        ],
+        "answer": "B",
+        "title": "Vai trò của các câu đầu đoạn",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "ordering",
+      "validator": "orderValidator",
+      "data": {
+        "items": [
+          "Vì vậy, có thể nói rừng là lá phổi xanh vô cùng quan trọng của Trái Đất.",
+          "Rừng cung cấp gỗ và nhiều lâm sản quý giá cho con người.",
+          "Ngoài ra, rừng còn là nơi sinh sống của hàng ngàn loài động, thực vật.",
+          "Rừng giúp điều hòa khí hậu, giữ đất, giữ nước và ngăn chặn lũ lụt."
+        ],
+        "answer": [
+          "Rừng giúp điều hòa khí hậu, giữ đất, giữ nước và ngăn chặn lũ lụt.",
+          "Rừng cung cấp gỗ và nhiều lâm sản quý giá cho con người.",
+          "Ngoài ra, rừng còn là nơi sinh sống của hàng ngàn loài động, thực vật.",
+          "Vì vậy, có thể nói rừng là lá phổi xanh vô cùng quan trọng của Trái Đất."
+        ],
+        "title": "Sắp xếp",
+        "instruction": "Hãy sắp xếp các câu sau theo thứ tự để tạo thành đoạn văn quy nạp.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Cho câu chủ đề: 'Tóm lại, việc tự học đóng vai trò rất quan trọng đối với mỗi học sinh.'. Em hãy viết phần mở đầu (2-3 câu) để tạo thành một đoạn văn quy nạp.",
+        "sampleAnswer": [
+          "Tự học giúp chúng ta ghi nhớ kiến thức lâu hơn. Qua việc tự tìm tòi, học sinh rèn luyện được tính kiên trì và khả năng giải quyết vấn đề. Không những thế, nó còn khơi dậy niềm đam mê học hỏi không ngừng.",
+          "Phần mở đầu cần đưa ra các lợi ích cụ thể của việc tự học trước khi chốt lại bằng câu chủ đề ở cuối."
+        ],
+        "title": "Vận dụng",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "doan-van",
+    "difficulty": "basic",
+    "xp": 150,
+    "stars": 3,
+    "description": "Tìm hiểu về đoạn văn quy nạp: khái niệm, đặc điểm nhận diện và cách viết đoạn quy nạp.",
+    "prerequisite": null,
+    "unlock": null,
+    "reviewMode": "quiz",
+    "durationMinutes": 15
+  }
+}

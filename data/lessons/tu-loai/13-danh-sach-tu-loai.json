@@ -1,0 +1,1147 @@
+{
+    "id": "so-tay-tu-loai",
+    "title": "📒 Sổ tay Từ loại — Nhận diện, phân biệt và sử dụng trong ngữ cảnh",
+    "type": "reference",
+    "version": "1.0.0",
+    "meta": {
+        "module": "tu-loai",
+        "category": "reference-tool",
+        "difficulty": "basic-to-advanced",
+        "target": "TS10-HCMC",
+        "description": "Sổ tay tra cứu nhanh giúp học sinh nhận diện từ loại, hiểu bản chất, phân biệt những từ loại dễ nhầm và xác định từ loại trong ngữ cảnh.",
+        "purpose": [
+            "Tra cứu nhanh khi học",
+            "Ôn tập trước khi làm bài",
+            "Kiểm tra từ loại trong ngữ cảnh",
+            "Phân biệt những từ loại dễ nhầm",
+            "Nhận diện bẫy thường gặp trong đề thi"
+        ]
+    },
+    "learningGoals": [
+        "Nhận diện được các từ loại thường gặp trong chương trình THCS.",
+        "Hiểu bản chất của từng từ loại thay vì chỉ học thuộc định nghĩa.",
+        "Biết sử dụng câu hỏi kiểm tra nhanh để xác định từ loại.",
+        "Phân biệt được những từ loại có hình thức hoặc chức năng dễ nhầm.",
+        "Nhận ra rằng một từ có thể thay đổi từ loại tùy theo ngữ cảnh sử dụng.",
+        "Phân tích được vai trò của từ trong câu và trong ngữ cảnh cụ thể.",
+        "Tránh các lỗi nhận diện từ loại chỉ dựa vào nghĩa từ điển hoặc vị trí của từ.",
+        "Biết sử dụng sổ tay như một công cụ tra cứu trong quá trình học và làm bài."
+    ],
+    "steps": [
+        {
+            "id": "step_1",
+            "type": "reference",
+            "data": {
+                "usageGuide": {
+                    "title": "Cách dùng sổ tay",
+                    "principle": "Đừng hỏi 'Từ này thường thuộc từ loại gì?' trước; hãy hỏi 'Trong câu này, từ này đang làm gì và có đặc điểm gì?'",
+                    "quickProcess": [
+                        "Bước 1: Đọc cả câu, không tách từ khỏi ngữ cảnh.",
+                        "Bước 2: Xác định từ đang biểu thị người, vật, hoạt động, đặc điểm hay quan hệ gì.",
+                        "Bước 3: Thử câu hỏi kiểm tra nhanh của từ loại tương ứng.",
+                        "Bước 4: Kiểm tra khả năng kết hợp với các từ xung quanh.",
+                        "Bước 5: Đối chiếu với những từ loại dễ nhầm.",
+                        "Bước 6: Kết luận từ loại trong chính ngữ cảnh đó."
+                    ],
+                    "warning": "Không nên xác định từ loại chỉ bằng một dấu hiệu duy nhất."
+                },
+                "map": {
+                    "title": "🗺️ Bản đồ từ loại",
+                    "description": "Nhìn nhanh toàn bộ hệ thống trước khi đi sâu vào từng nhóm.",
+                    "groups": [
+                        {
+                            "id": "thuc-tu",
+                            "name": "Thực từ",
+                            "description": "Những từ có ý nghĩa từ vựng tương đối rõ và có khả năng đảm nhiệm thành phần câu.",
+                            "items": [
+                                "danh-tu",
+                                "dong-tu",
+                                "tinh-tu",
+                                "dai-tu",
+                                "so-tu",
+                                "luong-tu"
+                            ]
+                        },
+                        {
+                            "id": "hu-tu",
+                            "name": "Hư từ",
+                            "description": "Những từ chủ yếu biểu thị quan hệ, sắc thái hoặc bổ sung ý nghĩa cho từ và câu.",
+                            "items": [
+                                "pho-tu",
+                                "quan-he-tu",
+                                "tro-tu",
+                                "tinh-thai-tu",
+                                "than-tu"
+                            ]
+                        }
+                    ]
+                },
+                "wordTypes": [
+                    {
+                        "id": "danh-tu",
+                        "name": "Danh từ",
+                        "icon": "🟦",
+                        "priority": "core",
+                        "keywords": [
+                            "người",
+                            "vật",
+                            "sự vật",
+                            "hiện tượng",
+                            "khái niệm",
+                            "đơn vị"
+                        ],
+                        "coreFact": "Danh từ là những từ gọi tên người, sự vật, hiện tượng, khái niệm hoặc đơn vị.",
+                        "essence": {
+                            "question": "Nó gọi tên cái gì?",
+                            "answer": "Người, vật, hiện tượng, khái niệm hoặc đơn vị."
+                        },
+                        "recognition": [
+                            "Có thể kết hợp với các từ chỉ số lượng như một, hai, những, các, mọi.",
+                            "Có thể làm chủ ngữ trong câu.",
+                            "Có thể kết hợp với từ chỉ định như này, ấy, đó.",
+                            "Một số danh từ chỉ khái niệm không phải là vật thể cụ thể."
+                        ],
+                        "quickTest": [
+                            "Có thể gọi tên một người, vật, hiện tượng hoặc khái niệm không?",
+                            "Có thể kết hợp với 'một', 'những', 'các' trong ngữ cảnh phù hợp không?",
+                            "Có thể đảm nhiệm vai trò chủ thể của câu không?"
+                        ],
+                        "examples": [
+                            {
+                                "sentence": "Những học sinh đang đọc sách trong thư viện.",
+                                "word": "học sinh",
+                                "analysis": "Gọi tên người nên 'học sinh' là danh từ."
+                            },
+                            {
+                                "sentence": "Lòng biết ơn giúp con người sống đẹp hơn.",
+                                "word": "lòng biết ơn",
+                                "analysis": "Gọi tên một khái niệm, trạng thái tình cảm nên đây là cụm danh từ."
+                            }
+                        ],
+                        "confusableWith": [
+                            {
+                                "type": "dong-tu",
+                                "difference": "Danh từ gọi tên sự vật hoặc khái niệm; động từ biểu thị hoạt động hoặc trạng thái."
+                            },
+                            {
+                                "type": "tinh-tu",
+                                "difference": "Danh từ gọi tên sự vật hoặc khái niệm; tính từ biểu thị đặc điểm, tính chất."
+                            }
+                        ],
+                        "examTips": [
+                            "Đừng nghĩ danh từ chỉ là tên người hoặc đồ vật cụ thể.",
+                            "Các khái niệm như 'niềm tin', 'lòng nhân ái', 'hạnh phúc', 'trách nhiệm' cũng có thể là danh từ.",
+                            "Cần xác định cả cụm từ nếu từ đang xét nằm trong một cụm danh từ."
+                        ],
+                        "usableFor": [
+                            "nhan-dien-tu-loai",
+                            "phan-tich-cau",
+                            "tim-chu-ngu",
+                            "phan-tich-cum-tu"
+                        ]
+                    },
+                    {
+                        "id": "dong-tu",
+                        "name": "Động từ",
+                        "icon": "🟩",
+                        "priority": "core",
+                        "keywords": [
+                            "hoạt động",
+                            "trạng thái",
+                            "hành động",
+                            "diễn biến"
+                        ],
+                        "coreFact": "Động từ là những từ biểu thị hoạt động hoặc trạng thái của người, vật.",
+                        "essence": {
+                            "question": "Đang làm gì? Đang ở trạng thái nào?",
+                            "answer": "Biểu thị hoạt động hoặc trạng thái."
+                        },
+                        "recognition": [
+                            "Thường làm trung tâm của vị ngữ.",
+                            "Có thể kết hợp với các từ chỉ thời gian, mức độ hoặc sự tiếp diễn như đã, đang, sẽ, vừa, mới.",
+                            "Biểu thị hành động như học, viết, chạy, đọc.",
+                            "Biểu thị trạng thái như yêu, nhớ, hiểu, lo, tin."
+                        ],
+                        "quickTest": [
+                            "Từ này có trả lời được câu hỏi 'làm gì?' không?",
+                            "Từ này có biểu thị một trạng thái hay hoạt động không?",
+                            "Có thể kết hợp với 'đang', 'đã', 'sẽ' trong ngữ cảnh không?"
+                        ],
+                        "examples": [
+                            {
+                                "sentence": "Lan đang học bài.",
+                                "word": "học",
+                                "analysis": "Biểu thị hoạt động nên 'học' là động từ."
+                            },
+                            {
+                                "sentence": "Em rất nhớ quê hương.",
+                                "word": "nhớ",
+                                "analysis": "Biểu thị trạng thái tình cảm nên 'nhớ' là động từ."
+                            }
+                        ],
+                        "confusableWith": [
+                            {
+                                "type": "tinh-tu",
+                                "difference": "Động từ thiên về hoạt động hoặc trạng thái; tính từ thiên về đặc điểm, tính chất."
+                            },
+                            {
+                                "type": "danh-tu",
+                                "difference": "Động từ biểu thị hoạt động/trạng thái; danh từ gọi tên sự vật hoặc khái niệm."
+                            }
+                        ],
+                        "examTips": [
+                            "Không phải cứ có thể đứng sau 'đang' thì chắc chắn là động từ; cần xét nghĩa và chức năng trong câu.",
+                            "Các từ chỉ trạng thái như 'yêu', 'ghét', 'nhớ', 'hiểu', 'tin' vẫn có thể là động từ.",
+                            "Một số từ có thể chuyển loại tùy ngữ cảnh."
+                        ],
+                        "usableFor": [
+                            "nhan-dien-tu-loai",
+                            "tim-vi-ngu",
+                            "phan-tich-cau",
+                            "phan-biet-dong-tu-tinh-tu"
+                        ]
+                    },
+                    {
+                        "id": "tinh-tu",
+                        "name": "Tính từ",
+                        "icon": "🟨",
+                        "priority": "core",
+                        "keywords": [
+                            "đặc điểm",
+                            "tính chất",
+                            "mức độ",
+                            "trạng thái biểu hiện"
+                        ],
+                        "coreFact": "Tính từ là những từ biểu thị đặc điểm hoặc tính chất của sự vật, hoạt động, trạng thái.",
+                        "essence": {
+                            "question": "Như thế nào?",
+                            "answer": "Biểu thị đặc điểm hoặc tính chất."
+                        },
+                        "recognition": [
+                            "Có thể kết hợp với các từ chỉ mức độ như rất, hơi, khá, cực kỳ.",
+                            "Thường làm vị ngữ hoặc thành phần bổ nghĩa cho danh từ.",
+                            "Có thể biểu thị đặc điểm về hình thức, tính chất, phẩm chất hoặc trạng thái."
+                        ],
+                        "quickTest": [
+                            "Từ này có trả lời được câu hỏi 'như thế nào?' không?",
+                            "Có thể kết hợp với 'rất', 'hơi', 'khá' trong ngữ cảnh không?",
+                            "Từ này đang mô tả đặc điểm hay tính chất của đối tượng nào?"
+                        ],
+                        "examples": [
+                            {
+                                "sentence": "Con đường rất rộng.",
+                                "word": "rộng",
+                                "analysis": "Biểu thị đặc điểm về kích thước nên là tính từ."
+                            },
+                            {
+                                "sentence": "Cô bé có một nụ cười dịu dàng.",
+                                "word": "dịu dàng",
+                                "analysis": "Biểu thị đặc điểm nên là tính từ."
+                            }
+                        ],
+                        "confusableWith": [
+                            {
+                                "type": "dong-tu",
+                                "difference": "Một số từ biểu thị trạng thái có thể dễ nhầm; cần xét xem từ đang biểu thị hoạt động/trạng thái hay đặc điểm/tính chất."
+                            },
+                            {
+                                "type": "danh-tu",
+                                "difference": "Tính từ mô tả đặc điểm; danh từ gọi tên sự vật hoặc khái niệm."
+                            }
+                        ],
+                        "examTips": [
+                            "Không đồng nhất mọi từ đứng sau 'rất' với tính từ nếu không xét ngữ cảnh.",
+                            "Cần phân biệt đặc điểm của đối tượng với hành động/trạng thái của đối tượng."
+                        ],
+                        "usableFor": [
+                            "nhan-dien-tu-loai",
+                            "phan-tich-cum-tu",
+                            "phan-biet-dong-tu-tinh-tu"
+                        ]
+                    },
+                    {
+                        "id": "dai-tu",
+                        "name": "Đại từ",
+                        "icon": "🟪",
+                        "priority": "core",
+                        "keywords": [
+                            "xưng hô",
+                            "thay thế",
+                            "chỉ người",
+                            "chỉ vật",
+                            "chỉ số lượng",
+                            "hỏi"
+                        ],
+                        "coreFact": "Đại từ là những từ dùng để trỏ hoặc hỏi về người, sự vật, hoạt động, tính chất, số lượng... trong ngữ cảnh.",
+                        "essence": {
+                            "question": "Từ này đang trỏ, thay thế hoặc hỏi về điều gì?",
+                            "answer": "Người, vật, hoạt động, tính chất, số lượng hoặc đối tượng được nói tới."
+                        },
+                        "recognition": [
+                            "Có thể dùng để xưng hô như tôi, chúng tôi, bạn, chúng ta.",
+                            "Có thể dùng để trỏ như này, kia, ấy, đó.",
+                            "Có thể dùng để hỏi như ai, gì, nào, bao nhiêu.",
+                            "Nghĩa cụ thể thường phụ thuộc vào ngữ cảnh."
+                        ],
+                        "quickTest": [
+                            "Từ này có thay thế hoặc trỏ đến một đối tượng đã biết trong ngữ cảnh không?",
+                            "Từ này có dùng để hỏi về người, vật, số lượng hoặc đặc điểm không?",
+                            "Nếu bỏ từ này ra, có thể xác định đối tượng mà nó trỏ tới từ ngữ cảnh không?"
+                        ],
+                        "examples": [
+                            {
+                                "sentence": "Tôi rất yêu quê hương.",
+                                "word": "tôi",
+                                "analysis": "Dùng để xưng hô và chỉ người nói nên là đại từ."
+                            },
+                            {
+                                "sentence": "Ai đang đứng ngoài cửa?",
+                                "word": "ai",
+                                "analysis": "Dùng để hỏi về người nên là đại từ."
+                            }
+                        ],
+                        "confusableWith": [
+                            {
+                                "type": "danh-tu",
+                                "difference": "Đại từ trỏ/thay thế/hỏi; danh từ trực tiếp gọi tên sự vật hoặc khái niệm."
+                            },
+                            {
+                                "type": "so-tu",
+                                "difference": "Đại từ có thể hỏi hoặc trỏ về số lượng; số từ trực tiếp biểu thị số lượng hoặc thứ tự."
+                            }
+                        ],
+                        "examTips": [
+                            "Không phải mọi từ 'ấy', 'này', 'đó' đều được xác định giống nhau trong mọi câu.",
+                            "Phải xét vai trò và đối tượng mà từ đang trỏ tới trong ngữ cảnh."
+                        ],
+                        "usableFor": [
+                            "nhan-dien-tu-loai",
+                            "phan-tich-ngoi",
+                            "phan-tich-cach-xung-ho",
+                            "phan-tich-nghia-trong-ngu-canh"
+                        ]
+                    },
+                    {
+                        "id": "so-tu",
+                        "name": "Số từ",
+                        "icon": "🟧",
+                        "priority": "core",
+                        "keywords": [
+                            "số lượng",
+                            "thứ tự",
+                            "đếm",
+                            "xếp thứ"
+                        ],
+                        "coreFact": "Số từ là những từ chỉ số lượng hoặc thứ tự của sự vật.",
+                        "essence": {
+                            "question": "Bao nhiêu? Thứ mấy?",
+                            "answer": "Chỉ số lượng hoặc thứ tự."
+                        },
+                        "recognition": [
+                            "Biểu thị số lượng cụ thể.",
+                            "Có thể biểu thị thứ tự như thứ nhất, thứ hai.",
+                            "Thường đứng trước danh từ khi chỉ số lượng."
+                        ],
+                        "quickTest": [
+                            "Từ này có trả lời câu hỏi 'bao nhiêu?' không?",
+                            "Từ này có trả lời câu hỏi 'thứ mấy?' không?",
+                            "Từ này có trực tiếp biểu thị một con số hoặc thứ tự không?"
+                        ],
+                        "examples": [
+                            {
+                                "sentence": "Ba học sinh bước vào lớp.",
+                                "word": "ba",
+                                "analysis": "Biểu thị số lượng học sinh nên là số từ."
+                            },
+                            {
+                                "sentence": "Em đứng thứ hai trong cuộc thi.",
+                                "word": "hai",
+                                "analysis": "Tham gia biểu thị thứ tự nên thuộc số từ."
+                            }
+                        ],
+                        "confusableWith": [
+                            {
+                                "type": "luong-tu",
+                                "difference": "Số từ biểu thị số lượng hoặc thứ tự cụ thể; lượng từ biểu thị lượng ít/nhiều hoặc toàn thể theo phạm vi."
+                            },
+                            {
+                                "type": "dai-tu",
+                                "difference": "Số từ trực tiếp biểu thị số lượng/thứ tự; đại từ có thể thay thế hoặc hỏi về số lượng."
+                            }
+                        ],
+                        "examTips": [
+                            "Phân biệt số từ chỉ số lượng cụ thể với lượng từ như những, các, mọi, mỗi.",
+                            "Cần xét cả cụm từ thay vì chỉ nhìn vào một từ đứng trước danh từ."
+                        ],
+                        "usableFor": [
+                            "nhan-dien-tu-loai",
+                            "phan-biet-so-tu-luong-tu",
+                            "phan-tich-cum-danh-tu"
+                        ]
+                    },
+                    {
+                        "id": "luong-tu",
+                        "name": "Lượng từ",
+                        "icon": "🟥",
+                        "priority": "core",
+                        "keywords": [
+                            "toàn thể",
+                            "tập hợp",
+                            "phạm vi",
+                            "ít nhiều",
+                            "phân phối"
+                        ],
+                        "coreFact": "Lượng từ là những từ chỉ lượng ít hay nhiều của sự vật hoặc phạm vi phân bố của sự vật được nói đến.",
+                        "essence": {
+                            "question": "Bao nhiêu theo phạm vi nào?",
+                            "answer": "Chỉ lượng và phạm vi phân bố của sự vật."
+                        },
+                        "recognition": [
+                            "Thường đứng trước danh từ.",
+                            "Có thể biểu thị toàn thể như tất cả, cả.",
+                            "Có thể biểu thị tập hợp như những, các.",
+                            "Có thể biểu thị phân phối như mỗi, từng."
+                        ],
+                        "quickTest": [
+                            "Từ này có biểu thị lượng của một nhóm sự vật thay vì một con số cụ thể không?",
+                            "Từ này có thể đứng trước danh từ để giới hạn phạm vi không?",
+                            "Có phải từ này đang biểu thị toàn bộ, tập hợp hoặc phân phối không?"
+                        ],
+                        "examples": [
+                            {
+                                "sentence": "Những học sinh chăm chỉ thường tiến bộ.",
+                                "word": "những",
+                                "analysis": "Biểu thị một tập hợp không xác định cụ thể về số lượng nên là lượng từ."
+                            },
+                            {
+                                "sentence": "Mỗi người đều có trách nhiệm với cộng đồng.",
+                                "word": "mỗi",
+                                "analysis": "Biểu thị sự phân phối lần lượt trên từng cá thể nên là lượng từ."
+                            }
+                        ],
+                        "confusableWith": [
+                            {
+                                "type": "so-tu",
+                                "difference": "Số từ cho biết số lượng cụ thể hoặc thứ tự; lượng từ chỉ lượng/phạm vi theo cách khái quát."
+                            },
+                            {
+                                "type": "dai-tu",
+                                "difference": "Lượng từ thường đi kèm danh từ để giới hạn lượng; đại từ có thể thay thế hoặc trỏ đến đối tượng."
+                            }
+                        ],
+                        "examTips": [
+                            "Các từ 'những', 'các', 'mọi', 'mỗi', 'từng', 'tất cả' cần được xét trong cụm danh từ.",
+                            "Không nhầm lượng từ với số từ chỉ vì cả hai đều liên quan đến số lượng."
+                        ],
+                        "usableFor": [
+                            "nhan-dien-tu-loai",
+                            "phan-biet-so-tu-luong-tu",
+                            "phan-tich-cum-danh-tu"
+                        ]
+                    },
+                    {
+                        "id": "pho-tu",
+                        "name": "Phó từ",
+                        "icon": "🟫",
+                        "priority": "core",
+                        "keywords": [
+                            "thời gian",
+                            "mức độ",
+                            "tiếp diễn",
+                            "phủ định",
+                            "cầu khiến",
+                            "kết quả",
+                            "khả năng"
+                        ],
+                        "coreFact": "Phó từ là những từ chuyên đi kèm động từ hoặc tính từ để bổ sung ý nghĩa về thời gian, mức độ, sự tiếp diễn, phủ định, cầu khiến, khả năng, kết quả...",
+                        "essence": {
+                            "question": "Từ này đang bổ sung ý nghĩa gì cho động từ hoặc tính từ?",
+                            "answer": "Thời gian, mức độ, tiếp diễn, phủ định, cầu khiến, khả năng hoặc ý nghĩa khác."
+                        },
+                        "recognition": [
+                            "Thường đứng trước hoặc sau động từ, tính từ.",
+                            "Bổ sung ý nghĩa cho trung tâm.",
+                            "Có thể biểu thị thời gian như đã, đang, sẽ.",
+                            "Có thể biểu thị mức độ như rất, hơi, quá.",
+                            "Có thể biểu thị phủ định như không, chưa, chẳng.",
+                            "Có thể biểu thị tiếp diễn như vẫn, còn, cứ."
+                        ],
+                        "quickTest": [
+                            "Từ này có đi kèm động từ hoặc tính từ không?",
+                            "Nó có bổ sung ý nghĩa thời gian, mức độ, phủ định, tiếp diễn... không?",
+                            "Nếu bỏ từ này đi, nghĩa cơ bản của động từ/tính từ có còn nhưng sắc thái thay đổi không?"
+                        ],
+                        "examples": [
+                            {
+                                "sentence": "Em đang học bài.",
+                                "word": "đang",
+                                "analysis": "Bổ sung ý nghĩa tiếp diễn về thời gian cho động từ 'học' nên là phó từ."
+                            },
+                            {
+                                "sentence": "Bài văn rất hay.",
+                                "word": "rất",
+                                "analysis": "Bổ sung ý nghĩa mức độ cho tính từ 'hay' nên là phó từ."
+                            }
+                        ],
+                        "confusableWith": [
+                            {
+                                "type": "tinh-tu",
+                                "difference": "Phó từ không trực tiếp biểu thị đặc điểm của sự vật mà bổ sung ý nghĩa cho động từ/tính từ."
+                            },
+                            {
+                                "type": "luong-tu",
+                                "difference": "Lượng từ thường đi với danh từ; phó từ chủ yếu đi kèm động từ hoặc tính từ."
+                            }
+                        ],
+                        "examTips": [
+                            "Đừng chỉ học thuộc danh sách phó từ; hãy nhìn vào từ mà nó bổ sung ý nghĩa.",
+                            "Một từ chỉ có thể xác định chắc chắn khi đặt vào câu cụ thể.",
+                            "Câu hỏi quan trọng nhất: 'Nó đang bổ sung nghĩa cho từ nào?'"
+                        ],
+                        "usableFor": [
+                            "nhan-dien-tu-loai",
+                            "phan-tich-cum-dong-tu",
+                            "phan-tich-cum-tinh-tu",
+                            "phan-tich-sac-thai"
+                        ]
+                    },
+                    {
+                        "id": "quan-he-tu",
+                        "name": "Quan hệ từ",
+                        "icon": "⬜",
+                        "priority": "core",
+                        "keywords": [
+                            "quan hệ",
+                            "liên kết",
+                            "giữa các từ",
+                            "giữa các cụm từ",
+                            "giữa các vế câu"
+                        ],
+                        "coreFact": "Quan hệ từ dùng để biểu thị quan hệ giữa các từ, cụm từ hoặc các bộ phận của câu.",
+                        "essence": {
+                            "question": "Từ này đang nối hoặc biểu thị quan hệ nào?",
+                            "answer": "Quan hệ giữa các thành phần như sở hữu, nguyên nhân, mục đích, điều kiện, tương phản, phương tiện..."
+                        },
+                        "recognition": [
+                            "Thường dùng để nối các thành phần có quan hệ với nhau.",
+                            "Có thể biểu thị quan hệ nguyên nhân, mục đích, sở hữu, so sánh, điều kiện, tương phản...",
+                            "Có thể xuất hiện theo cặp như vì... nên..., nếu... thì..., tuy... nhưng..."
+                        ],
+                        "quickTest": [
+                            "Từ này có đang biểu thị quan hệ giữa hai thành phần không?",
+                            "Nếu bỏ từ này đi, quan hệ giữa các thành phần có trở nên không rõ hoặc thay đổi không?",
+                            "Có thể xác định được loại quan hệ mà từ này biểu thị không?"
+                        ],
+                        "examples": [
+                            {
+                                "sentence": "Vì trời mưa nên đường trơn.",
+                                "word": "vì... nên...",
+                                "analysis": "Biểu thị quan hệ nguyên nhân – kết quả."
+                            },
+                            {
+                                "sentence": "Cuốn sách của Lan rất hay.",
+                                "word": "của",
+                                "analysis": "Biểu thị quan hệ sở hữu giữa 'cuốn sách' và 'Lan'."
+                            }
+                        ],
+                        "confusableWith": [
+                            {
+                                "type": "tro-tu",
+                                "difference": "Quan hệ từ biểu thị quan hệ giữa các thành phần; trợ từ nhấn mạnh hoặc biểu thị thái độ đánh giá đối với một thành phần."
+                            },
+                            {
+                                "type": "pho-tu",
+                                "difference": "Phó từ bổ sung ý nghĩa cho động từ/tính từ; quan hệ từ biểu thị quan hệ giữa các thành phần."
+                            }
+                        ],
+                        "examTips": [
+                            "Quan hệ từ thường cần được nhìn cùng thành phần trước và sau nó.",
+                            "Không nên chỉ học danh sách 'vì, nên, của, với...' mà phải xác định quan hệ thực tế trong câu."
+                        ],
+                        "usableFor": [
+                            "nhan-dien-tu-loai",
+                            "phan-tich-quan-he-cau",
+                            "phan-tich-lien-ket",
+                            "phan-tich-nghia"
+                        ]
+                    },
+                    {
+                        "id": "tro-tu",
+                        "name": "Trợ từ",
+                        "icon": "🔶",
+                        "priority": "support",
+                        "keywords": [
+                            "nhấn mạnh",
+                            "đánh giá",
+                            "nhấn vào",
+                            "số lượng",
+                            "mức độ"
+                        ],
+                        "coreFact": "Trợ từ là những từ chuyên đi kèm một từ ngữ trong câu để nhấn mạnh hoặc biểu thị thái độ đánh giá đối với sự vật, sự việc được nói đến.",
+                        "essence": {
+                            "question": "Từ này đang nhấn mạnh điều gì?",
+                            "answer": "Nhấn mạnh một từ ngữ hoặc sắc thái đánh giá của người nói."
+                        },
+                        "recognition": [
+                            "Thường đi kèm một từ hoặc cụm từ đã có ý nghĩa tương đối đầy đủ.",
+                            "Làm nổi bật thông tin được nhấn mạnh.",
+                            "Có thể biểu thị sự đánh giá về mức độ hoặc số lượng."
+                        ],
+                        "quickTest": [
+                            "Từ này có làm nổi bật một thành phần nào không?",
+                            "Nếu bỏ từ này, nội dung chính còn nhưng sắc thái nhấn mạnh thay đổi không?",
+                            "Từ này có đang thể hiện sự đánh giá của người nói không?"
+                        ],
+                        "examples": [
+                            {
+                                "sentence": "Chính Lan đã giúp tôi vượt qua khó khăn.",
+                                "word": "chính",
+                                "analysis": "Nhấn mạnh người thực hiện hành động là Lan."
+                            },
+                            {
+                                "sentence": "Tôi có mỗi một cuốn sách này.",
+                                "word": "mỗi",
+                                "analysis": "Trong ngữ cảnh này, 'mỗi' nhấn mạnh số lượng ít ỏi, không phải lượng từ theo nghĩa phân phối."
+                            }
+                        ],
+                        "confusableWith": [
+                            {
+                                "type": "luong-tu",
+                                "difference": "Một số từ như 'mỗi', 'có' có thể thay đổi chức năng tùy ngữ cảnh; cần xét tác dụng thực tế trong câu."
+                            },
+                            {
+                                "type": "pho-tu",
+                                "difference": "Phó từ bổ sung ý nghĩa cho động từ/tính từ; trợ từ nhấn mạnh hoặc đánh giá một thành phần."
+                            }
+                        ],
+                        "examTips": [
+                            "Đây là nhóm rất dễ nhầm vì cùng một hình thức từ có thể đảm nhiệm chức năng khác nhau.",
+                            "Luôn đặt từ vào câu cụ thể trước khi kết luận."
+                        ],
+                        "usableFor": [
+                            "nhan-dien-tu-loai",
+                            "phan-tich-sac-thai",
+                            "phan-tich-ham-y",
+                            "phan-tich-tac-dung"
+                        ]
+                    },
+                    {
+                        "id": "tinh-thai-tu",
+                        "name": "Tình thái từ",
+                        "icon": "💬",
+                        "priority": "support",
+                        "keywords": [
+                            "thái độ",
+                            "tình cảm",
+                            "hỏi",
+                            "cầu khiến",
+                            "cảm thán",
+                            "xưng hô"
+                        ],
+                        "coreFact": "Tình thái từ là những từ được thêm vào câu để tạo sắc thái nghi vấn, cầu khiến, cảm thán hoặc biểu thị sắc thái tình cảm, thái độ của người nói.",
+                        "essence": {
+                            "question": "Người nói đang thể hiện thái độ hoặc sắc thái gì?",
+                            "answer": "Hỏi, cầu khiến, cảm thán hoặc bộc lộ thái độ, tình cảm."
+                        },
+                        "recognition": [
+                            "Thường xuất hiện ở cuối câu.",
+                            "Có thể tạo sắc thái hỏi, cầu khiến hoặc cảm xúc.",
+                            "Có thể gắn với cách xưng hô để tạo sắc thái giao tiếp."
+                        ],
+                        "quickTest": [
+                            "Nếu bỏ từ này, nội dung thông tin chính có còn không?",
+                            "Từ này có làm thay đổi sắc thái giao tiếp của câu không?",
+                            "Nó có thể hiện thái độ, tình cảm hoặc mục đích giao tiếp không?"
+                        ],
+                        "examples": [
+                            {
+                                "sentence": "Bạn đã làm bài rồi à?",
+                                "word": "à",
+                                "analysis": "Tạo sắc thái nghi vấn."
+                            },
+                            {
+                                "sentence": "Bạn giúp tôi với!",
+                                "word": "với",
+                                "analysis": "Tạo sắc thái cầu khiến, đề nghị."
+                            }
+                        ],
+                        "confusableWith": [
+                            {
+                                "type": "than-tu",
+                                "difference": "Tình thái từ tạo sắc thái giao tiếp; thán từ chủ yếu dùng để bộc lộ cảm xúc hoặc gọi đáp."
+                            },
+                            {
+                                "type": "tro-tu",
+                                "difference": "Trợ từ nhấn mạnh thành phần; tình thái từ tạo sắc thái nghi vấn, cầu khiến, cảm thán hoặc thái độ."
+                            }
+                        ],
+                        "examTips": [
+                            "Không tách tình thái từ khỏi mục đích giao tiếp của câu.",
+                            "Cùng một hình thức từ có thể có chức năng khác nhau trong những ngữ cảnh khác nhau."
+                        ],
+                        "usableFor": [
+                            "nhan-dien-tu-loai",
+                            "phan-tich-sac-thai",
+                            "phan-tich-muc-dich-noi",
+                            "phan-tich-hoi-thoai"
+                        ]
+                    },
+                    {
+                        "id": "than-tu",
+                        "name": "Thán từ",
+                        "icon": "❤️",
+                        "priority": "support",
+                        "keywords": [
+                            "cảm xúc",
+                            "cảm thán",
+                            "gọi đáp",
+                            "bộc lộ"
+                        ],
+                        "coreFact": "Thán từ là những từ dùng để bộc lộ cảm xúc, tình cảm hoặc dùng để gọi đáp.",
+                        "essence": {
+                            "question": "Từ này có đang trực tiếp bộc lộ cảm xúc hoặc gọi đáp không?",
+                            "answer": "Bộc lộ cảm xúc hoặc thực hiện hành động gọi đáp."
+                        },
+                        "recognition": [
+                            "Thường đứng đầu câu.",
+                            "Có thể tạo thành câu đặc biệt.",
+                            "Bộc lộ trực tiếp cảm xúc như vui, buồn, ngạc nhiên, tiếc nuối.",
+                            "Có thể dùng để gọi đáp."
+                        ],
+                        "quickTest": [
+                            "Từ này có trực tiếp bộc lộ cảm xúc không?",
+                            "Từ này có dùng để gọi hoặc đáp không?",
+                            "Nếu bỏ từ này, thông tin sự việc còn nhưng cảm xúc hoặc hành động gọi đáp giảm đi không?"
+                        ],
+                        "examples": [
+                            {
+                                "sentence": "Ôi! Cảnh biển đẹp quá.",
+                                "word": "Ôi",
+                                "analysis": "Bộc lộ cảm xúc trực tiếp nên là thán từ."
+                            },
+                            {
+                                "sentence": "Này, bạn đi đâu vậy?",
+                                "word": "Này",
+                                "analysis": "Dùng để gọi người đối thoại nên là thán từ."
+                            }
+                        ],
+                        "confusableWith": [
+                            {
+                                "type": "tinh-thai-tu",
+                                "difference": "Thán từ trực tiếp bộc lộ cảm xúc hoặc gọi đáp; tình thái từ tạo sắc thái giao tiếp cho câu."
+                            },
+                            {
+                                "type": "dai-tu",
+                                "difference": "Một số từ xưng hô/chỉ định cần xét chức năng cụ thể trong câu, không chỉ nhìn hình thức."
+                            }
+                        ],
+                        "examTips": [
+                            "Đừng xác định thán từ chỉ vì từ đứng đầu câu.",
+                            "Cần xem từ đó có thực sự bộc lộ cảm xúc hoặc thực hiện chức năng gọi đáp hay không."
+                        ],
+                        "usableFor": [
+                            "nhan-dien-tu-loai",
+                            "phan-tich-cam-xuc",
+                            "phan-tich-hoi-thoai",
+                            "phan-tich-sac-thai"
+                        ]
+                    }
+                ],
+                "comparison": {
+                    "title": "🔍 Những cặp từ loại dễ nhầm",
+                    "pairs": [
+                        {
+                            "id": "danh-tu-dong-tu",
+                            "left": "Danh từ",
+                            "right": "Động từ",
+                            "question": "Gọi tên hay biểu thị hoạt động/trạng thái?",
+                            "ruleOfThumb": "Tên của cái gì → danh từ. Làm gì/ở trạng thái nào → động từ."
+                        },
+                        {
+                            "id": "dong-tu-tinh-tu",
+                            "left": "Động từ",
+                            "right": "Tính từ",
+                            "question": "Hoạt động/trạng thái hay đặc điểm/tính chất?",
+                            "ruleOfThumb": "Làm gì/ở trạng thái nào → động từ. Như thế nào → tính từ."
+                        },
+                        {
+                            "id": "so-tu-luong-tu",
+                            "left": "Số từ",
+                            "right": "Lượng từ",
+                            "question": "Số lượng cụ thể hay lượng/phạm vi khái quát?",
+                            "ruleOfThumb": "Ba, năm, mười, thứ nhất... → số từ. Những, các, mọi, mỗi... → lượng từ."
+                        },
+                        {
+                            "id": "pho-tu-tro-tu",
+                            "left": "Phó từ",
+                            "right": "Trợ từ",
+                            "question": "Bổ sung nghĩa hay nhấn mạnh?",
+                            "ruleOfThumb": "Bổ sung nghĩa cho động từ/tính từ → phó từ. Nhấn mạnh/đánh giá → trợ từ."
+                        },
+                        {
+                            "id": "tro-tu-tinh-thai-tu",
+                            "left": "Trợ từ",
+                            "right": "Tình thái từ",
+                            "question": "Nhấn mạnh thành phần hay tạo sắc thái giao tiếp?",
+                            "ruleOfThumb": "Nhấn vào thông tin → trợ từ. Tạo sắc thái hỏi, cầu khiến, cảm xúc, thái độ → tình thái từ."
+                        },
+                        {
+                            "id": "tinh-thai-tu-than-tu",
+                            "left": "Tình thái từ",
+                            "right": "Thán từ",
+                            "question": "Tạo sắc thái câu hay bộc lộ cảm xúc/gọi đáp?",
+                            "ruleOfThumb": "Tạo sắc thái giao tiếp → tình thái từ. Bộc lộ cảm xúc/gọi đáp → thán từ."
+                        }
+                    ]
+                },
+                "contextMicroscope": {
+                    "title": "🔬 Kính hiển vi từ loại",
+                    "description": "Không học từ loại bằng danh sách; hãy đặt từ vào câu và quan sát chức năng của nó.",
+                    "analysisProcess": [
+                        {
+                            "step": 1,
+                            "question": "Từ cần xét là từ nào?"
+                        },
+                        {
+                            "step": 2,
+                            "question": "Từ đó đang đi cùng từ nào?"
+                        },
+                        {
+                            "step": 3,
+                            "question": "Từ đó đang biểu thị điều gì?"
+                        },
+                        {
+                            "step": 4,
+                            "question": "Nó đang gọi tên, hoạt động, miêu tả, chỉ lượng, bổ sung nghĩa hay biểu thị quan hệ?"
+                        },
+                        {
+                            "step": 5,
+                            "question": "Có từ loại nào dễ nhầm với nó không?"
+                        },
+                        {
+                            "step": 6,
+                            "question": "Kết luận từ loại trong chính ngữ cảnh này."
+                        }
+                    ],
+                    "samples": [
+                        {
+                            "sentence": "Em đang học bài.",
+                            "focus": "đang",
+                            "answer": "Phó từ",
+                            "analysis": "Bổ sung ý nghĩa tiếp diễn về thời gian cho động từ 'học'."
+                        },
+                        {
+                            "sentence": "Những học sinh chăm chỉ đều tiến bộ.",
+                            "focus": "những",
+                            "answer": "Lượng từ",
+                            "analysis": "Biểu thị một tập hợp học sinh không xác định bằng số lượng cụ thể."
+                        },
+                        {
+                            "sentence": "Chính Lan đã giúp tôi.",
+                            "focus": "chính",
+                            "answer": "Trợ từ",
+                            "analysis": "Nhấn mạnh đối tượng thực hiện hành động là Lan."
+                        },
+                        {
+                            "sentence": "Ôi! Quê hương đẹp quá!",
+                            "focus": "Ôi",
+                            "answer": "Thán từ",
+                            "analysis": "Bộc lộ trực tiếp cảm xúc của người nói."
+                        }
+                    ]
+                },
+                "commonTraps": {
+                    "title": "⚠️ Những bẫy thường gặp",
+                    "traps": [
+                        {
+                            "id": "same-word-different-type",
+                            "title": "Một từ không phải lúc nào cũng chỉ có một từ loại",
+                            "explanation": "Một hình thức từ có thể đảm nhiệm chức năng khác nhau trong những ngữ cảnh khác nhau.",
+                            "strategy": "Luôn xét từ trong câu cụ thể."
+                        },
+                        {
+                            "id": "meaning-only",
+                            "title": "Chỉ nhìn nghĩa từ điển",
+                            "explanation": "Biết nghĩa của từ chưa đủ để xác định từ loại trong câu.",
+                            "strategy": "Xem từ đang làm gì và kết hợp với những từ nào."
+                        },
+                        {
+                            "id": "position-only",
+                            "title": "Chỉ nhìn vị trí",
+                            "explanation": "Một từ đứng trước hoặc sau danh từ chưa đủ để kết luận nó là lượng từ, phó từ hay loại khác.",
+                            "strategy": "Kết hợp vị trí với chức năng và ý nghĩa."
+                        },
+                        {
+                            "id": "number-vs-quantity",
+                            "title": "Nhầm số từ với lượng từ",
+                            "explanation": "Cả hai đều liên quan đến số lượng nhưng cách biểu thị khác nhau.",
+                            "strategy": "Hỏi: số lượng cụ thể hay lượng/phạm vi khái quát?"
+                        },
+                        {
+                            "id": "adverb-vs-particle",
+                            "title": "Nhầm phó từ với trợ từ",
+                            "explanation": "Phó từ bổ sung nghĩa cho động từ/tính từ; trợ từ chủ yếu tạo sự nhấn mạnh hoặc đánh giá.",
+                            "strategy": "Tìm xem từ đang bổ sung nghĩa cho từ nào hay đang nhấn mạnh điều gì."
+                        },
+                        {
+                            "id": "context-ignore",
+                            "title": "Tách từ khỏi câu",
+                            "explanation": "Đây là nguyên nhân phổ biến khiến học sinh xác định sai từ loại.",
+                            "strategy": "Đọc ít nhất cả cụm từ và câu chứa từ cần xét."
+                        }
+                    ]
+                },
+                "examStrategy": {
+                    "title": "🎯 Chiến lược làm bài TS10",
+                    "steps": [
+                        {
+                            "step": 1,
+                            "action": "Đọc cả câu."
+                        },
+                        {
+                            "step": 2,
+                            "action": "Gạch chân từ cần xác định."
+                        },
+                        {
+                            "step": 3,
+                            "action": "Xác định từ đó đang biểu thị hoặc thực hiện chức năng gì."
+                        },
+                        {
+                            "step": 4,
+                            "action": "Xem các từ đứng trước và sau."
+                        },
+                        {
+                            "step": 5,
+                            "action": "Đối chiếu với nhóm từ loại gần nhất."
+                        },
+                        {
+                            "step": 6,
+                            "action": "Kiểm tra lại bằng câu hỏi nhận diện."
+                        },
+                        {
+                            "step": 7,
+                            "action": "Nếu đề hỏi tác dụng, không dừng ở tên từ loại; phải giải thích vai trò của nó trong câu."
+                        }
+                    ],
+                    "importantReminder": "Xác định đúng từ loại là bước đầu. Khi đề yêu cầu phân tích, cần đi tiếp đến chức năng, ý nghĩa và tác dụng của từ trong ngữ cảnh."
+                },
+                "miniPractice": {
+                    "title": "🧩 Kiểm tra nhanh",
+                    "questions": [
+                        {
+                            "id": "q01",
+                            "sentence": "Những người trẻ cần có trách nhiệm với cộng đồng.",
+                            "focus": "những",
+                            "answer": "lượng từ",
+                            "analysis": "Biểu thị một tập hợp người trẻ."
+                        },
+                        {
+                            "id": "q02",
+                            "sentence": "Em đang đọc một cuốn sách hay.",
+                            "focus": "đang",
+                            "answer": "phó từ",
+                            "analysis": "Bổ sung ý nghĩa tiếp diễn cho động từ 'đọc'."
+                        },
+                        {
+                            "id": "q03",
+                            "sentence": "Ba học sinh đang trực nhật.",
+                            "focus": "ba",
+                            "answer": "số từ",
+                            "analysis": "Biểu thị số lượng cụ thể của học sinh."
+                        },
+                        {
+                            "id": "q04",
+                            "sentence": "Chính em đã nhận ra lỗi của mình.",
+                            "focus": "chính",
+                            "answer": "trợ từ",
+                            "analysis": "Nhấn mạnh đối tượng được nói đến là 'em'."
+                        },
+                        {
+                            "id": "q05",
+                            "sentence": "Ôi, quê hương tôi đẹp biết bao!",
+                            "focus": "Ôi",
+                            "answer": "thán từ",
+                            "analysis": "Bộc lộ trực tiếp cảm xúc của người nói."
+                        }
+                    ]
+                },
+                "quickClassifier": {
+                    "title": "⚡ Từ này là gì?",
+                    "description": "Công cụ tự hỏi nhanh khi gặp một từ chưa chắc chắn.",
+                    "questions": [
+                        {
+                            "id": "q1",
+                            "question": "Từ này có gọi tên người, vật, hiện tượng hoặc khái niệm không?",
+                            "yes": "Xem xét danh từ."
+                        },
+                        {
+                            "id": "q2",
+                            "question": "Từ này có biểu thị hoạt động hoặc trạng thái không?",
+                            "yes": "Xem xét động từ."
+                        },
+                        {
+                            "id": "q3",
+                            "question": "Từ này có biểu thị đặc điểm hoặc tính chất không?",
+                            "yes": "Xem xét tính từ."
+                        },
+                        {
+                            "id": "q4",
+                            "question": "Từ này có dùng để trỏ, thay thế hoặc hỏi không?",
+                            "yes": "Xem xét đại từ."
+                        },
+                        {
+                            "id": "q5",
+                            "question": "Từ này có biểu thị số lượng cụ thể hoặc thứ tự không?",
+                            "yes": "Xem xét số từ."
+                        },
+                        {
+                            "id": "q6",
+                            "question": "Từ này có biểu thị lượng hoặc phạm vi của một nhóm sự vật không?",
+                            "yes": "Xem xét lượng từ."
+                        },
+                        {
+                            "id": "q7",
+                            "question": "Từ này có bổ sung ý nghĩa cho động từ hoặc tính từ không?",
+                            "yes": "Xem xét phó từ."
+                        },
+                        {
+                            "id": "q8",
+                            "question": "Từ này có biểu thị quan hệ giữa các thành phần không?",
+                            "yes": "Xem xét quan hệ từ."
+                        },
+                        {
+                            "id": "q9",
+                            "question": "Từ này có nhấn mạnh một thành phần không?",
+                            "yes": "Xem xét trợ từ."
+                        },
+                        {
+                            "id": "q10",
+                            "question": "Từ này có tạo sắc thái hỏi, cầu khiến, cảm xúc hoặc thái độ cho câu không?",
+                            "yes": "Xem xét tình thái từ."
+                        },
+                        {
+                            "id": "q11",
+                            "question": "Từ này có trực tiếp bộc lộ cảm xúc hoặc dùng để gọi đáp không?",
+                            "yes": "Xem xét thán từ."
+                        }
+                    ]
+                },
+                "navigation": {
+                    "sections": [
+                        {
+                            "id": "map",
+                            "title": "🗺️ Bản đồ từ loại",
+                            "type": "map"
+                        },
+                        {
+                            "id": "word-types",
+                            "title": "📚 Tra từng từ loại",
+                            "type": "directory"
+                        },
+                        {
+                            "id": "comparison",
+                            "title": "🔍 Dễ nhầm",
+                            "type": "comparison"
+                        },
+                        {
+                            "id": "context-microscope",
+                            "title": "🔬 Kính hiển vi",
+                            "type": "context-tool"
+                        },
+                        {
+                            "id": "quick-classifier",
+                            "title": "⚡ Từ này là gì?",
+                            "type": "classifier"
+                        },
+                        {
+                            "id": "common-traps",
+                            "title": "⚠️ Bẫy thường gặp",
+                            "type": "traps"
+                        },
+                        {
+                            "id": "quick-note",
+                            "title": "📌 Phao 30 giây",
+                            "type": "quick-reference"
+                        },
+                        {
+                            "id": "mini-practice",
+                            "title": "🧩 Kiểm tra nhanh",
+                            "type": "practice"
+                        }
+                    ]
+                },
+                "quickNote": {
+                    "title": "📌 Tờ phao 30 giây",
+                    "items": [
+                        {
+                            "wordType": "Danh từ",
+                            "question": "Cái gì?",
+                            "core": "Gọi tên sự vật, hiện tượng, khái niệm."
+                        },
+                        {
+                            "wordType": "Động từ",
+                            "question": "Làm gì? Trạng thái gì?",
+                            "core": "Hoạt động hoặc trạng thái."
+                        },
+                        {
+                            "wordType": "Tính từ",
+                            "question": "Như thế nào?",
+                            "core": "Đặc điểm, tính chất."
+                        },
+                        {
+                            "wordType": "Đại từ",
+                            "question": "Trỏ/thay thế/hỏi cái gì?",
+                            "core": "Trỏ, thay thế hoặc hỏi."
+                        },
+                        {
+                            "wordType": "Số từ",
+                            "question": "Bao nhiêu? Thứ mấy?",
+                            "core": "Số lượng hoặc thứ tự."
+                        },
+                        {
+                            "wordType": "Lượng từ",
+                            "question": "Lượng/phạm vi nào?",
+                            "core": "Lượng và phạm vi phân bố."
+                        },
+                        {
+                            "wordType": "Phó từ",
+                            "question": "Bổ sung nghĩa gì?",
+                            "core": "Bổ sung nghĩa cho động từ/tính từ."
+                        },
+                        {
+                            "wordType": "Quan hệ từ",
+                            "question": "Quan hệ gì?",
+                            "core": "Biểu thị quan hệ giữa các thành phần."
+                        },
+                        {
+                            "wordType": "Trợ từ",
+                            "question": "Nhấn mạnh gì?",
+                            "core": "Nhấn mạnh hoặc đánh giá."
+                        },
+                        {
+                            "wordType": "Tình thái từ",
+                            "question": "Thái độ/sắc thái gì?",
+                            "core": "Tạo sắc thái giao tiếp."
+                        },
+                        {
+                            "wordType": "Thán từ",
+                            "question": "Cảm xúc/gọi đáp?",
+                            "core": "Bộc lộ cảm xúc hoặc gọi đáp."
+                        }
+                    ]
+                },
+                "reflection": {
+                    "title": "🔁 Tự kiểm tra",
+                    "checklist": [
+                        "Tôi có phân biệt được danh từ, động từ và tính từ không?",
+                        "Tôi có phân biệt được số từ và lượng từ không?",
+                        "Tôi có hiểu chức năng của phó từ không?",
+                        "Tôi có biết vì sao một từ phải được xét trong ngữ cảnh không?",
+                        "Tôi có phân biệt được trợ từ, tình thái từ và thán từ không?",
+                        "Khi gặp một từ chưa chắc chắn, tôi có biết phải tự hỏi những câu nào không?"
+                    ]
+                }
+            }
+        }
+    ]
+}

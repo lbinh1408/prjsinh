@@ -1,0 +1,552 @@
+{
+    "id": "dan-chung-nlxh.03-danh-sach-dan-chung",
+    "title": "Kho dẫn chứng NLXH",
+    "type": "skill",
+    "version": "1.0.0",
+    "meta": {
+        "module": "dan-chung-nlxh",
+        "lessonNumber": 3,
+        "durationMinutes": 45,
+        "difficulty": "intermediate",
+        "skill": "danh-sach-dan-chung",
+        "description": "Kho dữ liệu dẫn chứng."
+    },
+    "learningGoals": [
+        "Tra cứu và tham khảo dẫn chứng."
+    ],
+    "completion": {
+        "requiredSections": [
+            "gallery_01"
+        ],
+        "action": "completeLesson",
+        "message": "Em đã hoàn thành bài Kho dẫn chứng NLXH."
+    },
+    "steps": [
+        {
+            "id": "gallery_01",
+            "type": "evidenceGallery",
+            "data": {
+                "evidences": [
+                    {
+                        "id": "nguyen-ngoc-ky",
+                        "name": "Nguyễn Ngọc Ký",
+                        "keywords": [
+                            "nghị lực",
+                            "kiên trì",
+                            "tự học",
+                            "vượt khó"
+                        ],
+                        "coreFact": "Bị liệt hai tay nhưng kiên trì tập viết bằng chân và tiếp tục học tập.",
+                        "usableFor": [
+                            "nghi-luc",
+                            "kien-tri",
+                            "tu-hoc",
+                            "vuot-kho"
+                        ],
+                        "analysis": {
+                            "nghi-luc": "Cho thấy con người có thể vượt qua giới hạn của hoàn cảnh.",
+                            "kien-tri": "Cho thấy thành quả cần quá trình bền bỉ.",
+                            "tu-hoc": "Cho thấy khả năng chủ động tìm cách học phù hợp với hoàn cảnh.",
+                            "vuot-kho": "Cho thấy khó khăn không quyết định hoàn toàn khả năng vươn lên của con người."
+                        },
+                        "source": "Nguồn kiểm chứng",
+                        "verified": true
+                    },
+                    {
+                        "id": "nick-vujicic",
+                        "name": "Nick Vujicic",
+                        "keywords": [
+                            "nghị lực",
+                            "vượt khó",
+                            "tự tin",
+                            "truyền cảm hứng"
+                        ],
+                        "coreFact": "Sinh ra không có tay và chân nhưng vượt qua mặc cảm, học tập, diễn thuyết và truyền cảm hứng cho nhiều người.",
+                        "usableFor": [
+                            "nghi-luc",
+                            "vuot-kho",
+                            "tu-tin",
+                            "song-tich-cuc"
+                        ],
+                        "analysis": {
+                            "nghi-luc": "Cho thấy nghị lực giúp con người vượt qua những giới hạn tưởng như không thể.",
+                            "vuot-kho": "Cho thấy hoàn cảnh khó khăn không nhất thiết ngăn cản con người sống có ích.",
+                            "tu-tin": "Cho thấy tin vào giá trị của bản thân giúp con người chủ động trước nghịch cảnh.",
+                            "song-tich-cuc": "Cho thấy thái độ sống tích cực có thể biến nghịch cảnh thành động lực."
+                        },
+                        "source": "Nguồn kiểm chứng",
+                        "verified": true
+                    },
+                    {
+                        "id": "thomas-edison",
+                        "name": "Thomas Edison",
+                        "keywords": [
+                            "kien-tri",
+                            "nghi-luc",
+                            "sang-tao",
+                            "that-bai"
+                        ],
+                        "coreFact": "Không ngừng thử nghiệm và điều chỉnh trong quá trình nghiên cứu, qua đó góp phần tạo ra nhiều phát minh quan trọng.",
+                        "usableFor": [
+                            "kien-tri",
+                            "nghi-luc",
+                            "sang-tao",
+                            "that-bai"
+                        ],
+                        "analysis": {
+                            "kien-tri": "Cho thấy thành công thường được tạo nên từ quá trình thử nghiệm và bền bỉ.",
+                            "nghi-luc": "Cho thấy người có mục tiêu cần đủ bản lĩnh để theo đuổi đến cùng.",
+                            "sang-tao": "Cho thấy sáng tạo cần tinh thần thử nghiệm và không ngại tìm cách mới.",
+                            "that-bai": "Cho thấy thất bại có thể trở thành kinh nghiệm để tiếp tục hoàn thiện."
+                        },
+                        "source": "Nguồn kiểm chứng",
+                        "verified": true
+                    },
+                    {
+                        "id": "stephen-hawking",
+                        "name": "Stephen Hawking",
+                        "keywords": [
+                            "nghi-luc",
+                            "vuot-kho",
+                            "tri-thuc",
+                            "cong-hien"
+                        ],
+                        "coreFact": "Mắc bệnh khiến cơ thể suy yếu nghiêm trọng nhưng vẫn tiếp tục nghiên cứu khoa học và đóng góp cho tri thức nhân loại.",
+                        "usableFor": [
+                            "nghi-luc",
+                            "vuot-kho",
+                            "tri-thuc",
+                            "cong-hien"
+                        ],
+                        "analysis": {
+                            "nghi-luc": "Cho thấy nghị lực giúp con người tiếp tục theo đuổi giá trị mình tin tưởng dù gặp nghịch cảnh.",
+                            "vuot-kho": "Cho thấy giới hạn thể chất không nhất thiết giới hạn giá trị tinh thần và trí tuệ.",
+                            "tri-thuc": "Cho thấy việc theo đuổi tri thức có thể tạo ra giá trị vượt khỏi phạm vi cá nhân.",
+                            "cong-hien": "Cho thấy con người có thể biến năng lực của mình thành những đóng góp có ý nghĩa cho cộng đồng."
+                        },
+                        "source": "Nguồn kiểm chứng",
+                        "verified": true
+                    },
+                    {
+                        "id": "helen-keller",
+                        "name": "Helen Keller",
+                        "keywords": [
+                            "nghi-luc",
+                            "hoc-tap",
+                            "vuot-kho",
+                            "tu-tin"
+                        ],
+                        "coreFact": "Mù và điếc từ nhỏ nhưng nỗ lực học tập, trở thành nhà văn, diễn giả và nhà hoạt động xã hội.",
+                        "usableFor": [
+                            "nghi-luc",
+                            "hoc-tap",
+                            "vuot-kho",
+                            "tu-tin"
+                        ],
+                        "analysis": {
+                            "nghi-luc": "Cho thấy ý chí có thể giúp con người vượt qua những hạn chế rất lớn của hoàn cảnh.",
+                            "hoc-tap": "Cho thấy học tập có thể mở ra cơ hội phát triển bản thân dù hoàn cảnh khó khăn.",
+                            "vuot-kho": "Cho thấy nghịch cảnh không thể quyết định toàn bộ tương lai của một con người.",
+                            "tu-tin": "Cho thấy niềm tin vào bản thân là động lực để con người chủ động vươn lên."
+                        },
+                        "source": "Nguồn kiểm chứng",
+                        "verified": true
+                    },
+                    {
+                        "id": "nguyen-nhat-anh",
+                        "name": "Nguyễn Nhật Ánh",
+                        "keywords": [
+                            "doc-sach",
+                            "viet",
+                            "tri-thuc",
+                            "sang-tao"
+                        ],
+                        "coreFact": "Là nhà văn Việt Nam có nhiều tác phẩm viết cho thiếu nhi và tuổi mới lớn, được đông đảo bạn đọc yêu thích.",
+                        "usableFor": [
+                            "doc-sach",
+                            "van-hoc",
+                            "sang-tao",
+                            "tuoi-tre"
+                        ],
+                        "analysis": {
+                            "doc-sach": "Cho thấy việc đọc và tích lũy trải nghiệm có thể nuôi dưỡng đời sống tinh thần và khả năng sáng tạo.",
+                            "van-hoc": "Cho thấy văn học có khả năng kết nối người viết với nhiều thế hệ độc giả.",
+                            "sang-tao": "Cho thấy sáng tạo nghệ thuật cần sự quan sát và khả năng cảm nhận đời sống.",
+                            "tuoi-tre": "Cho thấy những câu chuyện gần gũi với tuổi trẻ có thể góp phần nuôi dưỡng tâm hồn người đọc."
+                        },
+                        "source": "Nguồn kiểm chứng",
+                        "verified": true
+                    },
+                    {
+                        "id": "malala-yousafzai",
+                        "name": "Malala Yousafzai",
+                        "keywords": [
+                            "hoc-tap",
+                            "dung-cam",
+                            "quyen-tre-em",
+                            "kien-tri"
+                        ],
+                        "coreFact": "Kiên trì lên tiếng bảo vệ quyền được học tập của trẻ em gái và trở thành một tiếng nói quốc tế về giáo dục.",
+                        "usableFor": [
+                            "hoc-tap",
+                            "dung-cam",
+                            "kien-tri",
+                            "trach-nhiem"
+                        ],
+                        "analysis": {
+                            "hoc-tap": "Cho thấy giáo dục là cơ hội quan trọng giúp con người phát triển và thay đổi cuộc sống.",
+                            "dung-cam": "Cho thấy lòng dũng cảm là dám bảo vệ điều mình tin là đúng dù phải đối mặt với khó khăn.",
+                            "kien-tri": "Cho thấy một mục tiêu có ý nghĩa cần được theo đuổi lâu dài.",
+                            "trach-nhiem": "Cho thấy mỗi người có thể sử dụng tiếng nói và khả năng của mình để bảo vệ những giá trị tốt đẹp."
+                        },
+                        "source": "Nguồn kiểm chứng",
+                        "verified": true
+                    },
+                    {
+                        "id": "greta-thunberg",
+                        "name": "Greta Thunberg",
+                        "keywords": [
+                            "trach-nhiem",
+                            "moi-truong",
+                            "dung-cam",
+                            "hanh-dong"
+                        ],
+                        "coreFact": "Từ khi còn trẻ đã lên tiếng và tham gia các hoạt động kêu gọi cộng đồng quan tâm đến biến đổi khí hậu.",
+                        "usableFor": [
+                            "trach-nhiem",
+                            "bao-ve-moi-truong",
+                            "dung-cam",
+                            "hanh-dong"
+                        ],
+                        "analysis": {
+                            "trach-nhiem": "Cho thấy trách nhiệm với cộng đồng bắt đầu từ việc nhận thức vấn đề và chủ động hành động.",
+                            "bao-ve-moi-truong": "Cho thấy bảo vệ môi trường không chỉ là trách nhiệm của một tổ chức mà cần sự tham gia của mỗi cá nhân.",
+                            "dung-cam": "Cho thấy người trẻ cũng có thể mạnh dạn lên tiếng trước những vấn đề lớn của xã hội.",
+                            "hanh-dong": "Cho thấy nhận thức chỉ thực sự có giá trị khi được chuyển thành hành động."
+                        },
+                        "source": "Nguồn kiểm chứng",
+                        "verified": true
+                    },
+                    {
+                        "id": "vo-thi-sau",
+                        "name": "Võ Thị Sáu",
+                        "keywords": [
+                            "long-yeu-nuoc",
+                            "dung-cam",
+                            "ly-tuong",
+                            "hy-sinh"
+                        ],
+                        "coreFact": "Tham gia hoạt động cách mạng khi còn trẻ và kiên cường trước sự đàn áp của kẻ thù.",
+                        "usableFor": [
+                            "long-yeu-nuoc",
+                            "dung-cam",
+                            "ly-tuong",
+                            "hy-sinh"
+                        ],
+                        "analysis": {
+                            "long-yeu-nuoc": "Cho thấy lòng yêu nước có thể trở thành động lực để con người đặt lợi ích của đất nước lên trên lợi ích cá nhân.",
+                            "dung-cam": "Cho thấy lòng dũng cảm được thể hiện rõ khi con người dám đối diện với nguy hiểm để bảo vệ điều mình tin tưởng.",
+                            "ly-tuong": "Cho thấy lý tưởng sống có thể định hướng hành động và lựa chọn của tuổi trẻ.",
+                            "hy-sinh": "Cho thấy những giá trị lớn lao đôi khi đòi hỏi con người biết đặt lợi ích chung lên trên lợi ích riêng."
+                        },
+                        "source": "Nguồn kiểm chứng",
+                        "verified": true
+                    },
+                    {
+                        "id": "hai-thuong-lan-ong",
+                        "name": "Hải Thượng Lãn Ông",
+                        "keywords": [
+                            "nhan-ai",
+                            "trach-nhiem",
+                            "y-duc",
+                            "cong-hien"
+                        ],
+                        "coreFact": "Lê Hữu Trác dành nhiều tâm huyết cho việc chữa bệnh, nghiên cứu y học và để lại những tư tưởng có giá trị về nghề thuốc.",
+                        "usableFor": [
+                            "nhan-ai",
+                            "trach-nhiem",
+                            "cong-hien",
+                            "song-co-ich"
+                        ],
+                        "analysis": {
+                            "nhan-ai": "Cho thấy lòng nhân ái được thể hiện bằng việc quan tâm và giúp đỡ con người trong lúc khó khăn.",
+                            "trach-nhiem": "Cho thấy người làm nghề cần có trách nhiệm với công việc và những người mình phục vụ.",
+                            "cong-hien": "Cho thấy tri thức chỉ thực sự có ý nghĩa lớn khi được dùng để tạo ra lợi ích cho cộng đồng.",
+                            "song-co-ich": "Cho thấy một cuộc đời có ý nghĩa không chỉ nằm ở thành công cá nhân mà còn ở những giá trị để lại cho người khác."
+                        },
+                        "source": "Nguồn kiểm chứng",
+                        "verified": true
+                    },
+                    {
+                        "id": "hai-ba-trung",
+                        "name": "Hai Bà Trưng",
+                        "keywords": [
+                            "long-yeu-nuoc",
+                            "dung-cam",
+                            "ly-tuong",
+                            "doan-ket"
+                        ],
+                        "coreFact": "Trưng Trắc và Trưng Nhị lãnh đạo cuộc khởi nghĩa chống ách đô hộ phương Bắc vào năm 40.",
+                        "usableFor": [
+                            "long-yeu-nuoc",
+                            "dung-cam",
+                            "ly-tuong",
+                            "doan-ket"
+                        ],
+                        "analysis": {
+                            "long-yeu-nuoc": "Cho thấy tình yêu quê hương, đất nước có thể trở thành động lực thúc đẩy con người hành động.",
+                            "dung-cam": "Cho thấy dũng cảm là dám đứng lên trước áp bức và nguy hiểm.",
+                            "ly-tuong": "Cho thấy lý tưởng lớn có thể tạo nên sức mạnh và quyết tâm hành động.",
+                            "doan-ket": "Cho thấy khi nhiều người cùng hướng tới một mục tiêu chung, sức mạnh cộng đồng được phát huy."
+                        },
+                        "source": "Nguồn kiểm chứng",
+                        "verified": true
+                    },
+                    {
+                        "id": "nguyen-van-thuong",
+                        "name": "Nguyễn Văn Thương",
+                        "keywords": [
+                            "nghi-luc",
+                            "am-nhac",
+                            "vuot-kho",
+                            "cong-hien"
+                        ],
+                        "coreFact": "Là nhạc sĩ Việt Nam có nhiều sáng tác và đóng góp cho nền âm nhạc Việt Nam trong hoàn cảnh đất nước nhiều biến động.",
+                        "usableFor": [
+                            "nghi-luc",
+                            "cong-hien",
+                            "nghe-thuat",
+                            "vuot-kho"
+                        ],
+                        "analysis": {
+                            "nghi-luc": "Cho thấy con người có thể giữ vững đam mê và năng lực sáng tạo ngay cả trong hoàn cảnh khó khăn.",
+                            "cong-hien": "Cho thấy tài năng cá nhân có thể trở thành giá trị chung khi được cống hiến cho xã hội.",
+                            "nghe-thuat": "Cho thấy nghệ thuật có thể lưu giữ cảm xúc, ký ức và những giá trị của một thời đại.",
+                            "vuot-kho": "Cho thấy hoàn cảnh khó khăn không nhất thiết dập tắt khát vọng sáng tạo."
+                        },
+                        "source": "Nguồn kiểm chứng",
+                        "verified": true
+                    },
+                    {
+                        "id": "nhung-nguoi-hien-mau",
+                        "name": "Những người hiến máu tình nguyện",
+                        "keywords": [
+                            "nhan-ai",
+                            "se-chia",
+                            "trach-nhiem",
+                            "cong-dong"
+                        ],
+                        "coreFact": "Nhiều người thường xuyên hiến máu tình nguyện để góp phần cứu chữa người bệnh và hỗ trợ cộng đồng.",
+                        "usableFor": [
+                            "nhan-ai",
+                            "se-chia",
+                            "trach-nhiem",
+                            "song-dep"
+                        ],
+                        "analysis": {
+                            "nhan-ai": "Cho thấy lòng nhân ái không nhất thiết phải bắt đầu từ những việc lớn mà có thể thể hiện qua hành động thiết thực.",
+                            "se-chia": "Cho thấy sự sẻ chia đúng lúc có thể đem lại cơ hội sống cho người khác.",
+                            "trach-nhiem": "Cho thấy trách nhiệm với cộng đồng được thể hiện bằng việc chủ động đóng góp trong khả năng của mình.",
+                            "song-dep": "Cho thấy một hành động nhỏ nhưng có ích có thể tạo ra giá trị lớn cho người khác."
+                        },
+                        "source": "Nguồn kiểm chứng",
+                        "verified": true
+                    },
+                    {
+                        "id": "nhung-nguoi-lam-cong-tac-cuu-ho",
+                        "name": "Những người làm công tác cứu hộ, cứu nạn",
+                        "keywords": [
+                            "trach-nhiem",
+                            "dung-cam",
+                            "nhan-ai",
+                            "cong-dong"
+                        ],
+                        "coreFact": "Trong thiên tai và sự cố nguy hiểm, lực lượng cứu hộ, cứu nạn thực hiện nhiệm vụ tìm kiếm, hỗ trợ và bảo vệ người gặp nạn.",
+                        "usableFor": [
+                            "trach-nhiem",
+                            "dung-cam",
+                            "nhan-ai",
+                            "cong-hien"
+                        ],
+                        "analysis": {
+                            "trach-nhiem": "Cho thấy trách nhiệm nghề nghiệp đòi hỏi con người nghiêm túc thực hiện nhiệm vụ vì sự an toàn của người khác.",
+                            "dung-cam": "Cho thấy lòng dũng cảm không phải là không sợ hãi mà là vẫn hành động đúng trong hoàn cảnh nguy hiểm.",
+                            "nhan-ai": "Cho thấy tình thương con người có thể được thể hiện bằng hành động giúp đỡ cụ thể.",
+                            "cong-hien": "Cho thấy những công việc thầm lặng có thể tạo ra giá trị rất lớn cho cộng đồng."
+                        },
+                        "source": "Nguồn kiểm chứng",
+                        "verified": true
+                    },
+                    {
+                        "id": "cac-tinh-nguyen-vien-mua-dich",
+                        "name": "Tình nguyện viên trong đại dịch COVID-19",
+                        "keywords": [
+                            "nhan-ai",
+                            "se-chia",
+                            "trach-nhiem",
+                            "doan-ket"
+                        ],
+                        "coreFact": "Nhiều tình nguyện viên tham gia hỗ trợ vận chuyển nhu yếu phẩm, chăm sóc cộng đồng và thực hiện các hoạt động hỗ trợ trong thời gian dịch COVID-19.",
+                        "usableFor": [
+                            "nhan-ai",
+                            "se-chia",
+                            "trach-nhiem",
+                            "doan-ket"
+                        ],
+                        "analysis": {
+                            "nhan-ai": "Cho thấy tình yêu thương được thể hiện thiết thực qua việc giúp đỡ người đang gặp khó khăn.",
+                            "se-chia": "Cho thấy khi con người biết chia sẻ, khó khăn của cộng đồng có thể được giảm bớt.",
+                            "trach-nhiem": "Cho thấy mỗi cá nhân đều có thể đóng góp vào việc giải quyết vấn đề chung.",
+                            "doan-ket": "Cho thấy sự chung sức của cộng đồng tạo nên nguồn lực lớn để vượt qua khủng hoảng."
+                        },
+                        "source": "Nguồn kiểm chứng",
+                        "verified": true
+                    },
+                    {
+                        "id": "nguyen-huu-canh",
+                        "name": "Nguyễn Hữu Cảnh",
+                        "keywords": [
+                            "cong-hien",
+                            "trach-nhiem",
+                            "que-huong",
+                            "lich-su"
+                        ],
+                        "coreFact": "Là danh tướng có vai trò quan trọng trong quá trình tổ chức quản lý vùng đất Nam Bộ vào cuối thế kỷ XVII.",
+                        "usableFor": [
+                            "cong-hien",
+                            "trach-nhiem",
+                            "long-yeu-que-huong",
+                            "lich-su"
+                        ],
+                        "analysis": {
+                            "cong-hien": "Cho thấy những đóng góp của cá nhân có thể tạo ảnh hưởng lâu dài đối với cộng đồng và đất nước.",
+                            "trach-nhiem": "Cho thấy người có trách nhiệm với công việc chung có thể tạo ra những thay đổi quan trọng.",
+                            "long-yeu-que-huong": "Cho thấy tình yêu quê hương có thể được thể hiện bằng việc góp sức xây dựng và bảo vệ quê hương.",
+                            "lich-su": "Cho thấy mỗi thế hệ đều có thể để lại dấu ấn thông qua những đóng góp cho cộng đồng."
+                        },
+                        "source": "Nguồn kiểm chứng",
+                        "verified": true
+                    },
+                    {
+                        "id": "nhung-hoc-sinh-vuot-kho",
+                        "name": "Những học sinh vượt khó học giỏi",
+                        "keywords": [
+                            "hoc-tap",
+                            "nghi-luc",
+                            "vuot-kho",
+                            "kien-tri"
+                        ],
+                        "coreFact": "Nhiều học sinh có hoàn cảnh khó khăn vẫn duy trì việc học, nỗ lực vươn lên và đạt kết quả tốt.",
+                        "usableFor": [
+                            "hoc-tap",
+                            "nghi-luc",
+                            "vuot-kho",
+                            "kien-tri"
+                        ],
+                        "analysis": {
+                            "hoc-tap": "Cho thấy học tập là con đường quan trọng để mỗi người phát triển năng lực và mở rộng cơ hội.",
+                            "nghi-luc": "Cho thấy nghị lực giúp con người không đầu hàng trước hoàn cảnh.",
+                            "vuot-kho": "Cho thấy hoàn cảnh khó khăn có thể là thử thách nhưng không nhất thiết quyết định kết quả cuối cùng.",
+                            "kien-tri": "Cho thấy tiến bộ trong học tập cần sự cố gắng đều đặn trong thời gian dài."
+                        },
+                        "source": "Nguồn kiểm chứng",
+                        "verified": true
+                    },
+                    {
+                        "id": "hoang-thi-hien",
+                        "name": "Hoàng Thị Hiền",
+                        "keywords": [
+                            "trách nhiệm",
+                            "nhân ái",
+                            "yêu thương",
+                            "dũng cảm",
+                            "hy sinh",
+                            "nghề giáo"
+                        ],
+                        "coreFact": "Cô giáo mầm non Hoàng Thị Hiền đã lao theo một bé trai 2 tuổi đang chạy ra đường và đưa em khỏi hướng chiếc xe tải, cứu em khỏi nguy hiểm nhưng bản thân bị thương rất nặng, phải cắt cụt chân phải.",
+                        "usableFor": [
+                            "trach-nhiem",
+                            "nhan-ai",
+                            "yeu-thuong",
+                            "dung-cam",
+                            "hy-sinh",
+                            "song-dep"
+                        ],
+                        "analysis": {
+                            "trach-nhiem": "Cho thấy trách nhiệm không chỉ nằm ở lời nói mà được thể hiện bằng hành động kịp thời để bảo vệ người khác khi họ cần giúp đỡ.",
+                            "nhan-ai": "Cho thấy lòng nhân ái là biết quan tâm và sẵn sàng hành động vì sự an toàn, hạnh phúc của người khác.",
+                            "yeu-thuong": "Cho thấy tình yêu thương chân thành có thể khiến con người đặt sự an toàn của người khác lên trên sự an nguy của chính mình.",
+                            "dung-cam": "Cho thấy lòng dũng cảm là dám hành động trước nguy hiểm để bảo vệ điều đúng đắn, dù bản thân có thể phải chịu tổn thương.",
+                            "hy-sinh": "Cho thấy sự hy sinh cao đẹp là chấp nhận thiệt thòi về mình để đem lại sự bình an và cơ hội sống cho người khác.",
+                            "song-dep": "Cho thấy một hành động đẹp không nhất thiết phải bắt đầu từ những việc lớn lao mà có thể xuất hiện trong một khoảnh khắc con người biết đặt người khác lên trên bản thân."
+                        },
+                        "source": "Báo Nghệ An, 'Cô giáo Hoàng Thị Hiền và khoảnh khắc quên mình cứu học trò', 10/09/2026",
+                        "verified": true
+                    },
+                    {
+                        "id": "vo-thi-sau",
+                        "name": "Võ Thị Sáu",
+                        "keywords": [
+                            "lòng yêu nước",
+                            "chống ngoại xâm",
+                            "dũng cảm",
+                            "hy sinh",
+                            "tuổi trẻ",
+                            "lý tưởng"
+                        ],
+                        "coreFact": "Võ Thị Sáu tham gia hoạt động cách mạng khi còn trẻ, bị bắt và bị thực dân Pháp xử tử tại Côn Đảo năm 1952. Trước khi hy sinh, chị vẫn giữ tinh thần kiên cường và không khuất phục.",
+                        "usableFor": [
+                            "yeu-nuoc",
+                            "chong-ngoai-xam",
+                            "dung-cam",
+                            "hy-sinh",
+                            "ly-tuong",
+                            "tuoi-tre"
+                        ],
+                        "analysis": {
+                            "yeu-nuoc": "Cho thấy lòng yêu nước có thể được thể hiện bằng sự dấn thân và sẵn sàng bảo vệ độc lập, tự do của dân tộc.",
+                            "chong-ngoai-xam": "Cho thấy trước nguy cơ mất nước, lòng yêu nước thôi thúc con người đứng lên đấu tranh chống lại kẻ thù xâm lược.",
+                            "dung-cam": "Cho thấy lòng dũng cảm là không khuất phục trước nguy hiểm và sự đe dọa, vẫn giữ vững niềm tin vào điều mình cho là đúng.",
+                            "hy-sinh": "Cho thấy có những người sẵn sàng chấp nhận mất mát của bản thân để bảo vệ Tổ quốc và những giá trị lớn lao của dân tộc.",
+                            "ly-tuong": "Cho thấy một lý tưởng sống cao đẹp có thể giúp con người vượt qua sợ hãi và kiên định trước nghịch cảnh.",
+                            "tuoi-tre": "Cho thấy tuổi trẻ không chỉ là quãng thời gian để hưởng thụ mà còn có thể sống có trách nhiệm, lý tưởng và cống hiến cho đất nước."
+                        },
+                        "source": "Các tư liệu lịch sử về Võ Thị Sáu và Côn Đảo",
+                        "verified": true
+                    },
+                    {
+                        "id": "thanh-nien-tinh-nguyen",
+                        "name": "Thanh niên tình nguyện vì cộng đồng",
+                        "keywords": [
+                            "lòng yêu nước",
+                            "thời bình",
+                            "cống hiến",
+                            "trách nhiệm",
+                            "tình nguyện",
+                            "cộng đồng"
+                        ],
+                        "coreFact": "Nhiều đoàn viên, thanh niên Việt Nam tham gia các hoạt động tình nguyện như hỗ trợ cộng đồng, đến vùng khó khăn, giúp người dân trong thiên tai, bảo vệ môi trường và thực hiện các chương trình xã hội.",
+                        "usableFor": [
+                            "yeu-nuoc",
+                            "cong-hien",
+                            "trach-nhiem",
+                            "song-dep",
+                            "tinh-nguyen",
+                            "cong-dong"
+                        ],
+                        "analysis": {
+                            "yeu-nuoc": "Cho thấy trong thời bình, lòng yêu nước không nhất thiết phải thể hiện bằng chiến đấu mà có thể được thể hiện qua việc góp sức xây dựng quê hương và giúp ích cho cộng đồng.",
+                            "cong-hien": "Cho thấy mỗi người đều có thể đóng góp cho xã hội bằng thời gian, sức lực và khả năng của mình.",
+                            "trach-nhiem": "Cho thấy trách nhiệm với đất nước bắt đầu từ việc không thờ ơ trước những vấn đề của cộng đồng và chủ động góp phần giải quyết chúng.",
+                            "song-dep": "Cho thấy một lối sống đẹp là biết quan tâm đến người khác và sẵn sàng dành một phần sức lực của mình cho những điều có ích.",
+                            "tinh-nguyen": "Cho thấy tinh thần tình nguyện xuất phát từ sự tự nguyện chia sẻ và mong muốn tạo ra giá trị tích cực cho cộng đồng.",
+                            "cong-dong": "Cho thấy khi nhiều cá nhân cùng chung tay, những đóng góp nhỏ có thể tạo nên sức mạnh giúp cộng đồng vượt qua khó khăn và phát triển."
+                        },
+                        "source": "Các chương trình, hoạt động thanh niên tình nguyện tại Việt Nam",
+                        "verified": true
+                    }
+                ]
+            }
+        }
+    ]
+}

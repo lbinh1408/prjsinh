@@ -1,0 +1,190 @@
+{
+  "id": "doc-hieu.07-xac-dinh-loi-nguoi-ke-va-loi-nhan-vat",
+  "title": "Lời người kể và lời nhân vật",
+  "version": "1.0",
+  "enabled": true,
+  "steps": [
+    {
+      "id": "step01",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Lời người kể chuyện",
+            "icon": "📖",
+            "active": true,
+            "content": {
+              "text": "Là phần lời của người đang kể lại câu chuyện (có thể xưng \"tôi\" hoặc giấu mình).\nNhiệm vụ: Miêu tả bối cảnh, thuật lại sự việc, dẫn dắt câu chuyện hoặc đưa ra nhận xét về nhân vật.",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Lời nhân vật",
+            "icon": "🗣️",
+            "active": false,
+            "content": {
+              "text": "Là phần lời nói trực tiếp (thoại) hoặc suy nghĩ thầm (độc thoại nội tâm) của chính nhân vật trong truyện.",
+              "examples": []
+            }
+          }
+        ],
+        "title": "Khái niệm",
+        "instruction": "Trong một câu chuyện, chúng ta thường bắt gặp hai giọng điệu chính: Lời người kể chuyện và Lời nhân vật.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Nhận biết Lời nhân vật",
+            "icon": "🔍",
+            "active": true,
+            "content": {
+              "text": "Thường có các dấu hiệu hình thức rõ ràng:\n- Đứng sau dấu hai chấm (:).\n- Được đặt trong ngoặc kép (\" \").\n- Bắt đầu bằng dấu gạch đầu dòng (-).",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Nhận biết Lời người kể",
+            "icon": "📝",
+            "active": false,
+            "content": {
+              "text": "Thường là những đoạn văn trần thuật, miêu tả liền mạch, không nằm trong các dấu ngoặc kép hay gạch đầu dòng. Đóng vai trò làm \"khung\" kết nối các lời thoại.",
+              "examples": []
+            }
+          }
+        ],
+        "title": "Dấu hiệu nhận biết",
+        "instruction": "Làm thế nào để phân biệt nhanh hai loại lời này?",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "observe",
+      "data": {
+        "content": "Một hôm, Dế Choắt sang nhà tôi, than thở:<br>– Anh ạ, dạo này em ốm yếu quá, chả làm được việc gì nặng nhọc.<br>Tôi bĩu môi, đáp lại:<br>– Chú mày cứ ốm vặt mãi thế thì làm ăn gì!",
+        "guide": [
+          "Đâu là câu do người kể (Dế Mèn) đang thuật lại sự việc?",
+          "Đâu là câu nói trực tiếp của các nhân vật?"
+        ],
+        "hint": "- Lời người kể: \"Một hôm, Dế Choắt sang nhà tôi, than thở:\", \"Tôi bĩu môi, đáp lại:\"\n- Lời nhân vật: \"– Anh ạ, dạo này em ốm yếu quá...\" (của Dế Choắt), \"– Chú mày cứ ốm vặt...\" (của Dế Mèn).",
+        "title": "Ví dụ minh họa",
+        "instruction": "Hãy đọc đoạn trích sau và xem cách phân biệt:",
+        "score": 0
+      }
+    },
+    {
+      "id": "step04",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trong đoạn văn sau, câu nào là LỜI NHÂN VẬT?\n\n(1) Trời bắt đầu đổ mưa lất phất.\n(2) Bà lão vội vàng thu dọn gánh hàng rong, miệng lẩm bẩm:\n(3) \"Mưa thế này thì bán chác gì được nữa!\"\n(4) Nói rồi, bà lủi thủi quảy gánh bước đi dưới bóng cây.",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Câu (1)"
+          },
+          {
+            "id": "B",
+            "text": "Câu (2)"
+          },
+          {
+            "id": "C",
+            "text": "Câu (3)"
+          },
+          {
+            "id": "D",
+            "text": "Câu (4)"
+          }
+        ],
+        "answer": "C",
+        "title": "Thực hành 1",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Đoạn văn sau ĐA SỐ sử dụng loại lời nào?\n\"Gió thổi mạnh làm những cành cây đung đưa dữ dội. Bầu trời đen kịt, sấm chớp rạch ngang không trung. Trong ngôi nhà nhỏ, ánh đèn dầu leo lét hắt lên bức tường những cái bóng xiêu vẹo.\"",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Chỉ có lời nhân vật."
+          },
+          {
+            "id": "B",
+            "text": "Chỉ có lời người kể chuyện."
+          },
+          {
+            "id": "C",
+            "text": "Lời nhân vật xen lẫn lời người kể chuyện."
+          },
+          {
+            "id": "D",
+            "text": "Không có loại lời nào."
+          }
+        ],
+        "answer": "B",
+        "title": "Thực hành 2",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Ông lão đánh cá nhặt được một con cá vàng.",
+          "Cậu bé ôm chầm lấy mẹ, khóc nức nở.",
+          "- Cứu tôi với, tôi sẽ trả ơn ông!",
+          "Mị trẻ lắm. Mị vẫn còn trẻ.",
+          "'Biết đâu rồi ngày mai trời lại sáng.'"
+        ],
+        "right": [
+          "Lời người kể",
+          "Lời nhân vật"
+        ],
+        "answer": {
+          "Ông lão đánh cá nhặt được một con cá vàng.": "Lời người kể",
+          "Cậu bé ôm chầm lấy mẹ, khóc nức nở.": "Lời người kể",
+          "Mị trẻ lắm. Mị vẫn còn trẻ.": "Lời người kể",
+          "- Cứu tôi với, tôi sẽ trả ơn ông!": "Lời nhân vật",
+          "'Biết đâu rồi ngày mai trời lại sáng.'": "Lời nhân vật"
+        },
+        "title": "Phân loại",
+        "instruction": "Kéo từng câu vào đúng nhóm Lời người kể chuyện hoặc Lời nhân vật:",
+        "score": 2
+      }
+    },
+    {
+      "id": "step07",
+      "type": "flashcard",
+      "data": {
+        "front": "Làm thế nào để phân biệt Lời người kể và Lời nhân vật?",
+        "back": "Lời nhân vật là lời nói/suy nghĩ trực tiếp của nhân vật, thường có dấu gạch ngang (-) hoặc ngoặc kép (\"\").\nLời người kể dùng để trần thuật, miêu tả, dẫn dắt.",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "doc-hieu",
+    "difficulty": 2,
+    "xp": 60,
+    "stars": 3,
+    "description": "Hướng dẫn cách phân biệt lời của người kể chuyện và lời của nhân vật trong văn bản tự sự.",
+    "durationMinutes": 20
+  }
+}

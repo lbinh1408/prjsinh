@@ -1,0 +1,219 @@
+{
+  "id": "kien-thuc-06",
+  "title": "Giải mã Truyện Ngắn (GDPT 2018)",
+  "type": "skill",
+  "version": "1.0.0",
+  "meta": {
+    "module": "kien-thuc-van-hoc",
+    "lessonNumber": 6,
+    "durationMinutes": 30,
+    "difficulty": "intermediate",
+    "skill": "giai-ma-van-xuoi",
+    "description": "Bộ công cụ 'nằm lòng' để bóc tách và phân tích bất kỳ một tác phẩm văn xuôi hay truyện ngắn lạ nào."
+  },
+  "learningGoals": [
+    "Biết áp dụng công thức 4 bước: Ngôi kể -> Tình huống -> Nhân vật -> Thông điệp.",
+    "Phân tích được một đoạn văn xuôi lạ ngoài chương trình."
+  ],
+  "completion": {
+    "requiredSections": [
+      "story_01",
+      "discover_01",
+      "observe_01",
+      "finalChallenge_01"
+    ],
+    "action": "completeLesson",
+    "message": "🎉 Chúc mừng! Giờ đây khi đứng trước bất kỳ câu chuyện nào, em đều biết cách giải phẫu nó một cách có hệ thống!"
+  },
+  "steps": [
+    {
+      "id": "story_01",
+      "type": "story",
+      "data": {
+        "title": "Làm sao để 'đọc vị' một câu chuyện lạ?",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "split_compare",
+          "layout": "two_columns"
+          },
+        "content": {
+          "prompt": "Gặp một đoạn trích truyện ngắn ngoài SGK, học sinh thường mắc lỗi gì?",
+          "title": "Cái bẫy của 'kể lể'",
+          "left": {
+            "label": "TÓM TẮT KỂ LỂ",
+            "paragraph": "Ngồi đọc đi đọc lại câu chuyện, sau đó viết lại y xì đúc nội dung câu chuyện đó bằng lời của mình, kéo dài lê thê mà không chỉ ra được cái hay của nghệ thuật."
+          },
+          "right": {
+            "label": "PHÂN TÍCH THEO CÔNG CỤ",
+            "paragraph": "Như một bác sĩ phẫu thuật: Chỉ ra ai đang kể chuyện (ngôi kể), nhân vật đang gặp tình huống éo le nào, nhân vật có hành động và suy nghĩ gì đặc biệt."
+          }
+        },
+        "interaction": {
+          "type": "choice",
+          "choices": [
+            { "id": "a", "text": "Phân tích kể lể", "correct": false },
+            { "id": "b", "text": "Phân tích theo công cụ", "correct": true }
+          ],
+          "feedback": {
+            "correct": "✓ Đúng! Điểm yếu lớn nhất của học sinh là Đọc - Chép (Kể lể lại câu chuyện). Phân tích văn xuôi là phải mổ xẻ các đặc trưng thể loại.",
+            "incorrect": "△ Sai rồi. Kể lể lại câu chuyện chỉ được điểm Liệt thôi nhé!"
+          }
+        },
+        "reveal": {
+          "title": "💡 Đừng kể chuyện, hãy giải phẫu!",
+          "text": "Văn xuôi/Truyện ngắn có cấu trúc riêng. Muốn phân tích giỏi, phải dùng đúng bộ công cụ của nó."
+        }
+      }
+    },
+    {
+      "id": "discover_01",
+      "type": "cheatSheet",
+      "data": {
+        "ui": { "component": "card_list" },
+        "prompt": "BỘ CÔNG CỤ 4 BƯỚC GIẢI MÃ VĂN XUÔI",
+        "items": [
+            { "icon": "👁️", "title": "BƯỚC 1: Ngôi kể & Điểm nhìn", "question": "Ai đang kể? Ngôi thứ nhất (nhân vật xưng 'tôi') hay Ngôi thứ 3? Tác dụng của ngôi kể đó là gì?" },
+            { "icon": "⚡", "title": "BƯỚC 2: Tình huống truyện", "question": "Sự kiện nào làm nảy sinh mâu thuẫn hay thử thách đối với nhân vật? (Tình huống nhận thức hay hành động?)" },
+            { "icon": "👤", "title": "BƯỚC 3: Giải phẫu Nhân vật", "question": "Phân tích qua 4 lăng kính: Ngoại hình - Lời thoại - Hành động - Tâm lý (nội tâm)." },
+            { "icon": "💎", "title": "BƯỚC 4: Chốt Thông điệp", "question": "Tác giả muốn ca ngợi, phê phán điều gì qua số phận nhân vật?" }
+        ],
+        "keyMessage": "Áp dụng đúng 4 bước này, em sẽ phân tích truyện ngắn chuyên nghiệp như một nhà phê bình văn học thực thụ!",
+        "practiceButton": { "label": "Vào bài thực hành →" }
+      }
+    },
+    {
+      "id": "observe_01",
+      "type": "observe",
+      "data": {
+        "title": "Thực hành Bước 3: Giải phẫu Nhân vật",
+        "durationSeconds": 150,
+        "ui": {
+          "component": "paragraph_highlight",
+          "interaction": "tap_sentence",
+          "question": "Trong đoạn văn sau, hãy bấm vào câu văn cho thấy 'Diễn biến Nội tâm' của nhân vật."
+        },
+        "content": {
+          "prompt": "Ngữ liệu lạ: Trích LÃO HẠC (Nam Cao)",
+          "isParagraph": true,
+          "paragraph": [
+            {
+              "id": "s1",
+              "text": "Lão cố rặn ra những nụ cười mếu máo.",
+              "role": "ngoai_hinh",
+              "roleLabel": "HÀNH ĐỘNG / NGOẠI HÌNH",
+              "feedback": "🟡 Đây là biểu hiện bên ngoài (nụ cười mếu máo), chưa phải là suy nghĩ sâu thẳm bên trong."
+            },
+            {
+              "id": "s2",
+              "text": "Lão khóc hu hu như một đứa trẻ con.",
+              "role": "hanh_dong",
+              "roleLabel": "HÀNH ĐỘNG",
+              "feedback": "🟡 Đây là hành động khóc, bộc lộ sự đau đớn."
+            },
+            {
+              "id": "s3",
+              "text": "Lão nghĩ bụng: 'Một con chó nó có biết gì đâu, thế mà mình lại lừa nó'.",
+              "role": "noi_tam",
+              "roleLabel": "NỘI TÂM",
+              "feedback": "🟢 Rất chính xác! Đây chính là dằn vặt nội tâm, sự ân hận sâu sắc của lão Hạc."
+            }
+          ]
+        },
+        "reveal": {
+          "title": "Em vừa áp dụng công cụ",
+          "text": "Phân tích nhân vật không chỉ là nhìn bề ngoài, mà phải 'bắt mạch' được nội tâm, những suy nghĩ thầm kín của họ."
+        }
+      }
+    },
+    {
+      "id": "finalChallenge_01",
+      "type": "finalChallenge",
+      "data": {
+        "title": "THỬ THÁCH: BẺ KHÓA NGỮ LIỆU",
+        "durationSeconds": 300,
+        "ui": {
+          "component": "multi_stage_challenge",
+          "layout": "multi_stage"
+        },
+        "prompt": "Áp dụng Bước 3 (Giải phẫu nhân vật), hãy phân tích nhân vật trong đoạn ngữ liệu em vừa đọc.",
+        "stages": [
+          {
+            "key": "outline",
+            "type": "card_to_slot",
+            "title": "🔍 SOI ĐIỂM SÁNG NGHỆ THUẬT",
+            "question": "Trong đoạn trích miêu tả Lão Hạc khóc, nhà văn Nam Cao đã tập trung sử dụng thủ pháp nghệ thuật nào?",
+            "slots": [
+              {
+                "id": "slot1",
+                "label": "Thủ pháp chính",
+                "description": "Nhà văn dùng thủ pháp gì?"
+              },
+              {
+                "id": "slot2",
+                "label": "Tác dụng",
+                "description": "Thể hiện điều gì về nhân vật?"
+              }
+            ],
+            "cards": [
+              {
+                "id": "c1",
+                "target": "slot1",
+                "correct": true,
+                "feedback": "✓ Đúng. Miêu tả ngoại hình (khóc hu hu, nụ cười mếu máo) kết hợp độc thoại nội tâm.",
+                "label": "Thủ pháp",
+                "slotText": "Miêu tả ngoại hình, hành động kết hợp với miêu tả diễn biến tâm lý."
+              },
+              {
+                "id": "c2",
+                "target": "slot2",
+                "correct": true,
+                "feedback": "✓ Đúng. Nó bộc lộ sự ân hận.",
+                "label": "Tác dụng",
+                "slotText": "Làm nổi bật sự dằn vặt, đau đớn tột cùng và bản chất lương thiện của nhân vật."
+              },
+              {
+                "id": "c3",
+                "target": "slot1",
+                "correct": false,
+                "feedback": "△ Sai. Không có đối thoại ở đây.",
+                "label": "Thủ pháp",
+                "slotText": "Xây dựng những câu đối thoại sắc bén."
+              }
+            ],
+            "minCards": 2,
+            "maxCards": 2
+          },
+          {
+            "key": "writing",
+            "type": "editor",
+            "title": "✍️ VIẾT ĐOẠN PHÂN TÍCH NHÂN VẬT",
+            "question": "Viết 1 đoạn văn (khoảng 5-7 câu) phân tích tâm trạng lão Hạc qua đoạn trích, dựa trên dàn ý vừa lập.",
+            "instruction": "Nhớ gọi tên được các chi tiết miêu tả nội tâm nhé.",
+            "placeholder": "Viết đoạn văn phân tích của em...",
+            "minCharacters": 100,
+            "maxCharacters": 800,
+            "hints": [
+              { "label": "TỪ NỐI", "words": ["Qua đó", "Bằng thủ pháp", "Không chỉ vậy", "Chính chi tiết này"] },
+              { "label": "ĐÁNH GIÁ TÂM LÝ", "words": ["Dằn vặt", "Khổ tâm", "Lương thiện", "Xót xa"] }
+            ],
+            "submitLabel": "🚀 Nộp bài & Phân tích"
+          },
+          {
+            "key": "analysis",
+            "type": "analysis",
+            "title": "🧠 HỒ SƠ PHÂN TÍCH",
+            "description": "Hệ thống đang kiểm tra xem em có nắm được phương pháp 'Giải phẫu nhân vật' không.",
+            "loadingText": "Đang phân tích lập luận...",
+            "metrics": [
+              { "id": "point", "label": "Chỉ ra được biểu hiện tâm lý", "status": "detect" },
+              { "id": "effect", "label": "Phân tích được tác dụng của chi tiết", "status": "detect" },
+              { "id": "emotion", "label": "Chốt được bản chất nhân vật", "status": "detect" }
+            ],
+            "diagnosticQuestion": "Đoạn văn của em có làm nổi bật được sự đau đớn từ nội tâm nhân vật không?",
+            "scoreDimensions": [ "accuracy", "depth", "coherence" ]
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,231 @@
+{
+  "id": "bptt.02-04-phan-biet-an-du-hoan-du",
+  "title": "Phân biệt Ẩn dụ và Hoán dụ",
+  "version": "3.0",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "content": "Ví dụ 1: <b>Người Cha</b> mái tóc bạc / Đốt lửa cho anh nằm.<br>Ví dụ 2: <b>Áo chàm</b> đưa buổi phân li / Cầm tay nhau biết nói gì hôm nay.",
+        "guide": [
+          "Từ 'Người Cha' (ẩn dụ) và Bác Hồ có mối quan hệ như thế nào?",
+          "Từ 'Áo chàm' (hoán dụ) và người dân Việt Bắc có mối quan hệ như thế nào?"
+        ],
+        "hint": "Cả hai đều dùng tên gọi khác để chỉ đối tượng. Nhưng một bên dựa vào nét giống nhau (tương đồng), một bên dựa vào sự đi liền với nhau (tương cận).",
+        "title": "Quan sát",
+        "instruction": "Đọc kĩ hai ví dụ sau.",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "1. Điểm giống nhau",
+            "icon": "🤝",
+            "active": true,
+            "content": {
+              "text": "Đều gọi tên sự vật, hiện tượng này bằng tên sự vật, hiện tượng khác. (Chỉ xuất hiện vế B, ẩn đi vế A).",
+              "examples": [
+                {
+                  "category": "Mục đích: ",
+                  "word": "Cùng làm tăng sức gợi hình, gợi cảm cho diễn đạt.",
+                  "emoji": "✨"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "2. Điểm khác nhau cốt lõi",
+            "icon": "⚖️",
+            "active": false,
+            "content": {
+              "items": [
+                {
+                  "type": "common",
+                  "label": "Ẩn dụ",
+                  "definition": "Dựa vào mối quan hệ TƯƠNG ĐỒNG (giống nhau).",
+                  "examples": [
+                    "Có thể khôi phục thành câu so sánh (A như B). Ví dụ: Bác Hồ giống như Người Cha."
+                  ]
+                },
+                {
+                  "type": "common",
+                  "label": "Hoán dụ",
+                  "definition": "Dựa vào mối quan hệ TƯƠNG CẬN (gần gũi, đi liền với nhau).",
+                  "examples": [
+                    "KHÔNG thể khôi phục thành câu so sánh. (Không thể nói 'Người dân Việt Bắc giống như cái áo chàm')."
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Khái niệm",
+        "instruction": "Phân biệt sự khác nhau giữa Ẩn dụ và Hoán dụ.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "identify",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Câu 'Bàn tay ta làm nên tất cả' sử dụng biện pháp tu từ nào?",
+        "options": [
+          "So sánh",
+          "Ẩn dụ",
+          "Nhân hóa",
+          "Hoán dụ"
+        ],
+        "answer": "Hoán dụ",
+        "title": "Nhận biết",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Mẹo đơn giản nhất để phân biệt Ẩn dụ và Hoán dụ là gì?",
+        "sampleAnswer": [
+          "Là thử đặt từ 'như' vào giữa sự vật bị ẩn (A) và sự vật xuất hiện (B).",
+          "Nếu hợp lý thì là Ẩn dụ. Nếu vô lý thì là Hoán dụ."
+        ],
+        "title": "Thông hiểu",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "highlight",
+      "data": {
+        "content": "[[Đầu xanh]] [[có]] [[tội]] [[tình]] [[gì]],<br>[[Má hồng]] [[đến]] [[quá]] [[nửa thì]] [[chưa]] [[thôi]].",
+        "answer": [
+          "Đầu xanh",
+          "Má hồng"
+        ],
+        "title": "Tô sáng",
+        "instruction": "Hãy tô sáng từ mang ý nghĩa hoán dụ trong câu sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "reflection",
+      "data": {
+        "question": "Trong câu 'Thuyền về có nhớ bến chăng', 'thuyền' và 'bến' là Ẩn dụ hay Hoán dụ? Vì sao?",
+        "sampleAnswer": [
+          "Là Ẩn dụ. Vì 'thuyền' (người đi xa) và 'bến' (người ở lại) có sự tương đồng về hoàn cảnh: người đi xa như chiếc thuyền không cố định, người ở lại như bến đò luôn chờ đợi."
+        ],
+        "title": "Vận dụng",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trường hợp nào sau đây KHÔNG PHẢI là hoán dụ?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Vì sao? Trái đất nặng ân tình / Nhắc mãi tên Người: Hồ Chí Minh (Trái đất)."
+          },
+          {
+            "id": "B",
+            "text": "Bàn tay ta làm nên tất cả / Có sức người sỏi đá cũng thành cơm (Bàn tay)."
+          },
+          {
+            "id": "C",
+            "text": "Mặt trời của bắp thì nằm trên đồi (Mặt trời)."
+          },
+          {
+            "id": "D",
+            "text": "Áo chàm đưa buổi phân li (Áo chàm)."
+          }
+        ],
+        "answer": "C",
+        "title": "Lựa chọn",
+        "score": 1
+      }
+    },
+    {
+      "id": "step08",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Ẩn dụ",
+          "Hoán dụ"
+        ],
+        "right": [
+          "Dựa vào sự tương đồng (giống nhau)",
+          "Dựa vào sự tương cận (gần gũi, đi liền với nhau)"
+        ],
+        "answer": {
+          "Ẩn dụ": "Dựa vào sự tương đồng (giống nhau)",
+          "Hoán dụ": "Dựa vào sự tương cận (gần gũi, đi liền với nhau)"
+        },
+        "title": "Nối câu",
+        "instruction": "Ghép các phép tu từ sau với đặc điểm của nó.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step09",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "Ngày ngày mặt trời đi qua trên lăng / Thấy một mặt trời trong lăng rất đỏ.",
+          "Mồ hôi mà đổ xuống đồng / Lúa mọc trùng trùng sáng cả đồi nương.",
+          "Gửi miền Nam nỗi nhớ buồng gan đứt ruột.",
+          "Dưới trăng quyên đã gọi hè / Đầu tường lửa lựu lập lòe đâm bông."
+        ],
+        "targets": [
+          "Ẩn dụ",
+          "Hoán dụ"
+        ],
+        "answer": {
+          "Ngày ngày mặt trời đi qua trên lăng / Thấy một mặt trời trong lăng rất đỏ.": "Ẩn dụ",
+          "Dưới trăng quyên đã gọi hè / Đầu tường lửa lựu lập lòe đâm bông.": "Ẩn dụ",
+          "Mồ hôi mà đổ xuống đồng / Lúa mọc trùng trùng sáng cả đồi nương.": "Hoán dụ",
+          "Gửi miền Nam nỗi nhớ buồng gan đứt ruột.": "Hoán dụ"
+        },
+        "title": "Kéo và thả",
+        "instruction": "Hãy phân loại các câu sau vào đúng nhóm Ẩn dụ hoặc Hoán dụ.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step10",
+      "type": "flashcard",
+      "data": {
+        "front": "Mẹo phân biệt Ẩn dụ và Hoán dụ",
+        "back": "Thử dùng phép so sánh (đặt từ 'như' vào giữa A và B):<br>- Nếu hợp lý -> Ẩn dụ (vì cùng nét tương đồng).<br>- Nếu vô lý -> Hoán dụ (vì chỉ gần gũi, không giống nhau).",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "bptt",
+    "difficulty": "reference",
+    "xp": 100,
+    "stars": 3,
+    "description": "Nhận biết và phân biệt sự khác nhau giữa hai biện pháp tu từ ẩn dụ và hoán dụ.",
+    "prerequisite": "bptt.04-hoan-du",
+    "unlock": null,
+    "reviewMode": "instant",
+    "durationMinutes": 15
+  }
+}

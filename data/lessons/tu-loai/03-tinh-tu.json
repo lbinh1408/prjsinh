@@ -1,0 +1,322 @@
+{
+  "id": "tu-loai.03-tinh-tu",
+  "title": "Tính từ",
+  "version": "3.1",
+  "enabled": true,
+  "image": "assets/images/tinh-tu.png",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "content": "Những bông hồng <b>đỏ thắm</b> tỏa hương <b>thơm ngát</b> trong khu vườn <b>be bé, xinh xinh</b>.",
+        "guide": [
+          "Chú ý các từ được in đậm trong câu.",
+          "Các từ đó miêu tả điều gì? Chúng trả lời cho câu hỏi nào?"
+        ],
+        "hint": "Chú ý các từ: đỏ thắm, thơm ngát, be bé, xinh xinh.",
+        "title": "Quan sát",
+        "instruction": "Đọc câu văn dưới đây.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "1. Định nghĩa cốt lõi",
+            "icon": "📖",
+            "active": true,
+            "content": {
+              "text": "Tính từ là những từ dùng để chỉ:",
+              "examples": [
+                {
+                  "category": "Đặc điểm",
+                  "word": "đẹp, cao, vuông",
+                  "emoji": "🌟"
+                },
+                {
+                  "category": "Tính chất",
+                  "word": "tốt, xấu, lạnh",
+                  "emoji": "🌡️"
+                },
+                {
+                  "category": "Màu sắc",
+                  "word": "xanh, đỏ, vàng",
+                  "emoji": "🎨"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "2. Đặc điểm ngữ pháp & Khả năng kết hợp",
+            "icon": "🔗",
+            "active": false,
+            "content": {
+              "combination": {
+                "description": "Có thể kết hợp với các từ chỉ mức độ (rất, hơi, quá, lắm...) hoặc từ so sánh (hơn, nhất).",
+                "examples": [
+                  "rất cao",
+                  "hơi buồn",
+                  "đẹp quá",
+                  "tốt nhất"
+                ]
+              },
+              "roles": [
+                "Vị ngữ",
+                "Trung tâm của cụm tính từ",
+                "Định ngữ cho danh từ"
+              ]
+            }
+          },
+          {
+            "id": "card-3",
+            "title": "3. Dấu hiệu nhận biết: Trả lời được cho câu hỏi ...",
+            "icon": "🏷️",
+            "active": false,
+            "content": {
+              "items": [
+                {
+                  "type": "characteristic",
+                  "label": "Như thế nào?",
+                  "definition": "Tính từ chỉ đặc điểm hoặc tính chất",
+                  "examples": [
+                    "Bông hoa thế nào? => đỏ thắm"
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Khái niệm",
+        "instruction": "Các từ vừa tìm được chính là các <i>tính từ</i>.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "identify",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Đâu là tính từ trong câu: 'Lan là một học sinh chăm chỉ.'?",
+        "options": [
+          "Lan",
+          "là",
+          "học sinh",
+          "chăm chỉ"
+        ],
+        "answer": "chăm chỉ",
+        "title": "Nhận biết",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Giải thích vì sao từ đó là tính từ?",
+        "sampleAnswer": [
+          "Vì 'chăm chỉ' miêu tả tính chất của học sinh.",
+          "vì nó chỉ người.",
+          "vì nó đứng cuối câu."
+        ],
+        "title": "Thông hiểu",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "highlight",
+      "data": {
+        "content": "Bầu trời cao trong xanh và mát mẻ.",
+        "answer": [
+          "cao",
+          "trong xanh",
+          "mát mẻ"
+        ],
+        "title": "Tô sáng",
+        "instruction": "Hãy chọn để tô sáng các tính từ trong câu sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "reflection",
+      "data": {
+        "question": "Hãy viết một câu chứa ít nhất hai tính từ.",
+        "sampleAnswer": "Ngôi nhà thoáng mát và sạch sẽ.",
+        "title": "Vận dụng",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "1. Tính từ chỉ đặc điểm",
+            "icon": "🏷️",
+            "active": true,
+            "content": {
+              "items": [
+                {
+                  "type": "characteristic",
+                  "label": "Tính từ chỉ đặc điểm",
+                  "definition": "Chỉ các nét riêng biệt về hình dáng, màu sắc, âm thanh... của sự vật mà ta có thể cảm nhận qua giác quan.",
+                  "examples": [
+                    "gầy",
+                    "thấp",
+                    "đỏ rực",
+                    "vang dội"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "2. Tính từ chỉ tính chất",
+            "icon": "✨",
+            "active": false,
+            "content": {
+              "items": [
+                {
+                  "type": "quality",
+                  "label": "Tính từ chỉ tính chất",
+                  "definition": "Chỉ bản chất bên trong khó thấy ngay bằng mắt nhưng cảm nhận được hoặc suy luận được.",
+                  "examples": [
+                    "tốt bụng",
+                    "ngoan ngoãn",
+                    "gian xảo",
+                    "kiên trì"
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Phân loại tính từ",
+        "score": 0
+      }
+    },
+    {
+      "id": "step08",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trong các từ sau, từ nào là tính từ chỉ tính chất?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "xanh biếc"
+          },
+          {
+            "id": "B",
+            "text": "hiền lành"
+          },
+          {
+            "id": "C",
+            "text": "tròn trịa"
+          },
+          {
+            "id": "D",
+            "text": "dài ngoẵng"
+          }
+        ],
+        "answer": "B",
+        "title": "Lựa chọn",
+        "score": 1
+      }
+    },
+    {
+      "id": "step09",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "đỏ rực",
+          "tốt bụng",
+          "cao lớn",
+          "gian xảo",
+          "tròn trịa",
+          "thông minh"
+        ],
+        "right": [
+          "Tính từ chỉ đặc điểm",
+          "Tính từ chỉ tính chất"
+        ],
+        "answer": {
+          "đỏ rực": "Tính từ chỉ đặc điểm",
+          "tốt bụng": "Tính từ chỉ tính chất",
+          "cao lớn": "Tính từ chỉ đặc điểm",
+          "gian xảo": "Tính từ chỉ tính chất",
+          "tròn trịa": "Tính từ chỉ đặc điểm",
+          "thông minh": "Tính từ chỉ tính chất"
+        },
+        "title": "Nối từ",
+        "instruction": "Ghép mỗi từ với loại tính từ của nó.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step10",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "xanh xao",
+          "chăm chỉ",
+          "mập mạp",
+          "kiên nhẫn",
+          "nhỏ bé",
+          "hung dữ",
+          "tím lịm",
+          "nhát gan"
+        ],
+        "targets": [
+          "Tính từ chỉ đặc điểm",
+          "Tính từ chỉ tính chất"
+        ],
+        "answer": {
+          "xanh xao": "Tính từ chỉ đặc điểm",
+          "chăm chỉ": "Tính từ chỉ tính chất",
+          "mập mạp": "Tính từ chỉ đặc điểm",
+          "kiên nhẫn": "Tính từ chỉ tính chất",
+          "nhỏ bé": "Tính từ chỉ đặc điểm",
+          "hung dữ": "Tính từ chỉ tính chất",
+          "tím lịm": "Tính từ chỉ đặc điểm",
+          "nhát gan": "Tính từ chỉ tính chất"
+        },
+        "title": "Kéo thả",
+        "instruction": "Phân loại các tính từ sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step11",
+      "type": "flashcard",
+      "data": {
+        "front": "Tính từ",
+        "back": "Tính từ là những từ miêu tả đặc điểm hoặc tính chất của sự vật, hoạt động, trạng thái.",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "tu-loai",
+    "difficulty": 1,
+    "xp": 50,
+    "stars": 3,
+    "description": "Nhận biết và sử dụng tính từ trong câu.",
+    "durationMinutes": 15
+  }
+}

@@ -1,0 +1,339 @@
+{
+  "id": "tu-loai.02-dong-tu",
+  "title": "Động từ",
+  "version": "3.1",
+  "enabled": true,
+  "image": "assets/images/dong-tu.png",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "content": "Lan đang <b>đọc</b> sách trong thư viện.",
+        "guide": [
+          "Chú ý đến các từ in đậm",
+          "Các từ đó có nói về sự vật không ? Hay nói về hoạt động, trạng thái của sự vật ?"
+        ],
+        "hint": "Nói về hoạt động của sự vật",
+        "title": "Quan sát",
+        "instruction": "Đọc câu sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "1. Định nghĩa cốt lõi",
+            "icon": "📖",
+            "active": true,
+            "content": {
+              "text": "Động từ là những từ dùng để chỉ:",
+              "examples": [
+                {
+                  "category": "Hoạt động",
+                  "word": "chạy, đọc, viết",
+                  "emoji": "🏃"
+                },
+                {
+                  "category": "Trạng thái",
+                  "word": "đứng yên, ngủ, sống, chết",
+                  "emoji": "💤"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "2. Đặc điểm ngữ pháp & Khả năng kết hợp",
+            "icon": "🔗",
+            "active": false,
+            "content": {
+              "combination": {
+                "description": "Có thể kết hợp với các từ chỉ mức độ ở trước (đã, đang, sẽ, rất, hơi...) và các từ chỉ hướng ở sau.",
+                "examples": [
+                  "đang chạy",
+                  "sẽ đi",
+                  "rất vui",
+                  "đi lên"
+                ]
+              },
+              "roles": [
+                "Vị ngữ",
+                "Trung tâm của cụm động từ"
+              ]
+            }
+          },
+          {
+            "id": "card-3",
+            "title": "3. Dấu hiệu nhận biết: Trả lời được cho câu hỏi ...",
+            "icon": "🏷️",
+            "active": false,
+            "content": {
+              "items": [
+                {
+                  "type": "action",
+                  "label": "Làm gì?",
+                  "definition": "Động từ chỉ hoạt động",
+                  "examples": [
+                    "Lan làm gì? => đọc sách"
+                  ]
+                },
+                {
+                  "type": "state",
+                  "label": "Làm sao? Thế nào?",
+                  "definition": "Động từ chỉ trạng thái",
+                  "examples": [
+                    "Lan thế nào? => rất vui"
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Khái niệm",
+        "instruction": "Các từ vừa tìm được chính là các <i>động từ</i>.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "identify",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Đâu là động từ trong câu?",
+        "options": [
+          "Lan",
+          "đang",
+          "đọc",
+          "thư viện"
+        ],
+        "answer": "đọc",
+        "title": "Nhận biết",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Giải thích vì sao từ đó là động từ?",
+        "sampleAnswer": [
+          "Vì người biết đọc, biết viết.",
+          "Vì đọc không phải là danh từ.",
+          "Vì 'đọc' chỉ hoạt động của con người."
+        ],
+        "title": "Thông hiểu",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "highlight",
+      "data": {
+        "content": "Lan chạy đến trường rồi học bài.",
+        "answer": [
+          "chạy",
+          "học"
+        ],
+        "title": "Tô sáng",
+        "instruction": "Chọn tất cả các động từ.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "reflection",
+      "data": {
+        "question": "Hãy viết một câu có chứa ít nhất hai động từ.",
+        "sampleAnswer": "Nam chạy rồi nhảy rất nhanh.",
+        "title": "Vận dụng",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Có thể xếp động từ vào các loại như",
+            "icon": "🏷️",
+            "active": true,
+            "content": {
+              "items": [
+                {
+                  "type": "action",
+                  "label": "Động từ chỉ hoạt động",
+                  "definition": "Chỉ hành động có hướng đích, sự vận động của người hoặc vật mà giác quan có thể nhận biết.",
+                  "examples": [
+                    "đi",
+                    "nói",
+                    "ăn",
+                    "đánh"
+                  ]
+                },
+                {
+                  "type": "state",
+                  "label": "Động từ chỉ trạng thái",
+                  "definition": "",
+                  "examples": [
+                    "tồn tại",
+                    "mất",
+                    "còn"
+                  ]
+                },
+                {
+                  "type": "emotion",
+                  "label": "Động từ chỉ cảm xúc, suy nghĩ",
+                  "definition": "",
+                  "examples": [
+                    "yêu",
+                    "ghét",
+                    "nhớ",
+                    "nghĩ",
+                    "hiểu"
+                  ]
+                },
+                {
+                  "type": "progress",
+                  "label": "Động từ chỉ quá trình, biến đổi",
+                  "definition": "",
+                  "examples": [
+                    "thay đổi",
+                    "lớn lên",
+                    "già đi",
+                    "chín",
+                    "tan"
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Phân loại động từ",
+        "score": 0
+      }
+    },
+    {
+      "id": "step08",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Từ nào dưới đây là động từ chỉ trạng thái",
+        "choices": [
+          {
+            "id": "A",
+            "text": "đẹp"
+          },
+          {
+            "id": "B",
+            "text": "chết"
+          },
+          {
+            "id": "C",
+            "text": "bàn"
+          },
+          {
+            "id": "D",
+            "text": "xanh"
+          }
+        ],
+        "answer": "B",
+        "title": "Lựa chọn",
+        "score": 1
+      }
+    },
+    {
+      "id": "step09",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "chạy",
+          "viết",
+          "ngủ",
+          "lo lắng",
+          "thích",
+          "vào"
+        ],
+        "right": [
+          "Động từ hoạt động",
+          "Động từ cảm xúc",
+          "Động từ trạng thái"
+        ],
+        "answer": {
+          "chạy": "Động từ hoạt động",
+          "viết": "Động từ hoạt động",
+          "ngủ": "Động từ trạng thái",
+          "lo lắng": "Động từ cảm xúc",
+          "thích": "Động từ cảm xúc",
+          "vào": "Động từ hoạt động"
+        },
+        "title": "Nối từ",
+        "instruction": "Ghép từ với loại thích hợp.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step10",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "ăn",
+          "uống",
+          "chạy",
+          "nhảy",
+          "nói",
+          "thích",
+          "yêu",
+          "ghét",
+          "tồn tại"
+        ],
+        "targets": [
+          "Động từ hoạt động",
+          "Động từ khác"
+        ],
+        "answer": {
+          "ăn": "Động từ hoạt động",
+          "uống": "Động từ hoạt động",
+          "chạy": "Động từ hoạt động",
+          "nhảy": "Động từ hoạt động",
+          "nói": "Động từ hoạt động",
+          "thích": "Động từ khác",
+          "yêu": "Động từ khác",
+          "ghét": "Động từ khác",
+          "tồn tại": "Động từ khác"
+        },
+        "title": "Kéo thả",
+        "instruction": "Phân loại các từ.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step11",
+      "type": "flashcard",
+      "data": {
+        "front": "Động từ",
+        "back": "Động từ là từ chỉ hoạt động, trạng thái của người, sự vật hoặc hiện tượng.",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "tu-loai",
+    "difficulty": 1,
+    "xp": 50,
+    "stars": 3,
+    "description": "Nhận biết và sử dụng động từ trong tiếng Việt.",
+    "durationMinutes": 15
+  }
+}

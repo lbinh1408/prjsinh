@@ -1,0 +1,214 @@
+{
+  "id": "doc-hieu.05-xac-dinh-ngoi-ke",
+  "title": "Xác định ngôi kể",
+  "version": "1.0",
+  "enabled": true,
+  "steps": [
+    {
+      "id": "step01",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Khái niệm",
+            "icon": "👁️",
+            "active": true,
+            "content": {
+              "text": "Ngôi kể là vị trí giao tiếp mà người kể sử dụng để kể lại câu chuyện. Có 2 loại ngôi kể phổ biến nhất: Ngôi thứ nhất và Ngôi thứ ba.",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Ngôi thứ nhất",
+            "icon": "👤",
+            "active": false,
+            "content": {
+              "text": "Người kể tự xưng là \"tôi\" (có thể là \"chúng tôi\", \"em\", \"mình\"). Người kể trực tiếp tham gia hoặc chứng kiến câu chuyện.",
+              "examples": [
+                {
+                  "category": "Ví dụ",
+                  "word": "Tôi đi học, tôi thấy những đám mây mùa thu...",
+                  "emoji": "💡"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-3",
+            "title": "Ngôi thứ ba",
+            "icon": "👥",
+            "active": false,
+            "content": {
+              "text": "Người kể giấu mình đi, gọi tên các nhân vật bằng chính tên gọi của chúng (hoặc bằng các đại từ như hắn, y, thị...). Người kể dường như biết hết mọi việc.",
+              "examples": [
+                {
+                  "category": "Ví dụ",
+                  "word": "Ngày xưa, có hai vợ chồng ông lão đánh cá ở với nhau trong một túp lều nát trên bờ biển...",
+                  "emoji": "💡"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Ngôi kể là gì?",
+        "instruction": "Cùng tìm hiểu khái niệm về ngôi kể và các loại ngôi kể cơ bản.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Tác dụng của Ngôi thứ nhất",
+            "icon": "❤️",
+            "active": true,
+            "content": {
+              "text": "- Giúp câu chuyện mang tính chủ quan, chân thực và đáng tin cậy.\n- Người kể dễ dàng bộc lộ trực tiếp nội tâm, diễn biến tâm lí, cảm xúc sâu sắc của chính mình.",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Tác dụng của Ngôi thứ ba",
+            "icon": "🌐",
+            "active": false,
+            "content": {
+              "text": "- Giúp câu chuyện mang tính khách quan (như nó vốn có).\n- Người kể có thể kể chuyện một cách linh hoạt, tự do vượt qua không gian, thời gian để kể về mọi sự việc, nhân vật.",
+              "examples": []
+            }
+          }
+        ],
+        "title": "Tác dụng của ngôi kể",
+        "instruction": "Mỗi ngôi kể sẽ mang lại một hiệu quả nghệ thuật khác nhau cho câu chuyện.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "observe",
+      "data": {
+        "format": "essay",
+        "content": "Bởi tôi ăn uống điều độ và làm việc có chừng mực nên tôi chóng lớn lắm. Chẳng bao lâu, tôi đã trở thành một chàng dế thanh niên cường tráng. Đôi càng tôi mẫm bóng. Những cái vuốt ở chân, ở khoeo cứ cứng dần và nhọn hoắt. <br> (<i>Tô Hoài, Dế Mèn phiêu lưu ký</i>)",
+        "guide": [
+          "Xác định đại từ nhân xưng xuất hiện trong đoạn.",
+          "Từ đó rút ra ngôi kể của đoạn văn."
+        ],
+        "hint": "- Đại từ nhân xưng: tôi. - Ngôi kể: Ngôi thứ nhất (nhân vật Dế Mèn tự kể chuyện của mình).",
+        "title": "Ví dụ minh họa",
+        "instruction": "Hãy quan sát và phân tích đoạn văn sau:",
+        "score": 0
+      }
+    },
+    {
+      "id": "step04",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Đoạn văn sau được kể theo ngôi thứ mấy?\n\"Hùng vừa bước vào lớp, mặt buồn thiu. Nó đi thẳng đến chỗ ngồi, gục đầu xuống bàn không nói không rằng. Lan và Mai thấy vậy liền chạy đến hỏi han, nhưng Hùng chỉ khẽ lắc đầu, ánh mắt nhìn ra xa xăm ngoài cửa sổ.\"",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Ngôi thứ nhất (người kể xưng \"tôi\")."
+          },
+          {
+            "id": "B",
+            "text": "Ngôi thứ hai (người kể trò chuyện trực tiếp với nhân vật)."
+          },
+          {
+            "id": "C",
+            "text": "Ngôi thứ ba (người kể giấu mình, gọi tên nhân vật)."
+          },
+          {
+            "id": "D",
+            "text": "Kết hợp cả ngôi thứ nhất và ngôi thứ ba."
+          }
+        ],
+        "answer": "C",
+        "title": "Thực hành 1",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trong văn bản \"Bài học đường đời đầu tiên\" (Tô Hoài), nhân vật Dế Mèn xưng \"tôi\" để kể lại câu chuyện của mình. Việc sử dụng ngôi kể này mang lại tác dụng gì nổi bật nhất?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Giúp người đọc hình dung bao quát toàn bộ thế giới loài vật một cách khách quan."
+          },
+          {
+            "id": "B",
+            "text": "Giúp nhân vật dễ dàng bộc lộ trực tiếp những suy nghĩ, thái độ kiêu ngạo và sự ân hận sâu sắc của chính mình."
+          },
+          {
+            "id": "C",
+            "text": "Giúp tác giả có thể dễ dàng thay đổi địa điểm kể chuyện."
+          },
+          {
+            "id": "D",
+            "text": "Làm cho câu chuyện mang đậm màu sắc thần thoại, cổ tích."
+          }
+        ],
+        "answer": "B",
+        "title": "Thực hành 2",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Nhận định nào sau đây là SAI khi nói về ngôi kể?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Người kể chuyện ngôi thứ ba dường như biết hết mọi diễn biến và suy nghĩ của các nhân vật."
+          },
+          {
+            "id": "B",
+            "text": "Trong ngôi thứ nhất, người xưng \"tôi\" bắt buộc phải là nhân vật chính của câu chuyện."
+          },
+          {
+            "id": "C",
+            "text": "Ngôi thứ ba giúp cho việc kể chuyện diễn ra một cách tự do, linh hoạt và khách quan hơn."
+          },
+          {
+            "id": "D",
+            "text": "Một văn bản có thể có sự thay đổi ngôi kể linh hoạt để tạo sức hấp dẫn."
+          }
+        ],
+        "answer": "B",
+        "title": "Thực hành 3",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "flashcard",
+      "data": {
+        "front": "Sự khác biệt lớn nhất giữa Ngôi thứ nhất và Ngôi thứ ba là gì?",
+        "back": "Ngôi thứ nhất: Xưng \"tôi\", kể đậm chất CHỦ QUAN, dễ bộc lộ nội tâm.\nNgôi thứ ba: Giấu mình đi, kể mang tính KHÁCH QUAN, linh hoạt.",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "doc-hieu",
+    "difficulty": 2,
+    "xp": 60,
+    "stars": 3,
+    "description": "Hướng dẫn cách nhận biết ngôi kể thứ nhất, ngôi kể thứ ba và hiểu tác dụng của từng ngôi kể trong văn bản tự sự.",
+    "durationMinutes": 20
+  }
+}

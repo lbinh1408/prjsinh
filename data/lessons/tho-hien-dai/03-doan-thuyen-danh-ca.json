@@ -1,0 +1,16 @@
+{
+    "id": "tho-hien-dai.03-doan-thuyen-danh-ca",
+    "title": "Đoàn thuyền đánh cá",
+    "module": "tho-hien-dai",
+    "steps": [
+        {
+            "id": "intro",
+            "type": "observe",
+            "data": {
+                "title": "Đoàn thuyền đánh cá",
+                "subtitle": "Huy Cận",
+                "content": "Nội dung bài học đang được cập nhật."
+            }
+        }
+    ]
+}

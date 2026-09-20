@@ -1,0 +1,320 @@
+{
+  "id": "nghia-cua-tu.10-luyen-tap-tong-hop",
+  "title": "Luyện tập tổng hợp",
+  "version": "3.0",
+  "theme": {
+    "id": "library",
+    "title": "Bí mật của Thư viện tri thức"
+  },
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "format": "essay",
+        "content": "Cánh cửa thư viện cổ khẽ mở ra. Trên những giá sách cao phủ đầy bụi thời gian là vô số cuốn sách quý. Người thủ thư già mỉm cười nói: 'Muốn tìm được kho báu tri thức, các em phải hiểu được ý nghĩa của từng từ ngữ. Mỗi căn phòng phía trước sẽ là một thử thách. Chỉ khi vượt qua tất cả, cánh cửa cuối cùng mới mở ra.' Cả lớp nhìn nhau đầy háo hức rồi cùng bước vào hành trình khám phá.",
+        "guide": [
+          "Đây là bài ôn tập toàn bộ phần nghĩa của từ.",
+          "Hãy nhớ lại tất cả kiến thức đã học."
+        ],
+        "hint": "Các thử thách phía sau sẽ sử dụng toàn bộ kiến thức của phần nghĩa của từ.",
+        "title": "Khởi đầu hành trình",
+        "instruction": "Đọc đoạn văn sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step02",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "Đầu bàn - Đầu em bé.",
+          "Mùa xuân đến - Sang xuân",
+          "Chân núi - chân mây"
+        ],
+        "targets": [
+          "Nghĩa gốc",
+          "Nghĩa chuyển",
+          "Từ nhiều nghĩa"
+        ],
+        "answer": {
+          "Mùa xuân đến - Sang xuân": "Nghĩa gốc",
+          "Chân núi - chân mây": "Nghĩa chuyển",
+          "Đầu bàn - Đầu em bé.": "Từ nhiều nghĩa"
+        },
+        "title": "Căn phòng thứ nhất",
+        "instruction": "Kéo mỗi ví dụ vào đúng kiến thức.",
+        "score": 2
+      }
+    },
+    {
+      "id": "step03",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Con đường làng - Đường cát",
+          "Vui vẻ - Hân hoan",
+          "Buôn bán - hình bán nguyệt",
+          "Nóng nực - se lạnh"
+        ],
+        "right": [
+          "Từ đồng âm",
+          "Từ đồng nghĩa",
+          "Từ trái nghĩa"
+        ],
+        "answer": {
+          "Con đường làng - Đường cát": "Từ đồng âm",
+          "Vui vẻ - Hân hoan": "Từ đồng nghĩa",
+          "Buôn bán - hình bán nguyệt": "Từ đồng âm",
+          "Nóng nực - se lạnh": "Từ trái nghĩa"
+        },
+        "title": "Căn phòng thứ hai",
+        "instruction": "Ghép đúng khái niệm.",
+        "score": 2
+      }
+    },
+    {
+      "id": "step04",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "cao - thấp",
+          "nhanh - chậm",
+          "đẹp - xinh",
+          "siêng năng - chăm chỉ"
+        ],
+        "targets": [
+          "Từ trái nghĩa",
+          "Từ đồng nghĩa"
+        ],
+        "answer": {
+          "cao - thấp": "Từ trái nghĩa",
+          "nhanh - chậm": "Từ trái nghĩa",
+          "đẹp - xinh": "Từ đồng nghĩa",
+          "siêng năng - chăm chỉ": "Từ đồng nghĩa"
+        },
+        "title": "Căn phòng thứ ba",
+        "instruction": "Phân loại các cặp từ.",
+        "score": 2
+      }
+    },
+    {
+      "id": "step05",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "Cam",
+          "Xoài",
+          "Đại bàng",
+          "Hoa hồng",
+          "Hoa cúc",
+          "Chim sẻ"
+        ],
+        "targets": [
+          "Cây ăn quả",
+          "Hoa",
+          "Chim"
+        ],
+        "answer": {
+          "Cam": "Cây ăn quả",
+          "Xoài": "Cây ăn quả",
+          "Hoa hồng": "Hoa",
+          "Hoa cúc": "Hoa",
+          "Đại bàng": "Chim",
+          "Chim sẻ": "Chim"
+        },
+        "title": "Căn phòng thứ tư",
+        "instruction": "Kéo các từ vào đúng nhóm.",
+        "score": 2
+      }
+    },
+    {
+      "id": "step06",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "Sóng, cát, hải âu",
+          "Bảng, phấn, lớp học",
+          "Bác sĩ, y tá, bệnh nhân",
+          "Bóng đá, trọng tài, cầu môn"
+        ],
+        "targets": [
+          "Bệnh viện",
+          "Thể thao",
+          "Trường học",
+          "Biển"
+        ],
+        "answer": {
+          "Sóng, cát, hải âu": "Biển",
+          "Bảng, phấn, lớp học": "Trường học",
+          "Bác sĩ, y tá, bệnh nhân": "Bệnh viện",
+          "Bóng đá, trọng tài, cầu môn": "Thể thao"
+        },
+        "title": "Căn phòng thứ năm",
+        "instruction": "Phân loại các nhóm từ.",
+        "score": 2
+      }
+    },
+    {
+      "id": "step07",
+      "type": "highlight",
+      "data": {
+        "content": "Tiếng đàn, tiếng sáo và lời ca vang lên giữa sân trường trong buổi biểu diễn.",
+        "answer": [
+          "đàn",
+          "sáo",
+          "lời ca"
+        ],
+        "title": "Căn phòng thứ sáu",
+        "instruction": "Tô sáng tất cả các từ thuộc trường từ vựng 'âm nhạc'.",
+        "score": 2
+      }
+    },
+    {
+      "id": "step08",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Quan hệ nào đúng với thứ tự tổng quát - cụ thể?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Thực vật → Cây ăn quả → Cam"
+          },
+          {
+            "id": "B",
+            "text": "Cam → Cây ăn quả → Thực vật"
+          },
+          {
+            "id": "C",
+            "text": "Cam ↔ Xoài là cấp độ khái quát"
+          },
+          {
+            "id": "D",
+            "text": "Hoa ↔ Chim là trường từ vựng"
+          }
+        ],
+        "answer": "A",
+        "title": "Căn phòng thứ bảy",
+        "score": 2
+      }
+    },
+    {
+      "id": "step09",
+      "type": "trueFalse",
+      "data": {
+        "question": "Một từ có thể vừa là nghĩa rộng, vừa là nghĩa hẹp tùy đối tượng so sánh.",
+        "answer": true,
+        "title": "Căn phòng thứ tám",
+        "score": 2
+      }
+    },
+    {
+      "id": "step10",
+      "type": "reflection",
+      "data": {
+        "question": "Theo em, vì sao cần hiểu đúng nghĩa của từ khi đọc và viết văn?",
+        "sampleAnswer": "Vì giúp hiểu đúng nội dung và diễn đạt chính xác, sinh động hơn.",
+        "title": "Giải mã",
+        "score": 2
+      }
+    },
+    {
+      "id": "step11",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "tuồi xuân - xuân kháng chiến",
+          "Đầu sông - Đầu học sinh",
+          "đường đi - đường phèn",
+          "vui vẻ - hân hoan",
+          "cao - thấp",
+          "Thực vật - Cây ăn quả - Cam",
+          "Sóng - cát - hải âu"
+        ],
+        "targets": [
+          "Từ trái nghĩa",
+          "Cấp độ khái quát",
+          "Từ đồng âm",
+          "Từ đồng nghĩa",
+          "Nghĩa chuyển",
+          "Từ nhiều nghĩa",
+          "Trường từ vựng"
+        ],
+        "answer": {
+          "tuồi xuân - hồi xuân": "Nghĩa chuyển",
+          "Đầu sông - Đầu học sinh": "Từ nhiều nghĩa",
+          "đường đi - đường phèn": "Từ đồng âm",
+          "vui vẻ - hân hoan": "Từ đồng nghĩa",
+          "cao - thấp": "Từ trái nghĩa",
+          "Thực vật - Cây ăn quả - Cam": "Cấp độ khái quát",
+          "Sóng, cát, hải âu": "Trường từ vựng"
+        },
+        "title": "Kho báu tri thức",
+        "instruction": "Kéo mỗi ví dụ vào đúng kiến thức.",
+        "score": 5
+      }
+    },
+    {
+      "id": "step12",
+      "type": "timeline",
+      "data": {
+        "events": [
+          {
+            "id": "A",
+            "label": "Bước vào thư viện"
+          },
+          {
+            "id": "B",
+            "label": "Giải các thử thách"
+          },
+          {
+            "id": "C",
+            "label": "Mở cánh cửa cuối"
+          },
+          {
+            "id": "D",
+            "label": "Nhận kho báu tri thức"
+          }
+        ],
+        "answer": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "title": "Về đích",
+        "instruction": "Sắp xếp các chặng của hành trình.",
+        "score": 2
+      }
+    },
+    {
+      "id": "step13",
+      "type": "flashcard",
+      "data": {
+        "front": "Nghĩa của từ",
+        "back": "Hiểu đúng nghĩa của từ giúp đọc đúng, viết hay và giao tiếp chính xác.",
+        "completedWhen": "flipped",
+        "title": "Tổng kết",
+        "score": 2
+      }
+    }
+  ],
+  "meta": {
+    "module": "nghia-tu",
+    "difficulty": "review",
+    "xp": 200,
+    "stars": 5,
+    "description": "Ôn tập toàn bộ kiến thức của module Nghĩa của từ.",
+    "prerequisite": "nghia-cua-tu.09-truong-tu-vung",
+    "unlock": null,
+    "reviewMode": "module",
+    "durationMinutes": 20
+  }
+}

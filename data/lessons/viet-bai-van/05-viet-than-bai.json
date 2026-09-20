@@ -1,0 +1,394 @@
+{
+  "id": "viet-bai-05",
+  "title": "Viết thân bài",
+  "subtitle": "Xây dựng thân bài phù hợp với kiểu bài",
+  "version": "1.0.0",
+  "learning_flow": [
+    "story",
+    "observe",
+    "discover",
+    "teach",
+    "guidedPractice",
+    "miniChallenge",
+    "reflection",
+    "cheatSheet",
+    "finalChallenge"
+  ],
+  "objective": "Biết cách xác định và tổ chức các đoạn văn trong thân bài sao cho phù hợp với từng kiểu bài cụ thể.",
+  "steps": [
+    {
+      "id": "story",
+      "type": "story",
+      "data": {
+        "title": "Cùng là thân bài, vì sao lại khác nhau?",
+        "subtitle": "Không có một công thức thân bài dùng chung cho mọi đề văn.",
+        "ui": {
+          "layout": "four_cards",
+          "question": "Cùng viết thân bài, nhưng các bạn học sinh dưới đây đang làm những việc hoàn toàn khác nhau. Vì sao vậy?",
+          "buttonText": "Tìm hiểu →"
+        },
+        "cards": [
+          {
+            "label": "BẠN A",
+            "text": "Tả khái quát về mẹ, rồi tả khuôn mặt, mái tóc, nụ cười và đôi bàn tay."
+          },
+          {
+            "label": "BẠN B",
+            "text": "Kể lại sự việc lúc bắt đầu, những diễn biến sau đó và đỉnh điểm của câu chuyện."
+          },
+          {
+            "label": "BẠN C",
+            "text": "Nêu cảm xúc ban đầu, nhớ lại những kỉ niệm và bày tỏ tình cảm sâu sắc."
+          },
+          {
+            "label": "BẠN D",
+            "text": "Giải thích vấn đề, nêu những biểu hiện trong thực tế và rút ra bài học."
+          }
+        ]
+      }
+    },
+    {
+      "id": "observe",
+      "type": "observe",
+      "data": {
+        "title": "Nhìn vào nhiệm vụ của từng đoạn",
+        "ui": {
+          "layout": "four_cards",
+          "interaction": "tap_to_highlight",
+          "question": "Mỗi kiểu bài có một cách tổ chức đoạn khác nhau."
+        },
+        "cards": [
+          {
+            "id": "MieuTa",
+            "text": "Tả bao quát khung cảnh. Tả chi tiết những đặc điểm nổi bật. Tả những hoạt động gắn liền với cảnh.",
+            "highlight": [
+              "Tả bao quát",
+              "Tả chi tiết",
+              "Tả những hoạt động"
+            ],
+            "hiddenLabel": "Miêu tả"
+          },
+          {
+            "id": "TuSu",
+            "text": "Giới thiệu hoàn cảnh. Sự việc phát triển và dẫn đến cao trào. Kết quả của câu chuyện.",
+            "highlight": [
+              "Hoàn cảnh",
+              "Sự việc phát triển",
+              "Kết quả"
+            ],
+            "hiddenLabel": "Tự sự"
+          },
+          {
+            "id": "BieuCam",
+            "text": "Cảm xúc ban đầu rụt rè. Kỉ niệm ùa về khiến lòng bồi hồi. Tình cảm đọng lại sâu sắc.",
+            "highlight": [
+              "Cảm xúc ban đầu",
+              "Kỉ niệm ùa về",
+              "Tình cảm đọng lại"
+            ],
+            "hiddenLabel": "Biểu cảm"
+          },
+          {
+            "id": "NghiLuan",
+            "text": "Giải thích khái niệm rõ ràng. Nêu những biểu hiện trong đời sống. Phân tích nguyên nhân và rút ra bài học.",
+            "highlight": [
+              "Giải thích",
+              "Biểu hiện",
+              "Phân tích nguyên nhân"
+            ],
+            "hiddenLabel": "Nghị luận"
+          }
+        ],
+        "reveal": "Cấu trúc của thân bài hoàn toàn phụ thuộc vào KIỂU BÀI mà đề yêu cầu."
+      }
+    },
+    {
+      "id": "discover",
+      "type": "discover",
+      "data": {
+        "title": "Ghép cặp hoàn hảo",
+        "ui": {
+          "layout": "matching_and_sorting",
+          "interaction": "drag_drop",
+          "question": "Hãy ghép các kiểu bài với cấu trúc thân bài tương ứng."
+        },
+        "items": [
+          {
+            "id": "d1",
+            "text": "Tả khái quát → Tả chi tiết (đặc điểm, hoạt động).",
+            "answer": "mieu_ta"
+          },
+          {
+            "id": "d2",
+            "text": "Mở đầu sự việc → Phát triển → Cao trào → Kết quả.",
+            "answer": "tu_su"
+          },
+          {
+            "id": "d3",
+            "text": "Ấn tượng, cảm xúc ban đầu → Kỉ niệm → Suy nghĩ sâu sắc hơn.",
+            "answer": "bieu_cam"
+          },
+          {
+            "id": "d4",
+            "text": "Giải thích → Biểu hiện → Nguyên nhân/Ý nghĩa → Bài học.",
+            "answer": "nghi_luan"
+          }
+        ],
+        "labels": [
+          {
+            "id": "mieu_ta",
+            "text": "👀 Miêu tả"
+          },
+          {
+            "id": "tu_su",
+            "text": "🏃 Tự sự"
+          },
+          {
+            "id": "bieu_cam",
+            "text": "❤️ Biểu cảm"
+          },
+          {
+            "id": "nghi_luan",
+            "text": "💡 Nghị luận xã hội"
+          }
+        ],
+        "reveal": "Tuyệt vời! Em đã biết cách chọn \"bản đồ\" cho từng dạng bài."
+      }
+    },
+    {
+      "id": "teach",
+      "type": "teach",
+      "data": {
+        "title": "4 Bản đồ cấu trúc thân bài",
+        "ui": {
+          "layout": "paragraph_type_map",
+          "centerTitle": "🧩 THÂN BÀI",
+          "diagnosticQuestion": "Xác định kiểu bài để chọn cấu trúc đúng đắn."
+        },
+        "types": [
+          {
+            "id": "mieu_ta",
+            "name": "Miêu tả",
+            "icon": "👀",
+            "purpose": "Từ cái nhìn bao quát đến chi tiết.",
+            "whenToUse": [
+              "Đoạn 1: Tả khái quát",
+              "Đoạn 2: Tả đặc điểm nổi bật",
+              "Đoạn 3: Tả hoạt động/chi tiết"
+            ],
+            "example": "Tả người, tả cảnh, tả con vật..."
+          },
+          {
+            "id": "tu_su",
+            "name": "Tự sự",
+            "icon": "🏃",
+            "purpose": "Theo trình tự thời gian, diễn biến sự việc.",
+            "whenToUse": [
+              "Đoạn 1: Hoàn cảnh",
+              "Đoạn 2: Các sự việc tiếp diễn",
+              "Đoạn 3: Cao trào và kết quả"
+            ],
+            "example": "Kể một kỉ niệm, thuật lại một sự kiện..."
+          },
+          {
+            "id": "bieu_cam",
+            "name": "Biểu cảm",
+            "icon": "❤️",
+            "purpose": "Theo mạch cảm xúc.",
+            "whenToUse": [
+              "Đoạn 1: Cảm xúc ban đầu",
+              "Đoạn 2: Kỉ niệm gợi cảm xúc",
+              "Đoạn 3: Chiêm nghiệm, tình cảm đọng lại"
+            ],
+            "example": "Cảm nghĩ về mẹ, về ngày tựu trường..."
+          },
+          {
+            "id": "nghi_luan",
+            "name": "Nghị luận xã hội",
+            "icon": "💡",
+            "purpose": "Làm rõ từng phương diện của vấn đề.",
+            "whenToUse": [
+              "Đoạn 1: Giải thích",
+              "Đoạn 2: Thực trạng/Biểu hiện",
+              "Đoạn 3: Nguyên nhân/Ý nghĩa",
+              "Đoạn 4: Giải pháp/Bài học"
+            ],
+            "example": "Suy nghĩ về lòng biết ơn, về tình trạng ô nhiễm..."
+          }
+        ],
+        "keyPoint": "Thân bài không phải là viết tuỳ hứng. Thân bài là sắp xếp các đoạn văn theo một trình tự hợp lí để phục vụ cho kiểu bài."
+      }
+    },
+    {
+      "id": "guidedPractice",
+      "type": "guidedPractice",
+      "data": {
+        "title": "Bắt mạch đề bài",
+        "ui": {
+          "layout": "guided_decision",
+          "steps": [
+            "Đọc đề",
+            "Xác định kiểu bài",
+            "Chọn cấu trúc"
+          ]
+        },
+        "tasks": [
+          {
+            "id": "gp1",
+            "prompt": "Tả một buổi sáng ở quê em.",
+            "choices": [
+              "Miêu tả (Khái quát → Chi tiết)",
+              "Nghị luận (Giải thích → Biểu hiện)",
+              "Tự sự (Hoàn cảnh → Diễn biến)"
+            ],
+            "answer": "Miêu tả (Khái quát → Chi tiết)",
+            "explanation": "Với bài tả cảnh, ta thường đi từ bao quát toàn cảnh đến các chi tiết cụ thể."
+          },
+          {
+            "id": "gp2",
+            "prompt": "Suy nghĩ về ý nghĩa của sự nỗ lực.",
+            "choices": [
+              "Biểu cảm (Cảm xúc → Kỉ niệm)",
+              "Nghị luận (Giải thích → Biểu hiện → Ý nghĩa)",
+              "Miêu tả (Khái quát → Chi tiết)"
+            ],
+            "answer": "Nghị luận (Giải thích → Biểu hiện → Ý nghĩa)",
+            "explanation": "Đề yêu cầu trình bày suy nghĩ, nên cần giải thích và làm rõ ý nghĩa của vấn đề."
+          }
+        ]
+      }
+    },
+    {
+      "id": "miniChallenge",
+      "type": "miniChallenge",
+      "data": {
+        "title": "Cấu trúc nào đang 'lạc quẻ'?",
+        "ui": {
+          "layout": "strategy_choice",
+          "noHints": true,
+          "showReasonAfterChoice": true
+        },
+        "prompt": "Đề bài: Phân tích vẻ đẹp của nhân vật ông Hai trong truyện ngắn Làng.",
+        "question": "Cấu trúc nào DƯỚI ĐÂY LÀ SAI hoàn toàn cho đề này?",
+        "choices": [
+          {
+            "id": "wrong_1",
+            "text": "Giải thích → Nguyên nhân → Hậu quả → Giải pháp",
+            "bestFor": true
+          },
+          {
+            "id": "correct_1",
+            "text": "Khái quát → Luận điểm 1 (Bằng chứng + Phân tích) → Luận điểm 2...",
+            "bestFor": false
+          }
+        ],
+        "reasonQuestion": "Vì sao cách làm trên lại sai?"
+      }
+    },
+    {
+      "id": "reflection",
+      "type": "reflection",
+      "data": {
+        "title": "Thói quen khi lập dàn ý",
+        "ui": {
+          "layout": "simple_reflection",
+          "questions": [
+            {
+              "id": "r1",
+              "text": "Từ giờ, việc đầu tiên khi đứng trước một đề văn mới để viết thân bài là gì?",
+              "type": "single_select",
+              "options": [
+                "Xác định xem đề thuộc kiểu bài nào để chọn cấu trúc phù hợp.",
+                "Cứ viết đoạn 1, nghĩ đến đâu viết tiếp đoạn 2 đến đó.",
+                "Học thuộc lòng một bài mẫu rồi chép lại."
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "cheatSheet",
+      "type": "cheatSheet",
+      "data": {
+        "title": "Decision Card — Chọn cấu trúc",
+        "ui": {
+          "layout": "decision_card",
+          "saveButton": true,
+          "downloadButton": true,
+          "practiceButton": true
+        },
+        "card": [
+          {
+            "question": "Nếu là bài TỰ SỰ?",
+            "answer": "Theo sát diễn biến sự kiện (Mở đầu → Phát triển → Cao trào → Kết thúc)"
+          },
+          {
+            "question": "Nếu là bài MIÊU TẢ?",
+            "answer": "Theo không gian/thời gian (Khái quát → Chi tiết nổi bật)"
+          },
+          {
+            "question": "Nếu là NGHỊ LUẬN XÃ HỘI?",
+            "answer": "Làm rõ từng phương diện (Giải thích → Biểu hiện → Phân tích → Bài học)"
+          },
+          {
+            "question": "Nếu là NGHỊ LUẬN VĂN HỌC?",
+            "answer": "Đi theo các luận điểm (Ý chính → Trích dẫn → Phân tích nghệ thuật)"
+          }
+        ],
+        "note": "⭐ Đừng nhồi nhét mọi thứ vào một đoạn văn duy nhất. Hãy chia nhỏ thân bài theo nhiệm vụ!"
+      }
+    },
+    {
+      "id": "finalChallenge",
+      "type": "finalChallenge",
+      "data": {
+        "title": "Kiến trúc sư thân bài",
+        "ui": {
+          "layout": "boss",
+          "showStrategyBeforeWriting": true,
+          "showAiAnalysis": true
+        },
+        "prompt": "Sắp tới em sẽ viết một bài văn nghị luận xã hội về đề tài: 'Học sinh và mạng xã hội'.",
+        "flow": [
+          "Xác định kiểu bài",
+          "Lên dàn ý",
+          "Viết đoạn trọng tâm",
+          "AI phân tích"
+        ],
+        "strategyQuestion": "Em dự định tổ chức thân bài này thế nào?",
+        "choices": [
+          "Giải thích (Mạng XH là gì?) → Biểu hiện → Tác động (Lợi/Hại) → Bài học",
+          "Tả khái quát cái điện thoại → Tả chi tiết nút bấm",
+          "Kể lúc em dùng điện thoại → Kể lúc mẹ mắng"
+        ],
+        "expected": {
+          "primary": "Giải thích (Mạng XH là gì?) → Biểu hiện → Tác động (Lợi/Hại) → Bài học",
+          "acceptableCombination": [],
+          "reason": "Đây là bài nghị luận xã hội, cần đi vào phân tích các phương diện của vấn đề."
+        },
+        "editor": {
+          "placeholder": "Hãy viết thử ĐOẠN 2 của em (Đoạn nêu những biểu hiện hoặc tác động của mạng xã hội)...",
+          "minCharacters": 150,
+          "maxCharacters": 500
+        },
+        "aiAnalysis": {
+          "sections": [
+            "Bám sát cấu trúc",
+            "Lí lẽ và dẫn chứng",
+            "Mạch lạc"
+          ]
+        }
+      }
+    }
+  ],
+  "completion": {
+    "successCriteria": [
+      "Hiểu rằng mỗi kiểu bài có cấu trúc khác nhau",
+      "Nhận diện được cấu trúc của 4 kiểu bài chính",
+      "Biết cách chọn cấu trúc khi đọc đề"
+    ],
+    "summary": "Thân bài là xương sống của bài văn. Xác định đúng kiểu bài sẽ giúp em lắp ráp đúng bộ xương vững chắc nhất."
+  },
+  "meta": {}
+}

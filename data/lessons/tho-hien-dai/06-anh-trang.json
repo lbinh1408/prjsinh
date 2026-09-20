@@ -1,0 +1,16 @@
+{
+    "id": "tho-hien-dai.06-anh-trang",
+    "title": "Ánh trăng",
+    "module": "tho-hien-dai",
+    "steps": [
+        {
+            "id": "intro",
+            "type": "observe",
+            "data": {
+                "title": "Ánh trăng",
+                "subtitle": "Nguyễn Duy",
+                "content": "Nội dung bài học đang được cập nhật."
+            }
+        }
+    ]
+}

@@ -1,0 +1,213 @@
+{
+  "id": "doc-hieu.03-xac-dinh-chu-de",
+  "title": "Xác định chủ đề",
+  "version": "1.0",
+  "enabled": true,
+  "steps": [
+    {
+      "id": "step01",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Khái niệm",
+            "icon": "🎯",
+            "active": true,
+            "content": {
+              "text": "Chủ đề là vấn đề cốt lõi, là đối tượng chính mà tác giả hướng tới và muốn thể hiện trong toàn bộ văn bản. Nó mang tính khái quát cao hơn nội dung.",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Phân biệt Nội dung & Chủ đề",
+            "icon": "⚖️",
+            "active": false,
+            "content": {
+              "text": "Nội dung là những gì CỤ THỂ đang diễn ra (nhân vật nào, sự việc gì, cảm xúc gì).\nChủ đề là vấn đề mang tính KHÁI QUÁT rút ra từ nội dung đó.",
+              "examples": [
+                {
+                  "category": "Ví dụ",
+                  "word": "Nội dung: Người mẹ tần tảo thức khuya dậy sớm chăm lo cho con.\nChủ đề: Tình mẫu tử / Tình cảm gia đình.",
+                  "emoji": "💡"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Chủ đề là gì?",
+        "instruction": "Hãy cùng tìm hiểu khái niệm Chủ đề và cách phân biệt nó với Nội dung chính.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Bước 1: Nắm bắt nội dung",
+            "icon": "📖",
+            "active": true,
+            "content": {
+              "text": "Đọc kĩ văn bản để hiểu rõ các sự việc, chi tiết, cảm xúc cụ thể đang được miêu tả.",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Bước 2: Khái quát hóa",
+            "icon": "⬆️",
+            "active": false,
+            "content": {
+              "text": "Từ những chi tiết cụ thể, hãy tự đặt câu hỏi: \"Tất cả những điều này hướng đến vấn đề lớn lao nào trong cuộc sống?\"",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-3",
+            "title": "Các chủ đề thường gặp",
+            "icon": "⭐",
+            "active": false,
+            "content": {
+              "text": "Trong đề thi, các chủ đề thường xoay quanh những giá trị nhân văn sâu sắc.",
+              "examples": [
+                {
+                  "category": "Gợi ý",
+                  "word": "- Tình yêu quê hương, đất nước.\n- Tình cảm gia đình (tình mẫu tử, phụ tử, bà cháu).\n- Tình yêu thương con người (sự sẻ chia, bao dung).\n- Lòng biết ơn, trân trọng quá khứ.\n- Khát vọng sống, nghị lực vươn lên.",
+                  "emoji": "📌"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Cách xác định chủ đề",
+        "instruction": "Để tìm ra chủ đề, ta làm theo các bước sau:",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "observe",
+      "data": {
+        "content": "Quê hương anh nước mặn, đồng chua<br>Làng tôi nghèo đất cày lên sỏi đá.<br>Anh với tôi đôi người xa lạ<br>Tự phương trời chẳng hẹn quen nhau,<br>Súng bên súng, đầu sát bên đầu,<br>Đêm rét chung chăn thành đôi tri kỷ.<br>(Chính Hữu, <i>Đồng chí</i>)",
+        "guide": [
+          "Nội dung cụ thể là gì?",
+          "Từ nội dung đó, khái quát lên chủ đề gì?"
+        ],
+        "hint": "- Nội dung: Hoàn cảnh xuất thân nghèo khó và sự gắn bó, chung mục tiêu chiến đấu của những người lính.\n- Chủ đề: Tình đồng chí, đồng đội.",
+        "title": "Ví dụ minh họa",
+        "instruction": "Phân tích ví dụ sau để thấy rõ sự khác biệt:",
+        "score": 0
+      }
+    },
+    {
+      "id": "step04",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Bão bùng thân bọc lấy thân<br>Tay ôm tay níu tre gần nhau thêm.<br>Thương nhau tre chẳng ở riêng<br>Lũy thành từ đó mà nên hỡi người.<br><i>(Nguyễn Duy, Tre Việt Nam)</i>",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Quá trình sinh trưởng của cây tre."
+          },
+          {
+            "id": "B",
+            "text": "Truyền thống đoàn kết, đùm bọc, yêu thương lẫn nhau của dân tộc Việt Nam."
+          },
+          {
+            "id": "C",
+            "text": "Lòng dũng cảm của người dân trong chiến đấu."
+          },
+          {
+            "id": "D",
+            "text": "Sức sống mãnh liệt của thiên nhiên Việt Nam."
+          }
+        ],
+        "answer": "B",
+        "title": "Thực hành 1: Đọc đoạn thơ sau và xác định chủ đề:",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Bạn có thể không thông minh bẩm sinh nhưng bạn luôn chuyên cần và vượt qua bản thân từng ngày một. Bạn có thể không hát hay nhưng bạn là người không bao giờ trễ hẹn. Bạn không là người giỏi thể thao nhưng bạn có nụ cười ấm áp. Bạn không có gương mặt xinh đẹp nhưng bạn rất giỏi nấu ăn. Bạn không có sự giàu có nhưng bạn luôn sẵn sàng chia sẻ... Chắc chắn, mỗi một người trong chúng ta đều được sinh ra với những giá trị có sẵn. Và chính bạn, hơn ai hết, trước ai hết, phải biết mình, phải nhận ra những giá trị đó.<i>(Phạm Lữ Ân, Nếu biết trăm năm là hữu hạn)</i>",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Khẳng định sự đa dạng của những đặc điểm tính cách con người."
+          },
+          {
+            "id": "B",
+            "text": "Sự tự ti của con người về những khiếm khuyết của bản thân."
+          },
+          {
+            "id": "C",
+            "text": "Mỗi người đều có một giá trị riêng biệt, cần biết trân trọng và phát huy giá trị bản thân."
+          },
+          {
+            "id": "D",
+            "text": "Lời khuyên con người nên học nấu ăn và giữ đúng lời hứa."
+          }
+        ],
+        "answer": "C",
+        "title": "Thực hành 2: Chủ đề của đoạn văn sau là gì?",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Những người chiến sĩ áo trắng ấy đã gác lại niềm vui sum họp bên gia đình để xông pha vào tâm dịch. Họ mặc trên người bộ đồ bảo hộ kín mít, ướt đẫm mồ hôi, làm việc quần quật suốt ngày đêm để giành giật sự sống cho từng bệnh nhân. Có người mệt lả đi, gục ngã trên hành lang bệnh viện nhưng chỉ chợp mắt vài phút rồi lại tiếp tục chiến đấu. Họ không màng đến sự an nguy của bản thân, tất cả chỉ vì sinh mệnh của đồng bào.",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Miêu tả trang phục bảo hộ của các y bác sĩ trong mùa dịch."
+          },
+          {
+            "id": "B",
+            "text": "Tinh thần hi sinh, cống hiến thầm lặng và lòng nhân ái cao cả của lực lượng y tế."
+          },
+          {
+            "id": "C",
+            "text": "Sự vất vả, mệt mỏi của con người khi làm việc quá sức."
+          },
+          {
+            "id": "D",
+            "text": "Tình cảm gia đình sâu nặng của những người chiến sĩ áo trắng."
+          }
+        ],
+        "answer": "B",
+        "title": "Thực hành 3: Chủ đề của đoạn trích dưới đây?",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "flashcard",
+      "data": {
+        "front": "Sự khác biệt lớn nhất giữa Nội dung và Chủ đề là gì?",
+        "back": "Nội dung là sự việc, cảm xúc CỤ THỂ. Chủ đề là vấn đề KHÁI QUÁT rút ra từ nội dung đó.",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "doc-hieu",
+    "difficulty": 2,
+    "xp": 60,
+    "stars": 3,
+    "description": "Hướng dẫn cách xác định chủ đề của văn bản và phân biệt chủ đề với nội dung chính.",
+    "durationMinutes": 20
+  }
+}

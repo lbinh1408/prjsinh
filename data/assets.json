@@ -1,0 +1,100 @@
+{
+  "version": "2.0",
+  "name": "TS10 Learning Assets",
+
+  "images": {
+    "logo": "assets/images/logo.png",
+    "banner": "assets/images/banner.jpg",
+    "empty": "assets/images/empty.svg",
+    "loading": "assets/images/loading.svg",
+
+    "modules": {
+      "tu-loai": "assets/images/modules/tu-loai.png",
+      "cau-tao-tu": "assets/images/modules/cau-tao-tu.png",
+      "nghia-tu": "assets/images/modules/nghia-tu.png",
+      "bptt": "assets/images/modules/bptt.png",
+      "cau": "assets/images/modules/cau.png",
+      "doc-hieu": "assets/images/modules/doc-hieu.png",
+      "nlxh": "assets/images/modules/nlxh.png"
+    },
+
+    "lesson": {
+      "observe": "assets/images/steps/observe.svg",
+      "identify": "assets/images/steps/identify.svg",
+      "explain": "assets/images/steps/explain.svg",
+      "fillBlank": "assets/images/steps/fillBlank.svg",
+      "reflection": "assets/images/steps/reflection.svg"
+    },
+
+    "avatars": {
+      "teacher": "assets/images/avatar-teacher.png",
+      "student": "assets/images/avatar-student.png"
+    }
+  },
+
+  "icons": {
+
+    "home": "assets/icons/home.svg",
+    "lesson": "assets/icons/lesson.svg",
+    "roadmap": "assets/icons/roadmap.svg",
+    "progress": "assets/icons/progress.svg",
+    "summary": "assets/icons/summary.svg",
+
+    "next": "assets/icons/next.svg",
+    "previous": "assets/icons/previous.svg",
+    "play": "assets/icons/play.svg",
+    "pause": "assets/icons/pause.svg",
+    "reload": "assets/icons/reload.svg",
+
+    "success": "assets/icons/success.svg",
+    "error": "assets/icons/error.svg",
+    "warning": "assets/icons/warning.svg",
+    "hint": "assets/icons/hint.svg",
+
+    "observe": "assets/icons/observe.svg",
+    "identify": "assets/icons/identify.svg",
+    "explain": "assets/icons/explain.svg",
+    "fillBlank": "assets/icons/fillBlank.svg",
+    "reflection": "assets/icons/reflection.svg"
+  },
+
+  "audio": {
+
+    "click": "assets/audio/click.mp3",
+    "correct": "assets/audio/correct.mp3",
+    "wrong": "assets/audio/wrong.mp3",
+    "finish": "assets/audio/finish.mp3",
+    "notification": "assets/audio/notification.mp3"
+
+  },
+
+  "animation": {
+
+    "loading": "assets/animation/loading.json",
+    "success": "assets/animation/success.json",
+    "confetti": "assets/animation/confetti.json",
+    "star": "assets/animation/star.json"
+
+  },
+
+  "theme": {
+
+    "primary": "#2563EB",
+    "secondary": "#14B8A6",
+    "success": "#22C55E",
+    "warning": "#F59E0B",
+    "danger": "#EF4444",
+    "background": "#F8FAFC",
+    "surface": "#FFFFFF",
+    "text": "#1E293B"
+
+  },
+
+  "fonts": {
+
+    "heading": "Be Vietnam Pro",
+    "body": "Inter",
+    "mono": "JetBrains Mono"
+
+  }
+}

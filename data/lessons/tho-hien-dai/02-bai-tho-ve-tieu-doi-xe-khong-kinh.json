@@ -1,0 +1,16 @@
+{
+    "id": "tho-hien-dai.02-bai-tho-ve-tieu-doi-xe-khong-kinh",
+    "title": "Bài thơ về tiểu đội xe không kính",
+    "module": "tho-hien-dai",
+    "steps": [
+        {
+            "id": "intro",
+            "type": "observe",
+            "data": {
+                "title": "Bài thơ về tiểu đội xe không kính",
+                "subtitle": "Phạm Tiến Duật",
+                "content": "Nội dung bài học đang được cập nhật."
+            }
+        }
+    ]
+}

@@ -1,0 +1,247 @@
+{
+  "id": "bptt.10-luyen-tap-tong-hop",
+  "title": "Luyện tập tổng hợp",
+  "version": "3.0",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Câu thơ 'Trẻ em như búp trên cành' sử dụng biện pháp tu từ nào?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "So sánh"
+          },
+          {
+            "id": "B",
+            "text": "Nhân hóa"
+          },
+          {
+            "id": "C",
+            "text": "Ẩn dụ"
+          },
+          {
+            "id": "D",
+            "text": "Hoán dụ"
+          }
+        ],
+        "answer": "A",
+        "title": "Trắc nghiệm 1",
+        "score": 1
+      }
+    },
+    {
+      "id": "step02",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trong câu 'Bác giun đào đất suốt ngày', từ 'Bác' là dấu hiệu của biện pháp tu từ nào?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Nói quá"
+          },
+          {
+            "id": "B",
+            "text": "Nhân hóa"
+          },
+          {
+            "id": "C",
+            "text": "Hoán dụ"
+          },
+          {
+            "id": "D",
+            "text": "Chơi chữ"
+          }
+        ],
+        "answer": "B",
+        "title": "Trắc nghiệm 2",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Gọi tên sự vật này bằng tên sự vật khác có nét tương đồng.",
+          "Gọi tên sự vật này bằng tên sự vật khác có quan hệ gần gũi.",
+          "Phóng đại mức độ, quy mô của sự vật."
+        ],
+        "right": [
+          "Ẩn dụ",
+          "Hoán dụ",
+          "Nói quá"
+        ],
+        "answer": {
+          "Gọi tên sự vật này bằng tên sự vật khác có nét tương đồng.": "Ẩn dụ",
+          "Gọi tên sự vật này bằng tên sự vật khác có quan hệ gần gũi.": "Hoán dụ",
+          "Phóng đại mức độ, quy mô của sự vật.": "Nói quá"
+        },
+        "title": "Nối câu",
+        "instruction": "Ghép các khái niệm với biện pháp tu từ tương ứng.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "highlight",
+      "data": {
+        "content": "Bác Hồ đã từ trần để lại muôn vàn niềm tiếc thương cho dân tộc.",
+        "answer": [
+          "từ trần"
+        ],
+        "title": "Tô sáng",
+        "instruction": "Hãy tô sáng từ ngữ mang ý nghĩa nói giảm nói tránh trong câu sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "Tre, nứa, mai, vầu giúp người hàng nghìn công việc khác nhau.",
+          "Đoàn kết, đoàn kết, đại đoàn kết.",
+          "Bác Dương thôi đã thôi rồi."
+        ],
+        "targets": [
+          "Liệt kê",
+          "Điệp ngữ",
+          "Nói giảm nói tránh"
+        ],
+        "answer": {
+          "Tre, nứa, mai, vầu giúp người hàng nghìn công việc khác nhau.": "Liệt kê",
+          "Đoàn kết, đoàn kết, đại đoàn kết.": "Điệp ngữ",
+          "Bác Dương thôi đã thôi rồi.": "Nói giảm nói tránh"
+        },
+        "title": "Kéo và thả",
+        "instruction": "Hãy phân loại các câu sau vào đúng nhóm biện pháp tu từ.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Câu 'Áo chàm đưa buổi phân li' sử dụng biện pháp tu từ gì?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Ẩn dụ"
+          },
+          {
+            "id": "B",
+            "text": "Hoán dụ"
+          },
+          {
+            "id": "C",
+            "text": "Nhân hóa"
+          },
+          {
+            "id": "D",
+            "text": "Nói quá"
+          }
+        ],
+        "answer": "B",
+        "title": "Trắc nghiệm 3",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Câu 'Ruồi đậu mâm xôi đậu' sử dụng biện pháp tu từ gì?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Điệp ngữ"
+          },
+          {
+            "id": "B",
+            "text": "Chơi chữ"
+          },
+          {
+            "id": "C",
+            "text": "Nói quá"
+          },
+          {
+            "id": "D",
+            "text": "Liệt kê"
+          }
+        ],
+        "answer": "B",
+        "title": "Trắc nghiệm 4",
+        "score": 1
+      }
+    },
+    {
+      "id": "step08",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "Bàn tay ta làm nên tất cả",
+          "Người Cha mái tóc bạc",
+          "Tiếng cười to vỡ bụng"
+        ],
+        "targets": [
+          "Hoán dụ",
+          "Ẩn dụ",
+          "Nói quá"
+        ],
+        "answer": {
+          "Bàn tay ta làm nên tất cả": "Hoán dụ",
+          "Người Cha mái tóc bạc": "Ẩn dụ",
+          "Tiếng cười to vỡ bụng": "Nói quá"
+        },
+        "title": "Kéo và thả",
+        "instruction": "Kéo tên các biện pháp tu từ vào câu ví dụ tương ứng.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step09",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Theo em, việc sử dụng các biện pháp tu từ trong văn bản mang lại tác dụng chung là gì?",
+        "sampleAnswer": [
+          "Làm cho cách diễn đạt thêm sinh động, gợi hình, gợi cảm.",
+          "Tăng sức hấp dẫn, thú vị cho câu văn, câu thơ và nâng cao hiệu quả biểu đạt."
+        ],
+        "title": "Thông hiểu",
+        "score": 1
+      }
+    },
+    {
+      "id": "step10",
+      "type": "flashcard",
+      "data": {
+        "front": "Chúc mừng em!",
+        "back": "Em đã hoàn thành xuất sắc toàn bộ bài tập tổng hợp về các biện pháp tu từ. Hãy ghi nhớ và áp dụng linh hoạt vào việc viết văn nhé!",
+        "completedWhen": "flipped",
+        "title": "Hoàn thành",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "bptt",
+    "difficulty": "challenge",
+    "xp": 150,
+    "stars": 3,
+    "description": "Ôn tập và củng cố toàn bộ kiến thức về các biện pháp tu từ đã học.",
+    "prerequisite": null,
+    "unlock": null,
+    "reviewMode": "quiz",
+    "durationMinutes": 20
+  }
+}

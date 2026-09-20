@@ -1,0 +1,171 @@
+{
+  "id": "doan-van.01-doan-van-cau-truc",
+  "title": "Đoạn văn và cấu trúc đoạn",
+  "version": "1.0",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "format": "essay",
+        "content": "Mỗi mùa xuân đều mang đến cho con người niềm hi vọng về những điều tốt đẹp. Những chồi non vươn mình sau mùa đông giá lạnh, hoa lá đua nhau khoe sắc và bầu trời như trong xanh hơn. Tiếng chim ríu rít, làn gió dịu nhẹ cùng hương thơm của cỏ cây khiến cảnh vật trở nên tràn đầy sức sống. Mùa xuân không chỉ làm thiên nhiên đổi mới mà còn khơi dậy trong mỗi người niềm tin và động lực để bắt đầu một hành trình mới.",
+        "guide": [
+          "<b>Về hình thức:</b> Hãy quan sát cách trình bày của đoạn văn",
+          "Đoạn văn bắt đầu như thế nào? Đoạn văn kết thúc bằng dấu gì?",
+          "<b>Về nội dung:</b> Các câu trong đoạn có liên quan với nhau không? nói về chủ đề gì?"
+        ],
+        "hint": "Câu đầu tiên trong đoạn thụt vào và viết hoa chữ cái đầu tiên. Hết đoạn dùng dấu chấm xuống dòng.<br> Các câu trong đoạn đều nói về mùa xuân mang lại những điều tốt đẹp cho con người và thiên nhiên.",
+        "title": "Quan sát",
+        "instruction": "Đọc kĩ đoạn văn sau và chú ý đến hình thức trình bày.",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Đặc điểm của đoạn văn",
+            "icon": "📖",
+            "active": true,
+            "content": {
+              "text": "Đoạn văn thường bao gồm nhiều câu được sắp xếp theo một trình tự hợp lý để thể hiện trọn vẹn một chủ đề.",
+              "examples": [
+                {
+                  "category": "Ví dụ",
+                  "word": "Mùa xuân là mùa đẹp nhất trong năm. Cây cối đâm chồi nảy lộc, muôn hoa khoe sắc. Khắp nơi tràn ngập sức sống mới.",
+                  "emoji": "🌸"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Khái niệm Đoạn văn",
+        "instruction": "Đoạn văn là một nhóm câu văn phối hợp chặt chẽ với nhau cùng diễn đạt một ý tương đối hoàn chỉnh.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Về mặt hình thức, đoạn văn có đặc điểm nào dưới đây?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Bắt đầu bằng chữ cái viết hoa lùi đầu dòng và kết thúc bằng dấu chấm xuống dòng."
+          },
+          {
+            "id": "B",
+            "text": "Gồm nhiều câu văn được đánh số thứ tự."
+          },
+          {
+            "id": "C",
+            "text": "Chỉ chứa một câu duy nhất dài và phức tạp."
+          },
+          {
+            "id": "D",
+            "text": "Luôn có câu chủ đề nằm ở đầu đoạn."
+          }
+        ],
+        "answer": "A",
+        "title": "Dấu hiệu nhận biết hình thức",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "highlight",
+      "validator": "highlightValidator",
+      "data": {
+        "content": "Đoạn 1:<br>&nbsp;&nbsp;&nbsp;&nbsp; [[Mùa thu Hà Nội đẹp thật!]] [[Nắng hè oi bức như nung chảy mặt đường.]] [[Những con phố nhuộm vàng lá, không khí trong lành và se lạnh.]] [[Người Hà Nội cũng trở nên dịu dàng, tinh tế hơn trong tiết thu.]]<br><br>Đoạn 2:<br>&nbsp;&nbsp;&nbsp;&nbsp; [[Lớp em có một bạn học sinh rất ngoan.]] [[Bạn ấy luôn chăm chỉ học tập và không bao giờ ngại giúp đỡ bạn bè khi gặp khó khăn.]] [[Trong lớp, bạn sống hòa đồng, lễ phép với thầy cô và thân thiện với mọi người.]] [[Lan luôn được mọi người yêu quý.]] [[Nhiều người cho rằng học sinh cần phải ngoan ngoãn và chăm chỉ thì mới có thể thành công trong học tập và cuộc sống.]]",
+        "answer": [
+          "Nắng hè oi bức như nung chảy mặt đường.",
+          "Nhiều người cho rằng học sinh cần phải ngoan ngoãn và chăm chỉ thì mới có thể thành công trong học tập và cuộc sống."
+        ],
+        "title": "Tô sáng",
+        "instruction": "Tô sáng câu văn không nên có trong mỗi đoạn văn sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Bạn Hoa có vẻ ngoài rất dịu dàng và đáng yêu. Bạn sở hữu mái tóc dài, đen óng, mềm mại như dòng suối nhỏ. Khuôn mặt trái xoan nổi bật với đôi mắt to, trong veo như hai hạt nhãn. Mỗi khi mỉm cười, gương mặt bạn bừng sáng và trông rất duyên. Ngoại hình giản dị nhưng tươi tắn của Hoa khiến ai cũng yêu mến.",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Bạn Hoa có vẻ ngoài rất dịu dàng và đáng yêu"
+          },
+          {
+            "id": "B",
+            "text": "Bạn sở hữu mái tóc dài, đen óng, mềm mại như dòng suối nhỏ"
+          },
+          {
+            "id": "C",
+            "text": "Khuôn mặt trái xoan nổi bật với đôi mắt to, trong veo như hai hạt nhãn"
+          },
+          {
+            "id": "D",
+            "text": "Mỗi khi mỉm cười, gương mặt bạn bừng sáng và trông rất duyên"
+          },
+          {
+            "id": "D",
+            "text": "Ngoại hình giản dị nhưng tươi tắn của Hoa khiến ai cũng yêu mến"
+          }
+        ],
+        "answer": "A",
+        "title": "Chọn câu trong đoạn văn sau mang nội dung chủ yếu của cả đoạn",
+        "score": 1
+      }
+    },
+    {
+      "id": "step10",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "Nhờ tính cách chân thành, Lan được cả thầy cô và bạn bè yêu quý.",
+          "Bạn Lan có ngoại hình rất đáng yêu.",
+          "Lan luôn chăm chỉ học tập và không bao giờ ngại giúp đỡ bạn bè khi gặp khó khăn",
+          "Đôi mắt to, đen láy cùng nụ cười tươi khiến ai gặp cũng có thiện cảm.",
+          "Trong lớp, bạn sống hòa đồng, lễ phép với thầy cô và thân thiện với mọi người.",
+          "Mái tóc đen dài luôn được buộc gọn gàng, ôm lấy khuôn mặt trái xoan xinh xắn.",
+          "Lan là một người bạn có tính cách rất đáng quý."
+        ],
+        "targets": [
+          "Đoạn văn 1",
+          "Đoạn văn 2"
+        ],
+        "answer": {
+          "Nhờ tính cách chân thành, Lan được cả thầy cô và bạn bè yêu quý.": "Đoạn văn 2",
+          "Bạn Lan có ngoại hình rất đáng yêu.": "Đoạn văn 1",
+          "Lan luôn chăm chỉ học tập và không bao giờ ngại giúp đỡ bạn bè khi gặp khó khăn": "Đoạn văn 2",
+          "Đôi mắt to, đen láy cùng nụ cười tươi khiến ai gặp cũng có thiện cảm.": "Đoạn văn 1",
+          "Trong lớp, bạn sống hòa đồng, lễ phép với thầy cô và thân thiện với mọi người.": "Đoạn văn 2",
+          "Mái tóc đen dài luôn được buộc gọn gàng, ôm lấy khuôn mặt trái xoan xinh xắn.": "Đoạn văn 1",
+          "Lan là một người bạn có tính cách rất đáng quý.": "Đoạn văn 2"
+        },
+        "title": "Kéo và thả",
+        "instruction": "Các câu văn bên dưới thuộc 2 đoạn văn nhưng bị xáo trộn lung tung. Bạn hãy giúp phân loại các câu vào 2 đoạn",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "doan-van",
+    "difficulty": "basic",
+    "xp": 150,
+    "stars": 3,
+    "description": "Tìm hiểu khái niệm đoạn văn, cách nhận diện đoạn văn về mặt hình thức và cấu trúc cơ bản của đoạn văn.",
+    "prerequisite": null,
+    "unlock": null,
+    "reviewMode": "instant",
+    "durationMinutes": 15
+  }
+}

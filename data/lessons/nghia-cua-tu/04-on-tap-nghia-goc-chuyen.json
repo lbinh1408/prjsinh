@@ -1,0 +1,221 @@
+{
+  "id": "nghia-tu.04-on-tap-nghia-goc-chuyen",
+  "title": "Ôn tập: Nghĩa gốc, Nghĩa chuyển, Từ đa nghĩa",
+  "version": "3.0",
+  "theme": {
+    "id": "forest",
+    "title": "Khám phá Khu rừng Ngôn ngữ"
+  },
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "format": "essay",
+        "content": "Khu rừng Ngôn ngữ hiện ra trước mắt với vô vàn những thân cây cổ thụ. Bác cú mèo già cất giọng trầm ấm: 'Chào mừng các cháu. Trong khu rừng này, một từ có thể hóa thân thành nhiều ý nghĩa khác nhau. Để tìm được chiếc chìa khóa vàng, các cháu phải dùng khả năng phân biệt Nghĩa gốc, Nghĩa chuyển và Từ đa nghĩa để vượt qua những thử thách. Chúc may mắn!'",
+        "guide": [
+          "Đây là bài ôn tập về nghĩa gốc, nghĩa chuyển và từ đa nghĩa.",
+          "Hãy nhớ lại các khái niệm để vượt qua thử thách."
+        ],
+        "hint": "Cẩn thận với những từ giống nhau nhưng mang nghĩa khác nhau.",
+        "title": "Khởi đầu hành trình",
+        "instruction": "Đọc đoạn văn sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step02",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "Bé bị đau chân.",
+          "Chân núi mây mù bao phủ.",
+          "Quả na mở mắt.",
+          "Đôi mắt bé tròn xoe."
+        ],
+        "targets": [
+          "Sử dụng Nghĩa gốc",
+          "Sử dụng Nghĩa chuyển"
+        ],
+        "answer": {
+          "Bé bị đau chân.": "Sử dụng Nghĩa gốc",
+          "Đôi mắt bé tròn xoe.": "Sử dụng Nghĩa gốc",
+          "Chân núi mây mù bao phủ.": "Sử dụng Nghĩa chuyển",
+          "Quả na mở mắt.": "Sử dụng Nghĩa chuyển"
+        },
+        "title": "Cửa ải thứ nhất",
+        "instruction": "Kéo mỗi ví dụ vào đúng giỏ.",
+        "score": 2
+      }
+    },
+    {
+      "id": "step03",
+      "type": "identify",
+      "data": {
+        "question": "Từ 'ngọt ngào' trong câu 'Cô ấy nói chuyện rất ngọt ngào' mang nghĩa gì?",
+        "options": [
+          "Nghĩa gốc",
+          "Nghĩa chuyển",
+          "Nghĩa bóng",
+          "Đồng nghĩa"
+        ],
+        "answer": "Nghĩa chuyển",
+        "title": "Cửa ải thứ hai",
+        "score": 2
+      }
+    },
+    {
+      "id": "step04",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Đầu súng",
+          "Đầu người",
+          "Đầu năm",
+          "Đầu làng"
+        ],
+        "right": [
+          "Bộ phận cơ thể (Nghĩa gốc)",
+          "Vị trí bắt đầu của không gian (Nghĩa chuyển)",
+          "Phần nhọn, phía trước của vật (Nghĩa chuyển)",
+          "Thời điểm bắt đầu (Nghĩa chuyển)"
+        ],
+        "answer": {
+          "Đầu người": "Bộ phận cơ thể (Nghĩa gốc)",
+          "Đầu làng": "Vị trí bắt đầu của không gian (Nghĩa chuyển)",
+          "Đầu súng": "Phần nhọn, phía trước của vật (Nghĩa chuyển)",
+          "Đầu năm": "Thời điểm bắt đầu (Nghĩa chuyển)"
+        },
+        "title": "Cửa ải thứ ba",
+        "instruction": "Ghép các cụm từ với nghĩa tương ứng của từ 'đầu'.",
+        "score": 2
+      }
+    },
+    {
+      "id": "step05",
+      "type": "highlight",
+      "data": {
+        "content": "[[Con]] [[tàu]] [[đang]] [[rẽ]] [[sóng]], [[hướng]] [[thẳng]] [[mũi]] [[ra]] [[khơi]].",
+        "answer": [
+          "mũi"
+        ],
+        "title": "Cửa ải thứ tư",
+        "instruction": "Tô sáng từ được dùng theo nghĩa chuyển trong câu sau.",
+        "score": 2
+      }
+    },
+    {
+      "id": "step06",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Vì sao từ 'chân' trong 'chân người' và 'chân bàn' được coi là hiện tượng từ đa nghĩa?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Vì chúng phát âm giống hệt nhau nhưng không liên quan."
+          },
+          {
+            "id": "B",
+            "text": "Vì chúng có chung một nghĩa gốc và các nghĩa có liên hệ với nhau."
+          },
+          {
+            "id": "C",
+            "text": "Vì chúng là hai từ khác biệt hoàn toàn."
+          },
+          {
+            "id": "D",
+            "text": "Vì chúng luôn đi kèm với nhau."
+          }
+        ],
+        "answer": "B",
+        "title": "Cửa ải thứ năm",
+        "score": 2
+      }
+    },
+    {
+      "id": "step07",
+      "type": "reflection",
+      "data": {
+        "question": "Thế nào là từ đa nghĩa (từ nhiều nghĩa)?",
+        "sampleAnswer": "Từ đa nghĩa là từ có một nghĩa gốc và một hay một số nghĩa chuyển. Các nghĩa của từ đa nghĩa luôn có mối liên hệ với nhau.",
+        "title": "Giải mã bí ẩn",
+        "score": 2
+      }
+    },
+    {
+      "id": "step08",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "Răng người",
+          "Răng lược",
+          "Mũi kim",
+          "Đi bộ",
+          "Đi xa (qua đời)"
+        ],
+        "targets": [
+          "Nghĩa gốc",
+          "Nghĩa chuyển"
+        ],
+        "answer": {
+          "Răng người": "Nghĩa gốc",
+          "Đi bộ": "Nghĩa gốc",
+          "Răng lược": "Nghĩa chuyển",
+          "Mũi kim": "Nghĩa chuyển",
+          "Đi xa (qua đời)": "Nghĩa chuyển"
+        },
+        "title": "Thử thách lớn",
+        "instruction": "Phân loại các trường hợp sau đây.",
+        "score": 3
+      }
+    },
+    {
+      "id": "step09",
+      "type": "ordering",
+      "validator": "orderValidator",
+      "data": {
+        "items": [
+          "Từ có thêm nghĩa mới (Nghĩa chuyển)",
+          "Sự vật, hiện tượng mới xuất hiện",
+          "Từ ra đời mang một nghĩa (Nghĩa gốc)",
+          "Con người liên tưởng, so sánh với sự vật cũ"
+        ],
+        "answer": [
+          "Từ ra đời mang một nghĩa (Nghĩa gốc)",
+          "Sự vật, hiện tượng mới xuất hiện",
+          "Con người liên tưởng, so sánh với sự vật cũ",
+          "Từ có thêm nghĩa mới (Nghĩa chuyển)"
+        ],
+        "title": "Về đích",
+        "instruction": "Sắp xếp lại quá trình hình thành từ đa nghĩa.",
+        "score": 2
+      }
+    },
+    {
+      "id": "step10",
+      "type": "flashcard",
+      "data": {
+        "front": "Chiếc chìa khóa vàng",
+        "back": "Nghĩa gốc là nghĩa cơ bản ban đầu. Nghĩa chuyển được hình thành từ nghĩa gốc. Từ có cả nghĩa gốc và nghĩa chuyển là từ đa nghĩa.",
+        "completedWhen": "flipped",
+        "title": "Tổng kết",
+        "score": 2
+      }
+    }
+  ],
+  "meta": {
+    "module": "nghia-tu",
+    "difficulty": "review",
+    "xp": 150,
+    "stars": 4,
+    "description": "Ôn tập và củng cố kiến thức về nghĩa gốc, nghĩa chuyển và từ đa nghĩa (từ nhiều nghĩa).",
+    "prerequisite": "nghia-tu.04-tu-nhieu-nghia",
+    "unlock": null,
+    "reviewMode": "module",
+    "durationMinutes": 15
+  }
+}

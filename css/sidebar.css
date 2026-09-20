@@ -1,0 +1,568 @@
+/* ==========================================================
+   TS10 Learning Platform
+   Sprint 2
+   sidebar.css
+========================================================== */
+
+/* ==========================================================
+   SIDEBAR
+========================================================== */
+
+#sidebar {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 24px;
+
+    padding: 24px;
+
+    background: #ffffff;
+
+    border-right: 1px solid var(--border);
+
+    overflow-y: auto;
+
+}
+
+/* ==========================================================
+   SECTION
+========================================================== */
+
+.sidebar-section {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 14px;
+
+}
+
+.sidebar-title {
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    color: #222;
+
+}
+
+/* ==========================================================
+   ROADMAP
+========================================================== */
+
+#roadmap-panel {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+}
+
+/* ==========================================================
+   ROADMAP ITEM
+========================================================== */
+
+.roadmap-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 12px 14px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    transition: .2s;
+
+    user-select: none;
+
+}
+
+.roadmap-item:hover {
+
+    background: #eef5ff;
+
+}
+
+.roadmap-item.active {
+
+    background: #2563eb;
+
+    color: #fff;
+
+}
+
+.roadmap-item.completed {
+
+    background: #ecfdf5;
+
+    color: #15803d;
+
+}
+
+.roadmap-item.locked {
+
+    opacity: .45;
+
+    cursor: not-allowed;
+
+}
+
+/* ==========================================================
+   ROADMAP ICON
+========================================================== */
+
+.roadmap-icon {
+
+    width: 30px;
+
+    height: 30px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #eef5ff;
+
+    font-size: 14px;
+
+    flex-shrink: 0;
+
+}
+
+.roadmap-item.active .roadmap-icon {
+
+    background: rgba(255, 255, 255, .2);
+
+}
+
+.roadmap-item.completed .roadmap-icon {
+
+    background: #bbf7d0;
+
+}
+
+/* ==========================================================
+   ROADMAP TEXT
+========================================================== */
+
+.roadmap-content {
+
+    flex: 1;
+
+}
+
+.roadmap-name {
+
+    font-weight: 600;
+
+    font-size: 18px;
+
+}
+
+.roadmap-desc {
+
+    font-size: 15px;
+
+    opacity: .75;
+
+    margin-top: 2px;
+
+}
+
+/* ==========================================================
+   PROGRESS PANEL
+========================================================== */
+
+#progress-panel {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+
+}
+
+/* ==========================================================
+   PROGRESS CIRCLE
+========================================================== */
+
+.progress-circle {
+
+    width: 110px;
+
+    height: 110px;
+
+    border-radius: 50%;
+
+    margin: auto;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background:
+
+        conic-gradient(var(--primary) 0deg,
+
+            var(--primary) 180deg,
+
+            #ececec 180deg);
+
+}
+
+.progress-circle-inner {
+
+    width: 82px;
+
+    height: 82px;
+
+    background: #fff;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+}
+
+/* ==========================================================
+   PROGRESS INFO
+========================================================== */
+
+.progress-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+}
+
+.progress-item {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    font-size: 14px;
+
+}
+
+.progress-value {
+
+    font-weight: 700;
+
+    color: var(--primary);
+
+}
+
+/* ==========================================================
+   LESSON LIST
+========================================================== */
+
+.lesson-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+}
+
+.lesson-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 10px 14px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    transition: .2s;
+
+}
+
+.lesson-item:hover {
+
+    background: #f4f8ff;
+
+}
+
+.lesson-item.active {
+
+    background: #eef5ff;
+
+    color: var(--primary);
+
+    font-weight: 600;
+
+}
+
+/* ==========================================================
+   STEP LIST
+========================================================== */
+
+.step-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    margin-top: 10px;
+
+}
+
+.step-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 10px 12px;
+
+    border-radius: 8px;
+
+    transition: .2s;
+
+    cursor: pointer;
+
+}
+
+.step-item:hover {
+
+    background: #f7f7f7;
+
+}
+
+.step-item.current {
+
+    background: #eef5ff;
+
+    color: var(--primary);
+
+    font-weight: 600;
+
+}
+
+.step-item.done {
+
+    color: #16a34a;
+
+}
+
+.step-item.locked {
+
+    opacity: .45;
+
+}
+
+/* ==========================================================
+   STATUS DOT
+========================================================== */
+
+.status-dot {
+
+    width: 10px;
+
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: #d1d5db;
+
+}
+
+.status-dot.done {
+
+    background: #16a34a;
+
+}
+
+.status-dot.current {
+
+    background: #2563eb;
+
+}
+
+.status-dot.locked {
+
+    background: #bdbdbd;
+
+}
+
+/* ==========================================================
+   SIDEBAR CARD
+========================================================== */
+
+.sidebar-card {
+
+    background: #fff;
+
+    border-radius: 14px;
+
+    border: 1px solid var(--border);
+
+    padding: 18px;
+
+}
+
+/* ==========================================================
+   STATISTICS
+========================================================== */
+
+.sidebar-stats {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+
+}
+
+.stat-box {
+
+    background: #f8fafc;
+
+    border-radius: 10px;
+
+    padding: 14px;
+
+    text-align: center;
+
+}
+
+.stat-number {
+
+    font-size: 24px;
+
+    font-weight: 700;
+
+    color: var(--primary);
+
+}
+
+.stat-label {
+
+    margin-top: 6px;
+
+    font-size: 13px;
+
+    color: #666;
+
+}
+
+/* ==========================================================
+   QUICK ACTION
+========================================================== */
+
+.quick-actions {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+}
+
+.quick-actions button {
+
+    width: 100%;
+
+}
+
+/* ==========================================================
+   SEARCH
+========================================================== */
+
+.sidebar-search {
+
+    width: 100%;
+
+}
+
+.sidebar-search input {
+
+    width: 100%;
+
+}
+
+/* ==========================================================
+   SCROLLBAR
+========================================================== */
+
+#sidebar::-webkit-scrollbar {
+
+    width: 8px;
+
+}
+
+#sidebar::-webkit-scrollbar-thumb {
+
+    background: #d6d6d6;
+
+    border-radius: 999px;
+
+}
+
+#sidebar::-webkit-scrollbar-thumb:hover {
+
+    background: #b5b5b5;
+
+}
+
+/* ==========================================================
+   SUBJECT LESSONS
+========================================================== */
+.subject-lessons {
+    margin-top: 8px;
+    margin-left: 20px;
+    padding-left: 12px;
+    border-left: 2px solid #e5e7eb;
+}
+
+.lesson-state-icon {
+    font-size: 12px;
+    width: 16px;
+    display: inline-block;
+    text-align: center;
+}

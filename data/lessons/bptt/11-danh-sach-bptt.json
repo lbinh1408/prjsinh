@@ -1,0 +1,475 @@
+{
+    "id": "so-tay-bptt",
+    "title": "📒 Sổ tay Biện pháp tu từ — Nhận diện, phân biệt và phân tích tác dụng",
+    "type": "reference",
+    "version": "1.0.0",
+    "meta": {
+        "module": "bptt",
+        "category": "reference-tool",
+        "difficulty": "basic-to-advanced",
+        "target": "TS10-HCMC",
+        "description": "Sổ tay tra cứu nhanh giúp học sinh nhận diện các biện pháp tu từ, phân biệt những biện pháp dễ nhầm và phân tích tác dụng nghệ thuật của chúng trong văn bản.",
+        "purpose": [
+            "Tra cứu nhanh khi học và làm bài Đọc hiểu",
+            "Ôn tập trước khi thi",
+            "Phân biệt những BPTT dễ nhầm (Ẩn dụ - Hoán dụ, Ẩn dụ - So sánh)",
+            "Gợi ý cách viết câu phân tích tác dụng BPTT"
+        ]
+    },
+    "learningGoals": [
+        "Nhận diện được các biện pháp tu từ thường gặp trong chương trình THCS.",
+        "Nắm vững bản chất của từng biện pháp thay vì chỉ học vẹt định nghĩa.",
+        "Sử dụng mẹo để phân biệt Ẩn dụ và Hoán dụ một cách chính xác.",
+        "Biết cách phân tích tác dụng (gọi tên BPTT + chỉ ra từ ngữ chứa BPTT + phân tích ý nghĩa nội dung + phân tích tác dụng nghệ thuật).",
+        "Tránh các lỗi gọi tên sai hoặc phân tích chung chung khi làm bài thi."
+    ],
+    "steps": [
+        {
+            "id": "step_1",
+            "type": "reference",
+            "data": {
+                "usageGuide": {
+                    "title": "Cách dùng sổ tay",
+                    "principle": "Đừng chỉ DỪNG LẠI ở việc GỌI TÊN. Điều quan trọng nhất là PHÂN TÍCH TÁC DỤNG.",
+                    "quickProcess": [
+                        "Bước 1: Đọc kĩ đoạn trích, tìm những từ ngữ được sử dụng khác với nghĩa thông thường.",
+                        "Bước 2: Đối chiếu đặc điểm để gọi đúng tên BPTT.",
+                        "Bước 3: Chỉ rõ BPTT đó được thể hiện qua từ ngữ/hình ảnh nào.",
+                        "Bước 4: Nêu ý nghĩa nội dung (Nó miêu tả điều gì? Gợi cảm xúc gì?).",
+                        "Bước 5: Nêu tác dụng nghệ thuật (Làm cho câu văn sinh động, tăng sức gợi hình gợi cảm...)."
+                    ],
+                    "warning": "Lỗi nặng nhất là 'Chỉ gọi tên mà không chỉ ra từ ngữ cụ thể' và 'Phân tích chung chung, bài nào cũng giống bài nào'."
+                },
+                "map": {
+                    "title": "🗺️ Bản đồ Biện pháp tu từ",
+                    "description": "Nhìn nhanh hệ thống các biện pháp tu từ thường gặp.",
+                    "groups": [
+                        {
+                            "id": "tu-vung",
+                            "name": "Biện pháp tu từ",
+                            "description": "Các biện pháp dựa trên sự biến đổi ý nghĩa của từ ngữ.",
+                            "items": [
+                                "so-sanh",
+                                "nhan-hoa",
+                                "an-du",
+                                "hoan-du",
+                                "noi-qua",
+                                "noi-giam-noi-tranh"
+                            ]
+                        },
+                        {
+                            "id": "cu-phap",
+                            "name": "BPTT Cú pháp",
+                            "description": "Các biện pháp dựa trên sự sắp xếp cấu trúc câu.",
+                            "items": [
+                                "diep-ngu",
+                                "cau-hoi-tu-tu",
+                                "dao-ngu"
+                            ]
+                        }
+                    ]
+                },
+                "wordTypes": [
+                    {
+                        "id": "so-sanh",
+                        "name": "So sánh",
+                        "icon": "⚖️",
+                        "priority": "core",
+                        "keywords": [
+                            "như",
+                            "là",
+                            "giống như",
+                            "bao nhiêu... bấy nhiêu",
+                            "đối chiếu"
+                        ],
+                        "coreFact": "Đối chiếu sự vật, sự việc này với sự vật, sự việc khác có nét tương đồng để làm tăng sức gợi hình, gợi cảm cho sự diễn đạt.",
+                        "essence": {
+                            "question": "Cái gì được đem ra đối chiếu với cái gì?",
+                            "answer": "A (Cái được miêu tả) được đối chiếu với B (Cái dùng để miêu tả) dựa trên điểm giống nhau."
+                        },
+                        "recognition": [
+                            "Thường có cấu trúc: A + từ so sánh (như, là, tựa, bằng...) + B.",
+                            "Có hai loại: So sánh ngang bằng và So sánh không ngang bằng.",
+                            "A và B phải cùng xuất hiện (dù đôi khi từ so sánh bị ẩn đi)."
+                        ],
+                        "quickTest": [
+                            "Có thấy sự xuất hiện của cả hai đối tượng (A và B) không?",
+                            "Có từ nối so sánh (như, là...) hoặc dấu hiệu tương đương không?",
+                            "Chúng có điểm chung nào để đối chiếu không?"
+                        ],
+                        "examples": [
+                            {
+                                "sentence": "Trẻ em như búp trên cành.",
+                                "word": "như búp trên cành",
+                                "analysis": "Đối chiếu 'Trẻ em' (A) với 'búp trên cành' (B) qua từ 'như'."
+                            },
+                            {
+                                "sentence": "Công cha như núi Thái Sơn.",
+                                "word": "như núi Thái Sơn",
+                                "analysis": "Đối chiếu 'Công cha' với 'núi Thái Sơn' để nhấn mạnh sự to lớn."
+                            }
+                        ],
+                        "confusableWith": [
+                            {
+                                "type": "an-du",
+                                "difference": "So sánh có cả A và B. Ẩn dụ thì A bị giấu đi, chỉ gọi thẳng B (So sánh ngầm)."
+                            }
+                        ],
+                        "examTips": [
+                            "Khi phân tích, phải chỉ ra được: Ai/cái gì đang được so sánh với cái gì? Sự so sánh đó giúp làm nổi bật đặc điểm gì của A?"
+                        ],
+                        "usableFor": [
+                            "nhan-dien-bptt",
+                            "phan-tich-tac-dung",
+                            "viet-cau"
+                        ]
+                    },
+                    {
+                        "id": "nhan-hoa",
+                        "name": "Nhân hóa",
+                        "icon": "👤",
+                        "priority": "core",
+                        "keywords": [
+                            "vật thành người",
+                            "hành động của người",
+                            "tình cảm của người",
+                            "gọi vật bằng đại từ người"
+                        ],
+                        "coreFact": "Gọi hoặc tả con vật, cây cối, đồ vật... bằng những từ ngữ vốn dùng để gọi hoặc tả con người.",
+                        "essence": {
+                            "question": "Sự vật đang được đối xử giống như ai?",
+                            "answer": "Được gắn cho hành động, tính cách, hoặc cách xưng hô của con người."
+                        },
+                        "recognition": [
+                            "Dùng từ gọi người để gọi vật (Bác giun, chú dế...).",
+                            "Dùng từ chỉ hoạt động, tính chất của người để chỉ vật (chống gậy, vui, buồn...).",
+                            "Trò chuyện, xưng hô với vật như với người (Trâu ơi...)."
+                        ],
+                        "quickTest": [
+                            "Có sự vật, con vật, cây cối nào đang xuất hiện không?",
+                            "Nó có hành động, cảm xúc hoặc được gọi bằng tên như con người không?"
+                        ],
+                        "examples": [
+                            {
+                                "sentence": "Bác mặt trời đạp xe qua đỉnh núi.",
+                                "word": "Bác, đạp xe",
+                                "analysis": "Mặt trời được gọi là 'Bác' và có hành động 'đạp xe' của con người."
+                            },
+                            {
+                                "sentence": "Cây dừa sải tay bơi.",
+                                "word": "sải tay bơi",
+                                "analysis": "Cây dừa có hành động của người."
+                            }
+                        ],
+                        "confusableWith": [
+                            {
+                                "type": "an-du",
+                                "difference": "Nếu dùng tên vật để chỉ người -> Ẩn dụ. Nếu dùng thuộc tính người để chỉ vật -> Nhân hóa."
+                            }
+                        ],
+                        "examTips": [
+                            "Tác dụng của nhân hóa luôn có ý: 'Làm cho thế giới loài vật/cây cối trở nên sinh động, gần gũi với con người, đồng thời thể hiện tâm trạng/tình cảm của tác giả'."
+                        ],
+                        "usableFor": [
+                            "nhan-dien-bptt",
+                            "phan-tich-tac-dung"
+                        ]
+                    },
+                    {
+                        "id": "an-du",
+                        "name": "Ẩn dụ",
+                        "icon": "🎭",
+                        "priority": "core",
+                        "keywords": [
+                            "gọi tên",
+                            "tương đồng",
+                            "so sánh ngầm",
+                            "giấu A gọi B"
+                        ],
+                        "coreFact": "Gọi tên sự vật, hiện tượng này bằng tên sự vật, hiện tượng khác có NÉT TƯƠNG ĐỒNG với nó (giống nhau).",
+                        "essence": {
+                            "question": "B ở đây thực chất là đang nói về A nào? B và A giống nhau ở điểm nào?",
+                            "answer": "B và A có nét tương đồng về hình thức, cách thức, phẩm chất hoặc cảm giác."
+                        },
+                        "recognition": [
+                            "Thường được gọi là 'so sánh ngầm'.",
+                            "Đối tượng thực sự muốn nhắc đến (A) đã bị ẩn đi.",
+                            "Phải dùng logic 'giống nhau' để giải mã."
+                        ],
+                        "quickTest": [
+                            "Từ này hiểu theo nghĩa đen thì vô lý trong ngữ cảnh này không?",
+                            "Nếu khôi phục lại thành 'A như B' thì có hợp lý không?",
+                            "A và B có giống nhau về đặc điểm nào không?"
+                        ],
+                        "examples": [
+                            {
+                                "sentence": "Ngày ngày mặt trời đi qua trên lăng / Thấy một mặt trời trong lăng rất đỏ.",
+                                "word": "mặt trời (2)",
+                                "analysis": "'Mặt trời' thứ hai là ẩn dụ chỉ Bác Hồ, vì Bác cũng mang nguồn sáng và sự sống ấm áp cho dân tộc giống như mặt trời."
+                            },
+                            {
+                                "sentence": "Thuyền về có nhớ bến chăng?",
+                                "word": "Thuyền, bến",
+                                "analysis": "Thuyền (hay di chuyển) ẩn dụ cho người đi xa. Bến (cố định) ẩn dụ cho người ở lại chờ đợi."
+                            }
+                        ],
+                        "confusableWith": [
+                            {
+                                "type": "hoan-du",
+                                "difference": "Ẩn dụ dựa trên sự TƯƠNG ĐỒNG (giống nhau). Hoán dụ dựa trên sự TƯƠNG CẬN (gần gũi, đi liền với nhau)."
+                            },
+                            {
+                                "type": "so-sanh",
+                                "difference": "So sánh có cả A và B (A như B). Ẩn dụ chỉ có B (giấu A)."
+                            }
+                        ],
+                        "examTips": [
+                            "Bí quyết phân biệt: Hãy thử thêm từ 'như'. Nếu 'Bác Hồ giống NHƯ mặt trời' -> Hợp lý -> Tương đồng -> Ẩn dụ."
+                        ],
+                        "usableFor": [
+                            "nhan-dien-bptt",
+                            "phan-tich-tac-dung",
+                            "phan-biet-an-du-hoan-du"
+                        ]
+                    },
+                    {
+                        "id": "hoan-du",
+                        "name": "Hoán dụ",
+                        "icon": "🔄",
+                        "priority": "core",
+                        "keywords": [
+                            "gọi tên",
+                            "tương cận",
+                            "gần gũi",
+                            "bộ phận chỉ toàn thể",
+                            "dấu hiệu"
+                        ],
+                        "coreFact": "Gọi tên sự vật, hiện tượng này bằng tên sự vật, hiện tượng khác có QUAN HỆ TƯƠNG CẬN (gần gũi, đi liền với nhau).",
+                        "essence": {
+                            "question": "B có đi liền, gắn bó, hoặc là một bộ phận của A không?",
+                            "answer": "B và A có quan hệ gần gũi thực tế."
+                        },
+                        "recognition": [
+                            "Lấy bộ phận để gọi toàn thể.",
+                            "Lấy vật chứa đựng để gọi vật bị chứa đựng.",
+                            "Lấy dấu hiệu của sự vật để gọi sự vật.",
+                            "Lấy cái cụ thể để gọi cái trừu tượng."
+                        ],
+                        "quickTest": [
+                            "A và B có GIỐNG NHAU không? Nếu KHÔNG giống, nhưng ĐI KÈM với nhau -> Hoán dụ.",
+                            "B có phải là đặc điểm nhận diện thường thấy của A không?"
+                        ],
+                        "examples": [
+                            {
+                                "sentence": "Áo chàm đưa buổi phân li.",
+                                "word": "Áo chàm",
+                                "analysis": "Hoán dụ chỉ người dân Việt Bắc (vì họ thường mặc áo chàm). Áo chàm và người dân không GIỐNG NHAU, mà ĐI LIỀN với nhau (dấu hiệu)."
+                            },
+                            {
+                                "sentence": "Bàn tay ta làm nên tất cả.",
+                                "word": "Bàn tay",
+                                "analysis": "Bàn tay là bộ phận cơ thể người, hoán dụ để chỉ sức lao động của con người (bộ phận chỉ toàn thể)."
+                            }
+                        ],
+                        "confusableWith": [
+                            {
+                                "type": "an-du",
+                                "difference": "Thử thêm từ 'như'. 'Người dân Việt Bắc giống NHƯ áo chàm' -> Vô lý! -> Tương cận -> Hoán dụ."
+                            }
+                        ],
+                        "examTips": [
+                            "Rất nhiều học sinh nhầm Ẩn dụ và Hoán dụ. Hãy luôn dùng phép thử 'như'. Hợp lý = Ẩn dụ (giống). Vô lý = Hoán dụ (gần)."
+                        ],
+                        "usableFor": [
+                            "nhan-dien-bptt",
+                            "phan-tich-tac-dung",
+                            "phan-biet-an-du-hoan-du"
+                        ]
+                    },
+                    {
+                        "id": "noi-qua",
+                        "name": "Nói quá",
+                        "icon": "📈",
+                        "priority": "support",
+                        "keywords": [
+                            "phóng đại",
+                            "thậm xưng",
+                            "cường điệu",
+                            "quy mô",
+                            "tính chất"
+                        ],
+                        "coreFact": "Phóng đại mức độ, quy mô, tính chất của sự vật, hiện tượng để nhấn mạnh, gây ấn tượng hoặc tăng sức biểu cảm.",
+                        "essence": {
+                            "question": "Sự việc có thực sự to lớn/nhiều/mạnh đến mức như tác giả viết không?",
+                            "answer": "Không. Cố tình phóng đại để gây ấn tượng mạnh."
+                        },
+                        "recognition": [
+                            "Dùng những từ ngữ chỉ mức độ cực đại (chưa từng thấy, vô vàn...).",
+                            "Miêu tả những khả năng vượt quá giới hạn thực tế."
+                        ],
+                        "quickTest": [
+                            "Theo lẽ thường, điều này có thể xảy ra ở mức độ đó không?",
+                            "Có phải tác giả đang phóng to sự việc để nhấn mạnh không?"
+                        ],
+                        "examples": [
+                            {
+                                "sentence": "Mồ hôi thánh thót như mưa ruộng cày.",
+                                "word": "như mưa ruộng cày",
+                                "analysis": "Mồ hôi không thể rơi nhiều đến mức như mưa được. Nói quá để nhấn mạnh sự vất vả."
+                            },
+                            {
+                                "sentence": "Bầm ruột, đứt gan.",
+                                "word": "Bầm ruột, đứt gan",
+                                "analysis": "Nói quá để nhấn mạnh nỗi đau xót vô cùng."
+                            }
+                        ],
+                        "confusableWith": [],
+                        "examTips": [
+                            "Nói quá không phải là nói khoác (nói dối). Mục đích của nói quá là để nhấn mạnh một sự thật, còn nói khoác là bịa đặt."
+                        ],
+                        "usableFor": [
+                            "nhan-dien-bptt",
+                            "phan-tich-tac-dung"
+                        ]
+                    },
+                    {
+                        "id": "noi-giam-noi-tranh",
+                        "name": "Nói giảm nói tránh",
+                        "icon": "🛡️",
+                        "priority": "support",
+                        "keywords": [
+                            "nhẹ nhàng",
+                            "tránh thô tục",
+                            "tránh đau buồn",
+                            "lịch sự"
+                        ],
+                        "coreFact": "Dùng cách diễn đạt tế nhị, uyển chuyển để tránh gây cảm giác quá đau buồn, ghê sợ, nặng nề, hoặc tránh sự thô tục, thiếu lịch sự.",
+                        "essence": {
+                            "question": "Tại sao tác giả không dùng từ trực tiếp (chết, xấu, tồi...)?",
+                            "answer": "Để giảm nhẹ nỗi đau, giữ lịch sự hoặc thể hiện sự tôn trọng."
+                        },
+                        "recognition": [
+                            "Thay vì dùng từ 'chết', dùng: mất, qua đời, đi xa, hi sinh, quy tiên...",
+                            "Thay vì dùng từ trực tiếp chê bai, dùng cách nói phủ định (không được đẹp, chưa tốt lắm...)."
+                        ],
+                        "quickTest": [
+                            "Từ này có đang nói về một sự việc tiêu cực (cái chết, khuyết điểm) bằng một vỏ bọc nhẹ nhàng hơn không?"
+                        ],
+                        "examples": [
+                            {
+                                "sentence": "Bác đã đi rồi sao Bác ơi!",
+                                "word": "đi",
+                                "analysis": "Dùng từ 'đi' thay cho từ 'chết' để giảm bớt nỗi đau thương mất mát."
+                            },
+                            {
+                                "sentence": "Bài làm của em chưa được xuất sắc lắm.",
+                                "word": "chưa được xuất sắc lắm",
+                                "analysis": "Nói giảm để tránh làm tổn thương học sinh (thay vì nói 'bài em làm tệ')."
+                            }
+                        ],
+                        "confusableWith": [],
+                        "examTips": [
+                            "Tác dụng chủ yếu thường là: 'Giảm bớt sự đau thương, mất mát' (nếu nói về cái chết) hoặc 'Thể hiện sự tôn trọng, tế nhị' (trong giao tiếp)."
+                        ],
+                        "usableFor": [
+                            "nhan-dien-bptt",
+                            "phan-tich-tac-dung"
+                        ]
+                    },
+                    {
+                        "id": "diep-ngu",
+                        "name": "Điệp ngữ (Điệp từ)",
+                        "icon": "🔁",
+                        "priority": "core",
+                        "keywords": [
+                            "lặp lại",
+                            "nhấn mạnh",
+                            "tạo nhịp điệu",
+                            "liên tiếp",
+                            "điệp khúc"
+                        ],
+                        "coreFact": "Lặp lại một từ, một cụm từ (hoặc một câu) một cách có chủ đích để nhấn mạnh ý nghĩa, cảm xúc hoặc tạo nhịp điệu cho văn bản.",
+                        "essence": {
+                            "question": "Từ/cụm từ nào được lặp lại? Lặp lại để làm gì?",
+                            "answer": "Để nhấn mạnh thông điệp và tạo âm hưởng nhạc điệu."
+                        },
+                        "recognition": [
+                            "Điệp ngữ ngắt quãng (cách nhau ra).",
+                            "Điệp ngữ nối tiếp (đứng liền nhau).",
+                            "Điệp ngữ vòng (từ cuối câu trước lặp lại ở đầu câu sau)."
+                        ],
+                        "quickTest": [
+                            "Có một từ hoặc cụm từ lặp lại nhiều lần không?",
+                            "Sự lặp lại đó là cố ý (nghệ thuật) hay là lỗi lặp từ (vụng về)?"
+                        ],
+                        "examples": [
+                            {
+                                "sentence": "Học, học nữa, học mãi.",
+                                "word": "học",
+                                "analysis": "Điệp từ 'học' nhấn mạnh tầm quan trọng của việc học không ngừng."
+                            },
+                            {
+                                "sentence": "Buồn trông cửa bể chiều hôm... Buồn trông ngọn nước mới sa...",
+                                "word": "Buồn trông",
+                                "analysis": "Điệp ngữ nhấn mạnh nỗi buồn triền miên, vô vọng của Thúy Kiều."
+                            }
+                        ],
+                        "confusableWith": [],
+                        "examTips": [
+                            "Tác dụng của điệp ngữ LUÔN có 2 ý: (1) Nhấn mạnh nội dung (phải nói rõ nội dung gì) và (2) Tạo nhịp điệu, âm hưởng cho câu thơ/câu văn."
+                        ],
+                        "usableFor": [
+                            "nhan-dien-bptt",
+                            "phan-tich-tac-dung"
+                        ]
+                    },
+                    {
+                        "id": "cau-hoi-tu-tu",
+                        "name": "Câu hỏi tu từ",
+                        "icon": "❓",
+                        "priority": "support",
+                        "keywords": [
+                            "hỏi không để đáp",
+                            "bộc lộ cảm xúc",
+                            "khẳng định",
+                            "băn khoăn"
+                        ],
+                        "coreFact": "Câu có hình thức là câu hỏi nhưng mục đích không phải để tìm kiếm câu trả lời, mà dùng để bộc lộ cảm xúc, khẳng định, phủ định hoặc nhấn mạnh một ý nào đó.",
+                        "essence": {
+                            "question": "Người hỏi có cần người khác trả lời không?",
+                            "answer": "Không. Câu trả lời đã nằm ngay trong câu hỏi hoặc trong cảm xúc của người hỏi."
+                        },
+                        "recognition": [
+                            "Có dấu chấm hỏi hoặc từ để hỏi.",
+                            "Mục đích: Bộc lộ nỗi buồn, sự băn khoăn, sự xót xa, hoặc để khẳng định một chân lý."
+                        ],
+                        "quickTest": [
+                            "Câu này là câu hỏi?",
+                            "Nếu không trả lời thì người hỏi có giận không? (Vì thực chất họ đang bộc lộ cảm xúc)."
+                        ],
+                        "examples": [
+                            {
+                                "sentence": "Mẹ ơi, con biết đi đâu về đâu?",
+                                "word": "(Cả câu)",
+                                "analysis": "Hỏi để bộc lộ sự bế tắc, tuyệt vọng."
+                            },
+                            {
+                                "sentence": "Hồn ở đâu bây giờ?",
+                                "word": "(Cả câu)",
+                                "analysis": "Câu hỏi cuối bài 'Ông đồ', bộc lộ niềm xót thương tiếc nuối cho một giá trị văn hóa bị mai một."
+                            }
+                        ],
+                        "confusableWith": [],
+                        "examTips": [
+                            "Khi phân tích, phải nói rõ câu hỏi tu từ đó bộc lộ cảm xúc gì (xót xa, day dứt, tự hào, hay khẳng định sự thật)."
+                        ],
+                        "usableFor": [
+                            "nhan-dien-bptt",
+                            "phan-tich-tac-dung"
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}

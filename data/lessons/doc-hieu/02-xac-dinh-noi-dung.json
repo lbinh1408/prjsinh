@@ -1,0 +1,278 @@
+{
+  "id": "doc-hieu.02-xac-dinh-noi-dung",
+  "title": "Xác định nội dung",
+  "version": "1.0",
+  "enabled": true,
+  "steps": [
+    {
+      "id": "step01",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Cách hỏi thường gặp",
+            "icon": "❓",
+            "active": true,
+            "content": {
+              "text": "Câu hỏi ở mức độ Nhận biết hoặc Thông hiểu, thường có các dạng sau:\n- Nội dung chính của văn bản/đoạn trích là gì?\n- Văn bản trên đề cập đến vấn đề gì?\n- Theo tác giả, đoạn thơ trên thể hiện cảm xúc/ý nghĩa gì?",
+              "examples": []
+            }
+          }
+        ],
+        "title": "Dấu hiệu nhận biết",
+        "instruction": "Các câu hỏi yêu cầu xác định nội dung chính thường xuất hiện dưới những dạng nào?",
+        "score": 1
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "1. Tìm câu chủ đề",
+            "icon": "🔑",
+            "active": true,
+            "content": {
+              "text": "Trong văn xuôi, câu chủ đề thường nằm ở đầu đoạn (diễn dịch) hoặc cuối đoạn (quy nạp). Đoạn thơ thường thể hiện qua câu mở đầu hoặc câu kết.",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "2. Tìm từ khóa lặp lại",
+            "icon": "🔍",
+            "active": false,
+            "content": {
+              "text": "Những từ ngữ xuất hiện nhiều lần (hoặc các từ đồng nghĩa của chúng) thường chính là chủ thể hoặc vấn đề mà tác giả đang muốn nhấn mạnh.",
+              "examples": []
+            }
+          },
+          {
+            "id": "card-3",
+            "title": "3. Chú ý nhan đề và nguồn",
+            "icon": "🏷️",
+            "active": false,
+            "content": {
+              "text": "Nhan đề bài thơ, tựa đề cuốn sách hoặc phần ghi chú (Nguồn) ở cuối văn bản có thể trực tiếp gợi mở nội dung chính.",
+              "examples": []
+            }
+          }
+        ],
+        "title": "Phương pháp xác định",
+        "instruction": "Làm thế nào để tìm ra nội dung chính nhanh và chính xác nhất?",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "observe",
+      "data": {
+        "format": "essay",
+        "content": "Sự sống nảy sinh từ cái chết, hạnh phúc hiện hình từ trong những hi sinh, gian khổ, ở đời này không có con đường cùng, chỉ có những ranh giới, điều cốt yếu là phải có sức mạnh để bước qua những ranh giới ấy...<br>(Nguyễn Khải, <i>Mùa lạc</i>)",
+        "guide": [
+          "Câu văn trên nói về điều gì?"
+        ],
+        "hint": "Nội dung chính: Khẳng định sự vươn lên mãnh liệt của sự sống và niềm tin vào hạnh phúc, con người cần có nghị lực vượt qua khó khăn, ranh giới.",
+        "title": "Ví dụ minh họa",
+        "instruction": "Hãy đọc đoạn văn sau và xem cách xác định nội dung:",
+        "score": 0
+      }
+    },
+    {
+      "id": "step04",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Làn thu thủy nét xuân sơn,<br>Hoa ghen thua thắm liễu hờn kém xanh.<br>Một hai nghiêng nước nghiêng thành,<br>Sắc đành đòi một tài đành họa hai.<br>&nbsp;&nbsp;&nbsp;&nbsp;<i>(Nguyễn Du, Truyện Kiều)</i>",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Miêu tả vẻ đẹp của thiên nhiên mùa thu."
+          },
+          {
+            "id": "B",
+            "text": "Miêu tả vẻ đẹp tuyệt mĩ, sắc sảo mặn mà của Thúy Kiều."
+          },
+          {
+            "id": "C",
+            "text": "Miêu tả tài năng đánh đàn của Thúy Kiều."
+          },
+          {
+            "id": "D",
+            "text": "Tái hiện khung cảnh chị em Thúy Kiều đi chơi xuân."
+          }
+        ],
+        "answer": "B",
+        "title": "Thực hành 1: Đọc đoạn thơ sau và cho biết nội dung chính:",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Thời gian là vàng ngọc. Nhưng nếu vàng bạc bị đánh mất, ta còn có thể tìm lại được, chứ thời gian qua đi thì không bao giờ quay trở lại. Tuổi trẻ là quãng thời gian quý giá nhất của đời người. Đó là lúc sức khỏe dồi dào, trí tuệ minh mẫn, nhiệt huyết tràn trề. Nếu biết tận dụng tuổi trẻ để học tập, rèn luyện, cống hiến, ta sẽ xây dựng được một tương lai tươi sáng. Ngược lại, nếu lãng phí tuổi trẻ vào những thú vui vô bổ, ta sẽ phải hối hận suốt phần đời còn lại.",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Tầm quan trọng của sức khỏe trong tuổi trẻ."
+          },
+          {
+            "id": "B",
+            "text": "Khẳng định giá trị của thời gian và khuyên con người biết trân trọng tuổi trẻ."
+          },
+          {
+            "id": "C",
+            "text": "So sánh sự khác nhau giữa thời gian và vàng bạc."
+          },
+          {
+            "id": "D",
+            "text": "Hậu quả của việc lãng phí tiền bạc khi còn trẻ."
+          }
+        ],
+        "answer": "B",
+        "title": "Thực hành 2: Đọc đoạn văn sau và xác định nội dung chính:",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Con gặp lại nhân dân như nai về suối cũ<br>Cỏ đón giêng hai, chim én gặp mùa,<br>Như đứa trẻ thơ đói lòng gặp sữa<br>Chiếc nôi ngừng bỗng gặp cánh tay đưa.<br>&nbsp;&nbsp;&nbsp;&nbsp;<i>(Chế Lan Viên, Tiếng hát con tàu)</i>",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Niềm vui sướng, hạnh phúc tột độ của nhà thơ khi được trở về với nhân dân."
+          },
+          {
+            "id": "B",
+            "text": "Tình yêu thiên nhiên, loài vật của tác giả."
+          },
+          {
+            "id": "C",
+            "text": "Hồi ức về tuổi thơ êm đềm bên chiếc nôi của người mẹ."
+          },
+          {
+            "id": "D",
+            "text": "Khát vọng được quay về quê hương cũ."
+          }
+        ],
+        "answer": "A",
+        "title": "Thực hành 3: Đọc đoạn thơ sau và cho biết nội dung chính:",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Đồng bào ta ngày nay cũng rất xứng đáng với tổ tiên ta ngày trước. Từ các cụ già tóc bạc đến các cháu nhi đồng trẻ thơ, từ những kiều bào ở nước ngoài đến những đồng bào ở vùng tạm chiếm, từ nhân dân miền ngược đến miền xuôi, ai cũng một lòng nồng nàn yêu nước, ghét giặc. Những cử chỉ cao quý đó, tuy khác nhau nơi việc làm, nhưng đều giống nhau nơi lòng nồng nàn yêu nước. Nói tóm lại, lòng yêu nước là truyền thống quý báu, là sức mạnh vô địch của dân tộc ta.<br><i>(Hồ Chí Minh, Tinh thần yêu nước của nhân dân ta)</i>",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Các thế hệ người Việt Nam từ già đến trẻ đều đoàn kết."
+          },
+          {
+            "id": "B",
+            "text": "Lòng yêu nước là truyền thống quý báu, sức mạnh vô địch của dân tộc Việt Nam."
+          },
+          {
+            "id": "C",
+            "text": "Ca ngợi sự đóng góp của kiều bào ở nước ngoài và đồng bào vùng tạm chiếm."
+          },
+          {
+            "id": "D",
+            "text": "Những hành động yêu nước của đồng bào ta trong kháng chiến."
+          }
+        ],
+        "answer": "B",
+        "title": "Thực hành 4: Đọc đoạn văn sau và xác định nội dung chính:",
+        "score": 1
+      }
+    },
+    {
+      "id": "step08",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Sách là ngọn đèn sáng bất diệt của trí tuệ con người. Sách ghi lại những hiểu biết của con người về thế giới tự nhiên và xã hội. Sách lưu giữ những giá trị tinh thần, những kinh nghiệm sống, những khát vọng, mơ ước của nhân loại qua các thời kỳ lịch sử. Nhờ có sách, con người có thể vượt qua không gian và thời gian để giao lưu, học hỏi lẫn nhau. Sách thực sự là một người bạn đường không thể thiếu trên con đường phát triển của mỗi cá nhân và toàn xã hội.",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Vai trò, ý nghĩa to lớn của sách đối với đời sống con người."
+          },
+          {
+            "id": "B",
+            "text": "Lịch sử hình thành và phát triển của sách qua các thời đại."
+          },
+          {
+            "id": "C",
+            "text": "Cách lựa chọn sách hay và phương pháp đọc sách hiệu quả."
+          },
+          {
+            "id": "D",
+            "text": "Trách nhiệm của con người trong việc bảo tồn và lưu giữ sách."
+          }
+        ],
+        "answer": "A",
+        "title": "Thực hành 5: Văn bản dưới đây đề cập đến vấn đề gì?",
+        "score": 1
+      }
+    },
+    {
+      "id": "step09",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Quê hương là chùm khế ngọt<br>Cho con trèo hái mỗi ngày<br>Quê hương là đường đi học<br>Con về rợp bướm vàng bay<br>Quê hương là con diều biếc<br>Tuổi thơ con thả trên đồng<br>Quê hương là con đò nhỏ<br>Êm đềm khua nước ven sông.<br><i>(Đỗ Trung Quân, Quê hương)</i>",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Ca ngợi vẻ đẹp trù phú của thiên nhiên đất nước."
+          },
+          {
+            "id": "B",
+            "text": "Miêu tả những trò chơi tuổi thơ đầy thú vị ở vùng nông thôn."
+          },
+          {
+            "id": "C",
+            "text": "Khẳng định quê hương là những điều giản dị, gần gũi, gắn bó thiết tha với tuổi thơ mỗi người."
+          },
+          {
+            "id": "D",
+            "text": "Nỗi nhớ da diết của tác giả về tuổi thơ nghèo khó nhưng bình yên."
+          }
+        ],
+        "answer": "C",
+        "title": "Thực hành 6: Nội dung chính của hai khổ thơ sau là gì?",
+        "score": 1
+      }
+    },
+    {
+      "id": "step10",
+      "type": "flashcard",
+      "data": {
+        "front": "3 bí kíp xác định nội dung chính của văn bản?",
+        "back": "1. Tìm câu chủ đề<br>2. Tìm từ khóa lặp lại<br>3. Chú ý nhan đề / nguồn trích dẫn.",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "doc-hieu",
+    "difficulty": 2,
+    "xp": 60,
+    "stars": 3,
+    "description": "Hướng dẫn cách xác định nội dung chính, vấn đề trọng tâm của đoạn trích, văn bản.",
+    "durationMinutes": 20
+  }
+}

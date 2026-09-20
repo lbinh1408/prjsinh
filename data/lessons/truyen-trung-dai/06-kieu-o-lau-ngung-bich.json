@@ -1,0 +1,16 @@
+{
+    "id": "truyen-trung-dai.06-kieu-o-lau-ngung-bich",
+    "title": "Kiều ở lầu Ngưng Bích",
+    "module": "truyen-trung-dai",
+    "steps": [
+        {
+            "id": "intro",
+            "type": "observe",
+            "data": {
+                "title": "Kiều ở lầu Ngưng Bích",
+                "subtitle": "Trích Truyện Kiều - Nguyễn Du",
+                "content": "Đoạn trích miêu tả tâm trạng cô đơn, buồn tủi và nỗi nhớ thương da diết của Thúy Kiều khi bị giam lỏng ở lầu Ngưng Bích."
+            }
+        }
+    ]
+}

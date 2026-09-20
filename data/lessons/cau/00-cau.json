@@ -1,0 +1,158 @@
+{
+  "id": "cau.lesson01",
+  "title": "Câu đơn",
+  "version": "3.0",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "content": "C1: Trời mưa.<br> C2: Chú mèo đang. <br>C3: Lan lúc nào cũng mĩm cười nên ai cững yêu mến.",
+        "guide": [
+          "Đọc các ví dụ sau và cho biết em hiểu nghĩa chúng thế nào?"
+        ],
+        "hint": "C1 và C3: đều diễn đạt một ý trọn vẹn, ta hiểu được --> gọi là câu. C2: chưa đủ nghĩa --> không phải câu",
+        "title": "Quan sát",
+        "instruction": "Đọc các ví dụ sau và xem em hiểu nghĩa thế nào",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Đặc điểm của câu",
+            "icon": "1️⃣",
+            "active": true,
+            "content": {
+              "text": "Diễn đạt trọn vẹn một ý",
+              "examples": [
+                {
+                  "category": "Ví dụ: ",
+                  "word": "Trời mưa.",
+                  "emoji": "🌸"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Thường có 2 bộ phận chính: Chủ ngữ, Vị ngữ",
+            "icon": "⚠️",
+            "active": false,
+            "content": {
+              "text": "Một câu có thể rất đơn giản, rất ngắn nhưng có câu khá dài và phức tạp hơn.  ",
+              "examples": [
+                {
+                  "category": "Ví dụ: ",
+                  "word": "Nó đi. Đám thú cưng của nó- hai chú cún, một bé mèo và ba chú chim - cũng trở nên buồn thiu từ đó.",
+                  "emoji": "👯"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Khái niệm Câu",
+        "instruction": "Câu là tập hợp từ ngữ được phối hợp với nhau theo một trật tự nhất định để diễn đạt trọn vẹn một ý, thường do một hoặc nhiều cụm chủ-vị tạo thành.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Như những áng mây bay trên bầu trời.",
+          "Mưa rơi.",
+          "Khi chúng tôi ngồi ôn lại chuyện cũ thì hắn tới.",
+          "Đi như bay vì sợ không kịp giờ."
+        ],
+        "right": [
+          "Không phải câu",
+          "Câu"
+        ],
+        "answer": {
+          "Như những áng mây bay trên bầu trời.": "Không phải câu",
+          "Mưa rơi.": "Câu",
+          "Khi chúng tôi ngồi ôn lại chuyện cũ thì hắn tới.": "Câu",
+          "Đi như bay vì sợ không kịp giờ.": "Không phải câu"
+        },
+        "title": "Ghép cặp",
+        "instruction": "Ghép cho đúng nhé.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "ordering",
+      "validator": "orderValidator",
+      "data": {
+        "items": [
+          "đã",
+          "vẫn",
+          ".",
+          ",",
+          "đang",
+          "Lan",
+          "học",
+          "khuya",
+          "bài",
+          "trời"
+        ],
+        "answer": [
+          "trời",
+          "đã",
+          "khuya",
+          ",",
+          "Lan",
+          "vẫn",
+          "đang",
+          "học",
+          "bài",
+          "."
+        ],
+        "title": "Sắp xếp",
+        "instruction": "Sắp xếp các từ để tạo thành câu hoàn chỉnh.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "reflection",
+      "data": {
+        "question": "Hãy viết một câu đơn có đầy đủ chủ ngữ và vị ngữ.",
+        "sampleAnswer": "Em đang làm bài tập.",
+        "title": "Vận dụng",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "flashcard",
+      "data": {
+        "front": "Câu",
+        "back": "Câu là tập hợp từ ngữ được phối hợp với nhau theo một trật tự nhất định để diễn đạt trọn vẹn một ý, thường do một hoặc nhiều cụm chủ-vị tạo thành.",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "cau",
+    "difficulty": "easy",
+    "xp": 20,
+    "stars": 3,
+    "description": "Nhận biết câu đơn và các thành phần cơ bản của câu.",
+    "prerequisite": null,
+    "unlock": "cau-lesson02",
+    "durationMinutes": 10
+  },
+  "learningGoals": [
+    "Hiểu khái niệm thế nào là câu."
+  ]
+}

@@ -1,0 +1,751 @@
+/* ==========================================================
+   TS10 Learning Platform
+   Sprint 2
+   animation.css
+========================================================== */
+
+/* ==========================================================
+   Animation Variables
+========================================================== */
+
+:root{
+
+    --fast:.18s;
+
+    --normal:.3s;
+
+    --slow:.5s;
+
+    --ease:ease;
+
+    --ease-in:ease-in;
+
+    --ease-out:ease-out;
+
+    --ease-in-out:ease-in-out;
+
+}
+
+/* ==========================================================
+   Fade
+========================================================== */
+
+.fade-in{
+
+    animation:fadeIn var(--normal) var(--ease);
+
+}
+
+.fade-out{
+
+    animation:fadeOut var(--normal) var(--ease);
+
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+@keyframes fadeOut{
+
+    from{
+
+        opacity:1;
+
+    }
+
+    to{
+
+        opacity:0;
+
+    }
+
+}
+
+/* ==========================================================
+   Slide
+========================================================== */
+
+.slide-up{
+
+    animation:slideUp .35s ease;
+
+}
+
+.slide-down{
+
+    animation:slideDown .35s ease;
+
+}
+
+.slide-left{
+
+    animation:slideLeft .35s ease;
+
+}
+
+.slide-right{
+
+    animation:slideRight .35s ease;
+
+}
+
+@keyframes slideUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(24px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes slideDown{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-24px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes slideLeft{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+
+@keyframes slideRight{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(-30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+
+/* ==========================================================
+   Scale
+========================================================== */
+
+.scale-in{
+
+    animation:scaleIn .25s ease;
+
+}
+
+.scale-out{
+
+    animation:scaleOut .25s ease;
+
+}
+
+@keyframes scaleIn{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.92);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+@keyframes scaleOut{
+
+    from{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+    to{
+
+        opacity:0;
+
+        transform:scale(.92);
+
+    }
+
+}
+
+/* ==========================================================
+   Zoom
+========================================================== */
+
+.zoom-in{
+
+    animation:zoomIn .4s ease;
+
+}
+
+@keyframes zoomIn{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.75);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* ==========================================================
+   Pop
+========================================================== */
+
+.pop{
+
+    animation:pop .28s ease;
+
+}
+
+@keyframes pop{
+
+    0%{
+
+        transform:scale(.9);
+
+    }
+
+    60%{
+
+        transform:scale(1.05);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* ==========================================================
+   Shake
+========================================================== */
+
+.shake{
+
+    animation:shake .45s ease;
+
+}
+
+@keyframes shake{
+
+    0%{
+
+        transform:translateX(0);
+
+    }
+
+    20%{
+
+        transform:translateX(-8px);
+
+    }
+
+    40%{
+
+        transform:translateX(8px);
+
+    }
+
+    60%{
+
+        transform:translateX(-6px);
+
+    }
+
+    80%{
+
+        transform:translateX(6px);
+
+    }
+
+    100%{
+
+        transform:translateX(0);
+
+    }
+
+}
+
+/* ==========================================================
+   Bounce
+========================================================== */
+
+.bounce{
+
+    animation:bounce .55s ease;
+
+}
+
+@keyframes bounce{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    30%{
+
+        transform:translateY(-10px);
+
+    }
+
+    55%{
+
+        transform:translateY(0);
+
+    }
+
+    75%{
+
+        transform:translateY(-4px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================================================
+   Pulse
+========================================================== */
+
+.pulse{
+
+    animation:pulse 1.2s infinite;
+
+}
+
+@keyframes pulse{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.05);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* ==========================================================
+   Glow
+========================================================== */
+
+.glow{
+
+    animation:glow 1.6s infinite alternate;
+
+}
+
+@keyframes glow{
+
+    from{
+
+        box-shadow:0 0 0 rgba(37,99,235,0);
+
+    }
+
+    to{
+
+        box-shadow:0 0 16px rgba(37,99,235,.35);
+
+    }
+
+}
+
+/* ==========================================================
+   Rotate
+========================================================== */
+
+.rotate{
+
+    animation:rotate 1s linear infinite;
+
+}
+
+@keyframes rotate{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+/* ==========================================================
+   Float
+========================================================== */
+
+.float{
+
+    animation:float 3s ease-in-out infinite;
+
+}
+
+@keyframes float{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-8px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================================================
+   Success
+========================================================== */
+
+.success-animation{
+
+    animation:successFlash .6s ease;
+
+}
+
+@keyframes successFlash{
+
+    0%{
+
+        background:#dcfce7;
+
+    }
+
+    100%{
+
+        background:transparent;
+
+    }
+
+}
+
+/* ==========================================================
+   Error
+========================================================== */
+
+.error-animation{
+
+    animation:errorFlash .6s ease;
+
+}
+
+@keyframes errorFlash{
+
+    0%{
+
+        background:#fee2e2;
+
+    }
+
+    100%{
+
+        background:transparent;
+
+    }
+
+}
+
+/* ==========================================================
+   Progress
+========================================================== */
+
+.progress-fill{
+
+    transition:width .4s ease;
+
+}
+
+/* ==========================================================
+   Button
+========================================================== */
+
+button{
+
+    transition:
+
+        background .25s,
+
+        transform .2s,
+
+        box-shadow .2s;
+
+}
+
+button:hover{
+
+    transform:translateY(-2px);
+
+}
+
+button:active{
+
+    transform:scale(.97);
+
+}
+
+/* ==========================================================
+   Card
+========================================================== */
+
+.card{
+
+    transition:
+
+        transform .25s,
+
+        box-shadow .25s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+
+        0 12px 28px rgba(0,0,0,.08);
+
+}
+
+/* ==========================================================
+   Option
+========================================================== */
+
+.option,
+
+.identify-option{
+
+    transition:
+
+        all .2s ease;
+
+}
+
+/* ==========================================================
+   Toast
+========================================================== */
+
+.toast-show{
+
+    animation:toastShow .35s ease;
+
+}
+
+.toast-hide{
+
+    animation:toastHide .35s ease;
+
+}
+
+@keyframes toastShow{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(50px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+
+@keyframes toastHide{
+
+    from{
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+    to{
+
+        opacity:0;
+
+        transform:translateX(50px);
+
+    }
+
+}
+
+/* ==========================================================
+   Loading
+========================================================== */
+
+.loading-fade{
+
+    animation:loadingFade .5s ease infinite alternate;
+
+}
+
+@keyframes loadingFade{
+
+    from{
+
+        opacity:.4;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+/* ==========================================================
+   Step Transition
+========================================================== */
+
+.lesson-transition{
+
+    animation:lessonTransition .35s ease;
+
+}
+
+@keyframes lessonTransition{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(18px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}

@@ -1,0 +1,285 @@
+{
+  "id": "nghia-cua-tu.02-nghia-goc",
+  "title": "Nghĩa gốc",
+  "version": "3.0",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "content": "Bé <b>ăn</b> cơm cùng gia đình. Sau đó bé uống một cốc sữa rồi <b>đi</b> học.",
+        "guide": [
+          "Chú ý các từ được in đậm, chúng có dễ hiểu không?",
+          "Có phải suy ra nghĩa khác không ?"
+        ],
+        "hint": "Chúng được dùng theo nghĩa thông thường nhất, thông dụng nhất mà ai cũng hiểu",
+        "title": "Quan sát",
+        "instruction": "Đọc câu văn sau.",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "1. Nghĩa gốc dễ hiểu, dễ hình dung",
+            "icon": "📖",
+            "active": true,
+            "content": {
+              "text": "Nghĩa gốc giúp người nghe dễ hiểu, dễ hình dung.",
+              "examples": [
+                {
+                  "category": "Ví dụ 1: ",
+                  "word": "ăn (nhai và nuốt thức ăn)",
+                  "emoji": "🍚"
+                },
+                {
+                  "category": "Ví dụ 2: ",
+                  "word": "mắt (cơ quan để nhìn)",
+                  "emoji": "👁️"
+                },
+                {
+                  "category": "Ví dụ 3: ",
+                  "word": "bàn (đồ vật có mặt phẳng)",
+                  "emoji": "🦶"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "2. Là cơ sở hình thành các nghĩa khác (nghĩa chuyển)",
+            "icon": "🔗",
+            "active": false,
+            "content": {
+              "text": "Bé <b>ăn</b> cơm. <br>Nước <b>ăn</b> chân.",
+              "examples": [
+                {
+                  "category": "",
+                  "word": "nghĩa gốc 'ăn': nhai nát và nuốt thức ăn",
+                  "emoji": ""
+                },
+                {
+                  "category": "",
+                  "word": "nghĩa chuyển 'ăn': bào mòn, làm mất đi lớp mặt ngoài",
+                  "emoji": ""
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Nghĩa gốc là gì?",
+        "instruction": "Nghĩa gốc là nghĩa xuất hiện đầu tiên và cơ bản nhất của từ, làm cơ sở để hình thành các nghĩa khác.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "1. Tính cụ thể",
+            "icon": "🏷️",
+            "active": true,
+            "content": {
+              "items": [
+                {
+                  "type": "common",
+                  "label": "Rõ ràng",
+                  "definition": "Thường gắn với các sự vật, hiện tượng cụ thể có thể cảm nhận bằng giác quan.",
+                  "examples": [
+                    "Ăn cơm, đi bộ, tay phải"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "2. Tính nguyên thủy",
+            "icon": "🌱",
+            "active": false,
+            "content": {
+              "items": [
+                {
+                  "type": "common",
+                  "label": "Lịch sử",
+                  "definition": "Là nghĩa ra đời sớm nhất.",
+                  "examples": [
+                    "'Đầu': Bộ phận trên cùng của cơ thể người."
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Đặc điểm của Nghĩa gốc",
+        "score": 0
+      }
+    },
+    {
+      "id": "step04",
+      "type": "identify",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trong câu trên, từ 'ăn' được dùng theo nghĩa nào?",
+        "options": [
+          "Nghĩa gốc",
+          "Nghĩa chuyển",
+          "Nghĩa bóng",
+          "Nghĩa hẹp"
+        ],
+        "answer": "Nghĩa gốc",
+        "title": "Nhận biết",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Vì sao trong câu 'Bé có đôi mắt rất sáng', từ 'mắt' mang nghĩa gốc?",
+        "sampleAnswer": [
+          "Vì từ 'mắt' chỉ có một nghĩa.",
+          "Vì 'mắt' ở đây mang nghĩa đây là nghĩa ban đầu của từ."
+        ],
+        "title": "Thông hiểu",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "highlight",
+      "data": {
+        "content": "[[Tôi]] [[bị]] [[đau]] [[chân]] [[khi]] [[đang]] [[leo]] [[lên]] [[mũi tàu]].",
+        "answer": [
+          "chân"
+        ],
+        "title": "Tô sáng",
+        "instruction": "Hãy chọn để tô sáng <u>danh từ</u> được dùng theo nghĩa gốc trong câu sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "reflection",
+      "data": {
+        "question": "Hãy viết một câu có sử dụng từ 'đi' theo nghĩa gốc.",
+        "sampleAnswer": "Mỗi buổi sáng, em đều đi bộ đến trường.",
+        "title": "Vận dụng",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Nghĩa gốc của từ 'đầu' là gì?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Bộ phận trên cùng của cơ thể con người, động vật"
+          },
+          {
+            "id": "B",
+            "text": "Phần trước nhất của một vật"
+          },
+          {
+            "id": "C",
+            "text": "Phần quan trọng nhất"
+          },
+          {
+            "id": "D",
+            "text": "Sự bắt đầu của một sự việc"
+          }
+        ],
+        "answer": "A",
+        "title": "Lựa chọn",
+        "score": 1
+      }
+    },
+    {
+      "id": "step08",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "ngủ",
+          "ăn",
+          "ngọt",
+          "đi"
+        ],
+        "right": [
+          "Đưa thức ăn vào cơ thể",
+          "Di chuyển bằng chân",
+          "Trạng thái nghỉ ngơi",
+          "Vị như vị của đường, mật"
+        ],
+        "answer": {
+          "ăn": "Đưa thức ăn vào cơ thể",
+          "đi": "Di chuyển bằng chân",
+          "ngủ": "Trạng thái nghỉ ngơi",
+          "ngọt": "Vị như vị của đường, mật"
+        },
+        "title": "Nối từ",
+        "instruction": "Ghép từ với nghĩa gốc tương ứng.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step09",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "Em bé đang tập <b>đi</b>.",
+          "Tôi <b>đi</b> xe đạp đến trường.",
+          "Tôi <b>ăn</b> ba bữa mỗi ngày.",
+          "Chúng tôi đang bàn chuyện làm <b>ăn</b>."
+        ],
+        "targets": [
+          "Sử dụng Nghĩa gốc",
+          "Không phải Nghĩa gốc (Nghĩa chuyển)"
+        ],
+        "answer": {
+          "Em bé đang tập <b>đi</b>.": "Sử dụng Nghĩa gốc",
+          "Tôi <b>ăn</b> ba bữa mỗi ngày.": "Sử dụng Nghĩa gốc",
+          "Tôi <b>đi</b> xe đạp đến trường.": "Không phải Nghĩa gốc (Nghĩa chuyển)",
+          "Chúng tôi đang bàn chuyện làm <b>ăn</b>.": "Không phải Nghĩa gốc (Nghĩa chuyển)"
+        },
+        "title": "Kéo và thả",
+        "instruction": "Hãy kéo và thả các câu vào đúng nhóm.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step10",
+      "type": "flashcard",
+      "data": {
+        "front": "Nghĩa gốc",
+        "back": "Nghĩa gốc là nghĩa xuất hiện đầu tiên của từ, làm cơ sở để hình thành các nghĩa khác.",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "nghia-cua-tu",
+    "difficulty": "reference",
+    "xp": 100,
+    "stars": 3,
+    "description": "Nhận biết, đặc điểm và sử dụng nghĩa gốc của từ.",
+    "prerequisite": "nghia-tu.01-nghia-cua-tu",
+    "unlock": null,
+    "reviewMode": "instant",
+    "durationMinutes": 15
+  }
+}

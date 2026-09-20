@@ -1,0 +1,16 @@
+{
+    "id": "truyen-trung-dai.03-truyen-kieu-tac-gia-tac-pham",
+    "title": "Truyện Kiều - Tác giả & Tác phẩm",
+    "module": "truyen-trung-dai",
+    "steps": [
+        {
+            "id": "intro",
+            "type": "observe",
+            "data": {
+                "title": "Truyện Kiều - Tác giả & Tác phẩm",
+                "subtitle": "Nguyễn Du",
+                "content": "Tìm hiểu về cuộc đời, sự nghiệp của Đại thi hào Nguyễn Du và tóm tắt kiệt tác Truyện Kiều."
+            }
+        }
+    ]
+}

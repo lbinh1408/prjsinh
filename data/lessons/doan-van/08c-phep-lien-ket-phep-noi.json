@@ -1,0 +1,148 @@
+{
+  "id": "doan-van.08c-phep-lien-ket-phep-noi",
+  "title": "Phép nối",
+  "version": "3.1",
+  "enabled": true,
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "format": "essay",
+        "content": "Trời mưa rất to. <b>Vì vậy</b>, đường phố bị ngập lụt nghiêm trọng.",
+        "guide": [
+          "Từ 'Vì vậy' ở câu thứ hai có tác dụng gì?",
+          "Từ này biểu thị mối quan hệ gì giữa hai câu văn?"
+        ],
+        "hint": "Từ 'Vì vậy' nối hai câu lại với nhau và chỉ ra mối quan hệ nguyên nhân - kết quả.",
+        "title": "Quan sát",
+        "instruction": "Đọc đoạn văn sau và chú ý từ được in đậm.",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "1. Khái niệm",
+            "icon": "➕",
+            "active": true,
+            "content": {
+              "text": "Phép nối là cách sử dụng ở câu đứng sau các từ ngữ biểu thị quan hệ với câu trước.",
+              "examples": [
+                {
+                  "category": "Ví dụ",
+                  "word": "Cậu ấy không được thông minh lắm. Nhưng bù lại, cậu ấy rất chăm chỉ.",
+                  "emoji": "🔗"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "2. Các từ ngữ thường dùng",
+            "icon": "📝",
+            "active": false,
+            "content": {
+              "items": [
+                {
+                  "type": "common",
+                  "label": "Quan hệ từ",
+                  "definition": "Và, rồi, nhưng, mà, còn, vì, nếu, tuy, để...",
+                  "examples": []
+                },
+                {
+                  "type": "common",
+                  "label": "Tổ hợp từ, phó từ, đại từ",
+                  "definition": "Vì vậy, cho nên, thế thì, tuy nhiên, tóm lại, nhìn chung, do đó...",
+                  "examples": []
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-3",
+            "title": "3. Tác dụng",
+            "icon": "✨",
+            "active": false,
+            "content": {
+              "text": "Tác dụng của phép nối là:",
+              "examples": [
+                {
+                  "category": "Hiệu quả",
+                  "word": "Chỉ rõ mối quan hệ logic (nguyên nhân, kết quả, tương phản, bổ sung...) giữa các câu, giúp đoạn văn rành mạch, rõ ràng.",
+                  "emoji": "🎨"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Khái niệm",
+        "instruction": "Cách dùng các từ ngữ biểu thị quan hệ để liên kết gọi là phép nối.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "identify",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Từ nối nào phù hợp để điền vào chỗ trống: 'Lan rất cố gắng ôn tập. __________, kết quả bài thi của cô ấy không như mong đợi.'",
+        "options": [
+          "Và",
+          "Cho nên",
+          "Tuy nhiên",
+          "Bởi vì"
+        ],
+        "answer": "Tuy nhiên",
+        "title": "Nhận biết",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "highlight",
+      "data": {
+        "content": "Bảo vệ môi trường là trách nhiệm của mọi người. Do đó, chúng ta cần hành động ngay từ bây giờ.",
+        "answer": [
+          "Do đó"
+        ],
+        "title": "Thực hành",
+        "instruction": "Hãy tô sáng TỪ NỐI trong câu sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "reflection",
+      "data": {
+        "question": "Hãy viết 2 câu trình bày nguyên nhân và kết quả của một sự việc, sử dụng phép nối.",
+        "sampleAnswer": "Sáng nay em dậy muộn. Vì vậy, em đã lỡ chuyến xe buýt đến trường.",
+        "title": "Vận dụng",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "flashcard",
+      "data": {
+        "front": "Phép nối là gì?",
+        "back": "Là sử dụng các từ ngữ biểu thị quan hệ (quan hệ từ, tổ hợp từ...) ở câu sau để liên kết với câu trước, nhằm làm rõ logic của đoạn văn.",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "doan-van",
+    "difficulty": 1,
+    "xp": 50,
+    "stars": 3,
+    "description": "Tìm hiểu chi tiết về phép nối trong liên kết câu.",
+    "durationMinutes": 15
+  }
+}

@@ -1,0 +1,284 @@
+{
+  "id": "bptt.05-diep-ngu",
+  "title": "Điệp ngữ",
+  "version": "3.0",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "content": "Trên đường hành quân xa<br>Dừng chân bên xóm nhỏ<br>Tiếng gà ai nhảy ổ:<br>\"Cục... cục tác cục ta\"<br><b>Nghe</b> xao động nắng trưa<br><b>Nghe</b> bàn chân đỡ mỏi<br><b>Nghe</b> gọi về tuổi thơ <br> (Tiếng gà trưa - Xuân Quỳnh)",
+        "guide": [
+          "Từ nào được lặp lại nhiều lần trong đoạn thơ?",
+          "Việc lặp lại từ đó mang lại tác dụng gì cho việc thể hiện cảm xúc?"
+        ],
+        "hint": "Việc cố ý lặp lại một từ ngữ để nhấn mạnh một ý nghĩa hoặc cảm xúc nào đó.",
+        "title": "Quan sát",
+        "instruction": "Đọc đoạn thơ sau.",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Khái niệm",
+            "icon": "🔁",
+            "active": true,
+            "content": {
+              "text": "Khi nói hoặc viết, người ta có thể dùng biện pháp lặp lại từ ngữ (hoặc cả một câu) để làm nổi bật ý, gây cảm xúc mạnh.",
+              "examples": [
+                {
+                  "category": "Ví dụ: ",
+                  "word": "Hồ Chí Minh muôn năm! Hồ Chí Minh muôn năm! (Lặp lại cả một câu)",
+                  "emoji": "🗣️"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Tác dụng",
+            "icon": "✨",
+            "active": false,
+            "content": {
+              "text": "Nhấn mạnh ý, tạo cảm xúc mãnh liệt, tạo nhịp điệu và sự liên kết cho câu văn, câu thơ.",
+              "examples": [
+                {
+                  "category": "Lưu ý: ",
+                  "word": "Cần phân biệt điệp ngữ (lặp có chủ ý, có tác dụng tu từ) với lỗi lặp từ (lặp do vốn từ nghèo nàn, diễn đạt lủng củng).",
+                  "emoji": "💡"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Khái niệm",
+        "instruction": "Biện pháp tu từ được sử dụng ở trên gọi là <i>Điệp ngữ</i>.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "identify",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trong câu 'Đoàn kết, đoàn kết, đại đoàn kết. Thành công, thành công, đại thành công', từ nào được dùng làm điệp ngữ?",
+        "options": [
+          "Đoàn kết, đại",
+          "Thành công, đại",
+          "Đoàn kết, thành công",
+          "Đại đoàn kết, đại thành công"
+        ],
+        "answer": "Đoàn kết, thành công",
+        "title": "Nhận biết",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Trong đoạn thơ 'Nghe xao động nắng trưa / Nghe bàn chân đỡ mỏi', tác giả lặp lại từ 'Nghe' để làm gì?",
+        "sampleAnswer": [
+          "Để nhấn mạnh cảm giác chân thực, sâu sắc của nhân vật khi nghe tiếng gà trưa.",
+          "Để tạo nhịp điệu dồn dập, thể hiện sự xúc động liên tục trào dâng."
+        ],
+        "title": "Thông hiểu",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "highlight",
+      "data": {
+        "content": "[[Nhớ sao]] [[lớp học]] [[i tờ]]<br>[[Nhớ sao]] [[ngày tháng]] [[cơ quan]]",
+        "answer": [
+          "Nhớ sao"
+        ],
+        "title": "Tô sáng",
+        "instruction": "Hãy tô sáng cụm từ được sử dụng làm điệp ngữ trong đoạn thơ sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "reflection",
+      "data": {
+        "question": "Hãy đặt một câu có sử dụng điệp ngữ để thể hiện sự quyết tâm học tập của em.",
+        "sampleAnswer": "Dù khó khăn đến đâu, em vẫn học, học nữa, học mãi.",
+        "title": "Vận dụng",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "1. Điệp ngữ nối tiếp",
+            "icon": "➡️",
+            "active": true,
+            "content": {
+              "items": [
+                {
+                  "type": "common",
+                  "label": "Đặc điểm",
+                  "definition": "Các từ ngữ lặp lại đứng liền nhau, tạo ấn tượng mạnh, dồn dập.",
+                  "examples": [
+                    "Anh đã tìm em, rất lâu, rất lâu."
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "2. Điệp ngữ cách quãng",
+            "icon": "⏸️",
+            "active": false,
+            "content": {
+              "items": [
+                {
+                  "type": "common",
+                  "label": "Đặc điểm",
+                  "definition": "Các từ ngữ lặp lại đứng cách nhau (thường ở đầu các dòng thơ, đầu câu).",
+                  "examples": [
+                    "Nhớ sao lớp học i tờ / Nhớ sao ngày tháng cơ quan / Nhớ sao tiếng mõ rừng chiều."
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-3",
+            "title": "3. Điệp ngữ vòng (điệp ngữ chuyển tiếp)",
+            "icon": "🔄",
+            "active": false,
+            "content": {
+              "items": [
+                {
+                  "type": "common",
+                  "label": "Đặc điểm",
+                  "definition": "Từ ngữ đứng cuối câu (hoặc dòng thơ) trước được lặp lại ở đầu câu (hoặc dòng thơ) sau.",
+                  "examples": [
+                    "Cùng trông lại mà cùng chẳng thấy / Thấy xanh xanh những mấy ngàn dâu./ Ngàn dâu xanh ngắt một màu / Lòng chàng ý thiếp ai sầu hơn ai "
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Các kiểu điệp ngữ",
+        "score": 0
+      }
+    },
+    {
+      "id": "step08",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Câu thơ 'Thấy xanh xanh những mấy ngàn dâu / Ngàn dâu xanh ngắt một màu' sử dụng kiểu điệp ngữ nào?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Điệp ngữ nối tiếp."
+          },
+          {
+            "id": "B",
+            "text": "Điệp ngữ cách quãng."
+          },
+          {
+            "id": "C",
+            "text": "Điệp ngữ vòng (chuyển tiếp)."
+          },
+          {
+            "id": "D",
+            "text": "Lỗi lặp từ."
+          }
+        ],
+        "answer": "C",
+        "title": "Lựa chọn",
+        "score": 1
+      }
+    },
+    {
+      "id": "step09",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Nghe xao động nắng trưa / Nghe bàn chân đỡ mỏi / Nghe gọi về tuổi thơ",
+          "Đoàn kết, đoàn kết, đại đoàn kết.",
+          "Cùng trông lại mà cùng chẳng thấy / Thấy xanh xanh những mấy ngàn dâu."
+        ],
+        "right": [
+          "Điệp ngữ nối tiếp",
+          "Điệp ngữ cách quãng",
+          "Điệp ngữ vòng"
+        ],
+        "answer": {
+          "Đoàn kết, đoàn kết, đại đoàn kết.": "Điệp ngữ nối tiếp",
+          "Nghe xao động nắng trưa / Nghe bàn chân đỡ mỏi / Nghe gọi về tuổi thơ": "Điệp ngữ cách quãng",
+          "Cùng trông lại mà cùng chẳng thấy / Thấy xanh xanh những mấy ngàn dâu.": "Điệp ngữ vòng"
+        },
+        "title": "Nối câu",
+        "instruction": "Ghép mỗi câu với kiểu điệp ngữ tương ứng.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step10",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "Điệp ngữ cách quãng",
+          "Điệp ngữ nối tiếp",
+          "Điệp ngữ vòng"
+        ],
+        "targets": [
+          "Các từ đứng liền kề nhau",
+          "Từ cuối câu trước lặp ở đầu câu sau",
+          "Các từ lặp lại đứng cách nhau"
+        ],
+        "answer": {
+          "Điệp ngữ nối tiếp": "Các từ đứng liền kề nhau",
+          "Điệp ngữ vòng": "Từ cuối câu trước lặp ở đầu câu sau",
+          "Điệp ngữ cách quãng": "Các từ lặp lại đứng cách nhau"
+        },
+        "title": "Kéo và thả",
+        "instruction": "Kéo và thả các kiểu điệp ngữ phù hợp với đặc điểm của nó.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step11",
+      "type": "flashcard",
+      "data": {
+        "front": "Điệp ngữ",
+        "back": "Điệp ngữ là biện pháp lặp lại có chủ ý một từ ngữ (hoặc một câu) nhằm nhấn mạnh ý, gây ấn tượng hoặc tạo nhịp điệu. Các kiểu: Nối tiếp, Cách quãng, Vòng.",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "bptt",
+    "difficulty": "reference",
+    "xp": 100,
+    "stars": 3,
+    "description": "Nhận biết và sử dụng biện pháp tu từ điệp ngữ.",
+    "prerequisite": null,
+    "unlock": null,
+    "reviewMode": "instant",
+    "durationMinutes": 15
+  }
+}

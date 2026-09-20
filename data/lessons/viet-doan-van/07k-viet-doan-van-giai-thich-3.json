@@ -1,0 +1,766 @@
+{
+  "id": "viet-bai-van-05",
+  "title": "Xây dựng thân bài – Đoạn giải thích",
+  "type": "skill",
+  "version": "1.0.0",
+  "meta": {
+    "module": "viet-bai-van",
+    "lessonNumber": 5,
+    "durationMinutes": 300,
+    "difficulty": "beginner",
+    "skill": "xay-dung-than-bai-doan-giai-thich",
+    "description": "Học cách xây dựng đoạn giải thích trong thân bài nghị luận xã hội: làm rõ vấn đề trước khi bàn luận."
+  },
+  "learningGoals": [
+    "Hiểu được nhiệm vụ của đoạn giải thích trong bài văn nghị luận xã hội.",
+    "Biết dùng câu hỏi “Vấn đề này là gì?” để xác định nội dung cần giải thích.",
+    "Biết sử dụng công thức cơ bản “Là gì → Làm rõ → Khái quát” như một điểm tựa khi chưa biết viết.",
+    "Biết áp dụng cách giải thích cho nhiều dạng vấn đề: phẩm chất, hiện tượng, câu nói và vấn đề xã hội.",
+    "Phân biệt được đoạn giải thích máy móc theo công thức với đoạn giải thích tự nhiên, linh hoạt.",
+    "Biết thoát khỏi công thức bằng cách tự đặt câu hỏi để làm rõ bản chất vấn đề.",
+    "Viết được một đoạn giải thích phù hợp với đề bài và làm tiền đề cho phần bàn luận tiếp theo."
+  ],
+  "completion": {
+    "requiredSections": [
+      "story",
+      "observe",
+      "discover",
+      "teach",
+      "guidedPractice",
+      "miniChallenge",
+      "reflection",
+      "cheatSheet",
+      "finalChallenge"
+    ],
+    "action": "completeLesson",
+    "message": "🎯 Giải thích không phải để bàn luận ngay. Hãy giúp người đọc hiểu đúng vấn đề trước, rồi mới đi tiếp."
+  },
+  "steps": [
+    {
+      "id": "story_01",
+      "type": "story",
+      "data": {
+        "title": "Giải thích để làm gì?",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "split_compare",
+          "layout": "two_columns",
+          "question": "Đoạn nào thực sự giúp người đọc hiểu vấn đề đang được bàn luận?"
+        },
+        "content": {
+          "prompt": "Đề bài yêu cầu trình bày suy nghĩ về lòng biết ơn. Hai đoạn dưới đây có cùng làm nhiệm vụ giải thích không?",
+          "title": "Lòng biết ơn là gì?",
+          "left": {
+            "label": "ĐOẠN A",
+            "paragraph": "Lòng biết ơn là sự trân trọng những điều tốt đẹp mà con người đã nhận được từ người khác. Người có lòng biết ơn biết ghi nhớ sự giúp đỡ và thể hiện sự trân trọng bằng những lời nói, hành động phù hợp. Nói cách khác, đó là cách con người biết trân trọng và đáp lại những giá trị tốt đẹp đã nhận được."
+          },
+          "right": {
+            "label": "ĐOẠN B",
+            "paragraph": "Lòng biết ơn có ý nghĩa rất lớn trong cuộc sống. Nó giúp con người sống tình cảm hơn, biết trân trọng người khác và góp phần xây dựng những mối quan hệ tốt đẹp. Vì vậy, mỗi người cần rèn luyện lòng biết ơn từ những việc nhỏ nhất."
+          }
+        },
+        "interaction": {
+          "type": "choice",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Đoạn A – vì chủ yếu làm rõ lòng biết ơn là gì và được hiểu như thế nào.",
+              "correct": true
+            },
+            {
+              "id": "b",
+              "text": "Đoạn B – vì nói nhiều hơn về ý nghĩa của lòng biết ơn.",
+              "correct": false
+            },
+            {
+              "id": "same",
+              "text": "Hai đoạn cùng làm đúng một nhiệm vụ.",
+              "correct": false
+            }
+          ],
+          "feedback": {
+            "correct": "✓ Đúng. Đoạn A đang giải thích: nó giúp người đọc hiểu đúng khái niệm lòng biết ơn. Đoạn B đã chuyển sang bàn luận về ý nghĩa.",
+            "incorrect": "△ Hãy chú ý câu hỏi: đoạn văn đang giúp người đọc hiểu “lòng biết ơn là gì” hay đang nói “lòng biết ơn có ý nghĩa gì”?"
+          }
+        },
+        "reveal": {
+          "title": "💡 Vậy đoạn giải thích làm nhiệm vụ gì?",
+          "text": "Đoạn giải thích có nhiệm vụ làm rõ vấn đề được nêu trong đề để người đọc hiểu đúng điều người viết đang bàn luận. Khi vấn đề đã được hiểu rõ, người viết mới tiếp tục bàn về ý nghĩa, thực trạng, nguyên nhân hoặc giải pháp."
+        }
+      }
+    },
+    {
+      "id": "observe_01",
+      "type": "observe",
+      "data": {
+        "title": "Một đoạn giải thích đang làm rõ vấn đề như thế nào?",
+        "durationSeconds": 180,
+        "ui": {
+          "component": "paragraph_highlight",
+          "interaction": "tap_sentence",
+          "question": "Hãy nhấn vào từng câu để xem người viết đang làm rõ vấn đề bằng cách nào."
+        },
+        "content": {
+          "prompt": "Ví dụ: Suy nghĩ về lòng biết ơn.",
+          "paragraph": [
+            {
+              "id": "s1",
+              "text": "Lòng biết ơn là sự trân trọng những điều tốt đẹp mà con người đã nhận được từ người khác.",
+              "role": "definition",
+              "roleLabel": "🔎 GIẢI THÍCH KHÁI NIỆM",
+              "feedback": "🟢 Câu này trả lời câu hỏi “Lòng biết ơn là gì?”. Đây là điểm bắt đầu để người đọc hiểu đúng vấn đề."
+            },
+            {
+              "id": "s2",
+              "text": "Người có lòng biết ơn biết ghi nhớ sự giúp đỡ, trân trọng tình cảm và thể hiện sự biết ơn bằng những lời nói hoặc hành động phù hợp.",
+              "role": "clarification",
+              "roleLabel": "💡 LÀM RÕ",
+              "feedback": "🟡 Câu này giúp khái niệm bớt trừu tượng bằng cách nói rõ người có lòng biết ơn thường được thể hiện như thế nào."
+            },
+            {
+              "id": "s3",
+              "text": "Nói cách khác, lòng biết ơn là cách con người sống trân trọng và biết đáp lại những giá trị tốt đẹp mà mình đã nhận được.",
+              "role": "generalization",
+              "roleLabel": "🎯 KHÁI QUÁT",
+              "feedback": "🟣 Câu này khái quát lại bản chất của vấn đề bằng một cách diễn đạt khác."
+            }
+          ]
+        },
+        "reveal": {
+          "title": "🧠 Em vừa nhìn thấy gì?",
+          "text": "Đoạn giải thích có thể đi từ khái niệm → làm rõ → khái quát. Đây là một cách rất hữu ích để học sinh chưa biết viết có điểm tựa khi bắt đầu."
+        }
+      }
+    },
+    {
+      "id": "discover_01",
+      "type": "discover",
+      "data": {
+        "title": "🔰 Công thức cứu hộ khi chưa biết viết",
+        "durationSeconds": 180,
+        "ui": {
+          "component": "card_to_slot",
+          "interaction": "tap_to_place"
+        },
+        "reveal": {
+          "title": "🌱 Một điểm tựa, không phải luật bắt buộc",
+          "text": "Nếu chưa biết bắt đầu đoạn giải thích như thế nào, em có thể dùng ba câu hỏi: Nó là gì? Nó được hiểu như thế nào? Nói gọn lại, bản chất của nó là gì?"
+        },
+        "content": {
+          "prompt": "Hãy ghép mỗi câu hỏi với nhiệm vụ phù hợp trong đoạn giải thích.",
+          "slots": [
+            {
+              "id": "definition",
+              "label": "🔎 1. NÓ LÀ GÌ?",
+              "question": "Câu hỏi này giúp em làm gì?",
+              "hint": "Bắt đầu bằng việc gọi tên và định nghĩa vấn đề."
+            },
+            {
+              "id": "clarification",
+              "label": "💡 2. NÓ ĐƯỢC HIỂU NHƯ THẾ NÀO?",
+              "question": "Câu hỏi này giúp em làm gì?",
+              "hint": "Làm cho khái niệm rõ hơn, cụ thể hơn."
+            },
+            {
+              "id": "generalization",
+              "label": "🎯 3. BẢN CHẤT LÀ GÌ?",
+              "question": "Câu hỏi này giúp em làm gì?",
+              "hint": "Khái quát lại cách hiểu của mình."
+            }
+          ],
+          "cards": [
+            {
+              "id": "definition",
+              "target": "definition",
+              "correct": true,
+              "slotText": "Định nghĩa hoặc gọi tên bản chất của vấn đề.",
+              "feedback": "✓ Đúng. Trước hết hãy trả lời: “Nó là gì?”",
+              "label": "🔎 Định nghĩa"
+            },
+            {
+              "id": "clarification",
+              "target": "clarification",
+              "correct": true,
+              "slotText": "Làm rõ bằng biểu hiện, đặc điểm hoặc cách hiểu cụ thể.",
+              "feedback": "✓ Đúng. Khi khái niệm còn trừu tượng, hãy làm cho nó dễ hiểu hơn.",
+              "label": "💡 Làm rõ"
+            },
+            {
+              "id": "generalization",
+              "target": "generalization",
+              "correct": true,
+              "slotText": "Khái quát lại điều vấn đề thực sự muốn nói.",
+              "feedback": "✓ Đúng. Đây là bước giúp đoạn giải thích có điểm kết và làm rõ bản chất.",
+              "label": "🎯 Khái quát"
+            },
+            {
+              "id": "wrong1",
+              "target": null,
+              "correct": false,
+              "slotText": "Nêu hậu quả của vấn đề.",
+              "feedback": "△ Đây đã là bước bàn luận về vấn đề, chưa phải nhiệm vụ cốt lõi của đoạn giải thích.",
+              "label": "△ Hậu quả"
+            },
+            {
+              "id": "wrong2",
+              "target": null,
+              "correct": false,
+              "slotText": "Đưa ra giải pháp để giải quyết vấn đề.",
+              "feedback": "△ Giải pháp thuộc phần bàn luận tiếp theo, không phải nhiệm vụ chính của đoạn giải thích.",
+              "label": "△ Giải pháp"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "teach_01",
+      "type": "teach",
+      "data": {
+        "title": "CÔNG THỨC 3 CÂU – THANH VỊN CHO NGƯỜI MỚI",
+        "durationSeconds": 300,
+        "ui": {
+          "component": "vertical_map",
+          "interaction": "click_node",
+          "center": "ĐOẠN GIẢI THÍCH"
+        },
+        "prompt": "Nếu em chưa biết viết đoạn giải thích, hãy bắt đầu bằng ba câu hỏi.",
+        "nodes": [
+          {
+            "id": "definition",
+            "icon": "🔎",
+            "title": "NÓ LÀ GÌ?",
+            "short": "Định nghĩa",
+            "question": "Vấn đề được nêu trong đề thực chất là gì?",
+            "example": "Lòng dũng cảm là khả năng con người dám đối diện với khó khăn, thử thách và những điều khiến mình sợ hãi để thực hiện điều đúng đắn."
+          },
+          {
+            "id": "clarification",
+            "icon": "💡",
+            "title": "LÀM RÕ",
+            "short": "Cụ thể hóa",
+            "question": "Khái niệm này được thể hiện hoặc hiểu cụ thể như thế nào?",
+            "example": "Người có lòng dũng cảm không phải là người không biết sợ, mà là người biết sợ nhưng vẫn dám đối diện với nỗi sợ và làm điều mình cho là đúng."
+          },
+          {
+            "id": "generalization",
+            "icon": "🎯",
+            "title": "KHÁI QUÁT",
+            "short": "Bản chất",
+            "question": "Nói gọn lại, vấn đề này muốn nói điều gì?",
+            "example": "Nói cách khác, lòng dũng cảm là cách con người chủ động đối diện với thử thách thay vì để nỗi sợ ngăn mình làm điều cần thiết."
+          }
+        ],
+        "diagnosticQuestion": "Câu này đang giúp người đọc hiểu vấn đề hay đang bắt đầu bàn luận về vấn đề?",
+        "importantNote": "Đây là công thức luyện tập dành cho người mới. Không phải đoạn giải thích nào cũng phải có đúng ba câu hoặc đủ cả ba bước theo thứ tự này."
+      }
+    },
+    {
+      "id": "guidedPractice_01",
+      "type": "guidedPractice",
+      "data": {
+        "title": "Luyện công thức - dạng vấn đề 1",
+        "durationSeconds": 300,
+        "ui": {
+          "component": "builder",
+          "interaction": "type_to_place"
+        },
+        "prompt": "Hãy đưa từng câu vào đúng vị trí để tạo thành đoạn giải thích.",
+        "instruction": "Mỗi đề có thể khác nhau, nhưng em vẫn có thể dùng ba câu hỏi làm điểm tựa.",
+        "content": {
+          "prompt": "Giải thích hiện tượng sử dụng mạng xã hội quá mức.",
+          "slots": [
+            {
+              "id": "definition",
+              "label": "🔎 NÓ LÀ GÌ?"
+            },
+            {
+              "id": "clarification",
+              "label": "💡 LÀM RÕ"
+            },
+            {
+              "id": "generalization",
+              "label": "🎯 KHÁI QUÁT"
+            }
+          ],
+          "cards": [
+            {
+              "id": "p1",
+              "target": "definition",
+              "correct": true,
+              "slotText": "Sử dụng mạng xã hội quá mức là tình trạng con người dành quá nhiều thời gian và sự chú ý cho các nền tảng trực tuyến.",
+              "feedback": "✓ Câu này xác định rõ hiện tượng đang được nói đến.",
+              "label": "Giải thích khái niệm"
+            },
+            {
+              "id": "p2",
+              "target": "clarification",
+              "correct": true,
+              "slotText": "Ở học sinh, tình trạng này có thể biểu hiện qua việc liên tục kiểm tra điện thoại, dành nhiều giờ để lướt mạng hoặc khó tập trung vào học tập và những hoạt động khác.",
+              "feedback": "✓ Câu này làm hiện tượng trở nên cụ thể hơn bằng các biểu hiện.",
+              "label": "Các biểu hiện cụ thể"
+            },
+            {
+              "id": "p3",
+              "target": "generalization",
+              "correct": true,
+              "slotText": "Có thể hiểu đơn giản, sử dụng mạng xã hội quá mức là khi việc dùng mạng không còn được kiểm soát và bắt đầu ảnh hưởng đến đời sống thực của con người.",
+              "feedback": "✓ Câu này khái quát bản chất của hiện tượng.",
+              "label": "Khái quát định nghĩa"
+            }
+          ]
+        },
+        "completion": {
+          "button": "Kiểm tra cấu trúc",
+          "feedback": {
+            "correct": "✓ Tốt! Em đã biết dùng ba câu hỏi làm điểm tựa để giải thích những vấn đề khác nhau.",
+            "partial": "△ Hãy xem lại: câu nào đang định nghĩa, câu nào làm rõ và câu nào đang khái quát?",
+            "wrong": "△ Hãy bắt đầu bằng câu hỏi: “Vấn đề này là gì?”"
+          }
+        }
+      }
+    },
+    {
+      "id": "guidedPractice_02",
+      "type": "guidedPractice",
+      "data": {
+        "title": "Luyện công thức - dạng vấn đề 2",
+        "durationSeconds": 300,
+        "ui": {
+          "component": "builder",
+          "interaction": "type_to_place"
+        },
+        "prompt": "Hãy đưa từng câu vào đúng vị trí để tạo thành đoạn giải thích.",
+        "instruction": "Mỗi đề có thể khác nhau, nhưng em vẫn có thể dùng ba câu hỏi làm điểm tựa.",
+        "content": {
+          "prompt": "Giải thích câu nói: “Thất bại là mẹ thành công.”",
+          "slots": [
+            {
+              "id": "definition",
+              "label": "🔎 NHẬN ĐỊNH MUỐN NÓI GÌ?"
+            },
+            {
+              "id": "clarification",
+              "label": "💡 LÀM RÕ"
+            },
+            {
+              "id": "generalization",
+              "label": "🎯 KHÁI QUÁT"
+            }
+          ],
+          "cards": [
+            {
+              "id": "c1",
+              "target": "definition",
+              "correct": true,
+              "slotText": "Câu nói “Thất bại là mẹ thành công” muốn khẳng định rằng thất bại có thể trở thành một bài học quan trọng trên con đường đi đến thành công.",
+              "feedback": "✓ Đây là bước giải mã ý nghĩa của nhận định.",
+              "label": "Giải thích khái niệm"
+            },
+            {
+              "id": "c2",
+              "target": "clarification",
+              "correct": true,
+              "slotText": "Sau mỗi lần thất bại, con người có cơ hội nhận ra những thiếu sót, rút kinh nghiệm và điều chỉnh cách làm để tiến bộ hơn.",
+              "feedback": "✓ Câu này làm rõ vì sao thất bại có thể trở thành bài học.",
+              "label": "Làm rõ câu nói"
+            },
+            {
+              "id": "c3",
+              "target": "generalization",
+              "correct": true,
+              "slotText": "Nói cách khác, điều quan trọng không phải là chưa từng thất bại mà là biết biến những lần vấp ngã thành kinh nghiệm cho chặng đường phía trước.",
+              "feedback": "✓ Đây là cách khái quát thông điệp của câu nói.",
+              "label": "Khái quát thông điệp"
+            }
+          ]
+        },
+        "completion": {
+          "button": "Kiểm tra cấu trúc",
+          "feedback": {
+            "correct": "✓ Tốt! Em đã biết dùng ba câu hỏi làm điểm tựa để giải thích những vấn đề khác nhau.",
+            "partial": "△ Hãy xem lại: câu nào đang định nghĩa, câu nào làm rõ và câu nào đang khái quát?",
+            "wrong": "△ Hãy bắt đầu bằng câu hỏi: “Vấn đề này là gì?”"
+          }
+        }
+      }
+    },
+    {
+      "id": "guidedPractice_03",
+      "type": "guidedPractice",
+      "data": {
+        "title": "Luyện công thức - dạng vấn đề 3",
+        "durationSeconds": 300,
+        "ui": {
+          "component": "builder",
+          "interaction": "type_to_place"
+        },
+        "prompt": "Hãy đưa từng câu vào đúng vị trí để tạo thành đoạn giải thích.",
+        "instruction": "Mỗi đề có thể khác nhau, nhưng em vẫn có thể dùng ba câu hỏi làm điểm tựa.",
+        "content": {
+          "prompt": "Giải thích vấn đề: Tinh thần trách nhiệm.",
+          "slots": [
+            {
+              "id": "definition",
+              "label": "🔎 NÓ LÀ GÌ?"
+            },
+            {
+              "id": "clarification",
+              "label": "💡 LÀM RÕ"
+            },
+            {
+              "id": "generalization",
+              "label": "🎯 KHÁI QUÁT"
+            }
+          ],
+          "cards": [
+            {
+              "id": "q1",
+              "target": "definition",
+              "correct": true,
+              "slotText": "Tinh thần trách nhiệm là ý thức tự giác thực hiện tốt những nhiệm vụ của mình và sẵn sàng chịu trách nhiệm về hành động của bản thân.",
+              "feedback": "✓ Đây là câu định nghĩa.",
+              "label": "Giải thích khái niệm"
+            },
+            {
+              "id": "q2",
+              "target": "clarification",
+              "correct": true,
+              "slotText": "Người có trách nhiệm không đùn đẩy công việc, biết hoàn thành nhiệm vụ đúng lúc và chủ động sửa chữa khi mình mắc sai sót.",
+              "feedback": "✓ Câu này làm rõ tinh thần trách nhiệm bằng biểu hiện cụ thể.",
+              "label": "Biểu hiện của tinh thần trách nhiệm?"
+            },
+            {
+              "id": "q3",
+              "target": "generalization",
+              "correct": true,
+              "slotText": "Nói cách khác, trách nhiệm thể hiện ở việc mỗi người biết làm tròn phần việc của mình và có ý thức với những gì mình đã làm.",
+              "feedback": "✓ Câu này khái quát lại bản chất.",
+              "label": "Khái quát định nghĩa"
+            }
+          ]
+        },
+        "completion": {
+          "button": "Kiểm tra cấu trúc",
+          "feedback": {
+            "correct": "✓ Tốt! Em đã biết dùng ba câu hỏi làm điểm tựa để giải thích những vấn đề khác nhau.",
+            "partial": "△ Hãy xem lại: câu nào đang định nghĩa, câu nào làm rõ và câu nào đang khái quát?",
+            "wrong": "△ Hãy bắt đầu bằng câu hỏi: “Vấn đề này là gì?”"
+          }
+        }
+      }
+    },
+    {
+      "id": "guidedPractice_04",
+      "type": "guidedPractice",
+      "data": {
+        "title": "Luyện công thức - dạng vấn đề 4",
+        "durationSeconds": 300,
+        "ui": {
+          "component": "builder",
+          "interaction": "type_to_place"
+        },
+        "prompt": "Hãy đưa từng câu vào đúng vị trí để tạo thành đoạn giải thích.",
+        "instruction": "Mỗi đề có thể khác nhau, nhưng em vẫn có thể dùng ba câu hỏi làm điểm tựa.",
+        "content": {
+          "prompt": "Giải thích vấn đề áp lực đồng trang lứa.",
+          "slots": [
+            {
+              "id": "definition",
+              "label": "🔎 NÓ LÀ GÌ?"
+            },
+            {
+              "id": "clarification",
+              "label": "💡 LÀM RÕ"
+            },
+            {
+              "id": "generalization",
+              "label": "🎯 KHÁI QUÁT"
+            }
+          ],
+          "cards": [
+            {
+              "id": "i1",
+              "target": "definition",
+              "correct": true,
+              "slotText": "Áp lực đồng trang lứa là cảm giác bị thúc ép hoặc lo lắng khi một người so sánh bản thân với những người cùng độ tuổi và cảm thấy mình phải đạt được những điều tương tự họ.",
+              "feedback": "✓ Câu này làm rõ khái niệm.",
+              "label": "Giải thích khái niệm"
+            },
+            {
+              "id": "i2",
+              "target": "clarification",
+              "correct": true,
+              "slotText": "Ở học sinh, áp lực ấy có thể xuất hiện khi các em liên tục so sánh điểm số, thành tích, ngoại hình hoặc cuộc sống của mình với bạn bè.",
+              "feedback": "✓ Câu này đưa khái niệm về những biểu hiện cụ thể.",
+              "label": "Biểu hiện của áp lực đồng trang lứa?"
+            },
+            {
+              "id": "i3",
+              "target": "generalization",
+              "correct": true,
+              "slotText": "Có thể hiểu, áp lực đồng trang lứa bắt nguồn từ việc con người nhìn giá trị của bản thân qua sự so sánh với người khác thay vì nhìn nhận chính mình một cách phù hợp.",
+              "feedback": "✓ Câu này đi sâu hơn vào bản chất.",
+              "label": "Khái quát định nghĩa"
+            }
+          ]
+        },
+        "completion": {
+          "button": "Kiểm tra cấu trúc",
+          "feedback": {
+            "correct": "✓ Tốt! Em đã biết dùng ba câu hỏi làm điểm tựa để giải thích những vấn đề khác nhau.",
+            "partial": "△ Hãy xem lại: câu nào đang định nghĩa, câu nào làm rõ và câu nào đang khái quát?",
+            "wrong": "△ Hãy bắt đầu bằng câu hỏi: “Vấn đề này là gì?”"
+          }
+        }
+      }
+    },
+    {
+      "id": "miniChallenge_01",
+      "type": "miniChallenge",
+      "data": {
+        "title": "Công thức có phải luật bắt buộc không?",
+        "durationSeconds": 180,
+        "ui": {
+          "layout": "single_choice"
+        },
+        "prompt": "Hai đoạn dưới đây đều giải thích về lòng biết ơn. Đoạn nào tốt hơn?",
+        "question": {
+          "left": "Lòng biết ơn là sự trân trọng những điều tốt đẹp mà mình nhận được từ người khác. Người có lòng biết ơn biết ghi nhớ sự giúp đỡ và thể hiện sự trân trọng bằng hành động. Nói cách khác, lòng biết ơn là cách con người sống trân trọng những giá trị tốt đẹp.",
+          "right": "Lòng biết ơn không chỉ nằm ở việc nhớ đến những người từng giúp đỡ mình mà còn thể hiện qua cách ta trân trọng, gìn giữ và đáp lại những điều tốt đẹp đã nhận được. Đó là một cách sống có tình, có nghĩa và giúp con người không quên những giá trị đã làm nên mình."
+        },
+        "choices": [
+          {
+            "id": "left",
+            "text": "Đoạn A tốt hơn vì có đúng ba câu theo công thức.",
+            "correct": false
+          },
+          {
+            "id": "right",
+            "text": "Đoạn B tốt hơn vì không cần công thức.",
+            "correct": false
+          },
+          {
+            "id": "both",
+            "text": "Cả hai đều có thể là đoạn giải thích tốt nếu cùng làm rõ đúng vấn đề.",
+            "correct": true
+          }
+        ],
+        "feedback": {
+          "correct": "✓ Chính xác. Công thức chỉ là điểm tựa để luyện viết. Một đoạn giải thích tốt không được quyết định bởi số câu mà bởi việc nó có làm rõ đúng vấn đề hay không.",
+          "left": "△ Công thức ba câu không phải điều kiện để một đoạn giải thích trở thành đoạn tốt.",
+          "right": "△ Không dùng công thức không có nghĩa là đoạn văn tự nhiên sẽ luôn tốt hơn.",
+          "default": "△ Hãy tập trung vào nhiệm vụ của đoạn: người đọc có hiểu rõ vấn đề sau khi đọc không?"
+        },
+        "answer": "both"
+      }
+    },
+    {
+      "id": "reflection_01",
+      "type": "reflection",
+      "data": {
+        "title": "Khi nào em nên dùng công thức?",
+        "durationSeconds": 180,
+        "ui": {
+          "component": "checklist_free_text"
+        },
+        "question": "Hãy tự kiểm tra cách em đang viết đoạn giải thích.",
+        "choices": [
+          {
+            "id": "definition",
+            "text": "🔎 Em đã làm rõ vấn đề là gì chưa?"
+          },
+          {
+            "id": "clarification",
+            "text": "💡 Em đã làm cho vấn đề bớt trừu tượng chưa?"
+          },
+          {
+            "id": "essence",
+            "text": "🎯 Em đã hiểu và diễn đạt được bản chất vấn đề chưa?"
+          },
+          {
+            "id": "discussion",
+            "text": "⚠️ Em có đang bàn về ý nghĩa, nguyên nhân hoặc giải pháp quá sớm không?"
+          },
+          {
+            "id": "formula",
+            "text": "🔰 Nếu chưa biết viết, em có thể dùng ba câu hỏi làm điểm tựa không?"
+          }
+        ],
+        "freeText": {
+          "label": "Điều em cần nhớ...",
+          "placeholder": "Ví dụ: Khi chưa biết viết, em có thể hỏi “Nó là gì? Được hiểu như thế nào? Bản chất là gì?”. Nhưng em không cần giữ nguyên công thức khi đã viết thành thạo."
+        },
+        "metacognition": "Công thức giúp em bắt đầu, nhưng mục tiêu cuối cùng là biết tự đặt câu hỏi để làm rõ vấn đề một cách tự nhiên."
+      }
+    },
+    {
+      "id": "cheatSheet_01",
+      "type": "cheatSheet",
+      "data": {
+        "title": "GHI NHỚ – ĐOẠN GIẢI THÍCH",
+        "durationSeconds": 120,
+        "ui": {
+          "component": "card_list",
+          "actions": [
+            "save",
+            "download"
+          ]
+        },
+        "items": [
+          {
+            "order": 1,
+            "icon": "🎯",
+            "title": "NHIỆM VỤ",
+            "question": "Giúp người đọc hiểu đúng vấn đề trước khi bàn luận."
+          },
+          {
+            "order": 2,
+            "icon": "🔎",
+            "title": "NẾU CHƯA BIẾT VIẾT",
+            "question": "Hỏi: Nó là gì?"
+          },
+          {
+            "order": 3,
+            "icon": "💡",
+            "title": "LÀM RÕ",
+            "question": "Hỏi: Nó được hiểu hoặc thể hiện như thế nào?"
+          },
+          {
+            "order": 4,
+            "icon": "🎯",
+            "title": "KHÁI QUÁT",
+            "question": "Hỏi: Nói gọn lại, bản chất của vấn đề là gì?"
+          },
+          {
+            "order": 5,
+            "icon": "🌱",
+            "title": "THÁO CÔNG THỨC",
+            "question": "Khi đã quen, không cần viết đúng ba câu. Hãy tự đặt câu hỏi để làm rõ vấn đề."
+          }
+        ],
+        "keyMessage": "⭐ Giải thích = giúp người đọc hiểu đúng vấn đề.",
+        "note": "“Là gì → Làm rõ → Khái quát” là công thức luyện tập cho người mới, không phải khuôn mẫu bắt buộc.",
+        "practiceButton": {
+          "label": "🛠️ Thử viết",
+          "action": "open_mini_practice"
+        }
+      }
+    },
+    {
+      "id": "finalChallenge_01",
+      "type": "finalChallenge",
+      "data": {
+        "title": "THỬ THÁCH: VIẾT ĐOẠN GIẢI THÍCH",
+        "durationSeconds": 300,
+        "ui": {
+          "component": "multi_stage_challenge",
+          "layout": "multi_stage"
+        },
+        "prompt": "Hãy viết một đoạn giải thích cho vấn đề: “Biết lắng nghe”.",
+        "stages": [
+          {
+            "key": "scaffold",
+            "type": "scaffold",
+            "title": "🧩 TRƯỚC KHI VIẾT",
+            "question": "Nếu chưa biết bắt đầu, hãy trả lời ba câu hỏi.",
+            "scaffold": [
+              {
+                "id": "definition",
+                "label": "🔎 NÓ LÀ GÌ?",
+                "hint": "Biết lắng nghe được hiểu là gì?"
+              },
+              {
+                "id": "clarification",
+                "label": "💡 LÀM RÕ",
+                "hint": "Người biết lắng nghe thể hiện như thế nào?"
+              },
+              {
+                "id": "generalization",
+                "label": "🎯 KHÁI QUÁT",
+                "hint": "Nói gọn lại, bản chất của biết lắng nghe là gì?"
+              }
+            ]
+          },
+          {
+            "key": "writing",
+            "type": "editor",
+            "title": "✍️ VIẾT ĐOẠN GIẢI THÍCH",
+            "placeholder": "Hãy viết đoạn giải thích của em. Nếu chưa biết bắt đầu, hãy dùng ba câu hỏi làm điểm tựa.",
+            "minCharacters": 100,
+            "maxCharacters": 350,
+            "submit": {
+              "label": "🚀 Nộp & phân tích"
+            }
+          },
+          {
+            "key": "analysis",
+            "type": "analysis",
+            "title": "🧠 KIỂM TRA ĐOẠN GIẢI THÍCH",
+            "metrics": [
+              {
+                "id": "definition",
+                "label": "Làm rõ khái niệm",
+                "status": "detect"
+              },
+              {
+                "id": "clarification",
+                "label": "Làm rõ vấn đề",
+                "status": "detect"
+              },
+              {
+                "id": "essence",
+                "label": "Thể hiện bản chất",
+                "status": "detect"
+              },
+              {
+                "id": "relevance",
+                "label": "Đúng vấn đề",
+                "status": "detect"
+              },
+              {
+                "id": "discussion_boundary",
+                "label": "Không bàn luận quá sớm",
+                "status": "detect"
+              }
+            ],
+            "diagnosticQuestion": "Sau khi đọc đoạn này, người đọc đã hiểu rõ vấn đề em muốn bàn chưa?",
+            "feedbackRules": [
+              {
+                "when": "missing_definition",
+                "feedback": "△ Đoạn văn chưa làm rõ vấn đề là gì. Hãy thử trả lời câu hỏi: “Vấn đề này được hiểu như thế nào?”"
+              },
+              {
+                "when": "too_vague",
+                "feedback": "△ Em đã đưa ra định nghĩa nhưng vấn đề vẫn còn khá chung chung. Hãy làm rõ bằng biểu hiện hoặc đặc điểm cụ thể."
+              },
+              {
+                "when": "missing_essence",
+                "feedback": "△ Em có thể thử hỏi thêm: “Nói gọn lại, bản chất của vấn đề này là gì?”"
+              },
+              {
+                "when": "discussion_too_early",
+                "feedback": "△ Em đang chuyển sang bàn về ý nghĩa, nguyên nhân hoặc giải pháp. Hãy quay lại nhiệm vụ chính của đoạn giải thích: làm rõ vấn đề."
+              },
+              {
+                "when": "formulaic_but_valid",
+                "feedback": "✓ Em đã sử dụng tốt công thức làm điểm tựa. Khi đã quen, hãy thử diễn đạt linh hoạt hơn."
+              },
+              {
+                "when": "good_explanation",
+                "feedback": "✓ Tốt! Đoạn văn đã làm rõ đúng vấn đề và tạo nền tảng để bước sang phần bàn luận."
+              }
+            ],
+            "scoreDimensions": [
+              "definition",
+              "clarification",
+              "essence",
+              "relevance",
+              "coherence"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

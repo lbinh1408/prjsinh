@@ -1,0 +1,134 @@
+{
+  "id": "cau.02b-khoi-ngu",
+  "title": "Khởi ngữ",
+  "version": "1.0",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "content": "<b>Cuốn sách này</b>, em đã đọc rồi.",
+        "guide": [
+          "Phần in đậm đứng ở vị trí nào trong câu so với Chủ ngữ ('em')?",
+          "Nó có tác dụng gì đối với nội dung câu nói?"
+        ],
+        "hint": "Phần in đậm đứng trước Chủ ngữ, nó có tác dụng nêu lên đề tài (đối tượng) được nói đến trong câu.",
+        "title": "Quan sát",
+        "instruction": "Đọc câu sau và chú ý đến phần in đậm.",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Thế nào là Khởi ngữ?",
+            "icon": "📖",
+            "active": true,
+            "content": {
+              "text": "Khởi ngữ là thành phần phụ của câu, đứng trước chủ ngữ để nêu lên đề tài được nói đến trong câu.",
+              "examples": [
+                {
+                  "category": "Ví dụ: ",
+                  "word": "Món ăn ấy, tôi rất thích. (Khởi ngữ: Món ăn ấy).",
+                  "emoji": "🍲"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Dấu hiệu nhận biết",
+            "icon": "🔍",
+            "active": false,
+            "content": {
+              "text": "Trước khởi ngữ thường có thể thêm các quan hệ từ như: Về, đối với, còn...",
+              "examples": [
+                {
+                  "category": "Ví dụ: ",
+                  "word": "(Về) bài tập này, em chưa hiểu lắm.",
+                  "emoji": "💡"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-3",
+            "title": "3. Tác dụng",
+            "icon": "✨",
+            "active": false,
+            "content": {
+              "text": "Tác dụng là:",
+              "examples": [
+                {
+                  "category": "Hiệu quả",
+                  "word": "Nêu lên đề tài của câu chứa nó; giúp nhấn mạnh, làm nổi bật đối tượng được nói đến và thu hút sự chú ý của người đọc, người nghe.",
+                  "emoji": "🎨"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Khái niệm",
+        "instruction": "Đặc điểm của Khởi ngữ.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "highlight",
+      "data": {
+        "content": "Đối với tôi, bóng đá là môn thể thao vua.",
+        "answer": [
+          "Đối với tôi"
+        ],
+        "title": "Nhận biết",
+        "instruction": "Tô sáng <b>Khởi ngữ</b> trong câu sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Đâu là khởi ngữ trong câu: 'Còn mắt tôi thì các anh lái xe bảo: Cô có cái nhìn sao mà xa xăm!'?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "các anh lái xe"
+          },
+          {
+            "id": "B",
+            "text": "mắt tôi"
+          },
+          {
+            "id": "C",
+            "text": "xa xăm"
+          },
+          {
+            "id": "D",
+            "text": "cái nhìn"
+          }
+        ],
+        "answer": "B",
+        "title": "Lựa chọn",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "cau",
+    "difficulty": "reference",
+    "xp": 100,
+    "stars": 3,
+    "description": "Tìm hiểu về Khởi ngữ - thành phần phụ đứng trước chủ ngữ để nêu lên đề tài của câu nói.",
+    "prerequisite": null,
+    "unlock": null,
+    "reviewMode": "instant",
+    "durationMinutes": 15
+  }
+}

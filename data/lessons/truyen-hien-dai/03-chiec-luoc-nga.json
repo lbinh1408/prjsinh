@@ -1,0 +1,16 @@
+{
+    "id": "truyen-hien-dai.03-chiec-luoc-nga",
+    "title": "Chiếc lược ngà",
+    "module": "truyen-hien-dai",
+    "steps": [
+        {
+            "id": "intro",
+            "type": "observe",
+            "data": {
+                "title": "Chiếc lược ngà",
+                "subtitle": "Nguyễn Quang Sáng",
+                "content": "Nội dung bài học đang được cập nhật."
+            }
+        }
+    ]
+}

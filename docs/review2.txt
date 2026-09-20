@@ -1,0 +1,185 @@
+bản implementation plan này đã ổn và khớp với những gì mình vừa thống nhất. Tôi chỉ muốn bạn chỉnh thêm 4 chi tiết nhỏ trước khi bắt tay code để architecture chắc hơn.
+
+1. State nên giữ completedStages
+
+bạn đã nêu ở Architecture:
+
+this.state = {
+  currentStageIndex: 0,
+  context: {},
+  completedStages: []
+}
+
+nhưng phần Proposed Changes lại chỉ ghi:
+
+this.state = {
+  currentStageIndex: 0,
+  context: {}
+}
+
+→ giữ luôn completedStages.
+
+Nó hữu ích để biết stage nào đã hoàn thành và sau này có thể cho phép Back/review.
+
+2. nextStage() nên nhận result, nhưng analysis không nên đi qua nextStage()
+
+Flow tôi muốn là:
+
+single_choice
+     ↓
+nextStage(result)
+
+multi_select
+     ↓
+nextStage(result)
+
+card_to_slot
+     ↓
+nextStage(result)
+
+editor
+     ↓
+submit
+     ↓
+context.writing
+     ↓
+analysis
+
+Còn:
+
+analysis
+
+là terminal stage, không có Next.
+
+Nên trong plan ghi rõ:
+
+analysis là stage cuối và không gọi nextStage().
+
+3. SlotBuilder dùng callback sẽ đẹp hơn CustomEvent
+
+Bạn viết:
+
+trigger một event hoặc dispatch một CustomEvent
+
+Tôi khuyên ưu tiên callback.
+
+Ví dụ:
+
+SlotBuilder.render({
+  data: stage,
+  mode: "stage",
+  onComplete: (result) => {
+    this.nextStage(result);
+  }
+});
+
+Lý do: SlotBuilder đang được render bên trong MultiStageChallenge, nên callback đơn giản và dễ kiểm soát hơn document.dispatchEvent().
+
+CustomEvent chỉ nên dùng nếu architecture hiện tại của project vốn đã theo event-driven.
+
+4. Có một điểm rất quan trọng: context phải truyền xuống stage khi cần
+
+Ví dụ bài biểu cảm:
+
+Stage 1
+emotion = "nhớ nhung"
+        ↓
+Stage 2
+
+Stage 2 có thể cần biết:
+
+context.emotion
+
+để hiển thị:
+
+Em đang muốn diễn tả cảm xúc nhớ nhung. Hãy chọn những chi tiết phù hợp.
+
+Vì vậy API nên hướng tới:
+
+renderStage(stage, context)
+
+chứ không chỉ:
+
+renderStage(stage)
+
+Không phải stage nào cũng cần context, nhưng có sẵn thì architecture sẽ linh hoạt hơn.
+
+Và tôi đề nghị JSON chuẩn cuối cùng là
+{
+  "type": "multi_stage",
+  "stages": [
+    {
+      "key": "emotion",
+      "type": "single_choice",
+      "title": "Em muốn người đọc cảm nhận điều gì?",
+      "options": []
+    },
+    {
+      "key": "details",
+      "type": "multi_select",
+      "minSelections": 2,
+      "maxSelections": 3,
+      "title": "Chọn những chi tiết gợi cảm xúc",
+      "cards": []
+    },
+    {
+      "key": "structure",
+      "type": "card_to_slot",
+      "title": "Xây mạch cảm xúc",
+      "slots": [],
+      "cards": []
+    },
+    {
+      "key": "writing",
+      "type": "editor",
+      "title": "Viết đoạn văn",
+      "placeholder": "Viết đoạn văn của em...",
+      "minCharacters": 120
+    },
+    {
+      "key": "analysis",
+      "type": "analysis",
+      "title": "🧠 HỒ SƠ CẢM XÚC"
+    }
+  ]
+}
+
+Và state:
+
+this.state = {
+  currentStageIndex: 0,
+  context: {},
+  completedStages: []
+};
+
+Flow:
+
+             MultiStageChallenge
+                     │
+             stages[0].type
+                     ↓
+              ┌─────────────┐
+              │ Stage 1     │
+              └──────┬──────┘
+                     │ result
+                     ↓
+                context[key]
+                     │
+                     ↓
+              ┌─────────────┐
+              │ Stage 2     │
+              └──────┬──────┘
+                     │
+                    ...
+                     │
+                     ↓
+              ┌─────────────┐
+              │   Editor    │
+              └──────┬──────┘
+                     │ submit
+                     ↓
+              ┌─────────────┐
+              │  Analysis   │
+              └─────────────┘
+
+=> Tôi duyệt plan này. Không cần thêm component EmotionBossChallenge.js. Sau khi nâng MultiStageChallenge, bài 07 và bài 08 sẽ là hai test case rất tốt để kiểm chứng nó có thực sự generic hay chưa.

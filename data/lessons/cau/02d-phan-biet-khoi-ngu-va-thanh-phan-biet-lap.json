@@ -1,0 +1,172 @@
+{
+  "id": "cau.02d-phan-biet-khoi-ngu-va-thanh-phan-biet-lap",
+  "title": "Phân biệt khởi ngữ và thành phần biệt lập",
+  "version": "3.1",
+  "enabled": true,
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "content": "<b>Về việc học</b>, <b>chắc chắn</b> Lan là người giỏi nhất lớp.",
+        "guide": [
+          "Phần 'Về việc học' nêu lên điều gì của câu?",
+          "Phần 'chắc chắn' thể hiện thái độ gì của người nói?"
+        ],
+        "hint": "'Về việc học' là đề tài (khởi ngữ), còn 'chắc chắn' bộc lộ sự đánh giá, tin cậy (thành phần biệt lập tình thái).",
+        "title": "Quan sát",
+        "instruction": "Đọc câu sau và chú ý các phần in đậm.",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "1. Khởi ngữ",
+            "icon": "🎯",
+            "active": true,
+            "content": {
+              "text": "Có quan hệ trực tiếp với nội dung chính của câu.",
+              "examples": [
+                {
+                  "category": "Chức năng",
+                  "word": "Nêu lên đề tài, sự việc được nói đến trong câu.",
+                  "emoji": "📌"
+                },
+                {
+                  "category": "Dấu hiệu",
+                  "word": "Thường đứng trước chủ ngữ, có thể thêm 'Về, đối với...' ở trước.",
+                  "emoji": "💡"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "2. Thành phần biệt lập",
+            "icon": "🎭",
+            "active": false,
+            "content": {
+              "text": "KHÔNG có quan hệ trực tiếp với sự việc được nói đến trong câu.",
+              "examples": [
+                {
+                  "category": "Chức năng",
+                  "word": "Chỉ dùng để bộc lộ cảm xúc, thái độ, gọi đáp hoặc giải thích thêm.",
+                  "emoji": "💬"
+                },
+                {
+                  "category": "Dấu hiệu",
+                  "word": "Nếu bỏ đi, nội dung cơ bản của sự việc trong câu không hề thay đổi.",
+                  "emoji": "✂️"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Sự khác nhau cơ bản",
+        "instruction": "Dù đều là thành phần phụ/không tham gia vào nòng cốt câu, Khởi ngữ và Thành phần biệt lập có chức năng hoàn toàn khác nhau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "identify",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trong câu: 'Nhìn cảnh ấy, mọi người đều rớt nước mắt, còn tôi, tôi cảm thấy như có ai đang bóp nghẹt tim mình.' - 'còn tôi' là thành phần gì?",
+        "options": [
+          "Trạng ngữ",
+          "Khởi ngữ",
+          "Thành phần tình thái",
+          "Thành phần gọi đáp"
+        ],
+        "answer": "Khởi ngữ",
+        "title": "Nhận biết",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "identify",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trong câu: 'Chao ôi, bắt gặp một con người như anh ta là một cơ hội hãn hữu cho sáng tác.' - 'Chao ôi' là thành phần gì?",
+        "options": [
+          "Khởi ngữ",
+          "Thành phần cảm thán (biệt lập)",
+          "Thành phần gọi đáp",
+          "Trạng ngữ"
+        ],
+        "answer": "Thành phần cảm thán (biệt lập)",
+        "title": "Nhận biết",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "Làm bài tập, (tôi đã làm xong rồi)",
+          "Về trí thông minh, (nó là nhất)",
+          "Có lẽ, (trời sắp mưa)",
+          "Trời ơi, (đẹp quá)",
+          "Thưa ông, (cháu ở đây)"
+        ],
+        "targets": [
+          "Khởi ngữ",
+          "Thành phần biệt lập"
+        ],
+        "answer": {
+          "Làm bài tập, (tôi đã làm xong rồi)": "Khởi ngữ",
+          "Về trí thông minh, (nó là nhất)": "Khởi ngữ",
+          "Có lẽ, (trời sắp mưa)": "Thành phần biệt lập",
+          "Trời ơi, (đẹp quá)": "Thành phần biệt lập",
+          "Thưa ông, (cháu ở đây)": "Thành phần biệt lập"
+        },
+        "title": "Phân loại",
+        "instruction": "Kéo các từ/cụm từ in đậm vào đúng cột phân loại tương ứng.",
+        "score": 2
+      }
+    },
+    {
+      "id": "step06",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Vì sao 'Thành phần biệt lập' lại được gọi là 'biệt lập'?",
+        "sampleAnswer": [
+          "Vì nó tách biệt khỏi cấu trúc ngữ pháp chính (chủ-vị).",
+          "Vì nó không tham gia diễn đạt sự việc của câu.",
+          "Vì nếu bỏ đi câu vẫn trọn vẹn nghĩa sự việc."
+        ],
+        "title": "Thông hiểu",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "flashcard",
+      "data": {
+        "front": "Điểm khác biệt lớn nhất giữa Khởi ngữ và Thành phần biệt lập?",
+        "back": "Khởi ngữ NÊU ĐỀ TÀI liên quan trực tiếp đến nội dung câu. Thành phần biệt lập KHÔNG THAM GIA vào sự việc của câu (chỉ bộc lộ cảm xúc, thái độ, gọi đáp, phụ chú).",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "cau",
+    "difficulty": 2,
+    "xp": 50,
+    "stars": 3,
+    "description": "Giúp học sinh phân biệt rõ khởi ngữ và các thành phần biệt lập trong câu.",
+    "durationMinutes": 15
+  }
+}

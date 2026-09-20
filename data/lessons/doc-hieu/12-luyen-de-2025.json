@@ -1,0 +1,187 @@
+{
+  "id": "doc-hieu.12-luyen-de-2025",
+  "title": "Luyện đề thi vào 10 (2025)",
+  "version": "1.0",
+  "enabled": true,
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "content": "<div style='text-align: center;'><b>Con nằm</b><br><i>Tế Hanh</i></div><br>Một chiếc giường nhỏ hẹp<br>Cha mẹ nằm hai bên<br>Khoảng giữa nôi êm<br>Con lật<br>&nbsp;&nbsp;&nbsp;&nbsp;con trườn<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;con cười<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;con réo<br>Con nằm giữa cha và mẹ<br>Cuộc đời nằm giữa yêu thương<br>Làn sóng giữa hai bờ biển bắc<br>Cánh chim bay giữa hai bờ trời xanh<br>Mặt lá giữa hai bờ cây thắm<br>Nụ hoa giữa hai bờ hương lành<br>Cái nhìn yêu lời nói khẽ<br>Như tiếng ngân giữa hai bờ lặng lẽ<br>Con nằm vui giữa mẹ và cha.<br><br><i>(Tế Hanh - Tác phẩm chọn lọc, NXB Giáo dục VN, 2009)</i>",
+        "guide": [
+          "Chú ý cách trình bày các câu thơ và biện pháp tu từ được sử dụng.",
+          "Bài thơ nói về tình cảm gì?"
+        ],
+        "hint": "Bài thơ ngợi ca tình yêu thương bao la của cha mẹ dành cho đứa con nhỏ bé.",
+        "title": "Đọc ngữ liệu",
+        "instruction": "Đọc kỹ bài thơ sau để chuẩn bị trả lời các câu hỏi:",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Chỉ ra những động từ diễn tả hành động của con khi nằm trong chiếc nôi êm.",
+        "choices": [
+          {
+            "id": "A",
+            "text": "nhỏ hẹp, nôi êm"
+          },
+          {
+            "id": "B",
+            "text": "lật, trườn, cười, réo"
+          },
+          {
+            "id": "C",
+            "text": "nằm, bay, thắm"
+          },
+          {
+            "id": "D",
+            "text": "yêu, nói khẽ, ngân"
+          }
+        ],
+        "answer": "B",
+        "title": "Câu 1a: Nhận biết",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Em hiểu như thế nào về nội dung hai dòng thơ: 'Con nằm giữa cha và mẹ/ Cuộc đời nằm giữa yêu thương'?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Miêu tả vị trí chỗ ngủ chật chội của gia đình."
+          },
+          {
+            "id": "B",
+            "text": "Khẳng định cha mẹ luôn ở bên cạnh bảo vệ, che chở và dành trọn vẹn tình yêu thương vô bờ bến cho con."
+          },
+          {
+            "id": "C",
+            "text": "Cho thấy đứa con là trung tâm, có quyền đòi hỏi mọi thứ từ cha mẹ."
+          },
+          {
+            "id": "D",
+            "text": "Thể hiện sự hi sinh, vất vả của cha mẹ khi nuôi con khôn lớn."
+          }
+        ],
+        "answer": "B",
+        "title": "Câu 1b: Thông hiểu",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Xác định lời dẫn trực tiếp trong nhận xét của Chế Lan Viên về thơ Tế Hanh:",
+        "choices": [
+          {
+            "id": "A",
+            "text": "\"Nhà thơ Chế Lan Viên đã từng nhận xét về thơ Tế Hanh\""
+          },
+          {
+            "id": "B",
+            "text": "\"Chữ ít mà nghĩa rất nhiều.\""
+          },
+          {
+            "id": "C",
+            "text": "\"Chữ ít mà nghĩa rất nhiều. Không phải nghĩa nữa, đó là hồn, tâm hồn, cái không thể đo bằng đơn vị chữ nghĩa\""
+          },
+          {
+            "id": "D",
+            "text": "\"cái không thể đo bằng đơn vị chữ nghĩa\""
+          }
+        ],
+        "answer": "C",
+        "title": "Câu 1c: Thực hành Tiếng Việt",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Nếu chuyển lời dẫn trực tiếp ở câu trên thành lời dẫn GIÁN TIẾP, phương án nào sau đây là đúng nhất?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Nhà thơ Chế Lan Viên đã từng nhận xét về thơ Tế Hanh: \"Chữ ít mà nghĩa rất nhiều. Không phải nghĩa nữa, đó là hồn, tâm hồn, cái không thể đo bằng đơn vị chữ nghĩa\"."
+          },
+          {
+            "id": "B",
+            "text": "Nhà thơ Chế Lan Viên đã từng nhận xét về thơ Tế Hanh rằng chữ ít mà nghĩa rất nhiều, không phải nghĩa nữa, đó là hồn, tâm hồn, cái không thể đo bằng đơn vị chữ nghĩa."
+          },
+          {
+            "id": "C",
+            "text": "Nhà thơ Chế Lan Viên đã từng nhận xét về thơ Tế Hanh là chữ ít mà nghĩa rất nhiều."
+          },
+          {
+            "id": "D",
+            "text": "Nhà thơ Chế Lan Viên đã từng nhận xét thơ Tế Hanh: chữ ít mà nghĩa rất nhiều..."
+          }
+        ],
+        "answer": "B",
+        "title": "Câu 1c: Chuyển lời dẫn",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Từ bài thơ trên, suy nghĩ về vai trò của tình yêu thương trên hành trình trưởng thành của mỗi người. Ý nào sau đây KHÔNG PHẢI là vai trò của tình yêu thương?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Là điểm tựa tinh thần vững chắc giúp con người vượt qua mọi khó khăn, thử thách."
+          },
+          {
+            "id": "B",
+            "text": "Nuôi dưỡng tâm hồn, giúp con người biết sống nhân ái, bao dung hơn."
+          },
+          {
+            "id": "C",
+            "text": "Đảm bảo cho con người một cuộc sống vật chất giàu sang, sung túc."
+          },
+          {
+            "id": "D",
+            "text": "Tiếp thêm sức mạnh, động lực để con người vươn lên hoàn thiện bản thân."
+          }
+        ],
+        "answer": "C",
+        "title": "Câu 1d: Vận dụng",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "flashcard",
+      "data": {
+        "front": "Cấu trúc đề Đọc hiểu 2025 có gì đặc biệt?",
+        "back": "Đề thi sẽ lồng ghép câu hỏi ngữ pháp (Tiếng Việt) và yêu cầu khả năng cảm thụ sâu sắc thông điệp, ý nghĩa của ngữ liệu thay vì học thuộc lòng.",
+        "completedWhen": "flipped",
+        "title": "Tổng kết",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "doc-hieu",
+    "difficulty": 3,
+    "xp": 100,
+    "stars": 3,
+    "description": "Thực hành giải quyết trọn vẹn một đề thi Đọc hiểu thực tế theo cấu trúc mới nhất.",
+    "durationMinutes": 30
+  }
+}

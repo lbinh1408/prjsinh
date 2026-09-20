@@ -1,0 +1,16 @@
+{
+    "id": "truyen-trung-dai.02-hoang-le-nhat-thong-chi",
+    "title": "Hoàng Lê nhất thống chí",
+    "module": "truyen-trung-dai",
+    "steps": [
+        {
+            "id": "intro",
+            "type": "observe",
+            "data": {
+                "title": "Hoàng Lê nhất thống chí",
+                "subtitle": "Ngô gia văn phái",
+                "content": "Tác phẩm phản ánh chân thực hình ảnh người anh hùng dân tộc Nguyễn Huệ qua chiến công thần tốc đại phá quân Thanh."
+            }
+        }
+    ]
+}

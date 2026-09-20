@@ -1,0 +1,238 @@
+{
+  "id": "cau.07-cau-dac-biet",
+  "title": "Câu đặc biệt",
+  "version": "1.0",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "format": "essay",
+        "content": "Một đêm mùa xuân. Trên dòng sông êm ả, cái đò cũ của bác tài Phán từ từ trôi.\n<b>Mưa.</b>",
+        "guide": [
+          "Câu in đậm 'Mưa.' có cấu tạo như thế nào?",
+          "Em có thể xác định được Chủ ngữ hay Vị ngữ của câu này không?"
+        ],
+        "hint": "Câu 'Mưa.' chỉ gồm một từ duy nhất, không thể xác định được đâu là Chủ ngữ, đâu là Vị ngữ. Đây là một câu đặc biệt.",
+        "title": "Quan sát",
+        "instruction": "Đọc đoạn văn sau và chú ý đến câu in đậm.",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Thế nào là câu đặc biệt?",
+            "icon": "🌟",
+            "active": true,
+            "content": {
+              "text": "Câu đặc biệt là loại câu không cấu tạo theo mô hình chủ ngữ - vị ngữ.",
+              "examples": [
+                {
+                  "category": "Ví dụ: ",
+                  "word": "Ôi! (bộc lộ cảm xúc), Sài Gòn. Mùa thu. (xác định thời gian, nơi chốn).",
+                  "emoji": "🏙️"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Tác dụng của câu đặc biệt",
+            "icon": "🎭",
+            "active": false,
+            "content": {
+              "text": "Câu đặc biệt thường được dùng để:",
+              "examples": [
+                {
+                  "category": "- Bộc lộ cảm xúc (Trời ơi!)<br>- Gọi đáp (Nam ơi!)<br>- Xác định thời gian, nơi chốn diễn ra sự việc.<br>- Liệt kê, thông báo sự tồn tại của sự vật, hiện tượng (Tiếng reo. Tiếng vỗ tay.).",
+                  "word": "",
+                  "emoji": "💡"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Khái niệm Câu đặc biệt",
+        "instruction": "Định nghĩa và tác dụng của câu đặc biệt.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trong các câu sau, câu nào là câu đặc biệt?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Trời đang mưa rất to."
+          },
+          {
+            "id": "B",
+            "text": "Sáng nay, tôi đi học sớm."
+          },
+          {
+            "id": "C",
+            "text": "Than ôi!"
+          },
+          {
+            "id": "D",
+            "text": "Cậu đi đâu đấy?"
+          }
+        ],
+        "answer": "C",
+        "title": "Nhận biết",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "Trời ơi!",
+          "Lan ơi!",
+          "Một đêm mùa đông.",
+          "Tiếng súng. Tiếng gươm khua."
+        ],
+        "targets": [
+          "Bộc lộ cảm xúc",
+          "Gọi đáp",
+          "Xác định thời gian, nơi chốn",
+          "Liệt kê, thông báo sự tồn tại"
+        ],
+        "answer": {
+          "Trời ơi!": "Bộc lộ cảm xúc",
+          "Lan ơi!": "Gọi đáp",
+          "Một đêm mùa đông.": "Xác định thời gian, nơi chốn",
+          "Tiếng súng. Tiếng gươm khua.": "Liệt kê, thông báo sự tồn tại"
+        },
+        "title": "Phân tích tác dụng",
+        "instruction": "Xếp các câu đặc biệt sau vào đúng nhóm tác dụng của chúng.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "highlight",
+      "data": {
+        "content": "Sóng ầm ĩ đập vào những tảng đá lớn ven bờ. Gió biển thổi lồng lộng. Chiều chiều. Những con tàu bắt đầu ra khơi.",
+        "answer": [
+          "Chiều chiều"
+        ],
+        "title": "Tô sáng",
+        "instruction": "Tô sáng <b>câu đặc biệt</b> trong đoạn văn sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Điểm khác biệt lớn nhất giữa Câu đặc biệt và Câu rút gọn là gì?",
+        "sampleAnswer": [
+          "Không có sự khác biệt giữa câu rút gọn và câu đặc biệt.",
+          "Câu rút gọn ngắn hơn câu đặc biệt",
+          "Câu rút gọn vốn là câu theo mô hình C-V nhưng bị lược bỏ thành phần (có thể khôi phục lại được dựa vào ngữ cảnh). Còn Câu đặc biệt thì không."
+        ],
+        "title": "Thông hiểu",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "- Bao giờ cậu đi? / - Ngày mai.",
+          "Đêm. Thành phố chìm trong giấc ngủ.",
+          "Mưa rào. Khắp nơi nước ngập lênh láng.",
+          "- Ai hát đấy? / - Lan."
+        ],
+        "right": [
+          "Câu đặc biệt",
+          "Câu rút gọn"
+        ],
+        "answer": {
+          "- Bao giờ cậu đi? / - Ngày mai.": "Câu rút gọn",
+          "- Ai hát đấy? / - Lan.": "Câu rút gọn",
+          "Đêm. Thành phố chìm trong giấc ngủ.": "Câu đặc biệt",
+          "Mưa rào. Khắp nơi nước ngập lênh láng.": "Câu đặc biệt"
+        },
+        "title": "Phân biệt câu",
+        "instruction": "Xác định xem các câu in đậm sau là Câu đặc biệt hay Câu rút gọn.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step08",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Câu đặc biệt 'Lá ơi!' trong bài thơ có tác dụng gì?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Bộc lộ cảm xúc."
+          },
+          {
+            "id": "B",
+            "text": "Xác định thời gian, nơi chốn."
+          },
+          {
+            "id": "C",
+            "text": "Dùng để gọi đáp."
+          },
+          {
+            "id": "D",
+            "text": "Thông báo sự tồn tại của sự vật."
+          }
+        ],
+        "answer": "C",
+        "title": "Lựa chọn",
+        "score": 1
+      }
+    },
+    {
+      "id": "step09",
+      "type": "reflection",
+      "data": {
+        "question": "Hãy viết 1 đoạn văn ngắn (2-3 câu) có sử dụng một câu đặc biệt dùng để bộc lộ cảm xúc khi thấy một cảnh đẹp.",
+        "sampleAnswer": "Ví dụ: Buổi sáng mùa thu trên quê hương tôi thật yên bình. Ôi! Cảnh sắc mây trời đẹp đến nao lòng.",
+        "title": "Vận dụng",
+        "score": 1
+      }
+    },
+    {
+      "id": "step10",
+      "type": "flashcard",
+      "data": {
+        "front": "Câu đặc biệt",
+        "back": "Là loại câu KHÔNG cấu tạo theo mô hình Chủ ngữ - Vị ngữ. Thường dùng để: xác định thời gian/nơi chốn, bộc lộ cảm xúc, gọi đáp hoặc thông báo sự tồn tại của sự vật.",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "cau",
+    "difficulty": "reference",
+    "xp": 100,
+    "stars": 3,
+    "description": "Tìm hiểu về loại câu không có cấu tạo theo mô hình Chủ ngữ - Vị ngữ và tác dụng của chúng trong giao tiếp, văn bản.",
+    "prerequisite": null,
+    "unlock": null,
+    "reviewMode": "instant",
+    "durationMinutes": 15
+  }
+}

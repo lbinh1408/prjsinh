@@ -1,0 +1,285 @@
+{
+  "id": "nguon-goc-cua-tu.02-tu-han-viet",
+  "title": "Từ Hán Việt",
+  "version": "3.0",
+  "steps": [
+    {
+      "id": "step01",
+      "type": "observe",
+      "data": {
+        "content": "1. <b>Phụ nữ</b> và <b>nam giới</b> đều <b>bình đẳng</b>.<br>2. <b>Đàn bà</b> và <b>đàn ông</b> đều <b>có quyền và nghĩa vụ như nhau</b>.",
+        "guide": [
+          "Những từ in đậm ở câu 1 và câu 2 có ý nghĩa khác nhau không?",
+          "Vì sao ở câu 1, người ta lại dùng 'phụ nữ', 'nam giới' thay vì dùng các từ ở câu 2?"
+        ],
+        "hint": "Cả hai câu có nghĩa giống nhau. Tuy nhiên, các từ ở câu 1 có nguồn gốc từ tiếng Hán, mang sắc thái trang trọng, lịch sự hơn.",
+        "title": "Quan sát",
+        "instruction": "Đọc kĩ các câu sau.",
+        "score": 0
+      }
+    },
+    {
+      "id": "step02",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "1. Từ Hán Việt",
+            "icon": "🏮",
+            "active": true,
+            "content": {
+              "text": "Từ Hán Việt là bộ phận từ mượn quan trọng nhất trong tiếng Việt, có nguồn gốc từ tiếng Hán (Trung Quốc) nhưng được đọc theo âm Việt (âm Hán Việt).",
+              "examples": [
+                {
+                  "category": "Ví dụ: ",
+                  "word": "quốc gia, phụ mẫu, học sinh, giáo viên, thiên thu...",
+                  "emoji": "📜"
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "2. Yếu tố Hán Việt",
+            "icon": "🧩",
+            "active": false,
+            "content": {
+              "text": "Là các tiếng cấu tạo nên từ Hán Việt. Phần lớn các yếu tố Hán Việt không được dùng độc lập như một từ (ví dụ: 'quốc', 'gia') mà phải ghép với yếu tố khác.",
+              "examples": [
+                {
+                  "category": "Đồng âm: ",
+                  "word": "Nhiều yếu tố Hán Việt đồng âm nhưng nghĩa hoàn toàn khác nhau. (VD: 'thiên' trong thiên niên kỷ là nghìn, 'thiên' trong thiên địa là trời).",
+                  "emoji": "🔤"
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Khái niệm",
+        "instruction": "Khái niệm Từ Hán Việt và Yếu tố Hán Việt.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step03",
+      "type": "identify",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Từ nào dưới đây là từ Hán Việt?",
+        "options": [
+          "Sông suối",
+          "Đất đai",
+          "Sơn thủy",
+          "Cây cối"
+        ],
+        "answer": "Sơn thủy",
+        "title": "Nhận biết",
+        "score": 1
+      }
+    },
+    {
+      "id": "step04",
+      "type": "explain",
+      "validator": "textValidator",
+      "data": {
+        "question": "Từ 'quốc gia' được ghép bởi hai yếu tố Hán Việt là 'quốc' và 'gia'. Em hãy giải thích nghĩa của hai yếu tố này.",
+        "sampleAnswer": [
+          "'Quốc' nghĩa là nước (VD: ái quốc, quốc ca).",
+          "'Gia' nghĩa là nhà (VD: gia đình, gia sư)."
+        ],
+        "title": "Thông hiểu",
+        "score": 1
+      }
+    },
+    {
+      "id": "step05",
+      "type": "highlight",
+      "data": {
+        "content": "Bác sĩ đang khám bệnh cho một bệnh nhân.",
+        "answer": [
+          "bệnh nhân"
+        ],
+        "title": "Tô sáng",
+        "instruction": "Hãy tô sáng từ Hán Việt trong câu sau.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step06",
+      "type": "reflection",
+      "data": {
+        "question": "Em hãy tìm một từ thuần Việt có nghĩa tương đương với từ Hán Việt 'nhi đồng'.",
+        "sampleAnswer": "Trẻ em, con nít...",
+        "title": "Vận dụng",
+        "score": 1
+      }
+    },
+    {
+      "id": "step07",
+      "type": "definition",
+      "data": {
+        "contents": [
+          {
+            "id": "card-1",
+            "title": "Trang trọng, tôn kính",
+            "icon": "🎩",
+            "active": true,
+            "content": {
+              "items": [
+                {
+                  "type": "common",
+                  "label": "Đặc điểm",
+                  "definition": "Tạo sắc thái uy nghi, trang trọng, tôn kính khi nhắc đến sự vật, sự việc, con người.",
+                  "examples": [
+                    "phu nhân (vợ), từ trần (chết), thân mẫu (mẹ)..."
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-2",
+            "title": "Tao nhã, tế nhị",
+            "icon": "🌸",
+            "active": false,
+            "content": {
+              "items": [
+                {
+                  "type": "common",
+                  "label": "Đặc điểm",
+                  "definition": "Tránh gây cảm giác thô tục, ghê sợ, hoặc diễn đạt lịch sự hơn (Nói giảm nói tránh).",
+                  "examples": [
+                    "hậu sự (việc ma chay), khiếm thị (mù)..."
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "card-3",
+            "title": "Cổ kính",
+            "icon": "🏛️",
+            "active": false,
+            "content": {
+              "items": [
+                {
+                  "type": "common",
+                  "label": "Đặc điểm",
+                  "definition": "Tạo sắc thái cổ xưa, phù hợp với không khí xã hội phong kiến, thi ca cổ.",
+                  "examples": [
+                    "trẫm, bệ hạ, ngự y, bằng hữu..."
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "title": "Sắc thái ý nghĩa của từ Hán Việt",
+        "score": 0
+      }
+    },
+    {
+      "id": "step08",
+      "type": "choice",
+      "validator": "choiceValidator",
+      "data": {
+        "question": "Trong câu 'Lăng tẩm của vua chúa triều Nguyễn được xây dựng rất bề thế', từ Hán Việt 'lăng tẩm' mang lại sắc thái gì?",
+        "choices": [
+          {
+            "id": "A",
+            "text": "Sắc thái bình dị, gần gũi."
+          },
+          {
+            "id": "B",
+            "text": "Sắc thái cổ kính, trang trọng."
+          },
+          {
+            "id": "C",
+            "text": "Sắc thái tao nhã, tế nhị."
+          },
+          {
+            "id": "D",
+            "text": "Sắc thái hài hước."
+          }
+        ],
+        "answer": "B",
+        "title": "Lựa chọn",
+        "score": 1
+      }
+    },
+    {
+      "id": "step09",
+      "type": "matching",
+      "validator": "matchValidator",
+      "data": {
+        "left": [
+          "Hoả hoạn",
+          "Huynh đệ",
+          "Thiên thu"
+        ],
+        "right": [
+          "Anh em",
+          "Nghìn năm",
+          "Cháy nhà"
+        ],
+        "answer": {
+          "Huynh đệ": "Anh em",
+          "Thiên thu": "Nghìn năm",
+          "Hoả hoạn": "Cháy nhà"
+        },
+        "title": "Nối câu",
+        "instruction": "Ghép các từ Hán Việt với từ thuần Việt có ý nghĩa tương đương.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step10",
+      "type": "dragDrop",
+      "validator": "dragValidator",
+      "data": {
+        "draggables": [
+          "thầy giáo",
+          "giáo viên",
+          "vợ chồng",
+          "phu thê"
+        ],
+        "targets": [
+          "Từ thuần Việt",
+          "Từ Hán Việt"
+        ],
+        "answer": {
+          "thầy giáo": "Từ thuần Việt",
+          "vợ chồng": "Từ thuần Việt",
+          "giáo viên": "Từ Hán Việt",
+          "phu thê": "Từ Hán Việt"
+        },
+        "title": "Kéo và thả",
+        "instruction": "Phân loại các từ sau vào đúng nhóm từ thuần Việt hoặc từ Hán Việt.",
+        "score": 1
+      }
+    },
+    {
+      "id": "step11",
+      "type": "flashcard",
+      "data": {
+        "front": "Từ Hán Việt",
+        "back": "Là từ mượn tiếng Hán nhưng đọc theo âm Việt. Chúng thường mang sắc thái trang trọng, tao nhã hoặc cổ kính. Các tiếng cấu tạo nên từ Hán Việt gọi là yếu tố Hán Việt.",
+        "completedWhen": "flipped",
+        "title": "Thẻ ghi nhớ",
+        "score": 1
+      }
+    }
+  ],
+  "meta": {
+    "module": "nguon-goc-cua-tu",
+    "difficulty": "reference",
+    "xp": 100,
+    "stars": 3,
+    "description": "Tìm hiểu về từ Hán Việt, yếu tố Hán Việt và tác dụng của chúng trong văn bản.",
+    "prerequisite": null,
+    "unlock": null,
+    "reviewMode": "instant",
+    "durationMinutes": 20
+  }
+}

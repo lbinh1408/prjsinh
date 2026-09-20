@@ -1,0 +1,695 @@
+{
+    "id": "luyen-de.02-ky-nang-trinh-bay-bai",
+    "title": "Kỹ năng trình bày bài",
+    "type": "skill",
+    "version": "1.0.0",
+    "meta": {
+        "module": "luyen-de",
+        "lessonNumber": 2,
+        "durationMinutes": 40,
+        "difficulty": "intermediate",
+        "skill": "ky-nang-trinh-bay-bai",
+        "description": "Học cách trình bày bài thi Ngữ Văn rõ ràng, sạch sẽ, có bố cục và giúp người chấm dễ theo dõi bài làm."
+    },
+    "learningGoals": [
+        "Hiểu vì sao trình bày bài làm ảnh hưởng đến khả năng thể hiện bài viết.",
+        "Biết chia phần, chia đoạn và xuống dòng hợp lý.",
+        "Biết cách trình bày câu trả lời đọc hiểu rõ ràng.",
+        "Biết cách trình bày một bài văn có mở bài, thân bài, kết bài.",
+        "Biết nhận ra những lỗi trình bày khiến bài làm khó đọc.",
+        "Biết sửa lỗi khi viết sai mà vẫn giữ bài làm sạch sẽ.",
+        "Biết tự kiểm tra hình thức bài làm trước khi nộp."
+    ],
+    "completion": {
+        "requiredSections": [
+            "story",
+            "observe",
+            "discover",
+            "teach",
+            "choice",
+            "miniChallenge",
+            "reflection",
+            "cheatSheet",
+            "finalChallenge"
+        ],
+        "action": "completeLesson",
+        "message": "Em đã nắm được những nguyên tắc cơ bản để trình bày bài thi Ngữ Văn rõ ràng và dễ theo dõi."
+    },
+    "steps": [
+        {
+            "id": "story_01",
+            "type": "story",
+            "data": {
+                "title": "Cùng một bài làm, cảm giác hoàn toàn khác",
+                "durationSeconds": 120,
+                "ui": {
+                    "component": "split_compare",
+                    "layout": "two_columns",
+                    "question": "Nếu nội dung hai bài tương đương nhau, bài nào giúp người chấm theo dõi dễ hơn?"
+                },
+                "content": {
+                    "prompt": "Quan sát hai cách trình bày sau",
+                    "left": {
+                        "label": "Bài A",
+                        "question": "Bài A",
+                        "paragraph": "Các ý viết liền nhau thành một khối. Không xuống đoạn rõ ràng. Câu trả lời này nối ngay sang câu khác. Có nhiều chỗ gạch xóa và sửa chồng lên nhau."
+                    },
+                    "right": {
+                        "label": "Bài B",
+                        "question": "Bài B",
+                        "paragraph": "Mỗi câu hỏi được trình bày rõ. Bài văn được chia đoạn hợp lí. Khi chuyển ý có xuống dòng. Chữ viết cố gắng rõ ràng, phần sửa lỗi gọn gàng."
+                    }
+                },
+                "interaction": {
+                    "type": "choice",
+                    "choices": [
+                        {
+                            "id": "a",
+                            "text": "Bài A vì viết liền mạch sẽ tiết kiệm giấy.",
+                            "correct": false
+                        },
+                        {
+                            "id": "b",
+                            "text": "Bài B vì bố cục rõ ràng giúp người chấm dễ theo dõi.",
+                            "correct": true
+                        },
+                        {
+                            "id": "c",
+                            "text": "Hai cách trình bày không tạo ra khác biệt nào.",
+                            "correct": false
+                        }
+                    ],
+                    "feedback": {
+                        "correct": "✓ Đúng. Trình bày tốt giúp nội dung của em được nhìn thấy và theo dõi rõ hơn.",
+                        "incorrect": "△ Hãy nghĩ đến người đang đọc bài. Một bài có cấu trúc rõ sẽ dễ theo dõi hơn."
+                    }
+                },
+                "reveal": {
+                    "title": "Điểm quan trọng",
+                    "text": "Trình bày đẹp không có nghĩa là trang trí cầu kỳ. Điều quan trọng nhất là bài làm rõ ràng, sạch sẽ, có tổ chức và giúp người chấm nhận ra em đang trả lời gì."
+                }
+            }
+        },
+        {
+            "id": "observe_01",
+            "type": "observe",
+            "data": {
+                "title": "Bắt lỗi trình bày",
+                "durationSeconds": 180,
+                "ui": {
+                    "interaction": "tap_sentence",
+                    "component": "paragraph_highlight",
+                    "question": "Đọc tình huống và tìm những cách trình bày chưa hợp lý."
+                },
+                "content": {
+                    "prompt": "Nam làm bài thi Ngữ Văn. Em trả lời câu 1 nhưng viết lẫn sang câu 2 mà không đánh dấu rõ. Khi viết bài văn, Nam viết mở bài, thân bài và kết bài thành một đoạn dài. Có một ý mới nhưng Nam không xuống dòng. Khi viết sai, Nam gạch xóa nhiều lần và viết chữ mới chồng lên phần cũ. Gần cuối bài, Nam viết ngày càng nhỏ và sát vào lề vì sợ thiếu chỗ."
+                },
+                "targets": [
+                    {
+                        "id": "error_01",
+                        "text": "viết lẫn sang câu 2 mà không đánh dấu rõ"
+                    },
+                    {
+                        "id": "error_02",
+                        "text": "viết mở bài, thân bài và kết bài thành một đoạn dài"
+                    },
+                    {
+                        "id": "error_03",
+                        "text": "Có một ý mới nhưng Nam không xuống dòng"
+                    },
+                    {
+                        "id": "error_04",
+                        "text": "gạch xóa nhiều lần và viết chữ mới chồng lên phần cũ"
+                    },
+                    {
+                        "id": "error_05",
+                        "text": "viết ngày càng nhỏ và sát vào lề"
+                    }
+                ],
+                "reveal": {
+                    "title": "5 lỗi dễ gặp",
+                    "items": [
+                        "Không phân biệt rõ các câu hoặc phần trả lời.",
+                        "Không chia đoạn theo bố cục bài viết.",
+                        "Chuyển ý nhưng không tạo dấu hiệu nhận biết.",
+                        "Gạch xóa quá nhiều, làm bài khó đọc.",
+                        "Chữ viết và khoảng cách thay đổi quá thất thường."
+                    ]
+                }
+            }
+        },
+        {
+            "id": "discover_01",
+            "type": "discover",
+            "data": {
+                "title": "Trình bày tốt để làm gì?",
+                "durationSeconds": 180,
+                "ui": {
+                    "component": "card_to_slot",
+                    "interaction": "tap_to_place",
+                    "question": "Ghép mỗi nguyên tắc trình bày với tác dụng phù hợp."
+                },
+                "content": {
+                    "slots": [
+                        {
+                            "id": "b1",
+                            "label": "🎯 Yếu tố 1",
+                            "question": "Chia câu và phần",
+                            "hint": "Giúp người chấm biết em đang trả lời phần nào."
+                        },
+                        {
+                            "id": "b2",
+                            "label": "🎯 Yếu tố 2",
+                            "question": "chia đoạn",
+                            "hint": "Giúp nhận ra cấu trúc và mạch phát triển của bài."
+                        },
+                        {
+                            "id": "b3",
+                            "label": "🎯 Yếu tố 3",
+                            "question": "Sửa lỗi",
+                            "hint": "Giúp bài không bị rối và khó đọc."
+                        },
+                        {
+                            "id": "b4",
+                            "label": "🎯 Yếu tố 4",
+                            "question": "Trình bày thống nhất",
+                            "hint": "Giúp bài tạo cảm giác rõ ràng, có tổ chức"
+                        }
+                    ],
+                    "cards": [
+                        {
+                            "id": "clear",
+                            "target": "b1",
+                            "correct": true,
+                            "slotText": "Giúp người chấm biết em đang trả lời phần nào",
+                            "feedback": "✓ Đúng.",
+                            "label": "Chia rõ câu và phần"
+                        },
+                        {
+                            "id": "paragraph",
+                            "target": "b2",
+                            "correct": true,
+                            "slotText": "Giúp nhận ra cấu trúc và mạch phát triển của bài",
+                            "feedback": "✓ Đúng.",
+                            "label": "Xuống đoạn khi chuyển ý lớn"
+                        },
+                        {
+                            "id": "clean",
+                            "target": "b3",
+                            "correct": true,
+                            "slotText": "Giúp bài không bị rối và khó đọc",
+                            "feedback": "✓ Đúng.",
+                            "label": "Sửa lỗi gọn gàng"
+                        },
+                        {
+                            "id": "consistent",
+                            "target": "b4",
+                            "correct": true,
+                            "slotText": "Giúp bài tạo cảm giác rõ ràng, có tổ chức",
+                            "feedback": "✓ Đúng.",
+                            "label": "Giữ cách trình bày tương đối thống nhất"
+                        }
+                    ],
+                    "reveal": {
+                        "title": "Nguyên tắc cốt lõi",
+                        "text": "Trình bày không phải để trang trí bài. Trình bày là cách tổ chức hình thức để người đọc nhìn thấy cấu trúc và nội dung của bài làm."
+                    }
+                }
+            }
+        },
+        {
+            "id": "teach_01",
+            "type": "teach",
+            "data": {
+                "title": "Nguyên tắc 1 — Người chấm phải biết em đang làm phần nào",
+                "durationSeconds": 240,
+                "ui": {
+                    "component": "vertical_map",
+                    "interaction": "click_node",
+                    "center": "BÀI VIẾT"
+                },
+                "prompt": "Phân biệt rõ từng phần của bài",
+                "nodes": [
+                    {
+                        "id": "new-question",
+                        "icon": "💡",
+                        "short": "Câu nào ra câu đó",
+                        "title": "Câu nào ra câu đó",
+                        "question": "Câu nào?",
+                        "example": "Khi chuyển sang trả lời một câu hỏi khác, hãy tạo dấu hiệu rõ ràng bằng số câu hoặc cách trình bày phù hợp."
+                    },
+                    {
+                        "id": "new-idea",
+                        "icon": "💡",
+                        "short": "Ý nào ra ý đó",
+                        "question": "Ý nào?",
+                        "example": "Nếu câu trả lời có nhiều ý lớn, có thể xuống dòng hoặc tổ chức để các ý không dính thành một khối."
+                    },
+                    {
+                        "id": "no-guess",
+                        "icon": "💡",
+                        "short": "Không để người đọc phải đoán",
+                        "title": "Không để người đọc phải đoán",
+                        "question": "Không để người đọc phải đoán?",
+                        "example": "Người chấm không nên phải tự tìm xem phần trả lời của em bắt đầu và kết thúc ở đâu."
+                    }
+                ],
+                "diagnosticQuestion": "Câu hỏi tự kiểm tra",
+                "importantNote": "Nhìn vào bài của mình, một người khác có biết ngay em đang trả lời câu nào và ý nào không?"
+            }
+        },
+        {
+            "id": "teach_02",
+            "type": "teach",
+            "data": {
+                "title": "Nguyên tắc 2 — Một bài văn phải nhìn ra được bố cục",
+                "durationSeconds": 240,
+                "ui": {
+                    "component": "vertical_map",
+                    "interaction": "click_node",
+                    "center": "BÀI VIẾT"
+                },
+                "prompt": "Bố cục cần xuất hiện trên trang giấy",
+                "nodes": [
+                    {
+                        "id": "new-question",
+                        "icon": "💡",
+                        "short": "Câu nào ra câu đó",
+                        "title": "Câu nào ra câu đó",
+                        "question": "Câu nào?",
+                        "example": "Khi chuyển sang trả lời một câu hỏi khác, hãy tạo dấu hiệu rõ ràng bằng số câu hoặc cách trình bày phù hợp."
+                    },
+                    {
+                        "id": "open",
+                        "icon": "💡",
+                        "short": "Mở bài",
+                        "title": "Mở bài",
+                        "question": "Mở bài?",
+                        "example": "Mở đầu bài viết, dẫn người đọc đến vấn đề cần bàn luận."
+                    },
+                    {
+                        "id": "body",
+                        "icon": "💡",
+                        "short": "Thân bài",
+                        "title": "Thân bài",
+                        "question": "Mỗi đoạn thực hiện một nhiệm vụ hoặc phát triển một ý chính. Khi chuyển sang ý lớn khác, cần tạo đoạn mới."
+                    },
+                    {
+                        "id": "end",
+                        "icon": "💡",
+                        "short": "Kết bài",
+                        "title": "Kết bài",
+                        "question": "Kết bài?",
+                        "example": "Khép lại bài viết bằng một phần riêng, không nên để kết bài chìm lẫn vào đoạn thân bài cuối."
+                    }
+                ],
+                "diagnosticQuestion": "Hãy để bố cục được nhìn thấy",
+                "importantNote": "Một bài văn có bố cục không chỉ nằm trong suy nghĩ của người viết. Bố cục cần được thể hiện qua cách chia đoạn trên bài làm."
+            }
+        },
+        {
+            "id": "teach_03",
+            "type": "teach",
+            "data": {
+                "title": "Nguyên tắc 3 — Xuống đoạn khi nhiệm vụ của đoạn thay đổi",
+                "durationSeconds": 240,
+                "ui": {
+                    "component": "vertical_map",
+                    "interaction": "click_node",
+                    "center": "BÀI VIẾT"
+                },
+                "prompt": "Khi nào nên tạo đoạn mới?",
+                "nodes": [
+                    {
+                        "id": "big-idea",
+                        "icon": "💡",
+                        "short": "Chuyển sang ý lớn khác",
+                        "title": "Chuyển sang ý lớn khác",
+                        "question": "Ví dụ: từ giải thích sang phân tích, từ luận điểm 1 sang luận điểm 2."
+                    },
+                    {
+                        "id": "another-task",
+                        "icon": "💡",
+                        "short": "Chuyển sang nhiệm vụ khác",
+                        "title": "Chuyển sang nhiệm vụ khác",
+                        "question": "Ví dụ: kết thúc phần thân bài và chuyển sang kết bài."
+                    },
+                    {
+                        "id": "complete-big-idea",
+                        "icon": "💡",
+                        "short": "Một đoạn đã hoàn thành ý chính",
+                        "title": "Một đoạn đã hoàn thành ý chính",
+                        "question": "Không kéo quá nhiều ý khác nhau vào cùng một đoạn chỉ vì muốn viết liền."
+                    },
+                    {
+                        "id": "dont-write-casually",
+                        "icon": "💡",
+                        "short": "Không xuống đoạn tùy hứng",
+                        "title": "Không xuống đoạn tùy hứng",
+                        "question": "Không phải cứ viết vài câu là xuống dòng. Mỗi đoạn cần có một nhiệm vụ rõ ràng."
+                    }
+                ],
+                "diagnosticQuestion": "Câu thần chú",
+                "importantNote": "Ý lớn đổi → nhiệm vụ đổi → cân nhắc tạo đoạn mới."
+            }
+        },
+        {
+            "id": "teach_04",
+            "type": "teach",
+            "data": {
+                "title": "Nguyên tắc 4 — Sửa lỗi nhưng đừng làm bài rối hơn",
+                "durationSeconds": 240,
+                "ui": {
+                    "component": "vertical_map",
+                    "interaction": "click_node",
+                    "center": "BÀI VIẾT"
+                },
+                "prompt": "Khi viết sai",
+                "nodes": [
+                    {
+                        "id": "crossout-just-enough",
+                        "icon": "💡",
+                        "short": "Gạch bỏ vừa đủ",
+                        "title": "Gạch bỏ vừa đủ",
+                        "question": "Gạch phần sai sao cho người đọc vẫn nhận ra em đã bỏ phần đó, nhưng không làm cả dòng trở nên đen và rối."
+                    },
+                    {
+                        "id": "write-clearly-after",
+                        "icon": "💡",
+                        "short": "Viết lại rõ ràng",
+                        "title": "Viết lại rõ ràng",
+                        "question": "Phần sửa nên nằm ở vị trí dễ đọc, tránh chèn chồng lên chữ cũ."
+                    },
+                    {
+                        "id": "dont-over-correct",
+                        "icon": "💡",
+                        "short": "Không sửa quá nhiều lần một chỗ",
+                        "title": "Không sửa quá nhiều lần một chỗ",
+                        "question": "Nếu đang liên tục sửa, hãy dừng lại và xác định lại ý trước khi tiếp tục viết."
+                    },
+                    {
+                        "id": "not-perfect-is-ok",
+                        "icon": "💡",
+                        "short": "Không cần làm bài hoàn hảo về hình thức",
+                        "title": "Không cần làm bài hoàn hảo về hình thức",
+                        "question": "Một vài chỗ sửa là bình thường. Mục tiêu là giữ bài rõ ràng và sạch nhất có thể."
+                    }
+                ]
+            },
+            "diagnosticQuestion": "Nguyên tắc",
+            "importantNote": "Sửa lỗi là để bài tốt hơn, không phải để tạo thêm một lớp chữ khiến bài khó đọc."
+        },
+        {
+            "id": "teach_05",
+            "type": "teach",
+            "data": {
+                "title": "Nguyên tắc 5 — Rõ ràng quan trọng hơn cầu kỳ",
+                "durationSeconds": 180,
+                "ui": {
+                    "component": "vertical_map",
+                    "interaction": "click_node",
+                    "center": "BÀI VIẾT"
+                },
+                "prompt": "Không cần những thứ này để bài tốt hơn",
+                "nodes": [
+                    {
+                        "id": "dont-decorate-too-much",
+                        "icon": "💡",
+                        "short": "Trang trí quá nhiều",
+                        "title": "Trang trí quá nhiều",
+                        "question": "Không cần vẽ khung, thêm ký hiệu hoặc trang trí cầu kỳ nếu không phục vụ nội dung."
+                    },
+                    {
+                        "id": "write-too-big-or-too-small",
+                        "icon": "💡",
+                        "short": "Viết thật to hoặc thật nhỏ",
+                        "title": "Viết thật to hoặc thật nhỏ    ",
+                        "question": "Cố gắng giữ kích thước chữ tương đối ổn định và dễ đọc."
+                    },
+                    {
+                        "id": "change-presentation-style-continuously",
+                        "icon": "💡",
+                        "short": "Thay đổi cách trình bày liên tục",
+                        "title": "Thay đổi cách trình bày liên tục",
+                        "question": "Bài làm nên có sự thống nhất thay vì mỗi phần một kiểu."
+                    },
+                    {
+                        "id": "dont-chase-perfect-writing-at-all-costs",
+                        "icon": "💡",
+                        "short": "Chạy theo chữ đẹp bằng mọi giá",
+                        "title": "Chạy theo chữ đẹp bằng mọi giá",
+                        "question": "Điều quan trọng hơn là chữ đủ rõ, khoảng cách hợp lý và bài có tổ chức."
+                    }
+                ],
+                "diagnosticQuestion": "Trình bày tốt = dễ đọc",
+                "importantNote": "Mục tiêu không phải là làm bài thật đẹp theo kiểu trang trí. Mục tiêu là để người chấm đọc bài một cách thuận lợi."
+            }
+        },
+        {
+            "id": "guidedPractice_01",
+            "type": "choice",
+            "data": {
+                "title": "Chọn cách chia đoạn hợp lý",
+                "question": "Em đang viết bài văn nghị luận. Em vừa giải thích xong vấn đề và chuẩn bị chuyển sang phân tích nguyên nhân. Em nên làm gì?",
+                "options": [
+                    {
+                        "id": "a",
+                        "text": "Viết tiếp ngay trong cùng đoạn vì vẫn đang nói về cùng đề tài.",
+                        "isCorrect": false,
+                        "feedback": "Chưa hợp lý. Dù cùng đề tài, nhiệm vụ của phần viết đã chuyển từ giải thích sang phân tích."
+                    },
+                    {
+                        "id": "b",
+                        "text": "Cân nhắc xuống đoạn mới vì đang chuyển sang một nhiệm vụ và ý lớn khác.",
+                        "isCorrect": true,
+                        "feedback": "✓ Đúng. Khi nhiệm vụ của phần viết thay đổi rõ ràng, việc tạo đoạn mới giúp bố cục dễ theo dõi."
+                    },
+                    {
+                        "id": "c",
+                        "text": "Viết hết thân bài thành một đoạn để bài không bị dài.",
+                        "isCorrect": false,
+                        "feedback": "Sai rồi. Một thân bài có nhiều nhiệm vụ lớn thường cần được tổ chức thành các đoạn."
+                    },
+                    {
+                        "id": "d",
+                        "text": "Xuống dòng sau mỗi câu để người chấm dễ đọc.",
+                        "isCorrect": false,
+                        "feedback": "Không đúng. Không phải mỗi câu đều cần thành một đoạn."
+                    }
+                ],
+                "answer": "b",
+                "score": 1
+            },
+            "validator": "choiceValidator"
+        },
+        {
+            "id": "miniChallenge_01",
+            "type": "miniChallenge",
+            "data": {
+                "title": "Bắt lỗi bài làm",
+                "durationSeconds": 300,
+                "ui": {
+                    "layout": "single_choice"
+                },
+                "prompt": "Một học sinh trả lời xong Câu 1 rồi viết ngay sang Câu 2 trên cùng dòng mà không có dấu hiệu nào cho thấy đã đổi câu. Vấn đề lớn nhất là gì?",
+                "question": "Một học sinh trả lời xong Câu 1 rồi viết ngay sang Câu 2 trên cùng dòng mà không có dấu hiệu nào cho thấy đã đổi câu. Vấn đề lớn nhất là gì?",
+                "choices": [
+                    {
+                        "id": "opt_0",
+                        "text": "Bài làm có thể khiến người chấm khó xác định phần trả lời của từng câu.",
+                        "correct": true
+                    },
+                    {
+                        "id": "opt_1",
+                        "text": "Bài chắc chắn sẽ bị trừ điểm vì không đủ số dòng.",
+                        "correct": false
+                    },
+                    {
+                        "id": "opt_2",
+                        "text": "Bài sẽ có nội dung kém hơn.",
+                        "correct": false
+                    },
+                    {
+                        "id": "opt_3",
+                        "text": "Không có vấn đề gì nếu chữ viết đẹp.",
+                        "correct": false
+                    }
+                ],
+                "feedback": {
+                    "correct": "✓ Chính xác! Trình bày cần giúp người đọc nhận ra cấu trúc của bài làm.",
+                    "opt_0": "✓ Chính xác!"
+                }
+            }
+        },
+        {
+            "id": "miniChallenge_02",
+            "type": "miniChallenge",
+            "data": {
+                "title": "Đoạn nào đang có vấn đề?",
+                "durationSeconds": 240,
+                "ui": {
+                    "layout": "single_choice"
+                },
+                "prompt": "Một bài văn có mở bài, sau đó phân tích ba luận điểm khác nhau và kết bài nhưng tất cả được viết thành một đoạn duy nhất. Nhận xét phù hợp nhất là gì?",
+                "question": "Một bài văn có mở bài, sau đó phân tích ba luận điểm khác nhau và kết bài nhưng tất cả được viết thành một đoạn duy nhất. Nhận xét phù hợp nhất là gì?",
+                "choices": [
+                    {
+                        "id": "opt_0",
+                        "text": "Không sao vì bài vẫn có đầy đủ nội dung.",
+                        "correct": false
+                    },
+                    {
+                        "id": "opt_1",
+                        "text": "Bài có nguy cơ làm mờ bố cục vì các phần và nhiệm vụ lớn không được phân biệt rõ.",
+                        "correct": true
+                    },
+                    {
+                        "id": "opt_2",
+                        "text": "Chỉ cần thêm nhiều dấu chấm là đủ.",
+                        "correct": false
+                    },
+                    {
+                        "id": "opt_3",
+                        "text": "Nên viết dài hơn để bù lại.",
+                        "correct": false
+                    }
+                ],
+                "feedback": {
+                    "correct": "✓ Đúng. Nội dung có thể tốt nhưng bố cục cũng cần được thể hiện rõ trên hình thức bài viết.",
+                    "opt_1": "✓ Đúng."
+                }
+            }
+        },
+        {
+            "id": "reflection_01",
+            "type": "reflection",
+            "data": {
+                "title": "Checklist trình bày của em",
+                "durationSeconds": 180,
+                "ui": {
+                    "component": "checklist_free_text",
+                    "question": "Hãy chọn những điều em sẽ chủ động kiểm tra trước khi nộp bài."
+                },
+                "reveal": {
+                    "title": "Đừng chỉ kiểm tra nội dung",
+                    "text": "Trước khi nộp bài, hãy dành ít phút nhìn bài như một người chấm: Có rõ câu không? Có rõ đoạn không? Có chỗ nào quá rối hoặc khó đọc không?"
+                },
+                "choices": [
+                    {
+                        "id": "ref_0",
+                        "text": "Các câu trả lời đã được phân biệt rõ chưa?"
+                    },
+                    {
+                        "id": "ref_1",
+                        "text": "Bài văn đã được chia đoạn theo các ý lớn chưa?"
+                    },
+                    {
+                        "id": "ref_2",
+                        "text": "Có đoạn nào quá dài vì chứa nhiều ý khác nhau không?"
+                    },
+                    {
+                        "id": "ref_3",
+                        "text": "Các chỗ gạch xóa có làm bài trở nên khó đọc không?"
+                    },
+                    {
+                        "id": "ref_4",
+                        "text": "Chữ viết và khoảng cách có tương đối rõ ràng không?"
+                    },
+                    {
+                        "id": "ref_5",
+                        "text": "Có phần nào đang viết chen hoặc chồng lên phần khác không?"
+                    },
+                    {
+                        "id": "ref_6",
+                        "text": "Người đọc có thể nhìn vào và nhận ra bố cục bài làm không?"
+                    }
+                ],
+                "freeText": {
+                    "label": "Điều em cần cải thiện nhất trong cách trình bày bài của mình là: ",
+                    "placeholder": "Ví dụ: Em thường viết các đoạn quá dài và ít xuống dòng khi chuyển sang ý mới."
+                }
+            }
+        },
+        {
+            "id": "cheatSheet_01",
+            "type": "cheatSheet",
+            "data": {
+                "title": "Presentation Card — 5 nguyên tắc trình bày",
+                "ui": {
+                    "layout": "decision_card",
+                    "saveButton": true,
+                    "downloadButton": true,
+                    "practiceButton": true
+                },
+                "card": [
+                    {
+                        "question": "Người chấm có biết em đang làm câu nào?",
+                        "answer": "Phân biệt rõ từng câu và từng phần trả lời."
+                    },
+                    {
+                        "question": "Người chấm có nhìn ra bố cục bài văn?",
+                        "answer": "Thể hiện mở bài → các đoạn thân bài → kết bài bằng cách chia đoạn hợp lý."
+                    },
+                    {
+                        "question": "Khi nào nên xuống đoạn?",
+                        "answer": "Khi ý lớn hoặc nhiệm vụ của phần viết thay đổi rõ ràng."
+                    },
+                    {
+                        "question": "Nếu viết sai thì sao?",
+                        "answer": "Sửa gọn, viết lại rõ, tránh gạch xóa và viết chồng quá nhiều."
+                    },
+                    {
+                        "question": "Có cần trang trí bài thật đẹp?",
+                        "answer": "Không. Ưu tiên rõ ràng, sạch sẽ, dễ đọc và thống nhất."
+                    }
+                ],
+                "note": "⭐ Trình bày tốt không phải để khoe chữ đẹp. Trình bày tốt là để người chấm nhìn thấy rõ cấu trúc và nội dung em muốn thể hiện."
+            }
+        },
+        {
+            "id": "finalChallenge_01",
+            "type": "finalChallenge",
+            "data": {
+                "title": "Biên tập viên bài thi",
+                "ui": {
+                    "layout": "boss",
+                    "showStrategyBeforeWriting": true,
+                    "showAiAnalysis": true
+                },
+                "prompt": "Em hãy kiểm tra tình huống sau: Một học sinh viết bài văn nghị luận gồm mở bài, giải thích, phân tích nguyên nhân, bàn luận, dẫn chứng và kết bài. Tuy nhiên, học sinh viết tất cả thành hai đoạn: đoạn đầu gồm mở bài + giải thích + nguyên nhân; đoạn thứ hai gồm bàn luận + dẫn chứng + kết bài.",
+                "flow": [
+                    "Nhìn cấu trúc hiện tại",
+                    "Phát hiện vấn đề",
+                    "Đề xuất cách chia lại",
+                    "Giải thích lí do",
+                    "AI phân tích"
+                ],
+                "strategyQuestion": "Em sẽ góp ý cách tổ chức và trình bày bài làm này như thế nào?",
+                "choices": [
+                    "Giữ nguyên hai đoạn vì bài đã đủ nội dung.",
+                    "Chia lại theo các nhiệm vụ lớn: mở bài riêng, các phần thân bài theo ý/nhiệm vụ phù hợp, kết bài riêng.",
+                    "Chia mỗi câu thành một đoạn mới.",
+                    "Không cần thay đổi đoạn, chỉ cần viết chữ to hơn."
+                ],
+                "expected": {
+                    "primary": "Chia lại theo các nhiệm vụ lớn: mở bài riêng, các phần thân bài theo ý/nhiệm vụ phù hợp, kết bài riêng.",
+                    "acceptableCombination": [
+                        "Chia lại theo các nhiệm vụ lớn: mở bài riêng, các phần thân bài theo ý/nhiệm vụ phù hợp, kết bài riêng."
+                    ],
+                    "reason": "Bài văn chỉ có 2 đoạn nhưng nội dung lại rất phức tạp."
+                },
+                "editor": {
+                    "placeholder": "Viết ngắn gọn cách em sẽ yêu cầu học sinh tổ chức lại bài làm để người chấm dễ theo dõi hơn: Em sẽ...",
+                    "minCharacters": 120,
+                    "maxCharacters": 500
+                },
+                "aiAnalysis": {
+                    "sections": [
+                        "Em đã biết cách nhìn một bài làm bằng con mắt của người chấm",
+                        "Hãy nhớ: Rõ câu → Rõ phần → Rõ đoạn → Sửa gọn → Dễ đọc."
+                    ]
+                }
+            }
+        }
+    ]
+}
