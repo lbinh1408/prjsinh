@@ -1,0 +1,437 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://example.com/schemas/analytics/event.schema.json",
+    "title": "Learning Analytics Event Schema",
+    "description": "Contract for immutable learning events collected by the Analytics Engine. Events describe what happened in the learning system; they do not make learning decisions.",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "schemaVersion",
+        "eventId",
+        "eventType",
+        "timestamp",
+        "studentId",
+        "sessionId",
+        "source",
+        "context",
+        "payload"
+    ],
+    "properties": {
+        "schemaVersion": {
+            "type": "string",
+            "const": "1.0.0"
+        },
+        "eventId": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Globally unique identifier for this event."
+        },
+        "eventType": {
+            "$ref": "#/$defs/eventType"
+        },
+        "timestamp": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "studentId": {
+            "type": "string",
+            "minLength": 1
+        },
+        "sessionId": {
+            "type": "string",
+            "minLength": 1
+        },
+        "source": {
+            "$ref": "#/$defs/source"
+        },
+        "context": {
+            "$ref": "#/$defs/context"
+        },
+        "payload": {
+            "$ref": "#/$defs/payload"
+        },
+        "correlation": {
+            "$ref": "#/$defs/correlation"
+        }
+    },
+    "$defs": {
+        "eventType": {
+            "type": "string",
+            "enum": [
+                "SESSION_STARTED",
+                "SESSION_PAUSED",
+                "SESSION_RESUMED",
+                "SESSION_COMPLETED",
+                "SESSION_ABANDONED",
+                "LEARNING_STARTED",
+                "LEARNING_COMPLETED",
+                "QUESTION_PRESENTED",
+                "QUESTION_STARTED",
+                "QUESTION_SUBMITTED",
+                "QUESTION_SKIPPED",
+                "QUESTION_RETRIED",
+                "ANSWER_CORRECT",
+                "ANSWER_INCORRECT",
+                "ANSWER_PARTIAL",
+                "HINT_REQUESTED",
+                "MASTERY_UPDATED",
+                "MASTERY_ADVANCED",
+                "MASTERY_STABLE",
+                "MASTERY_WEAK",
+                "FAILURE_DETECTED",
+                "SOURCE_NODE_IDENTIFIED",
+                "REMEDIATION_STARTED",
+                "REMEDIATION_STEP_COMPLETED",
+                "REMEDIATION_PROBE_STARTED",
+                "REMEDIATION_PROBE_PASSED",
+                "REMEDIATION_PROBE_FAILED",
+                "REMEDIATION_COMPLETED",
+                "NEXT_ACTION_SELECTED",
+                "ACTION_STARTED",
+                "ACTION_COMPLETED",
+                "RETEST_DUE",
+                "RETEST_STARTED",
+                "RETEST_PASSED",
+                "RETEST_FAILED",
+                "REVIEW_DUE",
+                "REVIEW_STARTED",
+                "REVIEW_COMPLETED",
+                "NODE_SKIPPED",
+                "NODE_UNLOCKED",
+                "NODE_BLOCKED",
+                "CHALLENGE_STARTED",
+                "CHALLENGE_COMPLETED",
+                "TRANSFER_ATTEMPTED",
+                "TRANSFER_PASSED",
+                "TRANSFER_FAILED",
+                "META_SKILL_DETECTED",
+                "META_SKILL_PRACTICED",
+                "STUDENT_CHOICE",
+                "STUDENT_CHANGED_PATH",
+                "FATIGUE_SIGNAL_DETECTED",
+                "BREAK_SUGGESTED",
+                "ERROR_SYSTEM",
+                "VALIDATION_FAILED"
+            ]
+        },
+        "source": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "component"
+            ],
+            "properties": {
+                "component": {
+                    "type": "string",
+                    "enum": [
+                        "UI",
+                        "LessonEngine",
+                        "QuestionEngine",
+                        "MasteryEngine",
+                        "AdaptiveEngine",
+                        "RemediationEngine",
+                        "AnalyticsEngine",
+                        "Storage",
+                        "System"
+                    ]
+                },
+                "engineVersion": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "appVersion": {
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
+        },
+        "context": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "learningMode"
+            ],
+            "properties": {
+                "learningMode": {
+                    "type": "string",
+                    "enum": [
+                        "HOC_NHANH",
+                        "HOC_SAU",
+                        "ON_THI"
+                    ]
+                },
+                "clusterId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "nodeId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "secondaryNodeIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "uniqueItems": true
+                },
+                "metaSkillId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "lessonId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "questionId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "action": {
+                    "type": "string",
+                    "enum": [
+                        "LEARN",
+                        "PRACTICE",
+                        "CHALLENGE",
+                        "REMEDIATE",
+                        "RETEST",
+                        "REVIEW",
+                        "SKIP"
+                    ]
+                },
+                "pathStage": {
+                    "type": "string",
+                    "enum": [
+                        "DIAGNOSTIC",
+                        "LEARN",
+                        "PRACTICE",
+                        "CHALLENGE",
+                        "REMEDIATE",
+                        "MINI_PRACTICE",
+                        "MINI_PROBE",
+                        "RETEST",
+                        "REVIEW",
+                        "SKIP",
+                        "TRANSFER",
+                        "CROSS_NODE"
+                    ]
+                },
+                "remediationId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "decisionId": {
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
+        },
+        "payload": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "result": {
+                    "type": "string",
+                    "enum": [
+                        "correct",
+                        "incorrect",
+                        "partial",
+                        "skipped",
+                        "completed",
+                        "failed",
+                        "passed",
+                        "blocked",
+                        "started",
+                        "cancelled"
+                    ]
+                },
+                "score": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "timeSpentSeconds": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "hintUsed": {
+                    "type": "boolean"
+                },
+                "hintLevel": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 3
+                },
+                "retry": {
+                    "type": "boolean"
+                },
+                "attemptNumber": {
+                    "type": "integer",
+                    "minimum": 1
+                },
+                "failureSignature": {
+                    "$ref": "#/$defs/failureSignature"
+                },
+                "sourceNodeId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "metaSkillId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "masteryLevel": {
+                    "$ref": "#/$defs/masteryLevel"
+                },
+                "previousMasteryLevel": {
+                    "$ref": "#/$defs/masteryLevel"
+                },
+                "status": {
+                    "$ref": "#/$defs/status"
+                },
+                "previousStatus": {
+                    "$ref": "#/$defs/status"
+                },
+                "masteryDecision": {
+                    "type": "string",
+                    "enum": [
+                        "unchanged",
+                        "advanced",
+                        "mastered",
+                        "stable",
+                        "review_required",
+                        "remediation_required"
+                    ]
+                },
+                "action": {
+                    "$ref": "#/$defs/action"
+                },
+                "previousAction": {
+                    "$ref": "#/$defs/action"
+                },
+                "nextAction": {
+                    "$ref": "#/$defs/action"
+                },
+                "decisionReason": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "remediationDepth": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 3
+                },
+                "probeResult": {
+                    "type": "string",
+                    "enum": [
+                        "passed",
+                        "failed",
+                        "partial"
+                    ]
+                },
+                "studentChoice": {
+                    "type": "string",
+                    "enum": [
+                        "CONTINUE",
+                        "REVIEW",
+                        "CHALLENGE",
+                        "DIFFERENT_NODE",
+                        "TAKE_BREAK",
+                        "END_SESSION"
+                    ]
+                },
+                "fatigueSignal": {
+                    "type": "string",
+                    "enum": [
+                        "FOUR_WRONG",
+                        "THREE_SKIPS",
+                        "CAREFUL_ERROR_PATTERN",
+                        "LONG_SESSION",
+                        "SLOW_RESPONSE_PATTERN"
+                    ]
+                },
+                "errorCode": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "message": {
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
+        },
+        "correlation": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "attemptId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "masteryUpdateId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "remediationId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "decisionId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "parentEventId": {
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
+        },
+        "masteryLevel": {
+            "type": "string",
+            "enum": [
+                "M0",
+                "M1",
+                "M2",
+                "M3",
+                "M4"
+            ]
+        },
+        "status": {
+            "type": "string",
+            "enum": [
+                "developing",
+                "mastered",
+                "stable",
+                "weak"
+            ]
+        },
+        "action": {
+            "type": "string",
+            "enum": [
+                "LEARN",
+                "PRACTICE",
+                "CHALLENGE",
+                "REMEDIATE",
+                "RETEST",
+                "REVIEW",
+                "SKIP"
+            ]
+        },
+        "failureSignature": {
+            "type": "string",
+            "enum": [
+                "prerequisite_gap",
+                "concept_confusion",
+                "mechanism_confusion",
+                "calculation_error",
+                "data_interpretation_error",
+                "reasoning_error",
+                "cross_node_reasoning_error",
+                "careless_error",
+                "source_knowledge_gap",
+                "meta_skill_gap"
+            ]
+        }
+    }
+}

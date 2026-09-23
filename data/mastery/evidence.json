@@ -1,0 +1,445 @@
+{
+    "schemaVersion": "1.1.0",
+    "modelId": "biology-evidence-model-v1",
+    "subject": "biology",
+    "language": "vi",
+    "status": "review",
+    "purpose": {
+        "description": "Định nghĩa mô hình evidence được sử dụng để biểu diễn bằng chứng học tập của học sinh.",
+        "role": "evidence_model",
+        "sourceOfTruthFor": [
+            "evidence dimensions",
+            "evidence semantics",
+            "evidence scale",
+            "evidence quality semantics",
+            "independent evidence semantics",
+            "diagnostic evidence semantics",
+            "transfer evidence semantics",
+            "multi-node evidence semantics",
+            "failure evidence semantics"
+        ],
+        "notSourceOfTruthFor": [
+            "evidence update formula",
+            "learning rate",
+            "difficulty weights",
+            "attempt weights",
+            "mastery thresholds",
+            "mastery promotion rules",
+            "mastery downgrade rules",
+            "confidence calculation",
+            "retest decision",
+            "remediation strategy",
+            "adaptive next action"
+        ],
+        "rulesSource": "mastery/rules.json",
+        "importantPrinciple": "Evidence model định nghĩa evidence là gì. mastery/rules.json định nghĩa evidence được cập nhật và sử dụng như thế nào để xác định mastery."
+    },
+    "evidenceDimensions": {
+        "know": {
+            "name": "Biết",
+            "description": "Nhận biết, gọi tên, xác định hoặc tái hiện thông tin cơ bản.",
+            "masteryRole": "Cung cấp bằng chứng cho khả năng nhận biết và tái hiện kiến thức.",
+            "typicalTasks": [
+                "nhận diện khái niệm",
+                "gọi tên cấu trúc",
+                "xác định thành phần",
+                "nhận biết quá trình",
+                "chọn phát biểu đúng"
+            ]
+        },
+        "explain": {
+            "name": "Giải thích",
+            "description": "Giải thích được bản chất, cơ chế, quan hệ hoặc nguyên nhân - kết quả.",
+            "masteryRole": "Cung cấp bằng chứng cho khả năng hiểu và giải thích kiến thức.",
+            "typicalTasks": [
+                "giải thích vì sao",
+                "mô tả cơ chế",
+                "so sánh",
+                "nêu mối quan hệ",
+                "giải thích kết quả",
+                "giải thích nguyên nhân - kết quả"
+            ]
+        },
+        "apply": {
+            "name": "Vận dụng",
+            "description": "Sử dụng kiến thức để giải quyết câu hỏi, bài toán, dữ liệu hoặc tình huống.",
+            "masteryRole": "Cung cấp bằng chứng cho khả năng vận dụng kiến thức.",
+            "typicalTasks": [
+                "tính toán",
+                "dự đoán kết quả",
+                "áp dụng quy luật",
+                "phân tích tình huống",
+                "xử lý dữ liệu",
+                "xác định nguyên nhân từ dữ kiện"
+            ]
+        },
+        "transfer": {
+            "name": "Chuyển giao",
+            "description": "Sử dụng kiến thức trong bối cảnh mới, dữ liệu mới, bài toán tích hợp hoặc suy luận không giống mẫu đã học.",
+            "masteryRole": "Cung cấp bằng chứng cho khả năng chuyển giao và tích hợp kiến thức.",
+            "typicalTasks": [
+                "bối cảnh mới",
+                "dữ liệu mới",
+                "suy luận ngược",
+                "tích hợp nhiều knowledge node",
+                "phân tích thí nghiệm mới",
+                "liên hệ thực tiễn",
+                "giải quyết bài toán có representation khác"
+            ]
+        }
+    },
+    "allowedEvidenceTypes": [
+        "know",
+        "explain",
+        "apply",
+        "transfer"
+    ],
+    "evidenceScale": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "interpretation": {
+            "0.00-0.24": "rất yếu",
+            "0.25-0.49": "yếu",
+            "0.50-0.69": "đang hình thành",
+            "0.70-0.84": "khá chắc",
+            "0.85-1.00": "rất chắc"
+        },
+        "important": "Các khoảng này chỉ dùng để diễn giải evidence. Chúng không thay thế mastery thresholds trong mastery/rules.json."
+    },
+    "questionEvidenceMapping": {
+        "principle": "Question phải khai báo trực tiếp evidence dimension mà câu hỏi đo.",
+        "questionField": "evidence",
+        "allowedValues": [
+            "know",
+            "explain",
+            "apply",
+            "transfer"
+        ],
+        "examples": [
+            {
+                "questionId": "Q-K-K206-K-001",
+                "evidence": "know"
+            },
+            {
+                "questionId": "Q-E-K206-E-001",
+                "evidence": "explain"
+            },
+            {
+                "questionId": "Q-A-K206-A-001",
+                "evidence": "apply"
+            },
+            {
+                "questionId": "Q-T-K206-T-001",
+                "evidence": "transfer"
+            }
+        ],
+        "legacyMapping": {
+            "purpose": "Chỉ dùng khi migrate dữ liệu Question cũ. Runtime không được phụ thuộc vào legacy question type.",
+            "Q-K": "know",
+            "Q-E": "explain",
+            "Q-A": "apply",
+            "Q-T": "transfer",
+            "Q-D": null
+        },
+        "legacyDiagnosticRule": "Q-D không phải evidence type. Khi migrate Q-D cũ, phải xác định evidence thật của câu hỏi và chuyển diagnostic thành question mode."
+    },
+    "diagnosticEvidence": {
+        "diagnosticIsEvidenceType": false,
+        "diagnosticIsQuestionMode": true,
+        "principle": "Diagnostic mô tả mục đích sử dụng câu hỏi, không mô tả năng lực mà câu hỏi đo.",
+        "allowedEvidence": [
+            "know",
+            "explain",
+            "apply",
+            "transfer"
+        ],
+        "example": {
+            "mode": [
+                "diagnostic"
+            ],
+            "evidence": "know"
+        },
+        "important": "Evidence từ diagnostic vẫn thuộc một trong bốn evidence dimensions. Trọng số hoặc cách xử lý diagnostic do mastery/rules.json quyết định."
+    },
+    "evidenceQuality": {
+        "principle": "Evidence quality mô tả mức độ độc lập và độ tin cậy của một observation. Giá trị số của các weight hoặc factor được định nghĩa trong mastery/rules.json.",
+        "categories": {
+            "independent": {
+                "description": "Học sinh trả lời mà không nhận hint, explanation hoặc answer reveal trước khi hoàn thành."
+            },
+            "hintAssisted": {
+                "description": "Học sinh trả lời sau khi đã sử dụng một hoặc nhiều hint."
+            },
+            "explanationAssisted": {
+                "description": "Học sinh trả lời sau khi đã được cung cấp explanation hoặc hướng dẫn gần với lời giải."
+            },
+            "retry": {
+                "description": "Học sinh trả lời lại cùng câu hỏi sau một attempt trước đó."
+            },
+            "exactAnswerRecall": {
+                "description": "Có khả năng học sinh nhớ trực tiếp đáp án của câu hỏi đã gặp thay vì tạo ra bằng chứng độc lập mới."
+            }
+        },
+        "important": "Evidence quality không tự chứa multiplier. Multiplier và cách update evidence thuộc mastery/rules.json."
+    },
+    "independentEvidence": {
+        "definition": "Một observation được xem là independent khi phản ánh khả năng của học sinh mà không phụ thuộc đáng kể vào đáp án, explanation hoặc việc ghi nhớ chính câu hỏi đó từ attempt trước.",
+        "typicalIndependentConditions": [
+            "không xem answer reveal trước khi trả lời",
+            "không nhận explanation chứa trực tiếp lời giải",
+            "không phụ thuộc vào exact answer recall",
+            "question hoặc representation đủ khác nếu dùng để xác nhận mastery",
+            "response phản ánh năng lực của chính học sinh"
+        ],
+        "typicallyNotIndependent": [
+            "answer đã được reveal trước response",
+            "làm lại chính xác cùng câu và nhớ đáp án",
+            "explanation đã cung cấp gần như toàn bộ lời giải",
+            "attempt lặp lại quá nhiều trên cùng question"
+        ],
+        "important": "Quy tắc định lượng về số attempt và số independent observations cần thiết cho mastery thuộc mastery/rules.json."
+    },
+    "transferEvidence": {
+        "distinctEvidence": true,
+        "principle": "Transfer phải chứng minh khả năng sử dụng knowledge ngoài mẫu quen thuộc; apply đúng trong một dạng bài quen thuộc không tự động tạo transfer evidence.",
+        "validTransferCharacteristics": [
+            "different context",
+            "different data",
+            "different representation",
+            "novel experiment",
+            "reverse reasoning",
+            "cross-node integration",
+            "real-world application"
+        ],
+        "invalidShortcut": [
+            "chỉ đổi số liệu nhưng giữ nguyên toàn bộ cấu trúc lời giải",
+            "chỉ đổi cách diễn đạt của câu hỏi",
+            "lặp lại cùng reasoning pattern mà không có yêu cầu chuyển giao mới"
+        ],
+        "contextDiversityMatters": true
+    },
+    "multiNodeEvidence": {
+        "principle": "Một câu hỏi có thể liên quan đến nhiều knowledge node nhưng việc một node xuất hiện trong secondaryNodes hoặc prerequisites không có nghĩa node đó được nhận direct mastery evidence.",
+        "primaryNode": {
+            "description": "Knowledge node chính mà câu hỏi được thiết kế để đo.",
+            "mustBeDirectlyMeasured": true,
+            "mustAppearInNodes": true
+        },
+        "nodes": {
+            "description": "Danh sách knowledge nodes được câu hỏi trực tiếp đo.",
+            "eligibleForDirectEvidence": true
+        },
+        "secondaryNodes": {
+            "description": "Các knowledge nodes hỗ trợ hoặc liên quan đến việc giải câu hỏi.",
+            "eligibleForDirectEvidenceByDefault": false
+        },
+        "prerequisites": {
+            "description": "Các knowledge nodes cần thiết hoặc hữu ích để giải câu hỏi.",
+            "eligibleForDirectEvidenceByDefault": false
+        },
+        "defaultRule": "Không cập nhật mastery của secondaryNodes hoặc prerequisites chỉ vì học sinh trả lời đúng câu hỏi.",
+        "multiNodeDirectMeasurementRule": "Nếu câu hỏi thực sự đo trực tiếp nhiều nodes thì tất cả nodes được đo phải xuất hiện rõ trong Question.nodes. Cách phân phối evidence giữa nhiều directly measured nodes phải được mastery/rules.json quy định."
+    },
+    "failureEvidence": {
+        "principle": "Failure evidence mô tả tín hiệu về nguyên nhân có thể dẫn đến một attempt thất bại. Failure evidence không tự động làm mất mastery và không tự quyết định remediation.",
+        "allowedFailureTypes": [
+            "prerequisite_gap",
+            "concept_confusion",
+            "mechanism_confusion",
+            "calculation_error",
+            "data_interpretation_error",
+            "reasoning_error",
+            "cross_node_reasoning_error",
+            "careless_error",
+            "source_knowledge_gap",
+            "meta_skill_gap"
+        ],
+        "definitions": {
+            "prerequisite_gap": {
+                "description": "Có bằng chứng cho thấy học sinh thiếu prerequisite cần thiết."
+            },
+            "concept_confusion": {
+                "description": "Nhầm lẫn hoặc phân biệt sai các khái niệm."
+            },
+            "mechanism_confusion": {
+                "description": "Có thể biết khái niệm nhưng hiểu sai hoặc chưa hiểu cơ chế."
+            },
+            "calculation_error": {
+                "description": "Sai trong thao tác hoặc logic tính toán."
+            },
+            "data_interpretation_error": {
+                "description": "Đọc hoặc diễn giải sai bảng, đồ thị hoặc dữ liệu."
+            },
+            "reasoning_error": {
+                "description": "Sai trong chuỗi suy luận."
+            },
+            "cross_node_reasoning_error": {
+                "description": "Không liên kết đúng nhiều knowledge nodes."
+            },
+            "careless_error": {
+                "description": "Sai do thao tác hoặc chú ý, không nhất thiết phản ánh knowledge gap."
+            },
+            "source_knowledge_gap": {
+                "description": "Failure tại node hiện tại có dấu hiệu bắt nguồn từ một source knowledge node yếu."
+            },
+            "meta_skill_gap": {
+                "description": "Knowledge có thể đã đủ nhưng học sinh còn yếu ở meta skill cần để xử lý câu hỏi."
+            }
+        },
+        "doesNotDefine": [
+            "remediation action",
+            "remediation node",
+            "remediation depth",
+            "next learning action"
+        ],
+        "ownership": {
+            "mastery": "Ghi nhận failure evidence và failure pattern.",
+            "remediation": "Chẩn đoán nguồn lỗi và xây dựng remediation plan.",
+            "adaptive": "Quyết định next action dựa trên mastery state và remediation result."
+        }
+    },
+    "metaSkillEvidence": {
+        "principle": "Meta skill và knowledge mastery là hai loại năng lực liên quan nhưng không đồng nhất.",
+        "knowledgeFailureDueToMetaSkill": "Failure chủ yếu do meta skill không được tự động diễn giải thành knowledge mastery thấp.",
+        "examples": [
+            "đọc bảng số liệu",
+            "đọc đồ thị",
+            "phân tích thí nghiệm",
+            "suy luận từ dữ liệu",
+            "xác suất sinh học",
+            "tính toán",
+            "liên kết nhiều chương",
+            "suy luận ngược"
+        ]
+    },
+    "contextEvidence": {
+        "contextDiversityMatters": true,
+        "principle": "Evidence từ nhiều context và representation độc lập có giá trị xác nhận mastery cao hơn việc lặp lại nhiều câu có cùng cấu trúc.",
+        "contextExamples": [
+            "direct concept question",
+            "numeric problem",
+            "table or graph",
+            "experiment",
+            "real-world scenario",
+            "reverse reasoning",
+            "cross-node problem"
+        ],
+        "important": "Cách context diversity ảnh hưởng confidence hoặc mastery được quy định trong mastery/rules.json."
+    },
+    "attemptEvidenceContract": {
+        "description": "Các trường cần thiết để Mastery Engine có thể diễn giải một attempt thành evidence.",
+        "requiredFields": [
+            "questionId",
+            "primaryNode",
+            "evidence",
+            "difficulty",
+            "result"
+        ],
+        "optionalFields": [
+            "nodes",
+            "secondaryNodes",
+            "score",
+            "failureSignature",
+            "skills",
+            "hintUsed",
+            "contextId",
+            "lessonId",
+            "attemptNumber",
+            "timestamp"
+        ],
+        "resultValues": [
+            "correct",
+            "wrong",
+            "partial",
+            "skipped"
+        ]
+    },
+    "ownership": {
+        "questionContract": {
+            "owns": [
+                "question evidence dimension",
+                "question difficulty",
+                "question mode",
+                "directly measured nodes",
+                "possible failure signature references"
+            ]
+        },
+        "evidenceModel": {
+            "owns": [
+                "meaning of evidence dimensions",
+                "evidence semantics",
+                "independent evidence semantics",
+                "transfer evidence semantics",
+                "failure evidence semantics",
+                "multi-node evidence semantics"
+            ]
+        },
+        "masteryRules": {
+            "owns": [
+                "evidence weights",
+                "attempt weights",
+                "difficulty weights",
+                "evidence update formula",
+                "learning rate",
+                "decay",
+                "mastery thresholds",
+                "mastery promotion",
+                "mastery downgrade",
+                "confidence calculation",
+                "retest mastery rules"
+            ]
+        },
+        "remediationEngine": {
+            "owns": [
+                "failure diagnosis",
+                "source selection",
+                "remediation strategy",
+                "remediation depth",
+                "remediation plan"
+            ]
+        },
+        "adaptiveEngine": {
+            "owns": [
+                "next action",
+                "learning path decision"
+            ]
+        }
+    },
+    "validationRules": [
+        "evidence must be one of know, explain, apply, transfer",
+        "diagnostic must never be treated as an evidence dimension",
+        "primaryNode must be directly measured",
+        "primaryNode must appear in Question.nodes",
+        "secondaryNodes must not receive direct evidence automatically",
+        "prerequisites must not receive direct evidence automatically",
+        "transfer evidence must require a genuine transfer condition",
+        "failure signature must use the canonical failure taxonomy",
+        "evidence model must not define adaptive next action",
+        "evidence model must not define remediation strategy",
+        "evidence model must not duplicate mastery calculation rules from mastery/rules.json"
+    ],
+    "compatibility": {
+        "questionContract": "1.x",
+        "knowledgeMap": "4.x",
+        "masteryRules": "1.x"
+    },
+    "versioning": {
+        "currentVersion": "1.1.0",
+        "breakingChangeExamples": [
+            "thêm hoặc xóa evidence dimension",
+            "thay đổi ý nghĩa của know, explain, apply hoặc transfer",
+            "thay đổi semantics của direct evidence",
+            "thay đổi semantics của multi-node evidence"
+        ],
+        "minorChangeExamples": [
+            "bổ sung evidence quality category",
+            "bổ sung context type",
+            "bổ sung failure evidence metadata"
+        ],
+        "patchChangeExamples": [
+            "sửa mô tả",
+            "sửa lỗi chính tả",
+            "bổ sung example không thay đổi semantics"
+        ]
+    }
+}

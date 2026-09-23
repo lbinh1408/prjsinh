@@ -1,0 +1,887 @@
+{
+    "schemaVersion": "1.0.0",
+    "description": {
+        "purpose": "Định nghĩa các đường đi học tập và chuyển trạng thái của Adaptive Engine.",
+        "sourceOfTruth": true,
+        "doesNotContain": [
+            "student mastery",
+            "student evidence",
+            "knowledge content",
+            "question content",
+            "lesson content",
+            "question scoring rules"
+        ]
+    },
+    "actions": [
+        "LEARN",
+        "PRACTICE",
+        "CHALLENGE",
+        "REMEDIATE",
+        "RETEST",
+        "REVIEW",
+        "SKIP"
+    ],
+    "pathModel": {
+        "defaultPath": [
+            "LEARN",
+            "PRACTICE",
+            "CHALLENGE",
+            "RETEST",
+            "REVIEW"
+        ],
+        "description": "Đây là đường đi mặc định. Adaptive Engine có thể chuyển hướng bất cứ lúc nào khi phát hiện prerequisite gap, failure pattern, mastery gap hoặc trạng thái cần review."
+    },
+    "masteryPaths": {
+        "M0": {
+            "defaultAction": "LEARN",
+            "path": [
+                "LEARN",
+                "PRACTICE",
+                "CHALLENGE",
+                "RETEST",
+                "REVIEW"
+            ],
+            "transitions": [
+                {
+                    "from": "LEARN",
+                    "to": "PRACTICE",
+                    "condition": "concept_evidence_available"
+                },
+                {
+                    "from": "LEARN",
+                    "to": "REMEDIATE",
+                    "condition": "prerequisite_gap_detected"
+                },
+                {
+                    "from": "PRACTICE",
+                    "to": "CHALLENGE",
+                    "condition": "mastery_reaches_M3"
+                },
+                {
+                    "from": "PRACTICE",
+                    "to": "LEARN",
+                    "condition": "concept_or_mechanism_confusion"
+                },
+                {
+                    "from": "PRACTICE",
+                    "to": "REMEDIATE",
+                    "condition": "source_knowledge_gap_detected"
+                }
+            ]
+        },
+        "M1": {
+            "defaultAction": "LEARN",
+            "path": [
+                "LEARN",
+                "PRACTICE",
+                "CHALLENGE"
+            ],
+            "transitions": [
+                {
+                    "from": "LEARN",
+                    "to": "PRACTICE",
+                    "condition": "explain_evidence_is_sufficient"
+                },
+                {
+                    "from": "LEARN",
+                    "to": "REMEDIATE",
+                    "condition": "prerequisite_gap_detected"
+                },
+                {
+                    "from": "PRACTICE",
+                    "to": "LEARN",
+                    "condition": "explain_evidence_remains_weak"
+                },
+                {
+                    "from": "PRACTICE",
+                    "to": "REMEDIATE",
+                    "condition": "repeated_source_failure"
+                },
+                {
+                    "from": "PRACTICE",
+                    "to": "CHALLENGE",
+                    "condition": "mastery_reaches_M3"
+                }
+            ]
+        },
+        "M2": {
+            "defaultAction": "PRACTICE",
+            "path": [
+                "PRACTICE",
+                "CHALLENGE",
+                "RETEST",
+                "REVIEW"
+            ],
+            "transitions": [
+                {
+                    "from": "PRACTICE",
+                    "to": "CHALLENGE",
+                    "condition": "apply_evidence_reaches_threshold"
+                },
+                {
+                    "from": "PRACTICE",
+                    "to": "LEARN",
+                    "condition": "concept_or_mechanism_confusion"
+                },
+                {
+                    "from": "PRACTICE",
+                    "to": "REMEDIATE",
+                    "condition": "source_knowledge_gap_detected"
+                },
+                {
+                    "from": "CHALLENGE",
+                    "to": "RETEST",
+                    "condition": "M4_thresholds_satisfied"
+                },
+                {
+                    "from": "CHALLENGE",
+                    "to": "PRACTICE",
+                    "condition": "challenge_failed_once"
+                },
+                {
+                    "from": "CHALLENGE",
+                    "to": "REMEDIATE",
+                    "condition": "repeated_challenge_failure"
+                }
+            ]
+        },
+        "M3": {
+            "defaultAction": "CHALLENGE",
+            "path": [
+                "CHALLENGE",
+                "RETEST",
+                "REVIEW"
+            ],
+            "transitions": [
+                {
+                    "from": "CHALLENGE",
+                    "to": "RETEST",
+                    "condition": "M4_thresholds_satisfied"
+                },
+                {
+                    "from": "CHALLENGE",
+                    "to": "PRACTICE",
+                    "condition": "apply_evidence_below_threshold"
+                },
+                {
+                    "from": "CHALLENGE",
+                    "to": "REMEDIATE",
+                    "condition": "source_knowledge_gap_detected"
+                },
+                {
+                    "from": "CHALLENGE",
+                    "to": "REMEDIATE",
+                    "condition": "repeated_failure_signature"
+                },
+                {
+                    "from": "RETEST",
+                    "to": "REVIEW",
+                    "condition": "retest_passed"
+                },
+                {
+                    "from": "RETEST",
+                    "to": "CHALLENGE",
+                    "condition": "retest_failed_but_knowledge_remains_strong"
+                },
+                {
+                    "from": "RETEST",
+                    "to": "REMEDIATE",
+                    "condition": "retest_reveals_source_gap"
+                }
+            ]
+        },
+        "M4": {
+            "defaultAction": "RETEST",
+            "path": [
+                "RETEST",
+                "REVIEW"
+            ],
+            "transitions": [
+                {
+                    "from": "RETEST",
+                    "to": "REVIEW",
+                    "condition": "retest_passed"
+                },
+                {
+                    "from": "RETEST",
+                    "to": "PRACTICE",
+                    "condition": "retest_failed_and_apply_gap_detected"
+                },
+                {
+                    "from": "RETEST",
+                    "to": "CHALLENGE",
+                    "condition": "retest_failed_but_evidence_remains_strong"
+                },
+                {
+                    "from": "RETEST",
+                    "to": "REMEDIATE",
+                    "condition": "retest_reveals_source_gap"
+                },
+                {
+                    "from": "REVIEW",
+                    "to": "RETEST",
+                    "condition": "review_due_and_retest_required"
+                }
+            ]
+        }
+    },
+    "statusPaths": {
+        "developing": {
+            "allowedActions": [
+                "LEARN",
+                "PRACTICE",
+                "CHALLENGE",
+                "REMEDIATE"
+            ]
+        },
+        "mastered": {
+            "allowedActions": [
+                "RETEST",
+                "REVIEW",
+                "CHALLENGE"
+            ],
+            "preferredAction": "RETEST"
+        },
+        "stable": {
+            "allowedActions": [
+                "REVIEW",
+                "CHALLENGE",
+                "RETEST"
+            ],
+            "preferredAction": "REVIEW"
+        },
+        "weak": {
+            "allowedActions": [
+                "REMEDIATE",
+                "PRACTICE",
+                "LEARN",
+                "REVIEW"
+            ],
+            "preferredAction": "REMEDIATE"
+        }
+    },
+    "remediationPaths": {
+        "default": {
+            "entry": "REMEDIATE",
+            "path": [
+                "REMEDIATE",
+                "MINI_PRACTICE",
+                "MINI_PROBE",
+                "RETURN"
+            ]
+        },
+        "actions": [
+            "REMEDIATE",
+            "MINI_PRACTICE",
+            "MINI_PROBE",
+            "RETURN"
+        ],
+        "transitions": [
+            {
+                "from": "REMEDIATE",
+                "to": "MINI_PRACTICE",
+                "condition": "source_node_or_failure_signature_identified"
+            },
+            {
+                "from": "REMEDIATE",
+                "to": "MINI_PROBE",
+                "condition": "remediation_content_completed"
+            },
+            {
+                "from": "MINI_PROBE",
+                "to": "RETURN",
+                "condition": "probe_passed"
+            },
+            {
+                "from": "MINI_PROBE",
+                "to": "REMEDIATE",
+                "condition": "probe_failed"
+            }
+        ],
+        "returnRules": {
+            "afterSuccessfulRemediation": [
+                "return_to_original_node",
+                "retest_original_failure_context"
+            ],
+            "afterFailedRemediation": [
+                "check_deeper_prerequisite",
+                "check_meta_skill",
+                "switch_representation"
+            ]
+        },
+        "maximumDepth": 3
+    },
+    "failurePaths": {
+        "singleFailure": {
+            "action": "CONTINUE_OR_RETRY",
+            "next": [
+                "same_node_retry",
+                "different_question",
+                "continue_current_path"
+            ]
+        },
+        "twoSameFailureSignatures": {
+            "action": "DIAGNOSE",
+            "next": [
+                "check_source_node",
+                "check_prerequisite",
+                "check_meta_skill"
+            ]
+        },
+        "threeSameFailureSignatures": {
+            "action": "DEEP_REMEDIATE",
+            "next": [
+                "REMEDIATE",
+                "MINI_PRACTICE",
+                "MINI_PROBE"
+            ]
+        },
+        "mixedFailureSignatures": {
+            "action": "FIND_COMMON_SOURCE",
+            "next": [
+                "check_common_prerequisite",
+                "check_meta_skill",
+                "check_representation"
+            ]
+        }
+    },
+    "challengePaths": {
+        "entryConditions": {
+            "preferredMastery": [
+                "M3",
+                "M4"
+            ],
+            "minimumEvidence": {
+                "apply": 0.70
+            }
+        },
+        "success": {
+            "next": [
+                "continue_challenge",
+                "RETEST"
+            ]
+        },
+        "singleFailure": {
+            "next": [
+                "PRACTICE",
+                "switch_context"
+            ]
+        },
+        "repeatedFailure": {
+            "next": [
+                "REMEDIATE",
+                "MINI_PROBE"
+            ]
+        },
+        "transferFailure": {
+            "next": [
+                "check_apply_evidence",
+                "check_cross_node_dependency",
+                "check_meta_skill"
+            ]
+        }
+    },
+    "retestPaths": {
+        "entryConditions": {
+            "mastery": "M4",
+            "status": [
+                "mastered",
+                "stable"
+            ]
+        },
+        "requirements": {
+            "differentQuestion": true,
+            "differentContext": true,
+            "minimumDifficulty": "D3",
+            "preferredQuestionTypes": [
+                "Q-A",
+                "Q-T"
+            ]
+        },
+        "passed": {
+            "next": "REVIEW",
+            "result": "stable"
+        },
+        "failed": {
+            "decision": [
+                {
+                    "condition": "evidence_remains_strong",
+                    "next": "CHALLENGE"
+                },
+                {
+                    "condition": "apply_or_transfer_gap",
+                    "next": "PRACTICE"
+                },
+                {
+                    "condition": "source_gap_detected",
+                    "next": "REMEDIATE"
+                }
+            ]
+        }
+    },
+    "reviewPaths": {
+        "entryConditions": {
+            "status": "stable"
+        },
+        "schedule": {
+            "intervalDays": [
+                7,
+                21,
+                45,
+                90
+            ]
+        },
+        "whenDue": {
+            "default": "REVIEW",
+            "ifEvidenceWeakens": "PRACTICE",
+            "ifFailurePatternAppears": "REMEDIATE",
+            "ifTransferGapAppears": "CHALLENGE"
+        },
+        "afterSuccessfulReview": {
+            "next": "CONTINUE_OR_NEXT_NODE"
+        }
+    },
+    "skipPaths": {
+        "entryConditions": {
+            "minimumMastery": "M3",
+            "required": [
+                "confidence_medium_or_high",
+                "no_recent_failure_pattern"
+            ]
+        },
+        "M4": {
+            "default": "SKIP",
+            "exceptions": [
+                "retest_due",
+                "review_due",
+                "dependency_required_for_transfer"
+            ]
+        },
+        "M3": {
+            "default": "PARTIAL_SKIP",
+            "next": [
+                "CHALLENGE"
+            ]
+        },
+        "M2": {
+            "default": "NO_SKIP",
+            "next": [
+                "PRACTICE"
+            ]
+        },
+        "M0_M1": {
+            "default": "NO_SKIP",
+            "next": [
+                "LEARN"
+            ]
+        },
+        "partialSkipDefinition": {
+            "description": "Bỏ phần giải thích cơ bản nhưng vẫn giữ phần practice/challenge để xác nhận khả năng vận dụng.",
+            "allowedSections": [
+                "practice",
+                "apply",
+                "challenge",
+                "transfer"
+            ]
+        }
+    },
+    "prerequisitePaths": {
+        "D1": {
+            "minimumUnlockMastery": "M2",
+            "ifBelowMinimum": {
+                "action": "REMEDIATE",
+                "path": [
+                    "CHECK_PREREQUISITE",
+                    "REMEDIATE",
+                    "MINI_PROBE",
+                    "RETURN"
+                ]
+            }
+        },
+        "D2": {
+            "blocking": false,
+            "action": "CONTINUE",
+            "exception": "may become blocking if repeated failure indicates source dependency"
+        },
+        "D3": {
+            "blocking": false,
+            "role": "transfer_dependency",
+            "action": "challenge_or_remediate_when_transfer_fails"
+        }
+    },
+    "modePaths": {
+        "HOC_NHANH": {
+            "principle": "Ưu tiên tốc độ nhưng không bỏ qua prerequisite và bằng chứng cốt lõi.",
+            "defaultPath": [
+                "DIAGNOSTIC",
+                "SKIP_KNOWN",
+                "PRACTICE",
+                "CHALLENGE",
+                "RETEST"
+            ],
+            "rules": {
+                "skipKnown": true,
+                "preferShortPractice": true,
+                "preferHighInformationQuestions": true,
+                "avoidLongExplanationWhenMasterySufficient": true,
+                "doNotSkipD1Prerequisite": true
+            },
+            "masteryRouting": {
+                "M0": "LEARN",
+                "M1": "LEARN",
+                "M2": "PRACTICE",
+                "M3": "CHALLENGE",
+                "M4": "RETEST"
+            }
+        },
+        "HOC_SAU": {
+            "principle": "Ưu tiên cơ chế, liên kết kiến thức, transfer và độ bền.",
+            "defaultPath": [
+                "DIAGNOSTIC",
+                "LEARN",
+                "MECHANISM",
+                "PRACTICE",
+                "CROSS_NODE",
+                "CHALLENGE",
+                "RETEST"
+            ],
+            "rules": {
+                "skipKnown": "partial",
+                "preferMechanism": true,
+                "preferCrossNode": true,
+                "preferTransfer": true,
+                "requireStrongerEvidence": true
+            }
+        },
+        "ON_THI": {
+            "principle": "Ưu tiên khả năng giải quyết dạng câu hỏi và điểm yếu có liên quan đến mục tiêu thi.",
+            "defaultPath": [
+                "DIAGNOSTIC",
+                "PRACTICE",
+                "CHALLENGE",
+                "TRANSFER",
+                "RETEST",
+                "REVIEW"
+            ],
+            "rules": {
+                "skipKnown": true,
+                "prioritizeWeakNodes": true,
+                "prioritizeExamRelevantNodes": true,
+                "prioritizeMetaSkills": true,
+                "preferMixedQuestions": true,
+                "preferTimedPractice": true
+            }
+        }
+    },
+    "metaSkillPaths": {
+        "trigger": "failure_is_likely_caused_by_meta_skill",
+        "S001": {
+            "skill": "Đọc bảng số liệu",
+            "path": [
+                "META_DIAGNOSTIC",
+                "META_PRACTICE",
+                "RETURN_TO_KNOWLEDGE"
+            ]
+        },
+        "S002": {
+            "skill": "Đọc đồ thị",
+            "path": [
+                "META_DIAGNOSTIC",
+                "META_PRACTICE",
+                "RETURN_TO_KNOWLEDGE"
+            ]
+        },
+        "S003": {
+            "skill": "Phân tích thí nghiệm",
+            "path": [
+                "META_DIAGNOSTIC",
+                "META_PRACTICE",
+                "RETURN_TO_KNOWLEDGE"
+            ]
+        },
+        "S004": {
+            "skill": "Suy luận từ dữ liệu",
+            "path": [
+                "META_DIAGNOSTIC",
+                "META_PRACTICE",
+                "RETURN_TO_KNOWLEDGE"
+            ]
+        },
+        "S005": {
+            "skill": "Phân tích phát biểu Đ/S",
+            "path": [
+                "META_DIAGNOSTIC",
+                "META_PRACTICE",
+                "RETURN_TO_KNOWLEDGE"
+            ]
+        },
+        "S006": {
+            "skill": "Tìm điều kiện ẩn",
+            "path": [
+                "META_DIAGNOSTIC",
+                "META_PRACTICE",
+                "RETURN_TO_KNOWLEDGE"
+            ]
+        },
+        "S007": {
+            "skill": "Xác suất sinh học",
+            "path": [
+                "META_DIAGNOSTIC",
+                "META_PRACTICE",
+                "RETURN_TO_KNOWLEDGE"
+            ]
+        },
+        "S008": {
+            "skill": "Tính toán chuỗi",
+            "path": [
+                "META_DIAGNOSTIC",
+                "META_PRACTICE",
+                "RETURN_TO_KNOWLEDGE"
+            ]
+        },
+        "S009": {
+            "skill": "Liên kết nhiều chương",
+            "path": [
+                "META_DIAGNOSTIC",
+                "META_PRACTICE",
+                "CROSS_NODE",
+                "RETURN_TO_KNOWLEDGE"
+            ]
+        },
+        "S010": {
+            "skill": "Suy luận ngược",
+            "path": [
+                "META_DIAGNOSTIC",
+                "META_PRACTICE",
+                "RETURN_TO_KNOWLEDGE"
+            ]
+        },
+        "S011": {
+            "skill": "Câu hỏi tổng hợp",
+            "path": [
+                "META_DIAGNOSTIC",
+                "META_PRACTICE",
+                "CROSS_NODE",
+                "RETURN_TO_KNOWLEDGE"
+            ]
+        }
+    },
+    "fatiguePaths": {
+        "signals": {
+            "fourConsecutiveWrong": {
+                "next": "SHORT_REVIEW_OR_BREAK"
+            },
+            "threeConsecutiveSkip": {
+                "next": "REDUCE_DIFFICULTY"
+            },
+            "carelessErrorPattern": {
+                "next": "BREAK_AND_RETRY"
+            },
+            "longResponseTime": {
+                "next": "REDUCE_LOAD"
+            }
+        },
+        "principle": "Không được tự động kết luận fatigue là knowledge gap."
+    },
+    "antiLoopPaths": {
+        "sameNodeSameAction": {
+            "maximum": 2,
+            "afterLimit": [
+                "CHANGE_REPRESENTATION",
+                "CHANGE_QUESTION_TYPE",
+                "DIAGNOSTIC"
+            ]
+        },
+        "sameFailureSignature": {
+            "maximum": 3,
+            "afterLimit": [
+                "CHECK_PREREQUISITE",
+                "CHECK_META_SKILL",
+                "DEEP_REMEDIATION"
+            ]
+        },
+        "sameQuestion": {
+            "maximum": 2,
+            "afterLimit": [
+                "NEW_QUESTION",
+                "NEW_CONTEXT"
+            ]
+        }
+    },
+    "studentChoicePaths": {
+        "allowedChoices": [
+            "CONTINUE_RECOMMENDED",
+            "REVIEW",
+            "CHALLENGE",
+            "CHOOSE_DIFFERENT_NODE"
+        ],
+        "rules": {
+            "continueRecommended": {
+                "allowed": true
+            },
+            "review": {
+                "allowed": true
+            },
+            "challenge": {
+                "allowed": true,
+                "minimumMastery": "M2"
+            },
+            "chooseDifferentNode": {
+                "allowed": true
+            },
+            "bypassD1Prerequisite": {
+                "allowed": false
+            }
+        }
+    },
+    "sessionTransitions": {
+        "short": {
+            "timeBudgetMinutes": 5,
+            "preferredActions": [
+                "REVIEW",
+                "RETRY",
+                "MINI_REMEDIATION"
+            ],
+            "maxNewNodes": 2
+        },
+        "normal": {
+            "timeBudgetMinutes": 15,
+            "preferredActions": [
+                "PRACTICE",
+                "REMEDIATE",
+                "CHALLENGE"
+            ],
+            "maxNewNodes": 4
+        },
+        "long": {
+            "timeBudgetMinutes": 30,
+            "preferredActions": [
+                "LEARN",
+                "PRACTICE",
+                "CHALLENGE"
+            ],
+            "maxNewNodes": 4
+        },
+        "deep": {
+            "timeBudgetMinutes": 60,
+            "preferredActions": [
+                "LEARN",
+                "PRACTICE",
+                "TRANSFER",
+                "CROSS_NODE"
+            ],
+            "maxNewNodes": 7
+        },
+        "extended": {
+            "timeBudgetMinutes": 90,
+            "preferredActions": [
+                "DEEP_CLUSTER",
+                "INTEGRATED_CHALLENGE",
+                "RETEST"
+            ],
+            "maxNewNodes": 7
+        }
+    },
+    "completionPaths": {
+        "nodeCompletion": {
+            "condition": "lesson_or_practice_completed",
+            "important": "Completion does not imply mastery.",
+            "next": [
+                "CHECK_MASTERY",
+                "CHECK_FAILURE",
+                "CHECK_PREREQUISITE",
+                "SELECT_NEXT_NODE"
+            ]
+        },
+        "masteryCompletion": {
+            "condition": "required_mastery_threshold_reached",
+            "next": [
+                "CHALLENGE",
+                "RETEST"
+            ]
+        },
+        "stableCompletion": {
+            "condition": "M4_and_successful_retest",
+            "next": [
+                "REVIEW",
+                "SELECT_NEXT_NODE"
+            ]
+        }
+    },
+    "globalTransitionPriority": [
+        {
+            "priority": 1,
+            "condition": "D1_prerequisite_below_M2",
+            "action": "REMEDIATE"
+        },
+        {
+            "priority": 2,
+            "condition": "deep_failure_pattern",
+            "action": "REMEDIATE"
+        },
+        {
+            "priority": 3,
+            "condition": "source_knowledge_gap",
+            "action": "REMEDIATE"
+        },
+        {
+            "priority": 4,
+            "condition": "meta_skill_gap",
+            "action": "ROUTE_META_SKILL"
+        },
+        {
+            "priority": 5,
+            "condition": "retest_due",
+            "action": "RETEST"
+        },
+        {
+            "priority": 6,
+            "condition": "review_due",
+            "action": "REVIEW"
+        },
+        {
+            "priority": 7,
+            "condition": "M0_or_M1",
+            "action": "LEARN"
+        },
+        {
+            "priority": 8,
+            "condition": "M2",
+            "action": "PRACTICE"
+        },
+        {
+            "priority": 9,
+            "condition": "M3",
+            "action": "CHALLENGE"
+        },
+        {
+            "priority": 10,
+            "condition": "M4",
+            "action": "RETEST"
+        }
+    ],
+    "terminalStates": {
+        "continue_learning": {
+            "description": "Node chưa đạt mastery mục tiêu.",
+            "isTerminal": false
+        },
+        "mastered": {
+            "description": "Đạt M4 nhưng chưa có retest.",
+            "isTerminal": false
+        },
+        "stable": {
+            "description": "Đạt M4 và vượt qua retest.",
+            "isTerminal": false,
+            "next": "REVIEW"
+        },
+        "blocked": {
+            "description": "Node đang bị chặn bởi D1 prerequisite.",
+            "isTerminal": false,
+            "next": "REMEDIATE"
+        },
+        "session_complete": {
+            "description": "Hết thời gian hoặc đạt mục tiêu phiên học.",
+            "isTerminal": true
+        }
+    }
+}

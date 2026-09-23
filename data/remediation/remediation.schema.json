@@ -1,0 +1,590 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://example.com/schemas/remediation/remediation.schema.json",
+    "title": "Remediation Plan Schema",
+    "description": "Contract for the output of the Remediation Engine. Defines where a learning weakness comes from, what should be repaired, how it should be checked, and how the student returns to the original learning target.",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "schemaVersion",
+        "remediationId",
+        "studentId",
+        "timestamp",
+        "trigger",
+        "target",
+        "diagnosis",
+        "plan",
+        "probe",
+        "return",
+        "constraints",
+        "source"
+    ],
+    "properties": {
+        "schemaVersion": {
+            "type": "string",
+            "const": "1.0.0"
+        },
+        "remediationId": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Unique identifier for this remediation plan."
+        },
+        "studentId": {
+            "type": "string",
+            "minLength": 1
+        },
+        "timestamp": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "trigger": {
+            "$ref": "#/$defs/trigger"
+        },
+        "target": {
+            "$ref": "#/$defs/target"
+        },
+        "diagnosis": {
+            "$ref": "#/$defs/diagnosis"
+        },
+        "plan": {
+            "$ref": "#/$defs/plan"
+        },
+        "probe": {
+            "$ref": "#/$defs/probe"
+        },
+        "return": {
+            "$ref": "#/$defs/returnPlan"
+        },
+        "constraints": {
+            "$ref": "#/$defs/constraints"
+        },
+        "source": {
+            "$ref": "#/$defs/source"
+        },
+        "previousRemediationId": {
+            "type": "string",
+            "minLength": 1
+        }
+    },
+    "$defs": {
+        "trigger": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "type",
+                "failureSignature"
+            ],
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "ATTEMPT_FAILURE",
+                        "REPEATED_FAILURE",
+                        "PREREQUISITE_GAP",
+                        "SOURCE_KNOWLEDGE_GAP",
+                        "META_SKILL_GAP",
+                        "TRANSFER_FAILURE",
+                        "RETEST_FAILURE",
+                        "ADAPTIVE_ESCALATION"
+                    ]
+                },
+                "attemptId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "questionId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "masteryUpdateId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "failureSignature": {
+                    "$ref": "#/$defs/failureSignature"
+                },
+                "occurrenceCount": {
+                    "type": "integer",
+                    "minimum": 1
+                },
+                "repeated": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "target": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "originalNodeId"
+            ],
+            "properties": {
+                "originalNodeId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "The knowledge node where the student originally failed."
+                },
+                "sourceNodeId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "The prerequisite/source node believed to cause the weakness."
+                },
+                "supportingNodeIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "uniqueItems": true
+                },
+                "metaSkillId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "targetType": {
+                    "type": "string",
+                    "enum": [
+                        "SOURCE_NODE",
+                        "ORIGINAL_NODE",
+                        "SUPPORTING_NODE",
+                        "META_SKILL",
+                        "MULTI_NODE"
+                    ]
+                }
+            }
+        },
+        "diagnosis": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "failureSignature",
+                "confidence",
+                "evidence",
+                "rootCauseType"
+            ],
+            "properties": {
+                "failureSignature": {
+                    "$ref": "#/$defs/failureSignature"
+                },
+                "confidence": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "evidence": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/diagnosticEvidence"
+                    },
+                    "minItems": 1
+                },
+                "rootCauseType": {
+                    "type": "string",
+                    "enum": [
+                        "PREREQUISITE_GAP",
+                        "CONCEPT_GAP",
+                        "MECHANISM_GAP",
+                        "PROCEDURE_GAP",
+                        "DATA_HANDLING_GAP",
+                        "REASONING_GAP",
+                        "CROSS_NODE_GAP",
+                        "META_SKILL_GAP",
+                        "UNKNOWN"
+                    ]
+                },
+                "alternativeCauses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/alternativeCause"
+                    }
+                }
+            }
+        },
+        "diagnosticEvidence": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "type",
+                "description"
+            ],
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "FAILED_ATTEMPT",
+                        "REPEATED_FAILURE",
+                        "MASTERY_EVIDENCE",
+                        "DEPENDENCY",
+                        "QUESTION_DIAGNOSTIC",
+                        "META_SKILL_EVIDENCE"
+                    ]
+                },
+                "attemptId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "questionId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "nodeId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "description": {
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
+        },
+        "alternativeCause": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "type",
+                "confidence"
+            ],
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "PREREQUISITE_GAP",
+                        "CONCEPT_GAP",
+                        "MECHANISM_GAP",
+                        "PROCEDURE_GAP",
+                        "DATA_HANDLING_GAP",
+                        "REASONING_GAP",
+                        "CROSS_NODE_GAP",
+                        "META_SKILL_GAP"
+                    ]
+                },
+                "nodeId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "metaSkillId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "confidence": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                }
+            }
+        },
+        "plan": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "strategy",
+                "steps",
+                "depth"
+            ],
+            "properties": {
+                "strategy": {
+                    "type": "string",
+                    "enum": [
+                        "REBUILD_FOUNDATION",
+                        "RETEACH_CONCEPT",
+                        "EXPLAIN_MECHANISM",
+                        "GUIDED_PRACTICE",
+                        "PROCEDURE_REPAIR",
+                        "DATA_INTERPRETATION",
+                        "REASONING_REPAIR",
+                        "CROSS_NODE_REPAIR",
+                        "META_SKILL_TRAINING",
+                        "MINIMAL_REPAIR"
+                    ]
+                },
+                "steps": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/remediationStep"
+                    },
+                    "minItems": 1,
+                    "maxItems": 10
+                },
+                "depth": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 3
+                },
+                "estimatedMinutes": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 180
+                }
+            }
+        },
+        "remediationStep": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "stepId",
+                "type",
+                "targetNodeIds"
+            ],
+            "properties": {
+                "stepId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "MICRO_LEARN",
+                        "EXAMPLE",
+                        "CONCEPT_CHECK",
+                        "MECHANISM_CHECK",
+                        "GUIDED_PRACTICE",
+                        "MINI_PRACTICE",
+                        "ERROR_ANALYSIS",
+                        "DATA_INTERPRETATION",
+                        "REASONING_STEP",
+                        "CROSS_NODE_LINK",
+                        "META_SKILL_PRACTICE"
+                    ]
+                },
+                "targetNodeIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "uniqueItems": true
+                },
+                "metaSkillIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "uniqueItems": true
+                },
+                "purpose": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "questionTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "Q-K",
+                            "Q-E",
+                            "Q-A",
+                            "Q-T",
+                            "Q-D"
+                        ]
+                    },
+                    "uniqueItems": true
+                },
+                "difficulty": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "D1",
+                            "D2",
+                            "D3",
+                            "D4",
+                            "D5"
+                        ]
+                    },
+                    "uniqueItems": true
+                }
+            }
+        },
+        "probe": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "required",
+                "type",
+                "successCriteria"
+            ],
+            "properties": {
+                "required": {
+                    "type": "boolean"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "MINI_PROBE",
+                        "RETEST",
+                        "NONE"
+                    ]
+                },
+                "targetNodeId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "questionTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "Q-K",
+                            "Q-E",
+                            "Q-A",
+                            "Q-T"
+                        ]
+                    },
+                    "uniqueItems": true
+                },
+                "difficulty": {
+                    "type": "string",
+                    "enum": [
+                        "D1",
+                        "D2",
+                        "D3",
+                        "D4",
+                        "D5"
+                    ]
+                },
+                "successCriteria": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "minimumResult"
+                    ],
+                    "properties": {
+                        "minimumResult": {
+                            "type": "string",
+                            "enum": [
+                                "correct",
+                                "partial_or_better",
+                                "mastery_evidence_improved"
+                            ]
+                        },
+                        "requiredEvidenceDimension": {
+                            "type": "string",
+                            "enum": [
+                                "know",
+                                "explain",
+                                "apply",
+                                "transfer"
+                            ]
+                        },
+                        "minimumEvidence": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1
+                        }
+                    }
+                }
+            }
+        },
+        "returnPlan": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "targetNodeId",
+                "condition"
+            ],
+            "properties": {
+                "targetNodeId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "condition": {
+                    "type": "string",
+                    "enum": [
+                        "PROBE_PASSED",
+                        "REMEDIATION_COMPLETED",
+                        "MINIMUM_EVIDENCE_REACHED",
+                        "STUDENT_CHOICE",
+                        "SESSION_END"
+                    ]
+                },
+                "action": {
+                    "type": "string",
+                    "enum": [
+                        "PRACTICE",
+                        "CHALLENGE",
+                        "RETEST",
+                        "REVIEW"
+                    ]
+                },
+                "preserveOriginalFailure": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "constraints": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "maxDepth": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 3
+                },
+                "maxMinutes": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 90
+                },
+                "maxQuestions": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 20
+                },
+                "avoidExactQuestion": {
+                    "type": "boolean"
+                },
+                "avoidSameContext": {
+                    "type": "boolean"
+                },
+                "respectPrerequisites": {
+                    "type": "boolean"
+                },
+                "allowEscalation": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "source": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "engine",
+                "rulesVersion"
+            ],
+            "properties": {
+                "engine": {
+                    "type": "string",
+                    "const": "RemediationEngine"
+                },
+                "rulesVersion": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "knowledgeMapVersion": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "masteryUpdateId": {
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
+        },
+        "failureSignature": {
+            "type": "string",
+            "enum": [
+                "prerequisite_gap",
+                "concept_confusion",
+                "mechanism_confusion",
+                "calculation_error",
+                "data_interpretation_error",
+                "reasoning_error",
+                "cross_node_reasoning_error",
+                "careless_error",
+                "source_knowledge_gap",
+                "meta_skill_gap"
+            ]
+        }
+    }
+}

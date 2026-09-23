@@ -1,0 +1,411 @@
+{
+    "schemaVersion": "1.0.0",
+    "student": {
+        "studentId": "student-001",
+        "displayName": "Học sinh 01",
+        "grade": 11,
+        "curriculum": "KNTT",
+        "target": {
+            "mode": "ON_THI",
+            "exam": "THPT",
+            "subject": "Sinh học"
+        }
+    },
+    "learning": {
+        "currentMode": "HOC_NHANH",
+        "session": {
+            "sessionId": "session-2026-09-20-001",
+            "startedAt": "2026-09-20T09:00:00+07:00",
+            "lastActivityAt": "2026-09-20T10:05:00+07:00",
+            "timeBudgetMinutes": 60,
+            "timeUsedMinutes": 35,
+            "consecutiveWrong": 1,
+            "consecutiveSkip": 0,
+            "consecutiveRemediation": 0,
+            "fatigue": {
+                "level": "normal",
+                "signals": []
+            }
+        },
+        "current": {
+            "clusterId": "cluster-03-dna-to-protein",
+            "lessonId": "dna-to-trait-01",
+            "nodeId": "K206",
+            "action": "PRACTICE"
+        }
+    },
+    "knowledge": {
+        "K013": {
+            "mastery": "M4",
+            "status": "stable",
+            "evidence": {
+                "know": 0.96,
+                "explain": 0.91,
+                "apply": 0.88,
+                "transfer": 0.82
+            },
+            "confidence": "high",
+            "attempts": 12,
+            "correct": 11,
+            "wrong": 1,
+            "lastAttemptAt": "2026-09-12T10:20:00+07:00",
+            "lastSuccessAt": "2026-09-12T10:20:00+07:00",
+            "lastFailure": null,
+            "retest": {
+                "required": false,
+                "dueAt": null,
+                "lastRetestAt": "2026-09-12T10:20:00+07:00",
+                "passed": true
+            },
+            "review": {
+                "lastReviewedAt": "2026-09-12T10:20:00+07:00",
+                "nextReviewAt": "2026-10-03T10:20:00+07:00"
+            }
+        },
+        "K200": {
+            "mastery": "M4",
+            "status": "mastered",
+            "evidence": {
+                "know": 0.98,
+                "explain": 0.94,
+                "apply": 0.91,
+                "transfer": 0.76
+            },
+            "confidence": "high",
+            "attempts": 10,
+            "correct": 9,
+            "wrong": 1,
+            "lastAttemptAt": "2026-09-18T09:30:00+07:00",
+            "lastSuccessAt": "2026-09-18T09:30:00+07:00",
+            "lastFailure": {
+                "questionId": "Q-K200-004",
+                "failureSignature": "careless_error",
+                "at": "2026-09-10T09:30:00+07:00"
+            },
+            "retest": {
+                "required": false,
+                "dueAt": null,
+                "lastRetestAt": null,
+                "passed": false
+            },
+            "review": {
+                "lastReviewedAt": "2026-09-18T09:30:00+07:00",
+                "nextReviewAt": "2026-10-02T09:30:00+07:00"
+            }
+        },
+        "K201": {
+            "mastery": "M4",
+            "status": "mastered",
+            "evidence": {
+                "know": 0.95,
+                "explain": 0.89,
+                "apply": 0.84,
+                "transfer": 0.71
+            },
+            "confidence": "high",
+            "attempts": 8,
+            "correct": 8,
+            "wrong": 0,
+            "lastAttemptAt": "2026-09-18T09:45:00+07:00",
+            "lastSuccessAt": "2026-09-18T09:45:00+07:00",
+            "lastFailure": null,
+            "retest": {
+                "required": false,
+                "dueAt": null,
+                "lastRetestAt": null,
+                "passed": false
+            },
+            "review": {
+                "lastReviewedAt": "2026-09-18T09:45:00+07:00",
+                "nextReviewAt": "2026-10-02T09:45:00+07:00"
+            }
+        },
+        "K204": {
+            "mastery": "M3",
+            "status": "developing",
+            "evidence": {
+                "know": 0.91,
+                "explain": 0.78,
+                "apply": 0.67,
+                "transfer": 0.42
+            },
+            "confidence": "medium",
+            "attempts": 9,
+            "correct": 7,
+            "wrong": 2,
+            "lastAttemptAt": "2026-09-19T09:10:00+07:00",
+            "lastSuccessAt": "2026-09-19T09:10:00+07:00",
+            "lastFailure": {
+                "questionId": "Q-A204-003",
+                "failureSignature": "mechanism_confusion",
+                "at": "2026-09-19T09:05:00+07:00"
+            },
+            "retest": {
+                "required": false,
+                "dueAt": null,
+                "lastRetestAt": null,
+                "passed": false
+            },
+            "review": {
+                "lastReviewedAt": "2026-09-19T09:10:00+07:00",
+                "nextReviewAt": null
+            }
+        },
+        "K205": {
+            "mastery": "M3",
+            "status": "developing",
+            "evidence": {
+                "know": 0.93,
+                "explain": 0.81,
+                "apply": 0.69,
+                "transfer": 0.48
+            },
+            "confidence": "medium",
+            "attempts": 7,
+            "correct": 6,
+            "wrong": 1,
+            "lastAttemptAt": "2026-09-19T09:20:00+07:00",
+            "lastSuccessAt": "2026-09-19T09:20:00+07:00",
+            "lastFailure": null,
+            "retest": {
+                "required": false,
+                "dueAt": null,
+                "lastRetestAt": null,
+                "passed": false
+            },
+            "review": {
+                "lastReviewedAt": "2026-09-19T09:20:00+07:00",
+                "nextReviewAt": null
+            }
+        },
+        "K206": {
+            "mastery": "M2",
+            "status": "developing",
+            "evidence": {
+                "know": 0.82,
+                "explain": 0.42,
+                "apply": 0.20,
+                "transfer": 0.00
+            },
+            "confidence": "low",
+            "attempts": 5,
+            "correct": 3,
+            "wrong": 2,
+            "lastAttemptAt": "2026-09-20T09:55:00+07:00",
+            "lastSuccessAt": "2026-09-20T09:50:00+07:00",
+            "lastFailure": {
+                "questionId": "Q-A206-002",
+                "failureSignature": "source_knowledge_gap",
+                "sourceNodeId": "K202",
+                "at": "2026-09-20T09:55:00+07:00"
+            },
+            "failureHistory": [
+                {
+                    "failureSignature": "source_knowledge_gap",
+                    "sourceNodeId": "K202",
+                    "count": 2,
+                    "lastAt": "2026-09-20T09:55:00+07:00"
+                }
+            ],
+            "retest": {
+                "required": false,
+                "dueAt": null,
+                "lastRetestAt": null,
+                "passed": false
+            },
+            "review": {
+                "lastReviewedAt": null,
+                "nextReviewAt": null
+            }
+        },
+        "K208": {
+            "mastery": "M2",
+            "status": "developing",
+            "evidence": {
+                "know": 0.84,
+                "explain": 0.58,
+                "apply": 0.31,
+                "transfer": 0.10
+            },
+            "confidence": "low",
+            "attempts": 4,
+            "correct": 2,
+            "wrong": 2,
+            "lastAttemptAt": "2026-09-20T10:00:00+07:00",
+            "lastSuccessAt": "2026-09-20T09:58:00+07:00",
+            "lastFailure": {
+                "questionId": "Q-T208-001",
+                "failureSignature": "cross_node_reasoning_error",
+                "sourceNodeId": "K206",
+                "at": "2026-09-20T10:00:00+07:00"
+            },
+            "failureHistory": [
+                {
+                    "failureSignature": "cross_node_reasoning_error",
+                    "sourceNodeId": "K206",
+                    "count": 1,
+                    "lastAt": "2026-09-20T10:00:00+07:00"
+                }
+            ],
+            "retest": {
+                "required": false,
+                "dueAt": null,
+                "lastRetestAt": null,
+                "passed": false
+            },
+            "review": {
+                "lastReviewedAt": null,
+                "nextReviewAt": null
+            }
+        }
+    },
+    "metaSkills": {
+        "S001": {
+            "mastery": "M3",
+            "evidence": 0.68,
+            "attempts": 6,
+            "wrong": 2,
+            "status": "developing",
+            "lastFailure": null
+        },
+        "S002": {
+            "mastery": "M2",
+            "evidence": 0.45,
+            "attempts": 5,
+            "wrong": 3,
+            "status": "weak",
+            "lastFailure": {
+                "questionId": "Q-S002-004",
+                "failureSignature": "data_interpretation_error",
+                "at": "2026-09-18T10:20:00+07:00"
+            }
+        },
+        "S003": {
+            "mastery": "M3",
+            "evidence": 0.72,
+            "attempts": 4,
+            "wrong": 1,
+            "status": "developing",
+            "lastFailure": null
+        }
+    },
+    "failurePatterns": {
+        "active": [
+            {
+                "signature": "mechanism_confusion",
+                "nodeId": "K204",
+                "count": 1,
+                "severity": "medium",
+                "lastAt": "2026-09-19T09:05:00+07:00"
+            },
+            {
+                "signature": "source_knowledge_gap",
+                "nodeId": "K206",
+                "sourceNodeId": "K202",
+                "count": 2,
+                "severity": "high",
+                "lastAt": "2026-09-20T09:55:00+07:00"
+            },
+            {
+                "signature": "cross_node_reasoning_error",
+                "nodeId": "K208",
+                "sourceNodeId": "K206",
+                "count": 1,
+                "severity": "medium",
+                "lastAt": "2026-09-20T10:00:00+07:00"
+            }
+        ]
+    },
+    "history": {
+        "recentActions": [
+            {
+                "action": "LEARN",
+                "nodeId": "K206",
+                "at": "2026-09-20T09:20:00+07:00"
+            },
+            {
+                "action": "PRACTICE",
+                "nodeId": "K206",
+                "at": "2026-09-20T09:45:00+07:00"
+            },
+            {
+                "action": "REMEDIATE",
+                "nodeId": "K202",
+                "at": "2026-09-20T09:55:00+07:00"
+            },
+            {
+                "action": "PRACTICE",
+                "nodeId": "K206",
+                "at": "2026-09-20T10:00:00+07:00"
+            }
+        ],
+        "recentQuestions": [
+            "Q-K206-001",
+            "Q-E206-001",
+            "Q-A206-002",
+            "Q-K202-004",
+            "Q-A206-003"
+        ]
+    },
+    "adaptive": {
+        "lastDecision": {
+            "action": "PRACTICE",
+            "nodeId": "K206",
+            "reason": [
+                "mastery_M2",
+                "apply_evidence_low",
+                "source_remediation_completed"
+            ],
+            "at": "2026-09-20T10:00:00+07:00"
+        },
+        "nextAction": {
+            "action": "PRACTICE",
+            "nodeId": "K206",
+            "priority": 145,
+            "selectionCriteria": {
+                "difficulty": [
+                    "D2",
+                    "D3"
+                ],
+                "evidence": [
+                    "explain",
+                    "apply"
+                ],
+                "questionTypes": [
+                    "Q-E",
+                    "Q-A"
+                ]
+            }
+        }
+    },
+    "progress": {
+        "nodes": {
+            "total": 150,
+            "unstarted": 132,
+            "learning": 6,
+            "mastered": 9,
+            "stable": 3
+        },
+        "clusters": {
+            "cluster-01": {
+                "status": "in_progress",
+                "progress": 0.35
+            },
+            "cluster-02": {
+                "status": "not_started",
+                "progress": 0.00
+            },
+            "cluster-03": {
+                "status": "in_progress",
+                "progress": 0.48
+            }
+        }
+    },
+    "preferences": {
+        "preferredSessionLength": "normal",
+        "preferredDifficulty": "adaptive",
+        "allowChallenge": true,
+        "allowSkipKnown": true,
+        "showDetailedFeedback": true
+    }
+}

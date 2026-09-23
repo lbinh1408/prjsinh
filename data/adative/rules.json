@@ -1,0 +1,1233 @@
+{
+    "schemaVersion": "1.0.0",
+    "rulesId": "biology-adaptive-rules-v1",
+    "subject": "biology",
+    "language": "vi",
+    "status": "final",
+    "purpose": {
+        "description": "Bộ luật quyết định hành động học tập tiếp theo dựa trên knowledge map, mastery state, evidence, failure signatures, prerequisite và mục tiêu học tập.",
+        "sourceOfTruth": {
+            "knowledge": "knowledge/knowledge-map-v4.json",
+            "mastery": "mastery/rules.json",
+            "questions": "questions/schema.json",
+            "lessons": "lessons/schema.json",
+            "studentState": "student-state.json"
+        },
+        "principle": "Adaptive Engine quyết định bước tiếp theo, không quyết định nội dung kiến thức hay cách tính mastery."
+    },
+    "architecture": {
+        "inputs": [
+            "studentState",
+            "knowledgeMap",
+            "masteryState",
+            "recentQuestionResults",
+            "failureSignatures",
+            "learningMode",
+            "timeBudget",
+            "sessionContext"
+        ],
+        "outputs": [
+            "nextAction",
+            "targetNode",
+            "sourceNode",
+            "lessonId",
+            "questionSelection",
+            "reason",
+            "priority",
+            "estimatedMinutes"
+        ],
+        "decisionFlow": [
+            "1. Xác định session mode",
+            "2. Xác định mục tiêu học tập",
+            "3. Kiểm tra prerequisite",
+            "4. Kiểm tra mastery",
+            "5. Kiểm tra failure signature",
+            "6. Kiểm tra retest/review",
+            "7. Tính priority",
+            "8. Chọn action",
+            "9. Chọn target node",
+            "10. Chọn delivery format",
+            "11. Tạo next-action payload"
+        ]
+    },
+    "actions": {
+        "LEARN": {
+            "name": "Học kiến thức",
+            "purpose": "Xây dựng kiến thức hoặc cơ chế mới.",
+            "typicalMastery": [
+                "M0",
+                "M1"
+            ]
+        },
+        "PRACTICE": {
+            "name": "Luyện tập",
+            "purpose": "Củng cố và nâng từ thông hiểu lên vận dụng.",
+            "typicalMastery": [
+                "M2"
+            ]
+        },
+        "CHALLENGE": {
+            "name": "Thử thách",
+            "purpose": "Đẩy từ vận dụng sang chuyển giao.",
+            "typicalMastery": [
+                "M3"
+            ]
+        },
+        "REMEDIATE": {
+            "name": "Khắc phục lỗ hổng",
+            "purpose": "Sửa prerequisite gap, knowledge gap hoặc failure signature.",
+            "typicalMastery": [
+                "M0",
+                "M1",
+                "M2",
+                "M3",
+                "M4"
+            ]
+        },
+        "RETEST": {
+            "name": "Kiểm tra lại",
+            "purpose": "Xác nhận mastery trong ngữ cảnh khác.",
+            "typicalMastery": [
+                "M4"
+            ]
+        },
+        "REVIEW": {
+            "name": "Ôn lại",
+            "purpose": "Duy trì kiến thức đã ổn định.",
+            "typicalStatus": [
+                "stable"
+            ]
+        },
+        "SKIP": {
+            "name": "Bỏ qua",
+            "purpose": "Không bắt học sinh học lại phần đã vững.",
+            "typicalStatus": [
+                "mastered",
+                "stable"
+            ]
+        }
+    },
+    "learningModes": {
+        "HOC_NHANH": {
+            "name": "Học nhanh",
+            "purpose": "Tối đa hóa tốc độ bằng cách bỏ qua phần đã vững và tập trung vào knowledge gap.",
+            "defaultStrategy": [
+                "DIAGNOSTIC",
+                "SKIP_KNOWN",
+                "LEARN_GAPS",
+                "PRACTICE_GAPS",
+                "CHALLENGE",
+                "MASTERY_CHECK"
+            ]
+        },
+        "HOC_SAU": {
+            "name": "Học sâu",
+            "purpose": "Tối đa hóa độ hiểu, cơ chế và transfer.",
+            "defaultStrategy": [
+                "CONCEPT",
+                "MECHANISM",
+                "GUIDED_PRACTICE",
+                "APPLY",
+                "CROSS_NODE",
+                "TRANSFER",
+                "RETEST"
+            ]
+        },
+        "ON_THI": {
+            "name": "Ôn thi",
+            "purpose": "Tập trung phát hiện và sửa lỗi nhanh.",
+            "defaultStrategy": [
+                "QUESTION",
+                "DIAGNOSE",
+                "REMEDIATE",
+                "RETRY",
+                "RETEST"
+            ]
+        }
+    },
+    "masteryActionRules": {
+        "M0": {
+            "defaultAction": "LEARN",
+            "reason": "Chưa có bằng chứng đủ tin cậy về kiến thức.",
+            "preferredDifficulty": [
+                "D1",
+                "D2"
+            ],
+            "preferredEvidence": [
+                "know",
+                "explain"
+            ]
+        },
+        "M1": {
+            "defaultAction": "LEARN",
+            "reason": "Đã nhận biết nhưng chưa hiểu ổn định.",
+            "preferredDifficulty": [
+                "D2"
+            ],
+            "preferredEvidence": [
+                "explain"
+            ]
+        },
+        "M2": {
+            "defaultAction": "PRACTICE",
+            "reason": "Đã hiểu nhưng cần luyện vận dụng.",
+            "preferredDifficulty": [
+                "D2",
+                "D3"
+            ],
+            "preferredEvidence": [
+                "explain",
+                "apply"
+            ]
+        },
+        "M3": {
+            "defaultAction": "CHALLENGE",
+            "reason": "Đã vận dụng được nhưng cần chuyển giao.",
+            "preferredDifficulty": [
+                "D3",
+                "D4",
+                "D5"
+            ],
+            "preferredEvidence": [
+                "apply",
+                "transfer"
+            ]
+        },
+        "M4": {
+            "defaultAction": "RETEST",
+            "reason": "Đã đạt mastery, cần xác nhận khả năng duy trì và chuyển giao.",
+            "preferredDifficulty": [
+                "D3",
+                "D4"
+            ],
+            "preferredEvidence": [
+                "apply",
+                "transfer"
+            ]
+        },
+        "stable": {
+            "defaultAction": "REVIEW",
+            "reason": "Đã ổn định, không cần học lại toàn bộ.",
+            "preferredDifficulty": [
+                "D3",
+                "D4"
+            ]
+        }
+    },
+    "statusOverrides": {
+        "weak": {
+            "priority": 100,
+            "action": "REMEDIATE",
+            "overrideDefaultMasteryAction": true
+        },
+        "mastered": {
+            "action": "RETEST",
+            "unless": {
+                "sessionMode": "HOC_NHANH",
+                "retestNotDue": true
+            }
+        },
+        "stable": {
+            "action": "REVIEW",
+            "unless": {
+                "reviewNotDue": true
+            }
+        }
+    },
+    "prerequisiteRules": {
+        "D1": {
+            "minimumMasteryForLearning": "M2",
+            "minimumMasteryForChallenge": "M2",
+            "blocking": true
+        },
+        "D2": {
+            "minimumMasteryForLearning": "M0",
+            "minimumMasteryForChallenge": "M0",
+            "blocking": false
+        },
+        "D3": {
+            "minimumMasteryForTransfer": "M0",
+            "blocking": false,
+            "affectsTransfer": true
+        },
+        "blockedNodeAction": {
+            "condition": "D1 prerequisite < M2",
+            "action": "REMEDIATE",
+            "target": "weakest_D1_prerequisite"
+        },
+        "importantRule": "Không yêu cầu prerequisite đạt M4 trước khi mở node."
+    },
+    "diagnosticRules": {
+        "entryDiagnostic": {
+            "enabled": true,
+            "purpose": "Xác định điểm bắt đầu.",
+            "maximumQuestions": 12,
+            "minimumQuestions": 3,
+            "selection": {
+                "include": [
+                    "know",
+                    "explain",
+                    "apply"
+                ],
+                "difficulty": [
+                    "D1",
+                    "D2",
+                    "D3"
+                ]
+            },
+            "decision": {
+                "strong": "SKIP_KNOWN",
+                "partial": "LEARN_GAPS",
+                "weak": "LEARN_FROM_PREREQUISITE"
+            }
+        },
+        "diagnosticDoesNotMeanMastery": true,
+        "diagnosticEvidenceWeight": 0.70
+    },
+    "acceleratedLearningRules": {
+        "enabled": true,
+        "principle": "Học sinh có kiến thức trước đó không phải học lại từ đầu.",
+        "skipCondition": {
+            "mastery": ">= targetMastery",
+            "confidence": "medium_or_higher",
+            "noRecentFailurePattern": true
+        },
+        "partialSkipCondition": {
+            "mastery": "M2_or_M3",
+            "weakEvidenceExists": true
+        },
+        "partialSkipAction": "SKIP_BASIC_TEACHING_AND_TARGET_WEAK_EVIDENCE",
+        "example": {
+            "nodeStates": {
+                "K200": "M4",
+                "K201": "M4",
+                "K204": "M3",
+                "K205": "M3",
+                "K206": "M2",
+                "K208": "M2"
+            },
+            "path": [
+                {
+                    "node": "K200",
+                    "action": "SKIP"
+                },
+                {
+                    "node": "K201",
+                    "action": "SKIP"
+                },
+                {
+                    "node": "K204",
+                    "action": "CHALLENGE"
+                },
+                {
+                    "node": "K205",
+                    "action": "CHALLENGE"
+                },
+                {
+                    "node": "K206",
+                    "action": "PRACTICE"
+                },
+                {
+                    "node": "K208",
+                    "action": "CHALLENGE"
+                }
+            ]
+        }
+    },
+    "remediationRules": {
+        "principle": "Không dạy lại toàn bộ lesson nếu lỗi chỉ nằm ở một nguồn cụ thể.",
+        "priorityOrder": [
+            "D1_prerequisite_gap",
+            "source_knowledge_gap",
+            "concept_confusion",
+            "mechanism_confusion",
+            "calculation_error",
+            "data_interpretation_error",
+            "reasoning_error",
+            "meta_skill_gap",
+            "careless_error"
+        ],
+        "failureSignatureRouting": {
+            "knowledge_gap": {
+                "action": "REMEDIATE",
+                "target": "sourceNode"
+            },
+            "prerequisite_gap": {
+                "action": "REMEDIATE",
+                "target": "weakestPrerequisite"
+            },
+            "concept_confusion": {
+                "action": "REMEDIATE",
+                "target": "sourceNode"
+            },
+            "mechanism_confusion": {
+                "action": "REMEDIATE",
+                "target": "sourceNode"
+            },
+            "calculation_error": {
+                "action": "PRACTICE",
+                "target": "relatedMetaSkillOrNode"
+            },
+            "data_interpretation_error": {
+                "action": "PRACTICE",
+                "target": "relatedMetaSkill"
+            },
+            "reasoning_error": {
+                "action": "CHALLENGE",
+                "target": "guidedReasoning"
+            },
+            "careless_error": {
+                "action": "RETRY",
+                "target": "sameNode"
+            }
+        },
+        "remediationFlow": [
+            "IDENTIFY_FAILURE",
+            "FIND_SOURCE_NODE",
+            "CHECK_SOURCE_MASTERY",
+            "REMEDIATE_SOURCE",
+            "MINI_PRACTICE",
+            "MINI_PROBE",
+            "RETURN_TO_ORIGINAL_NODE"
+        ],
+        "maximumRemediationDepth": 3,
+        "fallback": {
+            "action": "REMEDIATE",
+            "target": "primaryNode"
+        }
+    },
+    "retryRules": {
+        "enabled": true,
+        "condition": "wrong_answer",
+        "singleWrong": {
+            "action": "RETRY_OR_CONTINUE",
+            "doNotImmediatelyRemediate": true
+        },
+        "repeatedWrong": {
+            "sameFailureSignatureCount": 2,
+            "action": "REMEDIATE"
+        },
+        "thirdFailure": {
+            "sameFailureSignatureCount": 3,
+            "action": "DEEP_REMEDIATION"
+        },
+        "retryQuestion": {
+            "sameQuestionAllowed": false,
+            "sameConceptAllowed": true,
+            "differentQuestionPreferred": true
+        }
+    },
+    "challengeRules": {
+        "purpose": "Đẩy học sinh từ vận dụng sang chuyển giao.",
+        "entryCondition": {
+            "mastery": "M3",
+            "evidence.apply": ">= 0.70"
+        },
+        "questionSelection": {
+            "difficulty": [
+                "D3",
+                "D4"
+            ],
+            "evidence": [
+                "apply",
+                "transfer"
+            ]
+        },
+        "progression": [
+            "D3_apply",
+            "D4_transfer",
+            "D5_integrated"
+        ],
+        "failureDuringChallenge": {
+            "action": "DIAGNOSE",
+            "doNotImmediatelyDowngrade": true
+        }
+    },
+    "transferRules": {
+        "purpose": "Xác định học sinh có thể sử dụng kiến thức ngoài ngữ cảnh đã học hay không.",
+        "entryCondition": {
+            "mastery": "M3_or_M4"
+        },
+        "requiredForM4": true,
+        "selection": {
+            "difficulty": [
+                "D4",
+                "D5"
+            ],
+            "evidence": [
+                "transfer"
+            ]
+        },
+        "contextMustChange": true,
+        "allowedContextChanges": [
+            "new_biological_scenario",
+            "new_data",
+            "new_graph",
+            "new_experiment",
+            "cross_node",
+            "reverse_reasoning",
+            "real_world_context"
+        ],
+        "notTransfer": [
+            "same_question_reworded",
+            "same_context_with_numbers_changed",
+            "simple_recall"
+        ]
+    },
+    "retestRules": {
+        "purpose": "Kiểm tra mastery trong ngữ cảnh khác.",
+        "trigger": {
+            "mastery": "M4",
+            "status": [
+                "mastered",
+                "stable"
+            ]
+        },
+        "selection": {
+            "difficulty": [
+                "D3",
+                "D4"
+            ],
+            "evidence": [
+                "apply",
+                "transfer"
+            ]
+        },
+        "requirements": {
+            "differentQuestion": true,
+            "differentContext": true,
+            "samePrimaryNode": true
+        },
+        "passed": {
+            "action": "SET_STABLE"
+        },
+        "failed": {
+            "action": "REVIEW_OR_REMEDIATE",
+            "removeStable": true,
+            "resetMastery": false
+        }
+    },
+    "reviewRules": {
+        "purpose": "Duy trì kiến thức đã ổn định.",
+        "stableNode": {
+            "defaultAction": "REVIEW"
+        },
+        "reviewIntervals": {
+            "firstReviewDays": 7,
+            "secondReviewDays": 21,
+            "thirdReviewDays": 45,
+            "longTermReviewDays": 90
+        },
+        "reviewSelection": {
+            "prefer": [
+                "different_context",
+                "transfer",
+                "integrated_question"
+            ]
+        },
+        "noAutomaticDowngrade": true
+    },
+    "failurePatternRules": {
+        "singleFailure": {
+            "action": "UPDATE_EVIDENCE_ONLY"
+        },
+        "twoSameFailures": {
+            "action": "DIAGNOSE_SOURCE"
+        },
+        "threeSameFailures": {
+            "action": "REMEDIATE"
+        },
+        "mixedFailures": {
+            "action": "IDENTIFY_COMMON_SOURCE"
+        },
+        "principle": "Failure pattern quan trọng hơn số câu sai tuyệt đối."
+    },
+    "metaSkillRules": {
+        "principle": "Nếu knowledge node đã mạnh nhưng lỗi lặp lại theo dạng thao tác, kiểm tra meta skill.",
+        "routing": {
+            "table_reading": "S001",
+            "graph_reading": "S002",
+            "experiment_analysis": "S003",
+            "data_inference": "S004",
+            "true_false_analysis": "S005",
+            "hidden_condition": "S006",
+            "biology_probability": "S007",
+            "calculation_chain": "S008",
+            "cross_chapter": "S009",
+            "reverse_reasoning": "S010",
+            "integrated_question": "S011"
+        },
+        "rule": "Meta skill weakness không được làm mất mastery của knowledge node nếu evidence kiến thức vẫn mạnh."
+    },
+    "priorityRules": {
+        "principle": "Adaptive Engine cần chọn việc có giá trị học tập cao nhất, không chỉ node gần nhất.",
+        "priorityFactors": {
+            "P1": 100,
+            "P2": 70,
+            "weakness": 40,
+            "prerequisiteBlocking": 50,
+            "examRelevance": 20,
+            "dependencyCentrality": 20,
+            "recentFailure": 20,
+            "staleKnowledge": 10,
+            "transferGap": 15
+        },
+        "formula": "priority = knowledgePriority + weaknessBonus + prerequisiteBonus + examRelevance + dependencyCentrality + recentFailureBonus + staleBonus + transferGapBonus",
+        "tieBreaker": [
+            "blockingPrerequisite",
+            "P1_before_P2",
+            "weakestEvidence",
+            "higherDependencyCentrality",
+            "recentFailure",
+            "shorterEstimatedTime"
+        ]
+    },
+    "nodeSelectionRules": {
+        "candidateSources": [
+            "currentLessonNodes",
+            "unmasteredPrerequisites",
+            "weakNodes",
+            "dueRetests",
+            "dueReviews",
+            "nextDependencyNodes"
+        ],
+        "exclude": [
+            "stable_nodes_not_due",
+            "nodes_without_available_content",
+            "nodes_blocked_by_unresolved_higher_priority_issue"
+        ],
+        "selectionOrder": [
+            "blocking_prerequisite",
+            "weak_node",
+            "target_node",
+            "high_priority_unmastered_node",
+            "challenge_node",
+            "review_node"
+        ]
+    },
+    "lessonSelectionRules": {
+        "principle": "Adaptive Engine chọn loại lesson phù hợp; Lesson Engine cung cấp nội dung.",
+        "LEARN": {
+            "preferredLessonTypes": [
+                "cluster",
+                "concept",
+                "mechanism"
+            ]
+        },
+        "PRACTICE": {
+            "preferredLessonTypes": [
+                "application",
+                "cluster"
+            ]
+        },
+        "CHALLENGE": {
+            "preferredLessonTypes": [
+                "transfer",
+                "integrated",
+                "cluster"
+            ]
+        },
+        "REMEDIATE": {
+            "preferredLessonTypes": [
+                "remediation"
+            ]
+        },
+        "RETEST": {
+            "preferredLessonTypes": [
+                "review",
+                "transfer"
+            ]
+        },
+        "REVIEW": {
+            "preferredLessonTypes": [
+                "review",
+                "integrated"
+            ]
+        }
+    },
+    "questionSelectionRules": {
+        "LEARN": {
+            "difficulty": [
+                "D1",
+                "D2"
+            ],
+            "evidence": [
+                "know",
+                "explain"
+            ]
+        },
+        "PRACTICE": {
+            "difficulty": [
+                "D2",
+                "D3"
+            ],
+            "evidence": [
+                "explain",
+                "apply"
+            ]
+        },
+        "CHALLENGE": {
+            "difficulty": [
+                "D3",
+                "D4",
+                "D5"
+            ],
+            "evidence": [
+                "apply",
+                "transfer"
+            ]
+        },
+        "REMEDIATE": {
+            "difficulty": [
+                "D1",
+                "D2",
+                "D3"
+            ],
+            "evidence": [
+                "know",
+                "explain",
+                "apply"
+            ]
+        },
+        "RETEST": {
+            "difficulty": [
+                "D3",
+                "D4"
+            ],
+            "evidence": [
+                "apply",
+                "transfer"
+            ]
+        },
+        "REVIEW": {
+            "difficulty": [
+                "D3",
+                "D4"
+            ],
+            "evidence": [
+                "apply",
+                "transfer"
+            ]
+        }
+    },
+    "timeBudgetRules": {
+        "principle": "Adaptive path phải phù hợp với thời gian học thực tế.",
+        "budgets": {
+            "5": {
+                "maxMinutes": 5,
+                "preferredActions": [
+                    "REVIEW",
+                    "RETRY",
+                    "MINI_REMEDIATION"
+                ]
+            },
+            "15": {
+                "maxMinutes": 15,
+                "preferredActions": [
+                    "PRACTICE",
+                    "REMEDIATE",
+                    "CHALLENGE"
+                ]
+            },
+            "30": {
+                "maxMinutes": 30,
+                "preferredActions": [
+                    "LEARN",
+                    "PRACTICE",
+                    "CHALLENGE"
+                ]
+            },
+            "60": {
+                "maxMinutes": 60,
+                "preferredActions": [
+                    "LEARN",
+                    "PRACTICE",
+                    "TRANSFER"
+                ]
+            },
+            "90_plus": {
+                "maxMinutes": 90,
+                "preferredActions": [
+                    "DEEP_LEARNING_CLUSTER",
+                    "INTEGRATED_CHALLENGE",
+                    "RETEST"
+                ]
+            }
+        },
+        "rule": "Không bắt đầu một lesson dài nếu timeBudget không đủ cho meaningful completion."
+    },
+    "sessionRules": {
+        "maximumNewNodesPerSession": {
+            "short": 2,
+            "normal": 4,
+            "long": 7
+        },
+        "maximumConsecutiveRemediations": 3,
+        "afterRemediation": {
+            "required": "mini_probe"
+        },
+        "afterChallengeFailure": {
+            "action": "DIAGNOSE"
+        },
+        "afterSuccessfulMastery": {
+            "action": "next_highest_priority"
+        }
+    },
+    "fatigueRules": {
+        "enabled": true,
+        "signals": [
+            "long_response_time",
+            "repeated_careless_errors",
+            "rapid_skipping",
+            "multiple_consecutive_wrong_answers"
+        ],
+        "thresholds": {
+            "consecutiveWrong": 4,
+            "consecutiveSkip": 3
+        },
+        "actions": {
+            "consecutiveWrong": "SHORT_REVIEW_OR_BREAK",
+            "consecutiveSkip": "REDUCE_DIFFICULTY",
+            "carelessErrorPattern": "SHORT_BREAK_AND_RETRY"
+        },
+        "principle": "Fatigue signal không được tự động kết luận knowledge gap."
+    },
+    "antiLoopRules": {
+        "purpose": "Ngăn Adaptive Engine lặp vô hạn giữa cùng một node và cùng một action.",
+        "sameNodeSameActionLimit": 2,
+        "sameFailureSignatureLimit": 3,
+        "afterLimit": {
+            "action": "ESCALATE_DIAGNOSTIC"
+        },
+        "escalation": [
+            "check_prerequisite",
+            "check_meta_skill",
+            "switch_representation",
+            "switch_lesson",
+            "reduce_difficulty"
+        ]
+    },
+    "pathRules": {
+        "principle": "Adaptive path không cố định theo lesson number.",
+        "defaultPath": [
+            "LEARN",
+            "PRACTICE",
+            "CHALLENGE",
+            "RETEST",
+            "REVIEW"
+        ],
+        "allowedTransitions": {
+            "LEARN": [
+                "PRACTICE",
+                "REMEDIATE",
+                "CHALLENGE"
+            ],
+            "PRACTICE": [
+                "LEARN",
+                "REMEDIATE",
+                "CHALLENGE",
+                "RETEST"
+            ],
+            "CHALLENGE": [
+                "PRACTICE",
+                "REMEDIATE",
+                "RETEST"
+            ],
+            "REMEDIATE": [
+                "PRACTICE",
+                "LEARN",
+                "CHALLENGE"
+            ],
+            "RETEST": [
+                "REVIEW",
+                "REMEDIATE",
+                "CHALLENGE"
+            ],
+            "REVIEW": [
+                "CHALLENGE",
+                "RETEST",
+                "REMEDIATE"
+            ]
+        }
+    },
+    "decisionRules": [
+        {
+            "id": "R001",
+            "priority": 1000,
+            "condition": "targetNode.status == weak",
+            "action": "REMEDIATE",
+            "reason": "Node đang có failure pattern cần xử lý."
+        },
+        {
+            "id": "R002",
+            "priority": 990,
+            "condition": "required_D1_prerequisite.mastery < M2",
+            "action": "REMEDIATE",
+            "target": "weakest_D1_prerequisite",
+            "reason": "Không thể học hiệu quả node hiện tại khi prerequisite nền tảng chưa đủ."
+        },
+        {
+            "id": "R003",
+            "priority": 980,
+            "condition": "failureSignature.repeated >= 2",
+            "action": "REMEDIATE",
+            "reason": "Lỗi có tính hệ thống."
+        },
+        {
+            "id": "R004",
+            "priority": 970,
+            "condition": "targetNode.mastery == M0",
+            "action": "LEARN",
+            "reason": "Node chưa được hình thành."
+        },
+        {
+            "id": "R005",
+            "priority": 960,
+            "condition": "targetNode.mastery == M1",
+            "action": "LEARN",
+            "reason": "Node mới dừng ở nhận biết."
+        },
+        {
+            "id": "R006",
+            "priority": 950,
+            "condition": "targetNode.mastery == M2",
+            "action": "PRACTICE",
+            "reason": "Cần củng cố khả năng vận dụng."
+        },
+        {
+            "id": "R007",
+            "priority": 940,
+            "condition": "targetNode.mastery == M3",
+            "action": "CHALLENGE",
+            "reason": "Cần phát triển transfer."
+        },
+        {
+            "id": "R008",
+            "priority": 930,
+            "condition": "targetNode.mastery == M4 && retestDue == true",
+            "action": "RETEST",
+            "reason": "Cần xác nhận mastery."
+        },
+        {
+            "id": "R009",
+            "priority": 920,
+            "condition": "targetNode.status == stable && reviewDue == true",
+            "action": "REVIEW",
+            "reason": "Kiến thức ổn định nhưng đến chu kỳ ôn."
+        },
+        {
+            "id": "R010",
+            "priority": 900,
+            "condition": "targetNode.status == stable && reviewDue == false",
+            "action": "SKIP",
+            "reason": "Không cần bắt học sinh học lại kiến thức đã ổn định."
+        }
+    ],
+    "decisionPrecedence": [
+        "safety_and_validity",
+        "blocking_prerequisite",
+        "active_remediation",
+        "repeated_failure",
+        "unlearned_knowledge",
+        "developing_knowledge",
+        "challenge_opportunity",
+        "retest_due",
+        "review_due",
+        "skip_known"
+    ],
+    "nextActionContract": {
+        "requiredFields": [
+            "action",
+            "targetNode",
+            "reason",
+            "priority"
+        ],
+        "optionalFields": [
+            "sourceNode",
+            "failureSignature",
+            "lessonId",
+            "questionSelection",
+            "estimatedMinutes",
+            "timeBudget",
+            "confidence",
+            "alternativeActions"
+        ],
+        "example": {
+            "action": "REMEDIATE",
+            "targetNode": "K282",
+            "sourceNode": "K281",
+            "failureSignature": "linked-gamete-confusion",
+            "reason": "K281 là prerequisite trực tiếp và đang yếu.",
+            "priority": 138,
+            "estimatedMinutes": 12
+        }
+    },
+    "alternativeActionRules": {
+        "principle": "Khi nhiều hành động có giá trị gần nhau, Adaptive Engine có thể trả alternativeActions.",
+        "maximumAlternatives": 2,
+        "examples": [
+            "PRACTICE",
+            "REMEDIATE"
+        ]
+    },
+    "studentChoiceRules": {
+        "principle": "Adaptive system định hướng nhưng không khóa cứng học sinh.",
+        "allowedChoices": [
+            "continue_recommended",
+            "choose_review",
+            "choose_challenge",
+            "choose_different_node"
+        ],
+        "override": {
+            "enabled": true,
+            "mustRespectPrerequisite": true,
+            "mustRespectSafety": true
+        },
+        "importantRule": "Student choice không được phép mở khóa nội dung yêu cầu D1 prerequisite chưa đạt mức tối thiểu."
+    },
+    "completionRules": {
+        "nodeCompletion": {
+            "condition": "mastery >= targetMastery"
+        },
+        "lessonCompletion": {
+            "source": "lessons/schema.json"
+        },
+        "masteryCompletion": {
+            "source": "mastery/rules.json"
+        },
+        "principle": "Adaptive Engine không coi lesson completion là mastery."
+    },
+    "multiNodeRules": {
+        "integratedLesson": {
+            "allowed": true
+        },
+        "selection": {
+            "prefer": "nodes_with_shared_dependencies"
+        },
+        "priority": "primaryNode"
+    },
+    "dependencyCentralityRules": {
+        "principle": "Node có nhiều downstream dependency có thể được ưu tiên vì việc củng cố node đó mở ra nhiều kiến thức phía sau.",
+        "bonusLevels": {
+            "high": 20,
+            "medium": 10,
+            "low": 0
+        },
+        "neverOverride": [
+            "active_remediation",
+            "blocking_prerequisite"
+        ]
+    },
+    "examPreparationRules": {
+        "enabled": true,
+        "principle": "Ôn thi ưu tiên lỗ hổng có khả năng ảnh hưởng nhiều câu hỏi hoặc nhiều node liên quan.",
+        "priorityFactors": [
+            "P1",
+            "weakness",
+            "dependencyCentrality",
+            "recentFailure",
+            "transferGap"
+        ],
+        "rule": "Exam mode không thay đổi mastery definition; chỉ thay đổi ưu tiên và selection strategy."
+    },
+    "learningModeComparison": {
+        "HOC_NHANH": {
+            "skipKnown": true,
+            "remediationAggressive": true,
+            "transferWeight": "high",
+            "lessonDepth": "adaptive"
+        },
+        "HOC_SAU": {
+            "skipKnown": false,
+            "remediationAggressive": false,
+            "transferWeight": "very_high",
+            "lessonDepth": "high"
+        },
+        "ON_THI": {
+            "skipKnown": true,
+            "remediationAggressive": true,
+            "transferWeight": "medium",
+            "lessonDepth": "low_to_medium"
+        }
+    },
+    "stateTransitionExamples": {
+        "example01": {
+            "state": {
+                "mastery": "M0",
+                "status": "not_started"
+            },
+            "action": "LEARN"
+        },
+        "example02": {
+            "state": {
+                "mastery": "M2",
+                "status": "developing"
+            },
+            "action": "PRACTICE"
+        },
+        "example03": {
+            "state": {
+                "mastery": "M3",
+                "status": "developing"
+            },
+            "action": "CHALLENGE"
+        },
+        "example04": {
+            "state": {
+                "mastery": "M4",
+                "status": "mastered",
+                "retestDue": true
+            },
+            "action": "RETEST"
+        },
+        "example05": {
+            "state": {
+                "mastery": "M4",
+                "status": "stable",
+                "reviewDue": false
+            },
+            "action": "SKIP"
+        },
+        "example06": {
+            "state": {
+                "mastery": "M3",
+                "status": "weak",
+                "failureSignature": "linked-gamete-confusion"
+            },
+            "action": "REMEDIATE"
+        },
+        "example07": {
+            "state": {
+                "mastery": "M3"
+            },
+            "prerequisite": {
+                "K281": "M1"
+            },
+            "action": "REMEDIATE",
+            "target": "K281"
+        }
+    },
+    "outputExamples": {
+        "learn": {
+            "action": "LEARN",
+            "targetNode": "K206",
+            "lessonType": "cluster",
+            "questionSelection": {
+                "difficulty": [
+                    "D1",
+                    "D2"
+                ],
+                "evidence": [
+                    "know",
+                    "explain"
+                ]
+            }
+        },
+        "practice": {
+            "action": "PRACTICE",
+            "targetNode": "K206",
+            "lessonType": "application",
+            "questionSelection": {
+                "difficulty": [
+                    "D2",
+                    "D3"
+                ],
+                "evidence": [
+                    "explain",
+                    "apply"
+                ]
+            }
+        },
+        "challenge": {
+            "action": "CHALLENGE",
+            "targetNode": "K208",
+            "lessonType": "transfer",
+            "questionSelection": {
+                "difficulty": [
+                    "D4",
+                    "D5"
+                ],
+                "evidence": [
+                    "transfer"
+                ]
+            }
+        },
+        "remediate": {
+            "action": "REMEDIATE",
+            "targetNode": "K282",
+            "sourceNode": "K281",
+            "lessonType": "remediation",
+            "failureSignature": "linked-gamete-confusion"
+        },
+        "retest": {
+            "action": "RETEST",
+            "targetNode": "K283",
+            "lessonType": "review",
+            "questionSelection": {
+                "difficulty": [
+                    "D3",
+                    "D4"
+                ],
+                "evidence": [
+                    "apply",
+                    "transfer"
+                ],
+                "differentContext": true
+            }
+        }
+    },
+    "antiPatterns": {
+        "mustNot": [
+            "recommend_next_lesson_by_lesson_number",
+            "force_linear_curriculum",
+            "reset_mastery_after_one_wrong_answer",
+            "require_all_previous_lessons_completed",
+            "require_all_prerequisites_M4",
+            "repeat_same_question_until_correct",
+            "treat_time_spent_as_mastery",
+            "treat_lesson_completion_as_mastery",
+            "ignore_failure_signature",
+            "ignore_meta_skill",
+            "ignore_student_time_budget"
+        ]
+    },
+    "engineContract": {
+        "adaptiveEngineReads": [
+            "student-state.json",
+            "knowledge-map-v4.json",
+            "mastery/rules.json",
+            "questions/schema.json",
+            "lessons/schema.json"
+        ],
+        "adaptiveEngineWrites": [
+            "nextAction",
+            "pathDecision",
+            "selectionCriteria"
+        ],
+        "adaptiveEngineDoesNotWrite": [
+            "mastery",
+            "questionContent",
+            "lessonContent",
+            "knowledgeMap"
+        ]
+    },
+    "versioning": {
+        "currentVersion": "1.0.0",
+        "compatibleKnowledgeMap": "4.x",
+        "compatibleMasteryRules": "1.x",
+        "compatibleQuestionSchema": "1.x",
+        "compatibleLessonSchema": "1.x",
+        "breakingChanges": [
+            "Thay đổi action contract.",
+            "Thay đổi decision precedence.",
+            "Thay đổi prerequisite unlock logic.",
+            "Thay đổi ý nghĩa của learning modes."
+        ],
+        "nonBreakingChanges": [
+            "Thêm failure routing.",
+            "Thêm priority factor.",
+            "Thêm lesson type.",
+            "Thêm question selection strategy."
+        ]
+    }
+}

@@ -1,0 +1,740 @@
+{
+    "schemaVersion": "1.0.0",
+    "rulesId": "biology-mastery-rules-v1",
+    "subject": "biology",
+    "language": "vi",
+    "status": "final",
+    "purpose": {
+        "description": "Quy định cách Mastery Engine cập nhật và diễn giải mức độ thành thạo kiến thức sinh học của học sinh.",
+        "sourceOfTruth": "knowledge/knowledge-map-v4.json",
+        "masteryEngine": "Đọc kết quả câu hỏi, bằng chứng theo năng lực, failure signature và lịch sử retest để cập nhật mastery.",
+        "importantPrinciple": "Không giảm mastery một cách cơ học chỉ vì một câu trả lời sai."
+    },
+    "masteryLevels": {
+        "M0": {
+            "name": "Chưa biết",
+            "meaning": "Chưa có bằng chứng đáng tin cậy rằng học sinh nắm được kiến thức.",
+            "typicalEvidence": [
+                "Không trả lời được câu hỏi nhận biết.",
+                "Trả lời sai ở nhiều câu hỏi cơ bản.",
+                "Không thể giải thích khái niệm cốt lõi.",
+                "Prerequisite quan trọng còn yếu."
+            ]
+        },
+        "M1": {
+            "name": "Nhận biết",
+            "meaning": "Nhận ra hoặc gọi tên được kiến thức trong ngữ cảnh quen thuộc nhưng chưa hiểu bản chất ổn định.",
+            "typicalEvidence": [
+                "Làm được phần lớn câu hỏi know.",
+                "Có thể nhận diện thuật ngữ, cấu trúc hoặc quy luật.",
+                "Giải thích còn thiếu hoặc sai bản chất.",
+                "Chưa vận dụng ổn định."
+            ]
+        },
+        "M2": {
+            "name": "Thông hiểu",
+            "meaning": "Hiểu được cơ chế hoặc quan hệ cơ bản và có thể giải thích trong ngữ cảnh quen thuộc.",
+            "typicalEvidence": [
+                "Know ổn định.",
+                "Explain đạt mức yêu cầu.",
+                "Có thể mô tả nguyên nhân - kết quả.",
+                "Apply còn có thể sai khi thay đổi dữ kiện."
+            ]
+        },
+        "M3": {
+            "name": "Vận dụng",
+            "meaning": "Có thể sử dụng kiến thức để giải quyết bài toán hoặc tình huống mới ở mức vừa phải.",
+            "typicalEvidence": [
+                "Know và explain ổn định.",
+                "Apply đạt yêu cầu.",
+                "Có thể xử lý biến đổi dữ kiện.",
+                "Transfer chưa nhất thiết ổn định."
+            ]
+        },
+        "M4": {
+            "name": "Chuyển giao",
+            "meaning": "Có thể vận dụng kiến thức trong ngữ cảnh mới, liên kết kiến thức và suy luận từ dữ liệu.",
+            "typicalEvidence": [
+                "Apply ổn định.",
+                "Transfer đạt yêu cầu.",
+                "Có thể xử lý câu hỏi tích hợp.",
+                "Có khả năng suy luận khi dữ kiện hoặc cách hỏi thay đổi."
+            ]
+        }
+    },
+    "statuses": {
+        "not_started": {
+            "name": "Chưa học",
+            "meaning": "Chưa có đủ dữ liệu để xác định mastery."
+        },
+        "developing": {
+            "name": "Đang phát triển",
+            "meaning": "Đã có bằng chứng học tập nhưng chưa đạt mức mastery mục tiêu."
+        },
+        "mastered": {
+            "name": "Đã thành thạo",
+            "meaning": "Đạt M4 theo ngưỡng mastery nhưng chưa hoàn thành retest ổn định."
+        },
+        "stable": {
+            "name": "Ổn định",
+            "meaning": "Đạt M4 và vượt qua retest ở một ngữ cảnh khác."
+        },
+        "weak": {
+            "name": "Yếu",
+            "meaning": "Bằng chứng gần đây cho thấy một hoặc nhiều năng lực quan trọng đang dưới ngưỡng cần thiết.",
+            "note": "Weak không đồng nghĩa với quay về M0."
+        }
+    },
+    "evidenceTypes": {
+        "know": {
+            "name": "Biết",
+            "description": "Nhận biết, gọi tên, xác định hoặc chọn đúng kiến thức."
+        },
+        "explain": {
+            "name": "Giải thích",
+            "description": "Giải thích bản chất, cơ chế, nguyên nhân hoặc quan hệ."
+        },
+        "apply": {
+            "name": "Vận dụng",
+            "description": "Sử dụng kiến thức để giải quyết câu hỏi hoặc bài toán."
+        },
+        "transfer": {
+            "name": "Chuyển giao",
+            "description": "Vận dụng kiến thức trong ngữ cảnh mới, dữ liệu mới hoặc bài toán tích hợp."
+        }
+    },
+    "evidenceWeights": {
+        "know": 0.15,
+        "explain": 0.25,
+        "apply": 0.30,
+        "transfer": 0.30
+    },
+    "masteryThresholds": {
+        "P1": {
+            "description": "Kiến thức trọng tâm, cần mức thành thạo cao.",
+            "minimumEvidence": {
+                "know": 0.90,
+                "explain": 0.80,
+                "apply": 0.80,
+                "transfer": 0.70
+            },
+            "minimumPrerequisiteMastery": {
+                "D1": "M2"
+            },
+            "targetMastery": "M4"
+        },
+        "P2": {
+            "description": "Kiến thức quan trọng nhưng có thể có mức yêu cầu thấp hơn P1.",
+            "minimumEvidence": {
+                "know": 0.85,
+                "explain": 0.75,
+                "apply": 0.75,
+                "transfer": 0.65
+            },
+            "minimumPrerequisiteMastery": {
+                "D1": "M2"
+            },
+            "targetMastery": "M4"
+        }
+    },
+    "levelThresholds": {
+        "M0": {
+            "maxOverallEvidence": 0.39
+        },
+        "M1": {
+            "minOverallEvidence": 0.40,
+            "maxOverallEvidence": 0.59,
+            "requiredEvidence": {
+                "know": 0.60
+            }
+        },
+        "M2": {
+            "minOverallEvidence": 0.60,
+            "maxOverallEvidence": 0.74,
+            "requiredEvidence": {
+                "know": 0.75,
+                "explain": 0.60
+            }
+        },
+        "M3": {
+            "minOverallEvidence": 0.75,
+            "maxOverallEvidence": 0.89,
+            "requiredEvidence": {
+                "know": 0.80,
+                "explain": 0.70,
+                "apply": 0.70
+            }
+        },
+        "M4": {
+            "minOverallEvidence": 0.90,
+            "requiredEvidence": {
+                "know": 0.85,
+                "explain": 0.80,
+                "apply": 0.80,
+                "transfer": 0.65
+            }
+        }
+    },
+    "overallEvidenceCalculation": {
+        "formula": "know*0.15 + explain*0.25 + apply*0.30 + transfer*0.30",
+        "minimumEvidenceRequired": true,
+        "rule": "Overall evidence chỉ hỗ trợ quyết định mastery; không được dùng để bỏ qua minimumEvidence của từng loại năng lực."
+    },
+    "evidenceConfidence": {
+        "levels": {
+            "low": {
+                "minimumAttempts": 0,
+                "description": "Chưa đủ dữ liệu."
+            },
+            "medium": {
+                "minimumAttempts": 2,
+                "description": "Đã có một số bằng chứng nhưng chưa đủ đa dạng."
+            },
+            "high": {
+                "minimumAttempts": 4,
+                "description": "Có đủ bằng chứng để đưa ra quyết định tương đối ổn định."
+            },
+            "very_high": {
+                "minimumAttempts": 6,
+                "description": "Có nhiều bằng chứng từ nhiều dạng câu hỏi và ngữ cảnh."
+            }
+        },
+        "minimumAttemptsForMastery": 4,
+        "minimumDistinctContextsForMastery": 2,
+        "minimumDistinctQuestionTypesForMastery": 2
+    },
+    "questionResultRules": {
+        "correct": {
+            "description": "Cập nhật evidence tương ứng với loại năng lực của câu hỏi.",
+            "effect": "Tăng confidence của evidence nhưng mức tăng phụ thuộc vào độ khó và độ tin cậy của câu hỏi."
+        },
+        "wrong": {
+            "description": "Không tự động hạ mastery xuống M0.",
+            "effect": [
+                "Ghi nhận failure signature.",
+                "Giảm confidence của evidence liên quan.",
+                "Kiểm tra prerequisite và source node.",
+                "Có thể chuyển status sang weak nếu lỗi lặp lại."
+            ]
+        },
+        "partial": {
+            "description": "Dùng cho câu hỏi có thể chấm theo mức độ hoặc câu trả lời mở.",
+            "effect": "Cập nhật evidence theo điểm đạt được và rubric của câu hỏi."
+        },
+        "skipped": {
+            "description": "Không được xem là sai.",
+            "effect": "Không tăng mastery và không trực tiếp giảm mastery."
+        },
+        "hintUsed": {
+            "description": "Câu trả lời đúng sau hint không được xem là bằng chứng mạnh như câu trả lời độc lập.",
+            "effect": "Giảm trọng số evidence của attempt."
+        }
+    },
+    "attemptWeights": {
+        "independentCorrect": 1.0,
+        "correctAfterHint": 0.60,
+        "partialCorrect": 0.50,
+        "wrong": 0.0,
+        "skipped": 0.0
+    },
+    "difficultyWeights": {
+        "D1": 0.70,
+        "D2": 0.85,
+        "D3": 1.00,
+        "D4": 1.15,
+        "D5": 1.25
+    },
+    "evidenceUpdate": {
+        "method": "weighted_rolling_average",
+        "defaultLearningRate": 0.20,
+        "minimumLearningRate": 0.10,
+        "maximumLearningRate": 0.35,
+        "formula": "newEvidence = oldEvidence*(1-learningRate) + attemptScore*learningRate",
+        "difficultyAdjustment": {
+            "enabled": true,
+            "rule": "Câu khó hơn có thể tạo evidence mạnh hơn nhưng không được một câu duy nhất quyết định mastery."
+        },
+        "wrongAnswerRule": {
+            "enabled": true,
+            "formula": "newEvidence = oldEvidence*(1-decay)",
+            "defaultDecay": 0.08,
+            "maximumDecay": 0.15,
+            "note": "Decay nhỏ hơn learning gain để tránh một lỗi đơn lẻ phá hỏng lịch sử mastery."
+        }
+    },
+    "masteryPromotionRules": {
+        "M0_to_M1": {
+            "conditions": [
+                "know >= 0.60",
+                "evidenceConfidence != low"
+            ]
+        },
+        "M1_to_M2": {
+            "conditions": [
+                "know >= 0.75",
+                "explain >= 0.60",
+                "overallEvidence >= 0.60"
+            ]
+        },
+        "M2_to_M3": {
+            "conditions": [
+                "know >= 0.80",
+                "explain >= 0.70",
+                "apply >= 0.70",
+                "overallEvidence >= 0.75"
+            ]
+        },
+        "M3_to_M4": {
+            "conditions": [
+                "know >= 0.85",
+                "explain >= 0.80",
+                "apply >= 0.80",
+                "transfer >= 0.65",
+                "overallEvidence >= 0.90",
+                "minimumAttempts >= 4",
+                "minimumDistinctContexts >= 2"
+            ]
+        }
+    },
+    "targetMasteryRules": {
+        "rule": "Node.targetMastery trong knowledge-map-v4.json xác định mức kiến thức cần đạt trước khi xem node hoàn thành.",
+        "ifTargetIsM2": {
+            "requiredLevel": "M2"
+        },
+        "ifTargetIsM3": {
+            "requiredLevel": "M3"
+        },
+        "ifTargetIsM4": {
+            "requiredLevel": "M4"
+        }
+    },
+    "masteredRules": {
+        "conditions": [
+            "mastery == M4",
+            "node evidence đạt minimumEvidence theo priority",
+            "D1 prerequisites không thấp hơn ngưỡng yêu cầu",
+            "evidenceConfidence != low"
+        ],
+        "status": "mastered",
+        "note": "Mastered chưa đồng nghĩa Stable."
+    },
+    "stableRules": {
+        "conditions": [
+            "mastery == M4",
+            "status == mastered",
+            "retestPassed == true",
+            "retestUsesDifferentContext == true"
+        ],
+        "status": "stable",
+        "minimumRetestAttempts": 1
+    },
+    "retestRules": {
+        "trigger": {
+            "afterMastery": true,
+            "minimumDelayHours": 24,
+            "recommendedDelayHours": 48
+        },
+        "requirements": {
+            "differentQuestion": true,
+            "differentContext": true,
+            "samePrimaryNode": true,
+            "sameEvidenceOrHigher": true
+        },
+        "passed": {
+            "action": "set_status_stable"
+        },
+        "failed": {
+            "action": "retain_mastery_but_remove_stable_status",
+            "secondaryAction": "schedule_review_or_remediation",
+            "masteryReset": false
+        }
+    },
+    "weaknessRules": {
+        "principle": "Weakness được xác định theo evidence dimension và failure pattern, không chỉ theo overall score.",
+        "weakEvidenceThreshold": {
+            "know": 0.60,
+            "explain": 0.55,
+            "apply": 0.55,
+            "transfer": 0.50
+        },
+        "weaknessTriggers": [
+            {
+                "id": "W01",
+                "condition": "sameEvidenceWrongStreak >= 2",
+                "action": "mark_evidence_weak"
+            },
+            {
+                "id": "W02",
+                "condition": "sameFailureSignatureCount >= 2",
+                "action": "trigger_remediation_diagnosis"
+            },
+            {
+                "id": "W03",
+                "condition": "retestFailed == true",
+                "action": "schedule_review"
+            },
+            {
+                "id": "W04",
+                "condition": "prerequisiteBelowRequiredLevel == true",
+                "action": "inspect_prerequisite"
+            }
+        ]
+    },
+    "failureSignatureRules": {
+        "principle": "Failure signature là bằng chứng chẩn đoán nguyên nhân lỗi, không phải nhãn đánh giá học sinh.",
+        "priority": [
+            "source_knowledge_gap",
+            "prerequisite_gap",
+            "concept_confusion",
+            "mechanism_confusion",
+            "data_interpretation_error",
+            "calculation_error",
+            "reasoning_error",
+            "careless_error"
+        ],
+        "remediationDecision": {
+            "source_knowledge_gap": "remediate_source_node",
+            "prerequisite_gap": "move_to_weak_prerequisite",
+            "concept_confusion": "mini_concept_lesson",
+            "mechanism_confusion": "mechanism_explanation",
+            "data_interpretation_error": "practice_meta_skill",
+            "calculation_error": "practice_calculation",
+            "reasoning_error": "guided_reasoning",
+            "careless_error": "retry_with_error_check"
+        }
+    },
+    "prerequisiteRules": {
+        "D1": {
+            "name": "Hard prerequisite",
+            "minimumForUnlock": "M2",
+            "minimumForMastery": "M2",
+            "canBlockLearning": true
+        },
+        "D2": {
+            "name": "Supporting prerequisite",
+            "minimumForUnlock": "M0",
+            "minimumForMastery": "M0",
+            "canBlockLearning": false
+        },
+        "D3": {
+            "name": "Transfer dependency",
+            "minimumForUnlock": "M0",
+            "minimumForMastery": "M0",
+            "canBlockLearning": false,
+            "affectsTransfer": true
+        },
+        "rule": "Không yêu cầu prerequisite đạt M4 để học node mới."
+    },
+    "nodeStatusRules": {
+        "not_started": {
+            "condition": "no_reliable_evidence"
+        },
+        "developing": {
+            "condition": "evidence_exists && mastery < targetMastery"
+        },
+        "mastered": {
+            "condition": "mastery == M4 && mastery_requirements_passed"
+        },
+        "stable": {
+            "condition": "mastered && retest_passed"
+        },
+        "weak": {
+            "condition": "weakness_triggered"
+        }
+    },
+    "masteryDowngradeRules": {
+        "principle": "Mastery không bị reset về M0 chỉ vì một câu sai.",
+        "singleWrongAnswer": {
+            "action": "update_evidence_only",
+            "resetMastery": false
+        },
+        "repeatedWrongSameSignature": {
+            "threshold": 2,
+            "action": "mark_weak_and_remediate",
+            "resetMastery": false
+        },
+        "failedRetest": {
+            "action": "remove_stable_status",
+            "keepMastery": true,
+            "schedule": "review_or_remediation"
+        },
+        "persistentFailure": {
+            "threshold": 3,
+            "action": "recalculate_mastery",
+            "minimumPossibleLevel": "M1"
+        },
+        "note": "Chỉ được giảm mastery khi có đủ bằng chứng mới cho thấy mức thành thạo trước đó không còn đáng tin cậy."
+    },
+    "transferRules": {
+        "principle": "Transfer là bằng chứng quan trọng để phân biệt học thuộc với hiểu và vận dụng thực sự.",
+        "M2": {
+            "transferRequired": false
+        },
+        "M3": {
+            "transferRequired": false,
+            "recommended": true
+        },
+        "M4": {
+            "transferRequired": true,
+            "minimumTransferEvidence": 0.65
+        },
+        "integratedQuestions": {
+            "canUpdateMultipleNodes": true,
+            "primaryNodeReceivesMainEvidence": true,
+            "secondaryNodesReceiveSupportingEvidence": true
+        }
+    },
+    "multiNodeQuestionRules": {
+        "principle": "Một câu hỏi có thể kiểm tra nhiều node nhưng phải xác định primaryNode.",
+        "primaryNode": {
+            "evidenceWeight": 1.0
+        },
+        "secondaryNode": {
+            "evidenceWeight": 0.50
+        },
+        "rule": "Không được cập nhật mastery của tất cả node bằng cùng một trọng số như primaryNode."
+    },
+    "diagnosticRules": {
+        "purpose": "Xác định điểm bắt đầu học tập và phát hiện lỗ hổng prerequisite.",
+        "principle": "Diagnostic không nhằm hoàn thành mastery mà nhằm ước lượng nhanh trạng thái ban đầu.",
+        "questionMix": {
+            "know": 0.25,
+            "explain": 0.25,
+            "apply": 0.30,
+            "transfer": 0.20
+        },
+        "minimumQuestionsPerNode": 3,
+        "maximumQuestionsPerNode": 6,
+        "adaptiveStopping": {
+            "enabled": true,
+            "rule": "Dừng khi confidence đủ cao để quyết định học, luyện hoặc bỏ qua."
+        },
+        "diagnosticEvidenceWeight": 0.70,
+        "note": "Evidence từ diagnostic có trọng số thấp hơn evidence từ quá trình học tập đầy đủ."
+    },
+    "learningModeRules": {
+        "HOC_NHANH": {
+            "name": "Học nhanh",
+            "purpose": "Bỏ qua kiến thức đã vững và tập trung vào gap.",
+            "actions": [
+                "diagnostic",
+                "skip_mastered",
+                "learn_gap",
+                "practice",
+                "mastery_check"
+            ]
+        },
+        "HOC_SAU": {
+            "name": "Học sâu",
+            "purpose": "Xây dựng hiểu biết cơ chế và khả năng chuyển giao.",
+            "actions": [
+                "concept",
+                "mechanism",
+                "apply",
+                "transfer",
+                "cross_node",
+                "retest"
+            ]
+        },
+        "ON_THI": {
+            "name": "Ôn thi",
+            "purpose": "Phát hiện lỗi và sửa nhanh.",
+            "actions": [
+                "question",
+                "diagnose",
+                "remediate",
+                "retry",
+                "retest"
+            ]
+        }
+    },
+    "adaptiveInterpretation": {
+        "M0": {
+            "defaultAction": "LEARN"
+        },
+        "M1": {
+            "defaultAction": "LEARN"
+        },
+        "M2": {
+            "defaultAction": "PRACTICE"
+        },
+        "M3": {
+            "defaultAction": "CHALLENGE"
+        },
+        "M4": {
+            "defaultAction": "RETEST"
+        },
+        "stable": {
+            "defaultAction": "REVIEW"
+        },
+        "weak": {
+            "defaultAction": "REMEDIATE"
+        }
+    },
+    "confidenceRules": {
+        "confidenceDimensions": [
+            "evidenceAmount",
+            "evidenceConsistency",
+            "contextDiversity",
+            "questionTypeDiversity",
+            "recency"
+        ],
+        "principle": "Mastery cao nhưng confidence thấp không được xem là bằng chứng chắc chắn để bỏ qua node."
+    },
+    "recencyRules": {
+        "enabled": true,
+        "halfLifeDays": 45,
+        "formula": "recencyWeight = 0.5 ^ (daysSinceAttempt / halfLifeDays)",
+        "purpose": "Điều chỉnh confidence theo độ mới của bằng chứng mà không xóa lịch sử mastery.",
+        "importantRule": "Recency không được tự động làm mastery giảm chỉ vì lâu không học."
+    },
+    "stabilityRules": {
+        "stableRequires": [
+            "M4",
+            "successful_retest",
+            "different_context"
+        ],
+        "stableEvidenceMinimum": {
+            "know": 0.85,
+            "explain": 0.80,
+            "apply": 0.80,
+            "transfer": 0.65
+        },
+        "stableRetention": {
+            "days": 90,
+            "actionAfterPeriod": "schedule_review",
+            "automaticDowngrade": false
+        }
+    },
+    "reviewRules": {
+        "purpose": "Duy trì kiến thức đã ổn định.",
+        "stableNode": {
+            "recommendedReviewIntervalDays": 30
+        },
+        "masteredNode": {
+            "recommendedRetestIntervalDays": 7
+        },
+        "weakNode": {
+            "recommendedReviewIntervalDays": 1
+        }
+    },
+    "calculationNodeRules": {
+        "principle": "Các node có tính toán không được đánh giá chỉ bằng đáp án cuối.",
+        "requiredEvidence": [
+            "correct_setup",
+            "correct_method",
+            "correct_calculation",
+            "correct_interpretation"
+        ],
+        "examples": [
+            "K264",
+            "K265",
+            "K266",
+            "K271",
+            "K283",
+            "K302",
+            "K310",
+            "K311",
+            "K312",
+            "K314",
+            "S007",
+            "S008"
+        ],
+        "failureHandling": {
+            "wrongMethod": "concept_or_reasoning_error",
+            "correctMethodWrongArithmetic": "calculation_error",
+            "correctCalculationWrongConclusion": "interpretation_error"
+        }
+    },
+    "metaSkillRules": {
+        "principle": "Meta skill có thể hỗ trợ nhiều knowledge node nhưng không thay thế mastery kiến thức.",
+        "examples": {
+            "S001": "Đọc bảng số liệu",
+            "S002": "Đọc đồ thị",
+            "S003": "Phân tích thí nghiệm",
+            "S004": "Suy luận từ dữ liệu",
+            "S007": "Xác suất sinh học",
+            "S008": "Tính toán chuỗi",
+            "S009": "Liên kết nhiều chương",
+            "S010": "Suy luận ngược"
+        },
+        "weakMetaSkillRule": "Nếu knowledge node mạnh nhưng nhiều câu cùng dạng vẫn sai, kiểm tra meta skill trước khi kết luận knowledge gap."
+    },
+    "masteryEventSchema": {
+        "requiredFields": [
+            "studentId",
+            "questionId",
+            "primaryNode",
+            "evidence",
+            "difficulty",
+            "result",
+            "timestamp"
+        ],
+        "optionalFields": [
+            "secondaryNodes",
+            "failureSignature",
+            "skill",
+            "hintUsed",
+            "contextId",
+            "lessonId",
+            "attemptNumber"
+        ]
+    },
+    "updateOrder": [
+        "1. Validate question result",
+        "2. Identify primary node",
+        "3. Identify evidence type",
+        "4. Record result",
+        "5. Record failure signature if wrong",
+        "6. Update evidence",
+        "7. Recalculate overall evidence",
+        "8. Recalculate mastery level",
+        "9. Evaluate weakness",
+        "10. Evaluate prerequisite status",
+        "11. Evaluate mastered status",
+        "12. Evaluate retest/stable status",
+        "13. Emit mastery event",
+        "14. Send state to Adaptive Engine"
+    ],
+    "adaptiveOutputContract": {
+        "masteryEngineMustReturn": [
+            "nodeId",
+            "previousMastery",
+            "newMastery",
+            "status",
+            "evidence",
+            "overallEvidence",
+            "confidence",
+            "weakEvidence",
+            "failureSignatures",
+            "recommendedAction"
+        ]
+    },
+    "safetyRules": {
+        "never": [
+            "Không reset mastery về M0 chỉ vì một câu sai.",
+            "Không coi skipped là wrong.",
+            "Không coi một câu hỏi duy nhất là đủ để xác nhận M4.",
+            "Không yêu cầu tất cả prerequisite đạt M4 trước khi mở node.",
+            "Không dùng overallEvidence để bỏ qua minimumEvidence của một năng lực quan trọng.",
+            "Không dùng lesson completion làm bằng chứng mastery.",
+            "Không dùng số câu đã làm thay thế cho evidence quality.",
+            "Không coi đáp án đúng sau hint là bằng chứng mạnh tương đương đáp án độc lập."
+        ]
+    },
+    "versioning": {
+        "currentVersion": "1.0.0",
+        "compatibleKnowledgeMap": "4.x",
+        "breakingChangePolicy": "Nếu thay đổi định nghĩa M0-M4 hoặc công thức mastery, phải tăng major version.",
+        "minorChangeExamples": [
+            "Thêm failure signature.",
+            "Thêm loại question.",
+            "Điều chỉnh recommended review interval."
+        ],
+        "patchChangeExamples": [
+            "Sửa mô tả.",
+            "Sửa lỗi chính tả.",
+            "Bổ sung metadata không ảnh hưởng logic."
+        ]
+    }
+}

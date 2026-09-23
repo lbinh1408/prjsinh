@@ -1,0 +1,775 @@
+{
+    "schemaVersion": "1.0.0",
+    "schemaId": "biology-lesson-schema-v1",
+    "subject": "biology",
+    "language": "vi",
+    "status": "final",
+    "purpose": {
+        "description": "Schema chuẩn cho các lesson học Sinh học theo knowledge node và mastery.",
+        "sourceOfTruth": {
+            "knowledge": "knowledge/knowledge-map-v4.json",
+            "mastery": "mastery/rules.json",
+            "questions": "questions/schema.json"
+        },
+        "principle": "Lesson là lớp delivery. Lesson không quyết định học sinh cần học knowledge node nào; Knowledge Map và Adaptive Engine quyết định.",
+        "coreModel": "cluster_based_learning"
+    },
+    "lessonTypes": {
+        "cluster": {
+            "name": "Knowledge Cluster",
+            "description": "Lesson gom một nhóm knowledge node có quan hệ chặt chẽ."
+        },
+        "concept": {
+            "name": "Concept Lesson",
+            "description": "Tập trung xây dựng hoặc củng cố khái niệm."
+        },
+        "mechanism": {
+            "name": "Mechanism Lesson",
+            "description": "Tập trung hiểu cơ chế và quan hệ nguyên nhân - kết quả."
+        },
+        "application": {
+            "name": "Application Lesson",
+            "description": "Tập trung vận dụng kiến thức."
+        },
+        "transfer": {
+            "name": "Transfer Lesson",
+            "description": "Tập trung chuyển giao kiến thức sang ngữ cảnh mới."
+        },
+        "remediation": {
+            "name": "Remediation Lesson",
+            "description": "Sửa một hoặc một nhóm failure signature cụ thể."
+        },
+        "review": {
+            "name": "Review Lesson",
+            "description": "Ôn tập các node đã học."
+        },
+        "integrated": {
+            "name": "Integrated Lesson",
+            "description": "Liên kết nhiều knowledge cluster."
+        }
+    },
+    "deliveryModes": {
+        "HOC_NHANH": {
+            "name": "Học nhanh",
+            "description": "Diagnostic → bỏ qua phần đã vững → học gap → practice → mastery check."
+        },
+        "HOC_SAU": {
+            "name": "Học sâu",
+            "description": "Concept → mechanism → apply → transfer → cross-node → retest."
+        },
+        "ON_THI": {
+            "name": "Ôn thi",
+            "description": "Question → diagnose → remediate → retry → retest."
+        }
+    },
+    "sectionTypes": {
+        "orientation": {
+            "name": "Định hướng",
+            "purpose": "Cho học sinh biết mình sẽ học gì và vì sao."
+        },
+        "entryDiagnostic": {
+            "name": "Chẩn đoán đầu vào",
+            "purpose": "Xác định điểm bắt đầu."
+        },
+        "concept": {
+            "name": "Khái niệm",
+            "purpose": "Xây dựng kiến thức nền."
+        },
+        "observation": {
+            "name": "Quan sát",
+            "purpose": "Khởi tạo nhận thức từ ví dụ, dữ liệu hoặc hiện tượng."
+        },
+        "comparison": {
+            "name": "So sánh",
+            "purpose": "Phân biệt các khái niệm hoặc cơ chế."
+        },
+        "mechanism": {
+            "name": "Cơ chế",
+            "purpose": "Giải thích cách thức một quá trình diễn ra."
+        },
+        "workedExample": {
+            "name": "Ví dụ mẫu",
+            "purpose": "Cho thấy cách suy luận hoặc giải bài."
+        },
+        "guidedPractice": {
+            "name": "Luyện tập có hướng dẫn",
+            "purpose": "Luyện với scaffolding."
+        },
+        "practice": {
+            "name": "Luyện tập",
+            "purpose": "Củng cố kiến thức."
+        },
+        "apply": {
+            "name": "Vận dụng",
+            "purpose": "Áp dụng kiến thức vào vấn đề."
+        },
+        "transfer": {
+            "name": "Chuyển giao",
+            "purpose": "Áp dụng trong ngữ cảnh mới."
+        },
+        "crossNode": {
+            "name": "Liên kết kiến thức",
+            "purpose": "Kết nối nhiều knowledge node."
+        },
+        "remediation": {
+            "name": "Sửa lỗi",
+            "purpose": "Xử lý failure signature."
+        },
+        "reflection": {
+            "name": "Tự phản tư",
+            "purpose": "Giúp học sinh xác định mình đã hiểu gì và còn yếu gì."
+        },
+        "exitDiagnostic": {
+            "name": "Chẩn đoán đầu ra",
+            "purpose": "Kiểm tra mức mastery sau lesson."
+        },
+        "summary": {
+            "name": "Tổng kết",
+            "purpose": "Củng cố cấu trúc kiến thức."
+        }
+    },
+    "coreSchema": {
+        "required": [
+            "id",
+            "version",
+            "title",
+            "type",
+            "deliveryModes",
+            "knowledgeNodes",
+            "sections"
+        ],
+        "optional": [
+            "description",
+            "domain",
+            "prerequisites",
+            "entryDiagnostic",
+            "exitDiagnostic",
+            "estimatedMinutes",
+            "difficulty",
+            "objectives",
+            "adaptiveRules",
+            "metadata"
+        ]
+    },
+    "lessonObject": {
+        "id": "dna-to-trait-01",
+        "version": "1.0.0",
+        "title": "Từ DNA đến tính trạng",
+        "type": "cluster",
+        "description": "Hiểu mối liên hệ từ cấu trúc DNA đến biểu hiện tính trạng thông qua gene, RNA, dịch mã và protein.",
+        "domain": "J",
+        "deliveryModes": [
+            "HOC_NHANH",
+            "HOC_SAU",
+            "ON_THI"
+        ],
+        "knowledgeNodes": [
+            "K200",
+            "K201",
+            "K204",
+            "K205",
+            "K202",
+            "K206",
+            "K208"
+        ],
+        "primaryNodes": [
+            "K200",
+            "K201",
+            "K208"
+        ],
+        "supportingNodes": [
+            "K204",
+            "K205",
+            "K202",
+            "K206"
+        ],
+        "prerequisites": [
+            "K013"
+        ],
+        "objectives": [
+            {
+                "id": "OBJ01",
+                "node": "K200",
+                "type": "understand",
+                "description": "Mô tả được cấu trúc cơ bản của DNA."
+            },
+            {
+                "id": "OBJ02",
+                "node": "K204",
+                "type": "explain",
+                "description": "Giải thích được quá trình phiên mã."
+            },
+            {
+                "id": "OBJ03",
+                "node": "K206",
+                "type": "apply",
+                "description": "Vận dụng nguyên tắc dịch mã để xác định chuỗi amino acid."
+            },
+            {
+                "id": "OBJ04",
+                "node": "K208",
+                "type": "transfer",
+                "description": "Suy luận mối liên hệ DNA → RNA → protein → tính trạng trong ngữ cảnh mới."
+            }
+        ],
+        "entryDiagnostic": {
+            "enabled": true,
+            "purpose": [
+                "identify_starting_point",
+                "identify_prerequisite_gap"
+            ],
+            "questionSelection": {
+                "source": "questions/",
+                "nodes": [
+                    "K200",
+                    "K201",
+                    "K204",
+                    "K206",
+                    "K208"
+                ],
+                "evidence": [
+                    "know",
+                    "explain",
+                    "apply"
+                ],
+                "maxQuestions": 8
+            },
+            "adaptiveStopping": true,
+            "outcomes": {
+                "strong": {
+                    "action": "SKIP_TO_CHALLENGE"
+                },
+                "partial": {
+                    "action": "LEARN_GAPS"
+                },
+                "weak": {
+                    "action": "START_FROM_PREREQUISITE"
+                }
+            }
+        },
+        "sections": [
+            {
+                "id": "S01",
+                "type": "orientation",
+                "title": "Bức tranh lớn",
+                "nodes": [
+                    "K208"
+                ],
+                "estimatedMinutes": 5,
+                "content": {
+                    "format": "concept_map",
+                    "data": {
+                        "sequence": [
+                            "K200",
+                            "K201",
+                            "K204",
+                            "K205",
+                            "K206",
+                            "K208"
+                        ]
+                    }
+                }
+            },
+            {
+                "id": "S02",
+                "type": "concept",
+                "title": "DNA và gene",
+                "nodes": [
+                    "K200",
+                    "K201"
+                ],
+                "estimatedMinutes": 15,
+                "content": {
+                    "format": "rich_text",
+                    "blocks": [
+                        {
+                            "type": "concept",
+                            "node": "K200",
+                            "contentRef": "content/dna-structure"
+                        },
+                        {
+                            "type": "concept",
+                            "node": "K201",
+                            "contentRef": "content/gene"
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "S03",
+                "type": "mechanism",
+                "title": "Từ DNA đến RNA",
+                "nodes": [
+                    "K204",
+                    "K205"
+                ],
+                "estimatedMinutes": 20,
+                "content": {
+                    "format": "mechanism",
+                    "contentRef": "content/transcription"
+                }
+            },
+            {
+                "id": "S04",
+                "type": "workedExample",
+                "title": "Một gene tạo ra protein như thế nào?",
+                "nodes": [
+                    "K202",
+                    "K206"
+                ],
+                "estimatedMinutes": 15,
+                "content": {
+                    "format": "worked_example",
+                    "contentRef": "content/gene-to-protein-example"
+                }
+            },
+            {
+                "id": "S05",
+                "type": "guidedPractice",
+                "title": "Luyện từng bước",
+                "nodes": [
+                    "K202",
+                    "K206"
+                ],
+                "estimatedMinutes": 15,
+                "questionSet": {
+                    "source": "questions/",
+                    "selection": {
+                        "nodes": [
+                            "K202",
+                            "K206"
+                        ],
+                        "difficulty": [
+                            "D2",
+                            "D3"
+                        ],
+                        "evidence": [
+                            "explain",
+                            "apply"
+                        ],
+                        "count": 5
+                    },
+                    "adaptive": true
+                }
+            },
+            {
+                "id": "S06",
+                "type": "apply",
+                "title": "Từ codon đến protein",
+                "nodes": [
+                    "K206"
+                ],
+                "estimatedMinutes": 20,
+                "questionSet": {
+                    "source": "questions/",
+                    "selection": {
+                        "primaryNode": "K206",
+                        "difficulty": [
+                            "D3"
+                        ],
+                        "evidence": [
+                            "apply"
+                        ],
+                        "count": 5
+                    },
+                    "adaptive": true
+                }
+            },
+            {
+                "id": "S07",
+                "type": "crossNode",
+                "title": "Nối toàn bộ chuỗi",
+                "nodes": [
+                    "K200",
+                    "K201",
+                    "K204",
+                    "K205",
+                    "K206",
+                    "K208"
+                ],
+                "estimatedMinutes": 15,
+                "content": {
+                    "format": "causal_chain",
+                    "chain": [
+                        "DNA",
+                        "gene",
+                        "transcription",
+                        "RNA",
+                        "translation",
+                        "protein",
+                        "trait"
+                    ]
+                }
+            },
+            {
+                "id": "S08",
+                "type": "transfer",
+                "title": "Nếu dữ kiện thay đổi thì sao?",
+                "nodes": [
+                    "K208"
+                ],
+                "estimatedMinutes": 20,
+                "questionSet": {
+                    "source": "questions/transfer/",
+                    "selection": {
+                        "primaryNode": "K208",
+                        "difficulty": [
+                            "D4",
+                            "D5"
+                        ],
+                        "evidence": [
+                            "transfer"
+                        ],
+                        "count": 3
+                    },
+                    "adaptive": true
+                }
+            },
+            {
+                "id": "S09",
+                "type": "reflection",
+                "title": "Tự kiểm tra",
+                "nodes": [
+                    "K200",
+                    "K201",
+                    "K204",
+                    "K206",
+                    "K208"
+                ],
+                "estimatedMinutes": 5,
+                "prompts": [
+                    "Em có thể giải thích DNA liên quan đến tính trạng như thế nào không?",
+                    "Em có thể phân biệt phiên mã và dịch mã không?",
+                    "Khi dữ kiện thay đổi, em có biết bắt đầu suy luận từ đâu không?"
+                ]
+            }
+        ],
+        "exitDiagnostic": {
+            "enabled": true,
+            "questionSelection": {
+                "source": "questions/",
+                "selection": {
+                    "nodes": [
+                        "K200",
+                        "K204",
+                        "K206",
+                        "K208"
+                    ],
+                    "evidence": [
+                        "know",
+                        "explain",
+                        "apply",
+                        "transfer"
+                    ],
+                    "difficulty": [
+                        "D2",
+                        "D3",
+                        "D4"
+                    ],
+                    "count": 6
+                }
+            },
+            "outcomes": {
+                "mastered": {
+                    "action": "UPDATE_MASTERY"
+                },
+                "partial": {
+                    "action": "PRACTICE_GAP"
+                },
+                "weak": {
+                    "action": "REMEDIATE"
+                }
+            }
+        },
+        "adaptiveRules": {
+            "enabled": true,
+            "skip": {
+                "condition": "node.mastery >= node.targetMastery",
+                "action": "skip_section"
+            },
+            "learn": {
+                "condition": "node.mastery <= M1",
+                "action": "show_concept_and_guided_practice"
+            },
+            "practice": {
+                "condition": "node.mastery == M2",
+                "action": "show_practice"
+            },
+            "challenge": {
+                "condition": "node.mastery == M3",
+                "action": "show_apply_and_transfer"
+            },
+            "retest": {
+                "condition": "node.mastery == M4",
+                "action": "show_retest"
+            },
+            "remediate": {
+                "condition": "node.status == weak",
+                "action": "route_to_failure_signature"
+            }
+        },
+        "estimatedMinutes": {
+            "minimum": 35,
+            "typical": 90,
+            "maximum": 150
+        },
+        "difficulty": "adaptive",
+        "metadata": {
+            "author": "system",
+            "createdAt": "2026-09-20",
+            "updatedAt": "2026-09-20",
+            "reviewStatus": "approved",
+            "tags": [
+                "dna",
+                "gene",
+                "rna",
+                "protein",
+                "trait"
+            ]
+        }
+    },
+    "nodeRules": {
+        "multipleNodesPerLesson": true,
+        "nodeCanAppearInMultipleLessons": true,
+        "primaryNode": {
+            "required": false,
+            "rule": "Chỉ bắt buộc khi lesson có mục tiêu mastery cụ thể."
+        },
+        "supportingNode": {
+            "rule": "Node hỗ trợ có thể xuất hiện trong lesson mà không phải mục tiêu chính."
+        },
+        "targetMastery": {
+            "source": "knowledge-map-v4.json",
+            "rule": "Lesson không được tự đặt targetMastery khác với Knowledge Map."
+        }
+    },
+    "sectionRules": {
+        "sequenceIsFlexible": true,
+        "principle": "Section sequence có thể thay đổi theo delivery mode và mastery.",
+        "minimumLearningFlow": [
+            "concept_or_observation",
+            "guidedPractice",
+            "application_or_transfer"
+        ],
+        "deepLearningFlow": [
+            "orientation",
+            "concept",
+            "mechanism",
+            "workedExample",
+            "guidedPractice",
+            "apply",
+            "crossNode",
+            "transfer",
+            "reflection",
+            "exitDiagnostic"
+        ],
+        "fastLearningFlow": [
+            "entryDiagnostic",
+            "learn_gap",
+            "practice",
+            "challenge",
+            "exitDiagnostic"
+        ]
+    },
+    "questionSetRules": {
+        "principle": "Lesson tham chiếu question bank bằng selection rule thay vì hard-code toàn bộ câu hỏi.",
+        "selectionMayUse": [
+            "node",
+            "primaryNode",
+            "evidence",
+            "difficulty",
+            "mode",
+            "skill",
+            "failureSignature",
+            "contextType",
+            "retestGroupId"
+        ],
+        "adaptiveSelection": true,
+        "avoidRepeatedQuestions": true,
+        "avoidImmediateDuplicateContext": true
+    },
+    "diagnosticRules": {
+        "entryDiagnostic": {
+            "purpose": "Xác định điểm bắt đầu.",
+            "doesNotEqualMasteryTest": true,
+            "maySkipContent": true
+        },
+        "exitDiagnostic": {
+            "purpose": "Đánh giá tiến bộ sau lesson.",
+            "updatesMastery": true
+        },
+        "rule": "Diagnostic phải ngắn hơn một bài kiểm tra thông thường."
+    },
+    "adaptiveLearningRules": {
+        "principle": "Lesson structure là dynamic theo mastery.",
+        "M0": {
+            "show": [
+                "concept",
+                "observation",
+                "mechanism",
+                "guidedPractice"
+            ],
+            "skip": [
+                "advanced_transfer"
+            ]
+        },
+        "M1": {
+            "show": [
+                "concept",
+                "mechanism",
+                "guidedPractice",
+                "practice"
+            ]
+        },
+        "M2": {
+            "show": [
+                "brief_concept_review",
+                "practice",
+                "apply"
+            ],
+            "skip": [
+                "long_introduction"
+            ]
+        },
+        "M3": {
+            "show": [
+                "apply",
+                "crossNode",
+                "transfer"
+            ],
+            "skip": [
+                "basic_concept_explanation"
+            ]
+        },
+        "M4": {
+            "show": [
+                "challenge",
+                "transfer",
+                "retest"
+            ],
+            "skip": [
+                "basic_teaching"
+            ]
+        },
+        "stable": {
+            "show": [
+                "review",
+                "challenge"
+            ],
+            "skip": [
+                "full_lesson"
+            ]
+        }
+    },
+    "remediationLessonRules": {
+        "principle": "Remediation lesson nhỏ, tập trung vào failure signature thay vì dạy lại toàn bộ cluster.",
+        "requiredFields": [
+            "targetFailureSignature",
+            "sourceNodes",
+            "miniLesson",
+            "miniPractice",
+            "miniProbe"
+        ],
+        "recommendedFlow": [
+            "identify_error",
+            "explain_source",
+            "guided_practice",
+            "mini_probe",
+            "return_to_original_node"
+        ],
+        "maximumNodes": 3,
+        "maximumEstimatedMinutes": 20
+    },
+    "transferRules": {
+        "principle": "Transfer section phải thay đổi bối cảnh, dữ kiện hoặc cách biểu diễn.",
+        "acceptableChanges": [
+            "new_context",
+            "new_data",
+            "new_representation",
+            "cross_node_problem",
+            "reverse_reasoning",
+            "real_world_scenario"
+        ],
+        "notTransfer": [
+            "same_question_with_numbers_changed",
+            "same_example_reworded",
+            "simple_recall"
+        ]
+    },
+    "contentRules": {
+        "lessonShouldNot": [
+            "copy_entire_textbook_chapter",
+            "repeat_same_explanation_multiple_times",
+            "force_every_student_through_every_section",
+            "define_mastery_independently",
+            "hard_code_student_specific_next_action"
+        ],
+        "lessonShould": [
+            "teach_mechanisms",
+            "connect_nodes",
+            "provide_examples",
+            "provide_scaffolding",
+            "support_adaptive_skipping",
+            "provide_transfer",
+            "provide_self_reflection"
+        ]
+    },
+    "lessonCompletionRules": {
+        "principle": "Hoàn thành lesson không đồng nghĩa mastery.",
+        "completionMeans": [
+            "student_completed_required_sections",
+            "student_attempted_required_questions"
+        ],
+        "masteryMeans": [
+            "mastery_rules_passed"
+        ]
+    },
+    "analyticsContract": {
+        "lessonEvents": [
+            "lesson_started",
+            "diagnostic_started",
+            "section_started",
+            "section_completed",
+            "section_skipped",
+            "question_answered",
+            "remediation_triggered",
+            "lesson_completed",
+            "exit_diagnostic_completed"
+        ],
+        "lessonDoesNotStoreStudentState": true,
+        "rule": "Student state được lưu bởi Student State / Analytics layer, không lưu trực tiếp trong lesson definition."
+    },
+    "validationRules": {
+        "mustValidate": [
+            "all node IDs exist in knowledge-map-v4.json",
+            "all question references match questions/schema.json",
+            "all evidence values are valid",
+            "all difficulty values are valid",
+            "all section types are valid",
+            "all delivery modes are valid"
+        ],
+        "mustNotValidateAgainst": [
+            "student mastery",
+            "student progress",
+            "current adaptive decision"
+        ],
+        "principle": "Lesson schema kiểm tra tính hợp lệ của lesson definition, không kiểm tra trạng thái cá nhân của học sinh."
+    },
+    "versioning": {
+        "currentVersion": "1.0.0",
+        "compatibleKnowledgeMap": "4.x",
+        "compatibleMasteryRules": "1.x",
+        "compatibleQuestionSchema": "1.x",
+        "breakingChanges": [
+            "Thay đổi cấu trúc section bắt buộc.",
+            "Thay đổi meaning của delivery mode.",
+            "Thay đổi contract giữa Lesson Engine và Adaptive Engine."
+        ],
+        "nonBreakingChanges": [
+            "Thêm section type.",
+            "Thêm metadata.",
+            "Thêm content format.",
+            "Thêm adaptive rule."
+        ]
+    }
+}

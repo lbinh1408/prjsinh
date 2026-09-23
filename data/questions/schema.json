@@ -1,0 +1,875 @@
+{
+    "schemaVersion": "1.0.0",
+    "schemaId": "biology-question-schema-v1",
+    "subject": "biology",
+    "language": "vi",
+    "status": "final",
+    "purpose": {
+        "description": "Schema chuẩn cho mọi câu hỏi được sử dụng trong hệ thống học Sinh học thích ứng.",
+        "sourceOfTruth": {
+            "knowledge": "knowledge/knowledge-map-v4.json",
+            "mastery": "mastery/rules.json",
+            "failureSignatures": "remediation/failure-signatures.json"
+        },
+        "principle": "Question mô tả nội dung câu hỏi, knowledge node được đo, evidence dimension, difficulty, mode sử dụng, cách chấm và các failure signature mà câu hỏi có khả năng phát hiện. Question không tự cập nhật mastery, không tự chẩn đoán failure thực tế và không tự quyết định remediation hoặc next action."
+    },
+    "idRules": {
+        "questionId": {
+            "pattern": "^Q-[A-Z]-[A-Z0-9]+-[A-Z0-9]+-[0-9]{3}$",
+            "example": "Q-A-K283-A-001",
+            "description": "ID duy nhất của câu hỏi."
+        },
+        "version": {
+            "format": "major.minor.patch",
+            "example": "1.0.0"
+        }
+    },
+    "questionTypes": {
+        "mcq": {
+            "name": "Multiple Choice",
+            "description": "Chọn một đáp án đúng.",
+            "optionsRequired": true,
+            "singleAnswer": true
+        },
+        "multi_select": {
+            "name": "Multiple Select",
+            "description": "Chọn nhiều đáp án đúng.",
+            "optionsRequired": true,
+            "singleAnswer": false
+        },
+        "true_false": {
+            "name": "True / False",
+            "description": "Xác định phát biểu đúng hoặc sai."
+        },
+        "matching": {
+            "name": "Matching",
+            "description": "Nối các phần tử tương ứng."
+        },
+        "ordering": {
+            "name": "Ordering",
+            "description": "Sắp xếp các bước hoặc đối tượng theo thứ tự."
+        },
+        "fill_blank": {
+            "name": "Fill Blank",
+            "description": "Điền từ, cụm từ hoặc giá trị còn thiếu."
+        },
+        "short_answer": {
+            "name": "Short Answer",
+            "description": "Trả lời ngắn."
+        },
+        "numeric": {
+            "name": "Numeric",
+            "description": "Nhập kết quả tính toán."
+        },
+        "data_analysis": {
+            "name": "Data Analysis",
+            "description": "Phân tích bảng số liệu, đồ thị hoặc dữ liệu thí nghiệm."
+        },
+        "experiment": {
+            "name": "Experiment Analysis",
+            "description": "Phân tích thiết kế, kết quả hoặc kết luận thí nghiệm."
+        },
+        "sequence": {
+            "name": "Biological Sequence",
+            "description": "Xác định hoặc sắp xếp trình tự của quá trình sinh học."
+        },
+        "open_response": {
+            "name": "Open Response",
+            "description": "Câu trả lời tự do, chấm theo rubric."
+        }
+    },
+    "evidenceTypes": {
+        "know": {
+            "name": "Biết",
+            "masteryLevel": "M1"
+        },
+        "explain": {
+            "name": "Giải thích",
+            "masteryLevel": "M2"
+        },
+        "apply": {
+            "name": "Vận dụng",
+            "masteryLevel": "M3"
+        },
+        "transfer": {
+            "name": "Chuyển giao",
+            "masteryLevel": "M4"
+        }
+    },
+    "difficultyLevels": {
+        "D1": {
+            "name": "Nhận biết",
+            "description": "Nhận diện hoặc nhớ trực tiếp."
+        },
+        "D2": {
+            "name": "Thông hiểu",
+            "description": "Giải thích hoặc xử lý quan hệ quen thuộc."
+        },
+        "D3": {
+            "name": "Vận dụng",
+            "description": "Áp dụng kiến thức để giải quyết vấn đề."
+        },
+        "D4": {
+            "name": "Chuyển giao",
+            "description": "Áp dụng trong bối cảnh mới hoặc dữ liệu mới."
+        },
+        "D5": {
+            "name": "Tích hợp",
+            "description": "Kết hợp nhiều knowledge node hoặc nhiều bước suy luận."
+        }
+    },
+    "questionModes": {
+        "diagnostic": {
+            "name": "Diagnostic",
+            "purpose": "Xác định điểm bắt đầu và phát hiện lỗ hổng."
+        },
+        "learning": {
+            "name": "Learning",
+            "purpose": "Kiểm tra ngay sau khi học."
+        },
+        "practice": {
+            "name": "Practice",
+            "purpose": "Củng cố kiến thức."
+        },
+        "challenge": {
+            "name": "Challenge",
+            "purpose": "Kiểm tra khả năng vận dụng và chuyển giao."
+        },
+        "retest": {
+            "name": "Retest",
+            "purpose": "Kiểm tra khả năng duy trì mastery trong ngữ cảnh khác."
+        },
+        "review": {
+            "name": "Review",
+            "purpose": "Ôn lại kiến thức đã học."
+        },
+        "remediation": {
+            "name": "Remediation",
+            "purpose": "Kiểm tra sau khi sửa một failure signature."
+        }
+    },
+    "coreSchema": {
+        "required": [
+            "id",
+            "version",
+            "nodes",
+            "primaryNode",
+            "evidence",
+            "difficulty",
+            "questionType",
+            "mode",
+            "content",
+            "answer",
+            "scoring",
+            "failureSignatures"
+        ],
+        "optional": [
+            "secondaryNodes",
+            "prerequisites",
+            "skills",
+            "tags",
+            "context",
+            "hint",
+            "explanation",
+            "metadata"
+        ]
+    },
+    "questionObject": {
+        "id": "Q-A-K283-A-001",
+        "version": "1.0.0",
+        "nodes": [
+            "K283"
+        ],
+        "primaryNode": "K283",
+        "secondaryNodes": [
+            "K281",
+            "K282"
+        ],
+        "evidence": "apply",
+        "difficulty": "D3",
+        "questionType": "mcq",
+        "mode": [
+            "practice",
+            "diagnostic"
+        ],
+        "prerequisites": [
+            "K281",
+            "K282"
+        ],
+        "skills": [
+            "S008"
+        ],
+        "content": {
+            "stem": "Một quần thể có tần số hoán vị gene là 20%. Tỉ lệ giao tử tái tổ hợp được tạo ra là bao nhiêu?",
+            "context": null,
+            "options": [
+                {
+                    "id": "A",
+                    "text": "10%",
+                    "isCorrect": false
+                },
+                {
+                    "id": "B",
+                    "text": "20%",
+                    "isCorrect": true
+                },
+                {
+                    "id": "C",
+                    "text": "40%",
+                    "isCorrect": false
+                },
+                {
+                    "id": "D",
+                    "text": "80%",
+                    "isCorrect": false
+                }
+            ],
+            "media": [],
+            "data": null
+        },
+        "answer": {
+            "type": "single",
+            "value": "B"
+        },
+        "scoring": {
+            "maxScore": 1,
+            "partialCredit": false,
+            "rubric": null
+        },
+        "failureSignatures": [
+            "recombination-rate-calculation",
+            "linked-gamete-confusion"
+        ],
+        "explanation": {
+            "correct": "Tần số hoán vị gene chính là tỉ lệ giao tử tái tổ hợp được tạo ra. Vì vậy tần số hoán vị 20% tương ứng 20% giao tử tái tổ hợp.",
+            "incorrect": {
+                "A": "Có thể đã chia đôi tần số hoán vị khi không cần thiết.",
+                "C": "Có thể đã nhân đôi tần số hoán vị.",
+                "D": "Có thể nhầm tỉ lệ giao tử liên kết với giao tử tái tổ hợp."
+            }
+        },
+        "hint": {
+            "enabled": true,
+            "levels": [
+                {
+                    "level": 1,
+                    "text": "Hãy nhớ định nghĩa của tần số hoán vị gene."
+                },
+                {
+                    "level": 2,
+                    "text": "Tần số hoán vị gene được tính từ tỉ lệ giao tử nào?"
+                }
+            ]
+        },
+        "metadata": {
+            "author": "system",
+            "createdAt": "2026-01-01",
+            "updatedAt": "2026-01-01",
+            "source": "original",
+            "reviewStatus": "approved",
+            "estimatedTimeSeconds": 45,
+            "tags": [
+                "hoan-vi-gene",
+                "giao-tu-tai-to-hop",
+                "di-truyen"
+            ]
+        }
+    },
+    "nodeMappingRules": {
+        "primaryNode": {
+            "required": true,
+            "rule": "Phải là knowledge node mà câu hỏi trực tiếp đo mastery."
+        },
+        "secondaryNodes": {
+            "required": false,
+            "rule": "Các knowledge node hỗ trợ, prerequisite liên quan hoặc được sử dụng trong quá trình giải. secondaryNodes không mặc định nhận mastery evidence từ câu hỏi."
+        },
+        "nodes": {
+            "required": true,
+            "rule": "nodes chứa các knowledge node được câu hỏi trực tiếp đo evidence. primaryNode bắt buộc phải thuộc nodes. secondaryNodes không bắt buộc thuộc nodes.",
+            "primaryNodeMustBeIncluded": true,
+            "secondaryNodesAutoIncluded": false
+        },
+        "multiNodeQuestion": {
+            "rule": "Một câu có thể trực tiếp đo nhiều knowledge node và khi đó các node được đo phải xuất hiện trong nodes, nhưng chỉ có một primaryNode. Việc phân phối evidence cho các node khác ngoài primaryNode phải do Mastery contract quy định rõ, không được suy ra chỉ từ secondaryNodes."
+        }
+    },
+    "evidenceRules": {
+        "oneQuestionOnePrimaryEvidence": true,
+        "allowed": [
+            "know",
+            "explain",
+            "apply",
+            "transfer"
+        ],
+        "rule": "Một câu hỏi không được đồng thời mang nhiều evidence chính. Nếu câu hỏi tích hợp nhiều năng lực, chọn evidence cao nhất thực sự cần thiết để giải quyết câu hỏi.",
+        "diagnosticIsNotEvidence": true,
+        "diagnosticRule": "diagnostic là mode sử dụng câu hỏi, không phải một evidence dimension."
+    },
+    "difficultyRules": {
+        "rule": "Difficulty mô tả độ phức tạp của nhiệm vụ, không phải độ quan trọng của knowledge node.",
+        "evidenceAlignment": {
+            "D1": [
+                "know"
+            ],
+            "D2": [
+                "explain"
+            ],
+            "D3": [
+                "apply"
+            ],
+            "D4": [
+                "transfer"
+            ],
+            "D5": [
+                "apply",
+                "transfer"
+            ]
+        },
+        "allowedMismatch": true,
+        "mismatchRule": "Một số câu có thể có difficulty và evidence không khớp hoàn toàn với mapping mặc định; trường hợp này phải có lý do rõ ràng trong metadata."
+    },
+    "prerequisiteRules": {
+        "rule": "Prerequisites của question là kiến thức cần có để giải câu hỏi, không nhất thiết là toàn bộ prerequisites của primaryNode.",
+        "mustExistInKnowledgeMap": true,
+        "doNotInferMasteryFromPresence": true,
+        "masteryRequirement": "Dùng dependency type trong knowledge-map-v4.json và Adaptive Rules để xác định mức mastery cần thiết. Question không tự quyết định prerequisite đã đạt hay chưa."
+    },
+    "failureSignatureRules": {
+        "required": true,
+        "minimum": 1,
+        "storage": "reference_only",
+        "rule": "failureSignatures trong Question chỉ chứa ID của các failure signature mà câu hỏi có khả năng cung cấp tín hiệu để chẩn đoán. Definition đầy đủ của failure signature thuộc Failure Signature Registry / Remediation contract.",
+        "questionDoesNotDiagnoseActualFailure": true,
+        "actualFailureDecision": "Failure signature thực tế của một attempt phải được xác định từ câu trả lời, distractor, dữ liệu attempt và logic chẩn đoán; không được mặc định rằng mọi failureSignatures khai báo trong Question đều xảy ra.",
+        "registry": {
+            "path": "remediation/failure-signatures.json",
+            "example": {
+                "id": "recombination-rate-calculation",
+                "type": "calculation_error",
+                "description": "Không tính hoặc diễn giải đúng tần số hoán vị gene.",
+                "sourceNodes": [
+                    "K283"
+                ],
+                "remediationNodes": [
+                    "K283"
+                ],
+                "skills": [
+                    "S008"
+                ]
+            }
+        },
+        "failureTypes": [
+            "knowledge_gap",
+            "prerequisite_gap",
+            "concept_confusion",
+            "mechanism_confusion",
+            "calculation_error",
+            "data_interpretation_error",
+            "reasoning_error",
+            "cross_node_reasoning_error",
+            "sequence_error",
+            "classification_error",
+            "careless_error",
+            "source_knowledge_gap",
+            "meta_skill_gap"
+        ]
+    },
+    "answerRules": {
+        "mcq": {
+            "answerType": "single",
+            "requiredFields": [
+                "value"
+            ]
+        },
+        "multi_select": {
+            "answerType": "multiple",
+            "requiredFields": [
+                "values"
+            ]
+        },
+        "true_false": {
+            "answerType": "boolean",
+            "requiredFields": [
+                "value"
+            ]
+        },
+        "matching": {
+            "answerType": "pairs",
+            "requiredFields": [
+                "pairs"
+            ]
+        },
+        "ordering": {
+            "answerType": "sequence",
+            "requiredFields": [
+                "order"
+            ]
+        },
+        "fill_blank": {
+            "answerType": "text",
+            "requiredFields": [
+                "acceptedAnswers"
+            ]
+        },
+        "numeric": {
+            "answerType": "number",
+            "requiredFields": [
+                "value"
+            ],
+            "optionalFields": [
+                "tolerance",
+                "unit"
+            ]
+        },
+        "short_answer": {
+            "answerType": "text",
+            "requiredFields": [
+                "acceptedAnswers"
+            ],
+            "optionalFields": [
+                "acceptedPatterns"
+            ]
+        },
+        "open_response": {
+            "answerType": "rubric",
+            "requiredFields": [
+                "rubric"
+            ]
+        }
+    },
+    "answerConsistencyRules": {
+        "principle": "answer là source of truth cho đáp án chuẩn. Các trường isCorrect trong options nếu được sử dụng phải nhất quán với answer.",
+        "mcq": {
+            "exactlyOneCorrectOption": true,
+            "answerValueMustMatchOptionId": true,
+            "isCorrectMustMatchAnswerValue": true
+        },
+        "multi_select": {
+            "answerValuesMustMatchOptionIds": true,
+            "isCorrectMustMatchAnswerValues": true
+        }
+    },
+    "scoringRules": {
+        "principle": "Question định nghĩa điểm số nội tại của câu hỏi. Việc chuyển score/result thành mastery evidence và các multiplier liên quan đến hint, retry hoặc attempt thuộc Mastery Rules.",
+        "fullCorrect": {
+            "score": 1
+        },
+        "partialCorrect": {
+            "scoreRange": [
+                0.25,
+                0.75
+            ]
+        },
+        "wrong": {
+            "score": 0
+        },
+        "skip": {
+            "score": 0
+        }
+    },
+    "hintRules": {
+        "principle": "Question chỉ định nghĩa nội dung và cấp độ hint. Ảnh hưởng của hint lên mastery evidence thuộc Mastery Rules.",
+        "maximumLevels": 2,
+        "level1": {
+            "type": "direction"
+        },
+        "level2": {
+            "type": "strong_hint"
+        },
+        "answerReveal": {
+            "countsAsIndependentEvidence": false
+        }
+    },
+    "explanationRules": {
+        "required": true,
+        "correctExplanation": {
+            "required": true,
+            "purpose": "Giải thích tại sao đáp án đúng."
+        },
+        "incorrectExplanation": {
+            "required": false,
+            "recommended": true,
+            "purpose": "Giải thích các lỗi phổ biến hoặc logic có thể dẫn tới lựa chọn sai."
+        },
+        "principle": "Explanation phải giải thích cơ chế hoặc logic, không chỉ lặp lại đáp án."
+    },
+    "remediationIntegration": {
+        "principle": "Question không quyết định remediation action.",
+        "questionProvides": [
+            "failureSignatures",
+            "primaryNode",
+            "secondaryNodes",
+            "prerequisites",
+            "skills"
+        ],
+        "remediationEngineOwns": [
+            "actualFailureDiagnosis",
+            "sourceNodeSelection",
+            "remediationNodeSelection",
+            "remediationDepth",
+            "remediationStrategy",
+            "remediationPlan"
+        ],
+        "adaptiveEngineOwns": [
+            "nextAction"
+        ],
+        "fallbackBehavior": "Fallback remediation hoặc retry được xác định bởi Remediation/Adaptive Rules, không lưu trong Question."
+    },
+    "contextRules": {
+        "contextId": {
+            "requiredFor": [
+                "transfer",
+                "retest"
+            ]
+        },
+        "differentContextForRetest": true,
+        "contextTypes": [
+            "direct",
+            "biological_scenario",
+            "experiment",
+            "data_table",
+            "graph",
+            "clinical_context",
+            "ecological_context",
+            "genetic_cross",
+            "integrated_problem"
+        ]
+    },
+    "retestRules": {
+        "requiredFields": [
+            "retestGroupId",
+            "contextId"
+        ],
+        "principle": "Retest không được sao chép nguyên văn câu hỏi cũ.",
+        "sameNode": true,
+        "sameEvidence": true,
+        "differentQuestion": true,
+        "differentContext": true
+    },
+    "diagnosticRules": {
+        "diagnosticQuestion": {
+            "modeIncludes": "diagnostic"
+        },
+        "diagnosticIsMode": true,
+        "diagnosticIsNotEvidenceDimension": true,
+        "recommendedFields": [
+            "diagnosticPurpose",
+            "estimatedMasteryLevel",
+            "discriminatesBetween"
+        ],
+        "diagnosticPurposeValues": [
+            "identify_starting_point",
+            "identify_prerequisite_gap",
+            "identify_concept_gap",
+            "identify_application_gap",
+            "identify_transfer_gap"
+        ]
+    },
+    "qualityRules": {
+        "questionMustHave": [
+            "one_primaryNode",
+            "one_primaryEvidence",
+            "difficulty",
+            "answer",
+            "explanation",
+            "failureSignature"
+        ],
+        "questionMustNot": [
+            "depend_on_unlisted_knowledge",
+            "have_multiple_correct_answers_without_declaration",
+            "use_ambiguous_wording",
+            "use_trick_wording_as_the_main_difficulty",
+            "measure_only_memory_when_labeled_transfer",
+            "have_failureSignature_unrelated_to_the_question",
+            "grant_mastery_to_secondaryNodes_implicitly",
+            "decide_next_action",
+            "decide_remediation_plan"
+        ],
+        "contentQuality": {
+            "scientificAccuracy": "required",
+            "curriculumAlignment": "required",
+            "languageClarity": "required",
+            "answerUniqueness": "required",
+            "difficultyValidity": "required"
+        }
+    },
+    "questionLifecycle": {
+        "draft": {
+            "description": "Câu hỏi đang xây dựng."
+        },
+        "review": {
+            "description": "Đang được kiểm tra nội dung."
+        },
+        "approved": {
+            "description": "Được phép đưa vào hệ thống."
+        },
+        "deprecated": {
+            "description": "Không dùng cho session mới nhưng giữ lịch sử."
+        },
+        "archived": {
+            "description": "Không còn được sử dụng."
+        }
+    },
+    "analyticsFields": {
+        "optional": [
+            "exposureCount",
+            "attemptCount",
+            "correctCount",
+            "wrongCount",
+            "averageTimeSeconds",
+            "discriminationIndex",
+            "difficultyObserved",
+            "failureSignatureFrequency"
+        ],
+        "principle": "Analytics thực tế không được ghi đè nội dung Question. Dữ liệu analytics runtime thuộc Analytics Engine."
+    },
+    "questionSelectionContract": {
+        "QuestionEngineMayFilterBy": [
+            "node",
+            "evidence",
+            "difficulty",
+            "mode",
+            "failureSignature",
+            "skill",
+            "contextType",
+            "retestGroupId"
+        ],
+        "QuestionEngineMustRespect": [
+            "primaryNode",
+            "nodes",
+            "evidence",
+            "difficulty",
+            "prerequisites",
+            "mode"
+        ],
+        "QuestionEngineMustNot": [
+            "updateMastery",
+            "diagnoseFinalFailureState",
+            "chooseRemediationPlan",
+            "chooseNextAction"
+        ]
+    },
+    "attemptIntegration": {
+        "principle": "Question là dữ liệu tĩnh. Kết quả tương tác của học sinh phải được ghi thành Attempt riêng.",
+        "attemptReceivesFromQuestion": [
+            "questionId",
+            "primaryNode",
+            "nodes",
+            "secondaryNodes",
+            "evidence",
+            "difficulty",
+            "skills",
+            "contextId"
+        ],
+        "attemptAddsRuntimeData": [
+            "studentResponse",
+            "result",
+            "score",
+            "hintUsage",
+            "attemptNumber",
+            "responseTime",
+            "detectedFailureSignature",
+            "timestamp"
+        ]
+    },
+    "masteryIntegration": {
+        "resultPayload": {
+            "questionId": "Q-A-K283-A-001",
+            "primaryNode": "K283",
+            "nodes": [
+                "K283"
+            ],
+            "secondaryNodes": [
+                "K281",
+                "K282"
+            ],
+            "evidence": "apply",
+            "difficulty": "D3",
+            "result": "wrong",
+            "score": 0,
+            "hintUsed": false,
+            "failureSignature": "linked-gamete-confusion",
+            "skills": [
+                "S008"
+            ],
+            "contextId": "genetic-linkage-01",
+            "timestamp": "2026-09-20T08:00:00+07:00"
+        },
+        "rule": "Mastery Engine sử dụng Attempt/result payload để cập nhật evidence theo Mastery Rules. Question Engine không tự quyết định mastery.",
+        "secondaryNodeRule": "secondaryNodes không tự động nhận mastery evidence.",
+        "diagnosticRule": "Question có mode diagnostic vẫn cập nhật hoặc không cập nhật mastery theo chính sách của Mastery Engine; diagnostic không tạo evidence dimension riêng."
+    },
+    "adaptiveIntegration": {
+        "possibleActions": [
+            "LEARN",
+            "PRACTICE",
+            "CHALLENGE",
+            "REMEDIATE",
+            "RETEST",
+            "REVIEW",
+            "SKIP"
+        ],
+        "adaptiveEngineDecides": true,
+        "questionDoesNotDecideNextAction": true
+    },
+    "exampleMinimalQuestion": {
+        "id": "Q-K-K012-K-001",
+        "version": "1.0.0",
+        "nodes": [
+            "K012"
+        ],
+        "primaryNode": "K012",
+        "evidence": "know",
+        "difficulty": "D1",
+        "questionType": "mcq",
+        "mode": [
+            "diagnostic",
+            "practice"
+        ],
+        "content": {
+            "stem": "Đơn phân cấu tạo nên protein là gì?",
+            "options": [
+                {
+                    "id": "A",
+                    "text": "Glucose",
+                    "isCorrect": false
+                },
+                {
+                    "id": "B",
+                    "text": "Amino acid",
+                    "isCorrect": true
+                },
+                {
+                    "id": "C",
+                    "text": "Nucleotide",
+                    "isCorrect": false
+                },
+                {
+                    "id": "D",
+                    "text": "Glycerol",
+                    "isCorrect": false
+                }
+            ],
+            "media": []
+        },
+        "answer": {
+            "type": "single",
+            "value": "B"
+        },
+        "scoring": {
+            "maxScore": 1,
+            "partialCredit": false
+        },
+        "failureSignatures": [
+            "protein-monomer-confusion"
+        ],
+        "explanation": {
+            "correct": "Protein được cấu tạo từ các amino acid liên kết với nhau thành chuỗi polypeptide."
+        }
+    },
+    "validationRules": {
+        "references": {
+            "primaryNodeMustExist": true,
+            "nodesMustExist": true,
+            "secondaryNodesMustExist": true,
+            "prerequisitesMustExist": true,
+            "skillsMustExist": true,
+            "failureSignaturesMustExistInRegistry": true
+        },
+        "nodeConsistency": {
+            "primaryNodeMustBeInNodes": true,
+            "secondaryNodesNeedNotBeInNodes": true,
+            "secondaryNodesDoNotReceiveImplicitEvidence": true
+        },
+        "answerConsistency": {
+            "answerMustMatchQuestionType": true,
+            "answerMustReferenceExistingOptionWhenApplicable": true,
+            "optionCorrectFlagsMustMatchCanonicalAnswer": true
+        },
+        "modeConsistency": {
+            "allModesMustBeDeclared": true
+        },
+        "evidenceConsistency": {
+            "evidenceMustBeDeclared": true,
+            "diagnosticMustNotBeUsedAsEvidence": true
+        },
+        "difficultyConsistency": {
+            "difficultyMustBeDeclared": true
+        }
+    },
+    "ownership": {
+        "Question": [
+            "question content",
+            "node references",
+            "primary evidence",
+            "difficulty",
+            "question type",
+            "mode",
+            "canonical answer",
+            "question scoring",
+            "failure signature references",
+            "explanation",
+            "hint content",
+            "metadata"
+        ],
+        "Attempt": [
+            "student response",
+            "result",
+            "score",
+            "hint usage",
+            "attempt number",
+            "response time",
+            "detected failure signature"
+        ],
+        "MasteryEngine": [
+            "evidence gain/loss",
+            "hint multiplier",
+            "retry multiplier",
+            "difficulty reliability",
+            "mastery update",
+            "confidence update"
+        ],
+        "RemediationEngine": [
+            "failure diagnosis",
+            "source node",
+            "remediation node",
+            "remediation depth",
+            "remediation strategy",
+            "remediation plan"
+        ],
+        "AdaptiveEngine": [
+            "next action",
+            "routing",
+            "priority",
+            "skip",
+            "review",
+            "retest scheduling decision"
+        ],
+        "AnalyticsEngine": [
+            "aggregate question statistics",
+            "observed difficulty",
+            "failure frequency",
+            "performance metrics"
+        ]
+    },
+    "versioning": {
+        "currentVersion": "1.0.0",
+        "compatibleKnowledgeMap": "4.x",
+        "compatibleMasteryRules": "1.x",
+        "breakingChanges": [
+            "Thay đổi cấu trúc questionObject bắt buộc.",
+            "Thay đổi meaning của nodes hoặc primaryNode.",
+            "Thay đổi meaning của evidence.",
+            "Thay đổi meaning của difficulty.",
+            "Thay đổi cấu trúc answer.",
+            "Thay đổi cách Question tương tác với Attempt/Mastery."
+        ],
+        "nonBreakingChanges": [
+            "Thêm questionType.",
+            "Thêm failureSignature ID.",
+            "Thêm contextType.",
+            "Thêm metadata field tùy chọn."
+        ]
+    }
+}

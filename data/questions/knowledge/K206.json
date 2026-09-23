@@ -1,0 +1,671 @@
+{
+    "schemaVersion": "1.0.0",
+    "nodeId": "K206",
+    "nodeTitle": "Dịch mã",
+    "questions": [
+        {
+            "id": "Q-K-K206-K-001",
+            "version": "1.0.0",
+            "nodes": [
+                "K206"
+            ],
+            "primaryNode": "K206",
+            "secondaryNodes": [
+                "K205"
+            ],
+            "evidence": "know",
+            "difficulty": "D1",
+            "questionType": "mcq",
+            "mode": [
+                "learning",
+                "practice",
+                "review"
+            ],
+            "prerequisites": [
+                "K205"
+            ],
+            "skills": [],
+            "content": {
+                "stem": "Trong quá trình dịch mã, ribosome sử dụng phân tử nào làm khuôn để tổng hợp chuỗi polypeptide?",
+                "context": null,
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "DNA",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "B",
+                        "text": "mRNA",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "C",
+                        "text": "tRNA",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "rRNA",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "B"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "concept_confusion"
+            ],
+            "explanation": {
+                "correct": "mRNA mang thông tin di truyền và đóng vai trò khuôn trực tiếp để ribosome đọc theo từng codon trong quá trình tổng hợp chuỗi polypeptide.",
+                "incorrect": {
+                    "A": "DNA chứa thông tin di truyền nhưng không phải phân tử được ribosome trực tiếp dùng làm khuôn trong dịch mã.",
+                    "C": "tRNA mang amino acid đến ribosome, không đóng vai trò khuôn.",
+                    "D": "rRNA là thành phần cấu tạo và chức năng của ribosome, không phải khuôn mang trình tự codon cần dịch."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Hãy nghĩ đến phân tử chứa các codon mà ribosome đọc."
+                    },
+                    {
+                        "level": 2,
+                        "text": "Phân tử này được tạo ra trong quá trình phiên mã."
+                    }
+                ]
+            },
+            "metadata": {
+                "source": "migrated",
+                "reviewStatus": "approved"
+            }
+        },
+        {
+            "id": "Q-E-K206-E-001",
+            "version": "1.0.0",
+            "nodes": [
+                "K206"
+            ],
+            "primaryNode": "K206",
+            "secondaryNodes": [
+                "K202",
+                "K205"
+            ],
+            "evidence": "explain",
+            "difficulty": "D2",
+            "questionType": "short_answer",
+            "mode": [
+                "learning",
+                "practice"
+            ],
+            "prerequisites": [
+                "K202",
+                "K205"
+            ],
+            "skills": [],
+            "content": {
+                "stem": "Vì sao trình tự nucleotide trên mRNA có thể quyết định trình tự amino acid trong chuỗi polypeptide?",
+                "context": null,
+                "options": [],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "text",
+                "acceptedAnswers": [
+                    "Vì mRNA chứa các codon và mỗi codon quy định một amino acid hoặc tín hiệu kết thúc."
+                ],
+                "acceptedPatterns": [
+                    "mRNA.*codon.*amino acid",
+                    "codon.*quy định.*amino acid"
+                ]
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": true,
+                "rubric": [
+                    {
+                        "score": 0.5,
+                        "condition": "Nhận ra mối liên hệ codon và amino acid nhưng giải thích chưa đầy đủ."
+                    },
+                    {
+                        "score": 1,
+                        "condition": "Giải thích được codon trên mRNA xác định amino acid hoặc tín hiệu kết thúc."
+                    }
+                ]
+            },
+            "failureSignatures": [
+                "concept_confusion",
+                "mechanism_confusion"
+            ],
+            "explanation": {
+                "correct": "mRNA được ribosome đọc theo từng codon. Mỗi codon xác định một amino acid tương ứng hoặc tín hiệu kết thúc, vì vậy trình tự nucleotide trên mRNA quyết định trình tự amino acid của chuỗi polypeptide."
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Hãy chú ý đến khái niệm codon."
+                    },
+                    {
+                        "level": 2,
+                        "text": "Một codon gồm 3 nucleotide trên mRNA và có quan hệ với amino acid."
+                    }
+                ]
+            },
+            "metadata": {
+                "source": "migrated",
+                "reviewStatus": "approved"
+            }
+        },
+        {
+            "id": "Q-A-K206-A-001",
+            "version": "1.0.0",
+            "nodes": [
+                "K206"
+            ],
+            "primaryNode": "K206",
+            "secondaryNodes": [
+                "K202"
+            ],
+            "evidence": "apply",
+            "difficulty": "D3",
+            "questionType": "numeric",
+            "mode": [
+                "practice",
+                "challenge"
+            ],
+            "prerequisites": [
+                "K202"
+            ],
+            "skills": [
+                "S008"
+            ],
+            "content": {
+                "stem": "Một đoạn mRNA có trình tự 5'-AUG-GCU-UUU-GGA-UAA-3'. Nếu ribosome dịch mã toàn bộ đoạn này, chuỗi polypeptide được tạo thành có bao nhiêu amino acid?",
+                "context": null,
+                "options": [],
+                "media": [],
+                "data": {
+                    "mrna": "5'-AUG-GCU-UUU-GGA-UAA-3'"
+                }
+            },
+            "answer": {
+                "type": "number",
+                "value": 4,
+                "tolerance": 0,
+                "unit": "amino acid"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "calculation_error",
+                "concept_confusion"
+            ],
+            "explanation": {
+                "correct": "Có 4 codon mã hóa amino acid: AUG, GCU, UUU và GGA. UAA là codon kết thúc nên không mã hóa amino acid."
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Hãy xác định codon mở đầu và codon kết thúc."
+                    },
+                    {
+                        "level": 2,
+                        "text": "UAA là codon kết thúc và không mã hóa amino acid."
+                    }
+                ]
+            },
+            "metadata": {
+                "source": "migrated",
+                "reviewStatus": "approved"
+            }
+        },
+        {
+            "id": "Q-A-K206-A-002",
+            "version": "1.0.0",
+            "nodes": [
+                "K206"
+            ],
+            "primaryNode": "K206",
+            "secondaryNodes": [
+                "K202"
+            ],
+            "evidence": "apply",
+            "difficulty": "D3",
+            "questionType": "numeric",
+            "mode": [
+                "practice",
+                "challenge"
+            ],
+            "prerequisites": [
+                "K202"
+            ],
+            "skills": [
+                "S008"
+            ],
+            "content": {
+                "stem": "Một mRNA dài 900 nucleotide, trong đó có 1 codon kết thúc. Giả sử toàn bộ phần còn lại được dịch mã và không xét các nucleotide ngoài vùng mã hóa. Chuỗi polypeptide được tổng hợp có bao nhiêu amino acid?",
+                "context": null,
+                "options": [],
+                "media": [],
+                "data": {
+                    "mrnaLength": 900,
+                    "stopCodons": 1
+                }
+            },
+            "answer": {
+                "type": "number",
+                "value": 299,
+                "tolerance": 0,
+                "unit": "amino acid"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": true,
+                "rubric": [
+                    {
+                        "score": 0.5,
+                        "condition": "Tính đúng 300 codon nhưng chưa loại codon kết thúc."
+                    },
+                    {
+                        "score": 1,
+                        "condition": "Tính 900 / 3 = 300 codon và loại 1 codon kết thúc, còn 299 amino acid."
+                    }
+                ]
+            },
+            "failureSignatures": [
+                "calculation_error",
+                "careless_error"
+            ],
+            "explanation": {
+                "correct": "900 nucleotide tương ứng 300 codon. Có 1 codon kết thúc không mã hóa amino acid nên chuỗi polypeptide gồm 299 amino acid."
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Trước hết hãy đổi số nucleotide thành số codon."
+                    },
+                    {
+                        "level": 2,
+                        "text": "900 : 3 = 300 codon. Sau đó cần xử lý codon kết thúc."
+                    }
+                ]
+            },
+            "metadata": {
+                "source": "migrated",
+                "reviewStatus": "approved"
+            }
+        },
+        {
+            "id": "Q-E-K206-E-002",
+            "version": "1.0.0",
+            "nodes": [
+                "K206"
+            ],
+            "primaryNode": "K206",
+            "secondaryNodes": [
+                "K202",
+                "K205",
+                "K208"
+            ],
+            "evidence": "explain",
+            "difficulty": "D3",
+            "questionType": "short_answer",
+            "mode": [
+                "practice",
+                "challenge"
+            ],
+            "prerequisites": [
+                "K202",
+                "K205"
+            ],
+            "skills": [],
+            "content": {
+                "stem": "Giải thích vì sao thay đổi trình tự nucleotide trên mRNA có thể làm thay đổi trình tự amino acid của protein.",
+                "context": null,
+                "options": [],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "text",
+                "acceptedAnswers": [
+                    "Thay đổi nucleotide có thể làm thay đổi codon trên mRNA, từ đó làm thay đổi amino acid được đưa vào chuỗi polypeptide."
+                ],
+                "acceptedPatterns": [
+                    "thay đổi.*nucleotide.*codon.*amino acid",
+                    "codon.*thay đổi.*amino acid"
+                ]
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": true,
+                "rubric": [
+                    {
+                        "score": 0.5,
+                        "condition": "Nhận ra nucleotide thay đổi có thể làm codon thay đổi nhưng chưa nối được đến amino acid."
+                    },
+                    {
+                        "score": 1,
+                        "condition": "Giải thích được chuỗi nucleotide → codon → amino acid → protein."
+                    }
+                ]
+            },
+            "failureSignatures": [
+                "mechanism_confusion",
+                "cross_node_reasoning_error"
+            ],
+            "explanation": {
+                "correct": "Thay đổi nucleotide có thể làm thay đổi codon trên mRNA. Codon thay đổi có thể làm amino acid tương ứng thay đổi, từ đó làm thay đổi trình tự của chuỗi polypeptide."
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Hãy tìm bước trung gian giữa nucleotide và amino acid."
+                    },
+                    {
+                        "level": 2,
+                        "text": "Hãy nối chuỗi: nucleotide → codon → amino acid."
+                    }
+                ]
+            },
+            "metadata": {
+                "source": "migrated",
+                "reviewStatus": "approved"
+            }
+        },
+        {
+            "id": "Q-K-K206-D-001",
+            "version": "1.0.0",
+            "nodes": [
+                "K206"
+            ],
+            "primaryNode": "K206",
+            "secondaryNodes": [
+                "K202"
+            ],
+            "evidence": "know",
+            "difficulty": "D2",
+            "questionType": "mcq",
+            "mode": [
+                "diagnostic"
+            ],
+            "prerequisites": [
+                "K202"
+            ],
+            "skills": [],
+            "content": {
+                "stem": "Một học sinh cho rằng: 'Mỗi nucleotide trên mRNA tương ứng trực tiếp với một amino acid trong protein.' Phát biểu này sai ở điểm nào?",
+                "context": null,
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "Vì mỗi amino acid được mã hóa bởi một nhóm 3 nucleotide gọi là codon.",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "B",
+                        "text": "Vì amino acid không liên quan đến mRNA.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "C",
+                        "text": "Vì ribosome không tham gia dịch mã.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "Vì DNA mới là phân tử trực tiếp được ribosome đọc.",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "A"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "concept_confusion",
+                "prerequisite_gap"
+            ],
+            "explanation": {
+                "correct": "Thông tin trên mRNA được ribosome đọc theo từng codon gồm 3 nucleotide, không phải từng nucleotide riêng lẻ. Một codon quy định một amino acid hoặc tín hiệu kết thúc.",
+                "incorrect": {
+                    "B": "Amino acid có quan hệ trực tiếp với thông tin mã hóa trên mRNA thông qua các codon.",
+                    "C": "Ribosome là bộ máy trực tiếp thực hiện quá trình dịch mã.",
+                    "D": "Ribosome đọc mRNA chứ không trực tiếp đọc DNA."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Hãy nhớ đơn vị mã hóa mà ribosome đọc trên mRNA."
+                    },
+                    {
+                        "level": 2,
+                        "text": "Một codon gồm 3 nucleotide."
+                    }
+                ]
+            },
+            "metadata": {
+                "source": "migrated",
+                "reviewStatus": "approved",
+                "diagnosticPurpose": "identify_concept_gap",
+                "discriminatesBetween": [
+                    "nucleotide",
+                    "codon"
+                ]
+            }
+        },
+        {
+            "id": "Q-T-K206-T-001",
+            "version": "1.0.0",
+            "nodes": [
+                "K206"
+            ],
+            "primaryNode": "K206",
+            "secondaryNodes": [
+                "K202",
+                "K208",
+                "K220"
+            ],
+            "evidence": "transfer",
+            "difficulty": "D4",
+            "questionType": "short_answer",
+            "mode": [
+                "challenge",
+                "retest"
+            ],
+            "prerequisites": [
+                "K202"
+            ],
+            "skills": [
+                "S010"
+            ],
+            "context": {
+                "contextId": "K206-silent-mutation-01",
+                "contextType": "integrated_problem"
+            },
+            "content": {
+                "stem": "Một đột biến thay thế một nucleotide trong vùng mã hóa của gene nhưng không làm thay đổi amino acid trong protein. Hãy giải thích tại sao điều này có thể xảy ra.",
+                "context": {
+                    "scenario": "Một gene bị đột biến điểm nhưng protein được tạo ra vẫn có cùng trình tự amino acid."
+                },
+                "options": [],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "text",
+                "acceptedAnswers": [
+                    "Do tính thoái hóa của mã di truyền, các codon khác nhau có thể cùng mã hóa một amino acid. Vì vậy thay đổi nucleotide có thể làm đổi codon nhưng không đổi amino acid."
+                ],
+                "acceptedPatterns": [
+                    "thoái hóa.*mã di truyền.*codon.*amino acid",
+                    "codon.*khác nhau.*cùng.*amino acid"
+                ]
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": true,
+                "rubric": [
+                    {
+                        "score": 0.5,
+                        "condition": "Nhận ra codon có thể thay đổi nhưng amino acid không đổi."
+                    },
+                    {
+                        "score": 1,
+                        "condition": "Giải thích được hiện tượng bằng tính thoái hóa của mã di truyền."
+                    }
+                ]
+            },
+            "failureSignatures": [
+                "cross_node_reasoning_error",
+                "mechanism_confusion",
+                "source_knowledge_gap"
+            ],
+            "explanation": {
+                "correct": "Do mã di truyền có tính thoái hóa, nhiều codon khác nhau có thể cùng quy định một amino acid. Vì vậy một thay thế nucleotide có thể làm thay đổi codon nhưng không nhất thiết làm thay đổi amino acid."
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Hãy suy nghĩ: một amino acid có thể được mã hóa bởi chỉ một codon hay nhiều codon?"
+                    },
+                    {
+                        "level": 2,
+                        "text": "Hãy nhớ tính thoái hóa của mã di truyền."
+                    }
+                ]
+            },
+            "metadata": {
+                "source": "migrated",
+                "reviewStatus": "approved",
+                "retestGroupId": "K206-transfer-silent-mutation"
+            }
+        },
+        {
+            "id": "Q-T-K206-T-002",
+            "version": "1.0.0",
+            "nodes": [
+                "K206"
+            ],
+            "primaryNode": "K206",
+            "secondaryNodes": [
+                "K202",
+                "K208"
+            ],
+            "evidence": "transfer",
+            "difficulty": "D4",
+            "questionType": "short_answer",
+            "mode": [
+                "challenge",
+                "retest"
+            ],
+            "prerequisites": [
+                "K202"
+            ],
+            "skills": [
+                "S004",
+                "S010"
+            ],
+            "context": {
+                "contextId": "K206-stop-position-01",
+                "contextType": "integrated_problem"
+            },
+            "content": {
+                "stem": "Hai mRNA có cùng số nucleotide và cùng chứa một codon kết thúc. mRNA A tạo ra protein dài hơn mRNA B. Không có đột biến làm thay đổi số nucleotide của hai mRNA. Hãy nêu một nguyên nhân hợp lý có thể giải thích hiện tượng này.",
+                "context": {
+                    "scenario": "So sánh hai mRNA khác nhau về vị trí codon kết thúc."
+                },
+                "options": [],
+                "media": [],
+                "data": {
+                    "constraint": "Hai mRNA có cùng độ dài nhưng vị trí codon kết thúc có thể khác nhau."
+                }
+            },
+            "answer": {
+                "type": "text",
+                "acceptedAnswers": [
+                    "Codon kết thúc của mRNA A nằm gần cuối trình tự hơn mRNA B nên có nhiều codon mã hóa amino acid hơn trước khi gặp tín hiệu kết thúc."
+                ],
+                "acceptedPatterns": [
+                    "codon kết thúc.*gần cuối.*nhiều.*codon",
+                    "vị trí.*codon kết thúc.*khác.*số.*amino acid"
+                ]
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": true,
+                "rubric": [
+                    {
+                        "score": 0.5,
+                        "condition": "Nhận ra vị trí codon kết thúc ảnh hưởng đến độ dài protein."
+                    },
+                    {
+                        "score": 1,
+                        "condition": "Giải thích được codon kết thúc xuất hiện muộn hơn tạo chuỗi polypeptide dài hơn."
+                    }
+                ]
+            },
+            "failureSignatures": [
+                "reasoning_error",
+                "cross_node_reasoning_error"
+            ],
+            "explanation": {
+                "correct": "Nếu codon kết thúc của mRNA A nằm muộn hơn thì ribosome dịch mã qua nhiều codon mã hóa amino acid hơn trước khi dừng. Vì vậy protein tạo ra từ mRNA A có thể dài hơn dù hai mRNA có cùng tổng số nucleotide."
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Hai mRNA bằng nhau về độ dài nhưng protein không bằng nhau. Hãy tìm yếu tố khác."
+                    },
+                    {
+                        "level": 2,
+                        "text": "Hãy chú ý đến vị trí codon kết thúc."
+                    }
+                ]
+            },
+            "metadata": {
+                "source": "migrated",
+                "reviewStatus": "approved",
+                "retestGroupId": "K206-transfer-stop-position"
+            }
+        }
+    ]
+}

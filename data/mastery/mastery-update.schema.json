@@ -1,0 +1,477 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://ts10-learning.local/schema/mastery-update.schema.json",
+    "title": "Mastery Update Schema",
+    "description": "Contract for the output of the Mastery Engine after processing a learning attempt. A MasteryUpdate describes changes in evidence, mastery, confidence, status, and failure evidence for a knowledge node. It does not decide the next learning action.",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "schemaVersion",
+        "updateId",
+        "studentId",
+        "attemptId",
+        "questionId",
+        "nodeId",
+        "timestamp",
+        "previous",
+        "current",
+        "change",
+        "evidence",
+        "confidence",
+        "status",
+        "failure",
+        "retest",
+        "masteryDecision"
+    ],
+    "properties": {
+        "schemaVersion": {
+            "type": "string",
+            "const": "1.0.0"
+        },
+        "updateId": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Unique identifier for this mastery update."
+        },
+        "studentId": {
+            "type": "string",
+            "minLength": 1
+        },
+        "attemptId": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The attempt that generated this mastery update."
+        },
+        "questionId": {
+            "type": "string",
+            "minLength": 1
+        },
+        "nodeId": {
+            "type": "string",
+            "pattern": "^K[0-9]{3}$",
+            "description": "Primary knowledge node whose mastery evidence is being updated."
+        },
+        "timestamp": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "previous": {
+            "$ref": "#/$defs/masterySnapshot"
+        },
+        "current": {
+            "$ref": "#/$defs/masterySnapshot"
+        },
+        "change": {
+            "$ref": "#/$defs/change"
+        },
+        "evidence": {
+            "$ref": "#/$defs/evidence"
+        },
+        "confidence": {
+            "$ref": "#/$defs/confidence"
+        },
+        "status": {
+            "$ref": "#/$defs/status"
+        },
+        "failure": {
+            "$ref": "#/$defs/failure"
+        },
+        "retest": {
+            "$ref": "#/$defs/retest"
+        },
+        "masteryDecision": {
+            "$ref": "#/$defs/masteryDecision"
+        }
+    },
+    "$defs": {
+        "masteryLevel": {
+            "type": "string",
+            "enum": [
+                "M0",
+                "M1",
+                "M2",
+                "M3",
+                "M4"
+            ],
+            "description": "Mastery level from M0 (unknown) to M4 (transfer-capable/mastered)."
+        },
+        "statusValue": {
+            "type": "string",
+            "enum": [
+                "developing",
+                "mastered",
+                "stable",
+                "weak"
+            ]
+        },
+        "evidenceValue": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+        },
+        "evidenceVector": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "know",
+                "explain",
+                "apply",
+                "transfer"
+            ],
+            "properties": {
+                "know": {
+                    "$ref": "#/$defs/evidenceValue"
+                },
+                "explain": {
+                    "$ref": "#/$defs/evidenceValue"
+                },
+                "apply": {
+                    "$ref": "#/$defs/evidenceValue"
+                },
+                "transfer": {
+                    "$ref": "#/$defs/evidenceValue"
+                }
+            }
+        },
+        "masterySnapshot": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "mastery",
+                "status",
+                "evidence"
+            ],
+            "properties": {
+                "mastery": {
+                    "$ref": "#/$defs/masteryLevel"
+                },
+                "status": {
+                    "$ref": "#/$defs/statusValue"
+                },
+                "evidence": {
+                    "$ref": "#/$defs/evidenceVector"
+                }
+            }
+        },
+        "evidenceDelta": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "know",
+                "explain",
+                "apply",
+                "transfer"
+            ],
+            "properties": {
+                "know": {
+                    "type": "number",
+                    "minimum": -1,
+                    "maximum": 1
+                },
+                "explain": {
+                    "type": "number",
+                    "minimum": -1,
+                    "maximum": 1
+                },
+                "apply": {
+                    "type": "number",
+                    "minimum": -1,
+                    "maximum": 1
+                },
+                "transfer": {
+                    "type": "number",
+                    "minimum": -1,
+                    "maximum": 1
+                }
+            }
+        },
+        "change": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "evidenceDelta",
+                "masteryChanged",
+                "statusChanged"
+            ],
+            "properties": {
+                "evidenceDelta": {
+                    "$ref": "#/$defs/evidenceDelta"
+                },
+                "masteryChanged": {
+                    "type": "boolean"
+                },
+                "statusChanged": {
+                    "type": "boolean"
+                },
+                "masteryDirection": {
+                    "type": "string",
+                    "enum": [
+                        "increased",
+                        "decreased",
+                        "unchanged"
+                    ]
+                }
+            }
+        },
+        "evidence": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "know",
+                "explain",
+                "apply",
+                "transfer",
+                "updatedDimension",
+                "evidenceSource"
+            ],
+            "properties": {
+                "know": {
+                    "$ref": "#/$defs/evidenceValue"
+                },
+                "explain": {
+                    "$ref": "#/$defs/evidenceValue"
+                },
+                "apply": {
+                    "$ref": "#/$defs/evidenceValue"
+                },
+                "transfer": {
+                    "$ref": "#/$defs/evidenceValue"
+                },
+                "updatedDimension": {
+                    "type": "string",
+                    "enum": [
+                        "know",
+                        "explain",
+                        "apply",
+                        "transfer",
+                        "none"
+                    ],
+                    "description": "The mastery evidence dimension directly affected by the attempt. Diagnostic questions should normally use 'none'."
+                },
+                "evidenceSource": {
+                    "type": "string",
+                    "enum": [
+                        "Q-K",
+                        "Q-E",
+                        "Q-A",
+                        "Q-T",
+                        "Q-D"
+                    ]
+                },
+                "evidenceStrength": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "independence": {
+                    "type": "string",
+                    "enum": [
+                        "independent",
+                        "assisted",
+                        "hinted",
+                        "retry",
+                        "unknown"
+                    ]
+                }
+            }
+        },
+        "confidence": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "level",
+                "score"
+            ],
+            "properties": {
+                "level": {
+                    "type": "string",
+                    "enum": [
+                        "low",
+                        "medium",
+                        "high"
+                    ]
+                },
+                "score": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "reason": {
+                    "type": "string"
+                },
+                "attemptCount": {
+                    "type": "integer",
+                    "minimum": 0
+                }
+            }
+        },
+        "status": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "current"
+            ],
+            "properties": {
+                "current": {
+                    "$ref": "#/$defs/statusValue"
+                },
+                "previous": {
+                    "$ref": "#/$defs/statusValue"
+                },
+                "reason": {
+                    "type": "string"
+                },
+                "overlay": {
+                    "type": "string",
+                    "enum": [
+                        "none",
+                        "weak"
+                    ]
+                }
+            }
+        },
+        "failureSignature": {
+            "type": "string",
+            "enum": [
+                "prerequisite_gap",
+                "concept_confusion",
+                "mechanism_confusion",
+                "calculation_error",
+                "data_interpretation_error",
+                "reasoning_error",
+                "cross_node_reasoning_error",
+                "careless_error",
+                "source_knowledge_gap",
+                "meta_skill_gap",
+                "none"
+            ]
+        },
+        "failure": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "detected"
+            ],
+            "properties": {
+                "detected": {
+                    "type": "boolean"
+                },
+                "signature": {
+                    "$ref": "#/$defs/failureSignature"
+                },
+                "sourceNodeId": {
+                    "type": "string",
+                    "pattern": "^K[0-9]{3}$"
+                },
+                "metaSkillId": {
+                    "type": "string",
+                    "pattern": "^S[0-9]{3}$"
+                },
+                "confidence": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "evidence": {
+                    "type": "string"
+                },
+                "repeated": {
+                    "type": "boolean"
+                },
+                "occurrenceCount": {
+                    "type": "integer",
+                    "minimum": 0
+                }
+            }
+        },
+        "retest": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "isRetest",
+                "status"
+            ],
+            "properties": {
+                "isRetest": {
+                    "type": "boolean"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": [
+                        "not_applicable",
+                        "not_due",
+                        "due",
+                        "passed",
+                        "failed"
+                    ]
+                },
+                "contextDifferent": {
+                    "type": "boolean"
+                },
+                "questionDifferent": {
+                    "type": "boolean"
+                },
+                "result": {
+                    "type": "string",
+                    "enum": [
+                        "passed",
+                        "failed",
+                        "not_applicable"
+                    ]
+                },
+                "previousMastery": {
+                    "$ref": "#/$defs/masteryLevel"
+                },
+                "stableEligible": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "masteryDecision": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "previousMastery",
+                "currentMastery",
+                "decision"
+            ],
+            "properties": {
+                "previousMastery": {
+                    "$ref": "#/$defs/masteryLevel"
+                },
+                "currentMastery": {
+                    "$ref": "#/$defs/masteryLevel"
+                },
+                "decision": {
+                    "type": "string",
+                    "enum": [
+                        "unchanged",
+                        "advanced",
+                        "mastered",
+                        "stable",
+                        "review_required",
+                        "remediation_required"
+                    ]
+                },
+                "reason": {
+                    "type": "string"
+                },
+                "thresholdsSatisfied": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "M1",
+                            "M2",
+                            "M3",
+                            "M4"
+                        ]
+                    }
+                },
+                "allRequiredDimensionsSatisfied": {
+                    "type": "boolean"
+                }
+            }
+        }
+    }
+}

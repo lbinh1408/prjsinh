@@ -1,0 +1,4084 @@
+{
+    "schemaVersion": "1.0.0",
+    "mapVersion": "v4",
+    "status": "frozen",
+    "sourceOfTruth": true,
+    "metadata": {
+        "name": "Biology Knowledge Map V4",
+        "language": "vi-VN",
+        "subject": "Biology",
+        "educationLevel": "THPT",
+        "purpose": "Làm nguồn dữ liệu kiến thức cho hệ thống học Biology thích ứng.",
+        "description": "Knowledge Map tổ chức kiến thức theo node và dependency thay vì theo thứ tự chương trong sách giáo khoa.",
+        "masteryModel": "M0-M4",
+        "maxMastery": "M4"
+    },
+    "designPrinciples": [
+        "Knowledge node là đơn vị kiến thức; lesson chỉ là cách đóng gói để dạy.",
+        "Một knowledge node có thể xuất hiện trong nhiều lesson.",
+        "Một lesson có thể dạy nhiều knowledge node.",
+        "Prerequisite không đồng nghĩa với thứ tự bài học.",
+        "D1 là hard prerequisite và thường cần đạt tối thiểu M2 để unlock node đích.",
+        "D2 là supporting dependency và không mặc định block việc học.",
+        "D3 là transfer dependency và chủ yếu được dùng khi thiết kế nhiệm vụ chuyển giao.",
+        "Không yêu cầu prerequisite đạt M4 mới được học node đích.",
+        "Mastery được tính bởi Mastery Engine, không phải Knowledge Map.",
+        "Failure signature được xử lý bởi Remediation Engine.",
+        "M4 là mức mastery cao nhất.",
+        "Stable là trạng thái của M4 sau khi retest thành công."
+    ],
+    "masteryLevels": {
+        "M0": {
+            "name": "Chưa biết",
+            "description": "Chưa có bằng chứng đáng tin cậy rằng học sinh biết node."
+        },
+        "M1": {
+            "name": "Nhận biết",
+            "description": "Nhận diện, gọi tên hoặc nhớ được kiến thức cốt lõi."
+        },
+        "M2": {
+            "name": "Thông hiểu",
+            "description": "Giải thích được bản chất và quan hệ nhân quả cơ bản."
+        },
+        "M3": {
+            "name": "Vận dụng",
+            "description": "Vận dụng được vào bài tập hoặc tình huống quen thuộc."
+        },
+        "M4": {
+            "name": "Chuyển giao",
+            "description": "Vận dụng kiến thức vào dữ liệu, tình huống mới hoặc kết hợp nhiều node."
+        }
+    },
+    "evidenceTypes": {
+        "E-K": {
+            "name": "Know",
+            "description": "Biết và nhận diện."
+        },
+        "E-E": {
+            "name": "Explain",
+            "description": "Giải thích bản chất và cơ chế."
+        },
+        "E-A": {
+            "name": "Apply",
+            "description": "Vận dụng."
+        },
+        "E-T": {
+            "name": "Transfer",
+            "description": "Chuyển giao."
+        }
+    },
+    "dependencyTypes": {
+        "D1": {
+            "name": "Hard prerequisite",
+            "description": "Kiến thức nền quan trọng; thường cần đạt M2 trước khi unlock node đích."
+        },
+        "D2": {
+            "name": "Supporting dependency",
+            "description": "Kiến thức hỗ trợ; không mặc định block node đích."
+        },
+        "D3": {
+            "name": "Transfer dependency",
+            "description": "Kiến thức cần khi thực hiện nhiệm vụ chuyển giao hoặc tổng hợp."
+        }
+    },
+    "priorityLevels": {
+        "P1": {
+            "name": "Core",
+            "description": "Kiến thức trọng yếu, cần ưu tiên mastery cao."
+        },
+        "P2": {
+            "name": "Supporting",
+            "description": "Kiến thức hỗ trợ hoặc có mức ưu tiên thấp hơn."
+        }
+    },
+    "clusters": [
+        {
+            "id": "C01",
+            "name": "Nền tảng tế bào",
+            "nodeRange": [
+                "K001",
+                "K036"
+            ]
+        },
+        {
+            "id": "C02",
+            "name": "Năng lượng và chuyển hóa",
+            "nodeRange": [
+                "K040",
+                "K066"
+            ]
+        },
+        {
+            "id": "C03",
+            "name": "Sinh lý thực vật",
+            "nodeRange": [
+                "K070",
+                "K078"
+            ]
+        },
+        {
+            "id": "C04",
+            "name": "Sinh lý động vật",
+            "nodeRange": [
+                "K100",
+                "K181"
+            ]
+        },
+        {
+            "id": "C05",
+            "name": "DNA → Protein",
+            "nodeRange": [
+                "K200",
+                "K208"
+            ]
+        },
+        {
+            "id": "C06",
+            "name": "Điều hòa gene và đột biến",
+            "nodeRange": [
+                "K210",
+                "K224"
+            ]
+        },
+        {
+            "id": "C07",
+            "name": "NST và phân bào",
+            "nodeRange": [
+                "K230",
+                "K256"
+            ]
+        },
+        {
+            "id": "C08",
+            "name": "Mendel và xác suất",
+            "nodeRange": [
+                "K260",
+                "K276"
+            ]
+        },
+        {
+            "id": "C09",
+            "name": "Liên kết và hoán vị gene",
+            "nodeRange": [
+                "K280",
+                "K288"
+            ]
+        },
+        {
+            "id": "C10",
+            "name": "Đột biến NST",
+            "nodeRange": [
+                "K290",
+                "K293"
+            ]
+        },
+        {
+            "id": "C11",
+            "name": "Di truyền người",
+            "nodeRange": [
+                "K300",
+                "K304"
+            ]
+        },
+        {
+            "id": "C12",
+            "name": "Di truyền quần thể",
+            "nodeRange": [
+                "K310",
+                "K314"
+            ]
+        },
+        {
+            "id": "C13",
+            "name": "Tiến hóa",
+            "nodeRange": [
+                "K400",
+                "K411"
+            ]
+        },
+        {
+            "id": "C14",
+            "name": "Sinh thái",
+            "nodeRange": [
+                "K500",
+                "K513"
+            ]
+        },
+        {
+            "id": "C15",
+            "name": "Meta skills",
+            "nodeRange": [
+                "S001",
+                "S011"
+            ]
+        }
+    ],
+    "nodes": [
+        {
+            "id": "K001",
+            "name": "Cấp độ tổ chức sống",
+            "cluster": "C01",
+            "priority": "P2",
+            "targetMastery": "M2",
+            "dependencies": {
+                "D1": [],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": [
+                "K002",
+                "K500"
+            ]
+        },
+        {
+            "id": "K002",
+            "name": "Nguyên tố hóa học",
+            "cluster": "C01",
+            "priority": "P2",
+            "targetMastery": "M2",
+            "dependencies": {
+                "D1": [
+                    "K001"
+                ],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": [
+                "K003",
+                "K004",
+                "K005"
+            ]
+        },
+        {
+            "id": "K003",
+            "name": "Liên kết hóa học",
+            "cluster": "C01",
+            "priority": "P2",
+            "targetMastery": "M2",
+            "dependencies": {
+                "D1": [
+                    "K002"
+                ],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": [
+                "K004",
+                "K005"
+            ]
+        },
+        {
+            "id": "K004",
+            "name": "Nước trong tế bào",
+            "cluster": "C01",
+            "priority": "P2",
+            "targetMastery": "M2",
+            "dependencies": {
+                "D1": [
+                    "K002",
+                    "K003"
+                ],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": [
+                "K034",
+                "K070"
+            ]
+        },
+        {
+            "id": "K005",
+            "name": "Đại phân tử sinh học",
+            "cluster": "C01",
+            "priority": "P1",
+            "targetMastery": "M2",
+            "dependencies": {
+                "D1": [
+                    "K002",
+                    "K003"
+                ],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": [
+                "K006",
+                "K010",
+                "K011",
+                "K012",
+                "K013",
+                "K014"
+            ]
+        },
+        {
+            "id": "K006",
+            "name": "Monomer – polymer",
+            "cluster": "C01",
+            "priority": "P1",
+            "targetMastery": "M2",
+            "dependencies": {
+                "D1": [
+                    "K005"
+                ],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": [
+                "K010",
+                "K011",
+                "K012",
+                "K013"
+            ]
+        },
+        {
+            "id": "K007",
+            "name": "Cấu trúc → chức năng",
+            "cluster": "C01",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K005",
+                    "K006"
+                ],
+                "D2": [],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": [
+                "K012",
+                "K013",
+                "K021",
+                "K027",
+                "K030",
+                "K042",
+                "K200"
+            ]
+        },
+        {
+            "id": "K010",
+            "name": "Carbohydrate",
+            "cluster": "C01",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K005",
+                    "K006"
+                ],
+                "D2": [
+                    "K007"
+                ],
+                "D3": []
+            },
+            "leadsTo": [
+                "K050"
+            ]
+        },
+        {
+            "id": "K011",
+            "name": "Lipid",
+            "cluster": "C01",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K005",
+                    "K006"
+                ],
+                "D2": [
+                    "K007"
+                ],
+                "D3": []
+            },
+            "leadsTo": [
+                "K030"
+            ]
+        },
+        {
+            "id": "K012",
+            "name": "Protein",
+            "cluster": "C01",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K005",
+                    "K006",
+                    "K007"
+                ],
+                "D2": [],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": [
+                "K042",
+                "K111",
+                "K161",
+                "K171"
+            ]
+        },
+        {
+            "id": "K013",
+            "name": "Nucleic acid",
+            "cluster": "C01",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K005",
+                    "K006",
+                    "K007"
+                ],
+                "D2": [],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": [
+                "K200",
+                "K204",
+                "K205"
+            ]
+        },
+        {
+            "id": "K014",
+            "name": "ATP",
+            "cluster": "C01",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K005",
+                    "K006"
+                ],
+                "D2": [
+                    "K007"
+                ],
+                "D3": []
+            },
+            "leadsTo": [
+                "K035",
+                "K040",
+                "K041",
+                "K051",
+                "K054",
+                "K055",
+                "K062",
+                "K064"
+            ]
+        },
+        {
+            "id": "K020",
+            "name": "Tế bào nhân sơ",
+            "cluster": "C01",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K007"
+                ],
+                "D2": [
+                    "K013"
+                ],
+                "D3": []
+            },
+            "leadsTo": [
+                "K021"
+            ]
+        },
+        {
+            "id": "K021",
+            "name": "Tế bào nhân thực",
+            "cluster": "C01",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K007"
+                ],
+                "D2": [
+                    "K013"
+                ],
+                "D3": []
+            },
+            "leadsTo": [
+                "K022",
+                "K023",
+                "K024",
+                "K025",
+                "K026",
+                "K027"
+            ]
+        },
+        {
+            "id": "K022",
+            "name": "Nhân tế bào",
+            "cluster": "C01",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K021"
+                ],
+                "D2": [
+                    "K013"
+                ],
+                "D3": []
+            },
+            "leadsTo": [
+                "K200"
+            ]
+        },
+        {
+            "id": "K023",
+            "name": "Ribosome",
+            "cluster": "C01",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K021",
+                    "K013"
+                ],
+                "D2": [
+                    "K012"
+                ],
+                "D3": []
+            },
+            "leadsTo": [
+                "K206"
+            ]
+        },
+        {
+            "id": "K024",
+            "name": "Mitochondria",
+            "cluster": "C01",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K021",
+                    "K014"
+                ],
+                "D2": [
+                    "K007"
+                ],
+                "D3": []
+            },
+            "leadsTo": [
+                "K054",
+                "K055"
+            ]
+        },
+        {
+            "id": "K025",
+            "name": "Chloroplast",
+            "cluster": "C01",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K021",
+                    "K014"
+                ],
+                "D2": [
+                    "K007"
+                ],
+                "D3": []
+            },
+            "leadsTo": [
+                "K060",
+                "K062"
+            ]
+        },
+        {
+            "id": "K026",
+            "name": "ER – Golgi – lysosome",
+            "cluster": "C01",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K021"
+                ],
+                "D2": [
+                    "K012",
+                    "K007"
+                ],
+                "D3": []
+            },
+            "leadsTo": [
+                "K027"
+            ]
+        },
+        {
+            "id": "K027",
+            "name": "Cấu trúc tế bào → chức năng",
+            "cluster": "C01",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K021",
+                    "K007"
+                ],
+                "D2": [],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": [
+                "K030",
+                "K040",
+                "K100"
+            ]
+        },
+        {
+            "id": "K030",
+            "name": "Cấu trúc màng sinh chất",
+            "cluster": "C01",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K007",
+                    "K012"
+                ],
+                "D2": [
+                    "K021"
+                ],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": [
+                "K031",
+                "K032",
+                "K033",
+                "K034",
+                "K035",
+                "K036"
+            ]
+        },
+        {
+            "id": "K031",
+            "name": "Tính thấm chọn lọc",
+            "cluster": "C01",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K030"
+                ],
+                "D2": [
+                    "K007"
+                ],
+                "D3": []
+            },
+            "leadsTo": [
+                "K033",
+                "K034",
+                "K035"
+            ]
+        },
+        {
+            "id": "K032",
+            "name": "Gradient nồng độ",
+            "cluster": "C01",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K031"
+                ],
+                "D2": [
+                    "K003"
+                ],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": [
+                "K033",
+                "K034",
+                "K035",
+                "K055",
+                "K151"
+            ]
+        },
+        {
+            "id": "K033",
+            "name": "Khuếch tán",
+            "cluster": "C01",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K032"
+                ],
+                "D2": [
+                    "K031"
+                ],
+                "D3": []
+            },
+            "leadsTo": [
+                "K034"
+            ]
+        },
+        {
+            "id": "K034",
+            "name": "Thẩm thấu",
+            "cluster": "C01",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K032",
+                    "K033"
+                ],
+                "D2": [
+                    "K004"
+                ],
+                "D3": []
+            },
+            "leadsTo": [
+                "K070",
+                "K071"
+            ]
+        },
+        {
+            "id": "K035",
+            "name": "Vận chuyển chủ động",
+            "cluster": "C01",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K030",
+                    "K032",
+                    "K014"
+                ],
+                "D2": [
+                    "K041"
+                ],
+                "D3": []
+            },
+            "leadsTo": [
+                "K071",
+                "K112"
+            ]
+        },
+        {
+            "id": "K036",
+            "name": "Nhập bào – xuất bào",
+            "cluster": "C01",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K030",
+                    "K014"
+                ],
+                "D2": [
+                    "K007"
+                ],
+                "D3": []
+            },
+            "leadsTo": [
+                "K171"
+            ]
+        },
+        {
+            "id": "K040",
+            "name": "Chuyển hóa vật chất",
+            "cluster": "C02",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K014"
+                ],
+                "D2": [
+                    "K007"
+                ],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": [
+                "K041",
+                "K042",
+                "K045"
+            ]
+        },
+        {
+            "id": "K041",
+            "name": "ATP – ADP",
+            "cluster": "C02",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K014"
+                ],
+                "D2": [
+                    "K040"
+                ],
+                "D3": []
+            },
+            "leadsTo": [
+                "K051",
+                "K055"
+            ]
+        },
+        {
+            "id": "K042",
+            "name": "Enzyme",
+            "cluster": "C02",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K012",
+                    "K007"
+                ],
+                "D2": [
+                    "K040"
+                ],
+                "D3": [
+                    "S003"
+                ]
+            },
+            "leadsTo": [
+                "K043",
+                "K044",
+                "K045"
+            ]
+        },
+        {
+            "id": "K043",
+            "name": "Cơ chế enzyme–cơ chất",
+            "cluster": "C02",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K042"
+                ],
+                "D2": [
+                    "K007"
+                ],
+                "D3": []
+            },
+            "leadsTo": [
+                "K044"
+            ]
+        },
+        {
+            "id": "K044",
+            "name": "Yếu tố ảnh hưởng enzyme",
+            "cluster": "C02",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K042",
+                    "K043"
+                ],
+                "D2": [
+                    "K007"
+                ],
+                "D3": [
+                    "S002"
+                ]
+            },
+            "leadsTo": [
+                "K045"
+            ]
+        },
+        {
+            "id": "K045",
+            "name": "Điều hòa chuyển hóa",
+            "cluster": "C02",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K040",
+                    "K042"
+                ],
+                "D2": [
+                    "K014"
+                ],
+                "D3": []
+            },
+            "leadsTo": [
+                "K210"
+            ]
+        },
+        {
+            "id": "K050",
+            "name": "Glucose và phân giải glucose",
+            "cluster": "C02",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K010",
+                    "K014"
+                ],
+                "D2": [
+                    "K040"
+                ],
+                "D3": []
+            },
+            "leadsTo": [
+                "K051"
+            ]
+        },
+        {
+            "id": "K051",
+            "name": "Đường phân",
+            "cluster": "C02",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K050",
+                    "K041"
+                ],
+                "D2": [
+                    "K042"
+                ],
+                "D3": [
+                    "S008"
+                ]
+            },
+            "leadsTo": [
+                "K052",
+                "K056"
+            ]
+        },
+        {
+            "id": "K052",
+            "name": "Pyruvate → acetyl-CoA",
+            "cluster": "C02",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K051"
+                ],
+                "D2": [
+                    "K014"
+                ],
+                "D3": []
+            },
+            "leadsTo": [
+                "K053"
+            ]
+        },
+        {
+            "id": "K053",
+            "name": "Chu trình Krebs",
+            "cluster": "C02",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K052",
+                    "K014"
+                ],
+                "D2": [
+                    "K051"
+                ],
+                "D3": []
+            },
+            "leadsTo": [
+                "K054"
+            ]
+        },
+        {
+            "id": "K054",
+            "name": "Chuỗi truyền electron",
+            "cluster": "C02",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K053",
+                    "K014"
+                ],
+                "D2": [
+                    "K024"
+                ],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": [
+                "K055"
+            ]
+        },
+        {
+            "id": "K055",
+            "name": "Hóa thẩm và ATP synthase",
+            "cluster": "C02",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K054",
+                    "K032"
+                ],
+                "D2": [
+                    "K014"
+                ],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "K056",
+            "name": "Lên men",
+            "cluster": "C02",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K051"
+                ],
+                "D2": [
+                    "K014"
+                ],
+                "D3": []
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "K060",
+            "name": "Chloroplast trong quang hợp",
+            "cluster": "C02",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K025"
+                ],
+                "D2": [
+                    "K007"
+                ],
+                "D3": []
+            },
+            "leadsTo": [
+                "K061",
+                "K062",
+                "K064"
+            ]
+        },
+        {
+            "id": "K061",
+            "name": "Sắc tố quang hợp",
+            "cluster": "C02",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K025",
+                    "K007"
+                ],
+                "D2": [
+                    "K060"
+                ],
+                "D3": [
+                    "S002"
+                ]
+            },
+            "leadsTo": [
+                "K062"
+            ]
+        },
+        {
+            "id": "K062",
+            "name": "Pha sáng",
+            "cluster": "C02",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K060",
+                    "K061",
+                    "K014"
+                ],
+                "D2": [
+                    "K032"
+                ],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": [
+                "K063",
+                "K064"
+            ]
+        },
+        {
+            "id": "K063",
+            "name": "Cố định CO₂",
+            "cluster": "C02",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K062"
+                ],
+                "D2": [
+                    "K014"
+                ],
+                "D3": []
+            },
+            "leadsTo": [
+                "K064"
+            ]
+        },
+        {
+            "id": "K064",
+            "name": "Chu trình Calvin",
+            "cluster": "C02",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K063",
+                    "K014"
+                ],
+                "D2": [
+                    "K062"
+                ],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": [
+                "K065",
+                "K066"
+            ]
+        },
+        {
+            "id": "K065",
+            "name": "C3 – C4 – CAM",
+            "cluster": "C02",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K064"
+                ],
+                "D2": [
+                    "K066"
+                ],
+                "D3": []
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "K066",
+            "name": "Yếu tố ảnh hưởng quang hợp",
+            "cluster": "C02",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K062",
+                    "K064"
+                ],
+                "D2": [
+                    "K032"
+                ],
+                "D3": [
+                    "S002"
+                ]
+            },
+            "leadsTo": [
+                "K065"
+            ]
+        },
+        {
+            "id": "K070",
+            "name": "Thế nước và thẩm thấu ở cây",
+            "cluster": "C03",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K034"
+                ],
+                "D2": [
+                    "K004"
+                ],
+                "D3": []
+            },
+            "leadsTo": [
+                "K071",
+                "K073"
+            ]
+        },
+        {
+            "id": "K071",
+            "name": "Hấp thụ nước ở rễ",
+            "cluster": "C03",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K070",
+                    "K032"
+                ],
+                "D2": [
+                    "K031"
+                ],
+                "D3": []
+            },
+            "leadsTo": [
+                "K072"
+            ]
+        },
+        {
+            "id": "K072",
+            "name": "Vận chuyển nước trong mạch gỗ",
+            "cluster": "C03",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K071"
+                ],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": [
+                "K073",
+                "K074"
+            ]
+        },
+        {
+            "id": "K073",
+            "name": "Thoát hơi nước",
+            "cluster": "C03",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K070",
+                    "K072"
+                ],
+                "D2": [
+                    "K066"
+                ],
+                "D3": []
+            },
+            "leadsTo": [
+                "K074"
+            ]
+        },
+        {
+            "id": "K074",
+            "name": "Động lực dòng mạch gỗ",
+            "cluster": "C03",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K072",
+                    "K073"
+                ],
+                "D2": [
+                    "K070"
+                ],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "K075",
+            "name": "Dinh dưỡng khoáng",
+            "cluster": "C03",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K071"
+                ],
+                "D2": [
+                    "K040"
+                ],
+                "D3": []
+            },
+            "leadsTo": [
+                "K077"
+            ]
+        },
+        {
+            "id": "K076",
+            "name": "Mạch libe và vận chuyển chất hữu cơ",
+            "cluster": "C03",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K040"
+                ],
+                "D2": [
+                    "K072"
+                ],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": [
+                "K077"
+            ]
+        },
+        {
+            "id": "K077",
+            "name": "Hormone thực vật",
+            "cluster": "C03",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K007"
+                ],
+                "D2": [
+                    "K040"
+                ],
+                "D3": []
+            },
+            "leadsTo": [
+                "K078"
+            ]
+        },
+        {
+            "id": "K078",
+            "name": "Hướng động – ứng động",
+            "cluster": "C03",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K077"
+                ],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "K100",
+            "name": "Cơ thể động vật và trao đổi chất",
+            "cluster": "C04",
+            "priority": "P2",
+            "targetMastery": "M2",
+            "dependencies": {
+                "D1": [
+                    "K040"
+                ],
+                "D2": [
+                    "K007"
+                ],
+                "D3": []
+            },
+            "leadsTo": [
+                "K110",
+                "K120",
+                "K130",
+                "K140"
+            ]
+        },
+        {
+            "id": "K110",
+            "name": "Tiêu hóa cơ học",
+            "cluster": "C04",
+            "priority": "P2",
+            "targetMastery": "M2",
+            "dependencies": {
+                "D1": [
+                    "K100"
+                ],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": [
+                "K111"
+            ]
+        },
+        {
+            "id": "K111",
+            "name": "Tiêu hóa hóa học",
+            "cluster": "C04",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K110",
+                    "K042"
+                ],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": [
+                "K112"
+            ]
+        },
+        {
+            "id": "K112",
+            "name": "Hấp thụ chất dinh dưỡng",
+            "cluster": "C04",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K111",
+                    "K030"
+                ],
+                "D2": [
+                    "K035"
+                ],
+                "D3": []
+            },
+            "leadsTo": [
+                "K140"
+            ]
+        },
+        {
+            "id": "K120",
+            "name": "Trao đổi khí",
+            "cluster": "C04",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K100",
+                    "K030"
+                ],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": [
+                "K121",
+                "K122"
+            ]
+        },
+        {
+            "id": "K121",
+            "name": "Cơ chế thông khí",
+            "cluster": "C04",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K120"
+                ],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": [
+                "K122"
+            ]
+        },
+        {
+            "id": "K122",
+            "name": "Vận chuyển O₂/CO₂",
+            "cluster": "C04",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K120"
+                ],
+                "D2": [
+                    "K121"
+                ],
+                "D3": []
+            },
+            "leadsTo": [
+                "K140"
+            ]
+        },
+        {
+            "id": "K130",
+            "name": "Cấu trúc hệ tuần hoàn",
+            "cluster": "C04",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K100"
+                ],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": [
+                "K131",
+                "K132"
+            ]
+        },
+        {
+            "id": "K131",
+            "name": "Chu kỳ tim",
+            "cluster": "C04",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K130"
+                ],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": [
+                "K132"
+            ]
+        },
+        {
+            "id": "K132",
+            "name": "Huyết áp và dòng máu",
+            "cluster": "C04",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K130",
+                    "K032"
+                ],
+                "D2": [],
+                "D3": [
+                    "S001",
+                    "S002"
+                ]
+            },
+            "leadsTo": [
+                "K140"
+            ]
+        },
+        {
+            "id": "K140",
+            "name": "Nội môi",
+            "cluster": "C04",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K100"
+                ],
+                "D2": [],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": [
+                "K141",
+                "K142",
+                "K143"
+            ]
+        },
+        {
+            "id": "K141",
+            "name": "Feedback âm",
+            "cluster": "C04",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K140"
+                ],
+                "D2": [],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": [
+                "K142",
+                "K143"
+            ]
+        },
+        {
+            "id": "K142",
+            "name": "Điều hòa đường huyết",
+            "cluster": "C04",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K141",
+                    "K160"
+                ],
+                "D2": [],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "K143",
+            "name": "Điều hòa thân nhiệt",
+            "cluster": "C04",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K141"
+                ],
+                "D2": [],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "K150",
+            "name": "Neuron",
+            "cluster": "C04",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K007"
+                ],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": [
+                "K151"
+            ]
+        },
+        {
+            "id": "K151",
+            "name": "Điện thế màng",
+            "cluster": "C04",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K030",
+                    "K032"
+                ],
+                "D2": [],
+                "D3": [
+                    "S002"
+                ]
+            },
+            "leadsTo": [
+                "K152"
+            ]
+        },
+        {
+            "id": "K152",
+            "name": "Điện thế hoạt động",
+            "cluster": "C04",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K151"
+                ],
+                "D2": [],
+                "D3": [
+                    "S002"
+                ]
+            },
+            "leadsTo": [
+                "K153"
+            ]
+        },
+        {
+            "id": "K153",
+            "name": "Synapse",
+            "cluster": "C04",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K152"
+                ],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": [
+                "K154"
+            ]
+        },
+        {
+            "id": "K154",
+            "name": "Cung phản xạ",
+            "cluster": "C04",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K153"
+                ],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "K160",
+            "name": "Hormone",
+            "cluster": "C04",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K140"
+                ],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": [
+                "K161",
+                "K181"
+            ]
+        },
+        {
+            "id": "K161",
+            "name": "Cơ chế tác động hormone",
+            "cluster": "C04",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K160",
+                    "K030",
+                    "K012"
+                ],
+                "D2": [],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": [
+                "K142"
+            ]
+        },
+        {
+            "id": "K170",
+            "name": "Miễn dịch không đặc hiệu",
+            "cluster": "C04",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K100"
+                ],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": [
+                "K171"
+            ]
+        },
+        {
+            "id": "K171",
+            "name": "Miễn dịch đặc hiệu",
+            "cluster": "C04",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K170",
+                    "K012"
+                ],
+                "D2": [
+                    "K013"
+                ],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": [
+                "K172"
+            ]
+        },
+        {
+            "id": "K172",
+            "name": "Trí nhớ miễn dịch và vaccine",
+            "cluster": "C04",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K171"
+                ],
+                "D2": [],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "K180",
+            "name": "Sinh sản động vật",
+            "cluster": "C04",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K100"
+                ],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": [
+                "K181"
+            ]
+        },
+        {
+            "id": "K181",
+            "name": "Điều hòa sinh sản",
+            "cluster": "C04",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K160"
+                ],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "K200",
+            "name": "Cấu trúc DNA",
+            "cluster": "C05",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K013",
+                    "K007"
+                ],
+                "D2": [],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": [
+                "K201",
+                "K203",
+                "K204"
+            ]
+        },
+        {
+            "id": "K201",
+            "name": "Gene",
+            "cluster": "C05",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K200"
+                ],
+                "D2": [
+                    "K013"
+                ],
+                "D3": []
+            },
+            "leadsTo": [
+                "K203",
+                "K204",
+                "K260"
+            ]
+        },
+        {
+            "id": "K202",
+            "name": "Mã di truyền",
+            "cluster": "C05",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K013"
+                ],
+                "D2": [
+                    "K205"
+                ],
+                "D3": []
+            },
+            "leadsTo": [
+                "K206"
+            ]
+        },
+        {
+            "id": "K203",
+            "name": "Nhân đôi DNA",
+            "cluster": "C05",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K200",
+                    "K201"
+                ],
+                "D2": [
+                    "K042"
+                ],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": [
+                "K220",
+                "K250"
+            ]
+        },
+        {
+            "id": "K204",
+            "name": "Phiên mã",
+            "cluster": "C05",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K200",
+                    "K201"
+                ],
+                "D2": [
+                    "K042"
+                ],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": [
+                "K205",
+                "K206"
+            ]
+        },
+        {
+            "id": "K205",
+            "name": "Các loại RNA",
+            "cluster": "C05",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K013"
+                ],
+                "D2": [
+                    "K204"
+                ],
+                "D3": []
+            },
+            "leadsTo": [
+                "K206"
+            ]
+        },
+        {
+            "id": "K206",
+            "name": "Dịch mã",
+            "cluster": "C05",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K202",
+                    "K205",
+                    "K023"
+                ],
+                "D2": [
+                    "K012"
+                ],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": [
+                "K207",
+                "K208"
+            ]
+        },
+        {
+            "id": "K207",
+            "name": "Protein sau dịch mã",
+            "cluster": "C05",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K206",
+                    "K012"
+                ],
+                "D2": [
+                    "K007"
+                ],
+                "D3": []
+            },
+            "leadsTo": [
+                "K208"
+            ]
+        },
+        {
+            "id": "K208",
+            "name": "DNA → RNA → protein → tính trạng",
+            "cluster": "C05",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K200",
+                    "K201",
+                    "K204",
+                    "K205",
+                    "K202",
+                    "K206",
+                    "K207"
+                ],
+                "D2": [
+                    "K007"
+                ],
+                "D3": [
+                    "S009"
+                ]
+            },
+            "leadsTo": [
+                "K210",
+                "K220"
+            ]
+        },
+        {
+            "id": "K210",
+            "name": "Biểu hiện gene",
+            "cluster": "C06",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K208"
+                ],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": [
+                "K211"
+            ]
+        },
+        {
+            "id": "K211",
+            "name": "Điều hòa biểu hiện gene",
+            "cluster": "C06",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K210"
+                ],
+                "D2": [],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": [
+                "K212",
+                "K213"
+            ]
+        },
+        {
+            "id": "K212",
+            "name": "Điều hòa ở vi khuẩn/operon",
+            "cluster": "C06",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K211",
+                    "K201"
+                ],
+                "D2": [],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "K213",
+            "name": "Gene điều hòa và gene đích",
+            "cluster": "C06",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K211"
+                ],
+                "D2": [],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "K220",
+            "name": "Đột biến gene",
+            "cluster": "C06",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K200",
+                    "K201"
+                ],
+                "D2": [
+                    "K208"
+                ],
+                "D3": [
+                    "S009"
+                ]
+            },
+            "leadsTo": [
+                "K221",
+                "K222",
+                "K223",
+                "K224",
+                "K401"
+            ]
+        },
+        {
+            "id": "K221",
+            "name": "Thay thế nucleotide",
+            "cluster": "C06",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K220"
+                ],
+                "D2": [],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": [
+                "K223"
+            ]
+        },
+        {
+            "id": "K222",
+            "name": "Mất/thêm nucleotide",
+            "cluster": "C06",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K220"
+                ],
+                "D2": [],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": [
+                "K223"
+            ]
+        },
+        {
+            "id": "K223",
+            "name": "Đột biến → protein",
+            "cluster": "C06",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K222",
+                    "K206"
+                ],
+                "D2": [
+                    "K208"
+                ],
+                "D3": [
+                    "S009"
+                ]
+            },
+            "leadsTo": [
+                "K224"
+            ]
+        },
+        {
+            "id": "K224",
+            "name": "Đột biến → kiểu hình",
+            "cluster": "C06",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K223",
+                    "K208"
+                ],
+                "D2": [],
+                "D3": [
+                    "S009"
+                ]
+            },
+            "leadsTo": [
+                "K401"
+            ]
+        },
+        {
+            "id": "K230",
+            "name": "Cấu trúc NST",
+            "cluster": "C07",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K200",
+                    "K007"
+                ],
+                "D2": [],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": [
+                "K231",
+                "K240",
+                "K250",
+                "K290"
+            ]
+        },
+        {
+            "id": "K231",
+            "name": "NST đơn/kép và chromatid",
+            "cluster": "C07",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K230"
+                ],
+                "D2": [],
+                "D3": [
+                    "S008"
+                ]
+            },
+            "leadsTo": [
+                "K240",
+                "K250",
+                "K256"
+            ]
+        },
+        {
+            "id": "K232",
+            "name": "Bộ NST",
+            "cluster": "C07",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K230",
+                    "K231"
+                ],
+                "D2": [],
+                "D3": [
+                    "S008"
+                ]
+            },
+            "leadsTo": [
+                "K240",
+                "K250"
+            ]
+        },
+        {
+            "id": "K240",
+            "name": "Nguyên phân",
+            "cluster": "C07",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K231",
+                    "K232"
+                ],
+                "D2": [],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": [
+                "K241",
+                "K242"
+            ]
+        },
+        {
+            "id": "K241",
+            "name": "Các kì nguyên phân",
+            "cluster": "C07",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K240"
+                ],
+                "D2": [],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": [
+                "K242"
+            ]
+        },
+        {
+            "id": "K242",
+            "name": "Tính NST/DNA trong nguyên phân",
+            "cluster": "C07",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K231",
+                    "K240"
+                ],
+                "D2": [],
+                "D3": [
+                    "S008"
+                ]
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "K250",
+            "name": "Giảm phân",
+            "cluster": "C07",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K231",
+                    "K232"
+                ],
+                "D2": [],
+                "D3": [
+                    "S009"
+                ]
+            },
+            "leadsTo": [
+                "K251",
+                "K252",
+                "K253",
+                "K254",
+                "K255",
+                "K256"
+            ]
+        },
+        {
+            "id": "K251",
+            "name": "Giảm phân I",
+            "cluster": "C07",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K250"
+                ],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": [
+                "K255"
+            ]
+        },
+        {
+            "id": "K252",
+            "name": "Giảm phân II",
+            "cluster": "C07",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K250"
+                ],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": [
+                "K255"
+            ]
+        },
+        {
+            "id": "K253",
+            "name": "Crossing-over",
+            "cluster": "C07",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K250",
+                    "K230"
+                ],
+                "D2": [],
+                "D3": [
+                    "K281",
+                    "S004"
+                ]
+            },
+            "leadsTo": [
+                "K282",
+                "K283",
+                "K401"
+            ]
+        },
+        {
+            "id": "K254",
+            "name": "Phân li độc lập NST",
+            "cluster": "C07",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K250"
+                ],
+                "D2": [],
+                "D3": [
+                    "S007"
+                ]
+            },
+            "leadsTo": [
+                "K270"
+            ]
+        },
+        {
+            "id": "K255",
+            "name": "Tạo giao tử",
+            "cluster": "C07",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K250"
+                ],
+                "D2": [],
+                "D3": [
+                    "S007"
+                ]
+            },
+            "leadsTo": [
+                "K260",
+                "K264"
+            ]
+        },
+        {
+            "id": "K256",
+            "name": "Tính DNA/NST/giao tử trong giảm phân",
+            "cluster": "C07",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K250",
+                    "K231",
+                    "K232"
+                ],
+                "D2": [
+                    "S008"
+                ],
+                "D3": [
+                    "S009"
+                ]
+            },
+            "leadsTo": [
+                "K263",
+                "K264"
+            ]
+        },
+        {
+            "id": "K260",
+            "name": "Allele",
+            "cluster": "C08",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K201",
+                    "K232"
+                ],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": [
+                "K261",
+                "K263"
+            ]
+        },
+        {
+            "id": "K261",
+            "name": "Genotype",
+            "cluster": "C08",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K260"
+                ],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": [
+                "K262",
+                "K263"
+            ]
+        },
+        {
+            "id": "K262",
+            "name": "Phenotype",
+            "cluster": "C08",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K261",
+                    "K208"
+                ],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": [
+                "K266",
+                "K314"
+            ]
+        },
+        {
+            "id": "K263",
+            "name": "Quy luật phân li",
+            "cluster": "C08",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K260",
+                    "K261"
+                ],
+                "D2": [
+                    "K255"
+                ],
+                "D3": [
+                    "S007"
+                ]
+            },
+            "leadsTo": [
+                "K264",
+                "K265",
+                "K266"
+            ]
+        },
+        {
+            "id": "K264",
+            "name": "Xác suất giao tử",
+            "cluster": "C08",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K255",
+                    "K263"
+                ],
+                "D2": [
+                    "S007"
+                ],
+                "D3": [
+                    "S007"
+                ]
+            },
+            "leadsTo": [
+                "K265",
+                "K271"
+            ]
+        },
+        {
+            "id": "K265",
+            "name": "Xác suất hợp tử",
+            "cluster": "C08",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K264"
+                ],
+                "D2": [
+                    "S007"
+                ],
+                "D3": [
+                    "S007"
+                ]
+            },
+            "leadsTo": [
+                "K266"
+            ]
+        },
+        {
+            "id": "K266",
+            "name": "Xác suất kiểu hình",
+            "cluster": "C08",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K261",
+                    "K262",
+                    "K265"
+                ],
+                "D2": [
+                    "S007"
+                ],
+                "D3": [
+                    "S007"
+                ]
+            },
+            "leadsTo": [
+                "K275",
+                "K276"
+            ]
+        },
+        {
+            "id": "K270",
+            "name": "Phân li độc lập",
+            "cluster": "C08",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K250",
+                    "K254"
+                ],
+                "D2": [],
+                "D3": [
+                    "S007"
+                ]
+            },
+            "leadsTo": [
+                "K271",
+                "K275"
+            ]
+        },
+        {
+            "id": "K271",
+            "name": "Xác suất nhiều cặp gene",
+            "cluster": "C08",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K270",
+                    "K264"
+                ],
+                "D2": [
+                    "S007"
+                ],
+                "D3": [
+                    "S009"
+                ]
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "K275",
+            "name": "Tương tác gene",
+            "cluster": "C08",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K263",
+                    "K270"
+                ],
+                "D2": [],
+                "D3": [
+                    "S009"
+                ]
+            },
+            "leadsTo": [
+                "K276"
+            ]
+        },
+        {
+            "id": "K276",
+            "name": "Nhận dạng kiểu tương tác từ tỉ lệ",
+            "cluster": "C08",
+            "priority": "P2",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K275"
+                ],
+                "D2": [
+                    "S004"
+                ],
+                "D3": [
+                    "S009"
+                ]
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "K280",
+            "name": "Gene trên NST",
+            "cluster": "C09",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K201",
+                    "K230"
+                ],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": [
+                "K281"
+            ]
+        },
+        {
+            "id": "K281",
+            "name": "Liên kết gene",
+            "cluster": "C09",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K280",
+                    "K250"
+                ],
+                "D2": [],
+                "D3": [
+                    "S009"
+                ]
+            },
+            "leadsTo": [
+                "K282"
+            ]
+        },
+        {
+            "id": "K282",
+            "name": "Giao tử liên kết/tái tổ hợp",
+            "cluster": "C09",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K281",
+                    "K253"
+                ],
+                "D2": [],
+                "D3": [
+                    "S007",
+                    "S009"
+                ]
+            },
+            "leadsTo": [
+                "K283"
+            ]
+        },
+        {
+            "id": "K283",
+            "name": "Tần số hoán vị gene",
+            "cluster": "C09",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K282"
+                ],
+                "D2": [
+                    "S008"
+                ],
+                "D3": [
+                    "S007",
+                    "S009"
+                ]
+            },
+            "leadsTo": [
+                "K284"
+            ]
+        },
+        {
+            "id": "K284",
+            "name": "Bản đồ gene",
+            "cluster": "C09",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K283"
+                ],
+                "D2": [
+                    "S004"
+                ],
+                "D3": [
+                    "S009"
+                ]
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "K285",
+            "name": "NST giới tính",
+            "cluster": "C09",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K230"
+                ],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": [
+                "K286"
+            ]
+        },
+        {
+            "id": "K286",
+            "name": "Di truyền liên kết X/Y",
+            "cluster": "C09",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K285",
+                    "K280"
+                ],
+                "D2": [
+                    "K260",
+                    "K261"
+                ],
+                "D3": [
+                    "S007",
+                    "S009"
+                ]
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "K287",
+            "name": "DNA ngoài nhân",
+            "cluster": "C09",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K013"
+                ],
+                "D2": [
+                    "K007"
+                ],
+                "D3": []
+            },
+            "leadsTo": [
+                "K288"
+            ]
+        },
+        {
+            "id": "K288",
+            "name": "Di truyền ngoài nhân",
+            "cluster": "C09",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K287"
+                ],
+                "D2": [
+                    "K261"
+                ],
+                "D3": [
+                    "S009"
+                ]
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "K290",
+            "name": "Đột biến cấu trúc NST",
+            "cluster": "C10",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K230"
+                ],
+                "D2": [],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": [
+                "K293"
+            ]
+        },
+        {
+            "id": "K291",
+            "name": "Đột biến số lượng NST",
+            "cluster": "C10",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K230",
+                    "K250"
+                ],
+                "D2": [],
+                "D3": [
+                    "S008"
+                ]
+            },
+            "leadsTo": [
+                "K293"
+            ]
+        },
+        {
+            "id": "K292",
+            "name": "Không phân li",
+            "cluster": "C10",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K250"
+                ],
+                "D2": [],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": [
+                "K291"
+            ]
+        },
+        {
+            "id": "K293",
+            "name": "Hậu quả đột biến NST",
+            "cluster": "C10",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K290",
+                    "K291"
+                ],
+                "D2": [],
+                "D3": [
+                    "S009"
+                ]
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "K300",
+            "name": "Kí hiệu phả hệ",
+            "cluster": "C11",
+            "priority": "P2",
+            "targetMastery": "M2",
+            "dependencies": {
+                "D1": [
+                    "K232"
+                ],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": [
+                "K301"
+            ]
+        },
+        {
+            "id": "K301",
+            "name": "Suy kiểu gene từ phả hệ",
+            "cluster": "C11",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K300",
+                    "K260",
+                    "K261"
+                ],
+                "D2": [
+                    "S010"
+                ],
+                "D3": [
+                    "S007",
+                    "S009"
+                ]
+            },
+            "leadsTo": [
+                "K302",
+                "K303"
+            ]
+        },
+        {
+            "id": "K302",
+            "name": "Xác suất di truyền người",
+            "cluster": "C11",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K301"
+                ],
+                "D2": [
+                    "S007"
+                ],
+                "D3": [
+                    "S009"
+                ]
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "K303",
+            "name": "Di truyền bệnh",
+            "cluster": "C11",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K301"
+                ],
+                "D2": [],
+                "D3": [
+                    "S009"
+                ]
+            },
+            "leadsTo": [
+                "K304"
+            ]
+        },
+        {
+            "id": "K304",
+            "name": "Tư vấn di truyền",
+            "cluster": "C11",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K303"
+                ],
+                "D2": [],
+                "D3": [
+                    "S009"
+                ]
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "K310",
+            "name": "Tần số allele",
+            "cluster": "C12",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K260"
+                ],
+                "D2": [],
+                "D3": [
+                    "S007"
+                ]
+            },
+            "leadsTo": [
+                "K311",
+                "K312"
+            ]
+        },
+        {
+            "id": "K311",
+            "name": "Tần số genotype",
+            "cluster": "C12",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K310"
+                ],
+                "D2": [],
+                "D3": [
+                    "S007"
+                ]
+            },
+            "leadsTo": [
+                "K312"
+            ]
+        },
+        {
+            "id": "K312",
+            "name": "Hardy–Weinberg",
+            "cluster": "C12",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K310",
+                    "K311"
+                ],
+                "D2": [
+                    "S007"
+                ],
+                "D3": [
+                    "S009"
+                ]
+            },
+            "leadsTo": [
+                "K313",
+                "K314"
+            ]
+        },
+        {
+            "id": "K313",
+            "name": "Điều kiện cân bằng",
+            "cluster": "C12",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K312"
+                ],
+                "D2": [],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "K314",
+            "name": "Suy tần số allele từ phenotype",
+            "cluster": "C12",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K312"
+                ],
+                "D2": [
+                    "S007"
+                ],
+                "D3": [
+                    "S009"
+                ]
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "K400",
+            "name": "Khái niệm tiến hóa",
+            "cluster": "C13",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K401"
+                ],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": [
+                "K402",
+                "K403",
+                "K404",
+                "K405",
+                "K406"
+            ]
+        },
+        {
+            "id": "K401",
+            "name": "Nguồn biến dị di truyền",
+            "cluster": "C13",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K220"
+                ],
+                "D2": [
+                    "K253"
+                ],
+                "D3": [
+                    "S009"
+                ]
+            },
+            "leadsTo": [
+                "K400",
+                "K402"
+            ]
+        },
+        {
+            "id": "K402",
+            "name": "Đột biến trong tiến hóa",
+            "cluster": "C13",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K220"
+                ],
+                "D2": [
+                    "K401"
+                ],
+                "D3": [
+                    "S009"
+                ]
+            },
+            "leadsTo": [
+                "K407"
+            ]
+        },
+        {
+            "id": "K403",
+            "name": "Di nhập gene",
+            "cluster": "C13",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K400"
+                ],
+                "D2": [],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": [
+                "K407"
+            ]
+        },
+        {
+            "id": "K404",
+            "name": "Phiêu bạt di truyền",
+            "cluster": "C13",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K400"
+                ],
+                "D2": [],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": [
+                "K407"
+            ]
+        },
+        {
+            "id": "K405",
+            "name": "Giao phối không ngẫu nhiên",
+            "cluster": "C13",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K400"
+                ],
+                "D2": [],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": [
+                "K407"
+            ]
+        },
+        {
+            "id": "K406",
+            "name": "Chọn lọc tự nhiên",
+            "cluster": "C13",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K400"
+                ],
+                "D2": [
+                    "K401"
+                ],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": [
+                "K407"
+            ]
+        },
+        {
+            "id": "K407",
+            "name": "So sánh các nhân tố tiến hóa",
+            "cluster": "C13",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K402",
+                    "K403",
+                    "K404",
+                    "K405",
+                    "K406"
+                ],
+                "D2": [
+                    "S004"
+                ],
+                "D3": [
+                    "S009"
+                ]
+            },
+            "leadsTo": [
+                "K408"
+            ]
+        },
+        {
+            "id": "K408",
+            "name": "Cách li sinh sản",
+            "cluster": "C13",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K407"
+                ],
+                "D2": [],
+                "D3": [
+                    "S009"
+                ]
+            },
+            "leadsTo": [
+                "K409"
+            ]
+        },
+        {
+            "id": "K409",
+            "name": "Hình thành loài",
+            "cluster": "C13",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K408"
+                ],
+                "D2": [],
+                "D3": [
+                    "S009"
+                ]
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "K410",
+            "name": "Bằng chứng tiến hóa",
+            "cluster": "C13",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K400"
+                ],
+                "D2": [],
+                "D3": [
+                    "S002",
+                    "S004"
+                ]
+            },
+            "leadsTo": [
+                "K411"
+            ]
+        },
+        {
+            "id": "K411",
+            "name": "Cây phát sinh",
+            "cluster": "C13",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K410"
+                ],
+                "D2": [
+                    "S002"
+                ],
+                "D3": [
+                    "S009"
+                ]
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "K500",
+            "name": "Nhân tố sinh thái",
+            "cluster": "C14",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K001"
+                ],
+                "D2": [],
+                "D3": [
+                    "S001"
+                ]
+            },
+            "leadsTo": [
+                "K501",
+                "K502"
+            ]
+        },
+        {
+            "id": "K501",
+            "name": "Giới hạn sinh thái",
+            "cluster": "C14",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K500"
+                ],
+                "D2": [
+                    "S002"
+                ],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": [
+                "K502"
+            ]
+        },
+        {
+            "id": "K502",
+            "name": "Quần thể",
+            "cluster": "C14",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K500"
+                ],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": [
+                "K503",
+                "K504",
+                "K505"
+            ]
+        },
+        {
+            "id": "K503",
+            "name": "Kích thước và mật độ",
+            "cluster": "C14",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K502"
+                ],
+                "D2": [
+                    "S001"
+                ],
+                "D3": [
+                    "S002"
+                ]
+            },
+            "leadsTo": [
+                "K504"
+            ]
+        },
+        {
+            "id": "K504",
+            "name": "Tăng trưởng quần thể",
+            "cluster": "C14",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K503"
+                ],
+                "D2": [
+                    "S002"
+                ],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "K505",
+            "name": "Quan hệ giữa các loài",
+            "cluster": "C14",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K502"
+                ],
+                "D2": [],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": [
+                "K506"
+            ]
+        },
+        {
+            "id": "K506",
+            "name": "Quần xã",
+            "cluster": "C14",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K505"
+                ],
+                "D2": [
+                    "S001"
+                ],
+                "D3": []
+            },
+            "leadsTo": [
+                "K507",
+                "K508"
+            ]
+        },
+        {
+            "id": "K507",
+            "name": "Diễn thế sinh thái",
+            "cluster": "C14",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K506"
+                ],
+                "D2": [],
+                "D3": [
+                    "S004"
+                ]
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "K508",
+            "name": "Hệ sinh thái",
+            "cluster": "C14",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K506"
+                ],
+                "D2": [
+                    "K001"
+                ],
+                "D3": [
+                    "S009"
+                ]
+            },
+            "leadsTo": [
+                "K509",
+                "K511",
+                "K512"
+            ]
+        },
+        {
+            "id": "K509",
+            "name": "Chuỗi thức ăn",
+            "cluster": "C14",
+            "priority": "P1",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K508"
+                ],
+                "D2": [
+                    "S001"
+                ],
+                "D3": [
+                    "S009"
+                ]
+            },
+            "leadsTo": [
+                "K510",
+                "K511"
+            ]
+        },
+        {
+            "id": "K510",
+            "name": "Lưới thức ăn",
+            "cluster": "C14",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K509"
+                ],
+                "D2": [
+                    "S002"
+                ],
+                "D3": [
+                    "S009"
+                ]
+            },
+            "leadsTo": [
+                "K511"
+            ]
+        },
+        {
+            "id": "K511",
+            "name": "Dòng năng lượng",
+            "cluster": "C14",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K508",
+                    "K509"
+                ],
+                "D2": [
+                    "S002"
+                ],
+                "D3": [
+                    "S009"
+                ]
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "K512",
+            "name": "Chu trình vật chất",
+            "cluster": "C14",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "K508"
+                ],
+                "D2": [
+                    "S001"
+                ],
+                "D3": [
+                    "S009"
+                ]
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "K513",
+            "name": "Sinh quyển và bảo tồn",
+            "cluster": "C14",
+            "priority": "P2",
+            "targetMastery": "M3",
+            "dependencies": {
+                "D1": [
+                    "K508"
+                ],
+                "D2": [],
+                "D3": [
+                    "S009"
+                ]
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "S001",
+            "name": "Đọc bảng số liệu",
+            "cluster": "C15",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "S002",
+            "name": "Đọc đồ thị",
+            "cluster": "C15",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [],
+                "D2": [
+                    "S001"
+                ],
+                "D3": []
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "S003",
+            "name": "Phân tích thí nghiệm",
+            "cluster": "C15",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [],
+                "D2": [
+                    "S001",
+                    "S002"
+                ],
+                "D3": []
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "S004",
+            "name": "Suy luận từ dữ liệu",
+            "cluster": "C15",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "S001",
+                    "S002",
+                    "S003"
+                ],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "S005",
+            "name": "Phân tích phát biểu Đ/S",
+            "cluster": "C15",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "S004"
+                ],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "S006",
+            "name": "Tìm điều kiện ẩn",
+            "cluster": "C15",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "S004"
+                ],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "S007",
+            "name": "Xác suất sinh học",
+            "cluster": "C15",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "S008",
+            "name": "Tính toán chuỗi",
+            "cluster": "C15",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "S009",
+            "name": "Liên kết nhiều chương",
+            "cluster": "C15",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "S004"
+                ],
+                "D2": [
+                    "S002"
+                ],
+                "D3": []
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "S010",
+            "name": "Suy luận ngược",
+            "cluster": "C15",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "S004"
+                ],
+                "D2": [],
+                "D3": []
+            },
+            "leadsTo": []
+        },
+        {
+            "id": "S011",
+            "name": "Câu hỏi tổng hợp",
+            "cluster": "C15",
+            "priority": "P1",
+            "targetMastery": "M4",
+            "dependencies": {
+                "D1": [
+                    "S004",
+                    "S009"
+                ],
+                "D2": [
+                    "S005",
+                    "S006"
+                ],
+                "D3": []
+            },
+            "leadsTo": []
+        }
+    ],
+    "backbones": {
+        "molecular": [
+            "K013",
+            "K200",
+            "K201",
+            "K203",
+            "K204",
+            "K205",
+            "K202",
+            "K206",
+            "K207",
+            "K208"
+        ],
+        "genetics": [
+            "K230",
+            "K250",
+            "K255",
+            "K260",
+            "K263",
+            "K264",
+            "K265",
+            "K266",
+            "K270",
+            "K271",
+            "K281",
+            "K282",
+            "K283",
+            "K284"
+        ],
+        "evolution": [
+            "K220",
+            "K253",
+            "K290",
+            "K401",
+            "K400",
+            "K402",
+            "K403",
+            "K404",
+            "K405",
+            "K406",
+            "K407",
+            "K408",
+            "K409"
+        ],
+        "ecology": [
+            "K500",
+            "K501",
+            "K502",
+            "K503",
+            "K504",
+            "K505",
+            "K506",
+            "K508",
+            "K509",
+            "K510",
+            "K511",
+            "K512"
+        ]
+    },
+    "coreClusters": {
+        "cluster01": [
+            "K007",
+            "K012",
+            "K013",
+            "K014",
+            "K021",
+            "K030",
+            "K032",
+            "K035",
+            "K042"
+        ],
+        "cluster02": [
+            "K014",
+            "K040",
+            "K042",
+            "K050",
+            "K051",
+            "K054",
+            "K055",
+            "K060",
+            "K062",
+            "K064"
+        ],
+        "cluster03": [
+            "K013",
+            "K200",
+            "K201",
+            "K202",
+            "K203",
+            "K204",
+            "K205",
+            "K206",
+            "K208"
+        ],
+        "cluster04": [
+            "K230",
+            "K231",
+            "K232",
+            "K240",
+            "K250",
+            "K253",
+            "K254",
+            "K255",
+            "K260",
+            "K263",
+            "K264",
+            "K265",
+            "K266"
+        ],
+        "cluster05": [
+            "K270",
+            "K275",
+            "K281",
+            "K282",
+            "K283",
+            "K284",
+            "K285",
+            "K286",
+            "K290",
+            "K291",
+            "K292",
+            "K300",
+            "K301",
+            "K310",
+            "K312"
+        ],
+        "cluster06": [
+            "K400",
+            "K401",
+            "K402",
+            "K403",
+            "K404",
+            "K405",
+            "K406",
+            "K407",
+            "K408",
+            "K409",
+            "K410",
+            "K411"
+        ],
+        "cluster07": [
+            "K500",
+            "K501",
+            "K502",
+            "K503",
+            "K504",
+            "K505",
+            "K506",
+            "K507",
+            "K508",
+            "K509",
+            "K510",
+            "K511",
+            "K512",
+            "K513"
+        ],
+        "cluster08": [
+            "K070",
+            "K071",
+            "K072",
+            "K073",
+            "K074",
+            "K075",
+            "K076",
+            "K077",
+            "K078",
+            "K100",
+            "K110",
+            "K111",
+            "K112",
+            "K120",
+            "K121",
+            "K122",
+            "K130",
+            "K131",
+            "K132",
+            "K140",
+            "K141",
+            "K142",
+            "K143",
+            "K150",
+            "K151",
+            "K152",
+            "K153",
+            "K154",
+            "K160",
+            "K161",
+            "K170",
+            "K171",
+            "K172",
+            "K180",
+            "K181"
+        ]
+    },
+    "validationRules": {
+        "uniqueNodeId": true,
+        "idImmutable": true,
+        "allDependencyIdsMustExist": true,
+        "noSelfDependency": true,
+        "noDuplicateDependencyAcrossSameType": true,
+        "targetMasteryAllowed": [
+            "M2",
+            "M3",
+            "M4"
+        ],
+        "dependencyTypesAllowed": [
+            "D1",
+            "D2",
+            "D3"
+        ],
+        "knowledgeNodePattern": "^K[0-9]{3}$",
+        "metaSkillNodePattern": "^S[0-9]{3}$"
+    }
+}

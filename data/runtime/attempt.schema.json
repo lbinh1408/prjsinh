@@ -1,0 +1,441 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://example.com/schemas/runtime/attempt.schema.json",
+    "title": "Learning Attempt Schema",
+    "description": "Runtime contract representing one student's interaction with one question. An Attempt records what happened during the interaction; it does not calculate mastery or select the next action.",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "schemaVersion",
+        "attemptId",
+        "studentId",
+        "sessionId",
+        "questionId",
+        "startedAt",
+        "submittedAt",
+        "response",
+        "result",
+        "score",
+        "attemptNumber",
+        "hint",
+        "timing",
+        "context"
+    ],
+    "properties": {
+        "schemaVersion": {
+            "type": "string",
+            "const": "1.0.0"
+        },
+        "attemptId": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Unique identifier for this attempt."
+        },
+        "studentId": {
+            "type": "string",
+            "minLength": 1
+        },
+        "sessionId": {
+            "type": "string",
+            "minLength": 1
+        },
+        "questionId": {
+            "type": "string",
+            "minLength": 1
+        },
+        "startedAt": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "submittedAt": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "response": {
+            "$ref": "#/$defs/response"
+        },
+        "result": {
+            "$ref": "#/$defs/result"
+        },
+        "score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+        },
+        "attemptNumber": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Attempt number for this question in the current learning context."
+        },
+        "hint": {
+            "$ref": "#/$defs/hint"
+        },
+        "timing": {
+            "$ref": "#/$defs/timing"
+        },
+        "context": {
+            "$ref": "#/$defs/context"
+        },
+        "diagnostic": {
+            "$ref": "#/$defs/diagnostic"
+        },
+        "retry": {
+            "$ref": "#/$defs/retry"
+        },
+        "evidence": {
+            "$ref": "#/$defs/evidence"
+        },
+        "feedback": {
+            "$ref": "#/$defs/feedback"
+        },
+        "ui": {
+            "$ref": "#/$defs/ui"
+        },
+        "metadata": {
+            "$ref": "#/$defs/metadata"
+        }
+    },
+    "$defs": {
+        "response": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "type",
+                "value"
+            ],
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "singleChoice",
+                        "multipleChoice",
+                        "trueFalse",
+                        "shortText",
+                        "numeric",
+                        "ordering",
+                        "matching",
+                        "classification",
+                        "multiStep"
+                    ]
+                },
+                "value": {},
+                "normalizedValue": {},
+                "steps": {
+                    "type": "array",
+                    "items": {}
+                }
+            }
+        },
+        "result": {
+            "type": "string",
+            "enum": [
+                "correct",
+                "incorrect",
+                "partial",
+                "skipped"
+            ]
+        },
+        "hint": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "used"
+            ],
+            "properties": {
+                "used": {
+                    "type": "boolean"
+                },
+                "level": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 3
+                },
+                "count": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 3
+                }
+            }
+        },
+        "timing": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "timeSpentSeconds"
+            ],
+            "properties": {
+                "timeSpentSeconds": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "activeTimeSeconds": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "pausedTimeSeconds": {
+                    "type": "integer",
+                    "minimum": 0
+                }
+            }
+        },
+        "context": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "learningMode",
+                "action",
+                "pathStage"
+            ],
+            "properties": {
+                "learningMode": {
+                    "type": "string",
+                    "enum": [
+                        "HOC_NHANH",
+                        "HOC_SAU",
+                        "ON_THI"
+                    ]
+                },
+                "action": {
+                    "type": "string",
+                    "enum": [
+                        "LEARN",
+                        "PRACTICE",
+                        "CHALLENGE",
+                        "REMEDIATE",
+                        "RETEST",
+                        "REVIEW",
+                        "SKIP"
+                    ]
+                },
+                "pathStage": {
+                    "type": "string",
+                    "enum": [
+                        "DIAGNOSTIC",
+                        "LEARN",
+                        "PRACTICE",
+                        "CHALLENGE",
+                        "REMEDIATE",
+                        "MINI_PRACTICE",
+                        "MINI_PROBE",
+                        "RETEST",
+                        "REVIEW",
+                        "SKIP",
+                        "TRANSFER",
+                        "CROSS_NODE"
+                    ]
+                },
+                "nodeId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "secondaryNodeIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "uniqueItems": true
+                },
+                "metaSkillIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "uniqueItems": true
+                },
+                "clusterId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "lessonId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "remediationId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "decisionId": {
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
+        },
+        "diagnostic": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "failureSignature": {
+                    "$ref": "#/$defs/failureSignature"
+                },
+                "sourceNodeId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "metaSkillId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "confidence": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "evidence": {
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
+        },
+        "retry": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "isRetry"
+            ],
+            "properties": {
+                "isRetry": {
+                    "type": "boolean"
+                },
+                "previousAttemptId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "retryNumber": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2
+                }
+            }
+        },
+        "evidence": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "questionType",
+                "difficulty"
+            ],
+            "properties": {
+                "questionType": {
+                    "type": "string",
+                    "enum": [
+                        "Q-K",
+                        "Q-E",
+                        "Q-A",
+                        "Q-T",
+                        "Q-D"
+                    ]
+                },
+                "difficulty": {
+                    "type": "string",
+                    "enum": [
+                        "D1",
+                        "D2",
+                        "D3",
+                        "D4",
+                        "D5"
+                    ]
+                },
+                "primaryDimension": {
+                    "type": "string",
+                    "enum": [
+                        "know",
+                        "explain",
+                        "apply",
+                        "transfer",
+                        "none"
+                    ]
+                },
+                "evidenceStrength": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "independence": {
+                    "type": "string",
+                    "enum": [
+                        "independent",
+                        "hint_assisted",
+                        "retry_assisted"
+                    ]
+                }
+            }
+        },
+        "feedback": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "shown": {
+                    "type": "boolean"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "correct",
+                        "incorrect",
+                        "partial",
+                        "hint",
+                        "none"
+                    ]
+                }
+            }
+        },
+        "ui": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "device": {
+                    "type": "string",
+                    "enum": [
+                        "desktop",
+                        "tablet",
+                        "mobile"
+                    ]
+                },
+                "inputMethod": {
+                    "type": "string",
+                    "enum": [
+                        "mouse",
+                        "keyboard",
+                        "touch",
+                        "mixed"
+                    ]
+                }
+            }
+        },
+        "metadata": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "questionVersion": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "engineVersion": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "validatorVersion": {
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
+        },
+        "failureSignature": {
+            "type": "string",
+            "enum": [
+                "prerequisite_gap",
+                "concept_confusion",
+                "mechanism_confusion",
+                "calculation_error",
+                "data_interpretation_error",
+                "reasoning_error",
+                "cross_node_reasoning_error",
+                "careless_error",
+                "source_knowledge_gap",
+                "meta_skill_gap"
+            ]
+        }
+    }
+}

@@ -1,0 +1,789 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://example.com/schemas/runtime/student-state.schema.json",
+    "title": "Student State Schema",
+    "description": "Current persistent learning state of a student. Stores mastery, evidence, confidence, failure patterns, review and retest state, meta-skill state, progress, and preferences. It does not store session context, individual attempts, events, remediation plans, or adaptive decisions.",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "schemaVersion",
+        "studentId",
+        "profile",
+        "target",
+        "learning",
+        "knowledge",
+        "metaSkills",
+        "failurePatterns",
+        "progress",
+        "preferences",
+        "timestamps"
+    ],
+    "properties": {
+        "schemaVersion": {
+            "type": "string",
+            "const": "1.0.0"
+        },
+        "studentId": {
+            "type": "string",
+            "minLength": 1
+        },
+        "profile": {
+            "$ref": "#/$defs/profile"
+        },
+        "target": {
+            "$ref": "#/$defs/target"
+        },
+        "learning": {
+            "$ref": "#/$defs/learning"
+        },
+        "knowledge": {
+            "type": "object",
+            "description": "Current state of each knowledge node.",
+            "additionalProperties": {
+                "$ref": "#/$defs/knowledgeState"
+            }
+        },
+        "metaSkills": {
+            "type": "object",
+            "description": "Current state of each meta-skill.",
+            "additionalProperties": {
+                "$ref": "#/$defs/metaSkillState"
+            }
+        },
+        "failurePatterns": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/failurePattern"
+            }
+        },
+        "progress": {
+            "$ref": "#/$defs/progress"
+        },
+        "preferences": {
+            "$ref": "#/$defs/preferences"
+        },
+        "timestamps": {
+            "$ref": "#/$defs/timestamps"
+        }
+    },
+    "$defs": {
+        "profile": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "educationLevel"
+            ],
+            "properties": {
+                "educationLevel": {
+                    "type": "string",
+                    "enum": [
+                        "GRADE_10",
+                        "GRADE_11",
+                        "GRADE_12",
+                        "OTHER"
+                    ]
+                },
+                "curriculum": {
+                    "type": "string",
+                    "enum": [
+                        "KNTT",
+                        "CTST",
+                        "CANH_DIEU",
+                        "OTHER"
+                    ]
+                },
+                "subject": {
+                    "type": "string",
+                    "const": "SINH_HOC"
+                }
+            }
+        },
+        "target": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "primaryGoal"
+            ],
+            "properties": {
+                "primaryGoal": {
+                    "type": "string",
+                    "enum": [
+                        "SCHOOL",
+                        "THPT_GRADUATION",
+                        "UNIVERSITY_ENTRANCE",
+                        "MASTER_KNOWLEDGE",
+                        "COMBINATION"
+                    ]
+                },
+                "targetScore": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 10
+                },
+                "targetUniversity": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "targetDate": {
+                    "type": "string",
+                    "format": "date"
+                }
+            }
+        },
+        "learning": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "defaultMode"
+            ],
+            "properties": {
+                "defaultMode": {
+                    "$ref": "#/$defs/learningMode"
+                },
+                "currentMode": {
+                    "$ref": "#/$defs/learningMode"
+                },
+                "totalLearningMinutes": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "totalSessions": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "lastSessionId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "lastActiveNodeId": {
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
+        },
+        "knowledgeState": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "mastery",
+                "status",
+                "evidence",
+                "confidence",
+                "attempts",
+                "failure",
+                "retest",
+                "review"
+            ],
+            "properties": {
+                "mastery": {
+                    "$ref": "#/$defs/masteryLevel"
+                },
+                "status": {
+                    "$ref": "#/$defs/status"
+                },
+                "evidence": {
+                    "$ref": "#/$defs/evidenceVector"
+                },
+                "confidence": {
+                    "$ref": "#/$defs/confidence"
+                },
+                "attempts": {
+                    "$ref": "#/$defs/attemptStatistics"
+                },
+                "failure": {
+                    "$ref": "#/$defs/failureState"
+                },
+                "retest": {
+                    "$ref": "#/$defs/retestState"
+                },
+                "review": {
+                    "$ref": "#/$defs/reviewState"
+                },
+                "lastEvidence": {
+                    "$ref": "#/$defs/lastEvidence"
+                },
+                "history": {
+                    "$ref": "#/$defs/knowledgeHistory"
+                }
+            }
+        },
+        "evidenceVector": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "know",
+                "explain",
+                "apply",
+                "transfer"
+            ],
+            "properties": {
+                "know": {
+                    "$ref": "#/$defs/evidenceValue"
+                },
+                "explain": {
+                    "$ref": "#/$defs/evidenceValue"
+                },
+                "apply": {
+                    "$ref": "#/$defs/evidenceValue"
+                },
+                "transfer": {
+                    "$ref": "#/$defs/evidenceValue"
+                }
+            }
+        },
+        "confidence": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "level",
+                "score"
+            ],
+            "properties": {
+                "level": {
+                    "type": "string",
+                    "enum": [
+                        "low",
+                        "medium",
+                        "high"
+                    ]
+                },
+                "score": {
+                    "$ref": "#/$defs/evidenceValue"
+                },
+                "attemptCount": {
+                    "type": "integer",
+                    "minimum": 0
+                }
+            }
+        },
+        "attemptStatistics": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "total",
+                "correct",
+                "incorrect",
+                "partial",
+                "skipped"
+            ],
+            "properties": {
+                "total": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "correct": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "incorrect": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "partial": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "skipped": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "independent": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "hintAssisted": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "retry": {
+                    "type": "integer",
+                    "minimum": 0
+                }
+            }
+        },
+        "failureState": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "recent",
+                "count"
+            ],
+            "properties": {
+                "recent": {
+                    "$ref": "#/$defs/failureSignature"
+                },
+                "sourceNodeId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "metaSkillId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "count": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "sameSignatureCount": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "lastOccurredAt": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        },
+        "retestState": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "status"
+            ],
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "enum": [
+                        "not_eligible",
+                        "not_due",
+                        "due",
+                        "passed",
+                        "failed"
+                    ]
+                },
+                "eligible": {
+                    "type": "boolean"
+                },
+                "dueAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "lastAttemptAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "lastResult": {
+                    "type": "string",
+                    "enum": [
+                        "passed",
+                        "failed"
+                    ]
+                },
+                "lastQuestionId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "contextDifferent": {
+                    "type": "boolean"
+                },
+                "questionDifferent": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "reviewState": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "status"
+            ],
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "enum": [
+                        "not_due",
+                        "due",
+                        "completed"
+                    ]
+                },
+                "nextReviewAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "lastReviewedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "intervalDays": {
+                    "type": "integer",
+                    "enum": [
+                        7,
+                        21,
+                        45,
+                        90
+                    ]
+                }
+            }
+        },
+        "lastEvidence": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "attemptId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "questionId": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "questionType": {
+                    "type": "string",
+                    "enum": [
+                        "Q-K",
+                        "Q-E",
+                        "Q-A",
+                        "Q-T",
+                        "Q-D"
+                    ]
+                },
+                "difficulty": {
+                    "type": "string",
+                    "enum": [
+                        "D1",
+                        "D2",
+                        "D3",
+                        "D4",
+                        "D5"
+                    ]
+                },
+                "result": {
+                    "type": "string",
+                    "enum": [
+                        "correct",
+                        "incorrect",
+                        "partial",
+                        "skipped"
+                    ]
+                },
+                "dimension": {
+                    "type": "string",
+                    "enum": [
+                        "know",
+                        "explain",
+                        "apply",
+                        "transfer",
+                        "none"
+                    ]
+                },
+                "occurredAt": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        },
+        "knowledgeHistory": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "firstSeenAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "lastPracticedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "lastMasteryChangeAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "lastRetestAt": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        },
+        "metaSkillState": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "mastery",
+                "status",
+                "evidence",
+                "confidence",
+                "attempts"
+            ],
+            "properties": {
+                "mastery": {
+                    "$ref": "#/$defs/masteryLevel"
+                },
+                "status": {
+                    "$ref": "#/$defs/status"
+                },
+                "evidence": {
+                    "$ref": "#/$defs/evidenceVector"
+                },
+                "confidence": {
+                    "$ref": "#/$defs/confidence"
+                },
+                "attempts": {
+                    "$ref": "#/$defs/attemptStatistics"
+                },
+                "recentFailure": {
+                    "$ref": "#/$defs/failureSignature"
+                },
+                "lastPracticedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        },
+        "failurePattern": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "signature",
+                "count",
+                "severity"
+            ],
+            "properties": {
+                "signature": {
+                    "$ref": "#/$defs/failureSignature"
+                },
+                "count": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "severity": {
+                    "type": "string",
+                    "enum": [
+                        "low",
+                        "medium",
+                        "high"
+                    ]
+                },
+                "nodeIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "uniqueItems": true
+                },
+                "metaSkillIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "uniqueItems": true
+                },
+                "lastOccurredAt": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        },
+        "progress": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "nodes",
+                "clusters"
+            ],
+            "properties": {
+                "nodes": {
+                    "$ref": "#/$defs/nodeProgress"
+                },
+                "clusters": {
+                    "$ref": "#/$defs/clusterProgress"
+                },
+                "overallMastery": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "masteredNodes": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "stableNodes": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "developingNodes": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "weakNodes": {
+                    "type": "integer",
+                    "minimum": 0
+                }
+            }
+        },
+        "nodeProgress": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "total",
+                "mastered",
+                "stable",
+                "developing",
+                "weak"
+            ],
+            "properties": {
+                "total": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "mastered": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "stable": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "developing": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "weak": {
+                    "type": "integer",
+                    "minimum": 0
+                }
+            }
+        },
+        "clusterProgress": {
+            "type": "object",
+            "additionalProperties": {
+                "$ref": "#/$defs/clusterProgressItem"
+            }
+        },
+        "clusterProgressItem": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "total",
+                "mastered",
+                "stable"
+            ],
+            "properties": {
+                "total": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "mastered": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "stable": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "developing": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "weak": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "completionRate": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                }
+            }
+        },
+        "preferences": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "defaultLearningMode"
+            ],
+            "properties": {
+                "defaultLearningMode": {
+                    "$ref": "#/$defs/learningMode"
+                },
+                "sessionLength": {
+                    "type": "string",
+                    "enum": [
+                        "SHORT",
+                        "NORMAL",
+                        "LONG"
+                    ]
+                },
+                "allowStudentChoice": {
+                    "type": "boolean"
+                },
+                "preferFastProgression": {
+                    "type": "boolean"
+                },
+                "preferDeepExplanation": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "timestamps": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "createdAt",
+                "updatedAt"
+            ],
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "lastLearningActivityAt": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        },
+        "learningMode": {
+            "type": "string",
+            "enum": [
+                "HOC_NHANH",
+                "HOC_SAU",
+                "ON_THI"
+            ]
+        },
+        "masteryLevel": {
+            "type": "string",
+            "enum": [
+                "M0",
+                "M1",
+                "M2",
+                "M3",
+                "M4"
+            ]
+        },
+        "status": {
+            "type": "string",
+            "enum": [
+                "developing",
+                "mastered",
+                "stable",
+                "weak"
+            ]
+        },
+        "evidenceValue": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+        },
+        "failureSignature": {
+            "type": "string",
+            "enum": [
+                "prerequisite_gap",
+                "concept_confusion",
+                "mechanism_confusion",
+                "calculation_error",
+                "data_interpretation_error",
+                "reasoning_error",
+                "cross_node_reasoning_error",
+                "careless_error",
+                "source_knowledge_gap",
+                "meta_skill_gap"
+            ]
+        }
+    }
+}
