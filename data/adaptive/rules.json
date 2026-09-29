@@ -936,31 +936,9 @@
         "skip_known"
     ],
     "nextActionContract": {
-        "requiredFields": [
-            "action",
-            "targetNode",
-            "reason",
-            "priority"
-        ],
-        "optionalFields": [
-            "sourceNode",
-            "failureSignature",
-            "lessonId",
-            "questionSelection",
-            "estimatedMinutes",
-            "timeBudget",
-            "confidence",
-            "alternativeActions"
-        ],
-        "example": {
-            "action": "REMEDIATE",
-            "targetNode": "K282",
-            "sourceNode": "K281",
-            "failureSignature": "linked-gamete-confusion",
-            "reason": "K281 là prerequisite trực tiếp và đang yếu.",
-            "priority": 138,
-            "estimatedMinutes": 12
-        }
+        "source": "adaptive/next-action.schema.json",
+        "schemaVersion": "1.0.0",
+        "principle": "Adaptive Engine output MUST validate against next-action.schema.json."
     },
     "alternativeActionRules": {
         "principle": "Khi nhiều hành động có giá trị gần nhau, Adaptive Engine có thể trả alternativeActions.",

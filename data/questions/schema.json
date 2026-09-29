@@ -161,7 +161,8 @@
             "content",
             "answer",
             "scoring",
-            "failureSignatures"
+            "failureSignatures",
+            "explanation"
         ],
         "optional": [
             "secondaryNodes",
@@ -170,7 +171,6 @@
             "tags",
             "context",
             "hint",
-            "explanation",
             "metadata"
         ]
     },
@@ -360,7 +360,6 @@
             }
         },
         "failureTypes": [
-            "knowledge_gap",
             "prerequisite_gap",
             "concept_confusion",
             "mechanism_confusion",
@@ -368,8 +367,6 @@
             "data_interpretation_error",
             "reasoning_error",
             "cross_node_reasoning_error",
-            "sequence_error",
-            "classification_error",
             "careless_error",
             "source_knowledge_gap",
             "meta_skill_gap"
@@ -377,65 +374,80 @@
     },
     "answerRules": {
         "mcq": {
-            "answerType": "single",
-            "requiredFields": [
-                "value"
+            "allowedAnswerTypes": [
+                "single"
             ]
         },
         "multi_select": {
-            "answerType": "multiple",
-            "requiredFields": [
-                "values"
+            "allowedAnswerTypes": [
+                "multiple"
             ]
         },
         "true_false": {
-            "answerType": "boolean",
-            "requiredFields": [
-                "value"
+            "allowedAnswerTypes": [
+                "boolean"
             ]
         },
         "matching": {
-            "answerType": "pairs",
-            "requiredFields": [
+            "allowedAnswerTypes": [
                 "pairs"
             ]
         },
         "ordering": {
-            "answerType": "sequence",
-            "requiredFields": [
-                "order"
+            "allowedAnswerTypes": [
+                "sequence"
             ]
         },
         "fill_blank": {
-            "answerType": "text",
-            "requiredFields": [
-                "acceptedAnswers"
-            ]
-        },
-        "numeric": {
-            "answerType": "number",
-            "requiredFields": [
-                "value"
-            ],
-            "optionalFields": [
-                "tolerance",
-                "unit"
+            "allowedAnswerTypes": [
+                "text"
             ]
         },
         "short_answer": {
-            "answerType": "text",
-            "requiredFields": [
-                "acceptedAnswers"
-            ],
-            "optionalFields": [
-                "acceptedPatterns"
+            "allowedAnswerTypes": [
+                "text"
+            ]
+        },
+        "numeric": {
+            "allowedAnswerTypes": [
+                "number"
             ]
         },
         "open_response": {
-            "answerType": "rubric",
-            "requiredFields": [
+            "allowedAnswerTypes": [
                 "rubric"
             ]
+        },
+        "data_analysis": {
+            "allowedAnswerTypes": [
+                "single",
+                "multiple",
+                "boolean",
+                "number",
+                "text",
+                "rubric"
+            ],
+            "rule": "Loại answer phụ thuộc vào response format của nhiệm vụ phân tích dữ liệu."
+        },
+        "experiment": {
+            "allowedAnswerTypes": [
+                "single",
+                "multiple",
+                "boolean",
+                "number",
+                "text",
+                "rubric"
+            ],
+            "rule": "Loại answer phụ thuộc vào response format của nhiệm vụ phân tích thí nghiệm."
+        },
+        "sequence": {
+            "allowedAnswerTypes": [
+                "single",
+                "multiple",
+                "sequence",
+                "text"
+            ],
+            "rule": "Nếu học sinh trực tiếp sắp xếp thứ tự thì dùng sequence; nếu trả lời theo format khác thì dùng canonical answer type tương ứng."
         }
     },
     "answerConsistencyRules": {

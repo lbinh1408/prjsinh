@@ -141,6 +141,8 @@
         "optional": [
             "description",
             "domain",
+            "primaryNodes",
+            "supportingNodes",
             "prerequisites",
             "entryDiagnostic",
             "exitDiagnostic",

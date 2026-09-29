@@ -1,5 +1,8 @@
 {
-    "schemaVersion": "1.0.0",
+    "schemaVersion": "1.1.0",
+    "stateId": "student-state-v1",
+    "stateType": "runtime",
+    "updatedAt": "2026-09-20T10:05:00+07:00",
     "student": {
         "studentId": "student-001",
         "displayName": "Học sinh 01",
@@ -19,19 +22,22 @@
             "lastActivityAt": "2026-09-20T10:05:00+07:00",
             "timeBudgetMinutes": 60,
             "timeUsedMinutes": 35,
-            "consecutiveWrong": 1,
-            "consecutiveSkip": 0,
-            "consecutiveRemediation": 0,
+            "runtimeSignals": {
+                "consecutiveWrong": 1,
+                "consecutiveSkip": 0,
+                "consecutiveRemediation": 0
+            },
             "fatigue": {
                 "level": "normal",
                 "signals": []
             }
         },
         "current": {
-            "clusterId": "cluster-03-dna-to-protein",
+            "clusterId": "C05",
             "lessonId": "dna-to-trait-01",
             "nodeId": "K206",
-            "action": "PRACTICE"
+            "action": "PRACTICE",
+            "contextId": null
         }
     },
     "knowledge": {
@@ -44,22 +50,40 @@
                 "apply": 0.88,
                 "transfer": 0.82
             },
+            "overallEvidence": 0.88,
             "confidence": "high",
-            "attempts": 12,
-            "correct": 11,
-            "wrong": 1,
+            "evidenceSufficiency": {
+                "independentObservations": 10,
+                "distinctContexts": 3,
+                "observedEvidenceTypes": [
+                    "know",
+                    "explain",
+                    "apply",
+                    "transfer"
+                ]
+            },
+            "attemptStats": {
+                "total": 12,
+                "correct": 11,
+                "wrong": 1,
+                "partial": 0,
+                "skipped": 0
+            },
+            "weakEvidence": [],
+            "signals": [],
             "lastAttemptAt": "2026-09-12T10:20:00+07:00",
             "lastSuccessAt": "2026-09-12T10:20:00+07:00",
             "lastFailure": null,
             "retest": {
-                "required": false,
-                "dueAt": null,
+                "attempted": true,
                 "lastRetestAt": "2026-09-12T10:20:00+07:00",
-                "passed": true
+                "passed": true,
+                "differentQuestion": true,
+                "differentContext": true,
+                "independent": true
             },
             "review": {
-                "lastReviewedAt": "2026-09-12T10:20:00+07:00",
-                "nextReviewAt": "2026-10-03T10:20:00+07:00"
+                "lastReviewedAt": "2026-09-12T10:20:00+07:00"
             }
         },
         "K200": {
@@ -71,26 +95,45 @@
                 "apply": 0.91,
                 "transfer": 0.76
             },
+            "overallEvidence": 0.89,
             "confidence": "high",
-            "attempts": 10,
-            "correct": 9,
-            "wrong": 1,
+            "evidenceSufficiency": {
+                "independentObservations": 8,
+                "distinctContexts": 2,
+                "observedEvidenceTypes": [
+                    "know",
+                    "explain",
+                    "apply",
+                    "transfer"
+                ]
+            },
+            "attemptStats": {
+                "total": 10,
+                "correct": 9,
+                "wrong": 1,
+                "partial": 0,
+                "skipped": 0
+            },
+            "weakEvidence": [],
+            "signals": [],
             "lastAttemptAt": "2026-09-18T09:30:00+07:00",
             "lastSuccessAt": "2026-09-18T09:30:00+07:00",
             "lastFailure": {
                 "questionId": "Q-K200-004",
-                "failureSignature": "careless_error",
+                "failureType": "careless_error",
+                "sourceNodeId": null,
                 "at": "2026-09-10T09:30:00+07:00"
             },
             "retest": {
-                "required": false,
-                "dueAt": null,
+                "attempted": false,
                 "lastRetestAt": null,
-                "passed": false
+                "passed": false,
+                "differentQuestion": false,
+                "differentContext": false,
+                "independent": false
             },
             "review": {
-                "lastReviewedAt": "2026-09-18T09:30:00+07:00",
-                "nextReviewAt": "2026-10-02T09:30:00+07:00"
+                "lastReviewedAt": "2026-09-18T09:30:00+07:00"
             }
         },
         "K201": {
@@ -102,22 +145,40 @@
                 "apply": 0.84,
                 "transfer": 0.71
             },
+            "overallEvidence": 0.83,
             "confidence": "high",
-            "attempts": 8,
-            "correct": 8,
-            "wrong": 0,
+            "evidenceSufficiency": {
+                "independentObservations": 7,
+                "distinctContexts": 2,
+                "observedEvidenceTypes": [
+                    "know",
+                    "explain",
+                    "apply",
+                    "transfer"
+                ]
+            },
+            "attemptStats": {
+                "total": 8,
+                "correct": 8,
+                "wrong": 0,
+                "partial": 0,
+                "skipped": 0
+            },
+            "weakEvidence": [],
+            "signals": [],
             "lastAttemptAt": "2026-09-18T09:45:00+07:00",
             "lastSuccessAt": "2026-09-18T09:45:00+07:00",
             "lastFailure": null,
             "retest": {
-                "required": false,
-                "dueAt": null,
+                "attempted": false,
                 "lastRetestAt": null,
-                "passed": false
+                "passed": false,
+                "differentQuestion": false,
+                "differentContext": false,
+                "independent": false
             },
             "review": {
-                "lastReviewedAt": "2026-09-18T09:45:00+07:00",
-                "nextReviewAt": "2026-10-02T09:45:00+07:00"
+                "lastReviewedAt": "2026-09-18T09:45:00+07:00"
             }
         },
         "K204": {
@@ -129,26 +190,50 @@
                 "apply": 0.67,
                 "transfer": 0.42
             },
+            "overallEvidence": 0.66,
             "confidence": "medium",
-            "attempts": 9,
-            "correct": 7,
-            "wrong": 2,
+            "evidenceSufficiency": {
+                "independentObservations": 6,
+                "distinctContexts": 2,
+                "observedEvidenceTypes": [
+                    "know",
+                    "explain",
+                    "apply",
+                    "transfer"
+                ]
+            },
+            "attemptStats": {
+                "total": 9,
+                "correct": 7,
+                "wrong": 2,
+                "partial": 0,
+                "skipped": 0
+            },
+            "weakEvidence": [
+                "apply",
+                "transfer"
+            ],
+            "signals": [
+                "mechanism_confusion_observed"
+            ],
             "lastAttemptAt": "2026-09-19T09:10:00+07:00",
             "lastSuccessAt": "2026-09-19T09:10:00+07:00",
             "lastFailure": {
                 "questionId": "Q-A204-003",
-                "failureSignature": "mechanism_confusion",
+                "failureType": "mechanism_confusion",
+                "sourceNodeId": null,
                 "at": "2026-09-19T09:05:00+07:00"
             },
             "retest": {
-                "required": false,
-                "dueAt": null,
+                "attempted": false,
                 "lastRetestAt": null,
-                "passed": false
+                "passed": false,
+                "differentQuestion": false,
+                "differentContext": false,
+                "independent": false
             },
             "review": {
-                "lastReviewedAt": "2026-09-19T09:10:00+07:00",
-                "nextReviewAt": null
+                "lastReviewedAt": "2026-09-19T09:10:00+07:00"
             }
         },
         "K205": {
@@ -160,22 +245,43 @@
                 "apply": 0.69,
                 "transfer": 0.48
             },
+            "overallEvidence": 0.69,
             "confidence": "medium",
-            "attempts": 7,
-            "correct": 6,
-            "wrong": 1,
+            "evidenceSufficiency": {
+                "independentObservations": 5,
+                "distinctContexts": 2,
+                "observedEvidenceTypes": [
+                    "know",
+                    "explain",
+                    "apply",
+                    "transfer"
+                ]
+            },
+            "attemptStats": {
+                "total": 7,
+                "correct": 6,
+                "wrong": 1,
+                "partial": 0,
+                "skipped": 0
+            },
+            "weakEvidence": [
+                "apply",
+                "transfer"
+            ],
+            "signals": [],
             "lastAttemptAt": "2026-09-19T09:20:00+07:00",
             "lastSuccessAt": "2026-09-19T09:20:00+07:00",
             "lastFailure": null,
             "retest": {
-                "required": false,
-                "dueAt": null,
+                "attempted": false,
                 "lastRetestAt": null,
-                "passed": false
+                "passed": false,
+                "differentQuestion": false,
+                "differentContext": false,
+                "independent": false
             },
             "review": {
-                "lastReviewedAt": "2026-09-19T09:20:00+07:00",
-                "nextReviewAt": null
+                "lastReviewedAt": "2026-09-19T09:20:00+07:00"
             }
         },
         "K206": {
@@ -187,35 +293,58 @@
                 "apply": 0.20,
                 "transfer": 0.00
             },
+            "overallEvidence": 0.29,
             "confidence": "low",
-            "attempts": 5,
-            "correct": 3,
-            "wrong": 2,
+            "evidenceSufficiency": {
+                "independentObservations": 3,
+                "distinctContexts": 1,
+                "observedEvidenceTypes": [
+                    "know",
+                    "explain",
+                    "apply"
+                ]
+            },
+            "attemptStats": {
+                "total": 5,
+                "correct": 3,
+                "wrong": 2,
+                "partial": 0,
+                "skipped": 0
+            },
+            "weakEvidence": [
+                "explain",
+                "apply",
+                "transfer"
+            ],
+            "signals": [
+                "repeated_failure_signature",
+                "source_knowledge_gap_detected"
+            ],
             "lastAttemptAt": "2026-09-20T09:55:00+07:00",
             "lastSuccessAt": "2026-09-20T09:50:00+07:00",
             "lastFailure": {
                 "questionId": "Q-A206-002",
-                "failureSignature": "source_knowledge_gap",
+                "failureType": "source_knowledge_gap",
                 "sourceNodeId": "K202",
                 "at": "2026-09-20T09:55:00+07:00"
             },
-            "failureHistory": [
-                {
-                    "failureSignature": "source_knowledge_gap",
-                    "sourceNodeId": "K202",
+            "failureSummary": {
+                "source_knowledge_gap": {
                     "count": 2,
+                    "sourceNodeId": "K202",
                     "lastAt": "2026-09-20T09:55:00+07:00"
                 }
-            ],
+            },
             "retest": {
-                "required": false,
-                "dueAt": null,
+                "attempted": false,
                 "lastRetestAt": null,
-                "passed": false
+                "passed": false,
+                "differentQuestion": false,
+                "differentContext": false,
+                "independent": false
             },
             "review": {
-                "lastReviewedAt": null,
-                "nextReviewAt": null
+                "lastReviewedAt": null
             }
         },
         "K208": {
@@ -227,94 +356,171 @@
                 "apply": 0.31,
                 "transfer": 0.10
             },
+            "overallEvidence": 0.39,
             "confidence": "low",
-            "attempts": 4,
-            "correct": 2,
-            "wrong": 2,
+            "evidenceSufficiency": {
+                "independentObservations": 2,
+                "distinctContexts": 1,
+                "observedEvidenceTypes": [
+                    "know",
+                    "explain",
+                    "apply",
+                    "transfer"
+                ]
+            },
+            "attemptStats": {
+                "total": 4,
+                "correct": 2,
+                "wrong": 2,
+                "partial": 0,
+                "skipped": 0
+            },
+            "weakEvidence": [
+                "explain",
+                "apply",
+                "transfer"
+            ],
+            "signals": [
+                "cross_node_reasoning_error_observed"
+            ],
             "lastAttemptAt": "2026-09-20T10:00:00+07:00",
             "lastSuccessAt": "2026-09-20T09:58:00+07:00",
             "lastFailure": {
                 "questionId": "Q-T208-001",
-                "failureSignature": "cross_node_reasoning_error",
+                "failureType": "cross_node_reasoning_error",
                 "sourceNodeId": "K206",
                 "at": "2026-09-20T10:00:00+07:00"
             },
-            "failureHistory": [
-                {
-                    "failureSignature": "cross_node_reasoning_error",
-                    "sourceNodeId": "K206",
+            "failureSummary": {
+                "cross_node_reasoning_error": {
                     "count": 1,
+                    "sourceNodeId": "K206",
                     "lastAt": "2026-09-20T10:00:00+07:00"
                 }
-            ],
+            },
             "retest": {
-                "required": false,
-                "dueAt": null,
+                "attempted": false,
                 "lastRetestAt": null,
-                "passed": false
+                "passed": false,
+                "differentQuestion": false,
+                "differentContext": false,
+                "independent": false
             },
             "review": {
-                "lastReviewedAt": null,
-                "nextReviewAt": null
+                "lastReviewedAt": null
             }
         }
     },
     "metaSkills": {
         "S001": {
             "mastery": "M3",
-            "evidence": 0.68,
-            "attempts": 6,
-            "wrong": 2,
             "status": "developing",
+            "evidence": 0.68,
+            "confidence": "medium",
+            "attemptStats": {
+                "total": 6,
+                "wrong": 2
+            },
+            "weak": false,
+            "signals": [],
             "lastFailure": null
         },
         "S002": {
             "mastery": "M2",
+            "status": "developing",
             "evidence": 0.45,
-            "attempts": 5,
-            "wrong": 3,
-            "status": "weak",
+            "confidence": "medium",
+            "attemptStats": {
+                "total": 5,
+                "wrong": 3
+            },
+            "weak": true,
+            "signals": [
+                "repeated_evidence_failure"
+            ],
             "lastFailure": {
                 "questionId": "Q-S002-004",
-                "failureSignature": "data_interpretation_error",
+                "failureType": "data_interpretation_error",
                 "at": "2026-09-18T10:20:00+07:00"
             }
         },
         "S003": {
             "mastery": "M3",
-            "evidence": 0.72,
-            "attempts": 4,
-            "wrong": 1,
             "status": "developing",
+            "evidence": 0.72,
+            "confidence": "medium",
+            "attemptStats": {
+                "total": 4,
+                "wrong": 1
+            },
+            "weak": false,
+            "signals": [],
             "lastFailure": null
         }
     },
     "failurePatterns": {
         "active": [
             {
-                "signature": "mechanism_confusion",
+                "failureType": "mechanism_confusion",
                 "nodeId": "K204",
+                "sourceNodeId": null,
                 "count": 1,
-                "severity": "medium",
                 "lastAt": "2026-09-19T09:05:00+07:00"
             },
             {
-                "signature": "source_knowledge_gap",
+                "failureType": "source_knowledge_gap",
                 "nodeId": "K206",
                 "sourceNodeId": "K202",
                 "count": 2,
-                "severity": "high",
                 "lastAt": "2026-09-20T09:55:00+07:00"
             },
             {
-                "signature": "cross_node_reasoning_error",
+                "failureType": "cross_node_reasoning_error",
                 "nodeId": "K208",
                 "sourceNodeId": "K206",
                 "count": 1,
-                "severity": "medium",
                 "lastAt": "2026-09-20T10:00:00+07:00"
             }
         ]
+    },
+    "remediation": {
+        "lastResult": {
+            "targetNodeId": "K202",
+            "sourceNodeId": "K202",
+            "triggerNodeId": "K206",
+            "failureType": "source_knowledge_gap",
+            "status": "completed",
+            "completedAt": "2026-09-20T09:58:00+07:00"
+        },
+        "activePlan": null
+    },
+    "adaptive": {
+        "lastDecision": {
+            "action": "PRACTICE",
+            "nodeId": "K206",
+            "reasonCodes": [
+                "mastery_M2",
+                "apply_evidence_low",
+                "source_remediation_completed"
+            ],
+            "at": "2026-09-20T10:00:00+07:00"
+        },
+        "nextAction": {
+            "action": "PRACTICE",
+            "nodeId": "K206",
+            "priority": 145,
+            "constraints": {
+                "difficulty": [
+                    "D2",
+                    "D3"
+                ],
+                "evidence": [
+                    "explain",
+                    "apply"
+                ]
+            },
+            "decidedAt": "2026-09-20T10:00:00+07:00"
+        }
     },
     "history": {
         "recentActions": [
@@ -347,55 +553,24 @@
             "Q-A206-003"
         ]
     },
-    "adaptive": {
-        "lastDecision": {
-            "action": "PRACTICE",
-            "nodeId": "K206",
-            "reason": [
-                "mastery_M2",
-                "apply_evidence_low",
-                "source_remediation_completed"
-            ],
-            "at": "2026-09-20T10:00:00+07:00"
-        },
-        "nextAction": {
-            "action": "PRACTICE",
-            "nodeId": "K206",
-            "priority": 145,
-            "selectionCriteria": {
-                "difficulty": [
-                    "D2",
-                    "D3"
-                ],
-                "evidence": [
-                    "explain",
-                    "apply"
-                ],
-                "questionTypes": [
-                    "Q-E",
-                    "Q-A"
-                ]
-            }
-        }
-    },
     "progress": {
         "nodes": {
             "total": 150,
             "unstarted": 132,
-            "learning": 6,
+            "developing": 6,
             "mastered": 9,
             "stable": 3
         },
         "clusters": {
-            "cluster-01": {
+            "C01": {
                 "status": "in_progress",
                 "progress": 0.35
             },
-            "cluster-02": {
+            "C02": {
                 "status": "not_started",
                 "progress": 0.00
             },
-            "cluster-03": {
+            "C05": {
                 "status": "in_progress",
                 "progress": 0.48
             }

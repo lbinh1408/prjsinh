@@ -148,12 +148,12 @@
                 "level": {
                     "type": "integer",
                     "minimum": 1,
-                    "maximum": 3
+                    "maximum": 2
                 },
                 "count": {
                     "type": "integer",
                     "minimum": 0,
-                    "maximum": 3
+                    "maximum": 2
                 }
             }
         },
@@ -266,8 +266,13 @@
             "type": "object",
             "additionalProperties": false,
             "properties": {
-                "failureSignature": {
-                    "$ref": "#/$defs/failureSignature"
+                "failureSignatureId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Reference to a canonical failure signature in remediation/failure-signatures.json."
+                },
+                "failureType": {
+                    "$ref": "#/$defs/failureType"
                 },
                 "sourceNodeId": {
                     "type": "string",
@@ -313,20 +318,10 @@
             "type": "object",
             "additionalProperties": false,
             "required": [
-                "questionType",
-                "difficulty"
+                "difficulty",
+                "primaryDimension"
             ],
             "properties": {
-                "questionType": {
-                    "type": "string",
-                    "enum": [
-                        "Q-K",
-                        "Q-E",
-                        "Q-A",
-                        "Q-T",
-                        "Q-D"
-                    ]
-                },
                 "difficulty": {
                     "type": "string",
                     "enum": [
@@ -422,7 +417,7 @@
                 }
             }
         },
-        "failureSignature": {
+        "failureType": {
             "type": "string",
             "enum": [
                 "prerequisite_gap",

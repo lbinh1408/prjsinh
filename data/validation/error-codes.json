@@ -1,0 +1,442 @@
+{
+    "schemaVersion": "1.0.0",
+    "registryId": "biology-validation-error-codes-v1",
+    "status": "review",
+    "purpose": {
+        "description": "Canonical registry của validation issue codes dùng trong Biology Adaptive Learning System.",
+        "role": "validation_error_code_registry",
+        "sourceOfTruthFor": [
+            "validation issue codes",
+            "default issue severity",
+            "issue category",
+            "issue meaning"
+        ],
+        "notSourceOfTruthFor": [
+            "validation logic",
+            "validation execution order",
+            "data repair",
+            "automatic correction",
+            "engine business logic"
+        ],
+        "importantPrinciple": "Validator chỉ được emit code tồn tại trong registry này. Registry mô tả lỗi; validator quyết định khi nào lỗi xảy ra dựa trên contract tương ứng."
+    },
+    "severity": {
+        "error": {
+            "meaning": "Data vi phạm schema hoặc contract và không an toàn để engine sử dụng.",
+            "blocksEngine": true
+        },
+        "warning": {
+            "meaning": "Data vẫn hợp lệ để engine sử dụng nhưng có dấu hiệu cần kiểm tra.",
+            "blocksEngine": false
+        },
+        "info": {
+            "meaning": "Thông tin bổ sung từ quá trình validation.",
+            "blocksEngine": false
+        }
+    },
+    "categories": {
+        "schema": {
+            "meaning": "Lỗi về cấu trúc, kiểu dữ liệu, required field, enum hoặc format."
+        },
+        "reference": {
+            "meaning": "Lỗi tham chiếu tới resource hoặc ID không tồn tại."
+        },
+        "contract": {
+            "meaning": "Dữ liệu hợp lệ về schema nhưng vi phạm semantic contract của hệ thống."
+        },
+        "graph": {
+            "meaning": "Lỗi liên quan đến dependency graph hoặc DAG."
+        },
+        "consistency": {
+            "meaning": "Các phần dữ liệu hoặc các contract không đồng nhất với nhau."
+        }
+    },
+    "codes": {
+        "SCHEMA_INVALID": {
+            "severity": "error",
+            "category": "schema",
+            "meaning": "Resource không thỏa JSON Schema tương ứng."
+        },
+        "REQUIRED_FIELD_MISSING": {
+            "severity": "error",
+            "category": "schema",
+            "meaning": "Thiếu field bắt buộc."
+        },
+        "INVALID_FIELD_TYPE": {
+            "severity": "error",
+            "category": "schema",
+            "meaning": "Field có kiểu dữ liệu không đúng schema."
+        },
+        "INVALID_ENUM_VALUE": {
+            "severity": "error",
+            "category": "schema",
+            "meaning": "Giá trị không thuộc tập enum được cho phép."
+        },
+        "INVALID_FORMAT": {
+            "severity": "error",
+            "category": "schema",
+            "meaning": "Giá trị không đúng format được contract yêu cầu."
+        },
+        "UNKNOWN_FIELD": {
+            "severity": "error",
+            "category": "schema",
+            "meaning": "Resource chứa field không được schema cho phép."
+        },
+        "KNOWLEDGE_DUPLICATE_NODE_ID": {
+            "severity": "error",
+            "category": "consistency",
+            "meaning": "Có nhiều knowledge node sử dụng cùng một node ID."
+        },
+        "KNOWLEDGE_NODE_NOT_FOUND": {
+            "severity": "error",
+            "category": "reference",
+            "meaning": "Knowledge node được tham chiếu không tồn tại trong knowledge map."
+        },
+        "KNOWLEDGE_DEPENDENCY_NOT_FOUND": {
+            "severity": "error",
+            "category": "reference",
+            "meaning": "Dependency của knowledge node tham chiếu tới node không tồn tại."
+        },
+        "KNOWLEDGE_SELF_DEPENDENCY": {
+            "severity": "error",
+            "category": "graph",
+            "meaning": "Knowledge node khai báo chính nó là dependency."
+        },
+        "KNOWLEDGE_CYCLE_DETECTED": {
+            "severity": "error",
+            "category": "graph",
+            "meaning": "Dependency graph chứa cycle và không còn là DAG."
+        },
+        "KNOWLEDGE_LEADS_TO_NOT_FOUND": {
+            "severity": "error",
+            "category": "reference",
+            "meaning": "Một leadsTo reference trỏ tới knowledge node không tồn tại."
+        },
+        "KNOWLEDGE_CLUSTER_NOT_FOUND": {
+            "severity": "error",
+            "category": "reference",
+            "meaning": "Knowledge node tham chiếu tới cluster không tồn tại."
+        },
+        "KNOWLEDGE_SKILL_NOT_FOUND": {
+            "severity": "error",
+            "category": "reference",
+            "meaning": "Knowledge node tham chiếu tới meta-skill không tồn tại."
+        },
+        "KNOWLEDGE_INVALID_PRIORITY": {
+            "severity": "error",
+            "category": "contract",
+            "meaning": "Priority của knowledge node không thuộc tập giá trị được knowledge contract cho phép."
+        },
+        "KNOWLEDGE_INVALID_TARGET_MASTERY": {
+            "severity": "error",
+            "category": "contract",
+            "meaning": "targetMastery của knowledge node không thuộc mastery level hợp lệ."
+        },
+        "QUESTION_PRIMARY_NODE_NOT_FOUND": {
+            "severity": "error",
+            "category": "reference",
+            "meaning": "primaryNode của Question không tồn tại trong knowledge map."
+        },
+        "QUESTION_PRIMARY_NODE_NOT_IN_NODES": {
+            "severity": "error",
+            "category": "contract",
+            "meaning": "primaryNode không xuất hiện trong Question.nodes."
+        },
+        "QUESTION_NODE_NOT_FOUND": {
+            "severity": "error",
+            "category": "reference",
+            "meaning": "Một node trong Question.nodes không tồn tại trong knowledge map."
+        },
+        "QUESTION_SECONDARY_NODE_NOT_FOUND": {
+            "severity": "error",
+            "category": "reference",
+            "meaning": "Một secondaryNode của Question không tồn tại trong knowledge map."
+        },
+        "QUESTION_PREREQUISITE_NOT_FOUND": {
+            "severity": "error",
+            "category": "reference",
+            "meaning": "Một prerequisite của Question không tồn tại trong knowledge map."
+        },
+        "QUESTION_SKILL_NOT_FOUND": {
+            "severity": "error",
+            "category": "reference",
+            "meaning": "Một skill được Question tham chiếu không tồn tại trong meta-skill registry hoặc knowledge map tương ứng."
+        },
+        "QUESTION_INVALID_EVIDENCE": {
+            "severity": "error",
+            "category": "contract",
+            "meaning": "Question sử dụng evidence dimension không thuộc canonical evidence types."
+        },
+        "QUESTION_INVALID_DIFFICULTY": {
+            "severity": "error",
+            "category": "contract",
+            "meaning": "Question sử dụng difficulty không thuộc tập difficulty được contract cho phép."
+        },
+        "QUESTION_INVALID_MODE": {
+            "severity": "error",
+            "category": "contract",
+            "meaning": "Question sử dụng mode không thuộc tập mode được contract cho phép."
+        },
+        "QUESTION_INVALID_TYPE": {
+            "severity": "error",
+            "category": "contract",
+            "meaning": "Question sử dụng question type không thuộc tập type được contract cho phép."
+        },
+        "QUESTION_ANSWER_MISSING": {
+            "severity": "error",
+            "category": "contract",
+            "meaning": "Question yêu cầu answer nhưng không khai báo answer hợp lệ."
+        },
+        "QUESTION_ANSWER_OPTION_NOT_FOUND": {
+            "severity": "error",
+            "category": "contract",
+            "meaning": "answer của Question tham chiếu tới option không tồn tại."
+        },
+        "QUESTION_MULTIPLE_CORRECT_OPTIONS": {
+            "severity": "error",
+            "category": "contract",
+            "meaning": "Question chỉ cho phép một đáp án đúng nhưng có nhiều option được đánh dấu đúng."
+        },
+        "QUESTION_NO_CORRECT_OPTION": {
+            "severity": "error",
+            "category": "contract",
+            "meaning": "Question dạng lựa chọn yêu cầu đáp án đúng nhưng không có option nào được đánh dấu đúng."
+        },
+        "QUESTION_FAILURE_SIGNATURE_NOT_FOUND": {
+            "severity": "error",
+            "category": "reference",
+            "meaning": "Failure signature được Question tham chiếu không tồn tại trong canonical failure-signatures registry."
+        },
+        "ATTEMPT_QUESTION_NOT_FOUND": {
+            "severity": "error",
+            "category": "reference",
+            "meaning": "Attempt tham chiếu tới Question không tồn tại."
+        },
+        "ATTEMPT_STUDENT_NOT_FOUND": {
+            "severity": "error",
+            "category": "reference",
+            "meaning": "Attempt tham chiếu tới student không tồn tại trong context được validate."
+        },
+        "ATTEMPT_INVALID_RESULT": {
+            "severity": "error",
+            "category": "contract",
+            "meaning": "Attempt result không thuộc tập result hợp lệ."
+        },
+        "ATTEMPT_INVALID_SCORE": {
+            "severity": "error",
+            "category": "contract",
+            "meaning": "Attempt score nằm ngoài phạm vi hoặc không phù hợp scoring contract."
+        },
+        "ATTEMPT_INVALID_ANSWER": {
+            "severity": "error",
+            "category": "contract",
+            "meaning": "Answer payload của Attempt không phù hợp với Question hoặc attempt contract."
+        },
+        "ATTEMPT_INVALID_TIMESTAMP": {
+            "severity": "error",
+            "category": "schema",
+            "meaning": "Timestamp của Attempt không đúng format yêu cầu."
+        },
+        "ATTEMPT_NODE_MISMATCH": {
+            "severity": "error",
+            "category": "consistency",
+            "meaning": "Node information trong Attempt không khớp Question được tham chiếu."
+        },
+        "ATTEMPT_EVIDENCE_MISMATCH": {
+            "severity": "error",
+            "category": "consistency",
+            "meaning": "Evidence dimension trong Attempt không khớp evidence của Question."
+        },
+        "ATTEMPT_DIFFICULTY_MISMATCH": {
+            "severity": "error",
+            "category": "consistency",
+            "meaning": "Difficulty trong Attempt không khớp difficulty của Question."
+        },
+        "STATE_NODE_NOT_FOUND": {
+            "severity": "error",
+            "category": "reference",
+            "meaning": "Student State chứa knowledge node không tồn tại trong knowledge map."
+        },
+        "STATE_INVALID_MASTERY": {
+            "severity": "error",
+            "category": "contract",
+            "meaning": "Mastery level trong Student State không hợp lệ."
+        },
+        "STATE_INVALID_STATUS": {
+            "severity": "error",
+            "category": "contract",
+            "meaning": "Status trong Student State không thuộc tập status hợp lệ."
+        },
+        "STATE_INVALID_EVIDENCE": {
+            "severity": "error",
+            "category": "contract",
+            "meaning": "Evidence trong Student State không hợp lệ hoặc nằm ngoài phạm vi cho phép."
+        },
+        "STATE_INVALID_CONFIDENCE": {
+            "severity": "error",
+            "category": "contract",
+            "meaning": "Confidence trong Student State không thuộc tập confidence level hợp lệ."
+        },
+        "STATE_FAILURE_SIGNATURE_NOT_FOUND": {
+            "severity": "error",
+            "category": "reference",
+            "meaning": "Student State chứa failure signature không tồn tại trong canonical failure registry."
+        },
+        "STATE_SOURCE_NODE_NOT_FOUND": {
+            "severity": "error",
+            "category": "reference",
+            "meaning": "sourceNodeId trong Student State không tồn tại trong knowledge map."
+        },
+        "STATE_INVALID_CURRENT_NODE": {
+            "severity": "error",
+            "category": "reference",
+            "meaning": "Current node trong learning state không tồn tại trong knowledge map."
+        },
+        "STATE_INVALID_CURRENT_ACTION": {
+            "severity": "error",
+            "category": "contract",
+            "meaning": "Current action trong Student State không thuộc canonical adaptive actions."
+        },
+        "FAILURE_SIGNATURE_NOT_FOUND": {
+            "severity": "error",
+            "category": "reference",
+            "meaning": "Failure signature không tồn tại trong canonical failure-signatures registry."
+        },
+        "CONTRACT_EVIDENCE_MISMATCH": {
+            "severity": "error",
+            "category": "consistency",
+            "meaning": "Các contract hoặc registry không thống nhất về evidence dimensions."
+        },
+        "CONTRACT_FAILURE_SIGNATURE_MISMATCH": {
+            "severity": "error",
+            "category": "consistency",
+            "meaning": "Các contract không thống nhất với canonical failure-signatures registry."
+        },
+        "CONTRACT_NODE_REFERENCE_MISMATCH": {
+            "severity": "error",
+            "category": "consistency",
+            "meaning": "Node reference giữa các contract hoặc resource không nhất quán."
+        },
+        "CONTRACT_SKILL_REFERENCE_MISMATCH": {
+            "severity": "error",
+            "category": "consistency",
+            "meaning": "Meta-skill reference giữa các contract hoặc resource không nhất quán."
+        },
+        "CONTRACT_ACTION_MISMATCH": {
+            "severity": "error",
+            "category": "consistency",
+            "meaning": "Adaptive action definitions giữa các contract không nhất quán."
+        },
+        "CONTRACT_VERSION_INCOMPATIBLE": {
+            "severity": "error",
+            "category": "consistency",
+            "meaning": "Hai hoặc nhiều contract có version không tương thích."
+        },
+        "QUESTION_ANSWER_TYPE_MISMATCH": {
+            "severity": "error",
+            "category": "contract",
+            "meaning": "answer.type không thuộc tập answer type được questionType hiện tại cho phép."
+        }
+    },
+    "validationRules": {
+        "codeMustExistInRegistry": true,
+        "severityMustMatchRegistry": true,
+        "categoryMustMatchRegistry": true,
+        "validatorMustNotInventCodes": true,
+        "validatorMustNotModifyInput": true,
+        "validatorMustNotAutoFix": true,
+        "validatorMustNotPerformEngineBusinessLogic": true,
+        "validityRule": {
+            "validWhen": "errorCount == 0",
+            "invalidWhen": "errorCount > 0"
+        }
+    },
+    "namingConvention": {
+        "format": "<DOMAIN>_<PROBLEM>",
+        "rules": [
+            "Use uppercase snake case.",
+            "Code must describe the detected condition, not the repair action.",
+            "Code must remain stable after release.",
+            "Do not encode dynamic IDs or values inside the code.",
+            "Do not create different codes only because error messages differ."
+        ],
+        "examples": [
+            "QUESTION_PRIMARY_NODE_NOT_FOUND",
+            "KNOWLEDGE_CYCLE_DETECTED",
+            "ATTEMPT_EVIDENCE_MISMATCH",
+            "STATE_FAILURE_SIGNATURE_NOT_FOUND"
+        ],
+        "invalidExamples": [
+            "ERR001",
+            "FIX_PRIMARY_NODE",
+            "QUESTION_K206_ERROR",
+            "BAD_DATA"
+        ]
+    },
+    "ownership": {
+        "errorCodeRegistry": {
+            "owns": [
+                "canonical validation issue codes",
+                "default severity",
+                "issue category",
+                "issue semantic meaning"
+            ]
+        },
+        "validators": {
+            "own": [
+                "validation execution",
+                "issue detection",
+                "issue path",
+                "actual value",
+                "expected value",
+                "issue message",
+                "related resources"
+            ]
+        },
+        "validationReport": {
+            "owns": [
+                "validation result structure",
+                "valid flag",
+                "issue collection",
+                "summary counts",
+                "validation metadata"
+            ]
+        },
+        "engines": {
+            "own": [
+                "business logic after validated data is accepted"
+            ]
+        }
+    },
+    "compatibility": {
+        "validationReportSchema": "1.x",
+        "knowledgeMap": "4.x",
+        "questionContract": "1.x",
+        "attemptContract": "1.x",
+        "studentState": "1.x",
+        "evidenceModel": "1.x",
+        "masteryRules": "1.x",
+        "adaptiveRules": "1.x",
+        "remediationRules": "1.x",
+        "failureSignatures": "1.x"
+    },
+    "versioning": {
+        "currentVersion": "1.0.0",
+        "breakingChanges": [
+            "Removing an existing error code.",
+            "Changing the semantic meaning of an existing error code.",
+            "Changing an error code identifier.",
+            "Changing an error from non-blocking to blocking when existing consumers depend on the previous behavior."
+        ],
+        "minorChanges": [
+            "Adding a new error code.",
+            "Adding a new category.",
+            "Adding backward-compatible metadata."
+        ],
+        "patchChanges": [
+            "Fixing descriptions.",
+            "Fixing examples.",
+            "Fixing metadata that does not change validation behavior."
+        ]
+    }
+}

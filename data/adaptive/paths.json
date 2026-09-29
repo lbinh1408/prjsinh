@@ -808,58 +808,17 @@
             ]
         }
     },
-    "globalTransitionPriority": [
-        {
-            "priority": 1,
-            "condition": "D1_prerequisite_below_M2",
-            "action": "REMEDIATE"
-        },
-        {
-            "priority": 2,
-            "condition": "deep_failure_pattern",
-            "action": "REMEDIATE"
-        },
-        {
-            "priority": 3,
-            "condition": "source_knowledge_gap",
-            "action": "REMEDIATE"
-        },
-        {
-            "priority": 4,
-            "condition": "meta_skill_gap",
-            "action": "ROUTE_META_SKILL"
-        },
-        {
-            "priority": 5,
-            "condition": "retest_due",
-            "action": "RETEST"
-        },
-        {
-            "priority": 6,
-            "condition": "review_due",
-            "action": "REVIEW"
-        },
-        {
-            "priority": 7,
-            "condition": "M0_or_M1",
-            "action": "LEARN"
-        },
-        {
-            "priority": 8,
-            "condition": "M2",
-            "action": "PRACTICE"
-        },
-        {
-            "priority": 9,
-            "condition": "M3",
-            "action": "CHALLENGE"
-        },
-        {
-            "priority": 10,
-            "condition": "M4",
-            "action": "RETEST"
-        }
-    ],
+    "transitionResolution": {
+        "sourceOfTruth": "adaptive/rules.json#decisionPrecedence",
+        "principle": "Adaptive rules select the canonical primary action first. Adaptive paths only resolve the workflow transition for that selected action.",
+        "mustNotOverridePrimaryAction": true,
+        "responsibilities": [
+            "validate_allowed_transition",
+            "resolve_internal_path_stage",
+            "resolve_return_path",
+            "prevent_invalid_transition"
+        ]
+    },
     "terminalStates": {
         "continue_learning": {
             "description": "Node chưa đạt mastery mục tiêu.",

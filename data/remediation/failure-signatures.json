@@ -1,0 +1,36 @@
+{
+    "schemaVersion": "1.0.0",
+    "description": "Danh sách các failure signatures dùng chung cho toàn bộ hệ thống để chẩn đoán lỗi.",
+    "signatures": {
+        "prerequisite_gap": {
+            "description": "Có bằng chứng cho thấy học sinh thiếu prerequisite cần thiết."
+        },
+        "concept_confusion": {
+            "description": "Nhầm lẫn hoặc phân biệt sai các khái niệm."
+        },
+        "mechanism_confusion": {
+            "description": "Có thể biết khái niệm nhưng hiểu sai hoặc chưa hiểu cơ chế."
+        },
+        "calculation_error": {
+            "description": "Sai trong thao tác hoặc logic tính toán."
+        },
+        "data_interpretation_error": {
+            "description": "Đọc hoặc diễn giải sai bảng, đồ thị hoặc dữ liệu."
+        },
+        "reasoning_error": {
+            "description": "Sai trong chuỗi suy luận."
+        },
+        "cross_node_reasoning_error": {
+            "description": "Không liên kết đúng nhiều knowledge nodes."
+        },
+        "careless_error": {
+            "description": "Sai do thao tác hoặc chú ý, không nhất thiết phản ánh knowledge gap."
+        },
+        "source_knowledge_gap": {
+            "description": "Failure tại node hiện tại có dấu hiệu bắt nguồn từ một source knowledge node yếu."
+        },
+        "meta_skill_gap": {
+            "description": "Knowledge có thể đã đủ nhưng học sinh còn yếu ở meta skill cần để xử lý câu hỏi."
+        }
+    }
+}

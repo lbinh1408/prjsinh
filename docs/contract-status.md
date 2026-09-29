@@ -37,22 +37,22 @@ Nếu contract chưa thống nhất, Engine sẽ phải chứa logic tương th�
 | Contract / Data       | File                                        | Status         | Mức độ |
 | --------------------- | ------------------------------------------- | -------------- | ------ |
 | Knowledge Map         | `data/knowledge/knowledge-map-v4.json`      | LOCKED.        | Medium |
-| Question Schema       | `data/questions/schema.json`                | NEEDS_REVISION | High   |
-| Question Data         | `data/questions/knowledge/K206.json`        | NEEDS_REVISION | High   |
+| Question Schema       | `data/questions/schema.json`                | LOCKED         | High   |
+| Question Data         | `data/questions/knowledge/K206.json`        | LOCKED.        | High   |
 | Lesson Schema         | `data/lessons/schema.json`                  | LOCKED*        | Low    |
-| Mastery Evidence      | `data/mastery/evidence.json`                | NEEDS_REVISION | High   |
+| Mastery Evidence      | `data/mastery/evidence.json`                | LOCKED.        | High   |
 | Mastery Update        | `data/mastery/mastery-update.schema.json`   | LOCKED         | —      |
-| Mastery Rules         | `data/mastery/rules.json`                   | NEAR_LOCKED    | Low    |
+| Mastery Rules         | `data/mastery/rules.json`                   | LOCKED.        | Low    |
 | Remediation           | `data/remediation/remediation.schema.json`  | LOCKED         | —      |
-| Adaptive Rules        | `data/adative/rules.json`                   | NEAR_LOCKED    | Low    |
-| Adaptive Paths        | `data/adative/paths.json`                   | NEAR_LOCKED    | Low    |
+| Adaptive Rules        | `data/adative/rules.json`                   | LOCKED.        | Low    |
+| Adaptive Paths        | `data/adative/paths.json`                   | LOCKED.        | Low    |
 | Next Action           | `data/adative/next-action.schema.json`      | LOCKED         | —      |
 | Attempt               | `data/runtime/attempt.schema.json`          | LOCKED         | —      |
 | Learning Context      | `data/runtime/learning-context.schema.json` | LOCKED         | —      |
 | Student State Schema  | `data/runtime/student-state.schema.json`    | LOCKED         | —      |
-| Student State Fixture | `data/student/student-state.json`           | NEEDS_REVISION | Medium |
+| Student State Fixture | `data/student/student-state.json`           | LOCKED         | Medium |
 | Analytics Event       | `data/analytics/event.schema.json`          | LOCKED         | —      |
-
+      
 * `lessons/schema.json` chỉ được đánh giá ở mức schema. Chưa có lesson instance thực tế trong dữ liệu audit để xác nhận end-to-end.
 
 ---

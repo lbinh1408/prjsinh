@@ -1,0 +1,232 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "validation-report.schema.json",
+    "title": "Validation Report",
+    "description": "Chuẩn kết quả validation dùng chung cho toàn bộ Biology Adaptive Learning System.",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "schemaVersion",
+        "validationId",
+        "valid",
+        "summary",
+        "issues"
+    ],
+    "properties": {
+        "schemaVersion": {
+            "type": "string",
+            "const": "1.0.0"
+        },
+        "validationId": {
+            "type": "string",
+            "minLength": 1,
+            "description": "ID duy nhất của một lần validation."
+        },
+        "validator": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "name",
+                "version"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "examples": [
+                        "question-validator",
+                        "knowledge-validator",
+                        "attempt-validator",
+                        "student-state-validator",
+                        "cross-contract-validator"
+                    ]
+                },
+                "version": {
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
+        },
+        "target": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "type"
+            ],
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "knowledge-map",
+                        "lesson",
+                        "question",
+                        "question-set",
+                        "attempt",
+                        "student-state",
+                        "evidence-model",
+                        "mastery-rules",
+                        "adaptive-rules",
+                        "remediation-rules",
+                        "failure-signatures",
+                        "event",
+                        "schema",
+                        "cross-contract",
+                        "unknown"
+                    ]
+                },
+                "id": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "path": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "Đường dẫn logic hoặc file path của resource được validate."
+                }
+            }
+        },
+        "valid": {
+            "type": "boolean",
+            "description": "true khi không tồn tại issue severity=error."
+        },
+        "summary": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "errorCount",
+                "warningCount",
+                "infoCount"
+            ],
+            "properties": {
+                "errorCount": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "warningCount": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "infoCount": {
+                    "type": "integer",
+                    "minimum": 0
+                }
+            }
+        },
+        "issues": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/validationIssue"
+            }
+        },
+        "metadata": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "validatedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "durationMs": {
+                    "type": "number",
+                    "minimum": 0
+                },
+                "environment": {
+                    "type": "string",
+                    "enum": [
+                        "development",
+                        "test",
+                        "staging",
+                        "production"
+                    ]
+                }
+            }
+        }
+    },
+    "$defs": {
+        "validationIssue": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "code",
+                "severity",
+                "category",
+                "message"
+            ],
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "pattern": "^[A-Z][A-Z0-9]*(?:_[A-Z0-9]+)+$",
+                    "description": "Machine-readable stable error code."
+                },
+                "severity": {
+                    "type": "string",
+                    "enum": [
+                        "error",
+                        "warning",
+                        "info"
+                    ]
+                },
+                "category": {
+                    "type": "string",
+                    "enum": [
+                        "schema",
+                        "reference",
+                        "contract",
+                        "graph",
+                        "consistency"
+                    ]
+                },
+                "path": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "JSON Pointer tới vị trí gây issue. Ví dụ /questions/0/primaryNode."
+                },
+                "value": {
+                    "description": "Giá trị thực tế gây issue."
+                },
+                "expected": {
+                    "description": "Giá trị hoặc điều kiện validator mong đợi."
+                },
+                "message": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Thông báo dành cho developer."
+                },
+                "related": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/relatedResource"
+                    }
+                }
+            }
+        },
+        "relatedResource": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "type",
+                "id"
+            ],
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "path": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            }
+        }
+    }
+}

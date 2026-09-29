@@ -226,11 +226,18 @@
                     "items": {
                         "type": "string",
                         "enum": [
-                            "Q-K",
-                            "Q-E",
-                            "Q-A",
-                            "Q-T",
-                            "Q-D"
+                            "mcq",
+                            "multi_select",
+                            "true_false",
+                            "matching",
+                            "ordering",
+                            "fill_blank",
+                            "short_answer",
+                            "numeric",
+                            "data_analysis",
+                            "experiment",
+                            "sequence",
+                            "open_response"
                         ]
                     },
                     "uniqueItems": true
