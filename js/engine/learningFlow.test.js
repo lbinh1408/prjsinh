@@ -2805,5 +2805,129 @@ test(
                 );
             }
         );
+        /**
+ * ====================================================
+ * 21
+ * CURRENT SUCCESSFUL ATTEMPT MUST REACH
+ * ADAPTIVE RECENT-QUESTION EXCLUSION
+ * ====================================================
+ */
+
+        await t.test(
+            "21. current successful Attempt is included in Adaptive excludeQuestionIds",
+            () => {
+
+                const state =
+                    makeStudentState();
+
+
+                /*
+                 * Historical question already completed
+                 * before the current Attempt.
+                 */
+                const previousQuestionId =
+                    "Q-A-K283-A-003";
+
+
+                /*
+                 * Current successful question.
+                 *
+                 * This is the important case:
+                 * a correct Attempt has no failure,
+                 * but Adaptive must still know that
+                 * this question was just answered.
+                 */
+                const currentQuestionId =
+                    "Q-A-K283-K-001";
+
+
+                const attempt =
+                    makeAttempt({
+
+                        attemptId:
+                            "ATT-K283-EXCLUDE-001",
+
+                        questionId:
+                            currentQuestionId,
+
+                        nodeId:
+                            "K283",
+
+                        result:
+                            "correct",
+
+                        score:
+                            1,
+
+                        evidenceDimension:
+                            "know",
+
+                        difficulty:
+                            "D1"
+                    });
+
+
+                const result =
+                    runFlow({
+
+                        studentState:
+                            state,
+
+                        attempt,
+
+                        recentResults: [
+                            {
+                                attemptId:
+                                    "ATT-K283-PREVIOUS-001",
+
+                                questionId:
+                                    previousQuestionId,
+
+                                result:
+                                    "correct"
+                            }
+                        ]
+                    });
+
+
+                const excludeQuestionIds =
+                    result
+                        .adaptiveDecision
+                        ?.selectionCriteria
+                        ?.excludeQuestionIds ??
+                    [];
+
+
+                /*
+                 * Historical question must remain excluded.
+                 */
+                assert.ok(
+                    excludeQuestionIds.includes(
+                        previousQuestionId
+                    ),
+                    "Adaptive must exclude the previously answered question"
+                );
+
+
+                /*
+                 * REGRESSION ASSERTION:
+                 *
+                 * The current successful Attempt must ALSO
+                 * be visible to Adaptive.
+                 *
+                 * Before INT-001 fix this assertion fails
+                 * because normalizeRecentResults() only
+                 * appended the current Attempt when it
+                 * contained failure information.
+                 */
+                assert.ok(
+                    excludeQuestionIds.includes(
+                        currentQuestionId
+                    ),
+                    "Adaptive must exclude the current successful question"
+                );
+            }
+        );
+
     }
 );

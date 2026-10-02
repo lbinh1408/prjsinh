@@ -129,6 +129,7 @@
             "difficulty": "D2",
             "questionType": "mcq",
             "mode": [
+                "learning",
                 "practice"
             ],
             "prerequisites": [
@@ -226,6 +227,7 @@
                     "k283",
                     "recombinant-gametes",
                     "explain",
+                    "learning",
                     "practice"
                 ]
             }

@@ -1351,7 +1351,7 @@ function projectKnowledgeState({
                             flowResult
                                 ?.masteryUpdate
                                 ?.retest
-                                ?.contextDifferent ??
+                                ?.questionDifferent ??
                             false
                         ),
 

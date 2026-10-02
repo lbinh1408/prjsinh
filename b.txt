@@ -1,0 +1,873 @@
+[1] ENTRY ADAPTIVE DECISION
+{
+  "decisionId": "DECISION-LIVE-K283-1790931172791-INITIAL",
+  "action": "PRACTICE",
+  "target": {
+    "primaryNodeId": "K283",
+    "nodeIds": [
+      "K283"
+    ]
+  },
+  "selectionCriteria": {
+    "questionTypes": [
+      "mcq"
+    ],
+    "difficulty": {
+      "min": "D1",
+      "max": "D5",
+      "preferred": "D3"
+    },
+    "evidenceDimensions": [],
+    "excludeQuestionIds": [],
+    "requireDifferentQuestion": false,
+    "requireDifferentContext": false,
+    "requireIndependentEvidence": false,
+    "metaSkills": [],
+    "secondaryNodes": [],
+    "failureSignatures": []
+  },
+  "constraints": {
+    "requireDifferentContext": false,
+    "requireDifferentQuestion": false
+  },
+  "path": {
+    "current": "PRACTICE",
+    "next": null
+  },
+  "fallback": null,
+  "reason": null,
+  "reasonCodes": null
+}
+
+[2] QUESTION SELECTOR OUTPUT
+{
+  "status": "SELECTED",
+  "reason": {
+    "code": "QUESTION_SELECTED",
+    "message": "Selected Q-A-K283-A-003 for PRACTICE on K283"
+  },
+  "selectedQuestionId": "Q-A-K283-A-003",
+  "selected": {
+    "questionId": "Q-A-K283-A-003",
+    "evidence": "apply",
+    "difficulty": "D3",
+    "questionType": "mcq",
+    "mode": [
+      "practice"
+    ]
+  }
+}
+
+
+[4] CANONICAL ATTEMPT
+{
+  "attemptId": "ATTEMPT-LIVE-K283-1790931172791-001",
+  "questionId": "Q-A-K283-A-003",
+  "result": "correct",
+  "score": 1,
+  "attemptNumber": 1,
+  "context": {
+    "learningMode": "HOC_SAU",
+    "action": "PRACTICE",
+    "pathStage": "PRACTICE",
+    "nodeId": "K283",
+    "clusterId": "C09",
+    "decisionId": "DECISION-LIVE-K283-1790931172791-INITIAL"
+  },
+  "evidence": {
+    "difficulty": "D3",
+    "primaryDimension": "apply",
+    "independence": "independent"
+  },
+  "diagnostic": null,
+  "hint": {
+    "used": false,
+    "count": 0
+  }
+}
+
+[5] MASTERY UPDATE
+{
+  "nodeId": "K283",
+  "previous": {
+    "mastery": "M0",
+    "status": "developing",
+    "evidence": {
+      "know": 0,
+      "explain": 0,
+      "apply": 0,
+      "transfer": 0
+    }
+  },
+  "current": {
+    "mastery": "M0",
+    "status": "developing",
+    "evidence": {
+      "know": 0,
+      "explain": 0,
+      "apply": 0.2,
+      "transfer": 0
+    }
+  },
+  "update": null,
+  "evidence": {
+    "know": 0,
+    "explain": 0,
+    "apply": 0.2,
+    "transfer": 0,
+    "updatedDimension": "apply",
+    "evidenceSource": "apply",
+    "evidenceStrength": 1,
+    "independence": "independent"
+  },
+  "confidence": {
+    "level": "low",
+    "score": 0.4333,
+    "attemptCount": 1
+  },
+  "weakness": null,
+  "failure": {
+    "detected": false
+  },
+  "decision": {
+    "previousMastery": "M0",
+    "currentMastery": "M0",
+    "decision": "unchanged",
+    "reason": "Mastery level remains unchanged after processing this attempt.",
+    "thresholdsSatisfied": [],
+    "allRequiredDimensionsSatisfied": true
+  }
+}
+
+
+[7] NEXT ADAPTIVE DECISION
+{
+  "decisionId": "AD-STUDENT-LIVE-K283-K283-20261002T085258634Z",
+  "action": "LEARN",
+  "target": {
+    "type": "KNOWLEDGE_NODE",
+    "nodeIds": [
+      "K283"
+    ],
+    "primaryNodeId": "K283"
+  },
+  "selectionCriteria": {
+    "questionTypes": [
+      "mcq",
+      "true_false",
+      "matching",
+      "fill_blank",
+      "short_answer"
+    ],
+    "difficulty": {
+      "min": "D1",
+      "max": "D2",
+      "preferred": "D2"
+    },
+    "evidenceDimensions": [
+      "know",
+      "explain"
+    ]
+  },
+  "constraints": {
+    "respectPrerequisites": true,
+    "minimumPrerequisiteMastery": "M2",
+    "allowSkip": true,
+    "allowStudentChoice": true,
+    "requireDifferentContext": false,
+    "requireDifferentQuestion": false,
+    "maxTimeMinutes": 60,
+    "maxSameNodeActions": 2,
+    "maxSameFailureSignature": 3
+  },
+  "path": {
+    "current": "LEARN",
+    "next": "PRACTICE",
+    "terminal": false
+  },
+  "fallback": null,
+  "reason": {
+    "primary": "Node chưa được hình thành.",
+    "codes": [
+      "MASTERY_M0",
+      "HOC_SAU_MODE"
+    ],
+    "masteryLevel": "M0",
+    "status": "developing"
+  },
+  "reasonCodes": null
+}
+
+[9] STUDY SESSION HISTORY
+[
+  {
+    "attemptId": "ATTEMPT-LIVE-K283-1790931172791-001",
+    "questionId": "Q-A-K283-A-003",
+    "nodeId": "K283",
+    "result": "correct",
+    "score": 1,
+    "action": "PRACTICE",
+    "nextAction": "LEARN",
+    "context": {
+      "learningMode": "HOC_SAU",
+      "action": "PRACTICE",
+      "pathStage": "PRACTICE",
+      "nodeId": "K283",
+      "clusterId": "C09",
+      "decisionId": "DECISION-LIVE-K283-1790931172791-INITIAL",
+      "contextId": "C09"
+    },
+    "submittedAt": "2026-10-02T08:52:58.634Z",
+    "at": "2026-10-02T08:52:58.634Z"
+  }
+]
+
+╔════════════════════════════════════════════════════════════╗
+║ RUNTIME TRACE — TURN 2                                    ║
+╚════════════════════════════════════════════════════════════╝
+
+[1] ENTRY ADAPTIVE DECISION
+{
+  "decisionId": "AD-STUDENT-LIVE-K283-K283-20261002T085258634Z",
+  "action": "LEARN",
+  "target": {
+    "type": "KNOWLEDGE_NODE",
+    "nodeIds": [
+      "K283"
+    ],
+    "primaryNodeId": "K283"
+  },
+  "selectionCriteria": {
+    "questionTypes": [
+      "mcq",
+      "true_false",
+      "matching",
+      "fill_blank",
+      "short_answer"
+    ],
+    "difficulty": {
+      "min": "D1",
+      "max": "D2",
+      "preferred": "D2"
+    },
+    "evidenceDimensions": [
+      "know",
+      "explain"
+    ]
+  },
+  "constraints": {
+    "respectPrerequisites": true,
+    "minimumPrerequisiteMastery": "M2",
+    "allowSkip": true,
+    "allowStudentChoice": true,
+    "requireDifferentContext": false,
+    "requireDifferentQuestion": false,
+    "maxTimeMinutes": 60,
+    "maxSameNodeActions": 2,
+    "maxSameFailureSignature": 3
+  },
+  "path": {
+    "current": "LEARN",
+    "next": "PRACTICE",
+    "terminal": false
+  },
+  "fallback": null,
+  "reason": {
+    "primary": "Node chưa được hình thành.",
+    "codes": [
+      "MASTERY_M0",
+      "HOC_SAU_MODE"
+    ],
+    "masteryLevel": "M0",
+    "status": "developing"
+  },
+  "reasonCodes": null
+}
+
+[2] QUESTION SELECTOR OUTPUT
+{
+  "status": "SELECTED",
+  "reason": {
+    "code": "QUESTION_SELECTED",
+    "message": "Selected Q-A-K283-K-001 for LEARN on K283"
+  },
+  "selectedQuestionId": "Q-A-K283-K-001",
+  "selected": {
+    "questionId": "Q-A-K283-K-001",
+    "evidence": "know",
+    "difficulty": "D1",
+    "questionType": "mcq",
+    "mode": [
+      "diagnostic"
+    ]
+  }
+}
+
+
+
+[4] CANONICAL ATTEMPT
+{
+  "attemptId": "ATTEMPT-LIVE-K283-1790931172791-002",
+  "questionId": "Q-A-K283-K-001",
+  "result": "correct",
+  "score": 1,
+  "attemptNumber": 1,
+  "context": {
+    "learningMode": "HOC_SAU",
+    "action": "LEARN",
+    "pathStage": "LEARN",
+    "nodeId": "K283",
+    "clusterId": "C09",
+    "decisionId": "AD-STUDENT-LIVE-K283-K283-20261002T085258634Z"
+  },
+  "evidence": {
+    "difficulty": "D1",
+    "primaryDimension": "know",
+    "independence": "independent"
+  },
+  "diagnostic": null,
+  "hint": {
+    "used": false,
+    "count": 0
+  }
+}
+
+[5] MASTERY UPDATE
+{
+  "nodeId": "K283",
+  "previous": {
+    "mastery": "M0",
+    "status": "developing",
+    "evidence": {
+      "know": 0,
+      "explain": 0,
+      "apply": 0.2,
+      "transfer": 0
+    }
+  },
+  "current": {
+    "mastery": "M0",
+    "status": "developing",
+    "evidence": {
+      "know": 0.14,
+      "explain": 0,
+      "apply": 0.2,
+      "transfer": 0
+    }
+  },
+  "update": null,
+  "evidence": {
+    "know": 0.14,
+    "explain": 0,
+    "apply": 0.2,
+    "transfer": 0,
+    "updatedDimension": "know",
+    "evidenceSource": "know",
+    "evidenceStrength": 0.7,
+    "independence": "independent"
+  },
+  "confidence": {
+    "level": "medium",
+    "score": 0.4667,
+    "attemptCount": 2
+  },
+  "weakness": null,
+  "failure": {
+    "detected": false
+  },
+  "decision": {
+    "previousMastery": "M0",
+    "currentMastery": "M0",
+    "decision": "unchanged",
+    "reason": "Mastery level remains unchanged after processing this attempt.",
+    "thresholdsSatisfied": [],
+    "allRequiredDimensionsSatisfied": true
+  }
+}
+
+
+[7] NEXT ADAPTIVE DECISION
+{
+  "decisionId": "AD-STUDENT-LIVE-K283-K283-20261002T085359022Z",
+  "action": "LEARN",
+  "target": {
+    "type": "KNOWLEDGE_NODE",
+    "nodeIds": [
+      "K283"
+    ],
+    "primaryNodeId": "K283"
+  },
+  "selectionCriteria": {
+    "questionTypes": [
+      "mcq",
+      "true_false",
+      "matching",
+      "fill_blank",
+      "short_answer"
+    ],
+    "difficulty": {
+      "min": "D1",
+      "max": "D2",
+      "preferred": "D2"
+    },
+    "evidenceDimensions": [
+      "know",
+      "explain"
+    ],
+    "excludeQuestionIds": [
+      "Q-A-K283-A-003"
+    ]
+  },
+  "constraints": {
+    "respectPrerequisites": true,
+    "minimumPrerequisiteMastery": "M2",
+    "allowSkip": true,
+    "allowStudentChoice": true,
+    "requireDifferentContext": false,
+    "requireDifferentQuestion": false,
+    "maxTimeMinutes": 60,
+    "maxSameNodeActions": 2,
+    "maxSameFailureSignature": 3
+  },
+  "path": {
+    "current": "LEARN",
+    "next": "PRACTICE",
+    "terminal": false
+  },
+  "fallback": null,
+  "reason": {
+    "primary": "Node chưa được hình thành.",
+    "codes": [
+      "MASTERY_M0",
+      "HOC_SAU_MODE"
+    ],
+    "masteryLevel": "M0",
+    "status": "developing"
+  },
+  "reasonCodes": null
+}
+
+
+[9] STUDY SESSION HISTORY
+[
+  {
+    "attemptId": "ATTEMPT-LIVE-K283-1790931172791-001",
+    "questionId": "Q-A-K283-A-003",
+    "nodeId": "K283",
+    "result": "correct",
+    "score": 1,
+    "action": "PRACTICE",
+    "nextAction": "LEARN",
+    "context": {
+      "learningMode": "HOC_SAU",
+      "action": "PRACTICE",
+      "pathStage": "PRACTICE",
+      "nodeId": "K283",
+      "clusterId": "C09",
+      "decisionId": "DECISION-LIVE-K283-1790931172791-INITIAL",
+      "contextId": "C09"
+    },
+    "submittedAt": "2026-10-02T08:52:58.634Z",
+    "at": "2026-10-02T08:52:58.634Z"
+  },
+  {
+    "attemptId": "ATTEMPT-LIVE-K283-1790931172791-002",
+    "questionId": "Q-A-K283-K-001",
+    "nodeId": "K283",
+    "result": "correct",
+    "score": 1,
+    "action": "LEARN",
+    "nextAction": "LEARN",
+    "context": {
+      "learningMode": "HOC_SAU",
+      "action": "LEARN",
+      "pathStage": "LEARN",
+      "nodeId": "K283",
+      "clusterId": "C09",
+      "decisionId": "AD-STUDENT-LIVE-K283-K283-20261002T085258634Z",
+      "contextId": "C09"
+    },
+    "submittedAt": "2026-10-02T08:53:59.022Z",
+    "at": "2026-10-02T08:53:59.022Z"
+  }
+]
+
+
+
+╔════════════════════════════════════════════════════════════╗
+║ RUNTIME TRACE — TURN 3                                    ║
+╚════════════════════════════════════════════════════════════╝
+
+[1] ENTRY ADAPTIVE DECISION
+{
+  "decisionId": "AD-STUDENT-LIVE-K283-K283-20261002T085359022Z",
+  "action": "LEARN",
+  "target": {
+    "type": "KNOWLEDGE_NODE",
+    "nodeIds": [
+      "K283"
+    ],
+    "primaryNodeId": "K283"
+  },
+  "selectionCriteria": {
+    "questionTypes": [
+      "mcq",
+      "true_false",
+      "matching",
+      "fill_blank",
+      "short_answer"
+    ],
+    "difficulty": {
+      "min": "D1",
+      "max": "D2",
+      "preferred": "D2"
+    },
+    "evidenceDimensions": [
+      "know",
+      "explain"
+    ],
+    "excludeQuestionIds": [
+      "Q-A-K283-A-003"
+    ]
+  },
+  "constraints": {
+    "respectPrerequisites": true,
+    "minimumPrerequisiteMastery": "M2",
+    "allowSkip": true,
+    "allowStudentChoice": true,
+    "requireDifferentContext": false,
+    "requireDifferentQuestion": false,
+    "maxTimeMinutes": 60,
+    "maxSameNodeActions": 2,
+    "maxSameFailureSignature": 3
+  },
+  "path": {
+    "current": "LEARN",
+    "next": "PRACTICE",
+    "terminal": false
+  },
+  "fallback": null,
+  "reason": {
+    "primary": "Node chưa được hình thành.",
+    "codes": [
+      "MASTERY_M0",
+      "HOC_SAU_MODE"
+    ],
+    "masteryLevel": "M0",
+    "status": "developing"
+  },
+  "reasonCodes": null
+}
+
+[2] QUESTION SELECTOR OUTPUT
+{
+  "status": "SELECTED",
+  "reason": {
+    "code": "QUESTION_SELECTED",
+    "message": "Selected Q-A-K283-K-001 for LEARN on K283"
+  },
+  "selectedQuestionId": "Q-A-K283-K-001",
+  "selected": {
+    "questionId": "Q-A-K283-K-001",
+    "evidence": "know",
+    "difficulty": "D1",
+    "questionType": "mcq",
+    "mode": [
+      "diagnostic"
+    ]
+  }
+}
+
+[4] CANONICAL ATTEMPT
+{
+  "attemptId": "ATTEMPT-LIVE-K283-1790931172791-003",
+  "questionId": "Q-A-K283-K-001",
+  "result": "correct",
+  "score": 1,
+  "attemptNumber": 1,
+  "context": {
+    "learningMode": "HOC_SAU",
+    "action": "LEARN",
+    "pathStage": "LEARN",
+    "nodeId": "K283",
+    "clusterId": "C09",
+    "decisionId": "AD-STUDENT-LIVE-K283-K283-20261002T085359022Z"
+  },
+  "evidence": {
+    "difficulty": "D1",
+    "primaryDimension": "know",
+    "independence": "independent"
+  },
+  "diagnostic": null,
+  "hint": {
+    "used": false,
+    "count": 0
+  }
+}
+
+[5] MASTERY UPDATE
+{
+  "nodeId": "K283",
+  "previous": {
+    "mastery": "M0",
+    "status": "developing",
+    "evidence": {
+      "know": 0.14,
+      "explain": 0,
+      "apply": 0.2,
+      "transfer": 0
+    }
+  },
+  "current": {
+    "mastery": "M0",
+    "status": "developing",
+    "evidence": {
+      "know": 0.252,
+      "explain": 0,
+      "apply": 0.2,
+      "transfer": 0
+    }
+  },
+  "update": null,
+  "evidence": {
+    "know": 0.252,
+    "explain": 0,
+    "apply": 0.2,
+    "transfer": 0,
+    "updatedDimension": "know",
+    "evidenceSource": "know",
+    "evidenceStrength": 0.7,
+    "independence": "independent"
+  },
+  "confidence": {
+    "level": "medium",
+    "score": 0.5,
+    "attemptCount": 3
+  },
+  "weakness": null,
+  "failure": {
+    "detected": false
+  },
+  "decision": {
+    "previousMastery": "M0",
+    "currentMastery": "M0",
+    "decision": "unchanged",
+    "reason": "Mastery level remains unchanged after processing this attempt.",
+    "thresholdsSatisfied": [],
+    "allRequiredDimensionsSatisfied": true
+  }
+}
+
+
+[7] NEXT ADAPTIVE DECISION
+{
+  "decisionId": "AD-STUDENT-LIVE-K283-K283-20261002T085535788Z",
+  "action": "LEARN",
+  "target": {
+    "type": "KNOWLEDGE_NODE",
+    "nodeIds": [
+      "K283"
+    ],
+    "primaryNodeId": "K283"
+  },
+  "selectionCriteria": {
+    "questionTypes": [
+      "mcq",
+      "true_false",
+      "matching",
+      "fill_blank",
+      "short_answer"
+    ],
+    "difficulty": {
+      "min": "D1",
+      "max": "D2",
+      "preferred": "D2"
+    },
+    "evidenceDimensions": [
+      "know",
+      "explain"
+    ],
+    "excludeQuestionIds": [
+      "Q-A-K283-A-003",
+      "Q-A-K283-K-001"
+    ]
+  },
+  "constraints": {
+    "respectPrerequisites": true,
+    "minimumPrerequisiteMastery": "M2",
+    "allowSkip": true,
+    "allowStudentChoice": true,
+    "requireDifferentContext": false,
+    "requireDifferentQuestion": false,
+    "maxTimeMinutes": 60,
+    "maxSameNodeActions": 2,
+    "maxSameFailureSignature": 3
+  },
+  "path": {
+    "current": "LEARN",
+    "next": "PRACTICE",
+    "terminal": false
+  },
+  "fallback": null,
+  "reason": {
+    "primary": "Node chưa được hình thành.",
+    "codes": [
+      "MASTERY_M0",
+      "HOC_SAU_MODE"
+    ],
+    "masteryLevel": "M0",
+    "status": "developing"
+  },
+  "reasonCodes": null
+}
+
+
+[9] STUDY SESSION HISTORY
+[
+  {
+    "attemptId": "ATTEMPT-LIVE-K283-1790931172791-001",
+    "questionId": "Q-A-K283-A-003",
+    "nodeId": "K283",
+    "result": "correct",
+    "score": 1,
+    "action": "PRACTICE",
+    "nextAction": "LEARN",
+    "context": {
+      "learningMode": "HOC_SAU",
+      "action": "PRACTICE",
+      "pathStage": "PRACTICE",
+      "nodeId": "K283",
+      "clusterId": "C09",
+      "decisionId": "DECISION-LIVE-K283-1790931172791-INITIAL",
+      "contextId": "C09"
+    },
+    "submittedAt": "2026-10-02T08:52:58.634Z",
+    "at": "2026-10-02T08:52:58.634Z"
+  },
+  {
+    "attemptId": "ATTEMPT-LIVE-K283-1790931172791-002",
+    "questionId": "Q-A-K283-K-001",
+    "nodeId": "K283",
+    "result": "correct",
+    "score": 1,
+    "action": "LEARN",
+    "nextAction": "LEARN",
+    "context": {
+      "learningMode": "HOC_SAU",
+      "action": "LEARN",
+      "pathStage": "LEARN",
+      "nodeId": "K283",
+      "clusterId": "C09",
+      "decisionId": "AD-STUDENT-LIVE-K283-K283-20261002T085258634Z",
+      "contextId": "C09"
+    },
+    "submittedAt": "2026-10-02T08:53:59.022Z",
+    "at": "2026-10-02T08:53:59.022Z"
+  },
+  {
+    "attemptId": "ATTEMPT-LIVE-K283-1790931172791-003",
+    "questionId": "Q-A-K283-K-001",
+    "nodeId": "K283",
+    "result": "correct",
+    "score": 1,
+    "action": "LEARN",
+    "nextAction": "LEARN",
+    "context": {
+      "learningMode": "HOC_SAU",
+      "action": "LEARN",
+      "pathStage": "LEARN",
+      "nodeId": "K283",
+      "clusterId": "C09",
+      "decisionId": "AD-STUDENT-LIVE-K283-K283-20261002T085359022Z",
+      "contextId": "C09"
+    },
+    "submittedAt": "2026-10-02T08:55:35.788Z",
+    "at": "2026-10-02T08:55:35.788Z"
+  }
+]
+
+
+
+╔════════════════════════════════════════════════════════════╗
+║ RUNTIME TRACE — TURN 4                                    ║
+╚════════════════════════════════════════════════════════════╝
+
+[1] ENTRY ADAPTIVE DECISION
+{
+  "decisionId": "AD-STUDENT-LIVE-K283-K283-20261002T085535788Z",
+  "action": "LEARN",
+  "target": {
+    "type": "KNOWLEDGE_NODE",
+    "nodeIds": [
+      "K283"
+    ],
+    "primaryNodeId": "K283"
+  },
+  "selectionCriteria": {
+    "questionTypes": [
+      "mcq",
+      "true_false",
+      "matching",
+      "fill_blank",
+      "short_answer"
+    ],
+    "difficulty": {
+      "min": "D1",
+      "max": "D2",
+      "preferred": "D2"
+    },
+    "evidenceDimensions": [
+      "know",
+      "explain"
+    ],
+    "excludeQuestionIds": [
+      "Q-A-K283-A-003",
+      "Q-A-K283-K-001"
+    ]
+  },
+  "constraints": {
+    "respectPrerequisites": true,
+    "minimumPrerequisiteMastery": "M2",
+    "allowSkip": true,
+    "allowStudentChoice": true,
+    "requireDifferentContext": false,
+    "requireDifferentQuestion": false,
+    "maxTimeMinutes": 60,
+    "maxSameNodeActions": 2,
+    "maxSameFailureSignature": 3
+  },
+  "path": {
+    "current": "LEARN",
+    "next": "PRACTICE",
+    "terminal": false
+  },
+  "fallback": null,
+  "reason": {
+    "primary": "Node chưa được hình thành.",
+    "codes": [
+      "MASTERY_M0",
+      "HOC_SAU_MODE"
+    ],
+    "masteryLevel": "M0",
+    "status": "developing"
+  },
+  "reasonCodes": null
+}
+
+[2] QUESTION SELECTOR OUTPUT
+{
+  "status": "NO_MATCH",
+  "reason": {
+    "code": "NO_ELIGIBLE_QUESTION",
+    "message": "No eligible question satisfies Adaptive criteria for action LEARN on node K283 (difficulty D1-D2)."
+  },
+  "selectedQuestionId": null,
+  "selected": null
+}
+
+[3] SELECTED QUESTION
+null
+
+[4] ATTEMPT
+<not submitted yet>
+

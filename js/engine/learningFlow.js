@@ -85,7 +85,7 @@ import {
  * ============================================================
  */
 
-const FLOW_VERSION = "1.0.0";
+const FLOW_VERSION = "1.0.1";
 
 const FLOW_NAME = "LearningFlow";
 
@@ -2802,11 +2802,8 @@ function normalizeFailureFromAttempt(
  * without learningFlow itself deciding what "repeated" means.
  */
 function normalizeRecentResults({
-
     recentResults,
-
     attempt
-
 }) {
 
     const results =
@@ -2823,24 +2820,47 @@ function normalizeRecentResults({
         );
 
 
+    /**
+     * Current Attempt must always be visible to Adaptive.
+     *
+     * recentResults is used for more than failure detection:
+     *
+     * - recent question exclusion
+     * - repetition avoidance
+     * - failure-pattern inspection
+     *
+     * Therefore a successful Attempt must not disappear merely
+     * because it has no failure information.
+     */
+
+    const currentResult = {
+
+        attemptId:
+            attempt?.attemptId ??
+            null,
+
+        questionId:
+            attempt?.questionId ??
+            null,
+
+        result:
+            attempt?.result ??
+            null
+    };
+
+
     if (failure) {
 
-        results.push({
-            ...failure,
-
-            attemptId:
-                attempt?.attemptId ??
-                null,
-
-            questionId:
-                attempt?.questionId ??
-                null,
-
-            result:
-                attempt?.result ??
-                null
-        });
+        Object.assign(
+            currentResult,
+            failure
+        );
     }
+
+
+    results.push(
+        currentResult
+    );
 
 
     return results;
