@@ -248,7 +248,7 @@ export function processAttempt({
      * --------------------------------------------------------
      */
 
-    const masteryUpdate =
+    const masteryRuntimeResult =
         updateMastery({
 
             attempt:
@@ -260,6 +260,41 @@ export function processAttempt({
             masteryRules,
 
             evidenceModel
+        });
+
+
+    /*
+     * --------------------------------------------------------
+     * STEP 2B
+     *
+     * Contract adapter:
+     *
+     * Mastery Engine runtime output
+     *        ↓
+     * mastery-update.schema.json
+     *
+     * IMPORTANT:
+     *
+     * - Mastery Engine remains unchanged.
+     * - Runtime output remains available for internal
+     *   projection / Adaptive integration.
+     * - masteryUpdate is the public contract representation.
+     * - No mastery calculation happens here.
+     * --------------------------------------------------------
+     */
+
+    const masteryUpdate =
+        projectMasteryUpdateContract({
+
+            runtime:
+                masteryRuntimeResult,
+
+            attempt:
+                engineAttempt,
+
+            studentId,
+
+            now
         });
 
 
@@ -281,7 +316,10 @@ export function processAttempt({
 
     const projectedNodeState =
         projectMasteryNodeState({
-            masteryUpdate,
+
+            masteryUpdate:
+                masteryRuntimeResult,
+
             previousState:
                 currentNodeState
         });
@@ -336,7 +374,8 @@ export function processAttempt({
             attempt:
                 engineAttempt,
 
-            masteryUpdate
+            masteryUpdate:
+                masteryRuntimeResult
         });
 
 
@@ -645,6 +684,1567 @@ export function processRemediationProbe({
 
         now
     });
+}
+
+/**
+ * ============================================================
+ * MASTERY RUNTIME → MASTERY UPDATE CONTRACT
+ * ============================================================
+ */
+
+/**
+ * Project the rich internal Mastery Engine runtime result into
+ * the public mastery-update.schema.json contract.
+ *
+ * IMPORTANT:
+ *
+ * This function DOES NOT:
+ *
+ * - calculate mastery
+ * - calculate evidence
+ * - diagnose failure
+ * - decide remediation
+ * - decide the next action
+ * - mutate the Mastery runtime result
+ * - mutate the Attempt
+ *
+ * It only serializes / projects values that have already been
+ * produced by Mastery Engine or are directly observable from
+ * the Attempt.
+ */
+function projectMasteryUpdateContract({
+
+    runtime,
+
+    attempt,
+
+    studentId,
+
+    now = null
+
+}) {
+
+    const previous =
+        isPlainObject(runtime?.previous)
+            ? runtime.previous
+            : {};
+
+
+    const current =
+        isPlainObject(runtime?.current)
+            ? runtime.current
+            : {};
+
+
+    const runtimeUpdate =
+        isPlainObject(runtime?.update)
+            ? runtime.update
+            : {};
+
+
+    const runtimeDecision =
+        isPlainObject(runtime?.decision)
+            ? runtime.decision
+            : {};
+
+
+    const previousEvidence =
+        normalizeEvidenceVector(
+            previous.evidence
+        );
+
+
+    const currentEvidence =
+        normalizeEvidenceVector(
+            current.evidence
+        );
+
+
+    const previousMastery =
+        normalizeMasteryLevel(
+            previous.mastery,
+            "M0"
+        );
+
+
+    const currentMastery =
+        normalizeMasteryLevel(
+            current.mastery,
+            previousMastery
+        );
+
+
+    const previousStatus =
+        normalizeMasteryStatus(
+            previous.status,
+            "developing"
+        );
+
+
+    const currentStatus =
+        normalizeMasteryStatus(
+            current.status,
+            previousStatus
+        );
+
+
+    const updatedDimension =
+        resolveContractEvidenceDimension({
+            runtimeUpdate,
+            attempt
+        });
+
+
+    const evidenceSource =
+        resolveContractEvidenceSource(
+            updatedDimension
+        );
+
+
+    const confidence =
+        projectContractConfidence(
+            current.confidence
+        );
+
+
+    const failure =
+        projectContractFailure({
+            runtimeFailure:
+                runtime?.failure,
+
+            attempt
+        });
+
+
+    const retest =
+        projectContractRetest({
+
+            attempt,
+
+            previousMastery,
+
+            currentMastery,
+
+            previousStatus,
+
+            currentStatus
+        });
+
+
+    const masteryDecision =
+        projectContractMasteryDecision({
+
+            previousMastery,
+
+            currentMastery,
+
+            previousStatus,
+
+            currentStatus,
+
+            runtimeDecision,
+
+            failure,
+
+            retest
+        });
+
+
+    const timestamp =
+        resolveContractTimestamp({
+            now,
+            attempt
+        });
+
+
+    return {
+
+        schemaVersion:
+            "1.0.0",
+
+        updateId:
+            createMasteryUpdateId({
+                attempt,
+                nodeId:
+                    runtime?.nodeId
+            }),
+
+        studentId:
+            normalizeNonEmptyString(
+                studentId
+            ) ??
+            normalizeNonEmptyString(
+                attempt?.studentId
+            ) ??
+            "unknown-student",
+
+        attemptId:
+            normalizeNonEmptyString(
+                runtime?.attemptId
+            ) ??
+            normalizeNonEmptyString(
+                attempt?.attemptId
+            ) ??
+            "unknown-attempt",
+
+        questionId:
+            normalizeNonEmptyString(
+                runtime?.questionId
+            ) ??
+            normalizeNonEmptyString(
+                attempt?.questionId
+            ) ??
+            "unknown-question",
+
+        nodeId:
+            normalizeNonEmptyString(
+                runtime?.nodeId
+            ) ??
+            resolveAttemptNodeId(
+                attempt
+            ) ??
+            "K000",
+
+        timestamp,
+
+
+        previous: {
+
+            mastery:
+                previousMastery,
+
+            status:
+                previousStatus,
+
+            evidence:
+                previousEvidence
+        },
+
+
+        current: {
+
+            mastery:
+                currentMastery,
+
+            status:
+                currentStatus,
+
+            evidence:
+                currentEvidence
+        },
+
+
+        change: {
+
+            evidenceDelta:
+                calculateEvidenceDelta(
+                    previousEvidence,
+                    currentEvidence
+                ),
+
+            masteryChanged:
+                currentMastery !==
+                previousMastery,
+
+            statusChanged:
+                currentStatus !==
+                previousStatus,
+
+            masteryDirection:
+                normalizeMasteryDirection(
+                    runtimeDecision
+                        ?.direction,
+                    previousMastery,
+                    currentMastery
+                )
+        },
+
+
+        evidence: {
+
+            ...currentEvidence,
+
+            updatedDimension,
+
+            evidenceSource,
+
+            evidenceStrength:
+                clampContract01(
+                    finiteNumberOr(
+                        runtimeUpdate
+                            ?.attemptStrength,
+                        0
+                    )
+                ),
+
+            independence:
+                resolveEvidenceIndependence(
+                    attempt
+                )
+        },
+
+
+        confidence,
+
+
+        status: {
+
+            current:
+                currentStatus,
+
+            previous:
+                previousStatus,
+
+            reason:
+                resolveStatusReason({
+                    previousStatus,
+                    currentStatus,
+                    runtime
+                }),
+
+            overlay:
+                currentStatus === "weak"
+                    ? "weak"
+                    : "none"
+        },
+
+
+        failure,
+
+
+        retest,
+
+
+        masteryDecision
+    };
+}
+
+
+/**
+ * ============================================================
+ * MASTERY UPDATE CONTRACT — EVIDENCE
+ * ============================================================
+ */
+
+function normalizeEvidenceVector(
+    rawEvidence
+) {
+
+    const evidence =
+        isPlainObject(rawEvidence)
+            ? rawEvidence
+            : {};
+
+
+    return {
+
+        know:
+            clampContract01(
+                finiteNumberOr(
+                    evidence.know,
+                    0
+                )
+            ),
+
+        explain:
+            clampContract01(
+                finiteNumberOr(
+                    evidence.explain,
+                    0
+                )
+            ),
+
+        apply:
+            clampContract01(
+                finiteNumberOr(
+                    evidence.apply,
+                    0
+                )
+            ),
+
+        transfer:
+            clampContract01(
+                finiteNumberOr(
+                    evidence.transfer,
+                    0
+                )
+            )
+    };
+}
+
+
+function calculateEvidenceDelta(
+    previousEvidence,
+    currentEvidence
+) {
+
+    return {
+
+        know:
+            roundContractNumber(
+                currentEvidence.know -
+                previousEvidence.know
+            ),
+
+        explain:
+            roundContractNumber(
+                currentEvidence.explain -
+                previousEvidence.explain
+            ),
+
+        apply:
+            roundContractNumber(
+                currentEvidence.apply -
+                previousEvidence.apply
+            ),
+
+        transfer:
+            roundContractNumber(
+                currentEvidence.transfer -
+                previousEvidence.transfer
+            )
+    };
+}
+
+
+function resolveContractEvidenceDimension({
+
+    runtimeUpdate,
+
+    attempt
+
+}) {
+
+    const candidates = [
+
+        runtimeUpdate?.dimension,
+
+        attempt
+            ?.evidence
+            ?.primaryDimension
+
+    ];
+
+
+    for (const value of candidates) {
+
+        if (
+            value === "know" ||
+            value === "explain" ||
+            value === "apply" ||
+            value === "transfer"
+        ) {
+
+            return value;
+        }
+    }
+
+
+    return "none";
+}
+
+
+function resolveContractEvidenceSource(
+    dimension
+) {
+
+    if (
+        dimension === "know" ||
+        dimension === "explain" ||
+        dimension === "apply" ||
+        dimension === "transfer"
+    ) {
+
+        return dimension;
+    }
+
+
+    return "none";
+}
+
+
+function resolveEvidenceIndependence(
+    attempt
+) {
+
+    const hintUsed =
+        attempt?.hint?.used === true ||
+        (
+            Number.isFinite(
+                attempt?.hint?.count
+            ) &&
+            attempt.hint.count > 0
+        );
+
+
+    if (hintUsed) {
+        return "hinted";
+    }
+
+
+    const attemptNumber =
+        attempt?.attemptNumber;
+
+
+    if (
+        Number.isInteger(
+            attemptNumber
+        ) &&
+        attemptNumber > 1
+    ) {
+
+        return "retry";
+    }
+
+
+    return "independent";
+}
+
+
+/**
+ * ============================================================
+ * MASTERY UPDATE CONTRACT — CONFIDENCE
+ * ============================================================
+ */
+
+function projectContractConfidence(
+    rawConfidence
+) {
+
+    const confidence =
+        isPlainObject(rawConfidence)
+            ? rawConfidence
+            : {};
+
+
+    const level =
+        normalizeConfidenceLevel(
+            confidence.level
+        );
+
+
+    const result = {
+
+        level,
+
+        score:
+            clampContract01(
+                finiteNumberOr(
+                    confidence.score,
+                    0
+                )
+            )
+    };
+
+
+    if (
+        typeof confidence.reason ===
+        "string" &&
+        confidence.reason.trim()
+            .length > 0
+    ) {
+
+        result.reason =
+            confidence.reason.trim();
+    }
+
+
+    const attemptCount =
+        firstNonNegativeInteger([
+
+            confidence.attemptCount,
+
+            confidence.attempts,
+
+            confidence.count
+
+        ]);
+
+
+    if (attemptCount !== null) {
+
+        result.attemptCount =
+            attemptCount;
+    }
+
+
+    return result;
+}
+
+
+function normalizeConfidenceLevel(
+    value
+) {
+
+    if (
+        value === "low" ||
+        value === "medium" ||
+        value === "high" ||
+        value === "very_high"
+    ) {
+
+        return value;
+    }
+
+
+    return "low";
+}
+
+
+/**
+ * ============================================================
+ * MASTERY UPDATE CONTRACT — FAILURE
+ * ============================================================
+ */
+
+function projectContractFailure({
+
+    runtimeFailure,
+
+    attempt
+
+}) {
+
+    const raw =
+        isPlainObject(runtimeFailure)
+            ? runtimeFailure
+            : {};
+
+
+    const diagnostic =
+        isPlainObject(
+            attempt?.diagnostic
+        )
+            ? attempt.diagnostic
+            : {};
+
+
+    const signature =
+        normalizeFailureSignature(
+            raw.failureType ??
+            raw.failureSignature ??
+            raw.failureSignatureId ??
+            raw.signature ??
+            diagnostic.failureType ??
+            diagnostic.failureSignatureId
+        );
+
+
+    const detected =
+        signature !== "none";
+
+
+    const result = {
+        detected
+    };
+
+
+    if (!detected) {
+
+        return result;
+    }
+
+
+    result.signature =
+        signature;
+
+
+    const sourceNodeId =
+        normalizeNonEmptyString(
+            raw.sourceNodeId
+        ) ??
+        normalizeNonEmptyString(
+            diagnostic.sourceNodeId
+        );
+
+
+    if (
+        sourceNodeId &&
+        /^K[0-9]{3}$/.test(
+            sourceNodeId
+        )
+    ) {
+
+        result.sourceNodeId =
+            sourceNodeId;
+    }
+
+
+    const metaSkillId =
+        normalizeNonEmptyString(
+            raw.metaSkillId
+        ) ??
+        normalizeNonEmptyString(
+            diagnostic.metaSkillId
+        );
+
+
+    if (
+        metaSkillId &&
+        /^S[0-9]{3}$/.test(
+            metaSkillId
+        )
+    ) {
+
+        result.metaSkillId =
+            metaSkillId;
+    }
+
+
+    const confidence =
+        firstFiniteNumber([
+
+            raw.confidence,
+
+            diagnostic.confidence
+
+        ]);
+
+
+    if (confidence !== null) {
+
+        result.confidence =
+            clampContract01(
+                confidence
+            );
+    }
+
+
+    const failureEvidence =
+        normalizeNonEmptyString(
+            raw.evidence
+        );
+
+
+    if (failureEvidence) {
+
+        result.evidence =
+            failureEvidence;
+    }
+
+
+    const occurrenceCount =
+        firstNonNegativeInteger([
+
+            raw.occurrenceCount,
+
+            raw.sameFailureSignatureCount,
+
+            raw.count,
+
+            diagnostic.occurrenceCount,
+
+            diagnostic
+                .sameFailureSignatureCount,
+
+            diagnostic.count
+
+        ]);
+
+
+    if (occurrenceCount !== null) {
+
+        result.occurrenceCount =
+            occurrenceCount;
+
+        result.repeated =
+            occurrenceCount >= 2;
+    } else {
+
+        result.repeated =
+            raw.repeated === true;
+    }
+
+
+    return result;
+}
+
+
+function normalizeFailureSignature(
+    value
+) {
+
+    const canonical =
+        new Set([
+
+            "prerequisite_gap",
+            "concept_confusion",
+            "mechanism_confusion",
+            "calculation_error",
+            "data_interpretation_error",
+            "reasoning_error",
+            "cross_node_reasoning_error",
+            "careless_error",
+            "source_knowledge_gap",
+            "meta_skill_gap"
+
+        ]);
+
+
+    return canonical.has(value)
+        ? value
+        : "none";
+}
+
+
+/**
+ * ============================================================
+ * MASTERY UPDATE CONTRACT — RETEST
+ * ============================================================
+ */
+
+function projectContractRetest({
+
+    attempt,
+
+    previousMastery,
+
+    currentMastery,
+
+    previousStatus,
+
+    currentStatus
+
+}) {
+
+    const pathStage =
+        normalizeNonEmptyString(
+            attempt
+                ?.context
+                ?.pathStage
+        );
+
+
+    const learningMode =
+        normalizeNonEmptyString(
+            attempt
+                ?.context
+                ?.action
+        );
+
+
+    const isRetest =
+        pathStage === "RETEST" ||
+        learningMode === "RETEST";
+
+
+    if (!isRetest) {
+
+        return {
+
+            isRetest:
+                false,
+
+            status:
+                "not_applicable",
+
+            result:
+                "not_applicable",
+
+            previousMastery,
+
+            stableEligible:
+                false
+        };
+    }
+
+
+    const normalizedResult =
+        normalizeAttemptResultForContract(
+            attempt?.result
+        );
+
+
+    const passed =
+        normalizedResult ===
+        "correct";
+
+
+    const failed =
+        normalizedResult ===
+        "incorrect";
+
+
+    const status =
+        passed
+            ? "passed"
+            : failed
+                ? "failed"
+                : "due";
+
+
+    const result =
+        passed
+            ? "passed"
+            : failed
+                ? "failed"
+                : "not_applicable";
+
+
+    return {
+
+        isRetest:
+            true,
+
+        status,
+
+        result,
+
+        previousMastery,
+
+        stableEligible:
+            currentMastery === "M4" &&
+            currentStatus === "stable"
+    };
+}
+
+
+/**
+ * ============================================================
+ * MASTERY UPDATE CONTRACT — DECISION
+ * ============================================================
+ */
+
+function projectContractMasteryDecision({
+
+    previousMastery,
+
+    currentMastery,
+
+    previousStatus,
+
+    currentStatus,
+
+    runtimeDecision,
+
+    failure,
+
+    retest
+
+}) {
+
+    let decision =
+        "unchanged";
+
+
+    if (
+        currentStatus === "stable" &&
+        previousStatus !== "stable"
+    ) {
+
+        decision =
+            "stable";
+
+    } else if (
+        currentMastery === "M4" &&
+        previousMastery !== "M4"
+    ) {
+
+        decision =
+            "mastered";
+
+    } else if (
+        masteryRank(
+            currentMastery
+        ) >
+        masteryRank(
+            previousMastery
+        )
+    ) {
+
+        decision =
+            "advanced";
+
+    } else if (
+        failure.detected &&
+        currentStatus === "weak"
+    ) {
+
+        decision =
+            "remediation_required";
+
+    } else if (
+        retest.isRetest &&
+        retest.status === "failed"
+    ) {
+
+        decision =
+            "review_required";
+    }
+
+
+    const result = {
+
+        previousMastery,
+
+        currentMastery,
+
+        decision
+    };
+
+
+    const reason =
+        resolveMasteryDecisionReason({
+
+            decision,
+
+            runtimeDecision,
+
+            failure,
+
+            retest
+
+        });
+
+
+    if (reason) {
+
+        result.reason =
+            reason;
+    }
+
+
+    const supportedLevel =
+        normalizeMasteryLevelOrNull(
+            runtimeDecision
+                ?.supportedLevel
+        );
+
+
+    if (supportedLevel) {
+
+        const supportedRank =
+            masteryRank(
+                supportedLevel
+            );
+
+
+        result.thresholdsSatisfied =
+            [
+                "M1",
+                "M2",
+                "M3",
+                "M4"
+            ].filter(
+                level =>
+                    masteryRank(level) <=
+                    supportedRank
+            );
+    }
+
+
+    result.allRequiredDimensionsSatisfied =
+        supportedLevel !== null &&
+        masteryRank(
+            supportedLevel
+        ) >=
+        masteryRank(
+            currentMastery
+        );
+
+
+    return result;
+}
+
+
+function resolveMasteryDecisionReason({
+
+    decision,
+
+    runtimeDecision,
+
+    failure,
+
+    retest
+
+}) {
+
+    if (
+        decision ===
+        "remediation_required" &&
+        failure?.signature
+    ) {
+
+        return (
+            "Mastery Engine detected repeated or weak " +
+            `failure evidence: ${failure.signature}.`
+        );
+    }
+
+
+    if (
+        decision ===
+        "review_required" &&
+        retest?.status === "failed"
+    ) {
+
+        return (
+            "Retest failed; existing mastery is retained " +
+            "while stability is removed."
+        );
+    }
+
+
+    const downgradeReason =
+        normalizeNonEmptyString(
+            runtimeDecision
+                ?.downgradeReason
+        );
+
+
+    if (downgradeReason) {
+
+        return downgradeReason;
+    }
+
+
+    if (decision === "advanced") {
+
+        return (
+            "Current evidence supports a higher " +
+            "mastery level."
+        );
+    }
+
+
+    if (decision === "mastered") {
+
+        return (
+            "Current evidence supports mastery level M4."
+        );
+    }
+
+
+    if (decision === "stable") {
+
+        return (
+            "Mastery remains supported after retest."
+        );
+    }
+
+
+    return (
+        "Mastery level remains unchanged after " +
+        "processing this attempt."
+    );
+}
+
+
+/**
+ * ============================================================
+ * MASTERY UPDATE CONTRACT — STATUS
+ * ============================================================
+ */
+
+function resolveStatusReason({
+
+    previousStatus,
+
+    currentStatus,
+
+    runtime
+
+}) {
+
+    if (
+        previousStatus !==
+        currentStatus
+    ) {
+
+        return (
+            `Status changed from ${previousStatus} ` +
+            `to ${currentStatus}.`
+        );
+    }
+
+
+    const signals =
+        runtime
+            ?.current
+            ?.signals;
+
+
+    if (
+        Array.isArray(signals) &&
+        signals.length > 0
+    ) {
+
+        return signals
+            .map(String)
+            .join(", ");
+    }
+
+
+    return (
+        `Status remains ${currentStatus}.`
+    );
+}
+
+
+/**
+ * ============================================================
+ * MASTERY UPDATE CONTRACT — ID / TIME
+ * ============================================================
+ */
+
+function createMasteryUpdateId({
+
+    attempt,
+
+    nodeId
+
+}) {
+
+    const attemptId =
+        normalizeNonEmptyString(
+            attempt?.attemptId
+        ) ??
+        "unknown-attempt";
+
+
+    const normalizedNodeId =
+        normalizeNonEmptyString(
+            nodeId
+        ) ??
+        resolveAttemptNodeId(
+            attempt
+        ) ??
+        "K000";
+
+
+    return (
+        `MU-${attemptId}-${normalizedNodeId}`
+    );
+}
+
+
+function resolveContractTimestamp({
+
+    now,
+
+    attempt
+
+}) {
+
+    const candidates = [
+
+        now,
+
+        attempt?.submittedAt,
+
+        attempt?.timestamp,
+
+        attempt?.completedAt
+
+    ];
+
+
+    for (const value of candidates) {
+
+        const normalized =
+            normalizeDateTimeString(
+                value
+            );
+
+
+        if (normalized) {
+            return normalized;
+        }
+    }
+
+
+    /*
+     * Last-resort serialization timestamp.
+     *
+     * This does not affect mastery calculation.
+     */
+    return new Date()
+        .toISOString();
+}
+
+
+function normalizeDateTimeString(
+    value
+) {
+
+    if (
+        value instanceof Date &&
+        !Number.isNaN(
+            value.getTime()
+        )
+    ) {
+
+        return value.toISOString();
+    }
+
+
+    if (
+        typeof value !== "string" ||
+        value.trim().length === 0
+    ) {
+
+        return null;
+    }
+
+
+    const date =
+        new Date(value);
+
+
+    if (
+        Number.isNaN(
+            date.getTime()
+        )
+    ) {
+
+        return null;
+    }
+
+
+    return date.toISOString();
+}
+
+
+/**
+ * ============================================================
+ * MASTERY UPDATE CONTRACT — NORMALIZATION
+ * ============================================================
+ */
+
+function normalizeMasteryLevel(
+    value,
+    fallback = "M0"
+) {
+
+    return (
+        value === "M0" ||
+        value === "M1" ||
+        value === "M2" ||
+        value === "M3" ||
+        value === "M4"
+    )
+        ? value
+        : fallback;
+}
+
+
+function normalizeMasteryLevelOrNull(
+    value
+) {
+
+    return (
+        value === "M0" ||
+        value === "M1" ||
+        value === "M2" ||
+        value === "M3" ||
+        value === "M4"
+    )
+        ? value
+        : null;
+}
+
+
+function normalizeMasteryStatus(
+    value,
+    fallback = "developing"
+) {
+
+    return (
+        value === "developing" ||
+        value === "mastered" ||
+        value === "stable" ||
+        value === "weak"
+    )
+        ? value
+        : fallback;
+}
+
+
+function normalizeMasteryDirection(
+    runtimeDirection,
+    previousMastery,
+    currentMastery
+) {
+
+    if (
+        runtimeDirection ===
+        "increased" ||
+        runtimeDirection ===
+        "decreased" ||
+        runtimeDirection ===
+        "unchanged"
+    ) {
+
+        return runtimeDirection;
+    }
+
+
+    const previousRank =
+        masteryRank(
+            previousMastery
+        );
+
+
+    const currentRank =
+        masteryRank(
+            currentMastery
+        );
+
+
+    if (
+        currentRank >
+        previousRank
+    ) {
+
+        return "increased";
+    }
+
+
+    if (
+        currentRank <
+        previousRank
+    ) {
+
+        return "decreased";
+    }
+
+
+    return "unchanged";
+}
+
+
+function masteryRank(
+    level
+) {
+
+    const ranks = {
+        M0: 0,
+        M1: 1,
+        M2: 2,
+        M3: 3,
+        M4: 4
+    };
+
+
+    return ranks[level] ?? 0;
+}
+
+
+function normalizeAttemptResultForContract(
+    value
+) {
+
+    if (
+        value === "correct" ||
+        value === "passed"
+    ) {
+
+        return "correct";
+    }
+
+
+    if (
+        value === "incorrect" ||
+        value === "wrong" ||
+        value === "failed"
+    ) {
+
+        return "incorrect";
+    }
+
+
+    if (
+        value === "partial" ||
+        value === "partial_correct"
+    ) {
+
+        return "partial";
+    }
+
+
+    if (
+        value === "skipped" ||
+        value === "skip"
+    ) {
+
+        return "skipped";
+    }
+
+
+    return "unknown";
+}
+
+
+function clampContract01(
+    value
+) {
+
+    if (!Number.isFinite(value)) {
+        return 0;
+    }
+
+
+    return Math.min(
+        1,
+        Math.max(
+            0,
+            value
+        )
+    );
+}
+
+
+function roundContractNumber(
+    value
+) {
+
+    if (!Number.isFinite(value)) {
+        return 0;
+    }
+
+
+    return Math.round(
+        value * 1000000
+    ) / 1000000;
+}
+
+
+function firstFiniteNumber(
+    values
+) {
+
+    for (const value of values) {
+
+        if (
+            Number.isFinite(value)
+        ) {
+
+            return value;
+        }
+    }
+
+
+    return null;
+}
+
+
+function firstNonNegativeInteger(
+    values
+) {
+
+    for (const value of values) {
+
+        if (
+            Number.isInteger(value) &&
+            value >= 0
+        ) {
+
+            return value;
+        }
+    }
+
+
+    return null;
 }
 
 

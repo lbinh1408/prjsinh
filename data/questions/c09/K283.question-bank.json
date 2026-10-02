@@ -1,0 +1,1077 @@
+{
+    "schemaVersion": "1.0.0",
+    "bankId": "QB-C09-K283-V1",
+    "version": "1.0.0",
+    "subject": "biology",
+    "language": "vi",
+    "cluster": "C09",
+    "primaryNode": "K283",
+    "status": "draft",
+    "questions": [
+        {
+            "id": "Q-A-K283-K-001",
+            "version": "1.0.0",
+            "nodes": [
+                "K283"
+            ],
+            "primaryNode": "K283",
+            "evidence": "know",
+            "difficulty": "D1",
+            "questionType": "mcq",
+            "mode": [
+                "diagnostic"
+            ],
+            "prerequisites": [
+                "K282"
+            ],
+            "content": {
+                "stem": "Tần số hoán vị gene giữa hai gene liên kết được xác định bằng đại lượng nào sau đây?",
+                "context": "Kiểm tra khái niệm cơ bản về tần số hoán vị gene.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "Tổng tỉ lệ các giao tử tái tổ hợp.",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "B",
+                        "text": "Tổng tỉ lệ các giao tử mang tổ hợp allele bố mẹ.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "C",
+                        "text": "Tỉ lệ của một loại giao tử tái tổ hợp bất kỳ.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "Tỉ lệ của loại giao tử có tần số lớn nhất.",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "A"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "concept_confusion"
+            ],
+            "explanation": {
+                "correct": "Tần số hoán vị gene được xác định bằng tổng tỉ lệ các giao tử tái tổ hợp đối với hai gene đang xét.",
+                "incorrect": {
+                    "B": "Giao tử mang tổ hợp allele bố mẹ thuộc nhóm không tái tổ hợp.",
+                    "C": "Một loại giao tử tái tổ hợp chỉ là một phần của tổng số giao tử tái tổ hợp.",
+                    "D": "Loại giao tử có tần số lớn nhất thường thuộc nhóm bố mẹ và không trực tiếp bằng tần số hoán vị gene."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Hãy nhớ f phản ánh phần giao tử được xếp vào nhóm tái tổ hợp."
+                    },
+                    {
+                        "level": 2,
+                        "text": "Nếu có hai loại giao tử tái tổ hợp, phải cộng tỉ lệ của cả hai."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "concept_confusion": {
+                        "sourceNodes": [
+                            "K282",
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-09-30",
+                "updatedAt": "2026-09-30",
+                "source": "original",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 45,
+                "diagnosticPurpose": "identify_recombination_frequency_concept_gap",
+                "estimatedMasteryLevel": "M1",
+                "discriminatesBetween": [
+                    "M0",
+                    "M1"
+                ],
+                "tags": [
+                    "c09",
+                    "k283",
+                    "tan-so-hoan-vi-gene",
+                    "diagnostic"
+                ]
+            }
+        },
+        {
+            "id": "Q-A-K283-E-002",
+            "version": "1.0.0",
+            "nodes": [
+                "K283"
+            ],
+            "primaryNode": "K283",
+            "evidence": "explain",
+            "difficulty": "D2",
+            "questionType": "mcq",
+            "mode": [
+                "practice"
+            ],
+            "prerequisites": [
+                "K282"
+            ],
+            "content": {
+                "stem": "Một cơ thể có kiểu sắp xếp allele AB/ab và tần số hoán vị gene giữa A và B là 20%. Vì sao mỗi loại giao tử tái tổ hợp Ab và aB có tỉ lệ 10%?",
+                "context": "Giải thích mối quan hệ giữa tổng tần số tái tổ hợp và hai loại giao tử tái tổ hợp.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "Vì 20% là tổng tỉ lệ của hai loại giao tử tái tổ hợp Ab và aB, và hai loại này xuất hiện với tỉ lệ bằng nhau.",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "B",
+                        "text": "Vì mỗi loại giao tử luôn chiếm một nửa tổng số giao tử của cơ thể.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "C",
+                        "text": "Vì 20% là tỉ lệ của giao tử Ab, còn aB có tỉ lệ bằng 0%.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "Vì tổng tỉ lệ giao tử mang tổ hợp bố mẹ là 20%.",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "A"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "concept_confusion",
+                "reasoning_error"
+            ],
+            "explanation": {
+                "correct": "Với hai gene đang xét, f = 20% là tổng tỉ lệ giao tử tái tổ hợp. Hai loại giao tử tái tổ hợp đối ứng Ab và aB có tỉ lệ bằng nhau nên mỗi loại chiếm 20% / 2 = 10%.",
+                "incorrect": {
+                    "B": "Không phải mỗi loại giao tử đều luôn chiếm 50%; tỉ lệ phụ thuộc vào tần số tái tổ hợp.",
+                    "C": "Hai loại giao tử tái tổ hợp đối ứng đều được tạo ra và có tỉ lệ bằng nhau trong mô hình này.",
+                    "D": "20% ở đây là tổng tỉ lệ giao tử tái tổ hợp, không phải giao tử bố mẹ."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "20% là tổng của Ab và aB."
+                    },
+                    {
+                        "level": 2,
+                        "text": "Ab = aB, nên mỗi loại bằng 20% / 2."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "concept_confusion": {
+                        "sourceNodes": [
+                            "K282",
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "reasoning_error": {
+                        "sourceNodes": [
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-09-30",
+                "updatedAt": "2026-09-30",
+                "source": "original",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 60,
+                "tags": [
+                    "c09",
+                    "k283",
+                    "recombinant-gametes",
+                    "explain",
+                    "practice"
+                ]
+            }
+        },
+        {
+            "id": "Q-A-K283-A-003",
+            "version": "1.0.0",
+            "nodes": [
+                "K283"
+            ],
+            "primaryNode": "K283",
+            "evidence": "apply",
+            "difficulty": "D3",
+            "questionType": "mcq",
+            "mode": [
+                "practice"
+            ],
+            "prerequisites": [
+                "K282"
+            ],
+            "content": {
+                "stem": "Một cơ thể có kiểu sắp xếp allele AB/ab, tần số hoán vị gene giữa A và B là 20%. Tỉ lệ giao tử Ab được tạo ra là bao nhiêu?",
+                "context": "Tính tỉ lệ một loại giao tử tái tổ hợp khi biết tần số hoán vị gene.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "5%.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "B",
+                        "text": "10%.",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "C",
+                        "text": "20%.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "40%.",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "B"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "calculation_error",
+                "concept_confusion"
+            ],
+            "explanation": {
+                "correct": "Ab và aB là hai loại giao tử tái tổ hợp. Tổng tỉ lệ của chúng là 20%, nên mỗi loại chiếm 20% / 2 = 10%.",
+                "incorrect": {
+                    "A": "Không cần chia 20% cho 4 vì chỉ có hai loại giao tử tái tổ hợp đối ứng.",
+                    "C": "20% là tổng tỉ lệ của hai loại giao tử tái tổ hợp, không phải tỉ lệ của riêng Ab.",
+                    "D": "40% là tỉ lệ của mỗi loại giao tử bố mẹ trong trường hợp này."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Ab chỉ là một trong hai loại giao tử tái tổ hợp."
+                    },
+                    {
+                        "level": 2,
+                        "text": "Ab = aB = f / 2."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "calculation_error": {
+                        "sourceNodes": [
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "concept_confusion": {
+                        "sourceNodes": [
+                            "K282",
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-09-30",
+                "updatedAt": "2026-09-30",
+                "source": "original",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 45,
+                "tags": [
+                    "c09",
+                    "k283",
+                    "f-to-one-recombinant-class",
+                    "practice"
+                ]
+            }
+        },
+        {
+            "id": "Q-A-K283-A-004",
+            "version": "1.0.0",
+            "nodes": [
+                "K283"
+            ],
+            "primaryNode": "K283",
+            "evidence": "apply",
+            "difficulty": "D3",
+            "questionType": "mcq",
+            "mode": [
+                "practice"
+            ],
+            "prerequisites": [
+                "K282"
+            ],
+            "content": {
+                "stem": "Một cơ thể dị hợp hai gene liên kết có kiểu sắp xếp allele AB/ab, tạo giao tử với tỉ lệ: AB = 35%, ab = 35%, Ab = 15%, aB = 15%. Tần số hoán vị gene giữa A và B là bao nhiêu?",
+                "context": "Tính tần số hoán vị gene từ phân bố bốn loại giao tử.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "15%.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "B",
+                        "text": "30%.",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "C",
+                        "text": "35%.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "70%.",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "B"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "calculation_error",
+                "data_interpretation_error"
+            ],
+            "explanation": {
+                "correct": "Hai loại giao tử có tỉ lệ thấp hơn là Ab và aB, tương ứng với hai loại tái tổ hợp trong kiểu AB/ab. Do đó f = 15% + 15% = 30%.",
+                "incorrect": {
+                    "A": "15% mới chỉ là tỉ lệ của một loại giao tử tái tổ hợp.",
+                    "C": "35% là tỉ lệ của một loại giao tử bố mẹ.",
+                    "D": "70% là tổng tỉ lệ hai loại giao tử bố mẹ, không phải tổng tỉ lệ tái tổ hợp."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Xác định hai loại giao tử tái tổ hợp trước."
+                    },
+                    {
+                        "level": 2,
+                        "text": "Ab và aB là recombinant → cộng 15% + 15%."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "calculation_error": {
+                        "sourceNodes": [
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "data_interpretation_error": {
+                        "sourceNodes": [
+                            "K282",
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-09-30",
+                "updatedAt": "2026-09-30",
+                "source": "original",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 60,
+                "tags": [
+                    "c09",
+                    "k283",
+                    "gamete-frequency",
+                    "apply",
+                    "practice"
+                ]
+            }
+        },
+        {
+            "id": "Q-A-K283-A-005",
+            "version": "1.0.0",
+            "nodes": [
+                "K283"
+            ],
+            "primaryNode": "K283",
+            "evidence": "apply",
+            "difficulty": "D3",
+            "questionType": "mcq",
+            "mode": [
+                "remediation"
+            ],
+            "prerequisites": [
+                "K282"
+            ],
+            "content": {
+                "stem": "Ở một cơ thể dị hợp hai gene liên kết, một loại giao tử tái tổ hợp chiếm 12%. Biết hai loại giao tử tái tổ hợp đối ứng được tạo ra với tỉ lệ bằng nhau. Tần số hoán vị gene là bao nhiêu?",
+                "context": "Remediation cho lỗi nhầm tỉ lệ một loại giao tử tái tổ hợp với tổng tần số hoán vị gene.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "6%.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "B",
+                        "text": "12%.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "C",
+                        "text": "24%.",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "D",
+                        "text": "48%.",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "C"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "calculation_error",
+                "reasoning_error"
+            ],
+            "explanation": {
+                "correct": "12% mới là tỉ lệ của một loại giao tử tái tổ hợp. Loại tái tổ hợp đối ứng cũng chiếm 12%, nên tổng tần số hoán vị gene là 12% + 12% = 24%.",
+                "incorrect": {
+                    "A": "Không chia 12% cho 2 vì đề đã cho tỉ lệ của một loại giao tử tái tổ hợp.",
+                    "B": "12% chỉ là một trong hai loại giao tử tái tổ hợp, chưa phải tổng f.",
+                    "D": "Chỉ có hai loại giao tử tái tổ hợp đối ứng cần cộng lại, nên không nhân 4."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Đề cho MỘT loại recombinant, trong khi f là TỔNG recombinant."
+                    },
+                    {
+                        "level": 2,
+                        "text": "12% + 12% = ?"
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "calculation_error": {
+                        "sourceNodes": [
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "reasoning_error": {
+                        "sourceNodes": [
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-09-30",
+                "updatedAt": "2026-09-30",
+                "source": "original",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 45,
+                "tags": [
+                    "c09",
+                    "k283",
+                    "remediation",
+                    "one-recombinant-class",
+                    "double-recombinant-percentage"
+                ]
+            }
+        },
+        {
+            "id": "Q-A-K283-A-006",
+            "version": "1.0.0",
+            "nodes": [
+                "K283"
+            ],
+            "primaryNode": "K283",
+            "evidence": "apply",
+            "difficulty": "D3",
+            "questionType": "mcq",
+            "mode": [
+                "remediation",
+                "practice"
+            ],
+            "prerequisites": [
+                "K282"
+            ],
+            "content": {
+                "stem": "Ở một cơ thể dị hợp hai gene liên kết, giao tử tái tổ hợp Mn chiếm 8%. Biết giao tử tái tổ hợp đối ứng mN có tỉ lệ bằng Mn. Tần số hoán vị gene giữa hai gene là bao nhiêu?",
+                "context": "Mini-probe sau remediation bằng cách đổi ký hiệu gene và giá trị số.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "8%.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "B",
+                        "text": "16%.",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "C",
+                        "text": "32%.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "42%.",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "B"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "calculation_error",
+                "reasoning_error"
+            ],
+            "explanation": {
+                "correct": "Mn và mN là hai loại giao tử tái tổ hợp đối ứng, mỗi loại chiếm 8%. Vì vậy f = 8% + 8% = 16%.",
+                "incorrect": {
+                    "A": "8% chỉ là tỉ lệ của một loại giao tử tái tổ hợp.",
+                    "C": "Không nhân 8% với 4; f chỉ là tổng của hai loại tái tổ hợp.",
+                    "D": "42% không được suy ra từ dữ kiện của bài."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Có hai loại recombinant đối ứng và đề đã cho tỉ lệ của một loại."
+                    },
+                    {
+                        "level": 2,
+                        "text": "f = 8% + 8%."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "calculation_error": {
+                        "sourceNodes": [
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "reasoning_error": {
+                        "sourceNodes": [
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-09-30",
+                "updatedAt": "2026-09-30",
+                "source": "original",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 45,
+                "tags": [
+                    "c09",
+                    "k283",
+                    "mini-probe",
+                    "remediation",
+                    "one-recombinant-class"
+                ]
+            }
+        },
+        {
+            "id": "Q-A-K283-A-007",
+            "version": "1.0.0",
+            "nodes": [
+                "K283"
+            ],
+            "primaryNode": "K283",
+            "evidence": "apply",
+            "difficulty": "D3",
+            "questionType": "mcq",
+            "mode": [
+                "retest"
+            ],
+            "prerequisites": [
+                "K282"
+            ],
+            "content": {
+                "stem": "Một cơ thể dị hợp hai gene liên kết tạo một loại giao tử tái tổ hợp Pq với tỉ lệ 9%. Biết loại giao tử tái tổ hợp đối ứng pQ có cùng tỉ lệ. Tần số hoán vị gene giữa hai gene là bao nhiêu?",
+                "context": "Retest lỗi nhầm một loại giao tử tái tổ hợp với tổng tần số hoán vị gene.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "9%.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "B",
+                        "text": "18%.",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "C",
+                        "text": "36%.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "41%.",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "B"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "calculation_error",
+                "reasoning_error"
+            ],
+            "context": {
+                "contextId": "c09-k283-retest-one-recombinant-01",
+                "contextType": "genetic_cross",
+                "retestGroupId": "c09-k283-one-recombinant-class-01"
+            },
+            "explanation": {
+                "correct": "Pq và pQ là hai loại giao tử tái tổ hợp đối ứng. Mỗi loại chiếm 9%, nên tổng tần số hoán vị gene là 9% + 9% = 18%.",
+                "incorrect": {
+                    "A": "9% mới là tỉ lệ của một loại giao tử tái tổ hợp.",
+                    "C": "Không nhân 9% với 4 vì chỉ có hai loại giao tử tái tổ hợp đối ứng.",
+                    "D": "41% không phải tổng tỉ lệ giao tử tái tổ hợp từ dữ kiện này."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Phân biệt 'một loại recombinant' với 'tổng recombinant'."
+                    },
+                    {
+                        "level": 2,
+                        "text": "Pq = 9%, pQ = 9%."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "calculation_error": {
+                        "sourceNodes": [
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "reasoning_error": {
+                        "sourceNodes": [
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-09-30",
+                "updatedAt": "2026-09-30",
+                "source": "original",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 45,
+                "retestGroupId": "c09-k283-one-recombinant-class-01",
+                "contextId": "c09-k283-retest-one-recombinant-01",
+                "tags": [
+                    "c09",
+                    "k283",
+                    "retest",
+                    "one-recombinant-class"
+                ]
+            }
+        },
+        {
+            "id": "Q-A-K283-T-008",
+            "version": "1.0.0",
+            "nodes": [
+                "K283"
+            ],
+            "primaryNode": "K283",
+            "evidence": "transfer",
+            "difficulty": "D4",
+            "questionType": "mcq",
+            "mode": [
+                "challenge"
+            ],
+            "prerequisites": [
+                "K282"
+            ],
+            "content": {
+                "stem": "Một cơ thể dị hợp có hai gene A và B liên kết được lai phân tích với cơ thể ab/ab. Đời con thu được 2000 cá thể gồm: 820 AB/ab, 820 ab/ab, 180 Ab/ab và 180 aB/ab. Tần số hoán vị gene giữa A và B của cơ thể dị hợp là bao nhiêu?",
+                "context": "Suy ra tần số giao tử của cơ thể dị hợp từ kết quả lai phân tích.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "9%.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "B",
+                        "text": "18%.",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "C",
+                        "text": "36%.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "82%.",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": {
+                    "totalOffspring": 2000,
+                    "offspringClasses": [
+                        {
+                            "class": "AB/ab",
+                            "count": 820
+                        },
+                        {
+                            "class": "ab/ab",
+                            "count": 820
+                        },
+                        {
+                            "class": "Ab/ab",
+                            "count": 180
+                        },
+                        {
+                            "class": "aB/ab",
+                            "count": 180
+                        }
+                    ]
+                }
+            },
+            "answer": {
+                "type": "single",
+                "value": "B"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "data_interpretation_error",
+                "calculation_error",
+                "reasoning_error"
+            ],
+            "context": {
+                "contextId": "c09-k283-transfer-testcross-01",
+                "contextType": "genetic_cross"
+            },
+            "explanation": {
+                "correct": "Trong phép lai phân tích với cơ thể ab/ab, mỗi nhóm kiểu gen đời con tương ứng với một loại giao tử do cơ thể dị hợp tạo ra. Hai nhóm tái tổ hợp có 180 + 180 = 360 cá thể. Vì vậy f = 360 / 2000 = 0,18 = 18%.",
+                "incorrect": {
+                    "A": "9% = 180/2000 chỉ là tỉ lệ của một nhóm tái tổ hợp.",
+                    "C": "360 là số cá thể tái tổ hợp; phải chia cho tổng 2000 chứ không chuyển trực tiếp thành 36%.",
+                    "D": "82% là tổng tỉ lệ của hai nhóm mang tổ hợp bố mẹ."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Trong lai phân tích, kiểu hình/kiểu gene đời con phản ánh giao tử của cơ thể dị hợp."
+                    },
+                    {
+                        "level": 2,
+                        "text": "Recombinant = 180 + 180 = 360; sau đó chia cho 2000."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "data_interpretation_error": {
+                        "sourceNodes": [
+                            "K282",
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "calculation_error": {
+                        "sourceNodes": [
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "reasoning_error": {
+                        "sourceNodes": [
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-09-30",
+                "updatedAt": "2026-09-30",
+                "source": "original",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 90,
+                "contextId": "c09-k283-transfer-testcross-01",
+                "tags": [
+                    "c09",
+                    "k283",
+                    "testcross",
+                    "transfer",
+                    "challenge"
+                ]
+            }
+        },
+        {
+            "id": "Q-A-K283-T-009",
+            "version": "1.0.0",
+            "nodes": [
+                "K283"
+            ],
+            "primaryNode": "K283",
+            "evidence": "transfer",
+            "difficulty": "D4",
+            "questionType": "mcq",
+            "mode": [
+                "retest",
+                "challenge"
+            ],
+            "prerequisites": [
+                "K282"
+            ],
+            "content": {
+                "stem": "Trong một phép lai phân tích cơ thể dị hợp hai gene liên kết, thu được 1000 cá thể đời con. Hai nhóm có số lượng lớn là 390 và 410 cá thể; hai nhóm còn lại có 95 và 105 cá thể. Giả sử hai nhóm có số lượng nhỏ là các nhóm tái tổ hợp. Tần số hoán vị gene giữa hai gene là bao nhiêu?",
+                "context": "Retest trong ngữ cảnh lai phân tích với số lượng hai nhóm tái tổ hợp không hoàn toàn bằng nhau.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "10%.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "B",
+                        "text": "20%.",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "C",
+                        "text": "39%.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "80%.",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": {
+                    "totalOffspring": 1000,
+                    "classCounts": [
+                        390,
+                        410,
+                        95,
+                        105
+                    ]
+                }
+            },
+            "answer": {
+                "type": "single",
+                "value": "B"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "data_interpretation_error",
+                "calculation_error",
+                "reasoning_error"
+            ],
+            "context": {
+                "contextId": "c09-k283-retest-testcross-02",
+                "contextType": "genetic_cross",
+                "retestGroupId": "c09-k283-testcross-frequency-01"
+            },
+            "explanation": {
+                "correct": "Hai nhóm tái tổ hợp có tổng số 95 + 105 = 200 cá thể. Tần số hoán vị gene là 200/1000 = 0,20 = 20%. Không cần hai nhóm tái tổ hợp quan sát được phải có số lượng hoàn toàn bằng nhau.",
+                "incorrect": {
+                    "A": "Khoảng 10% chỉ tương ứng với một nhóm tái tổ hợp, trong khi f phải tính cả hai nhóm.",
+                    "C": "390 là số cá thể của một nhóm lớn, không phải số tái tổ hợp.",
+                    "D": "80% là tổng tỉ lệ của hai nhóm mang tổ hợp bố mẹ."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Đề đã xác định hai nhóm nhỏ là recombinant. Hãy cộng cả hai."
+                    },
+                    {
+                        "level": 2,
+                        "text": "(95 + 105) / 1000 × 100%."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "data_interpretation_error": {
+                        "sourceNodes": [
+                            "K282",
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "calculation_error": {
+                        "sourceNodes": [
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "reasoning_error": {
+                        "sourceNodes": [
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-09-30",
+                "updatedAt": "2026-09-30",
+                "source": "original",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 90,
+                "retestGroupId": "c09-k283-testcross-frequency-01",
+                "contextId": "c09-k283-retest-testcross-02",
+                "tags": [
+                    "c09",
+                    "k283",
+                    "testcross",
+                    "retest",
+                    "transfer",
+                    "sampling-variation"
+                ]
+            }
+        }
+    ]
+}

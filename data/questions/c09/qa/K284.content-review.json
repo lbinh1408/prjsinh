@@ -1,0 +1,39 @@
+{
+    "schemaVersion": "1.0.0",
+    "bankId": "QB-C09-K284-V1",
+    "reviewType": "biology-content-review",
+    "status": "passed_with_edits",
+    "reviewedAt": "2026-09-30",
+    "summary": {
+        "questionsReviewed": 12,
+        "approved": 12,
+        "rejected": 0,
+        "edited": 2
+    },
+    "edits": [
+        {
+            "questionId": "Q-A-K284-K-001",
+            "type": "scientific_wording",
+            "reason": "Clarified that the relationship between recombination frequency and map distance is an estimate used in the intended school-level mapping context."
+        },
+        {
+            "questionId": "Q-A-K284-A-007",
+            "type": "scientific_wording",
+            "reason": "Separated interval recombination frequencies from map distance to avoid conflating observed recombination frequency with genetic map distance."
+        }
+    ],
+    "reviewedQuestions": [
+        "Q-A-K284-K-001",
+        "Q-A-K284-A-002",
+        "Q-A-K284-A-003",
+        "Q-A-K284-A-004",
+        "Q-A-K284-A-005",
+        "Q-A-K284-A-006",
+        "Q-A-K284-A-007",
+        "Q-A-K284-A-008",
+        "Q-A-K284-A-009",
+        "Q-A-K284-A-010",
+        "Q-A-K284-T-011",
+        "Q-A-K284-T-012"
+    ]
+}

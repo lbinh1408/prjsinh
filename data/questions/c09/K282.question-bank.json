@@ -1,0 +1,688 @@
+{
+    "schemaVersion": "1.0.0",
+    "bankId": "QB-C09-K282-V1",
+    "version": "1.0.0",
+    "subject": "biology",
+    "language": "vi",
+    "cluster": "C09",
+    "primaryNode": "K282",
+    "status": "draft",
+    "questions": [
+        {
+            "id": "Q-A-K282-K-001",
+            "version": "1.0.0",
+            "nodes": [
+                "K282"
+            ],
+            "primaryNode": "K282",
+            "evidence": "know",
+            "difficulty": "D1",
+            "questionType": "mcq",
+            "mode": [
+                "diagnostic"
+            ],
+            "prerequisites": [
+                "K281",
+                "K253"
+            ],
+            "content": {
+                "stem": "Một cơ thể có kiểu sắp xếp allele AB/ab. Xét hai gene A và B, những giao tử nào mang tổ hợp allele giống với các tổ hợp có trên hai nhiễm sắc thể của cơ thể bố mẹ?",
+                "context": "Phân biệt giao tử mang tổ hợp allele bố mẹ và giao tử mang tổ hợp allele mới.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "AB và ab.",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "B",
+                        "text": "Ab và aB.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "C",
+                        "text": "AB và Ab.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "aB và ab.",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "A"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "concept_confusion"
+            ],
+            "explanation": {
+                "correct": "Ở kiểu sắp xếp AB/ab, hai tổ hợp allele ban đầu trên hai nhiễm sắc thể tương đồng là AB và ab. Vì vậy AB và ab là các loại giao tử mang tổ hợp allele bố mẹ; Ab và aB là các tổ hợp tái tổ hợp nếu chúng được tạo ra.",
+                "incorrect": {
+                    "B": "Ab và aB là các tổ hợp allele mới so với hai tổ hợp AB và ab ban đầu.",
+                    "C": "Ab không phải tổ hợp allele bố mẹ trong kiểu sắp xếp AB/ab.",
+                    "D": "aB không phải tổ hợp allele bố mẹ trong kiểu sắp xếp AB/ab."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Đọc trực tiếp hai tổ hợp ở hai phía của dấu '/'."
+                    },
+                    {
+                        "level": 2,
+                        "text": "AB/ab cho biết hai tổ hợp allele ban đầu là AB và ab."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "concept_confusion": {
+                        "sourceNodes": [
+                            "K282"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-09-30",
+                "updatedAt": "2026-09-30",
+                "source": "original",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 45,
+                "diagnosticPurpose": "identify_concept_gap",
+                "estimatedMasteryLevel": "M1",
+                "discriminatesBetween": [
+                    "M0",
+                    "M1"
+                ],
+                "tags": [
+                    "c09",
+                    "k282",
+                    "giao-tu-lien-ket",
+                    "giao-tu-bo-me",
+                    "diagnostic"
+                ]
+            }
+        },
+        {
+            "id": "Q-A-K282-E-002",
+            "version": "1.0.0",
+            "nodes": [
+                "K282"
+            ],
+            "primaryNode": "K282",
+            "evidence": "explain",
+            "difficulty": "D2",
+            "questionType": "mcq",
+            "mode": [
+                "practice"
+            ],
+            "prerequisites": [
+                "K281",
+                "K253"
+            ],
+            "content": {
+                "stem": "Một cơ thể có kiểu sắp xếp allele Ab/aB. Nếu xảy ra hoán vị gene giữa hai locus A và B, cặp giao tử nào là giao tử tái tổ hợp?",
+                "context": "Xác định giao tử tái tổ hợp từ kiểu sắp xếp allele ở trạng thái đối.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "Ab và aB.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "B",
+                        "text": "AB và ab.",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "C",
+                        "text": "AB và Ab.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "aB và ab.",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "B"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "concept_confusion",
+                "mechanism_confusion"
+            ],
+            "explanation": {
+                "correct": "Ở kiểu Ab/aB, các tổ hợp allele bố mẹ là Ab và aB. Hoán vị gene giữa A và B có thể tạo các tổ hợp mới AB và ab, nên đây là các giao tử tái tổ hợp.",
+                "incorrect": {
+                    "A": "Ab và aB chính là hai tổ hợp allele bố mẹ của cơ thể này.",
+                    "C": "Ab là tổ hợp bố mẹ, còn AB là tổ hợp tái tổ hợp; cặp này trộn hai loại với nhau.",
+                    "D": "aB là tổ hợp bố mẹ, còn ab là tổ hợp tái tổ hợp; cặp này không gồm hai giao tử tái tổ hợp."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Trước tiên hãy xác định hai tổ hợp allele bố mẹ từ Ab/aB."
+                    },
+                    {
+                        "level": 2,
+                        "text": "Hai tổ hợp bố mẹ là Ab và aB. Hãy tìm hai tổ hợp còn lại."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "concept_confusion": {
+                        "sourceNodes": [
+                            "K282"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "mechanism_confusion": {
+                        "sourceNodes": [
+                            "K253",
+                            "K282"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-09-30",
+                "updatedAt": "2026-09-30",
+                "source": "original",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 60,
+                "tags": [
+                    "c09",
+                    "k282",
+                    "giao-tu-tai-to-hop",
+                    "pha-doi",
+                    "practice"
+                ]
+            }
+        },
+        {
+            "id": "Q-A-K282-A-003",
+            "version": "1.0.0",
+            "nodes": [
+                "K282"
+            ],
+            "primaryNode": "K282",
+            "evidence": "apply",
+            "difficulty": "D3",
+            "questionType": "mcq",
+            "mode": [
+                "practice"
+            ],
+            "prerequisites": [
+                "K281",
+                "K253"
+            ],
+            "content": {
+                "stem": "Một cơ thể có kiểu sắp xếp allele AB/ab tạo bốn loại giao tử AB, ab, Ab và aB. Biết có xảy ra hoán vị gene giữa A và B. Cách phân loại nào sau đây đúng?",
+                "context": "Phân loại đồng thời bốn loại giao tử thành nhóm bố mẹ và nhóm tái tổ hợp.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "AB và ab là giao tử mang tổ hợp bố mẹ; Ab và aB là giao tử tái tổ hợp.",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "B",
+                        "text": "AB và aB là giao tử mang tổ hợp bố mẹ; Ab và ab là giao tử tái tổ hợp.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "C",
+                        "text": "Ab và aB là giao tử mang tổ hợp bố mẹ; AB và ab là giao tử tái tổ hợp.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "Cả bốn loại đều là giao tử tái tổ hợp vì đã xảy ra hoán vị gene.",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "A"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "concept_confusion",
+                "reasoning_error"
+            ],
+            "explanation": {
+                "correct": "Kiểu sắp xếp AB/ab cho biết AB và ab là các tổ hợp allele bố mẹ. Khi hoán vị gene xảy ra giữa A và B, các tổ hợp mới Ab và aB được tạo ra và là giao tử tái tổ hợp.",
+                "incorrect": {
+                    "B": "Cần xác định nhóm bố mẹ từ kiểu sắp xếp AB/ab trước khi phân loại.",
+                    "C": "Ab và aB là các tổ hợp mới, không phải tổ hợp bố mẹ của AB/ab.",
+                    "D": "Hoán vị gene tạo thêm giao tử tái tổ hợp nhưng không biến các giao tử mang tổ hợp bố mẹ thành giao tử tái tổ hợp."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Kiểu sắp xếp allele ban đầu là thông tin quyết định giao tử nào thuộc nhóm bố mẹ."
+                    },
+                    {
+                        "level": 2,
+                        "text": "AB/ab → bố mẹ: AB, ab. Hai tổ hợp còn lại là tái tổ hợp."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "concept_confusion": {
+                        "sourceNodes": [
+                            "K282"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "reasoning_error": {
+                        "sourceNodes": [
+                            "K282"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-09-30",
+                "updatedAt": "2026-09-30",
+                "source": "original",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 60,
+                "tags": [
+                    "c09",
+                    "k282",
+                    "phan-loai-giao-tu",
+                    "practice"
+                ]
+            }
+        },
+        {
+            "id": "Q-A-K282-A-004",
+            "version": "1.0.0",
+            "nodes": [
+                "K282"
+            ],
+            "primaryNode": "K282",
+            "evidence": "apply",
+            "difficulty": "D3",
+            "questionType": "mcq",
+            "mode": [
+                "remediation"
+            ],
+            "prerequisites": [
+                "K281",
+                "K253"
+            ],
+            "content": {
+                "stem": "Một cơ thể có kiểu sắp xếp allele Mn/mN. Nếu xảy ra hoán vị gene giữa hai locus M và N, cặp nào sau đây là các giao tử mang tổ hợp allele bố mẹ?",
+                "context": "Đổi ký hiệu gene để kiểm tra khả năng nhận diện tổ hợp bố mẹ mà không phụ thuộc vào ví dụ AB/ab.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "MN và mn.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "B",
+                        "text": "Mn và mN.",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "C",
+                        "text": "MN và Mn.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "mN và mn.",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "B"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "concept_confusion"
+            ],
+            "explanation": {
+                "correct": "Mn/mN cho biết trực tiếp hai tổ hợp allele bố mẹ là Mn và mN. Hoán vị gene có thể tạo MN và mn, nhưng không làm thay đổi việc xác định tổ hợp nào là tổ hợp bố mẹ.",
+                "incorrect": {
+                    "A": "MN và mn là các tổ hợp mới so với Mn/mN.",
+                    "C": "MN là tổ hợp mới, còn Mn là tổ hợp bố mẹ.",
+                    "D": "mN là tổ hợp bố mẹ, còn mn là tổ hợp mới."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Đừng dựa vào chữ hoa hay chữ thường để xác định giao tử bố mẹ."
+                    },
+                    {
+                        "level": 2,
+                        "text": "Đọc trực tiếp Mn/mN thành hai tổ hợp ban đầu: Mn và mN."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "concept_confusion": {
+                        "sourceNodes": [
+                            "K282"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-09-30",
+                "updatedAt": "2026-09-30",
+                "source": "original",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 45,
+                "tags": [
+                    "c09",
+                    "k282",
+                    "remediation",
+                    "giao-tu-bo-me",
+                    "pha-doi"
+                ]
+            }
+        },
+        {
+            "id": "Q-A-K282-A-005",
+            "version": "1.0.0",
+            "nodes": [
+                "K282"
+            ],
+            "primaryNode": "K282",
+            "evidence": "apply",
+            "difficulty": "D3",
+            "questionType": "mcq",
+            "mode": [
+                "remediation",
+                "practice"
+            ],
+            "prerequisites": [
+                "K281",
+                "K253"
+            ],
+            "content": {
+                "stem": "Một cơ thể có kiểu sắp xếp allele CD/cd. Xét các giao tử được tạo ra khi có tái tổ hợp giữa hai locus C và D, cặp nào sau đây mang các tổ hợp allele tái tổ hợp so với hai tổ hợp ban đầu?",
+                "context": "Mini-probe kiểm tra lại khả năng nhận diện giao tử tái tổ hợp sau remediation.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "CD và cd.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "B",
+                        "text": "Cd và cD.",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "C",
+                        "text": "CD và Cd.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "cD và cd.",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "B"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "concept_confusion",
+                "mechanism_confusion"
+            ],
+            "explanation": {
+                "correct": "Ở kiểu sắp xếp CD/cd, CD và cd là hai tổ hợp allele bố mẹ. Các tổ hợp Cd và cD khác với hai tổ hợp ban đầu nên được xếp vào nhóm tái tổ hợp.",
+                "incorrect": {
+                    "A": "CD và cd giữ nguyên các tổ hợp allele bố mẹ.",
+                    "C": "CD là tổ hợp bố mẹ còn Cd là tổ hợp tái tổ hợp.",
+                    "D": "cd là tổ hợp bố mẹ còn cD là tổ hợp tái tổ hợp."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Xác định hai tổ hợp ban đầu trước, rồi tìm hai tổ hợp mới."
+                    },
+                    {
+                        "level": 2,
+                        "text": "CD/cd → bố mẹ CD và cd → hai tổ hợp còn lại là Cd và cD."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "concept_confusion": {
+                        "sourceNodes": [
+                            "K282"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "mechanism_confusion": {
+                        "sourceNodes": [
+                            "K253",
+                            "K282"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-09-30",
+                "updatedAt": "2026-09-30",
+                "source": "original",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 45,
+                "tags": [
+                    "c09",
+                    "k282",
+                    "mini-probe",
+                    "remediation",
+                    "giao-tu-tai-to-hop"
+                ]
+            }
+        },
+        {
+            "id": "Q-A-K282-T-006",
+            "version": "1.0.0",
+            "nodes": [
+                "K282"
+            ],
+            "primaryNode": "K282",
+            "evidence": "transfer",
+            "difficulty": "D4",
+            "questionType": "mcq",
+            "mode": [
+                "retest",
+                "challenge"
+            ],
+            "prerequisites": [
+                "K281",
+                "K253"
+            ],
+            "content": {
+                "stem": "Ở một loài, hai gene R/r và S/s nằm trên cùng một nhiễm sắc thể. Một cá thể dị hợp nhận nhiễm sắc thể mang R và s từ bố, còn nhiễm sắc thể tương đồng mang r và S từ mẹ. Trong quá trình tạo giao tử, hoán vị gene có thể xảy ra giữa hai locus. Nhận định nào sau đây đúng?",
+                "context": "Thông tin về pha liên kết được mô tả bằng nguồn gốc nhiễm sắc thể thay vì ký hiệu trực tiếp kiểu Rs/rS.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "Rs và rS là các tổ hợp tái tổ hợp; RS và rs là các tổ hợp bố mẹ.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "B",
+                        "text": "Rs và rS là các tổ hợp bố mẹ; RS và rs là các tổ hợp tái tổ hợp.",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "C",
+                        "text": "Cả bốn tổ hợp RS, Rs, rS và rs đều là các tổ hợp bố mẹ.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "Không thể xác định tổ hợp bố mẹ nếu chưa biết tần số hoán vị gene.",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "B"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "reasoning_error",
+                "concept_confusion"
+            ],
+            "context": {
+                "contextId": "c09-k282-retest-parental-origin-01",
+                "contextType": "genetic_cross",
+                "retestGroupId": "c09-k282-gamete-classification-01"
+            },
+            "explanation": {
+                "correct": "Thông tin đề bài tương đương với kiểu sắp xếp Rs/rS: một nhiễm sắc thể mang Rs và nhiễm sắc thể tương đồng mang rS. Vì vậy Rs và rS là hai tổ hợp allele bố mẹ. Khi xảy ra tái tổ hợp giữa hai locus, RS và rs là hai tổ hợp allele tái tổ hợp.",
+                "incorrect": {
+                    "A": "Đề đã cho trực tiếp R đi cùng s và r đi cùng S trên hai nhiễm sắc thể bố mẹ, nên Rs và rS mới là các tổ hợp bố mẹ.",
+                    "C": "Chỉ hai tổ hợp ban đầu trên hai nhiễm sắc thể là tổ hợp bố mẹ; hai tổ hợp còn lại hình thành do tái tổ hợp.",
+                    "D": "Tần số hoán vị cần thiết khi tính tỉ lệ giao tử, nhưng không cần để xác định tổ hợp nào là tổ hợp bố mẹ khi pha liên kết đã được cho."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Chuyển mô tả nguồn gốc nhiễm sắc thể thành cách viết pha liên kết."
+                    },
+                    {
+                        "level": 2,
+                        "text": "R đi với s, còn r đi với S → Rs/rS."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "reasoning_error": {
+                        "sourceNodes": [
+                            "K282"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "concept_confusion": {
+                        "sourceNodes": [
+                            "K282"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-09-30",
+                "updatedAt": "2026-09-30",
+                "source": "original",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 75,
+                "retestGroupId": "c09-k282-gamete-classification-01",
+                "contextId": "c09-k282-retest-parental-origin-01",
+                "tags": [
+                    "c09",
+                    "k282",
+                    "transfer",
+                    "challenge",
+                    "retest",
+                    "parental-origin",
+                    "giao-tu-tai-to-hop"
+                ]
+            }
+        }
+    ]
+}

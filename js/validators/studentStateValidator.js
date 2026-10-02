@@ -39,10 +39,10 @@ const VALIDATOR_NAME =
     "student-state-validator";
 
 const VALIDATOR_VERSION =
-    "1.0.0";
+    "1.0.1";
 
 const STATE_SCHEMA_VERSION =
-    "1.1.0";
+    "1.2.0";
 
 
 /* =========================================================
@@ -93,7 +93,8 @@ const MASTERY_STATUSES = new Set([
 const CONFIDENCE_LEVELS = new Set([
     "low",
     "medium",
-    "high"
+    "high",
+    "very_high"
 ]);
 
 
@@ -274,6 +275,7 @@ const EVIDENCE_SUFFICIENCY_FIELDS =
     new Set([
         "independentObservations",
         "distinctContexts",
+        "distinctQuestionTypes",
         "observedEvidenceTypes"
     ]);
 
@@ -2228,6 +2230,7 @@ function validateEvidenceSufficiency(
         [
             "independentObservations",
             "distinctContexts",
+            "distinctQuestionTypes",
             "observedEvidenceTypes"
         ],
         path
@@ -2245,6 +2248,13 @@ function validateEvidenceSufficiency(
         context,
         value.distinctContexts,
         `${path}/distinctContexts`
+    );
+
+
+    validateNonNegativeIntegerIfPresent(
+        context,
+        value.distinctQuestionTypes,
+        `${path}/distinctQuestionTypes`
     );
 
 

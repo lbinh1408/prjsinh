@@ -24,7 +24,7 @@
     "properties": {
         "schemaVersion": {
             "type": "string",
-            "const": "1.1.0"
+            "const": "1.2.0"
         },
         "stateId": {
             "type": "string",
@@ -404,6 +404,7 @@
             "required": [
                 "independentObservations",
                 "distinctContexts",
+                "distinctQuestionTypes",
                 "observedEvidenceTypes"
             ],
             "properties": {
@@ -412,6 +413,10 @@
                     "minimum": 0
                 },
                 "distinctContexts": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "distinctQuestionTypes": {
                     "type": "integer",
                     "minimum": 0
                 },
@@ -1196,7 +1201,8 @@
             "enum": [
                 "low",
                 "medium",
-                "high"
+                "high",
+                "very_high"
             ]
         },
         "evidenceDimension": {

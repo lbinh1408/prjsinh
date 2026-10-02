@@ -1,0 +1,579 @@
+{
+    "schemaVersion": "1.0.0",
+    "bankId": "QB-C09-K281-V1",
+    "version": "1.0.0",
+    "subject": "biology",
+    "language": "vi",
+    "cluster": "C09",
+    "primaryNode": "K281",
+    "status": "draft",
+    "questions": [
+        {
+            "id": "Q-A-K281-K-001",
+            "version": "1.0.0",
+            "nodes": [
+                "K281"
+            ],
+            "primaryNode": "K281",
+            "evidence": "know",
+            "difficulty": "D1",
+            "questionType": "mcq",
+            "mode": [
+                "diagnostic"
+            ],
+            "prerequisites": [
+                "K280",
+                "K250"
+            ],
+            "content": {
+                "stem": "Hai gene A và B cùng nằm trên một cặp nhiễm sắc thể tương đồng. Trong trường hợp không xảy ra hoán vị gene giữa hai locus A và B, hiện tượng nào sau đây được thể hiện rõ nhất?",
+                "context": "Xét sự di truyền của hai gene cùng nằm trên một nhiễm sắc thể.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "Hai gene có xu hướng được truyền cùng nhau qua các thế hệ tế bào và cơ thể.",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "B",
+                        "text": "Hai gene luôn phân li độc lập trong quá trình tạo giao tử.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "C",
+                        "text": "Mỗi gene bắt buộc phải nằm trên một nhiễm sắc thể khác nhau.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "Hai gene luôn tạo ra bốn loại giao tử với tỉ lệ bằng nhau.",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "A"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "concept_confusion"
+            ],
+            "explanation": {
+                "correct": "Các gene cùng nằm trên một nhiễm sắc thể có thể tạo thành nhóm gene liên kết và có xu hướng được di truyền cùng nhau. Khi không xảy ra hoán vị gene giữa hai locus đang xét, các tổ hợp allele trên nhiễm sắc thể bố mẹ được bảo toàn.",
+                "incorrect": {
+                    "B": "Phân li độc lập đặc trưng cho các cặp gene phân li độc lập; không thể mặc định cho hai gene đang xét cùng nằm trên một nhiễm sắc thể.",
+                    "C": "Hai gene hoàn toàn có thể cùng nằm trên một nhiễm sắc thể.",
+                    "D": "Bốn loại giao tử bằng nhau không phải hệ quả của liên kết gene hoàn toàn."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Hãy chú ý hai gene đang nằm trên cùng một nhiễm sắc thể."
+                    },
+                    {
+                        "level": 2,
+                        "text": "Nếu không có hoán vị gene giữa hai locus, hãy nghĩ xem các tổ hợp allele trên nhiễm sắc thể bố mẹ có bị thay đổi hay không."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "concept_confusion": {
+                        "sourceNodes": [
+                            "K281"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-09-30",
+                "updatedAt": "2026-09-30",
+                "source": "original",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 45,
+                "diagnosticPurpose": "identify_concept_gap",
+                "estimatedMasteryLevel": "M1",
+                "discriminatesBetween": [
+                    "M0",
+                    "M1"
+                ],
+                "tags": [
+                    "c09",
+                    "k281",
+                    "lien-ket-gene",
+                    "diagnostic"
+                ]
+            }
+        },
+        {
+            "id": "Q-A-K281-E-002",
+            "version": "1.0.0",
+            "nodes": [
+                "K281"
+            ],
+            "primaryNode": "K281",
+            "evidence": "explain",
+            "difficulty": "D2",
+            "questionType": "mcq",
+            "mode": [
+                "practice"
+            ],
+            "prerequisites": [
+                "K280",
+                "K250"
+            ],
+            "content": {
+                "stem": "Một cơ thể có kiểu sắp xếp allele AB/ab. Giả sử hai gene A và B liên kết hoàn toàn và không xảy ra hoán vị gene. Vì sao cơ thể này chỉ tạo hai loại giao tử AB và ab xét theo hai gene trên?",
+                "context": "Hai gene A và B cùng nằm trên một cặp nhiễm sắc thể tương đồng.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "Vì A luôn trội hoàn toàn so với a và B luôn trội hoàn toàn so với b.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "B",
+                        "text": "Vì các tổ hợp allele AB và ab trên các nhiễm sắc thể bố mẹ được bảo toàn khi không có hoán vị gene giữa hai locus.",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "C",
+                        "text": "Vì các allele A, B, a và b không phân li trong giảm phân.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "Vì tất cả allele của cơ thể đều đi vào cùng một giao tử.",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "B"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "mechanism_confusion",
+                "concept_confusion"
+            ],
+            "explanation": {
+                "correct": "Ở kiểu sắp xếp AB/ab, một nhiễm sắc thể mang AB và nhiễm sắc thể tương đồng mang ab. Khi không xảy ra hoán vị gene giữa hai locus, hai tổ hợp allele này được giữ nguyên, nên xét hai gene đó cơ thể tạo giao tử AB và ab.",
+                "incorrect": {
+                    "A": "Quan hệ trội - lặn không quyết định loại giao tử được tạo ra.",
+                    "C": "Các nhiễm sắc thể tương đồng vẫn phân li trong giảm phân; điều được bảo toàn ở đây là tổ hợp allele trên mỗi nhiễm sắc thể khi không có hoán vị giữa hai locus.",
+                    "D": "Mỗi giao tử chỉ nhận một nhiễm sắc thể của cặp tương đồng, không nhận toàn bộ allele của cơ thể."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Hãy viết riêng hai nhiễm sắc thể: AB và ab."
+                    },
+                    {
+                        "level": 2,
+                        "text": "Không có hoán vị gene nghĩa là tổ hợp allele trên mỗi nhiễm sắc thể không bị tái tổ hợp giữa hai locus đang xét."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "mechanism_confusion": {
+                        "sourceNodes": [
+                            "K281"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "concept_confusion": {
+                        "sourceNodes": [
+                            "K281"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-09-30",
+                "updatedAt": "2026-09-30",
+                "source": "original",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 60,
+                "tags": [
+                    "c09",
+                    "k281",
+                    "lien-ket-hoan-toan",
+                    "ab-ab",
+                    "practice"
+                ]
+            }
+        },
+        {
+            "id": "Q-A-K281-A-003",
+            "version": "1.0.0",
+            "nodes": [
+                "K281"
+            ],
+            "primaryNode": "K281",
+            "evidence": "apply",
+            "difficulty": "D3",
+            "questionType": "mcq",
+            "mode": [
+                "remediation"
+            ],
+            "prerequisites": [
+                "K280",
+                "K250"
+            ],
+            "content": {
+                "stem": "Một cơ thể có kiểu sắp xếp allele Ab/aB. Hai gene A và B liên kết hoàn toàn. Nếu không xảy ra hoán vị gene giữa hai locus, các loại giao tử mà cơ thể tạo ra xét theo A và B là",
+                "context": "Câu hỏi dùng để kiểm tra lại khả năng giữ nguyên tổ hợp allele trên nhiễm sắc thể sau khi học sinh được sửa lỗi về liên kết gene.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "AB và ab.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "B",
+                        "text": "Ab và aB.",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "C",
+                        "text": "AB, Ab, aB và ab với tỉ lệ bằng nhau.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "Chỉ Ab.",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "B"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "concept_confusion",
+                "mechanism_confusion"
+            ],
+            "explanation": {
+                "correct": "Hai nhiễm sắc thể đang mang các tổ hợp Ab và aB. Khi liên kết hoàn toàn và không có hoán vị gene giữa hai locus, các tổ hợp này được bảo toàn nên giao tử là Ab và aB.",
+                "incorrect": {
+                    "A": "AB và ab không phải các tổ hợp allele đang có trên hai nhiễm sắc thể của cơ thể Ab/aB.",
+                    "C": "Bốn loại giao tử bằng nhau sẽ không xuất hiện trong điều kiện liên kết hoàn toàn đang xét.",
+                    "D": "Hai nhiễm sắc thể tương đồng phân li về các giao tử nên cả Ab và aB đều được tạo ra."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Đừng tự ghép lại A với B. Hãy đọc nguyên hai tổ hợp đang có ở hai phía dấu '/'."
+                    },
+                    {
+                        "level": 2,
+                        "text": "Ab/aB nghĩa là một nhiễm sắc thể mang Ab và chiếc tương đồng mang aB. Không có hoán vị thì giữ nguyên hai tổ hợp đó."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "concept_confusion": {
+                        "sourceNodes": [
+                            "K281"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "mechanism_confusion": {
+                        "sourceNodes": [
+                            "K281"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-09-30",
+                "updatedAt": "2026-09-30",
+                "source": "original",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 45,
+                "tags": [
+                    "c09",
+                    "k281",
+                    "lien-ket-hoan-toan",
+                    "pha-doi",
+                    "remediation",
+                    "mini-practice"
+                ]
+            }
+        },
+        {
+            "id": "Q-A-K281-A-004",
+            "version": "1.0.0",
+            "nodes": [
+                "K281"
+            ],
+            "primaryNode": "K281",
+            "evidence": "apply",
+            "difficulty": "D3",
+            "questionType": "mcq",
+            "mode": [
+                "remediation",
+                "practice"
+            ],
+            "prerequisites": [
+                "K280",
+                "K250"
+            ],
+            "content": {
+                "stem": "Một cơ thể có hai gene M và N liên kết với nhau, có kiểu sắp xếp allele MN/mn. Trong điều kiện liên kết hoàn toàn, nhận định nào sau đây đúng?",
+                "context": "Đổi ký hiệu gene để kiểm tra học sinh có hiểu quy tắc thay vì ghi nhớ ví dụ AB/ab.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "Cơ thể tạo hai loại giao tử MN và mn xét theo hai gene này.",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "B",
+                        "text": "Cơ thể chỉ tạo hai loại giao tử Mn và mN.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "C",
+                        "text": "Cơ thể luôn tạo bốn loại giao tử MN, Mn, mN và mn với tỉ lệ bằng nhau.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "Không thể xác định loại giao tử nếu chưa biết tính trạng nào trội.",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "A"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "concept_confusion",
+                "mechanism_confusion"
+            ],
+            "explanation": {
+                "correct": "MN/mn cho biết hai tổ hợp allele trên hai nhiễm sắc thể tương đồng là MN và mn. Liên kết hoàn toàn bảo toàn hai tổ hợp này khi tạo giao tử.",
+                "incorrect": {
+                    "B": "Mn và mN là các tổ hợp mới so với MN/mn và không được tạo ra trong điều kiện liên kết hoàn toàn đang xét.",
+                    "C": "Liên kết hoàn toàn không tạo bốn loại giao tử với tỉ lệ bằng nhau.",
+                    "D": "Quan hệ trội - lặn không cần thiết để xác định các loại giao tử trong trường hợp này."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Áp dụng đúng quy tắc em vừa dùng với AB/ab, nhưng lần này ký hiệu gene đã thay đổi."
+                    },
+                    {
+                        "level": 2,
+                        "text": "Đọc MN/mn thành hai tổ hợp nguyên vẹn: MN và mn."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "concept_confusion": {
+                        "sourceNodes": [
+                            "K281"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "mechanism_confusion": {
+                        "sourceNodes": [
+                            "K281"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-09-30",
+                "updatedAt": "2026-09-30",
+                "source": "original",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 45,
+                "tags": [
+                    "c09",
+                    "k281",
+                    "lien-ket-hoan-toan",
+                    "mini-probe",
+                    "remediation"
+                ]
+            }
+        },
+        {
+            "id": "Q-A-K281-A-005",
+            "version": "1.0.0",
+            "nodes": [
+                "K281"
+            ],
+            "primaryNode": "K281",
+            "evidence": "apply",
+            "difficulty": "D3",
+            "questionType": "mcq",
+            "mode": [
+                "retest"
+            ],
+            "prerequisites": [
+                "K280",
+                "K250"
+            ],
+            "content": {
+                "stem": "Ở một loài, hai locus P/p và Q/q liên kết với nhau. Một cá thể dị hợp có allele P đi cùng q trên một nhiễm sắc thể, còn p đi cùng Q trên nhiễm sắc thể tương đồng. Nếu giữa hai locus không xảy ra hoán vị gene, cá thể này tạo những loại giao tử nào xét theo P và Q?",
+                "context": "Retest sử dụng mô tả bằng lời thay cho cách viết trực tiếp kiểu sắp xếp allele.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "PQ và pq.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "B",
+                        "text": "Pq và pQ.",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "C",
+                        "text": "PQ, Pq, pQ và pq với tỉ lệ bằng nhau.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "Chỉ PQ.",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "B"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "concept_confusion",
+                "reasoning_error"
+            ],
+            "context": {
+                "contextId": "c09-k281-retest-verbal-01",
+                "contextType": "genetic_cross",
+                "retestGroupId": "c09-k281-linkage-01"
+            },
+            "explanation": {
+                "correct": "Mô tả cho biết hai nhiễm sắc thể mang Pq và pQ, tức kiểu sắp xếp Pq/pQ. Khi không có hoán vị gene giữa hai locus, hai tổ hợp này được giữ nguyên nên giao tử là Pq và pQ.",
+                "incorrect": {
+                    "A": "PQ và pq không phải hai tổ hợp allele ban đầu được mô tả trong đề.",
+                    "C": "Không có hoán vị gene giữa hai locus nên không tạo đủ bốn tổ hợp với tỉ lệ bằng nhau.",
+                    "D": "Cơ thể dị hợp mang hai nhiễm sắc thể tương đồng khác nhau nên không chỉ tạo một loại giao tử."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Hãy chuyển mô tả bằng lời thành cách viết hai nhiễm sắc thể trước."
+                    },
+                    {
+                        "level": 2,
+                        "text": "Đề đang mô tả Pq/pQ. Sau đó áp dụng quy tắc liên kết hoàn toàn."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "concept_confusion": {
+                        "sourceNodes": [
+                            "K281"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "reasoning_error": {
+                        "sourceNodes": [
+                            "K281"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-09-30",
+                "updatedAt": "2026-09-30",
+                "source": "original",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 60,
+                "retestGroupId": "c09-k281-linkage-01",
+                "contextId": "c09-k281-retest-verbal-01",
+                "tags": [
+                    "c09",
+                    "k281",
+                    "lien-ket-hoan-toan",
+                    "retest",
+                    "different-context"
+                ]
+            }
+        }
+    ]
+}

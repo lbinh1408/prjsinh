@@ -251,11 +251,11 @@
                 "evidenceSource": {
                     "type": "string",
                     "enum": [
-                        "Q-K",
-                        "Q-E",
-                        "Q-A",
-                        "Q-T",
-                        "Q-D"
+                        "know",
+                        "explain",
+                        "apply",
+                        "transfer",
+                        "none"
                     ]
                 },
                 "evidenceStrength": {
@@ -288,7 +288,8 @@
                     "enum": [
                         "low",
                         "medium",
-                        "high"
+                        "high",
+                        "very_high"
                     ]
                 },
                 "score": {

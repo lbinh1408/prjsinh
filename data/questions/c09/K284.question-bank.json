@@ -1,0 +1,1410 @@
+{
+    "schemaVersion": "1.0.0",
+    "bankId": "QB-C09-K284-V1",
+    "version": "1.0.0",
+    "subject": "biology",
+    "language": "vi",
+    "cluster": "C09",
+    "primaryNode": "K284",
+    "status": "draft",
+    "questions": [
+        {
+            "id": "Q-A-K284-K-001",
+            "version": "1.0.0",
+            "nodes": [
+                "K284"
+            ],
+            "primaryNode": "K284",
+            "evidence": "know",
+            "difficulty": "D1",
+            "questionType": "mcq",
+            "mode": [
+                "diagnostic"
+            ],
+            "prerequisites": [
+                "K283"
+            ],
+            "content": {
+                "stem": "Theo quy ước lập bản đồ gene ở mức phổ thông, với hai gene liên kết có tần số tái tổ hợp 12%, khoảng cách bản đồ được ước tính là bao nhiêu?",
+                "context": "Kiểm tra mối liên hệ cơ bản giữa tần số hoán vị gene và đơn vị bản đồ.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "6 cM.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "B",
+                        "text": "12 cM.",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "C",
+                        "text": "24 cM.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "88 cM.",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "B"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "concept_confusion"
+            ],
+            "explanation": {
+                "correct": "Ở mức bài toán lập bản đồ gene phổ thông và với khoảng cách tương đối nhỏ, tần số tái tổ hợp 1% được dùng để ước tính khoảng 1 cM. Vì vậy 12% tương ứng khoảng 12 cM.",
+                "incorrect": {
+                    "A": "Không cần chia đôi tần số hoán vị khi đổi sang đơn vị bản đồ.",
+                    "C": "Không nhân đôi tần số hoán vị để tính khoảng cách bản đồ.",
+                    "D": "88% là phần không tái tổ hợp, không phải khoảng cách bản đồ."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Trong bài toán bản đồ gene phổ thông với khoảng cách tương đối nhỏ, 1% tái tổ hợp được dùng để ước tính khoảng 1 cM."
+                    },
+                    {
+                        "level": 2,
+                        "text": "12% → 12 cM."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "concept_confusion": {
+                        "sourceNodes": [
+                            "K283",
+                            "K284"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-09-30",
+                "updatedAt": "2026-09-30",
+                "source": "original",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 45,
+                "diagnosticPurpose": "identify_basic_gene_mapping_gap",
+                "estimatedMasteryLevel": "M1",
+                "discriminatesBetween": [
+                    "M0",
+                    "M1"
+                ],
+                "tags": [
+                    "c09",
+                    "k284",
+                    "gene-map",
+                    "centimorgan",
+                    "diagnostic"
+                ]
+            }
+        },
+        {
+            "id": "Q-A-K284-A-002",
+            "version": "1.0.0",
+            "nodes": [
+                "K284"
+            ],
+            "primaryNode": "K284",
+            "evidence": "apply",
+            "difficulty": "D2",
+            "questionType": "mcq",
+            "mode": [
+                "practice"
+            ],
+            "prerequisites": [
+                "K283"
+            ],
+            "content": {
+                "stem": "Ba gene A, B và C nằm trên cùng một nhiễm sắc thể theo thứ tự A – B – C. Khoảng cách A–B là 8 cM và B–C là 13 cM. Khoảng cách bản đồ từ A đến C là bao nhiêu?",
+                "context": "Cộng khoảng cách của hai đoạn liên tiếp trên bản đồ gene.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "5 cM.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "B",
+                        "text": "8 cM.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "C",
+                        "text": "13 cM.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "21 cM.",
+                        "isCorrect": true
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "D"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "calculation_error",
+                "concept_confusion"
+            ],
+            "explanation": {
+                "correct": "B nằm giữa A và C nên khoảng cách bản đồ A–C bằng tổng hai đoạn A–B và B–C: 8 + 13 = 21 cM.",
+                "incorrect": {
+                    "A": "5 cM là hiệu của hai khoảng cách, không phải tổng chiều dài bản đồ từ A đến C.",
+                    "B": "8 cM chỉ là đoạn A–B.",
+                    "C": "13 cM chỉ là đoạn B–C."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "B nằm giữa A và C."
+                    },
+                    {
+                        "level": 2,
+                        "text": "A–C = A–B + B–C."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "calculation_error": {
+                        "sourceNodes": [
+                            "K284"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "concept_confusion": {
+                        "sourceNodes": [
+                            "K284"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-09-30",
+                "updatedAt": "2026-09-30",
+                "source": "original",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 45,
+                "tags": [
+                    "c09",
+                    "k284",
+                    "three-gene-map",
+                    "practice"
+                ]
+            }
+        },
+        {
+            "id": "Q-A-K284-A-003",
+            "version": "1.0.0",
+            "nodes": [
+                "K284"
+            ],
+            "primaryNode": "K284",
+            "evidence": "apply",
+            "difficulty": "D3",
+            "questionType": "mcq",
+            "mode": [
+                "practice"
+            ],
+            "prerequisites": [
+                "K283"
+            ],
+            "content": {
+                "stem": "Trong phép lai phân tích ba gene, 8 lớp đời con có số lượng: ABC = 360, abc = 340, Abc = 48, aBC = 52, ABc = 92, abC = 88, AbC = 10, aBc = 10. Hai lớp lớn nhất là ABC và abc; hai lớp nhỏ nhất là AbC và aBc. Gene nào nằm giữa hai gene còn lại?",
+                "context": "Xác định gene giữa bằng cách so sánh lớp bố mẹ với lớp hoán vị kép.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "Gene A.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "B",
+                        "text": "Gene B.",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "C",
+                        "text": "Gene C.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "Không thể xác định.",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": {
+                    "offspringClasses": {
+                        "ABC": 360,
+                        "abc": 340,
+                        "Abc": 48,
+                        "aBC": 52,
+                        "ABc": 92,
+                        "abC": 88,
+                        "AbC": 10,
+                        "aBc": 10
+                    }
+                }
+            },
+            "answer": {
+                "type": "single",
+                "value": "B"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "data_interpretation_error",
+                "reasoning_error"
+            ],
+            "explanation": {
+                "correct": "Hai lớp bố mẹ là ABC và abc. Hai lớp hoán vị kép là AbC và aBc. So sánh ABC với AbC và abc với aBc cho thấy chỉ allele tại locus B thay đổi vị trí tương đối, nên B là gene ở giữa.",
+                "incorrect": {
+                    "A": "So sánh từng lớp bố mẹ với lớp hoán vị kép tương ứng cho thấy A không phải gene đổi vị trí.",
+                    "C": "C không phải gene thay đổi khi so sánh parental với DCO tương ứng.",
+                    "D": "Có thể xác định gene giữa từ hai lớp bố mẹ và hai lớp hoán vị kép."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "So sánh ABC với AbC."
+                    },
+                    {
+                        "level": 2,
+                        "text": "A và C giữ nguyên; B đổi B → b."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "data_interpretation_error": {
+                        "sourceNodes": [
+                            "K284"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "reasoning_error": {
+                        "sourceNodes": [
+                            "K284"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-09-30",
+                "updatedAt": "2026-09-30",
+                "source": "original",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 90,
+                "tags": [
+                    "c09",
+                    "k284",
+                    "three-point-testcross",
+                    "middle-gene",
+                    "practice"
+                ]
+            }
+        },
+        {
+            "id": "Q-A-K284-A-004",
+            "version": "1.0.0",
+            "nodes": [
+                "K284"
+            ],
+            "primaryNode": "K284",
+            "evidence": "apply",
+            "difficulty": "D3",
+            "questionType": "mcq",
+            "mode": [
+                "remediation"
+            ],
+            "prerequisites": [
+                "K283"
+            ],
+            "content": {
+                "stem": "Trong phép lai phân tích ba gene, hai lớp bố mẹ là Abc và aBC; hai lớp hoán vị kép là AbC và aBc. Gene nào nằm giữa?",
+                "context": "Remediation lỗi xác định gene giữa khi pha bố mẹ không phải ABC/abc.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "Gene A.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "B",
+                        "text": "Gene B.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "C",
+                        "text": "Gene C.",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "D",
+                        "text": "Không thể xác định.",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "C"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "reasoning_error",
+                "data_interpretation_error"
+            ],
+            "explanation": {
+                "correct": "So sánh Abc với AbC: A và B giữ nguyên, chỉ c đổi thành C. Tương tự aBC với aBc chỉ C đổi trạng thái. Vì vậy C là gene nằm giữa.",
+                "incorrect": {
+                    "A": "Allele A không đổi khi so sánh từng parental với DCO tương ứng.",
+                    "B": "Allele B cũng không đổi trong phép so sánh này.",
+                    "D": "Hai lớp parental và hai lớp DCO đã đủ để xác định gene giữa."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "So sánh Abc với AbC từng locus một."
+                    },
+                    {
+                        "level": 2,
+                        "text": "Chỉ locus C thay đổi."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "reasoning_error": {
+                        "sourceNodes": [
+                            "K284"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "data_interpretation_error": {
+                        "sourceNodes": [
+                            "K284"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-09-30",
+                "updatedAt": "2026-09-30",
+                "source": "original",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 60,
+                "tags": [
+                    "c09",
+                    "k284",
+                    "remediation",
+                    "middle-gene",
+                    "unusual-parental-phase"
+                ]
+            }
+        },
+        {
+            "id": "Q-A-K284-A-005",
+            "version": "1.0.0",
+            "nodes": [
+                "K284"
+            ],
+            "primaryNode": "K284",
+            "evidence": "apply",
+            "difficulty": "D3",
+            "questionType": "mcq",
+            "mode": [
+                "remediation",
+                "practice"
+            ],
+            "prerequisites": [
+                "K283"
+            ],
+            "content": {
+                "stem": "Một phép lai phân tích ba gene cho hai lớp bố mẹ ABC và abc; hai lớp hoán vị kép AbC và aBc. Kết luận nào đúng?",
+                "context": "Mini-probe kiểm tra lại quy tắc xác định gene giữa.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "A nằm giữa.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "B",
+                        "text": "B nằm giữa.",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "C",
+                        "text": "C nằm giữa.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "A, B và C cách đều nhau.",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "B"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "reasoning_error"
+            ],
+            "explanation": {
+                "correct": "ABC → AbC chỉ thay đổi B thành b; abc → aBc chỉ thay đổi b thành B. Do đó B là gene giữa.",
+                "incorrect": {
+                    "A": "A không thay đổi giữa parental và DCO tương ứng.",
+                    "C": "C không thay đổi giữa parental và DCO tương ứng.",
+                    "D": "Dữ liệu này xác định thứ tự gene chứ không chứng minh ba khoảng cách bằng nhau."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Tìm locus duy nhất đổi trạng thái giữa parental và DCO tương ứng."
+                    },
+                    {
+                        "level": 2,
+                        "text": "ABC → AbC: B là locus đổi."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "reasoning_error": {
+                        "sourceNodes": [
+                            "K284"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-09-30",
+                "updatedAt": "2026-09-30",
+                "source": "original",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 45,
+                "tags": [
+                    "c09",
+                    "k284",
+                    "mini-probe",
+                    "middle-gene"
+                ]
+            }
+        },
+        {
+            "id": "Q-A-K284-A-006",
+            "version": "1.0.0",
+            "nodes": [
+                "K284"
+            ],
+            "primaryNode": "K284",
+            "evidence": "apply",
+            "difficulty": "D3",
+            "questionType": "mcq",
+            "mode": [
+                "practice"
+            ],
+            "prerequisites": [
+                "K283"
+            ],
+            "content": {
+                "stem": "Trong phép lai phân tích ba gene có thứ tự A – B – C, thu được 1000 cá thể. Tổng số cá thể thuộc các lớp trao đổi chéo đơn trong đoạn A–B là 160; tổng số cá thể hoán vị kép là 20. Khoảng cách A–B là bao nhiêu?",
+                "context": "Tính khoảng cách một đoạn của bản đồ ba gene có tính cả hoán vị kép.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "16 cM.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "B",
+                        "text": "18 cM.",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "C",
+                        "text": "20 cM.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "36 cM.",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": {
+                    "totalOffspring": 1000,
+                    "singleCrossoversAB": 160,
+                    "doubleCrossovers": 20
+                }
+            },
+            "answer": {
+                "type": "single",
+                "value": "B"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "calculation_error",
+                "reasoning_error"
+            ],
+            "explanation": {
+                "correct": "Mỗi cá thể thuộc lớp hoán vị kép cũng chứa một sự kiện trao đổi chéo trong đoạn A–B. Vì vậy tần số tái tổ hợp của đoạn A–B = (160 + 20)/1000 = 18%, tương ứng 18 cM.",
+                "incorrect": {
+                    "A": "16 cM chỉ tính các lớp trao đổi chéo đơn và bỏ sót DCO.",
+                    "C": "20 là số cá thể DCO, không phải khoảng cách A–B.",
+                    "D": "Không nhân đôi tổng số recombinant của đoạn."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "DCO phải được tính vào cả hai khoảng kế cận."
+                    },
+                    {
+                        "level": 2,
+                        "text": "(160 + 20) / 1000 × 100%."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "calculation_error": {
+                        "sourceNodes": [
+                            "K283",
+                            "K284"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "reasoning_error": {
+                        "sourceNodes": [
+                            "K284"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-09-30",
+                "updatedAt": "2026-09-30",
+                "source": "original",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 75,
+                "tags": [
+                    "c09",
+                    "k284",
+                    "sco",
+                    "dco",
+                    "interval-distance"
+                ]
+            }
+        },
+        {
+            "id": "Q-A-K284-A-007",
+            "version": "1.0.0",
+            "nodes": [
+                "K284"
+            ],
+            "primaryNode": "K284",
+            "evidence": "apply",
+            "difficulty": "D3",
+            "questionType": "mcq",
+            "mode": [
+                "practice"
+            ],
+            "prerequisites": [
+                "K283"
+            ],
+            "content": {
+                "stem": "Ba gene có thứ tự A – B – C. Tần số tái tổ hợp ở hai khoảng A–B và B–C lần lượt là 18% và 14%. Tỉ lệ hoán vị kép quan sát được là 2%. Tần số tái tổ hợp quan sát được giữa hai gene ngoài A và C là bao nhiêu?",
+                "context": "Phân biệt khoảng cách bản đồ A–C với tần số tái tổ hợp quan sát được giữa hai gene ngoài.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "28%.",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "B",
+                        "text": "30%.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "C",
+                        "text": "32%.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "34%.",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": {
+                    "recombinationFrequencyAB": 0.18,
+                    "recombinationFrequencyBC": 0.14,
+                    "observedDCO": 0.02
+                }
+            },
+            "answer": {
+                "type": "single",
+                "value": "A"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "calculation_error",
+                "reasoning_error",
+                "cross_node_reasoning_error"
+            ],
+            "explanation": {
+                "correct": "Tần số tái tổ hợp quan sát giữa hai gene ngoài bằng r(A,B) + r(B,C) − 2×DCO, vì hoán vị kép được tính trong cả hai khoảng kế cận nhưng khôi phục tổ hợp allele của hai gene ngoài. Do đó r(A,C) = 18% + 14% − 2×2% = 28%.",
+                "incorrect": {
+                    "B": "Chỉ trừ DCO một lần là chưa đủ vì DCO đã được tính một lần trong mỗi khoảng kế cận.",
+                    "C": "32% là tổng hai tần số tái tổ hợp của hai khoảng kế cận; giá trị này đã tính các cá thể hoán vị kép hai lần và không phải tần số tái tổ hợp quan sát giữa A và C.",
+                    "D": "DCO không được cộng vào tần số recombinant quan sát giữa hai gene ngoài."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Khoảng cách bản đồ A–C và tần số recombinant quan sát A–C không nhất thiết bằng nhau."
+                    },
+                    {
+                        "level": 2,
+                        "text": "r(A,C) = r(A,B) + r(B,C) − 2DCO."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "calculation_error": {
+                        "sourceNodes": [
+                            "K284"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "reasoning_error": {
+                        "sourceNodes": [
+                            "K284"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "cross_node_reasoning_error": {
+                        "sourceNodes": [
+                            "K283",
+                            "K284"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-09-30",
+                "updatedAt": "2026-09-30",
+                "source": "original",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 90,
+                "tags": [
+                    "c09",
+                    "k284",
+                    "outer-gene-recombination",
+                    "dco",
+                    "practice"
+                ]
+            }
+        },
+        {
+            "id": "Q-A-K284-A-008",
+            "version": "1.0.0",
+            "nodes": [
+                "K284"
+            ],
+            "primaryNode": "K284",
+            "evidence": "apply",
+            "difficulty": "D3",
+            "questionType": "mcq",
+            "mode": [
+                "practice"
+            ],
+            "prerequisites": [
+                "K283"
+            ],
+            "content": {
+                "stem": "Hai khoảng gene kế cận có tần số tái tổ hợp lần lượt là 20% và 10%. Nếu hai sự kiện trao đổi chéo xảy ra độc lập, tần số hoán vị kép kỳ vọng là bao nhiêu?",
+                "context": "Tính tần số DCO kỳ vọng trước khi xác định hệ số trùng hợp.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "1%.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "B",
+                        "text": "2%.",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "C",
+                        "text": "10%.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "30%.",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "B"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "calculation_error"
+            ],
+            "explanation": {
+                "correct": "Nếu hai sự kiện độc lập, DCO kỳ vọng = 0,20 × 0,10 = 0,02 = 2%.",
+                "incorrect": {
+                    "A": "1% không phải tích của 20% và 10%.",
+                    "C": "Không lấy tần số nhỏ hơn làm DCO kỳ vọng.",
+                    "D": "Không cộng hai tần số để tính DCO kỳ vọng."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "DCO kỳ vọng khi độc lập được tính bằng tích hai xác suất."
+                    },
+                    {
+                        "level": 2,
+                        "text": "0,20 × 0,10."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "calculation_error": {
+                        "sourceNodes": [
+                            "K284"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-09-30",
+                "updatedAt": "2026-09-30",
+                "source": "original",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 60,
+                "tags": [
+                    "c09",
+                    "k284",
+                    "expected-dco",
+                    "practice"
+                ]
+            }
+        },
+        {
+            "id": "Q-A-K284-A-009",
+            "version": "1.0.0",
+            "nodes": [
+                "K284"
+            ],
+            "primaryNode": "K284",
+            "evidence": "apply",
+            "difficulty": "D3",
+            "questionType": "mcq",
+            "mode": [
+                "practice"
+            ],
+            "prerequisites": [
+                "K283"
+            ],
+            "content": {
+                "stem": "Trong một phép lai ba điểm, tần số hoán vị kép quan sát được là 1,2%, còn tần số hoán vị kép kỳ vọng là 2,0%. Hệ số trùng hợp (coefficient of coincidence) bằng bao nhiêu?",
+                "context": "Tính hệ số trùng hợp từ DCO quan sát và DCO kỳ vọng.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "0,4.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "B",
+                        "text": "0,6.",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "C",
+                        "text": "0,8.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "1,2.",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "B"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "calculation_error",
+                "concept_confusion"
+            ],
+            "explanation": {
+                "correct": "Hệ số trùng hợp C = DCO quan sát / DCO kỳ vọng = 1,2 / 2,0 = 0,6.",
+                "incorrect": {
+                    "A": "0,4 là giá trị interference trong trường hợp này, không phải hệ số trùng hợp.",
+                    "C": "0,8 không bằng 1,2/2,0.",
+                    "D": "1,2% là DCO quan sát, chưa phải hệ số trùng hợp."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "C = observed DCO / expected DCO."
+                    },
+                    {
+                        "level": 2,
+                        "text": "C = 1,2 / 2,0."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "calculation_error": {
+                        "sourceNodes": [
+                            "K284"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "concept_confusion": {
+                        "sourceNodes": [
+                            "K284"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-09-30",
+                "updatedAt": "2026-09-30",
+                "source": "original",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 60,
+                "tags": [
+                    "c09",
+                    "k284",
+                    "coefficient-of-coincidence",
+                    "practice"
+                ]
+            }
+        },
+        {
+            "id": "Q-A-K284-A-010",
+            "version": "1.0.0",
+            "nodes": [
+                "K284"
+            ],
+            "primaryNode": "K284",
+            "evidence": "apply",
+            "difficulty": "D3",
+            "questionType": "mcq",
+            "mode": [
+                "retest"
+            ],
+            "prerequisites": [
+                "K283"
+            ],
+            "content": {
+                "stem": "Một phép lai ba điểm có hệ số trùng hợp C = 0,75. Hệ số nhiễu (interference) bằng bao nhiêu?",
+                "context": "Retest khả năng phân biệt hệ số trùng hợp và hệ số nhiễu.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "0,25.",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "B",
+                        "text": "0,75.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "C",
+                        "text": "1,25.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "1,75.",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "A"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "calculation_error",
+                "concept_confusion"
+            ],
+            "context": {
+                "contextId": "c09-k284-retest-interference-01",
+                "contextType": "integrated_problem",
+                "retestGroupId": "c09-k284-coc-interference-01"
+            },
+            "explanation": {
+                "correct": "Hệ số nhiễu I = 1 − C = 1 − 0,75 = 0,25.",
+                "incorrect": {
+                    "B": "0,75 là hệ số trùng hợp đã cho, không phải hệ số nhiễu.",
+                    "C": "Interference được tính bằng 1 − C, không phải 1 + C.",
+                    "D": "Không cộng C vào 1."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "I và C có tổng bằng 1."
+                    },
+                    {
+                        "level": 2,
+                        "text": "I = 1 − 0,75."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "calculation_error": {
+                        "sourceNodes": [
+                            "K284"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "concept_confusion": {
+                        "sourceNodes": [
+                            "K284"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-09-30",
+                "updatedAt": "2026-09-30",
+                "source": "original",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 45,
+                "contextId": "c09-k284-retest-interference-01",
+                "retestGroupId": "c09-k284-coc-interference-01",
+                "tags": [
+                    "c09",
+                    "k284",
+                    "interference",
+                    "retest"
+                ]
+            }
+        },
+        {
+            "id": "Q-A-K284-T-011",
+            "version": "1.0.0",
+            "nodes": [
+                "K284"
+            ],
+            "primaryNode": "K284",
+            "evidence": "transfer",
+            "difficulty": "D4",
+            "questionType": "mcq",
+            "mode": [
+                "challenge"
+            ],
+            "prerequisites": [
+                "K283"
+            ],
+            "content": {
+                "stem": "Trong phép lai phân tích ba gene, thu được: ABC = 42, abc = 38, Abc = 390, aBC = 410, ABc = 58, abC = 52, AbC = 5, aBc = 5. Tổng số cá thể là 1000. Thứ tự gene nào phù hợp với dữ liệu?",
+                "context": "Transfer: pha bố mẹ không ở dạng ABC/abc; học sinh phải tự xác định parental, DCO và gene giữa.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "A – B – C.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "B",
+                        "text": "A – C – B.",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "C",
+                        "text": "B – A – C.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "Không thể xác định.",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": {
+                    "totalOffspring": 1000,
+                    "offspringClasses": {
+                        "ABC": 42,
+                        "abc": 38,
+                        "Abc": 390,
+                        "aBC": 410,
+                        "ABc": 58,
+                        "abC": 52,
+                        "AbC": 5,
+                        "aBc": 5
+                    }
+                }
+            },
+            "answer": {
+                "type": "single",
+                "value": "B"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "data_interpretation_error",
+                "reasoning_error",
+                "cross_node_reasoning_error"
+            ],
+            "context": {
+                "contextId": "c09-k284-transfer-unusual-parental-01",
+                "contextType": "genetic_cross"
+            },
+            "explanation": {
+                "correct": "Hai lớp lớn nhất Abc và aBC là parental; hai lớp nhỏ nhất AbC và aBc là DCO. So sánh Abc với AbC cho thấy chỉ locus C đổi c → C; so sánh aBC với aBc cũng chỉ locus C đổi C → c. Vì vậy C là gene giữa, tương ứng thứ tự A – C – B.",
+                "incorrect": {
+                    "A": "Nếu B ở giữa thì B phải là locus đổi trạng thái khi so sánh parental với DCO tương ứng; dữ liệu cho thấy C mới là locus đổi.",
+                    "C": "Dữ liệu xác định C nằm giữa A và B, không phải A nằm giữa.",
+                    "D": "Hai lớp parental và hai lớp DCO cho phép xác định gene giữa."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Hai lớp lớn nhất là parental; hai lớp nhỏ nhất là DCO."
+                    },
+                    {
+                        "level": 2,
+                        "text": "Abc → AbC: locus nào thay đổi?"
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "data_interpretation_error": {
+                        "sourceNodes": [
+                            "K284"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "reasoning_error": {
+                        "sourceNodes": [
+                            "K284"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "cross_node_reasoning_error": {
+                        "sourceNodes": [
+                            "K283",
+                            "K284"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-09-30",
+                "updatedAt": "2026-09-30",
+                "source": "original",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 120,
+                "contextId": "c09-k284-transfer-unusual-parental-01",
+                "tags": [
+                    "c09",
+                    "k284",
+                    "transfer",
+                    "three-point-testcross",
+                    "middle-gene",
+                    "unusual-parental-phase"
+                ]
+            }
+        },
+        {
+            "id": "Q-A-K284-T-012",
+            "version": "1.0.0",
+            "nodes": [
+                "K284"
+            ],
+            "primaryNode": "K284",
+            "evidence": "transfer",
+            "difficulty": "D4",
+            "questionType": "mcq",
+            "mode": [
+                "retest",
+                "challenge"
+            ],
+            "prerequisites": [
+                "K283"
+            ],
+            "content": {
+                "stem": "Ba gene có thứ tự A – B – C. Khoảng cách A–B là 18 cM và B–C là 13 cM. Trong 1000 cá thể của một phép lai phân tích, quan sát được 20 cá thể thuộc các lớp hoán vị kép. Hệ số trùng hợp và hệ số nhiễu lần lượt gần nhất với cặp giá trị nào?",
+                "context": "Bài transfer tổng hợp: từ khoảng cách gene và DCO quan sát suy ra DCO kỳ vọng, hệ số trùng hợp và interference.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "C ≈ 0,85 và I ≈ 0,15.",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "B",
+                        "text": "C ≈ 0,15 và I ≈ 0,85.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "C",
+                        "text": "C ≈ 1,17 và I ≈ 0,17.",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "C ≈ 2,34 và I ≈ 0,66.",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": {
+                    "distanceABcM": 18,
+                    "distanceBCcM": 13,
+                    "totalOffspring": 1000,
+                    "observedDCOCount": 20
+                }
+            },
+            "answer": {
+                "type": "single",
+                "value": "A"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "calculation_error",
+                "reasoning_error",
+                "cross_node_reasoning_error"
+            ],
+            "context": {
+                "contextId": "c09-k284-retest-integrated-dco-01",
+                "contextType": "integrated_problem",
+                "retestGroupId": "c09-k284-integrated-map-01"
+            },
+            "explanation": {
+                "correct": "DCO kỳ vọng = 0,18 × 0,13 = 0,0234 = 2,34%. DCO quan sát = 20/1000 = 2%. Do đó C = 2/2,34 ≈ 0,85 và I = 1 − 0,85 ≈ 0,15.",
+                "incorrect": {
+                    "B": "0,15 là interference, không phải hệ số trùng hợp.",
+                    "C": "Hệ số trùng hợp phải lấy DCO quan sát chia DCO kỳ vọng: 2/2,34, không phải phép chia ngược.",
+                    "D": "2,34% là DCO kỳ vọng, chưa phải hệ số trùng hợp."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Tính expected DCO = 0,18 × 0,13; observed DCO = 20/1000."
+                    },
+                    {
+                        "level": 2,
+                        "text": "C = observed/expected; I = 1 − C."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "calculation_error": {
+                        "sourceNodes": [
+                            "K284"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "reasoning_error": {
+                        "sourceNodes": [
+                            "K284"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "cross_node_reasoning_error": {
+                        "sourceNodes": [
+                            "K283",
+                            "K284"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-09-30",
+                "updatedAt": "2026-09-30",
+                "source": "original",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 120,
+                "contextId": "c09-k284-retest-integrated-dco-01",
+                "retestGroupId": "c09-k284-integrated-map-01",
+                "tags": [
+                    "c09",
+                    "k284",
+                    "transfer",
+                    "retest",
+                    "dco",
+                    "coefficient-of-coincidence",
+                    "interference"
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,2398 @@
+TAP version 13
+# (node:7848) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js is not specified and it doesn't parse as CommonJS.
+# Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+# To eliminate this warning, add "type": "module" to /Users/doducqunynhtram/package.json.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: 1. loads canonical attempt.schema.json
+ok 1 - 1. loads canonical attempt.schema.json
+  ---
+  duration_ms: 0.531875
+  ...
+# Subtest: 2. basic AttemptBuilder output validates against schema
+not ok 2 - 2. basic AttemptBuilder output validates against schema
+  ---
+  duration_ms: 3.038458
+  location: '/Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:426:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Basic builder output must satisfy attempt.schema.json.
+    
+    [
+      {
+        "instancePath": "/evidence",
+        "schemaPath": "#/$defs/evidence/additionalProperties",
+        "keyword": "additionalProperties",
+        "params": {
+          "additionalProperty": "questionType"
+        },
+        "message": "must NOT have additional properties"
+      }
+    ]
+    
+    Attempt:
+    {
+      "schemaVersion": "1.0.0",
+      "attemptId": "ATTEMPT-001",
+      "studentId": "STUDENT-001",
+      "sessionId": "SESSION-001",
+      "questionId": "Q-A-K283-A-001",
+      "startedAt": "2026-10-01T07:00:00.000Z",
+      "submittedAt": "2026-10-01T07:00:30.000Z",
+      "response": {
+        "type": "singleChoice",
+        "value": "B",
+        "normalizedValue": "B"
+      },
+      "result": "correct",
+      "score": 1,
+      "attemptNumber": 1,
+      "hint": {
+        "used": false,
+        "count": 0
+      },
+      "timing": {
+        "timeSpentSeconds": 30
+      },
+      "context": {
+        "learningMode": "HOC_SAU",
+        "action": "PRACTICE",
+        "pathStage": "PRACTICE",
+        "nodeId": "K283",
+        "secondaryNodeIds": [
+          "K282"
+        ],
+        "metaSkillIds": [
+          "S008"
+        ],
+        "clusterId": "C09",
+        "decisionId": "DECISION-001"
+      },
+      "evidence": {
+        "questionType": "Q-A",
+        "difficulty": "D3",
+        "primaryDimension": "apply",
+        "independence": "independent"
+      },
+      "metadata": {
+        "questionVersion": "1.0.0"
+      }
+    }
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    assertSchemaValid (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:365:12)
+    TestContext.<anonymous> (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:436:9)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: 3. correct Attempt validates against schema
+not ok 3 - 3. correct Attempt validates against schema
+  ---
+  duration_ms: 0.15875
+  location: '/Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:450:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Attempt must satisfy attempt.schema.json.
+    
+    [
+      {
+        "instancePath": "/evidence",
+        "schemaPath": "#/$defs/evidence/additionalProperties",
+        "keyword": "additionalProperties",
+        "params": {
+          "additionalProperty": "questionType"
+        },
+        "message": "must NOT have additional properties"
+      }
+    ]
+    
+    Attempt:
+    {
+      "schemaVersion": "1.0.0",
+      "attemptId": "ATTEMPT-001",
+      "studentId": "STUDENT-001",
+      "sessionId": "SESSION-001",
+      "questionId": "Q-A-K283-A-001",
+      "startedAt": "2026-10-01T07:00:00.000Z",
+      "submittedAt": "2026-10-01T07:00:30.000Z",
+      "response": {
+        "type": "singleChoice",
+        "value": "B",
+        "normalizedValue": "B"
+      },
+      "result": "correct",
+      "score": 1,
+      "attemptNumber": 1,
+      "hint": {
+        "used": false,
+        "count": 0
+      },
+      "timing": {
+        "timeSpentSeconds": 30
+      },
+      "context": {
+        "learningMode": "HOC_SAU",
+        "action": "PRACTICE",
+        "pathStage": "PRACTICE",
+        "nodeId": "K283",
+        "secondaryNodeIds": [
+          "K282"
+        ],
+        "metaSkillIds": [
+          "S008"
+        ],
+        "clusterId": "C09",
+        "decisionId": "DECISION-001"
+      },
+      "evidence": {
+        "questionType": "Q-A",
+        "difficulty": "D3",
+        "primaryDimension": "apply",
+        "independence": "independent"
+      },
+      "metadata": {
+        "questionVersion": "1.0.0"
+      }
+    }
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    assertSchemaValid (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:365:12)
+    TestContext.<anonymous> (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:465:9)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: 4. wrong evaluation becomes schema-valid incorrect Attempt
+not ok 4 - 4. wrong evaluation becomes schema-valid incorrect Attempt
+  ---
+  duration_ms: 0.204917
+  location: '/Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:478:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Attempt must satisfy attempt.schema.json.
+    
+    [
+      {
+        "instancePath": "/evidence",
+        "schemaPath": "#/$defs/evidence/additionalProperties",
+        "keyword": "additionalProperties",
+        "params": {
+          "additionalProperty": "questionType"
+        },
+        "message": "must NOT have additional properties"
+      }
+    ]
+    
+    Attempt:
+    {
+      "schemaVersion": "1.0.0",
+      "attemptId": "ATTEMPT-001",
+      "studentId": "STUDENT-001",
+      "sessionId": "SESSION-001",
+      "questionId": "Q-A-K283-A-001",
+      "startedAt": "2026-10-01T07:00:00.000Z",
+      "submittedAt": "2026-10-01T07:00:30.000Z",
+      "response": {
+        "type": "singleChoice",
+        "value": "A",
+        "normalizedValue": "A"
+      },
+      "result": "incorrect",
+      "score": 0,
+      "attemptNumber": 1,
+      "hint": {
+        "used": false,
+        "count": 0
+      },
+      "timing": {
+        "timeSpentSeconds": 30
+      },
+      "context": {
+        "learningMode": "HOC_SAU",
+        "action": "PRACTICE",
+        "pathStage": "PRACTICE",
+        "nodeId": "K283",
+        "secondaryNodeIds": [
+          "K282"
+        ],
+        "metaSkillIds": [
+          "S008"
+        ],
+        "clusterId": "C09",
+        "decisionId": "DECISION-001"
+      },
+      "evidence": {
+        "questionType": "Q-A",
+        "difficulty": "D3",
+        "primaryDimension": "apply",
+        "independence": "independent"
+      },
+      "metadata": {
+        "questionVersion": "1.0.0"
+      }
+    }
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    assertSchemaValid (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:365:12)
+    TestContext.<anonymous> (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:522:9)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: 5. partial Attempt validates against schema
+not ok 5 - 5. partial Attempt validates against schema
+  ---
+  duration_ms: 0.131792
+  location: '/Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:535:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Attempt must satisfy attempt.schema.json.
+    
+    [
+      {
+        "instancePath": "/evidence",
+        "schemaPath": "#/$defs/evidence/additionalProperties",
+        "keyword": "additionalProperties",
+        "params": {
+          "additionalProperty": "questionType"
+        },
+        "message": "must NOT have additional properties"
+      }
+    ]
+    
+    Attempt:
+    {
+      "schemaVersion": "1.0.0",
+      "attemptId": "ATTEMPT-001",
+      "studentId": "STUDENT-001",
+      "sessionId": "SESSION-001",
+      "questionId": "Q-A-K283-A-001",
+      "startedAt": "2026-10-01T07:00:00.000Z",
+      "submittedAt": "2026-10-01T07:00:30.000Z",
+      "response": {
+        "type": "singleChoice",
+        "value": "B",
+        "normalizedValue": "B"
+      },
+      "result": "partial",
+      "score": 0.5,
+      "attemptNumber": 1,
+      "hint": {
+        "used": false,
+        "count": 0
+      },
+      "timing": {
+        "timeSpentSeconds": 30
+      },
+      "context": {
+        "learningMode": "HOC_SAU",
+        "action": "PRACTICE",
+        "pathStage": "PRACTICE",
+        "nodeId": "K283",
+        "secondaryNodeIds": [
+          "K282"
+        ],
+        "metaSkillIds": [
+          "S008"
+        ],
+        "clusterId": "C09",
+        "decisionId": "DECISION-001"
+      },
+      "evidence": {
+        "questionType": "Q-A",
+        "difficulty": "D3",
+        "primaryDimension": "apply",
+        "independence": "independent"
+      },
+      "metadata": {
+        "questionVersion": "1.0.0"
+      }
+    }
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    assertSchemaValid (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:365:12)
+    TestContext.<anonymous> (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:574:9)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: 6. skipped Attempt validates against schema
+not ok 6 - 6. skipped Attempt validates against schema
+  ---
+  duration_ms: 0.193875
+  location: '/Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:587:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Attempt must satisfy attempt.schema.json.
+    
+    [
+      {
+        "instancePath": "/evidence",
+        "schemaPath": "#/$defs/evidence/additionalProperties",
+        "keyword": "additionalProperties",
+        "params": {
+          "additionalProperty": "questionType"
+        },
+        "message": "must NOT have additional properties"
+      }
+    ]
+    
+    Attempt:
+    {
+      "schemaVersion": "1.0.0",
+      "attemptId": "ATTEMPT-001",
+      "studentId": "STUDENT-001",
+      "sessionId": "SESSION-001",
+      "questionId": "Q-A-K283-A-001",
+      "startedAt": "2026-10-01T07:00:00.000Z",
+      "submittedAt": "2026-10-01T07:00:30.000Z",
+      "response": {
+        "type": "singleChoice",
+        "value": null,
+        "normalizedValue": null
+      },
+      "result": "skipped",
+      "score": 0,
+      "attemptNumber": 1,
+      "hint": {
+        "used": false,
+        "count": 0
+      },
+      "timing": {
+        "timeSpentSeconds": 30
+      },
+      "context": {
+        "learningMode": "HOC_SAU",
+        "action": "PRACTICE",
+        "pathStage": "PRACTICE",
+        "nodeId": "K283",
+        "secondaryNodeIds": [
+          "K282"
+        ],
+        "metaSkillIds": [
+          "S008"
+        ],
+        "clusterId": "C09",
+        "decisionId": "DECISION-001"
+      },
+      "evidence": {
+        "questionType": "Q-A",
+        "difficulty": "D3",
+        "primaryDimension": "apply",
+        "independence": "independent"
+      },
+      "metadata": {
+        "questionVersion": "1.0.0"
+      }
+    }
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    assertSchemaValid (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:365:12)
+    TestContext.<anonymous> (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:631:9)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: 7. hint-assisted Attempt validates against schema
+not ok 7 - 7. hint-assisted Attempt validates against schema
+  ---
+  duration_ms: 0.116834
+  location: '/Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:644:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Attempt must satisfy attempt.schema.json.
+    
+    [
+      {
+        "instancePath": "/evidence",
+        "schemaPath": "#/$defs/evidence/additionalProperties",
+        "keyword": "additionalProperties",
+        "params": {
+          "additionalProperty": "questionType"
+        },
+        "message": "must NOT have additional properties"
+      }
+    ]
+    
+    Attempt:
+    {
+      "schemaVersion": "1.0.0",
+      "attemptId": "ATTEMPT-001",
+      "studentId": "STUDENT-001",
+      "sessionId": "SESSION-001",
+      "questionId": "Q-A-K283-A-001",
+      "startedAt": "2026-10-01T07:00:00.000Z",
+      "submittedAt": "2026-10-01T07:00:30.000Z",
+      "response": {
+        "type": "singleChoice",
+        "value": "B",
+        "normalizedValue": "B"
+      },
+      "result": "correct",
+      "score": 1,
+      "attemptNumber": 1,
+      "hint": {
+        "used": true,
+        "count": 1,
+        "level": 2
+      },
+      "timing": {
+        "timeSpentSeconds": 30
+      },
+      "context": {
+        "learningMode": "HOC_SAU",
+        "action": "PRACTICE",
+        "pathStage": "PRACTICE",
+        "nodeId": "K283",
+        "secondaryNodeIds": [
+          "K282"
+        ],
+        "metaSkillIds": [
+          "S008"
+        ],
+        "clusterId": "C09",
+        "decisionId": "DECISION-001"
+      },
+      "evidence": {
+        "questionType": "Q-A",
+        "difficulty": "D3",
+        "primaryDimension": "apply",
+        "independence": "hint_assisted"
+      },
+      "metadata": {
+        "questionVersion": "1.0.0"
+      }
+    }
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    assertSchemaValid (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:365:12)
+    TestContext.<anonymous> (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:673:9)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: 8. retry-assisted Attempt validates against schema
+not ok 8 - 8. retry-assisted Attempt validates against schema
+  ---
+  duration_ms: 0.12475
+  location: '/Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:686:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Attempt must satisfy attempt.schema.json.
+    
+    [
+      {
+        "instancePath": "/evidence",
+        "schemaPath": "#/$defs/evidence/additionalProperties",
+        "keyword": "additionalProperties",
+        "params": {
+          "additionalProperty": "questionType"
+        },
+        "message": "must NOT have additional properties"
+      }
+    ]
+    
+    Attempt:
+    {
+      "schemaVersion": "1.0.0",
+      "attemptId": "ATTEMPT-002",
+      "studentId": "STUDENT-001",
+      "sessionId": "SESSION-001",
+      "questionId": "Q-A-K283-A-001",
+      "startedAt": "2026-10-01T07:00:00.000Z",
+      "submittedAt": "2026-10-01T07:00:30.000Z",
+      "response": {
+        "type": "singleChoice",
+        "value": "B",
+        "normalizedValue": "B"
+      },
+      "result": "correct",
+      "score": 1,
+      "attemptNumber": 2,
+      "hint": {
+        "used": false,
+        "count": 0
+      },
+      "timing": {
+        "timeSpentSeconds": 30
+      },
+      "context": {
+        "learningMode": "HOC_SAU",
+        "action": "PRACTICE",
+        "pathStage": "PRACTICE",
+        "nodeId": "K283",
+        "secondaryNodeIds": [
+          "K282"
+        ],
+        "metaSkillIds": [
+          "S008"
+        ],
+        "clusterId": "C09",
+        "decisionId": "DECISION-001"
+      },
+      "retry": {
+        "isRetry": true,
+        "previousAttemptId": "ATTEMPT-001",
+        "retryNumber": 1
+      },
+      "evidence": {
+        "questionType": "Q-A",
+        "difficulty": "D3",
+        "primaryDimension": "apply",
+        "independence": "retry_assisted"
+      },
+      "metadata": {
+        "questionVersion": "1.0.0"
+      }
+    }
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    assertSchemaValid (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:365:12)
+    TestContext.<anonymous> (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:722:9)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: 9. Attempt with canonical diagnostic validates against schema
+not ok 9 - 9. Attempt with canonical diagnostic validates against schema
+  ---
+  duration_ms: 0.34125
+  location: '/Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:735:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Attempt must satisfy attempt.schema.json.
+    
+    [
+      {
+        "instancePath": "/diagnostic",
+        "schemaPath": "#/additionalProperties",
+        "keyword": "additionalProperties",
+        "params": {
+          "additionalProperty": "failureSignature"
+        },
+        "message": "must NOT have additional properties"
+      },
+      {
+        "instancePath": "/evidence",
+        "schemaPath": "#/$defs/evidence/additionalProperties",
+        "keyword": "additionalProperties",
+        "params": {
+          "additionalProperty": "questionType"
+        },
+        "message": "must NOT have additional properties"
+      }
+    ]
+    
+    Attempt:
+    {
+      "schemaVersion": "1.0.0",
+      "attemptId": "ATTEMPT-001",
+      "studentId": "STUDENT-001",
+      "sessionId": "SESSION-001",
+      "questionId": "Q-A-K283-A-001",
+      "startedAt": "2026-10-01T07:00:00.000Z",
+      "submittedAt": "2026-10-01T07:00:30.000Z",
+      "response": {
+        "type": "singleChoice",
+        "value": "A",
+        "normalizedValue": "A"
+      },
+      "result": "incorrect",
+      "score": 0,
+      "attemptNumber": 1,
+      "hint": {
+        "used": false,
+        "count": 0
+      },
+      "timing": {
+        "timeSpentSeconds": 30
+      },
+      "context": {
+        "learningMode": "HOC_SAU",
+        "action": "PRACTICE",
+        "pathStage": "PRACTICE",
+        "nodeId": "K283",
+        "secondaryNodeIds": [
+          "K282"
+        ],
+        "metaSkillIds": [
+          "S008"
+        ],
+        "clusterId": "C09",
+        "decisionId": "DECISION-001"
+      },
+      "diagnostic": {
+        "failureSignature": "calculation_error",
+        "sourceNodeId": "K283",
+        "metaSkillId": "S008",
+        "confidence": 0.9,
+        "evidence": "Observed calculation error."
+      },
+      "evidence": {
+        "questionType": "Q-A",
+        "difficulty": "D3",
+        "primaryDimension": "apply",
+        "independence": "independent"
+      },
+      "metadata": {
+        "questionVersion": "1.0.0"
+      }
+    }
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    assertSchemaValid (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:365:12)
+    TestContext.<anonymous> (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:793:9)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: 10. Attempt with optional runtime metadata validates against schema
+not ok 10 - 10. Attempt with optional runtime metadata validates against schema
+  ---
+  duration_ms: 0.24625
+  location: '/Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:806:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Full optional Attempt must satisfy attempt.schema.json.
+    
+    [
+      {
+        "instancePath": "/evidence",
+        "schemaPath": "#/$defs/evidence/additionalProperties",
+        "keyword": "additionalProperties",
+        "params": {
+          "additionalProperty": "questionType"
+        },
+        "message": "must NOT have additional properties"
+      }
+    ]
+    
+    Attempt:
+    {
+      "schemaVersion": "1.0.0",
+      "attemptId": "ATTEMPT-001",
+      "studentId": "STUDENT-001",
+      "sessionId": "SESSION-001",
+      "questionId": "Q-A-K283-A-001",
+      "startedAt": "2026-10-01T07:00:00.000Z",
+      "submittedAt": "2026-10-01T07:00:30.000Z",
+      "response": {
+        "type": "singleChoice",
+        "value": "B",
+        "normalizedValue": "B"
+      },
+      "result": "correct",
+      "score": 1,
+      "attemptNumber": 1,
+      "hint": {
+        "used": true,
+        "count": 1,
+        "level": 1
+      },
+      "timing": {
+        "timeSpentSeconds": 30,
+        "activeTimeSeconds": 25,
+        "pausedTimeSeconds": 5
+      },
+      "context": {
+        "learningMode": "HOC_SAU",
+        "action": "PRACTICE",
+        "pathStage": "PRACTICE",
+        "nodeId": "K283",
+        "secondaryNodeIds": [
+          "K282"
+        ],
+        "metaSkillIds": [
+          "S008"
+        ],
+        "clusterId": "C09",
+        "lessonId": "LESSON-C09-K283",
+        "remediationId": "REM-001",
+        "decisionId": "DECISION-001"
+      },
+      "evidence": {
+        "questionType": "Q-A",
+        "difficulty": "D3",
+        "primaryDimension": "apply",
+        "independence": "hint_assisted"
+      },
+      "feedback": {
+        "shown": true,
+        "type": "correct"
+      },
+      "ui": {
+        "device": "desktop",
+        "inputMethod": "mouse"
+      },
+      "metadata": {
+        "questionVersion": "1.0.0",
+        "engineVersion": "study-runtime-1.0.0",
+        "validatorVersion": "1.0.0"
+      }
+    }
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    assertSchemaValid (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:365:12)
+    TestContext.<anonymous> (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:881:9)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: 11. REMEDIATE + MINI_PRACTICE validates against schema
+not ok 11 - 11. REMEDIATE + MINI_PRACTICE validates against schema
+  ---
+  duration_ms: 0.129833
+  location: '/Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:895:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Attempt must satisfy attempt.schema.json.
+    
+    [
+      {
+        "instancePath": "/evidence",
+        "schemaPath": "#/$defs/evidence/additionalProperties",
+        "keyword": "additionalProperties",
+        "params": {
+          "additionalProperty": "questionType"
+        },
+        "message": "must NOT have additional properties"
+      }
+    ]
+    
+    Attempt:
+    {
+      "schemaVersion": "1.0.0",
+      "attemptId": "ATTEMPT-001",
+      "studentId": "STUDENT-001",
+      "sessionId": "SESSION-001",
+      "questionId": "Q-A-K283-A-001",
+      "startedAt": "2026-10-01T07:00:00.000Z",
+      "submittedAt": "2026-10-01T07:00:30.000Z",
+      "response": {
+        "type": "singleChoice",
+        "value": "B",
+        "normalizedValue": "B"
+      },
+      "result": "correct",
+      "score": 1,
+      "attemptNumber": 1,
+      "hint": {
+        "used": false,
+        "count": 0
+      },
+      "timing": {
+        "timeSpentSeconds": 30
+      },
+      "context": {
+        "learningMode": "HOC_SAU",
+        "action": "REMEDIATE",
+        "pathStage": "MINI_PRACTICE",
+        "nodeId": "K283",
+        "secondaryNodeIds": [
+          "K282"
+        ],
+        "metaSkillIds": [
+          "S008"
+        ],
+        "clusterId": "C09",
+        "decisionId": "DECISION-001"
+      },
+      "evidence": {
+        "questionType": "Q-A",
+        "difficulty": "D3",
+        "primaryDimension": "apply",
+        "independence": "independent"
+      },
+      "metadata": {
+        "questionVersion": "1.0.0"
+      }
+    }
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    assertSchemaValid (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:365:12)
+    TestContext.<anonymous> (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:916:9)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: 12. REMEDIATE + MINI_PROBE validates against schema
+not ok 12 - 12. REMEDIATE + MINI_PROBE validates against schema
+  ---
+  duration_ms: 0.143
+  location: '/Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:929:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Attempt must satisfy attempt.schema.json.
+    
+    [
+      {
+        "instancePath": "/evidence",
+        "schemaPath": "#/$defs/evidence/additionalProperties",
+        "keyword": "additionalProperties",
+        "params": {
+          "additionalProperty": "questionType"
+        },
+        "message": "must NOT have additional properties"
+      }
+    ]
+    
+    Attempt:
+    {
+      "schemaVersion": "1.0.0",
+      "attemptId": "ATTEMPT-001",
+      "studentId": "STUDENT-001",
+      "sessionId": "SESSION-001",
+      "questionId": "Q-A-K283-A-001",
+      "startedAt": "2026-10-01T07:00:00.000Z",
+      "submittedAt": "2026-10-01T07:00:30.000Z",
+      "response": {
+        "type": "singleChoice",
+        "value": "B",
+        "normalizedValue": "B"
+      },
+      "result": "correct",
+      "score": 1,
+      "attemptNumber": 1,
+      "hint": {
+        "used": false,
+        "count": 0
+      },
+      "timing": {
+        "timeSpentSeconds": 30
+      },
+      "context": {
+        "learningMode": "HOC_SAU",
+        "action": "REMEDIATE",
+        "pathStage": "MINI_PROBE",
+        "nodeId": "K283",
+        "secondaryNodeIds": [
+          "K282"
+        ],
+        "metaSkillIds": [
+          "S008"
+        ],
+        "clusterId": "C09",
+        "decisionId": "DECISION-001"
+      },
+      "evidence": {
+        "questionType": "Q-A",
+        "difficulty": "D3",
+        "primaryDimension": "apply",
+        "independence": "independent"
+      },
+      "metadata": {
+        "questionVersion": "1.0.0"
+      }
+    }
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    assertSchemaValid (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:365:12)
+    TestContext.<anonymous> (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:950:9)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: 13. RETEST Attempt validates against schema
+not ok 13 - 13. RETEST Attempt validates against schema
+  ---
+  duration_ms: 0.094541
+  location: '/Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:963:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Attempt must satisfy attempt.schema.json.
+    
+    [
+      {
+        "instancePath": "/evidence",
+        "schemaPath": "#/$defs/evidence/additionalProperties",
+        "keyword": "additionalProperties",
+        "params": {
+          "additionalProperty": "questionType"
+        },
+        "message": "must NOT have additional properties"
+      }
+    ]
+    
+    Attempt:
+    {
+      "schemaVersion": "1.0.0",
+      "attemptId": "ATTEMPT-001",
+      "studentId": "STUDENT-001",
+      "sessionId": "SESSION-001",
+      "questionId": "Q-A-K283-A-001",
+      "startedAt": "2026-10-01T07:00:00.000Z",
+      "submittedAt": "2026-10-01T07:00:30.000Z",
+      "response": {
+        "type": "singleChoice",
+        "value": "B",
+        "normalizedValue": "B"
+      },
+      "result": "correct",
+      "score": 1,
+      "attemptNumber": 1,
+      "hint": {
+        "used": false,
+        "count": 0
+      },
+      "timing": {
+        "timeSpentSeconds": 30
+      },
+      "context": {
+        "learningMode": "HOC_SAU",
+        "action": "RETEST",
+        "pathStage": "RETEST",
+        "nodeId": "K283",
+        "secondaryNodeIds": [
+          "K282"
+        ],
+        "metaSkillIds": [
+          "S008"
+        ],
+        "clusterId": "C09",
+        "decisionId": "DECISION-001"
+      },
+      "evidence": {
+        "questionType": "Q-A",
+        "difficulty": "D3",
+        "primaryDimension": "apply",
+        "independence": "independent"
+      },
+      "metadata": {
+        "questionVersion": "1.0.0"
+      }
+    }
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    assertSchemaValid (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:365:12)
+    TestContext.<anonymous> (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:984:9)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: 14. CHALLENGE Attempt validates against schema
+not ok 14 - 14. CHALLENGE Attempt validates against schema
+  ---
+  duration_ms: 0.143375
+  location: '/Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:997:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Attempt must satisfy attempt.schema.json.
+    
+    [
+      {
+        "instancePath": "/evidence",
+        "schemaPath": "#/$defs/evidence/additionalProperties",
+        "keyword": "additionalProperties",
+        "params": {
+          "additionalProperty": "questionType"
+        },
+        "message": "must NOT have additional properties"
+      }
+    ]
+    
+    Attempt:
+    {
+      "schemaVersion": "1.0.0",
+      "attemptId": "ATTEMPT-001",
+      "studentId": "STUDENT-001",
+      "sessionId": "SESSION-001",
+      "questionId": "Q-A-K283-A-001",
+      "startedAt": "2026-10-01T07:00:00.000Z",
+      "submittedAt": "2026-10-01T07:00:30.000Z",
+      "response": {
+        "type": "singleChoice",
+        "value": "B",
+        "normalizedValue": "B"
+      },
+      "result": "correct",
+      "score": 1,
+      "attemptNumber": 1,
+      "hint": {
+        "used": false,
+        "count": 0
+      },
+      "timing": {
+        "timeSpentSeconds": 30
+      },
+      "context": {
+        "learningMode": "HOC_SAU",
+        "action": "CHALLENGE",
+        "pathStage": "CHALLENGE",
+        "nodeId": "K283",
+        "secondaryNodeIds": [
+          "K282"
+        ],
+        "metaSkillIds": [
+          "S008"
+        ],
+        "clusterId": "C09",
+        "decisionId": "DECISION-001"
+      },
+      "evidence": {
+        "questionType": "Q-A",
+        "difficulty": "D3",
+        "primaryDimension": "apply",
+        "independence": "independent"
+      },
+      "metadata": {
+        "questionVersion": "1.0.0"
+      }
+    }
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    assertSchemaValid (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:365:12)
+    TestContext.<anonymous> (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:1018:9)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: 15. REVIEW Attempt validates against schema
+not ok 15 - 15. REVIEW Attempt validates against schema
+  ---
+  duration_ms: 0.190458
+  location: '/Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:1031:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Attempt must satisfy attempt.schema.json.
+    
+    [
+      {
+        "instancePath": "/evidence",
+        "schemaPath": "#/$defs/evidence/additionalProperties",
+        "keyword": "additionalProperties",
+        "params": {
+          "additionalProperty": "questionType"
+        },
+        "message": "must NOT have additional properties"
+      }
+    ]
+    
+    Attempt:
+    {
+      "schemaVersion": "1.0.0",
+      "attemptId": "ATTEMPT-001",
+      "studentId": "STUDENT-001",
+      "sessionId": "SESSION-001",
+      "questionId": "Q-A-K283-A-001",
+      "startedAt": "2026-10-01T07:00:00.000Z",
+      "submittedAt": "2026-10-01T07:00:30.000Z",
+      "response": {
+        "type": "singleChoice",
+        "value": "B",
+        "normalizedValue": "B"
+      },
+      "result": "correct",
+      "score": 1,
+      "attemptNumber": 1,
+      "hint": {
+        "used": false,
+        "count": 0
+      },
+      "timing": {
+        "timeSpentSeconds": 30
+      },
+      "context": {
+        "learningMode": "HOC_SAU",
+        "action": "REVIEW",
+        "pathStage": "REVIEW",
+        "nodeId": "K283",
+        "secondaryNodeIds": [
+          "K282"
+        ],
+        "metaSkillIds": [
+          "S008"
+        ],
+        "clusterId": "C09",
+        "decisionId": "DECISION-001"
+      },
+      "evidence": {
+        "questionType": "Q-A",
+        "difficulty": "D3",
+        "primaryDimension": "apply",
+        "independence": "independent"
+      },
+      "metadata": {
+        "questionVersion": "1.0.0"
+      }
+    }
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    assertSchemaValid (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:365:12)
+    TestContext.<anonymous> (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:1052:9)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: 16. LEARN Attempt validates against schema
+not ok 16 - 16. LEARN Attempt validates against schema
+  ---
+  duration_ms: 0.196166
+  location: '/Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:1065:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Attempt must satisfy attempt.schema.json.
+    
+    [
+      {
+        "instancePath": "/evidence",
+        "schemaPath": "#/$defs/evidence/additionalProperties",
+        "keyword": "additionalProperties",
+        "params": {
+          "additionalProperty": "questionType"
+        },
+        "message": "must NOT have additional properties"
+      }
+    ]
+    
+    Attempt:
+    {
+      "schemaVersion": "1.0.0",
+      "attemptId": "ATTEMPT-001",
+      "studentId": "STUDENT-001",
+      "sessionId": "SESSION-001",
+      "questionId": "Q-A-K283-A-001",
+      "startedAt": "2026-10-01T07:00:00.000Z",
+      "submittedAt": "2026-10-01T07:00:30.000Z",
+      "response": {
+        "type": "singleChoice",
+        "value": "B",
+        "normalizedValue": "B"
+      },
+      "result": "correct",
+      "score": 1,
+      "attemptNumber": 1,
+      "hint": {
+        "used": false,
+        "count": 0
+      },
+      "timing": {
+        "timeSpentSeconds": 30
+      },
+      "context": {
+        "learningMode": "HOC_SAU",
+        "action": "LEARN",
+        "pathStage": "LEARN",
+        "nodeId": "K283",
+        "secondaryNodeIds": [
+          "K282"
+        ],
+        "metaSkillIds": [
+          "S008"
+        ],
+        "clusterId": "C09",
+        "decisionId": "DECISION-001"
+      },
+      "evidence": {
+        "questionType": "Q-A",
+        "difficulty": "D3",
+        "primaryDimension": "apply",
+        "independence": "independent"
+      },
+      "metadata": {
+        "questionVersion": "1.0.0"
+      }
+    }
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    assertSchemaValid (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:365:12)
+    TestContext.<anonymous> (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:1086:9)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: 17. LEARN + DIAGNOSTIC path validates against schema
+not ok 17 - 17. LEARN + DIAGNOSTIC path validates against schema
+  ---
+  duration_ms: 0.09725
+  location: '/Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:1099:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Attempt must satisfy attempt.schema.json.
+    
+    [
+      {
+        "instancePath": "/evidence",
+        "schemaPath": "#/$defs/evidence/additionalProperties",
+        "keyword": "additionalProperties",
+        "params": {
+          "additionalProperty": "questionType"
+        },
+        "message": "must NOT have additional properties"
+      }
+    ]
+    
+    Attempt:
+    {
+      "schemaVersion": "1.0.0",
+      "attemptId": "ATTEMPT-001",
+      "studentId": "STUDENT-001",
+      "sessionId": "SESSION-001",
+      "questionId": "Q-A-K283-A-001",
+      "startedAt": "2026-10-01T07:00:00.000Z",
+      "submittedAt": "2026-10-01T07:00:30.000Z",
+      "response": {
+        "type": "singleChoice",
+        "value": "B",
+        "normalizedValue": "B"
+      },
+      "result": "correct",
+      "score": 1,
+      "attemptNumber": 1,
+      "hint": {
+        "used": false,
+        "count": 0
+      },
+      "timing": {
+        "timeSpentSeconds": 30
+      },
+      "context": {
+        "learningMode": "HOC_SAU",
+        "action": "LEARN",
+        "pathStage": "DIAGNOSTIC",
+        "nodeId": "K283",
+        "secondaryNodeIds": [
+          "K282"
+        ],
+        "metaSkillIds": [
+          "S008"
+        ],
+        "clusterId": "C09",
+        "decisionId": "DECISION-001"
+      },
+      "evidence": {
+        "questionType": "Q-A",
+        "difficulty": "D3",
+        "primaryDimension": "apply",
+        "independence": "independent"
+      },
+      "metadata": {
+        "questionVersion": "1.0.0"
+      }
+    }
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    assertSchemaValid (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:365:12)
+    TestContext.<anonymous> (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:1120:9)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: 18. know evidence projection validates against schema
+not ok 18 - 18. know evidence projection validates against schema
+  ---
+  duration_ms: 0.091708
+  location: '/Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:1133:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Attempt must satisfy attempt.schema.json.
+    
+    [
+      {
+        "instancePath": "/evidence",
+        "schemaPath": "#/$defs/evidence/additionalProperties",
+        "keyword": "additionalProperties",
+        "params": {
+          "additionalProperty": "questionType"
+        },
+        "message": "must NOT have additional properties"
+      }
+    ]
+    
+    Attempt:
+    {
+      "schemaVersion": "1.0.0",
+      "attemptId": "ATTEMPT-001",
+      "studentId": "STUDENT-001",
+      "sessionId": "SESSION-001",
+      "questionId": "Q-A-K283-A-001",
+      "startedAt": "2026-10-01T07:00:00.000Z",
+      "submittedAt": "2026-10-01T07:00:30.000Z",
+      "response": {
+        "type": "singleChoice",
+        "value": "B",
+        "normalizedValue": "B"
+      },
+      "result": "correct",
+      "score": 1,
+      "attemptNumber": 1,
+      "hint": {
+        "used": false,
+        "count": 0
+      },
+      "timing": {
+        "timeSpentSeconds": 30
+      },
+      "context": {
+        "learningMode": "HOC_SAU",
+        "action": "PRACTICE",
+        "pathStage": "PRACTICE",
+        "nodeId": "K283",
+        "secondaryNodeIds": [
+          "K282"
+        ],
+        "metaSkillIds": [
+          "S008"
+        ],
+        "clusterId": "C09",
+        "decisionId": "DECISION-001"
+      },
+      "evidence": {
+        "questionType": "Q-K",
+        "difficulty": "D1",
+        "primaryDimension": "know",
+        "independence": "independent"
+      },
+      "metadata": {
+        "questionVersion": "1.0.0"
+      }
+    }
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    assertSchemaValid (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:365:12)
+    TestContext.<anonymous> (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:1161:9)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: 19. explain evidence projection validates against schema
+not ok 19 - 19. explain evidence projection validates against schema
+  ---
+  duration_ms: 0.094208
+  location: '/Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:1174:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Attempt must satisfy attempt.schema.json.
+    
+    [
+      {
+        "instancePath": "/evidence",
+        "schemaPath": "#/$defs/evidence/additionalProperties",
+        "keyword": "additionalProperties",
+        "params": {
+          "additionalProperty": "questionType"
+        },
+        "message": "must NOT have additional properties"
+      }
+    ]
+    
+    Attempt:
+    {
+      "schemaVersion": "1.0.0",
+      "attemptId": "ATTEMPT-001",
+      "studentId": "STUDENT-001",
+      "sessionId": "SESSION-001",
+      "questionId": "Q-A-K283-A-001",
+      "startedAt": "2026-10-01T07:00:00.000Z",
+      "submittedAt": "2026-10-01T07:00:30.000Z",
+      "response": {
+        "type": "singleChoice",
+        "value": "B",
+        "normalizedValue": "B"
+      },
+      "result": "correct",
+      "score": 1,
+      "attemptNumber": 1,
+      "hint": {
+        "used": false,
+        "count": 0
+      },
+      "timing": {
+        "timeSpentSeconds": 30
+      },
+      "context": {
+        "learningMode": "HOC_SAU",
+        "action": "PRACTICE",
+        "pathStage": "PRACTICE",
+        "nodeId": "K283",
+        "secondaryNodeIds": [
+          "K282"
+        ],
+        "metaSkillIds": [
+          "S008"
+        ],
+        "clusterId": "C09",
+        "decisionId": "DECISION-001"
+      },
+      "evidence": {
+        "questionType": "Q-E",
+        "difficulty": "D2",
+        "primaryDimension": "explain",
+        "independence": "independent"
+      },
+      "metadata": {
+        "questionVersion": "1.0.0"
+      }
+    }
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    assertSchemaValid (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:365:12)
+    TestContext.<anonymous> (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:1202:9)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: 20. transfer evidence projection validates against schema
+not ok 20 - 20. transfer evidence projection validates against schema
+  ---
+  duration_ms: 0.135208
+  location: '/Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:1215:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Attempt must satisfy attempt.schema.json.
+    
+    [
+      {
+        "instancePath": "/evidence",
+        "schemaPath": "#/$defs/evidence/additionalProperties",
+        "keyword": "additionalProperties",
+        "params": {
+          "additionalProperty": "questionType"
+        },
+        "message": "must NOT have additional properties"
+      }
+    ]
+    
+    Attempt:
+    {
+      "schemaVersion": "1.0.0",
+      "attemptId": "ATTEMPT-001",
+      "studentId": "STUDENT-001",
+      "sessionId": "SESSION-001",
+      "questionId": "Q-A-K283-A-001",
+      "startedAt": "2026-10-01T07:00:00.000Z",
+      "submittedAt": "2026-10-01T07:00:30.000Z",
+      "response": {
+        "type": "singleChoice",
+        "value": "B",
+        "normalizedValue": "B"
+      },
+      "result": "correct",
+      "score": 1,
+      "attemptNumber": 1,
+      "hint": {
+        "used": false,
+        "count": 0
+      },
+      "timing": {
+        "timeSpentSeconds": 30
+      },
+      "context": {
+        "learningMode": "HOC_SAU",
+        "action": "PRACTICE",
+        "pathStage": "PRACTICE",
+        "nodeId": "K283",
+        "secondaryNodeIds": [
+          "K282"
+        ],
+        "metaSkillIds": [
+          "S008"
+        ],
+        "clusterId": "C09",
+        "decisionId": "DECISION-001"
+      },
+      "evidence": {
+        "questionType": "Q-T",
+        "difficulty": "D4",
+        "primaryDimension": "transfer",
+        "independence": "independent"
+      },
+      "metadata": {
+        "questionVersion": "1.0.0"
+      }
+    }
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    assertSchemaValid (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:365:12)
+    TestContext.<anonymous> (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:1243:9)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: 21. D1-D5 builder evidence outputs validate against schema
+not ok 21 - 21. D1-D5 builder evidence outputs validate against schema
+  ---
+  duration_ms: 0.14225
+  location: '/Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:1256:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Difficulty D1 must satisfy attempt.schema.json.
+    
+    [
+      {
+        "instancePath": "/evidence",
+        "schemaPath": "#/$defs/evidence/additionalProperties",
+        "keyword": "additionalProperties",
+        "params": {
+          "additionalProperty": "questionType"
+        },
+        "message": "must NOT have additional properties"
+      }
+    ]
+    
+    Attempt:
+    {
+      "schemaVersion": "1.0.0",
+      "attemptId": "ATTEMPT-001",
+      "studentId": "STUDENT-001",
+      "sessionId": "SESSION-001",
+      "questionId": "Q-A-K283-A-001",
+      "startedAt": "2026-10-01T07:00:00.000Z",
+      "submittedAt": "2026-10-01T07:00:30.000Z",
+      "response": {
+        "type": "singleChoice",
+        "value": "B",
+        "normalizedValue": "B"
+      },
+      "result": "correct",
+      "score": 1,
+      "attemptNumber": 1,
+      "hint": {
+        "used": false,
+        "count": 0
+      },
+      "timing": {
+        "timeSpentSeconds": 30
+      },
+      "context": {
+        "learningMode": "HOC_SAU",
+        "action": "PRACTICE",
+        "pathStage": "PRACTICE",
+        "nodeId": "K283",
+        "secondaryNodeIds": [
+          "K282"
+        ],
+        "metaSkillIds": [
+          "S008"
+        ],
+        "clusterId": "C09",
+        "decisionId": "DECISION-001"
+      },
+      "evidence": {
+        "questionType": "Q-A",
+        "difficulty": "D1",
+        "primaryDimension": "apply",
+        "independence": "independent"
+      },
+      "metadata": {
+        "questionVersion": "1.0.0"
+      }
+    }
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    assertSchemaValid (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:365:12)
+    TestContext.<anonymous> (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:1293:13)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: 22. all canonical failure signatures validate against schema
+not ok 22 - 22. all canonical failure signatures validate against schema
+  ---
+  duration_ms: 0.111333
+  location: '/Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:1308:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Failure prerequisite_gap must satisfy attempt.schema.json.
+    
+    [
+      {
+        "instancePath": "/diagnostic",
+        "schemaPath": "#/additionalProperties",
+        "keyword": "additionalProperties",
+        "params": {
+          "additionalProperty": "failureSignature"
+        },
+        "message": "must NOT have additional properties"
+      },
+      {
+        "instancePath": "/evidence",
+        "schemaPath": "#/$defs/evidence/additionalProperties",
+        "keyword": "additionalProperties",
+        "params": {
+          "additionalProperty": "questionType"
+        },
+        "message": "must NOT have additional properties"
+      }
+    ]
+    
+    Attempt:
+    {
+      "schemaVersion": "1.0.0",
+      "attemptId": "ATTEMPT-001",
+      "studentId": "STUDENT-001",
+      "sessionId": "SESSION-001",
+      "questionId": "Q-A-K283-A-001",
+      "startedAt": "2026-10-01T07:00:00.000Z",
+      "submittedAt": "2026-10-01T07:00:30.000Z",
+      "response": {
+        "type": "singleChoice",
+        "value": "B",
+        "normalizedValue": "B"
+      },
+      "result": "correct",
+      "score": 1,
+      "attemptNumber": 1,
+      "hint": {
+        "used": false,
+        "count": 0
+      },
+      "timing": {
+        "timeSpentSeconds": 30
+      },
+      "context": {
+        "learningMode": "HOC_SAU",
+        "action": "PRACTICE",
+        "pathStage": "PRACTICE",
+        "nodeId": "K283",
+        "secondaryNodeIds": [
+          "K282"
+        ],
+        "metaSkillIds": [
+          "S008"
+        ],
+        "clusterId": "C09",
+        "decisionId": "DECISION-001"
+      },
+      "diagnostic": {
+        "failureSignature": "prerequisite_gap",
+        "confidence": 0.8
+      },
+      "evidence": {
+        "questionType": "Q-A",
+        "difficulty": "D3",
+        "primaryDimension": "apply",
+        "independence": "independent"
+      },
+      "metadata": {
+        "questionVersion": "1.0.0"
+      }
+    }
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    assertSchemaValid (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:365:12)
+    TestContext.<anonymous> (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:1346:13)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: 23. schema accepts canonical hint count maximum of 3
+not ok 23 - 23. schema accepts canonical hint count maximum of 3
+  ---
+  duration_ms: 0.09125
+  location: '/Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:1361:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Attempt must satisfy attempt.schema.json.
+    
+    [
+      {
+        "instancePath": "/hint/level",
+        "schemaPath": "#/$defs/hint/properties/level/maximum",
+        "keyword": "maximum",
+        "params": {
+          "comparison": "<=",
+          "limit": 2
+        },
+        "message": "must be <= 2"
+      },
+      {
+        "instancePath": "/hint/count",
+        "schemaPath": "#/$defs/hint/properties/count/maximum",
+        "keyword": "maximum",
+        "params": {
+          "comparison": "<=",
+          "limit": 2
+        },
+        "message": "must be <= 2"
+      },
+      {
+        "instancePath": "/evidence",
+        "schemaPath": "#/$defs/evidence/additionalProperties",
+        "keyword": "additionalProperties",
+        "params": {
+          "additionalProperty": "questionType"
+        },
+        "message": "must NOT have additional properties"
+      }
+    ]
+    
+    Attempt:
+    {
+      "schemaVersion": "1.0.0",
+      "attemptId": "ATTEMPT-001",
+      "studentId": "STUDENT-001",
+      "sessionId": "SESSION-001",
+      "questionId": "Q-A-K283-A-001",
+      "startedAt": "2026-10-01T07:00:00.000Z",
+      "submittedAt": "2026-10-01T07:00:30.000Z",
+      "response": {
+        "type": "singleChoice",
+        "value": "B",
+        "normalizedValue": "B"
+      },
+      "result": "correct",
+      "score": 1,
+      "attemptNumber": 1,
+      "hint": {
+        "used": true,
+        "count": 3,
+        "level": 3
+      },
+      "timing": {
+        "timeSpentSeconds": 30
+      },
+      "context": {
+        "learningMode": "HOC_SAU",
+        "action": "PRACTICE",
+        "pathStage": "PRACTICE",
+        "nodeId": "K283",
+        "secondaryNodeIds": [
+          "K282"
+        ],
+        "metaSkillIds": [
+          "S008"
+        ],
+        "clusterId": "C09",
+        "decisionId": "DECISION-001"
+      },
+      "evidence": {
+        "questionType": "Q-A",
+        "difficulty": "D3",
+        "primaryDimension": "apply",
+        "independence": "hint_assisted"
+      },
+      "metadata": {
+        "questionVersion": "1.0.0"
+      }
+    }
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    assertSchemaValid (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:365:12)
+    TestContext.<anonymous> (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:1388:9)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: 24. builder output respects root additionalProperties=false
+not ok 24 - 24. builder output respects root additionalProperties=false
+  ---
+  duration_ms: 0.079833
+  location: '/Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:1401:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Attempt must satisfy attempt.schema.json.
+    
+    [
+      {
+        "instancePath": "/evidence",
+        "schemaPath": "#/$defs/evidence/additionalProperties",
+        "keyword": "additionalProperties",
+        "params": {
+          "additionalProperty": "questionType"
+        },
+        "message": "must NOT have additional properties"
+      }
+    ]
+    
+    Attempt:
+    {
+      "schemaVersion": "1.0.0",
+      "attemptId": "ATTEMPT-001",
+      "studentId": "STUDENT-001",
+      "sessionId": "SESSION-001",
+      "questionId": "Q-A-K283-A-001",
+      "startedAt": "2026-10-01T07:00:00.000Z",
+      "submittedAt": "2026-10-01T07:00:30.000Z",
+      "response": {
+        "type": "singleChoice",
+        "value": "B",
+        "normalizedValue": "B"
+      },
+      "result": "correct",
+      "score": 1,
+      "attemptNumber": 1,
+      "hint": {
+        "used": false,
+        "count": 0
+      },
+      "timing": {
+        "timeSpentSeconds": 30
+      },
+      "context": {
+        "learningMode": "HOC_SAU",
+        "action": "PRACTICE",
+        "pathStage": "PRACTICE",
+        "nodeId": "K283",
+        "secondaryNodeIds": [
+          "K282"
+        ],
+        "metaSkillIds": [
+          "S008"
+        ],
+        "clusterId": "C09",
+        "decisionId": "DECISION-001"
+      },
+      "evidence": {
+        "questionType": "Q-A",
+        "difficulty": "D3",
+        "primaryDimension": "apply",
+        "independence": "independent"
+      },
+      "metadata": {
+        "questionVersion": "1.0.0"
+      }
+    }
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    assertSchemaValid (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:365:12)
+    TestContext.<anonymous> (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:1411:9)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: 25. schema confirms Attempt uses incorrect rather than wrong
+ok 25 - 25. schema confirms Attempt uses incorrect rather than wrong
+  ---
+  duration_ms: 0.101
+  ...
+# Subtest: 26. schema confirms Attempt score is normalized to 0..1
+ok 26 - 26. schema confirms Attempt score is normalized to 0..1
+  ---
+  duration_ms: 0.067709
+  ...
+# Subtest: 27. schema confirms MINI_PROBE is pathStage, not primary action
+ok 27 - 27. schema confirms MINI_PROBE is pathStage, not primary action
+  ---
+  duration_ms: 0.0645
+  ...
+# Subtest: 28. projected context.nodeId is schema-valid
+not ok 28 - 28. projected context.nodeId is schema-valid
+  ---
+  duration_ms: 0.075417
+  location: '/Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:1624:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Attempt must satisfy attempt.schema.json.
+    
+    [
+      {
+        "instancePath": "/evidence",
+        "schemaPath": "#/$defs/evidence/additionalProperties",
+        "keyword": "additionalProperties",
+        "params": {
+          "additionalProperty": "questionType"
+        },
+        "message": "must NOT have additional properties"
+      }
+    ]
+    
+    Attempt:
+    {
+      "schemaVersion": "1.0.0",
+      "attemptId": "ATTEMPT-001",
+      "studentId": "STUDENT-001",
+      "sessionId": "SESSION-001",
+      "questionId": "Q-A-K283-A-001",
+      "startedAt": "2026-10-01T07:00:00.000Z",
+      "submittedAt": "2026-10-01T07:00:30.000Z",
+      "response": {
+        "type": "singleChoice",
+        "value": "B",
+        "normalizedValue": "B"
+      },
+      "result": "correct",
+      "score": 1,
+      "attemptNumber": 1,
+      "hint": {
+        "used": false,
+        "count": 0
+      },
+      "timing": {
+        "timeSpentSeconds": 30
+      },
+      "context": {
+        "learningMode": "HOC_SAU",
+        "action": "PRACTICE",
+        "pathStage": "PRACTICE",
+        "nodeId": "K283",
+        "secondaryNodeIds": [
+          "K282"
+        ],
+        "metaSkillIds": [
+          "S008"
+        ],
+        "clusterId": "C09",
+        "decisionId": "DECISION-001"
+      },
+      "evidence": {
+        "questionType": "Q-A",
+        "difficulty": "D3",
+        "primaryDimension": "apply",
+        "independence": "independent"
+      },
+      "metadata": {
+        "questionVersion": "1.0.0"
+      }
+    }
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    assertSchemaValid (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:365:12)
+    TestContext.<anonymous> (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:1640:9)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: 29. projected secondaryNodeIds and metaSkillIds validate
+not ok 29 - 29. projected secondaryNodeIds and metaSkillIds validate
+  ---
+  duration_ms: 1.127
+  location: '/Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:1653:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Attempt must satisfy attempt.schema.json.
+    
+    [
+      {
+        "instancePath": "/evidence",
+        "schemaPath": "#/$defs/evidence/additionalProperties",
+        "keyword": "additionalProperties",
+        "params": {
+          "additionalProperty": "questionType"
+        },
+        "message": "must NOT have additional properties"
+      }
+    ]
+    
+    Attempt:
+    {
+      "schemaVersion": "1.0.0",
+      "attemptId": "ATTEMPT-001",
+      "studentId": "STUDENT-001",
+      "sessionId": "SESSION-001",
+      "questionId": "Q-A-K283-A-001",
+      "startedAt": "2026-10-01T07:00:00.000Z",
+      "submittedAt": "2026-10-01T07:00:30.000Z",
+      "response": {
+        "type": "singleChoice",
+        "value": "B",
+        "normalizedValue": "B"
+      },
+      "result": "correct",
+      "score": 1,
+      "attemptNumber": 1,
+      "hint": {
+        "used": false,
+        "count": 0
+      },
+      "timing": {
+        "timeSpentSeconds": 30
+      },
+      "context": {
+        "learningMode": "HOC_SAU",
+        "action": "PRACTICE",
+        "pathStage": "PRACTICE",
+        "nodeId": "K283",
+        "secondaryNodeIds": [
+          "K282"
+        ],
+        "metaSkillIds": [
+          "S008"
+        ],
+        "clusterId": "C09",
+        "decisionId": "DECISION-001"
+      },
+      "evidence": {
+        "questionType": "Q-A",
+        "difficulty": "D3",
+        "primaryDimension": "apply",
+        "independence": "independent"
+      },
+      "metadata": {
+        "questionVersion": "1.0.0"
+      }
+    }
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    assertSchemaValid (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:365:12)
+    TestContext.<anonymous> (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:1679:9)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+# Subtest: 30. complete Study MVP Attempt passes canonical schema gate
+not ok 30 - 30. complete Study MVP Attempt passes canonical schema gate
+  ---
+  duration_ms: 0.171458
+  location: '/Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:1692:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Complete Study MVP Attempt must satisfy attempt.schema.json.
+    
+    [
+      {
+        "instancePath": "/diagnostic",
+        "schemaPath": "#/additionalProperties",
+        "keyword": "additionalProperties",
+        "params": {
+          "additionalProperty": "failureSignature"
+        },
+        "message": "must NOT have additional properties"
+      },
+      {
+        "instancePath": "/evidence",
+        "schemaPath": "#/$defs/evidence/additionalProperties",
+        "keyword": "additionalProperties",
+        "params": {
+          "additionalProperty": "questionType"
+        },
+        "message": "must NOT have additional properties"
+      }
+    ]
+    
+    Attempt:
+    {
+      "schemaVersion": "1.0.0",
+      "attemptId": "ATTEMPT-C09-001",
+      "studentId": "STUDENT-001",
+      "sessionId": "SESSION-001",
+      "questionId": "Q-A-K283-A-001",
+      "startedAt": "2026-10-01T07:00:00.000Z",
+      "submittedAt": "2026-10-01T07:00:30.000Z",
+      "response": {
+        "type": "singleChoice",
+        "value": "A",
+        "normalizedValue": "A"
+      },
+      "result": "incorrect",
+      "score": 0,
+      "attemptNumber": 1,
+      "hint": {
+        "used": true,
+        "count": 1,
+        "level": 1
+      },
+      "timing": {
+        "timeSpentSeconds": 42,
+        "activeTimeSeconds": 40,
+        "pausedTimeSeconds": 2
+      },
+      "context": {
+        "learningMode": "HOC_SAU",
+        "action": "REMEDIATE",
+        "pathStage": "MINI_PROBE",
+        "nodeId": "K283",
+        "secondaryNodeIds": [
+          "K282"
+        ],
+        "metaSkillIds": [
+          "S008"
+        ],
+        "clusterId": "C09",
+        "lessonId": "LESSON-C09-K283",
+        "remediationId": "REM-C09-001",
+        "decisionId": "DECISION-001"
+      },
+      "diagnostic": {
+        "failureSignature": "calculation_error",
+        "sourceNodeId": "K283",
+        "metaSkillId": "S008",
+        "confidence": 0.9,
+        "evidence": "Observed error during C09 practice."
+      },
+      "evidence": {
+        "questionType": "Q-A",
+        "difficulty": "D3",
+        "primaryDimension": "apply",
+        "independence": "hint_assisted"
+      },
+      "feedback": {
+        "shown": true,
+        "type": "incorrect"
+      },
+      "ui": {
+        "device": "desktop",
+        "inputMethod": "mouse"
+      },
+      "metadata": {
+        "questionVersion": "1.0.0",
+        "engineVersion": "study-runtime-1.0.0",
+        "validatorVersion": "1.0.0"
+      }
+    }
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    assertSchemaValid (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:365:12)
+    TestContext.<anonymous> (file:///Users/doducqunynhtram/Documents/projects/prjsinh/js/engine/attemptBuilder.schema.test.js:1823:9)
+    Test.runInAsyncScope (node:async_hooks:206:9)
+    Test.run (node:internal/test_runner/test:796:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:526:18)
+    Test.postRun (node:internal/test_runner/test:889:19)
+    Test.run (node:internal/test_runner/test:835:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+  ...
+1..30
+# tests 30
+# suites 0
+# pass 4
+# fail 26
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 137.842625
