@@ -1,19 +1,19 @@
 {
-    "schemaVersion": "1.0.0",
-    "rulesId": "biology-mastery-rules-v1",
+    "schemaVersion": "2.0.0",
+    "rulesId": "biology-mastery-rules-v2",
     "subject": "biology",
     "language": "vi",
-    "status": "final",
+    "status": "draft",
     "purpose": {
-        "description": "Quy định cách Mastery Engine cập nhật và diễn giải mức độ thành thạo kiến thức sinh học của học sinh.",
+        "description": "Quy định cách Mastery Engine cập nhật và diễn giải mức độ thành thạo kiến thức sinh học. Evidence biểu diễn năng lực đã thể hiện; evidence sufficiency và confidence biểu diễn mức độ đủ và đáng tin cậy của bằng chứng.",
         "sourceOfTruth": "knowledge/knowledge-map-v4.json",
-        "masteryEngine": "Đọc kết quả câu hỏi, bằng chứng theo năng lực, failure signature và lịch sử retest để cập nhật mastery.",
-        "importantPrinciple": "Không giảm mastery một cách cơ học chỉ vì một câu trả lời sai."
+        "masteryEngine": "Đọc kết quả câu hỏi, evidence dimension, độ khó, mức độc lập, failure signature và lịch sử retest để ước lượng demonstrated capability, evidence sufficiency, confidence và mastery.",
+        "importantPrinciple": "Capability, evidence sufficiency và confidence là ba khái niệm riêng; không giảm mastery một cách cơ học chỉ vì một câu trả lời sai."
     },
     "masteryLevels": {
         "M0": {
-            "name": "Chưa biết",
-            "meaning": "Chưa có bằng chứng đáng tin cậy rằng học sinh nắm được kiến thức.",
+            "name": "Chưa đủ bằng chứng",
+            "meaning": "Chưa có đủ bằng chứng đáng tin cậy để xác nhận M1; M0 không đồng nghĩa học sinh có 0% năng lực.",
             "typicalEvidence": [
                 "Không trả lời được câu hỏi nhận biết.",
                 "Trả lời sai ở nhiều câu hỏi cơ bản.",
@@ -111,94 +111,111 @@
     },
     "masteryThresholds": {
         "P1": {
-            "description": "Kiến thức trọng tâm, cần mức thành thạo cao.",
-            "minimumEvidence": {
-                "know": 0.9,
-                "explain": 0.8,
-                "apply": 0.8,
-                "transfer": 0.7
-            },
+            "description": "Kiến thức trọng tâm. Priority làm tăng yêu cầu về độ chắc chắn, retest và prerequisite; không ép capability score lên ngưỡng cực cao chỉ vì node quan trọng.",
             "minimumPrerequisiteMastery": {
                 "D1": "M2"
             },
-            "targetMastery": "M4"
+            "targetMastery": "M4",
+            "completionRequirements": {
+                "minimumConfidence": "high",
+                "minimumIndependentObservations": 6,
+                "minimumDistinctContexts": 2,
+                "minimumDistinctQuestionTypes": 2,
+                "retestRequired": true
+            }
         },
         "P2": {
-            "description": "Kiến thức quan trọng nhưng có thể có mức yêu cầu thấp hơn P1.",
-            "minimumEvidence": {
-                "know": 0.85,
-                "explain": 0.75,
-                "apply": 0.75,
-                "transfer": 0.65
-            },
+            "description": "Kiến thức quan trọng với yêu cầu xác nhận nhẹ hơn P1; capability thresholds vẫn do mastery level quyết định.",
             "minimumPrerequisiteMastery": {
                 "D1": "M2"
             },
-            "targetMastery": "M4"
+            "targetMastery": "M4",
+            "completionRequirements": {
+                "minimumConfidence": "medium",
+                "minimumIndependentObservations": 4,
+                "minimumDistinctContexts": 2,
+                "minimumDistinctQuestionTypes": 1,
+                "retestRequired": false
+            }
         }
     },
     "levelThresholds": {
         "M0": {
-            "maxOverallEvidence": 0.39
+            "meaning": "Chưa đủ evidence đáng tin cậy để xác nhận M1."
         },
         "M1": {
-            "minOverallEvidence": 0.4,
-            "maxOverallEvidence": 0.59,
             "requiredEvidence": {
                 "know": 0.6
-            }
+            },
+            "minimumEvidenceSufficiency": {
+                "minimumQualifyingKnowObservations": 1,
+                "minimumIndependentObservations": 2
+            },
+            "minimumConfidence": "medium"
         },
         "M2": {
-            "minOverallEvidence": 0.6,
-            "maxOverallEvidence": 0.74,
             "requiredEvidence": {
-                "know": 0.75,
-                "explain": 0.6
-            }
+                "know": 0.6,
+                "explain": 0.65
+            },
+            "minimumEvidenceSufficiency": {
+                "minimumQualifyingKnowObservations": 1,
+                "minimumQualifyingExplainObservations": 1,
+                "minimumIndependentObservations": 3
+            },
+            "minimumConfidence": "medium"
         },
         "M3": {
-            "minOverallEvidence": 0.75,
-            "maxOverallEvidence": 0.89,
             "requiredEvidence": {
-                "know": 0.8,
-                "explain": 0.7,
+                "explain": 0.6,
                 "apply": 0.7
-            }
+            },
+            "minimumEvidenceSufficiency": {
+                "minimumQualifyingApplyObservations": 2,
+                "minimumIndependentObservations": 4,
+                "minimumDistinctContexts": 2
+            },
+            "minimumConfidence": "high"
         },
         "M4": {
-            "minOverallEvidence": 0.9,
             "requiredEvidence": {
-                "know": 0.85,
-                "explain": 0.8,
-                "apply": 0.8,
-                "transfer": 0.65
-            }
+                "apply": 0.7,
+                "transfer": 0.7
+            },
+            "minimumEvidenceSufficiency": {
+                "minimumQualifyingTransferObservations": 2,
+                "minimumIndependentObservations": 6,
+                "minimumDistinctContexts": 2,
+                "minimumDistinctQuestionTypes": 2
+            },
+            "minimumConfidence": "high"
         }
     },
     "overallEvidenceCalculation": {
         "formula": "know*0.15 + explain*0.25 + apply*0.30 + transfer*0.30",
-        "minimumEvidenceRequired": true,
-        "rule": "Overall evidence chỉ hỗ trợ quyết định mastery; không được dùng để bỏ qua minimumEvidence của từng loại năng lực."
+        "hardPromotionGate": false,
+        "rule": "Overall evidence là chỉ báo tổng hợp phục vụ analytics, progress, adaptive prioritization và weakness overview; không phải hard gate để promotion M1-M4 và không được thay thế requiredEvidence của level."
     },
     "evidenceConfidence": {
         "levels": {
             "low": {
                 "minimumAttempts": 0,
-                "description": "Chưa đủ dữ liệu."
+                "description": "Chưa đủ dữ liệu để tin cậy estimate."
             },
             "medium": {
                 "minimumAttempts": 2,
-                "description": "Đã có một số bằng chứng nhưng chưa đủ đa dạng."
+                "description": "Có một số bằng chứng độc lập nhưng độ đa dạng còn hạn chế."
             },
             "high": {
                 "minimumAttempts": 4,
-                "description": "Có đủ bằng chứng để đưa ra quyết định tương đối ổn định."
+                "description": "Có đủ bằng chứng tương đối nhất quán và đa dạng để đưa ra quyết định ổn định."
             },
             "very_high": {
                 "minimumAttempts": 6,
-                "description": "Có nhiều bằng chứng từ nhiều dạng câu hỏi và ngữ cảnh."
+                "description": "Có nhiều bằng chứng độc lập từ nhiều dạng câu hỏi và ngữ cảnh."
             }
         },
+        "principle": "Attempt count chỉ là một thành phần của confidence; consistency, context diversity, question-type diversity và recency vẫn phải được xét.",
         "minimumAttemptsForMastery": 4,
         "minimumDistinctContextsForMastery": 2,
         "minimumDistinctQuestionTypesForMastery": 2
@@ -245,54 +262,90 @@
         "D5": 1.25
     },
     "evidenceUpdate": {
-        "method": "weighted_rolling_average",
-        "defaultLearningRate": 0.2,
-        "minimumLearningRate": 0.1,
-        "maximumLearningRate": 0.35,
-        "formula": "newEvidence = oldEvidence*(1-learningRate) + attemptScore*learningRate",
+        "method": "bounded_weighted_observation_mean",
+        "capabilityRange": {
+            "minimum": 0.0,
+            "maximum": 1.0
+        },
+        "maxRecentObservationsPerDimension": 8,
+        "observationScore": {
+            "formula": "clamp(resultScore * difficultyWeight * independenceWeight, 0, 1)",
+            "resultScore": {
+                "correct": 1.0,
+                "partial": "normalizedScore * partialCorrectWeight",
+                "wrong": 0.0,
+                "skipped": null
+            },
+            "rule": "Skipped không tạo capability observation. Wrong tạo observation score 0 nhưng không tự động reset mastery."
+        },
+        "firstObservationRule": {
+            "formula": "newEvidence = observationScore",
+            "rule": "Không khởi tạo bằng EMA từ zero; zero không được xem như một observation thất bại giả."
+        },
+        "subsequentObservationRule": {
+            "formula": "newEvidence = sum(observationScore_i * reliabilityWeight_i) / sum(reliabilityWeight_i)",
+            "window": "Chỉ dùng tối đa maxRecentObservationsPerDimension observations hợp lệ gần nhất của dimension.",
+            "rule": "Capability estimate phản ánh các demonstrations gần đây thay vì bị lịch sử cũ kéo xuống vô hạn."
+        },
+        "reliabilityWeight": {
+            "factors": [
+                "independence",
+                "recency",
+                "diagnosticReliability"
+            ],
+            "rule": "Reliability điều chỉnh mức độ tin cậy của observation trong estimator; không được nhân trực tiếp vào capability observationScore như thể học sinh có năng lực thấp hơn."
+        },
         "difficultyAdjustment": {
             "enabled": true,
-            "rule": "Câu khó hơn có thể tạo evidence mạnh hơn nhưng không được một câu duy nhất quyết định mastery."
+            "rule": "Difficulty ảnh hưởng observationScore. D4/D5 có thể tạo score trên 1 trước clamp nhưng final capability luôn nằm trong [0,1]."
         },
         "wrongAnswerRule": {
             "enabled": true,
-            "formula": "newEvidence = oldEvidence*(1-decay)",
-            "defaultDecay": 0.08,
-            "maximumDecay": 0.15,
-            "note": "Decay nhỏ hơn learning gain để tránh một lỗi đơn lẻ phá hỏng lịch sử mastery."
+            "rule": "Wrong được đưa vào observation window với score 0; một wrong đơn lẻ không reset mastery. Weakness/downgrade vẫn dựa trên failure pattern và repeated evidence."
         }
     },
     "masteryPromotionRules": {
+        "principle": "Promotion dựa trên required capability + evidence sufficiency + confidence. OverallEvidence không phải hard gate.",
+        "sequentialPromotion": true,
+        "maximumLevelsPerUpdate": 1,
+        "reachabilityInvariant": "Evidence cần cho level tiếp theo phải có thể được tạo bởi action khả dụng ở level hiện tại.",
         "M0_to_M1": {
             "conditions": [
                 "know >= 0.60",
-                "evidenceConfidence != low"
+                "qualifyingKnowObservations >= 1",
+                "independentObservations >= 2",
+                "evidenceConfidence >= medium"
             ]
         },
         "M1_to_M2": {
             "conditions": [
-                "know >= 0.75",
-                "explain >= 0.60",
-                "overallEvidence >= 0.60"
+                "know >= 0.60",
+                "explain >= 0.65",
+                "qualifyingKnowObservations >= 1",
+                "qualifyingExplainObservations >= 1",
+                "independentObservations >= 3",
+                "evidenceConfidence >= medium"
             ]
         },
         "M2_to_M3": {
             "conditions": [
-                "know >= 0.80",
-                "explain >= 0.70",
+                "explain >= 0.60",
                 "apply >= 0.70",
-                "overallEvidence >= 0.75"
+                "qualifyingApplyObservations >= 2",
+                "independentObservations >= 4",
+                "distinctContexts >= 2",
+                "evidenceConfidence >= high"
             ]
         },
         "M3_to_M4": {
             "conditions": [
-                "know >= 0.85",
-                "explain >= 0.80",
-                "apply >= 0.80",
-                "transfer >= 0.65",
-                "overallEvidence >= 0.90",
-                "minimumAttempts >= 4",
-                "minimumDistinctContexts >= 2"
+                "apply >= 0.70",
+                "transfer >= 0.70",
+                "qualifyingTransferObservations >= 2",
+                "independentObservations >= 6",
+                "distinctContexts >= 2",
+                "distinctQuestionTypes >= 2",
+                "evidenceConfidence >= high"
             ]
         }
     },
@@ -311,12 +364,11 @@
     "masteredRules": {
         "conditions": [
             "mastery == M4",
-            "node evidence đạt minimumEvidence theo priority",
-            "D1 prerequisites không thấp hơn ngưỡng yêu cầu",
-            "evidenceConfidence != low"
+            "priority completionRequirements satisfied",
+            "D1 prerequisites không thấp hơn ngưỡng yêu cầu"
         ],
         "status": "mastered",
-        "note": "Mastered chưa đồng nghĩa Stable."
+        "note": "Mastered xác nhận capability M4 với độ chắc chắn phù hợp priority; chưa đồng nghĩa Stable."
     },
     "stableRules": {
         "conditions": [
@@ -350,12 +402,12 @@
         }
     },
     "weaknessRules": {
-        "principle": "Weakness được xác định theo evidence dimension và failure pattern, không chỉ theo overall score.",
+        "principle": "Weakness được xác định theo failure pattern và evidence dimension có đủ observations; không đánh dấu weak chỉ vì một dimension chưa được quan sát hoặc có ít dữ liệu.",
         "weakEvidenceThreshold": {
-            "know": 0.6,
-            "explain": 0.55,
+            "know": 0.5,
+            "explain": 0.5,
             "apply": 0.55,
-            "transfer": 0.5
+            "transfer": 0.55
         },
         "weaknessTriggers": [
             {
@@ -469,7 +521,7 @@
         },
         "M4": {
             "transferRequired": true,
-            "minimumTransferEvidence": 0.65
+            "minimumTransferEvidence": 0.7
         },
         "integratedQuestions": {
             "canUpdateMultipleNodes": true,
@@ -489,9 +541,10 @@
     },
     "diagnosticRules": {
         "purpose": "Xác định điểm bắt đầu học tập và phát hiện lỗ hổng prerequisite.",
-        "principle": "Diagnostic không nhằm hoàn thành mastery mà nhằm ước lượng nhanh trạng thái ban đầu.",
-        "diagnosticEvidenceWeight": 0.7,
-        "note": "Evidence từ diagnostic có trọng số thấp hơn evidence từ quá trình học tập đầy đủ."
+        "principle": "Diagnostic không nhằm hoàn thành mastery. Diagnostic observation vẫn phản ánh demonstrated capability, nhưng có reliability thấp hơn khi tính sufficiency/confidence và estimator.",
+        "diagnosticReliabilityWeight": 0.7,
+        "affectsCapabilityObservationScore": false,
+        "note": "Không nhân diagnostic weight trực tiếp vào capability score."
     },
     "confidenceRules": {
         "confidenceDimensions": [
@@ -507,8 +560,8 @@
         "enabled": true,
         "halfLifeDays": 45,
         "formula": "recencyWeight = 0.5 ^ (daysSinceAttempt / halfLifeDays)",
-        "purpose": "Điều chỉnh confidence theo độ mới của bằng chứng mà không xóa lịch sử mastery.",
-        "importantRule": "Recency không được tự động làm mastery giảm chỉ vì lâu không học."
+        "purpose": "Điều chỉnh reliability/confidence của evidence theo độ mới mà không coi thời gian trôi qua là một failure observation.",
+        "importantRule": "Recency không được tự động làm mastery giảm chỉ vì lâu không học; review/retest xử lý độ bền kiến thức."
     },
     "stabilityRules": {
         "stableRequires": [
@@ -517,10 +570,8 @@
             "different_context"
         ],
         "stableEvidenceMinimum": {
-            "know": 0.85,
-            "explain": 0.8,
-            "apply": 0.8,
-            "transfer": 0.65
+            "apply": 0.7,
+            "transfer": 0.7
         },
         "stableRetention": {
             "days": 90,
@@ -606,17 +657,19 @@
         "1. Validate question result",
         "2. Identify primary node",
         "3. Identify evidence type",
-        "4. Record result",
-        "5. Record failure signature if wrong",
-        "6. Update evidence",
-        "7. Recalculate overall evidence",
-        "8. Recalculate mastery level",
-        "9. Evaluate weakness",
-        "10. Evaluate prerequisite status",
-        "11. Evaluate mastered status",
-        "12. Evaluate retest/stable status",
-        "13. Emit mastery event",
-        "14. Send state to Adaptive Engine"
+        "4. Record result and failure signature if applicable",
+        "5. Build capability observation",
+        "6. Update bounded capability estimate for the evidence dimension",
+        "7. Update evidence sufficiency",
+        "8. Recalculate overall evidence as a summary indicator",
+        "9. Recalculate confidence",
+        "10. Evaluate mastery promotion/downgrade",
+        "11. Evaluate weakness",
+        "12. Evaluate prerequisite status",
+        "13. Evaluate mastered status",
+        "14. Evaluate retest/stable status",
+        "15. Emit mastery event",
+        "16. Send state to Adaptive Engine"
     ],
     "adaptiveOutputContract": {
         "masteryEngineMustReturn": [
@@ -637,25 +690,78 @@
             "Không coi skipped là wrong.",
             "Không coi một câu hỏi duy nhất là đủ để xác nhận M4.",
             "Không yêu cầu tất cả prerequisite đạt M4 trước khi mở node.",
-            "Không dùng overallEvidence để bỏ qua minimumEvidence của một năng lực quan trọng.",
+            "Không dùng overallEvidence làm hard gate thay cho requiredEvidence và evidence sufficiency.",
             "Không dùng lesson completion làm bằng chứng mastery.",
             "Không dùng số câu đã làm thay thế cho evidence quality.",
-            "Không coi đáp án đúng sau hint là bằng chứng mạnh tương đương đáp án độc lập."
+            "Không coi đáp án đúng sau hint là bằng chứng mạnh tương đương đáp án độc lập.",
+            "Không pha observation đầu tiên với zero giả định.",
+            "Không dùng diagnostic reliability như một phép giảm trực tiếp demonstrated capability.",
+            "Không đặt promotion rule mà evidence yêu cầu không thể được tạo bởi action khả dụng ở level hiện tại."
         ]
     },
     "versioning": {
-        "currentVersion": "1.0.0",
+        "currentVersion": "2.0.0",
         "compatibleKnowledgeMap": "4.x",
-        "breakingChangePolicy": "Nếu thay đổi định nghĩa M0-M4 hoặc công thức mastery, phải tăng major version.",
+        "breakingChangePolicy": "Nếu thay đổi định nghĩa M0-M4, semantics của evidence, công thức capability estimator hoặc contract mastery thì phải tăng major version.",
         "minorChangeExamples": [
             "Thêm failure signature.",
-            "Thêm loại question.",
+            "Thêm loại question tương thích contract hiện tại.",
+            "Thêm mastery profile mà không thay đổi semantics chung.",
             "Điều chỉnh recommended review interval."
         ],
         "patchChangeExamples": [
             "Sửa mô tả.",
             "Sửa lỗi chính tả.",
             "Bổ sung metadata không ảnh hưởng logic."
+        ],
+        "migrationFrom": "1.0.0",
+        "migrationNotes": [
+            "Evidence đổi từ EMA-from-zero sang demonstrated-capability estimator dựa trên bounded weighted observations.",
+            "OverallEvidence không còn là hard promotion gate.",
+            "Priority chuyển từ capability minimum cực cao sang certainty/completion requirements.",
+            "Promotion M0-M4 dùng required evidence + sufficiency + confidence.",
+            "Mastery Engine V1.x không tương thích logic với rules V2 và phải được nâng cấp trước khi dùng file này trong runtime."
         ]
+    },
+    "evidenceSemantics": {
+        "principle": "Evidence score đo demonstrated capability của học sinh trên từng evidence dimension trong khoảng [0,1], không đo số lượng bằng chứng đã thu thập.",
+        "dimensions": [
+            "know",
+            "explain",
+            "apply",
+            "transfer"
+        ],
+        "range": {
+            "minimum": 0.0,
+            "maximum": 1.0
+        },
+        "noZeroSeedPenalty": true,
+        "firstObservationRule": "Nếu dimension chưa có observation hợp lệ trước đó, capability estimate được khởi tạo từ observationScore; không pha với giá trị 0 giả định.",
+        "separation": {
+            "capability": "Học sinh đã thể hiện năng lực ở mức nào.",
+            "sufficiency": "Đã có bao nhiêu bằng chứng độc lập và đa dạng để hỗ trợ estimate.",
+            "confidence": "Estimate hiện đáng tin cậy đến mức nào."
+        },
+        "higherOrderEvidenceRule": "Evidence bậc cao không tự động ghi đè evidence bậc thấp, nhưng promotion không được bắt học sinh lặp lại evidence bậc thấp không cần thiết khi yêu cầu của level hiện tại đã được chứng minh."
+    },
+    "evidenceSufficiencyRules": {
+        "principle": "Evidence sufficiency đo số lượng, tính độc lập và độ đa dạng của observations; không được suy ra chỉ từ capability score.",
+        "globalFields": [
+            "independentObservations",
+            "distinctContexts",
+            "distinctQuestionTypes",
+            "observedEvidenceTypes"
+        ],
+        "perDimensionInternalTracking": {
+            "enabled": true,
+            "persistToStudentState": false,
+            "fields": [
+                "observations",
+                "independentObservations",
+                "distinctContexts",
+                "distinctQuestionTypes"
+            ],
+            "note": "V2 engine có thể theo dõi nội bộ trước; không tự động mở rộng Student State contract nếu chưa cần persistence."
+        }
     }
 }
