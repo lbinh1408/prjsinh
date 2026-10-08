@@ -104,6 +104,21 @@ import failureSignatures from
     "../../src/data/remediation/failure-signatures.json"
 with { type: "json" };
 
+import {
+    registerCheckpointRealSessionTests
+} from './persistence/checkpointCodec.realSession.integration.test.js';
+
+import {
+    registerAttemptStoreRealSessionTests
+} from './persistence/attemptStore.realSession.integration.test.js';
+
+import {
+    registerCheckpointStoreRealSessionTests
+} from './persistence/checkpointStore.realSession.integration.test.js';
+
+import {
+    registerPersistenceCoordinatorRealSessionTests
+} from './persistence/persistenceCoordinator.realSession.integration.test.js';
 
 /**
  * ============================================================
@@ -2587,3 +2602,149 @@ test(
         );
     }
 );
+
+/**
+ * PHASE 3.2 — TEST-ONLY CHARACTERIZATION
+ * Append to tests/integration/studySession.lesson.learningflow.integration.test.js
+ * Uses existing fixture helpers; does NOT test persistence or hydration.
+ */
+function p32RoundTrip(value) {
+    return JSON.parse(JSON.stringify(value));
+}
+
+function p32AssertProjectionRoundTrip(session) {
+    const snapshot = getSessionSnapshot(session);
+    const encoded = JSON.stringify(snapshot);
+    const decoded = JSON.parse(encoded);
+    assert.deepStrictEqual(decoded, snapshot);
+    assert.deepStrictEqual(decoded.state, snapshot.state);
+    assert.deepStrictEqual(decoded.history, snapshot.history);
+    assert.deepStrictEqual(decoded.masteryRuntime, snapshot.masteryRuntime);
+    assert.deepStrictEqual(decoded.lessonRuntime.progress, snapshot.lessonRuntime.progress);
+    assert.deepStrictEqual(decoded.currentDecision, snapshot.currentDecision);
+    assert.deepStrictEqual(decoded.currentQuestion, snapshot.currentQuestion);
+    assert.deepStrictEqual(decoded.currentSelection, snapshot.currentSelection);
+    return decoded;
+}
+
+test('P3.2 characterization: initial K283 runtime JSON round-trip', () => {
+    const session = makeSession();
+    const before = structuredClone(session);
+    const decoded = p32AssertProjectionRoundTrip(session);
+    assert.deepStrictEqual(session, before, 'serialization must not mutate input');
+    assert.deepStrictEqual(decoded.lessonRuntime.progress.completedSectionIds, []);
+    assert.deepStrictEqual(decoded.masteryRuntime.evidenceHistoryByNode, {});
+});
+
+test('P3.2 characterization: lesson progress JSON round-trip', () => {
+    const session = navigateToTransferSection(makeSession());
+    const decoded = p32AssertProjectionRoundTrip(session);
+    assert.deepStrictEqual(decoded.lessonRuntime.progress.completedSectionIds, ['S08']);
+});
+
+test('P3.2 characterization: pending Q010 selection JSON round-trip', () => {
+    const selected = selectTransferQuestion(makeSession());
+    const decoded = p32AssertProjectionRoundTrip(selected.session);
+    assert.equal(decoded.currentQuestion.id, TRANSFER_QUESTION_ID);
+    assert.equal(decoded.lessonRuntime.currentItem.sectionId, TRANSFER_SECTION_ID);
+    assert.deepStrictEqual(decoded.history, selected.session.history);
+});
+
+test('P3.2 characterization: post-Q010 evidence JSON round-trip', () => {
+    const selected = selectTransferQuestion(makeSession());
+    const submitted = submitAnswer({
+        session: selected.session,
+        attemptId: ATTEMPT_ID,
+        response: 25,
+        startedAt: QUESTION_STARTED_AT,
+        submittedAt: SUBMIT_NOW,
+        now: SUBMIT_NOW
+    });
+    const decoded = p32AssertProjectionRoundTrip(submitted.session);
+    assert.deepStrictEqual(
+        decoded.masteryRuntime.evidenceHistoryByNode,
+        submitted.session.masteryRuntime.evidenceHistoryByNode
+    );
+    const observations = decoded.masteryRuntime.evidenceHistoryByNode.K283?.transfer;
+    assert.ok(Array.isArray(observations) && observations.length > 0);
+    assert.ok(observations.some(o => o.contextId === 'c09-k283-transfer-gamete-counts-03' && o.questionType === 'numeric'));
+});
+registerCheckpointRealSessionTests({
+    makeSession,
+    navigateToTransferSection,
+    selectTransferQuestion,
+
+    submitTransferAnswer: () => {
+        const selected = selectTransferQuestion(
+            makeSession()
+        );
+
+        const result = submitAnswer({
+            session: selected.session,
+            attemptId: ATTEMPT_ID,
+            response: 25,
+            startedAt: QUESTION_STARTED_AT,
+            submittedAt: SUBMIT_NOW,
+            now: SUBMIT_NOW
+        });
+
+        return result.session;
+    }
+});
+registerAttemptStoreRealSessionTests({
+    makeSession,
+    selectTransferQuestion,
+
+    submitTransferAnswer: (selectedSession) => {
+        return submitAnswer({
+            session: selectedSession,
+            attemptId: ATTEMPT_ID,
+            response: 25,
+            startedAt: QUESTION_STARTED_AT,
+            submittedAt: SUBMIT_NOW,
+            now: SUBMIT_NOW
+        });
+    }
+});
+registerCheckpointStoreRealSessionTests({
+    makeSession,
+    navigateToTransferSection,
+    selectTransferQuestion,
+
+    submitTransferAnswer: (selectedSession) => {
+        return submitAnswer({
+            session: selectedSession,
+            attemptId: ATTEMPT_ID,
+            response: 25,
+            startedAt: QUESTION_STARTED_AT,
+            submittedAt: SUBMIT_NOW,
+            now: SUBMIT_NOW
+        });
+    }
+});
+registerPersistenceCoordinatorRealSessionTests({
+    makeSession,
+
+    navigateToTransferSection: (session) => {
+        // Sử dụng helper điều hướng tới S09
+        // đã có trong bộ integration K283.
+        //
+        // Phải trả về session hoặc { session }.
+        return navigateToTransferSection(session);
+    },
+
+    selectTransferQuestion: (session) => {
+        return selectTransferQuestion(session);
+    },
+
+    submitTransferAnswer: (session) => {
+        return submitAnswer({
+            session,
+            attemptId: 'ATT-K283-Q010-001',
+            response: 25,
+            startedAt: '2026-10-07T10:04:00.000Z',
+            submittedAt: '2026-10-07T10:05:00.000Z',
+            now: '2026-10-07T10:05:00.000Z'
+        });
+    }
+});
