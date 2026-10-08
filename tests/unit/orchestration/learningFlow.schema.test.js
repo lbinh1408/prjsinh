@@ -12,7 +12,7 @@ import addFormats from "ajv-formats";
 import {
     processAttempt,
     processRemediationProbe
-} from "./learningFlow.js";
+} from "../../../src/engines/orchestration/learningFlow.js";
 
 
 /**
@@ -56,7 +56,7 @@ function findSchema(filename) {
 
         path.join(
             __dirname,
-            "../../data/schemas",
+            "../../../src/contracts/schemas",
             filename
         ),
 

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { validateKnowledgeMap } from './knowledgeValidator.js';
+import { validateKnowledgeMap } from '../../../../src/engines/knowledge/validators/knowledgeValidator.js';
 
 function createValidMap() {
     return {

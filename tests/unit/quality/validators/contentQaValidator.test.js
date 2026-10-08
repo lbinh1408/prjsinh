@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 
 import {
     validateQuestionContent
-} from "./contentQaValidator.js";
+} from "../../../../src/quality/validators/contentQaValidator.js";
 
 
 function makeMcq(options) {

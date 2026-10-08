@@ -1,7 +1,7 @@
 /**
  * attemptBuilder.test.js
  *
- * Unit tests for AttemptBuilder V1.0.1
+ * Unit tests for AttemptBuilder V1.0.2
  *
  * Run:
  *   node --test attemptBuilder.test.js
@@ -13,7 +13,7 @@ import assert from "node:assert/strict";
 import {
     buildAttempt,
     ATTEMPT_BUILDER_INFO
-} from "./attemptBuilder.js";
+} from "../../../src/engines/attempt/attemptBuilder.js";
 
 
 /**
@@ -258,7 +258,7 @@ function createBuildInput(
  */
 
 test(
-    "1. exposes AttemptBuilder V1.0.1 metadata",
+    "1. exposes AttemptBuilder V1.0.2 metadata",
     () => {
 
         assert.deepEqual(
@@ -268,7 +268,7 @@ test(
                     "AttemptBuilder",
 
                 version:
-                    "1.0.1",
+                    "1.0.2",
 
                 schemaVersion:
                     "1.0.0"

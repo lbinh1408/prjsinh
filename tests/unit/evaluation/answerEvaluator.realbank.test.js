@@ -23,7 +23,7 @@ import { fileURLToPath } from "node:url";
 
 import {
     evaluateAnswer
-} from "./answerEvaluator.js";
+} from "../../../src/engines/evaluation/answerEvaluator.js";
 
 
 /**
@@ -43,7 +43,7 @@ function loadJson(fileName) {
     const filePath =
         path.join(
             __dirname,
-            "../../data/questions/c09",
+            "../../../src/data/questions/c09",
             fileName
         );
 
@@ -116,30 +116,88 @@ function getQuestion(
 }
 
 
-function getCorrectOptionId(question) {
-    /**
-     * answer.value is the canonical grading source.
-     */
-    return question.answer.value;
+function getCorrectResponse(question) {
+
+    switch (question.questionType) {
+
+        case "mcq":
+            assert.equal(
+                question.answer?.type,
+                "single"
+            );
+
+            return question.answer.value;
+
+
+        case "numeric":
+            assert.equal(
+                question.answer?.type,
+                "number"
+            );
+
+            assert.ok(
+                Number.isFinite(
+                    question.answer.value
+                )
+            );
+
+            return question.answer.value;
+
+
+        default:
+            throw new Error(
+                `Unsupported questionType: ${question.questionType}`
+            );
+    }
 }
 
 
-function getWrongOptionId(question) {
-    const correctValue =
-        question.answer.value;
+function getWrongResponse(question) {
 
-    const wrongOption =
-        question.content.options.find(
-            (option) =>
-                option.id !== correctValue
-        );
+    switch (question.questionType) {
 
-    assert.ok(
-        wrongOption,
-        `Question '${question.id}' must contain at least one wrong option.`
-    );
+        case "mcq": {
 
-    return wrongOption.id;
+            const correct =
+                getCorrectResponse(question);
+
+            const wrong =
+                question.content?.options?.find(
+                    option =>
+                        option.id !== correct
+                );
+
+            assert.ok(
+                wrong,
+                `Question '${question.id}' must contain at least one wrong option.`
+            );
+
+            return wrong.id;
+        }
+
+
+        case "numeric": {
+
+            const correct =
+                getCorrectResponse(question);
+
+            const tolerance =
+                question.answer?.tolerance ?? 0;
+
+            assert.ok(
+                Number.isFinite(tolerance) &&
+                tolerance >= 0
+            );
+
+            return correct + tolerance + 1;
+        }
+
+
+        default:
+            throw new Error(
+                `Unsupported questionType: ${question.questionType}`
+            );
+    }
 }
 
 
@@ -272,7 +330,7 @@ test(
 
         assert.equal(
             K283_BANK.questions.length,
-            9
+            10
         );
 
         assert.equal(
@@ -290,8 +348,9 @@ test(
  */
 
 test(
-    "2. every real C09 question is single-answer MCQ supported by AnswerEvaluator V1",
+    "2. every real C09 question uses an AnswerEvaluator-supported response type",
     () => {
+
         for (
             const bank
             of REAL_BANKS
@@ -300,22 +359,22 @@ test(
                 const question
                 of bank.questions
             ) {
-                assert.equal(
-                    question.questionType,
-                    "mcq",
-                    `${question.id} must be mcq`
-                );
+
+                const supported =
+                    (
+                        question.questionType === "mcq" &&
+                        question.answer?.type === "single"
+                    ) ||
+                    (
+                        question.questionType === "numeric" &&
+                        question.answer?.type === "number"
+                    );
 
                 assert.equal(
-                    question.answer.type,
-                    "single",
-                    `${question.id} must use answer.type=single`
-                );
-
-                assert.equal(
-                    typeof question.answer.value,
-                    "string",
-                    `${question.id} answer.value must be a string`
+                    supported,
+                    true,
+                    `${question.id} uses unsupported pair: ` +
+                    `${question.questionType} + ${question.answer?.type}`
                 );
             }
         }
@@ -348,7 +407,7 @@ test(
                         question,
 
                         response:
-                            getCorrectOptionId(
+                            getCorrectResponse(
                                 question
                             )
                     });
@@ -370,7 +429,7 @@ test(
          */
         assert.equal(
             evaluatedCount,
-            32
+            33
         );
     }
 );
@@ -397,7 +456,7 @@ test(
                 of bank.questions
             ) {
                 const wrongOptionId =
-                    getWrongOptionId(
+                    getWrongResponse(
                         question
                     );
 
@@ -425,7 +484,7 @@ test(
 
         assert.equal(
             evaluatedCount,
-            32
+            33
         );
     }
 );
@@ -491,7 +550,7 @@ test(
 
         assert.equal(
             evaluatedCount,
-            32
+            33
         );
     }
 );
@@ -1049,8 +1108,9 @@ test(
  */
 
 test(
-    "17. every real answer.value points to an existing option",
+    "17. every real MCQ answer.value points to an existing option",
     () => {
+
         for (
             const bank
             of REAL_BANKS
@@ -1059,19 +1119,27 @@ test(
                 const question
                 of bank.questions
             ) {
-                const optionIds =
-                    question.content.options.map(
-                        (option) =>
-                            option.id
+
+                if (
+                    question.questionType !== "mcq"
+                ) {
+                    continue;
+                }
+
+                const options =
+                    question.content?.options ?? [];
+
+                const exists =
+                    options.some(
+                        option =>
+                            option.id ===
+                            question.answer.value
                     );
 
-
                 assert.ok(
-                    optionIds.includes(
-                        question.answer.value
-                    ),
-
-                    `${question.id}: answer.value '${question.answer.value}' must exist in content.options`
+                    exists,
+                    `${question.id}: answer.value '${question.answer.value}' ` +
+                    `must exist in content.options`
                 );
             }
         }
@@ -1086,8 +1154,9 @@ test(
  */
 
 test(
-    "18. every real answer.value agrees with the single isCorrect option",
+    "18. every real MCQ answer.value agrees with the single isCorrect option",
     () => {
+
         for (
             const bank
             of REAL_BANKS
@@ -1096,32 +1165,34 @@ test(
                 const question
                 of bank.questions
             ) {
+
+                if (
+                    question.questionType !== "mcq"
+                ) {
+                    continue;
+                }
+
                 const correctOptions =
                     question.content.options.filter(
-                        (option) =>
+                        option =>
                             option.isCorrect === true
                     );
-
 
                 assert.equal(
                     correctOptions.length,
                     1,
-
                     `${question.id} must contain exactly one isCorrect option`
                 );
-
 
                 assert.equal(
                     correctOptions[0].id,
                     question.answer.value,
-
-                    `${question.id}: answer.value must agree with isCorrect`
+                    `${question.id}: answer.value must agree with isCorrect option`
                 );
             }
         }
     }
 );
-
 
 /**
  * =========================================================
@@ -1261,7 +1332,7 @@ test(
 
 
         const wrongOptionId =
-            getWrongOptionId(
+            getWrongResponse(
                 question
             );
 
@@ -1360,7 +1431,7 @@ test(
  */
 
 test(
-    "24. real Study MVP contains exactly 32 evaluable C09 questions",
+    "24. real Study MVP contains exactly 33 evaluable C09 questions",
     () => {
         const allQuestions =
             REAL_BANKS.flatMap(
@@ -1371,7 +1442,7 @@ test(
 
         assert.equal(
             allQuestions.length,
-            32
+            33
         );
 
 

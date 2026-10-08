@@ -28,7 +28,7 @@ import addFormats from "ajv-formats";
 import {
     buildAttempt,
     ATTEMPT_BUILDER_INFO
-} from "./attemptBuilder.js";
+} from "../../../src/engines/attempt/attemptBuilder.js";
 
 
 /**
@@ -59,7 +59,7 @@ const __dirname =
 const ATTEMPT_SCHEMA_PATH =
     path.join(
         __dirname,
-        "../../data/runtime/attempt.schema.json"
+        "../../../src/contracts/schemas/attempt.schema.json"
     );
 
 

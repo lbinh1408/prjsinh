@@ -5,14 +5,38 @@
     "language": "vi",
     "status": "final",
     "purpose": {
-        "description": "Schema chuẩn cho các lesson học Sinh học theo knowledge node và mastery.",
+        "description": "Schema chuẩn cho lesson học Sinh học theo knowledge node. Lesson chịu trách nhiệm mô tả nội dung và cấu trúc delivery; không sở hữu quyết định adaptive, mastery update, remediation diagnosis hoặc question evaluation.",
         "sourceOfTruth": {
             "knowledge": "knowledge/knowledge-map-v4.json",
             "mastery": "mastery/rules.json",
-            "questions": "questions/schema.json"
+            "questions": "questions/schema.json",
+            "adaptive": "adaptive/rules.json",
+            "failureSignatures": "remediation/failure-signatures.json"
         },
-        "principle": "Lesson là lớp delivery. Lesson không quyết định học sinh cần học knowledge node nào; Knowledge Map và Adaptive Engine quyết định.",
+        "principle": "Lesson là delivery layer. Lesson mô tả những gì có thể được dạy và cách nội dung được tổ chức; Adaptive Engine quyết định next action, Mastery Engine quyết định mastery, Remediation Engine quyết định remediation strategy, Question Engine/Selector quyết định câu hỏi phù hợp.",
         "coreModel": "cluster_based_learning"
+    },
+    "ownership": {
+        "owns": [
+            "lesson_definition",
+            "section_structure",
+            "content_references",
+            "instructional_sequence",
+            "question_selection_constraints",
+            "delivery_mode_compatibility",
+            "lesson_completion_requirements"
+        ],
+        "doesNotOwn": [
+            "knowledge_dependency_truth",
+            "target_mastery",
+            "mastery_calculation",
+            "mastery_promotion",
+            "adaptive_next_action",
+            "failure_diagnosis",
+            "remediation_strategy_selection",
+            "question_grading",
+            "student_state_persistence"
+        ]
     },
     "lessonTypes": {
         "cluster": {
@@ -37,7 +61,7 @@
         },
         "remediation": {
             "name": "Remediation Lesson",
-            "description": "Sửa một hoặc một nhóm failure signature cụ thể."
+            "description": "Cung cấp nội dung sửa lỗi cho một hoặc một nhóm failure signature đã được Remediation Engine xác định."
         },
         "review": {
             "name": "Review Lesson",
@@ -51,15 +75,15 @@
     "deliveryModes": {
         "HOC_NHANH": {
             "name": "Học nhanh",
-            "description": "Diagnostic → bỏ qua phần đã vững → học gap → practice → mastery check."
+            "description": "Ưu tiên diagnostic, nội dung gap, practice và challenge; việc bỏ qua hay chuyển bước do Adaptive Engine quyết định."
         },
         "HOC_SAU": {
             "name": "Học sâu",
-            "description": "Concept → mechanism → apply → transfer → cross-node → retest."
+            "description": "Ưu tiên concept, mechanism, worked example, apply, transfer và cross-node."
         },
         "ON_THI": {
             "name": "Ôn thi",
-            "description": "Question → diagnose → remediate → retry → retest."
+            "description": "Ưu tiên question practice, diagnostic evidence, remediation content khi được yêu cầu, retry và retest."
         }
     },
     "sectionTypes": {
@@ -69,7 +93,7 @@
         },
         "entryDiagnostic": {
             "name": "Chẩn đoán đầu vào",
-            "purpose": "Xác định điểm bắt đầu."
+            "purpose": "Thu thập evidence để hệ thống xác định điểm bắt đầu."
         },
         "concept": {
             "name": "Khái niệm",
@@ -105,7 +129,7 @@
         },
         "transfer": {
             "name": "Chuyển giao",
-            "purpose": "Áp dụng trong ngữ cảnh mới."
+            "purpose": "Áp dụng kiến thức trong ngữ cảnh mới."
         },
         "crossNode": {
             "name": "Liên kết kiến thức",
@@ -113,7 +137,7 @@
         },
         "remediation": {
             "name": "Sửa lỗi",
-            "purpose": "Xử lý failure signature."
+            "purpose": "Cung cấp nội dung sửa failure signature đã được xác định bên ngoài Lesson."
         },
         "reflection": {
             "name": "Tự phản tư",
@@ -121,12 +145,41 @@
         },
         "exitDiagnostic": {
             "name": "Chẩn đoán đầu ra",
-            "purpose": "Kiểm tra mức mastery sau lesson."
+            "purpose": "Thu thập evidence sau lesson; Mastery Engine xử lý evidence này."
         },
         "summary": {
             "name": "Tổng kết",
             "purpose": "Củng cố cấu trúc kiến thức."
         }
+    },
+    "canonicalRegistries": {
+        "evidence": [
+            "know",
+            "explain",
+            "apply",
+            "transfer"
+        ],
+        "difficulty": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+        ],
+        "deliveryModes": [
+            "HOC_NHANH",
+            "HOC_SAU",
+            "ON_THI"
+        ],
+        "adaptiveActions": [
+            "LEARN",
+            "PRACTICE",
+            "CHALLENGE",
+            "REMEDIATE",
+            "RETEST",
+            "REVIEW",
+            "SKIP"
+        ]
     },
     "coreSchema": {
         "required": [
@@ -149,7 +202,6 @@
             "estimatedMinutes",
             "difficulty",
             "objectives",
-            "adaptiveRules",
             "metadata"
         ]
     },
@@ -192,25 +244,25 @@
             {
                 "id": "OBJ01",
                 "node": "K200",
-                "type": "understand",
+                "evidence": "know",
                 "description": "Mô tả được cấu trúc cơ bản của DNA."
             },
             {
                 "id": "OBJ02",
                 "node": "K204",
-                "type": "explain",
+                "evidence": "explain",
                 "description": "Giải thích được quá trình phiên mã."
             },
             {
                 "id": "OBJ03",
                 "node": "K206",
-                "type": "apply",
+                "evidence": "apply",
                 "description": "Vận dụng nguyên tắc dịch mã để xác định chuỗi amino acid."
             },
             {
                 "id": "OBJ04",
                 "node": "K208",
-                "type": "transfer",
+                "evidence": "transfer",
                 "description": "Suy luận mối liên hệ DNA → RNA → protein → tính trạng trong ngữ cảnh mới."
             }
         ],
@@ -222,31 +274,34 @@
             ],
             "questionSelection": {
                 "source": "questions/",
-                "nodes": [
-                    "K200",
-                    "K201",
-                    "K204",
-                    "K206",
-                    "K208"
-                ],
-                "evidence": [
-                    "know",
-                    "explain",
-                    "apply"
-                ],
-                "maxQuestions": 8
+                "selection": {
+                    "nodes": [
+                        "K200",
+                        "K201",
+                        "K204",
+                        "K206",
+                        "K208"
+                    ],
+                    "evidence": [
+                        "know",
+                        "explain",
+                        "apply"
+                    ],
+                    "mode": [
+                        "diagnostic"
+                    ],
+                    "count": 8
+                }
             },
             "adaptiveStopping": true,
-            "outcomes": {
-                "strong": {
-                    "action": "SKIP_TO_CHALLENGE"
-                },
-                "partial": {
-                    "action": "LEARN_GAPS"
-                },
-                "weak": {
-                    "action": "START_FROM_PREREQUISITE"
-                }
+            "handoff": {
+                "consumer": "Adaptive Engine",
+                "provides": [
+                    "attempts",
+                    "evidence",
+                    "diagnostic_completion"
+                ],
+                "rule": "Lesson không ánh xạ kết quả diagnostic thành next action. Adaptive Engine quyết định action tiếp theo."
             }
         },
         "sections": [
@@ -349,6 +404,10 @@
                             "explain",
                             "apply"
                         ],
+                        "mode": [
+                            "learning",
+                            "practice"
+                        ],
                         "count": 5
                     },
                     "adaptive": true
@@ -371,6 +430,10 @@
                         ],
                         "evidence": [
                             "apply"
+                        ],
+                        "mode": [
+                            "practice",
+                            "challenge"
                         ],
                         "count": 5
                     },
@@ -412,7 +475,7 @@
                 ],
                 "estimatedMinutes": 20,
                 "questionSet": {
-                    "source": "questions/transfer/",
+                    "source": "questions/",
                     "selection": {
                         "primaryNode": "K208",
                         "difficulty": [
@@ -421,6 +484,10 @@
                         ],
                         "evidence": [
                             "transfer"
+                        ],
+                        "mode": [
+                            "challenge",
+                            "retest"
                         ],
                         "count": 3
                     },
@@ -468,46 +535,21 @@
                         "D3",
                         "D4"
                     ],
+                    "mode": [
+                        "diagnostic",
+                        "retest"
+                    ],
                     "count": 6
                 }
             },
-            "outcomes": {
-                "mastered": {
-                    "action": "UPDATE_MASTERY"
-                },
-                "partial": {
-                    "action": "PRACTICE_GAP"
-                },
-                "weak": {
-                    "action": "REMEDIATE"
-                }
-            }
-        },
-        "adaptiveRules": {
-            "enabled": true,
-            "skip": {
-                "condition": "node.mastery >= node.targetMastery",
-                "action": "skip_section"
-            },
-            "learn": {
-                "condition": "node.mastery <= M1",
-                "action": "show_concept_and_guided_practice"
-            },
-            "practice": {
-                "condition": "node.mastery == M2",
-                "action": "show_practice"
-            },
-            "challenge": {
-                "condition": "node.mastery == M3",
-                "action": "show_apply_and_transfer"
-            },
-            "retest": {
-                "condition": "node.mastery == M4",
-                "action": "show_retest"
-            },
-            "remediate": {
-                "condition": "node.status == weak",
-                "action": "route_to_failure_signature"
+            "handoff": {
+                "consumer": "LearningFlow / Mastery Engine / Adaptive Engine",
+                "provides": [
+                    "attempts",
+                    "evidence",
+                    "diagnostic_completion"
+                ],
+                "rule": "Lesson không tự update mastery và không tự quyết định next action."
             }
         },
         "estimatedMinutes": {
@@ -519,7 +561,7 @@
         "metadata": {
             "author": "system",
             "createdAt": "2026-09-20",
-            "updatedAt": "2026-09-20",
+            "updatedAt": "2026-10-07",
             "reviewStatus": "approved",
             "tags": [
                 "dna",
@@ -535,24 +577,43 @@
         "nodeCanAppearInMultipleLessons": true,
         "primaryNode": {
             "required": false,
-            "rule": "Chỉ bắt buộc khi lesson có mục tiêu mastery cụ thể."
+            "rule": "Chỉ cần primaryNodes khi lesson muốn khai báo các node trọng tâm về mặt delivery; target mastery vẫn thuộc Knowledge Map."
         },
         "supportingNode": {
-            "rule": "Node hỗ trợ có thể xuất hiện trong lesson mà không phải mục tiêu chính."
+            "rule": "Node hỗ trợ có thể xuất hiện trong lesson mà không phải mục tiêu delivery chính."
         },
         "targetMastery": {
             "source": "knowledge-map-v4.json",
-            "rule": "Lesson không được tự đặt targetMastery khác với Knowledge Map."
+            "rule": "Lesson không định nghĩa hoặc override targetMastery."
         }
+    },
+    "objectiveRules": {
+        "allowedEvidence": [
+            "know",
+            "explain",
+            "apply",
+            "transfer"
+        ],
+        "rule": "Objective mô tả năng lực mà lesson hỗ trợ xây dựng. Objective không tự chứng minh mastery và không tạo mastery promotion."
     },
     "sectionRules": {
         "sequenceIsFlexible": true,
-        "principle": "Section sequence có thể thay đổi theo delivery mode và mastery.",
+        "principle": "Lesson khai báo canonical section sequence. Lesson Engine có thể project delivery plan từ sequence này theo delivery mode và external AdaptiveDecision nhưng không tự suy ra next action từ mastery.",
         "minimumLearningFlow": [
-            "concept_or_observation",
+            "concept",
             "guidedPractice",
-            "application_or_transfer"
+            "apply"
         ],
+        "minimumLearningFlowAlternatives": {
+            "concept": [
+                "concept",
+                "observation"
+            ],
+            "application": [
+                "apply",
+                "transfer"
+            ]
+        },
         "deepLearningFlow": [
             "orientation",
             "concept",
@@ -567,106 +628,98 @@
         ],
         "fastLearningFlow": [
             "entryDiagnostic",
-            "learn_gap",
+            "concept",
+            "guidedPractice",
             "practice",
-            "challenge",
+            "apply",
+            "transfer",
             "exitDiagnostic"
+        ],
+        "rule": "Tên trong learning flow phải là section type canonical; không dùng action, mastery state hoặc pseudo-section làm section type."
+    },
+    "deliveryProjectionRules": {
+        "principle": "Adaptive Engine quyết định primary action; Lesson Engine chỉ ánh xạ action đã được cung cấp sang các section phù hợp trong lesson.",
+        "actionToPreferredSectionTypes": {
+            "LEARN": [
+                "orientation",
+                "observation",
+                "concept",
+                "comparison",
+                "mechanism",
+                "workedExample",
+                "guidedPractice"
+            ],
+            "PRACTICE": [
+                "guidedPractice",
+                "practice",
+                "apply"
+            ],
+            "CHALLENGE": [
+                "apply",
+                "crossNode",
+                "transfer"
+            ],
+            "REMEDIATE": [
+                "remediation",
+                "guidedPractice",
+                "practice"
+            ],
+            "RETEST": [
+                "exitDiagnostic",
+                "transfer",
+                "practice"
+            ],
+            "REVIEW": [
+                "summary",
+                "reflection",
+                "practice",
+                "crossNode"
+            ],
+            "SKIP": []
+        },
+        "rules": [
+            "Mapping này là delivery projection, không phải Adaptive decision logic.",
+            "Lesson Engine không được tự tạo primary action.",
+            "Nếu action không có section phù hợp, Lesson Engine phải trả explicit no-match thay vì đổi action."
         ]
     },
     "questionSetRules": {
-        "principle": "Lesson tham chiếu question bank bằng selection rule thay vì hard-code toàn bộ câu hỏi.",
+        "principle": "Lesson tham chiếu question bank bằng selection constraints; QuestionSelector thực hiện selection thực tế.",
         "selectionMayUse": [
-            "node",
+            "nodes",
             "primaryNode",
             "evidence",
             "difficulty",
             "mode",
-            "skill",
-            "failureSignature",
+            "skills",
+            "failureSignatures",
             "contextType",
             "retestGroupId"
         ],
         "adaptiveSelection": true,
         "avoidRepeatedQuestions": true,
-        "avoidImmediateDuplicateContext": true
+        "avoidImmediateDuplicateContext": true,
+        "ownershipRule": "Lesson không tự implement ranking, exclusion, novelty hoặc fallback selection; các ràng buộc này được chuyển cho QuestionSelector khi phù hợp."
     },
     "diagnosticRules": {
         "entryDiagnostic": {
-            "purpose": "Xác định điểm bắt đầu.",
+            "purpose": "Thu thập evidence để xác định điểm bắt đầu.",
             "doesNotEqualMasteryTest": true,
-            "maySkipContent": true
+            "mayEnableAdaptiveSkip": true,
+            "ownerOfNextAction": "Adaptive Engine"
         },
         "exitDiagnostic": {
-            "purpose": "Đánh giá tiến bộ sau lesson.",
-            "updatesMastery": true
+            "purpose": "Thu thập evidence sau lesson.",
+            "producesEvidence": true,
+            "ownerOfMasteryUpdate": "Mastery Engine",
+            "ownerOfNextAction": "Adaptive Engine"
         },
-        "rule": "Diagnostic phải ngắn hơn một bài kiểm tra thông thường."
-    },
-    "adaptiveLearningRules": {
-        "principle": "Lesson structure là dynamic theo mastery.",
-        "M0": {
-            "show": [
-                "concept",
-                "observation",
-                "mechanism",
-                "guidedPractice"
-            ],
-            "skip": [
-                "advanced_transfer"
-            ]
-        },
-        "M1": {
-            "show": [
-                "concept",
-                "mechanism",
-                "guidedPractice",
-                "practice"
-            ]
-        },
-        "M2": {
-            "show": [
-                "brief_concept_review",
-                "practice",
-                "apply"
-            ],
-            "skip": [
-                "long_introduction"
-            ]
-        },
-        "M3": {
-            "show": [
-                "apply",
-                "crossNode",
-                "transfer"
-            ],
-            "skip": [
-                "basic_concept_explanation"
-            ]
-        },
-        "M4": {
-            "show": [
-                "challenge",
-                "transfer",
-                "retest"
-            ],
-            "skip": [
-                "basic_teaching"
-            ]
-        },
-        "stable": {
-            "show": [
-                "review",
-                "challenge"
-            ],
-            "skip": [
-                "full_lesson"
-            ]
-        }
+        "rule": "Diagnostic phải ngắn hơn một bài kiểm tra thông thường. Lesson chỉ mô tả diagnostic delivery và question constraints."
     },
     "remediationLessonRules": {
-        "principle": "Remediation lesson nhỏ, tập trung vào failure signature thay vì dạy lại toàn bộ cluster.",
+        "principle": "Remediation lesson nhỏ, cung cấp delivery content cho failure signature đã được Remediation Engine xác định; Lesson không tự chẩn đoán failure source hoặc chọn remediation strategy.",
         "requiredFields": [
-            "targetFailureSignature",
+            "targetFailureSignatures",
             "sourceNodes",
             "miniLesson",
             "miniPractice",
@@ -680,7 +733,9 @@
             "return_to_original_node"
         ],
         "maximumNodes": 3,
-        "maximumEstimatedMinutes": 20
+        "maximumEstimatedMinutes": 20,
+        "ownerOfDiagnosis": "Remediation Engine",
+        "ownerOfStrategy": "Remediation Engine"
     },
     "transferRules": {
         "principle": "Transfer section phải thay đổi bối cảnh, dữ kiện hoặc cách biểu diễn.",
@@ -704,14 +759,20 @@
             "repeat_same_explanation_multiple_times",
             "force_every_student_through_every_section",
             "define_mastery_independently",
-            "hard_code_student_specific_next_action"
+            "calculate_mastery",
+            "promote_mastery",
+            "diagnose_failure_independently",
+            "select_remediation_strategy_independently",
+            "hard_code_student_specific_next_action",
+            "grade_question_answers",
+            "persist_student_state"
         ],
         "lessonShould": [
             "teach_mechanisms",
             "connect_nodes",
             "provide_examples",
             "provide_scaffolding",
-            "support_adaptive_skipping",
+            "support_adaptive_projection",
             "provide_transfer",
             "provide_self_reflection"
         ]
@@ -724,6 +785,35 @@
         ],
         "masteryMeans": [
             "mastery_rules_passed"
+        ],
+        "ownerOfCompletion": "Lesson Engine",
+        "ownerOfMastery": "Mastery Engine"
+    },
+    "runtimeContract": {
+        "principle": "Lesson definition là immutable content contract. Runtime lesson progress nằm ngoài lesson definition.",
+        "lessonEngineMayReceive": [
+            "lesson",
+            "deliveryMode",
+            "adaptiveDecision",
+            "completedSectionIds",
+            "skippedSectionIds"
+        ],
+        "lessonEngineMayReturn": [
+            "lessonId",
+            "deliveryMode",
+            "adaptiveAction",
+            "eligibleSections",
+            "currentSection",
+            "nextSection",
+            "completion"
+        ],
+        "lessonEngineMustNotReturnAsAuthority": [
+            "masteryUpdate",
+            "newMasteryLevel",
+            "failureDiagnosis",
+            "remediationStrategy",
+            "gradedAnswer",
+            "studentState"
         ]
     },
     "analyticsContract": {
@@ -739,39 +829,47 @@
             "exit_diagnostic_completed"
         ],
         "lessonDoesNotStoreStudentState": true,
-        "rule": "Student state được lưu bởi Student State / Analytics layer, không lưu trực tiếp trong lesson definition."
+        "rule": "Lesson Engine có thể phát event; Student State / Analytics layer chịu trách nhiệm lưu hoặc tổng hợp runtime state theo contract tương ứng."
     },
     "validationRules": {
         "mustValidate": [
             "all node IDs exist in knowledge-map-v4.json",
-            "all question references match questions/schema.json",
+            "all objective evidence values use canonical evidence registry",
+            "all question selection constraints are compatible with questions/schema.json",
             "all evidence values are valid",
             "all difficulty values are valid",
             "all section types are valid",
-            "all delivery modes are valid"
+            "all delivery modes are valid",
+            "all adaptive action references use canonical Adaptive actions",
+            "primaryNodes and supportingNodes are subsets of knowledgeNodes",
+            "section node IDs belong to lesson knowledgeNodes unless explicitly allowed as prerequisites",
+            "section IDs are unique within a lesson"
         ],
         "mustNotValidateAgainst": [
             "student mastery",
             "student progress",
             "current adaptive decision"
         ],
-        "principle": "Lesson schema kiểm tra tính hợp lệ của lesson definition, không kiểm tra trạng thái cá nhân của học sinh."
+        "principle": "Lesson schema kiểm tra tính hợp lệ của lesson definition và cross-contract references; không kiểm tra trạng thái cá nhân của học sinh."
     },
     "versioning": {
         "currentVersion": "1.0.0",
         "compatibleKnowledgeMap": "4.x",
-        "compatibleMasteryRules": "1.x",
+        "compatibleMasteryRules": "2.x",
         "compatibleQuestionSchema": "1.x",
+        "compatibleAdaptiveRules": "1.x",
         "breakingChanges": [
             "Thay đổi cấu trúc section bắt buộc.",
             "Thay đổi meaning của delivery mode.",
+            "Thay đổi ownership boundary giữa Lesson Engine và engine khác.",
             "Thay đổi contract giữa Lesson Engine và Adaptive Engine."
         ],
         "nonBreakingChanges": [
             "Thêm section type.",
             "Thêm metadata.",
             "Thêm content format.",
-            "Thêm adaptive rule."
-        ]
+            "Thêm optional delivery projection metadata."
+        ],
+        "auditNote": "V1.0.0 được audit trước khi Lesson Engine được triển khai. Audit loại bỏ adaptive/mastery/remediation decision logic khỏi Lesson ownership và đồng bộ với các contract hiện hành."
     }
 }

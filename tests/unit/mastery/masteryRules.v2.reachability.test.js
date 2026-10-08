@@ -33,7 +33,7 @@ const __dirname = path.dirname(__filename);
 
 const RULES_PATH = process.argv[2]
     ? path.resolve(process.argv[2])
-    : path.resolve(__dirname, "mastery-rules-v2.0.0.json");
+    : path.resolve(__dirname, "../../../src/policies/mastery/rules.json");
 
 const rules = JSON.parse(
     fs.readFileSync(RULES_PATH, "utf8")

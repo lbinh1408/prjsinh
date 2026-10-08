@@ -12,12 +12,12 @@ import assert from "node:assert/strict";
 
 import {
     decideNextAction
-} from "./adaptiveEngine.js";
+} from "../../../src/engines/adaptive/adaptiveEngine.js";
 
 import Ajv2020 from "ajv/dist/2020.js";
 import addFormats from "ajv-formats";
 
-import nextActionSchema from "../../data/adaptive/next-action.schema.json" with {
+import nextActionSchema from "../../../src/contracts/schemas/next-action.schema.json" with {
     type: "json"
 };
 

@@ -3,13 +3,13 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { validateStudentState } from './studentStateValidator.js';
+import { validateStudentState } from '../../../../src/contracts/validators/studentStateValidator.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 // Path to canonical fixture
-const FIXTURE_PATH = join(__dirname, '../../data/student/student-state.json');
+const FIXTURE_PATH = join(__dirname, '../../../../src/data/student/student-state.json');
 
 const MOCK_OPTIONS = {
     knowledgeMap: {
@@ -76,11 +76,11 @@ test('studentStateValidator test suite', async (t) => {
         const state = getBaseState();
         const originalState = JSON.parse(JSON.stringify(state));
         const report = validateStudentState(state, MOCK_OPTIONS);
-        
+
         if (!report.valid) {
             console.error(JSON.stringify(report.issues, null, 2));
         }
-        
+
         assert.equal(report.valid, true, "Expected base fixture to be VALID");
         ensureNoMutation(originalState, state);
     });
@@ -119,7 +119,7 @@ test('studentStateValidator test suite', async (t) => {
 
     await t.test('confidence "very_high" -> STATE_INVALID_CONFIDENCE', () => {
         const state = getBaseState();
-        state.knowledge.K200.confidence = "very_high";
+        state.knowledge.K200.confidence = "extreme";
         runAndAssertInvalid(state, "STATE_INVALID_CONFIDENCE");
     });
 

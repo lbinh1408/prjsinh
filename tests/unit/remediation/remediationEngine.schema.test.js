@@ -6,10 +6,10 @@ import addFormats from "ajv-formats";
 
 import {
     buildRemediationPlan
-} from "./remediationEngine.js";
+} from "../../../src/engines/remediation/remediationEngine.js";
 
 import remediationSchema
-    from "../../data/remediation/remediation.schema.json"
+    from "../../../src/contracts/schemas/remediation.schema.json"
 with { type: "json" };
 
 

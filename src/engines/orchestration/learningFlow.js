@@ -66,17 +66,17 @@
 
 import {
     updateMastery
-} from "./masterEngine.js";
+} from "../mastery/masterEngine.js";
 
 
 import {
     decideNextAction
-} from "./adaptiveEngine.js";
+} from "../adaptive/adaptiveEngine.js";
 
 
 import {
     buildRemediationPlan
-} from "./remediationEngine.js";
+} from "../remediation/remediationEngine.js";
 
 
 /**
@@ -85,7 +85,7 @@ import {
  * ============================================================
  */
 
-const FLOW_VERSION = "1.0.1";
+const FLOW_VERSION = "1.0.3";
 
 const FLOW_NAME = "LearningFlow";
 
@@ -143,6 +143,9 @@ export function processAttempt({
     recentResults = [],
 
     sessionContext = {},
+
+    masteryEvidenceHistory = null,
+    masteryEvidenceContext = {},
 
     learningMode = null,
 
@@ -259,7 +262,13 @@ export function processAttempt({
 
             masteryRules,
 
-            evidenceModel
+            evidenceModel,
+
+            evidenceHistory:
+                masteryEvidenceHistory,
+
+            evidenceContext:
+                masteryEvidenceContext
         });
 
 
@@ -525,7 +534,26 @@ export function processAttempt({
 
 
         remediationPlan,
+        /**
+         * DESIGN-005 / runtime evidence-history bridge
+         *
+         * Mastery V2 exposes the updated runtime evidence history at:
+         *
+         *     masteryRuntimeResult.current.evidenceHistory
+         *
+         * This history remains runtime-only and is intentionally not
+         * persisted into canonical Student State.
+         */
+        runtime: {
 
+            masteryEvidenceHistory:
+                clonePlainObject(
+                    masteryRuntimeResult
+                        ?.current
+                        ?.evidenceHistory ??
+                    {}
+                )
+        },
 
         outcome: {
 
@@ -588,6 +616,8 @@ export function processRemediationProbe({
     recentResults = [],
 
     sessionContext = {},
+    masteryEvidenceHistory = null,
+    masteryEvidenceContext = {},
 
     learningMode = null,
 
@@ -678,6 +708,8 @@ export function processRemediationProbe({
         sessionContext:
             enrichedSessionContext,
 
+        masteryEvidenceHistory,
+        masteryEvidenceContext,
         learningMode,
 
         timeBudget,
@@ -2526,7 +2558,34 @@ function buildAdaptiveSessionContext({
         )
     };
 
+    /*
+ * DESIGN-003
+ * --------------------------------------------------------
+ * Mastery Engine owns the calculation of supportedLevel.
+ *
+ * LearningFlow only forwards that already-calculated
+ * runtime signal to Adaptive Engine.
+ *
+ * IMPORTANT:
+ *
+ * - This is runtime-only integration metadata.
+ * - It is NOT persisted into Student State.
+ * - Adaptive MUST NOT recalculate mastery from evidence.
+ * - recorded mastery and supported mastery remain distinct.
+ */
 
+    const supportedMastery =
+        normalizeMasteryLevelOrNull(
+            masteryUpdate
+                ?.decision
+                ?.supportedLevel
+        );
+
+    if (supportedMastery) {
+
+        context.supportedMastery =
+            supportedMastery;
+    }
     /*
      * Mastery Update traceability.
      *

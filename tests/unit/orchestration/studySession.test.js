@@ -3,7 +3,7 @@
  * studySession.test.js
  * ============================================================
  *
- * StudySession V0.1.0
+ * StudySession V0.2.0
  *
  * Phase 2A — Study MVP Runtime
  *
@@ -66,7 +66,7 @@ import {
     getSessionSnapshot,
     getStudentState,
     STUDY_SESSION_INFO
-} from "./studySession.js";
+} from "../../../src/engines/orchestration/studySession.js";
 
 
 /**
@@ -128,37 +128,37 @@ function loadJson(
 
 const knowledgeMap =
     loadJson(
-        "data/knowledge/knowledge-map-v4.json"
+        "../src/data/knowledge/knowledge-map-v4.json"
     );
 
 
 const masteryRules =
     loadJson(
-        "data/mastery/rules.json"
+        "../src/policies/mastery/rules.json"
     );
 
 
 const evidenceModel =
     loadJson(
-        "data/mastery/evidence.json"
+        "../src/data/mastery/evidence.json"
     );
 
 
 const adaptiveRules =
     loadJson(
-        "data/adaptive/rules.json"
+        "../src/policies/adaptive/rules.json"
     );
 
 
 const adaptivePaths =
     loadJson(
-        "data/adaptive/paths.json"
+        "../src/policies/adaptive/paths.json"
     );
 
 
 const failureSignatures =
     loadJson(
-        "data/remediation/failure-signatures.json"
+        "../src/data/remediation/failure-signatures.json"
     );
 
 
@@ -177,7 +177,7 @@ const remediationRules = {};
  */
 const k283Bank =
     loadJson(
-        "data/questions/c09/K283.question-bank.json"
+        "../src/data/questions/c09/K283.question-bank.json"
     );
 
 
@@ -746,7 +746,7 @@ function submitWrong({
  */
 
 test(
-    "1. StudySession exposes V0.1.0 runtime metadata",
+    "1. StudySession exposes V0.2.0 runtime metadata",
     () => {
 
         assert.equal(
@@ -757,7 +757,7 @@ test(
 
         assert.equal(
             STUDY_SESSION_INFO.version,
-            "0.1.0"
+            "0.2.0"
         );
 
 
@@ -798,7 +798,7 @@ test(
 
         assert.equal(
             session.runtime.version,
-            "0.1.0"
+            "0.2.0"
         );
 
 

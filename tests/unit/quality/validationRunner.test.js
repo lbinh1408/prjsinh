@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { runValidation } from './validationRunner.js';
-import { knowledgeMap, questions, attempts, events, studentState, lessons } from './validationRunner.fixtures.js';
+import { runValidation } from '../../../src/quality/validators/validationRunner.js';
+import { knowledgeMap, questions, attempts, events, studentState, lessons } from '../../fixtures/validation/validationRunner.fixtures.js';
 
 function getCanonicalArtifacts() {
     const artifacts = {
@@ -22,13 +22,13 @@ function getCanonicalArtifacts() {
             ]
         }
     };
-    
+
     // Thêm các node còn thiếu
     const missingNodes = ["K013", "K200", "K201", "K202", "K204", "K205", "K206", "K208"];
     for (const n of missingNodes) {
         if (!artifacts.knowledgeMap.nodes.find(x => x.id === n)) {
             artifacts.knowledgeMap.nodes.push({
-                id: n, name: "Node", cluster: "C01", priority: "P1", targetMastery: "M2", 
+                id: n, name: "Node", cluster: "C01", priority: "P1", targetMastery: "M2",
                 dependencies: { D1: [], D2: [], D3: [] }, leadsTo: []
             });
         }
@@ -40,7 +40,7 @@ function getCanonicalArtifacts() {
             artifacts.knowledgeMap.clusters.push({ id: c, name: "Cluster" });
         }
     }
-    artifacts.knowledgeMap.metaSkills = [ { id: "S001" }, { id: "S002" }, { id: "S003" }, { id: "attention" }, { id: "persistence" } ];
+    artifacts.knowledgeMap.metaSkills = [{ id: "S001" }, { id: "S002" }, { id: "S003" }, { id: "attention" }, { id: "persistence" }];
 
     if (!artifacts.questions.find(q => q.id === "Q-A-K206-A-002")) {
         artifacts.questions.push({
@@ -52,12 +52,12 @@ function getCanonicalArtifacts() {
             primaryNode: "K206",
             nodes: ["K206"],
             mode: ["practice"],
-            content: { 
-                stem: "Q", 
+            content: {
+                stem: "Q",
                 options: [
                     { id: "A", text: "1", isCorrect: true },
                     { id: "B", text: "2", isCorrect: false }
-                ] 
+                ]
             },
             answer: { type: "single", value: "A" },
             scoring: { maxScore: 1, partialCredit: false },
@@ -83,7 +83,7 @@ function ensureNoMutation(originalObj, objToTest) {
 }
 
 test('validationRunner test suite', async (t) => {
-    
+
     await t.test('1. {} -> valid, không crash', () => {
         const result = runValidation({});
         if (!result.valid) console.error(JSON.stringify(result, null, 2));
@@ -193,7 +193,7 @@ test('validationRunner test suite', async (t) => {
 
     await t.test('13. stopCrossContractOnIndividualFailure=true + individual fail -> cross skipped', () => {
         const artifacts = getCanonicalArtifacts();
-        artifacts.questions[0].primaryNode = 123; 
+        artifacts.questions[0].primaryNode = 123;
         const result = runValidation(artifacts, { stopCrossContractOnIndividualFailure: true });
         assert.equal(result.valid, false);
         assert.equal(result.summary.crossContract.run, false);
@@ -202,7 +202,7 @@ test('validationRunner test suite', async (t) => {
 
     await t.test('14. stopCrossContractOnIndividualFailure=false + individual fail -> cross vẫn chạy với valid subset', () => {
         const artifacts = getCanonicalArtifacts();
-        artifacts.questions[0].primaryNode = 123; 
+        artifacts.questions[0].primaryNode = 123;
         const result = runValidation(artifacts, { stopCrossContractOnIndividualFailure: false });
         assert.equal(result.valid, false);
         assert.equal(result.summary.crossContract.run, true);
@@ -235,12 +235,12 @@ test('validationRunner test suite', async (t) => {
 
     await t.test('18. Array / single artifact / Map / registry object normalization chạy đúng', () => {
         const arts = getCanonicalArtifacts();
-        
+
         // Convert to Map
         const questionsMap = new Map();
         questionsMap.set(arts.questions[0].id, arts.questions[0]);
         questionsMap.set(arts.questions[1].id, arts.questions[1]);
-        
+
         // Convert to plain registry object
         const attemptsObj = {
             "A01": arts.attempts[0]

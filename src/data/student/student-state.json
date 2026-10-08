@@ -1,5 +1,5 @@
 {
-    "schemaVersion": "1.1.0",
+    "schemaVersion": "1.2.0",
     "stateId": "student-state-v1",
     "stateType": "runtime",
     "updatedAt": "2026-09-20T10:05:00+07:00",
@@ -55,6 +55,7 @@
             "evidenceSufficiency": {
                 "independentObservations": 10,
                 "distinctContexts": 3,
+                "distinctQuestionTypes": 0,
                 "observedEvidenceTypes": [
                     "know",
                     "explain",
@@ -100,6 +101,7 @@
             "evidenceSufficiency": {
                 "independentObservations": 8,
                 "distinctContexts": 2,
+                "distinctQuestionTypes": 0,
                 "observedEvidenceTypes": [
                     "know",
                     "explain",
@@ -150,6 +152,7 @@
             "evidenceSufficiency": {
                 "independentObservations": 7,
                 "distinctContexts": 2,
+                "distinctQuestionTypes": 0,
                 "observedEvidenceTypes": [
                     "know",
                     "explain",
@@ -195,6 +198,7 @@
             "evidenceSufficiency": {
                 "independentObservations": 6,
                 "distinctContexts": 2,
+                "distinctQuestionTypes": 0,
                 "observedEvidenceTypes": [
                     "know",
                     "explain",
@@ -250,6 +254,7 @@
             "evidenceSufficiency": {
                 "independentObservations": 5,
                 "distinctContexts": 2,
+                "distinctQuestionTypes": 0,
                 "observedEvidenceTypes": [
                     "know",
                     "explain",
@@ -298,6 +303,7 @@
             "evidenceSufficiency": {
                 "independentObservations": 3,
                 "distinctContexts": 1,
+                "distinctQuestionTypes": 0,
                 "observedEvidenceTypes": [
                     "know",
                     "explain",
@@ -361,6 +367,7 @@
             "evidenceSufficiency": {
                 "independentObservations": 2,
                 "distinctContexts": 1,
+                "distinctQuestionTypes": 0,
                 "observedEvidenceTypes": [
                     "know",
                     "explain",

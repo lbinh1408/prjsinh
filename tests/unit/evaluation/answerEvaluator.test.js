@@ -14,7 +14,7 @@ import assert from "node:assert/strict";
 import {
     evaluateAnswer,
     ANSWER_EVALUATOR_INFO
-} from "./answerEvaluator.js";
+} from "../../../src/engines/evaluation/answerEvaluator.js";
 
 
 /**
@@ -127,7 +127,7 @@ function createMcqQuestion(overrides = {}) {
  */
 
 test(
-    "1. exposes AnswerEvaluator V1.0.0 metadata",
+    "1. exposes AnswerEvaluator V1.1.0 metadata",
     () => {
         assert.equal(
             ANSWER_EVALUATOR_INFO.name,
@@ -136,17 +136,23 @@ test(
 
         assert.equal(
             ANSWER_EVALUATOR_INFO.version,
-            "1.0.0"
+            "1.1.0"
         );
 
         assert.deepEqual(
             ANSWER_EVALUATOR_INFO.supportedQuestionTypes,
-            ["mcq"]
+            [
+                "mcq",
+                "numeric"
+            ],
+            "numeric"
         );
 
         assert.deepEqual(
             ANSWER_EVALUATOR_INFO.supportedAnswerTypes,
-            ["single"]
+            ["single",
+                "number"
+            ]
         );
     }
 );
@@ -663,8 +669,7 @@ test(
     () => {
         const question =
             createMcqQuestion({
-                questionType:
-                    "numeric"
+                questionType: "matching"
             });
 
         assert.throws(
@@ -1077,7 +1082,7 @@ test(
                     "AnswerEvaluator",
 
                 version:
-                    "1.0.0"
+                    "1.1.0"
             }
         );
 

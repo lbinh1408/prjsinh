@@ -1,0 +1,388 @@
+{
+    "id": "lesson-k283-v1",
+    "version": "1.0.0",
+    "title": "Tần số hoán vị gene",
+    "type": "concept",
+    "description": "Xây dựng khái niệm tần số hoán vị gene, hiểu ý nghĩa sinh học, tính tần số hoán vị từ dữ kiện và vận dụng trong các ngữ cảnh mới.",
+    "domain": "C09",
+    "deliveryModes": [
+        "HOC_NHANH",
+        "HOC_SAU",
+        "ON_THI"
+    ],
+    "knowledgeNodes": [
+        "K283"
+    ],
+    "primaryNodes": [
+        "K283"
+    ],
+    "supportingNodes": [],
+    "prerequisites": [
+        "K282"
+    ],
+    "objectives": [
+        {
+            "id": "OBJ-K283-01",
+            "node": "K283",
+            "type": "understand",
+            "description": "Nhận biết được khái niệm tần số hoán vị gene và các đại lượng liên quan."
+        },
+        {
+            "id": "OBJ-K283-02",
+            "node": "K283",
+            "type": "explain",
+            "description": "Giải thích được ý nghĩa của tần số hoán vị gene và mối liên hệ với giao tử tái tổ hợp."
+        },
+        {
+            "id": "OBJ-K283-03",
+            "node": "K283",
+            "type": "apply",
+            "description": "Tính được tần số hoán vị gene từ dữ kiện phù hợp."
+        },
+        {
+            "id": "OBJ-K283-04",
+            "node": "K283",
+            "type": "transfer",
+            "description": "Suy luận và xác định tần số hoán vị gene khi dữ kiện hoặc cách biểu diễn của bài toán thay đổi."
+        }
+    ],
+    "entryDiagnostic": {
+        "enabled": true,
+        "purpose": [
+            "identify_starting_point",
+            "identify_prerequisite_gap"
+        ],
+        "questionSelection": {
+            "source": "questions/",
+            "selection": {
+                "primaryNode": "K283",
+                "evidence": [
+                    "know",
+                    "explain"
+                ],
+                "difficulty": [
+                    "D1",
+                    "D2"
+                ],
+                "mode": [
+                    "diagnostic",
+                    "practice"
+                ],
+                "count": 2
+            }
+        },
+        "adaptiveStopping": true
+    },
+    "sections": [
+        {
+            "id": "S01",
+            "type": "orientation",
+            "title": "Từ giao tử tái tổ hợp đến tần số hoán vị gene",
+            "nodes": [
+                "K283"
+            ],
+            "estimatedMinutes": 3,
+            "content": {
+                "format": "rich_text",
+                "blocks": [
+                    {
+                        "type": "prompt",
+                        "node": "K283",
+                        "contentRef": "content/k283/orientation-prompt"
+                    },
+                    {
+                        "type": "learning_goal",
+                        "node": "K283",
+                        "contentRef": "content/k283/learning-goal"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "S02",
+            "type": "concept",
+            "title": "Tần số hoán vị gene là gì?",
+            "nodes": [
+                "K283"
+            ],
+            "estimatedMinutes": 7,
+            "content": {
+                "format": "rich_text",
+                "blocks": [
+                    {
+                        "type": "concept",
+                        "node": "K283",
+                        "contentRef": "content/k283/recombination-frequency-concept"
+                    },
+                    {
+                        "type": "key_relation",
+                        "contentRef": "content/k283/recombinant-gamete-relation"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "S03",
+            "type": "comparison",
+            "title": "Giao tử liên kết và giao tử tái tổ hợp",
+            "nodes": [
+                "K283"
+            ],
+            "estimatedMinutes": 6,
+            "content": {
+                "format": "comparison",
+                "contentRef": "content/k283/parental-vs-recombinant-gametes"
+            }
+        },
+        {
+            "id": "S04",
+            "type": "mechanism",
+            "title": "Vì sao tần số giao tử tái tổ hợp phản ánh hoán vị gene?",
+            "nodes": [
+                "K283"
+            ],
+            "estimatedMinutes": 8,
+            "content": {
+                "format": "mechanism",
+                "contentRef": "content/k283/recombination-frequency-mechanism"
+            }
+        },
+        {
+            "id": "S05",
+            "type": "workedExample",
+            "title": "Tính tần số hoán vị gene từng bước",
+            "nodes": [
+                "K283"
+            ],
+            "estimatedMinutes": 7,
+            "content": {
+                "format": "worked_example",
+                "contentRef": "content/k283/recombination-frequency-worked-example"
+            }
+        },
+        {
+            "id": "S06",
+            "type": "guidedPractice",
+            "title": "Luyện nhận biết và giải thích",
+            "nodes": [
+                "K283"
+            ],
+            "estimatedMinutes": 8,
+            "questionSet": {
+                "source": "questions/",
+                "selection": {
+                    "primaryNode": "K283",
+                    "evidence": [
+                        "know",
+                        "explain"
+                    ],
+                    "difficulty": [
+                        "D1",
+                        "D2"
+                    ],
+                    "mode": [
+                        "learning",
+                        "practice"
+                    ],
+                    "count": 3
+                },
+                "adaptive": true
+            }
+        },
+        {
+            "id": "S07",
+            "type": "practice",
+            "title": "Củng cố cách xác định tần số hoán vị",
+            "nodes": [
+                "K283"
+            ],
+            "estimatedMinutes": 10,
+            "questionSet": {
+                "source": "questions/",
+                "selection": {
+                    "primaryNode": "K283",
+                    "evidence": [
+                        "explain",
+                        "apply"
+                    ],
+                    "difficulty": [
+                        "D2",
+                        "D3"
+                    ],
+                    "mode": [
+                        "practice"
+                    ],
+                    "count": 4
+                },
+                "adaptive": true
+            }
+        },
+        {
+            "id": "S08",
+            "type": "apply",
+            "title": "Tính tần số hoán vị từ dữ kiện",
+            "nodes": [
+                "K283"
+            ],
+            "estimatedMinutes": 12,
+            "questionSet": {
+                "source": "questions/",
+                "selection": {
+                    "primaryNode": "K283",
+                    "evidence": [
+                        "apply"
+                    ],
+                    "difficulty": [
+                        "D3"
+                    ],
+                    "mode": [
+                        "practice",
+                        "challenge"
+                    ],
+                    "count": 3
+                },
+                "adaptive": true
+            }
+        },
+        {
+            "id": "S09",
+            "type": "transfer",
+            "title": "Khi dữ kiện được biểu diễn theo cách khác",
+            "nodes": [
+                "K283"
+            ],
+            "estimatedMinutes": 12,
+            "questionSet": {
+                "source": "questions/",
+                "selection": {
+                    "primaryNode": "K283",
+                    "evidence": [
+                        "transfer"
+                    ],
+                    "difficulty": [
+                        "D4"
+                    ],
+                    "mode": [
+                        "challenge",
+                        "retest"
+                    ],
+                    "count": 2
+                },
+                "adaptive": true
+            }
+        },
+        {
+            "id": "S10",
+            "type": "reflection",
+            "title": "Tự kiểm tra cách suy luận",
+            "nodes": [
+                "K283"
+            ],
+            "estimatedMinutes": 3,
+            "prompts": [
+                "Em có thể giải thích tần số hoán vị gene biểu thị điều gì không?",
+                "Khi đề cho số lượng từng loại giao tử, em có xác định được đâu là nhóm tái tổ hợp không?",
+                "Nếu dữ kiện được cho dưới dạng bảng thay vì phát biểu trực tiếp, em có biết cách tính tần số hoán vị gene không?"
+            ]
+        },
+        {
+            "id": "S11",
+            "type": "summary",
+            "title": "Chốt kiến thức K283",
+            "nodes": [
+                "K283"
+            ],
+            "estimatedMinutes": 4,
+            "content": {
+                "format": "rich_text",
+                "blocks": [
+                    {
+                        "type": "summary",
+                        "contentRef": "content/k283/summary"
+                    },
+                    {
+                        "type": "common_traps",
+                        "contentRef": "content/k283/common-traps"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "S12",
+            "type": "exitDiagnostic",
+            "title": "Kiểm tra sau lesson",
+            "nodes": [
+                "K283"
+            ],
+            "estimatedMinutes": 8,
+            "questionSet": {
+                "source": "questions/",
+                "selection": {
+                    "primaryNode": "K283",
+                    "evidence": [
+                        "explain",
+                        "apply",
+                        "transfer"
+                    ],
+                    "difficulty": [
+                        "D2",
+                        "D3",
+                        "D4"
+                    ],
+                    "mode": [
+                        "retest",
+                        "review",
+                        "challenge"
+                    ],
+                    "count": 4
+                },
+                "adaptive": true
+            }
+        }
+    ],
+    "exitDiagnostic": {
+        "enabled": true,
+        "questionSelection": {
+            "source": "questions/",
+            "selection": {
+                "primaryNode": "K283",
+                "evidence": [
+                    "explain",
+                    "apply",
+                    "transfer"
+                ],
+                "difficulty": [
+                    "D2",
+                    "D3",
+                    "D4"
+                ],
+                "mode": [
+                    "retest",
+                    "review",
+                    "challenge"
+                ],
+                "count": 4
+            }
+        }
+    },
+    "estimatedMinutes": {
+        "minimum": 20,
+        "typical": 55,
+        "maximum": 90
+    },
+    "difficulty": "adaptive",
+    "metadata": {
+        "author": "system",
+        "createdAt": "2026-10-07",
+        "updatedAt": "2026-10-07",
+        "reviewStatus": "candidate",
+        "tags": [
+            "K283",
+            "C09",
+            "hoan-vi-gene",
+            "tan-so-hoan-vi-gene",
+            "tai-to-hop",
+            "di-truyen"
+        ]
+    }
+}

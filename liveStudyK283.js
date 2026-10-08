@@ -54,7 +54,7 @@ import {
     getNextQuestion,
     submitAnswer,
     getStudentState
-} from "./js/engine/studySession.js";
+} from "./src/engines/orchestration/studySession.js";
 
 
 /**
@@ -82,28 +82,28 @@ const __dirname =
 const PATHS = Object.freeze({
 
     questionBank:
-        "./data/questions/c09/K283.question-bank.json",
+        "./src/data/questions/c09/K283.question-bank.json",
 
     knowledgeMap:
-        "./data/knowledge/knowledge-map-v4.json",
+        "./src/data/knowledge/knowledge-map-v4.json",
 
     masteryRules:
-        "./data/mastery/rules.json",
+        "./src/policies/mastery/rules.json",
 
     evidenceModel:
-        "./data/mastery/evidence.json",
+        "./src/data/mastery/evidence.json",
 
     adaptiveRules:
-        "./data/adaptive/rules.json",
+        "./src/policies/adaptive/rules.json",
 
     adaptivePaths:
-        "./data/adaptive/paths.json",
+        "./src/policies/adaptive/paths.json",
 
     failureSignatures:
-        "./data/remediation/failure-signatures.json",
+        "./src/data/remediation/failure-signatures.json",
 
     studentState:
-        "./data/runtime/student-state.json"
+        "./src/data/student-state.json"
 });
 
 

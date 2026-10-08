@@ -47,27 +47,27 @@ import {
 
 import {
     validateQuestion
-} from "./questionValidator.js";
+} from "../../contracts/validators/questionValidator.js";
 
 
 import {
     validateAttempt
-} from "./attemptValidator.js";
+} from "../../contracts/validators/attemptValidator.js";
 
 
 import {
     validateStudentState
-} from "./studentStateValidator.js";
+} from "../../contracts/validators/studentStateValidator.js";
 
 
 import {
     validateLesson
-} from "./lessonValidator.js";
+} from "../../contracts/validators/lessonValidator.js";
 
 
 import {
     validateEvent
-} from "./eventValidator.js";
+} from "../../contracts/validators/eventValidator.js";
 
 
 import {

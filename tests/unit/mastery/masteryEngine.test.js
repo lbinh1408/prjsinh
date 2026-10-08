@@ -1,14 +1,56 @@
+
+
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { updateMastery } from './masterEngine.js';
+import fs from 'node:fs';
 
-function createDefaultState() {
+import { updateMastery } from '../../../src/engines/mastery/masterEngine.js';
+
+/**
+ * =========================================================
+ * LOAD MASTERY RULES V2
+ * =========================================================
+ *
+ * Nếu mastery-rules-v2.0.0.json không nằm cùng thư mục
+ * với test này, chỉ cần sửa RULES_PATH.
+ */
+
+const RULES_PATH =
+    new URL('../../../src/policies/mastery/rules.json', import.meta.url);
+
+const rules = JSON.parse(
+    fs.readFileSync(
+        RULES_PATH,
+        'utf8'
+    )
+);
+
+/**
+ * =========================================================
+ * FIXTURES
+ * =========================================================
+ */
+
+function state0() {
     return {
-        mastery: "M0",
-        status: "developing",
-        evidence: { know: 0, explain: 0, apply: 0, transfer: 0 },
+        mastery: 'M0',
+
+        status: 'developing',
+
+        evidence: {
+            know: 0,
+            explain: 0,
+            apply: 0,
+            transfer: 0
+        },
+
         overallEvidence: 0,
-        confidence: { level: "low", score: 0, attemptCount: 0 },
+
+        confidence: {
+            level: 'low',
+            score: 0,
+            attemptCount: 0
+        },
 
         evidenceSufficiency: {
             independentObservations: 0,
@@ -25,1378 +67,1186 @@ function createDefaultState() {
             apply: 0,
             transfer: 0
         },
-        attemptStats: { total: 0, correct: 0, wrong: 0, partial: 0, skipped: 0 },
+
+        attemptStats: {
+            total: 0,
+            correct: 0,
+            wrong: 0,
+            partial: 0,
+            skipped: 0
+        },
+
+        weakEvidence: [],
+
         signals: [],
-        failureSummary: {}
+
+        failureSummary: {},
+
+        lastAttemptAt: null,
+
+        lastSuccessAt: null,
+
+        lastFailure: null,
+
+        retest: {
+            attempted: false,
+            lastRetestAt: null,
+            passed: false,
+            differentQuestion: false,
+            differentContext: false,
+            independent: false
+        },
+
+        review: {
+            lastReviewedAt: null
+        }
     };
 }
 
-function ensureNoMutation(originalObj, objToTest) {
-    assert.deepEqual(
-        JSON.parse(JSON.stringify(objToTest)),
-        originalObj,
-        "Object was mutated during engine execution!"
-    );
+function run(
+    state,
+    attempt,
+    evidenceContext = {}
+) {
+    return updateMastery({
+        attempt,
+
+        currentState: state,
+
+        masteryRules: rules,
+
+        evidenceContext
+    });
 }
 
-test('Mastery Engine test suite', async (t) => {
+function a(
+    id,
+    dimension,
+    difficulty,
+    result = 'correct',
+    contextId = 'C1',
+    questionType = 'mcq',
+    extra = {}
+) {
+    return {
+        attemptId: id,
 
-    await t.test('1. Basic correct attempt', () => {
-        const state = createDefaultState();
-        const attempt = {
-            attemptId: "A1",
-            questionId: "Q1",
-            nodeId: "K100",
-            primaryDimension: "know",
-            result: "correct",
-            difficulty: "D3"
-        };
-        const result = updateMastery({ attempt, currentState: state });
-        assert.equal(result.current.evidence.know > 0, true, "Evidence should increase");
-        assert.equal(result.current.attemptStats.total, 1);
-        assert.equal(result.current.attemptStats.correct, 1);
-        assert.equal(result.update.directEvidence, true);
-    });
+        questionId: `Q-${id}`,
 
-    await t.test('2. Wrong attempt decays evidence', () => {
-        const state = createDefaultState();
-        state.evidence.know = 0.8; // Set high initial
-        const attempt = {
-            nodeId: "K100",
-            primaryDimension: "know",
-            result: "incorrect",
-            difficulty: "D3"
-        };
-        const result = updateMastery({ attempt, currentState: state });
-        assert.equal(result.current.evidence.know < 0.8, true, "Evidence should decay");
-        assert.equal(result.current.attemptStats.wrong, 1);
-    });
+        nodeId: 'K283',
 
-    await t.test('3. Partial correct attempt uses partial weight', () => {
-        const state1 = createDefaultState();
-        const state2 = createDefaultState();
-        const attCorrect = { nodeId: "K100", primaryDimension: "apply", result: "correct", difficulty: "D3" };
-        const attPartial = { nodeId: "K100", primaryDimension: "apply", result: "partial", score: 0.5, difficulty: "D3" };
+        primaryDimension:
+            dimension,
 
-        const res1 = updateMastery({ attempt: attCorrect, currentState: state1 });
-        const res2 = updateMastery({ attempt: attPartial, currentState: state2 });
+        difficulty,
 
-        assert.equal(res2.current.evidence.apply > 0, true);
-        assert.equal(res2.current.evidence.apply < res1.current.evidence.apply, true, "Partial gains less than full correct");
-    });
+        result,
 
-    await t.test('4. Skipped attempt does not affect evidence', () => {
-        const state = createDefaultState();
-        state.evidence.apply = 0.5;
-        const attempt = { nodeId: "K100", primaryDimension: "apply", result: "skipped" };
-        const result = updateMastery({ attempt, currentState: state });
-        assert.equal(result.current.evidence.apply, 0.5, "Evidence should not change");
-        assert.equal(result.current.attemptStats.skipped, 1);
-    });
+        contextId,
 
-    await t.test('5. Hint used attempt reduces weight', () => {
-        const state1 = createDefaultState();
-        const state2 = createDefaultState();
-        const attNoHint = { nodeId: "K1", primaryDimension: "know", result: "correct" };
-        const attHint = { nodeId: "K1", primaryDimension: "know", result: "correct", hintUsed: true };
+        questionType,
 
-        const res1 = updateMastery({ attempt: attNoHint, currentState: state1 });
-        const res2 = updateMastery({ attempt: attHint, currentState: state2 });
+        submittedAt:
+            '2026-10-04T12:00:00.000Z',
 
-        assert.equal(res2.current.evidence.know < res1.current.evidence.know, true, "Hint provides less evidence");
-        assert.equal(res2.current.evidenceSufficiency.independentObservations, 0, "Hinted attempt is not independent");
-    });
+        ...extra
+    };
+}
 
-    await t.test('6. Diagnostic attempt reduces weight', () => {
-        const state1 = createDefaultState();
-        const state2 = createDefaultState();
-        const attNorm = { nodeId: "K1", primaryDimension: "know", result: "correct" };
-        const attDiag = { nodeId: "K1", primaryDimension: "know", result: "correct", mode: "diagnostic" };
-
-        const res1 = updateMastery({ attempt: attNorm, currentState: state1 });
-        const res2 = updateMastery({ attempt: attDiag, currentState: state2 });
-
-        assert.equal(res2.current.evidence.know < res1.current.evidence.know, true, "Diagnostic provides less evidence");
-    });
-
-    await t.test('7. None primaryDimension', () => {
-        const state = createDefaultState();
-        const attempt = { nodeId: "K1", primaryDimension: "none", result: "correct" };
-        const result = updateMastery({ attempt, currentState: state });
-        assert.equal(result.update.directEvidence, false);
-        assert.equal(result.current.attemptStats.total, 1);
-    });
-
-    await t.test('8. D1 difficulty vs D5 difficulty', () => {
-        const state1 = createDefaultState();
-        const state2 = createDefaultState();
-        const attD1 = { nodeId: "K1", primaryDimension: "know", result: "correct", difficulty: "D1" };
-        const attD5 = { nodeId: "K1", primaryDimension: "know", result: "correct", difficulty: "D5" };
-
-        const res1 = updateMastery({ attempt: attD1, currentState: state1 });
-        const res2 = updateMastery({ attempt: attD5, currentState: state2 });
-
-        assert.equal(res2.current.evidence.know > res1.current.evidence.know, true, "D5 gives more evidence than D1");
-    });
-
-    await t.test('9. M0 -> M1 Promotion', () => {
-        const state = createDefaultState();
-        state.evidence.know = 0.65; // M1 threshold is 0.60
-        state.attemptStats = { //tdo
-            total: 1,
-            correct: 1,
-            wrong: 0,
-            partial: 0,
-            skipped: 0
-        };
-        state.evidenceSufficiency = {
-            independentObservations: 2,
-            distinctContexts: 1,
-            observedEvidenceTypes: ["know"],
-            contextIds: ["C1"]
-        };
-        state.confidence = { level: "medium", score: 0.6, attemptCount: 2 };
-
-        const attempt = { nodeId: "K1", primaryDimension: "know", result: "correct", contextId: "C1" };
-        const result = updateMastery({ attempt, currentState: state });
-        assert.equal(result.current.mastery, "M1");
-        assert.equal(result.decision.masteryChanged, true);
-    });
-
-    await t.test('10. M1 -> M2 Promotion', () => {
-
-        const state = createDefaultState();
-        state.mastery = "M1";
-        state.evidence = { know: 0.85, explain: 0.75, apply: 0.55, transfer: 0.45 };
-        state.attemptStats = {
-            total: 3,
-            correct: 3,
-            wrong: 0,
-            partial: 0,
-            skipped: 0
-        };
-        state.evidenceSufficiency = {
-            independentObservations: 3,
-            distinctContexts: 2,
-            distinctQuestionTypes: 2,
-            observedEvidenceTypes: ["know", "explain", "apply", "transfer"],
-            contextIds: ["C1", "C2"],
-            questionTypes: ["mcq", "true_false"]
-        };
-        state.confidence = { level: "high", score: 0.8, attemptCount: 4 };
-
-        const attempt = { nodeId: "K1", primaryDimension: "explain", result: "correct" };
-        const result = updateMastery({ attempt, currentState: state });
-        assert.equal(result.current.mastery, "M2");
-    });
-
-    await t.test('11. M2 -> M3 Promotion', () => {
-
-        const state = createDefaultState();
-        state.mastery = "M2";
-        state.evidence = {
-            know: 0.9,
-            explain: 0.85,
-            apply: 0.8,
-            transfer: 0.7
-        };
-
-        state.attemptStats = {
-            total: 5,
-            correct: 5,
-            wrong: 0,
-            partial: 0,
-            skipped: 0
-        };
-        state.evidenceSufficiency = {
-            independentObservations: 5,
-            distinctContexts: 2,
-            distinctQuestionTypes: 2,
-            observedEvidenceTypes: ["know", "explain", "apply", "transfer"],
-            contextIds: ["C1", "C2"],
-            questionTypes: ["mcq", "data_analysis"]
-        };
-        state.confidence = { level: "high", score: 0.9, attemptCount: 6 };
-
-        const attempt = { nodeId: "K1", primaryDimension: "apply", result: "correct" };
-        const result = updateMastery({ attempt, currentState: state });
-        assert.equal(result.current.mastery, "M3");
-    });
-
-    await t.test('12. M3 -> M4 Promotion', () => {
-
-        const state = createDefaultState();
-        state.mastery = "M3";
-        state.evidence = {
-            know: 0.95,
-            explain: 0.95,
-            apply: 0.95,
-            transfer: 0.9
-        };
-        state.attemptStats = {
-            total: 7,
-            correct: 7,
-            wrong: 0,
-            partial: 0,
-            skipped: 0
-        };
-        state.evidenceSufficiency = {
-            independentObservations: 7,
-            distinctContexts: 2,
-            distinctQuestionTypes: 2,
-            observedEvidenceTypes: ["know", "explain", "apply", "transfer"],
-            contextIds: ["C1", "C2"],
-            questionTypes: ["mcq", "data_analysis"]
-        };
-        state.confidence = { level: "high", score: 0.9, attemptCount: 8 };
-
-        const attempt = {
-            nodeId: "K1",
-            primaryDimension: "transfer",
-            result: "correct",
-            contextId: "C3",
-            questionType: "data_analysis"
-        };
-
-        const result = updateMastery({ attempt, currentState: state });
-        assert.equal(result.current.mastery, "M4");
-    });
-
-    await t.test('13. Insufficient evidence observations block promotion', () => {
-        const state = createDefaultState();
-        state.evidence.know = 0.9;
-        state.evidenceSufficiency = {
-            independentObservations: 0, // Need 2 for M1
-            distinctContexts: 1,
-            observedEvidenceTypes: ["know"],
-            contextIds: ["C1"]
-        };
-        state.confidence = { level: "high", score: 0.9, attemptCount: 1 };
-
-        const attempt = { nodeId: "K1", primaryDimension: "know", result: "correct", hintUsed: true };
-        const result = updateMastery({ attempt, currentState: state });
-        assert.equal(result.current.mastery, "M0", "Should not promote due to insufficient independent observations");
-    });
-
-    await t.test('14. Low confidence blocks M1 promotion', () => {
-        const state = createDefaultState();
-        state.evidence.know = 0.8;
-        state.evidenceSufficiency = { independentObservations: 2, distinctContexts: 1, observedEvidenceTypes: ["know"], contextIds: ["C1"] };
-        state.confidence = { level: "low", score: 0.1, attemptCount: 2 };
-
-        const attempt = { nodeId: "K1", primaryDimension: "know", result: "wrong" }; // Will cause low consistency
-        const result = updateMastery({ attempt, currentState: state });
-        assert.equal(result.current.mastery, "M0");
-        assert.equal(result.current.confidence.level, "low");
-    });
-
-    await t.test('15. Repeated failure triggers weakness signal', () => {
-        const state = createDefaultState();
-        state.failureSummary = {
-            "mechanism_confusion": { count: 1, sourceNodeId: "K99", lastAt: "2026-09-01T00:00:00Z" }
-        };
-        const attempt = {
-            nodeId: "K1",
-            result: "incorrect",
-            failureType: "mechanism_confusion"
-        };
-
-        const result = updateMastery({ attempt, currentState: state });
-        assert.equal(
-            result.weakness.signals.includes(
-                "trigger_remediation_diagnosis_recommended"
-            ),
-            true
-        );
-
-        assert.equal(result.weakness.isWeak, true);
-        assert.equal(result.current.status, "weak");
-    });
-
-    await t.test('16. Immutability of inputs', () => {
-        const state = createDefaultState();
-        const attempt = { nodeId: "K1", primaryDimension: "know", result: "correct" };
-
-        const stateCopy = JSON.parse(JSON.stringify(state));
-        const attemptCopy = JSON.parse(JSON.stringify(attempt));
-
-        updateMastery({ attempt, currentState: state });
-
-        ensureNoMutation(stateCopy, state);
-        ensureNoMutation(attemptCopy, attempt);
-    });
-
-    await t.test('17. Missing fields handled gracefully', () => {
-        const attempt = {};
-        const result = updateMastery({ attempt });
-        assert.equal(result.current.mastery, "M0");
-        assert.equal(result.nodeId, null);
-    });
-
-    await t.test('18. Context ID processing', () => {
-        const state = createDefaultState();
-        const attempt1 = { nodeId: "K1", primaryDimension: "know", result: "correct", contextId: "C1" };
-        const res1 = updateMastery({ attempt: attempt1, currentState: state });
-
-        const attempt2 = { nodeId: "K1", primaryDimension: "know", result: "correct", contextId: "C2" };
-        const res2 = updateMastery({ attempt: attempt2, currentState: res1.current });
-
-        assert.equal(res2.current.evidenceSufficiency.distinctContexts, 2);
-    });
-
-    await t.test('19. Fallback on invalid failureType', () => {
-        const attempt = { nodeId: "K1", result: "wrong", failureType: "not_a_real_failure" };
-        const result = updateMastery({ attempt });
-        assert.equal(result.failure.failureType, null, "Should not record invalid failure type");
-    });
-
-    await t.test('20. M4 conservative downgrade', () => {
-        const state = createDefaultState();
-        state.mastery = "M4";
-        state.evidence = { know: 0.9, explain: 0.9, apply: 0.9, transfer: 0.9 };
-
-        const attempt = { nodeId: "K1", primaryDimension: "transfer", result: "wrong" };
-        const result = updateMastery({ attempt, currentState: state });
-
-        // Single wrong answer shouldn't downgrade from M4 if we didn't drop below M4 thresholds drastically,
-        // but even if we did, engine holds the line unless forced by complex rule. 
-        // Here, the engine's evaluateMastery keeps previousMastery if it doesn't meet lower ones (actually it tries M4->M1, then keeps previous if none).
-        assert.equal(result.current.mastery, "M4");
-    });
-
-    await t.test('21. Confidence score computation increases with consistency', () => {
-        let state = createDefaultState();
-
-        state.evidenceSufficiency = {
-            independentObservations: 10,
-            distinctContexts: 5,
-            distinctQuestionTypes: 4,
-
-            observedEvidenceTypes: [
-                "know",
-                "explain",
-                "apply",
-                "transfer"
-            ],
-
-            contextIds: [
-                "C1",
-                "C2",
-                "C3",
-                "C4",
-                "C5"
-            ],
-
-            questionTypes: [
-                "mcq",
-                "true_false",
-                "data_analysis",
-                "experiment"
-            ]
-        };
-        const attempt = {
-            nodeId: "K1",
-            primaryDimension: "know",
-            result: "correct",
-            contextId: "C5",
-            questionType: "mcq"
-        };
-
-        // 10 correct attempts -> high consistency
-        state.attemptStats = { total: 10, correct: 10, wrong: 0, partial: 0, skipped: 0 };
-        const result = updateMastery({ attempt, currentState: state });
-
-        assert.equal(result.current.confidence.level, "very_high");
-        assert.ok(result.current.confidence.score > 0.75);
-    });
-    /*
+/**
  * =========================================================
- * DOWNGRADE REGRESSION TESTS — Mastery Engine V1.0.1
+ * MASTERy ENGINE V2 TEST SUITE
  * =========================================================
  */
 
+test(
+    'Mastery Engine V2',
 
-    /*
-     * 22.
-     * Một câu sai không được downgrade mastery.
-     *
-     * Contract:
-     * singleWrongAnswer.action = update_evidence_only
-     * resetMastery = false
-     */
-    await t.test(
-        '22. Single wrong answer never downgrades mastery',
-        () => {
+    async t => {
 
-            const state = createDefaultState();
+        /**
+         * -------------------------------------------------
+         * 1. VERSION
+         * -------------------------------------------------
+         */
 
-            state.mastery = "M4";
+        await t.test(
+            '1 engine reports V2',
 
-            state.evidence = {
-                know: 0.95,
-                explain: 0.95,
-                apply: 0.95,
-                transfer: 0.91
-            };
+            () => {
+                const r = run(
+                    state0(),
 
-            state.attemptStats = {
-                total: 8,
-                correct: 8,
-                wrong: 0,
-                partial: 0,
-                skipped: 0
-            };
+                    a(
+                        '1',
+                        'know',
+                        'D1'
+                    )
+                );
 
-            state.evidenceSufficiency = {
-                independentObservations: 8,
-                distinctContexts: 2,
-                distinctQuestionTypes: 2,
-                observedEvidenceTypes: [
-                    "know",
-                    "explain",
-                    "apply",
-                    "transfer"
-                ],
-                contextIds: [
-                    "C1",
-                    "C2"
-                ],
-                questionTypes: [
-                    "mcq",
-                    "data_analysis"
-                ]
-            };
+                assert.equal(
+                    r.engine.version,
+                    '2.0.0'
+                );
+            }
+        );
 
-            const attempt = {
-                nodeId: "K1",
-                primaryDimension: "transfer",
-                result: "wrong",
-                failureType: "reasoning_error",
-                failureSignatureId: "FS-REASONING-01",
-                contextId: "C2",
-                questionType: "data_analysis"
-            };
+        /**
+         * -------------------------------------------------
+         * 2. NO ZERO-SEED PENALTY
+         * -------------------------------------------------
+         */
 
-            const result =
-                updateMastery({
-                    attempt,
-                    currentState: state
-                });
+        await t.test(
+            '2 no-zero-seed: first D1 know correct = .70',
 
+            () => {
+                const r = run(
+                    state0(),
 
-            assert.equal(
-                result.current.mastery,
-                "M4"
-            );
+                    a(
+                        '1',
+                        'know',
+                        'D1'
+                    )
+                );
 
-            assert.equal(
-                result.decision.downgradeTriggered,
-                false
-            );
+                assert.equal(
+                    r.current
+                        .evidence
+                        .know,
+                    0.7
+                );
 
-            assert.equal(
-                result.decision.persistentFailureCount,
-                1
-            );
-        }
-    );
+                assert.equal(
+                    r.current
+                        .evidenceHistory
+                        .know
+                        .length,
+                    1
+                );
 
+                assert.equal(
+                    r.current
+                        .evidenceHistory
+                        .know[0]
+                        .score,
+                    0.7
+                );
+            }
+        );
 
-    /*
-     * 23.
-     * Failure cùng signature lần thứ 2:
-     *
-     * → weak
-     * → remediation signal
-     * → KHÔNG downgrade mastery
-     */
-    await t.test(
-        '23. Repeated same failure marks weak but does not downgrade',
-        () => {
+        /**
+         * -------------------------------------------------
+         * 3. D3 CORRECT
+         * -------------------------------------------------
+         */
 
-            const state = createDefaultState();
+        await t.test(
+            '3 first D3 correct = 1.0',
 
-            state.mastery = "M4";
+            () => {
+                const r = run(
+                    state0(),
 
-            state.evidence = {
-                know: 0.95,
-                explain: 0.95,
-                apply: 0.95,
-                transfer: 0.80
-            };
+                    a(
+                        '1',
+                        'apply',
+                        'D3'
+                    )
+                );
 
-            state.attemptStats = {
-                total: 8,
-                correct: 7,
-                wrong: 1,
-                partial: 0,
-                skipped: 0
-            };
+                assert.equal(
+                    r.current
+                        .evidence
+                        .apply,
+                    1
+                );
+            }
+        );
 
-            state.evidenceSufficiency = {
-                independentObservations: 8,
-                distinctContexts: 2,
-                distinctQuestionTypes: 2,
-                observedEvidenceTypes: [
-                    "know",
-                    "explain",
-                    "apply",
-                    "transfer"
-                ],
-                contextIds: [
-                    "C1",
-                    "C2"
-                ],
-                questionTypes: [
-                    "mcq",
-                    "data_analysis"
-                ]
-            };
+        /**
+         * -------------------------------------------------
+         * 4. PARTIAL
+         * -------------------------------------------------
+         */
 
-            /*
-             * Failure #1 already exists.
-             */
-            state.failureSummary = {
+        await t.test(
+            '4 partial lower than correct',
 
-                "FS-TRANSFER-01": {
-                    count: 1,
-                    failureType:
-                        "reasoning_error",
-                    failureSignatureId:
-                        "FS-TRANSFER-01",
-                    sourceNodeId:
-                        "K1",
-                    lastAt:
-                        "2026-09-20T00:00:00Z"
+            () => {
+                const correct =
+                    run(
+                        state0(),
+
+                        a(
+                            'correct',
+                            'apply',
+                            'D3',
+                            'correct'
+                        )
+                    );
+
+                const partial =
+                    run(
+                        state0(),
+
+                        a(
+                            'partial',
+                            'apply',
+                            'D3',
+                            'partial',
+                            'C1',
+                            'mcq',
+                            {
+                                score: 0.5
+                            }
+                        )
+                    );
+
+                assert.ok(
+                    partial.current
+                        .evidence
+                        .apply
+                    <
+                    correct.current
+                        .evidence
+                        .apply
+                );
+            }
+        );
+
+        /**
+         * -------------------------------------------------
+         * 5. SKIPPED
+         * -------------------------------------------------
+         */
+
+        await t.test(
+            '5 skipped creates no observation',
+
+            () => {
+                const s =
+                    state0();
+
+                s.evidence.apply =
+                    0.5;
+
+                const r = run(
+                    s,
+
+                    a(
+                        'skip',
+                        'apply',
+                        'D3',
+                        'skipped'
+                    )
+                );
+
+                assert.equal(
+                    r.current
+                        .evidence
+                        .apply,
+                    0.5
+                );
+
+                assert.equal(
+                    r.current
+                        .evidenceHistory
+                        .apply
+                        .length,
+                    0
+                );
+
+                assert.equal(
+                    r.update
+                        .directEvidence,
+                    false
+                );
+            }
+        );
+
+        /**
+         * -------------------------------------------------
+         * 6. DIAGNOSTIC
+         * -------------------------------------------------
+         */
+
+        await t.test(
+            '6 diagnostic keeps capability score but lowers reliability',
+
+            () => {
+                const normal =
+                    run(
+                        state0(),
+
+                        a(
+                            'normal',
+                            'know',
+                            'D1'
+                        )
+                    );
+
+                const diagnostic =
+                    run(
+                        state0(),
+
+                        a(
+                            'diagnostic',
+                            'know',
+                            'D1',
+                            'correct',
+                            'C1',
+                            'mcq',
+                            {
+                                mode:
+                                    'diagnostic'
+                            }
+                        )
+                    );
+
+                /**
+                 * Capability must remain identical.
+                 */
+
+                assert.equal(
+                    diagnostic.current
+                        .evidence
+                        .know,
+
+                    normal.current
+                        .evidence
+                        .know
+                );
+
+                /**
+                 * Reliability must be lower.
+                 */
+
+                assert.ok(
+                    diagnostic.current
+                        .evidenceHistory
+                        .know[0]
+                        .reliabilityWeight
+                    <
+                    normal.current
+                        .evidenceHistory
+                        .know[0]
+                        .reliabilityWeight
+                );
+
+                assert.equal(
+                    diagnostic.current
+                        .evidence
+                        .know,
+                    0.7
+                );
+            }
+        );
+
+        /**
+         * -------------------------------------------------
+         * 7. HINT ASSISTANCE
+         * -------------------------------------------------
+         */
+
+        await t.test(
+            '7 hinted correct is not independent',
+
+            () => {
+                const r = run(
+                    state0(),
+
+                    a(
+                        'hint',
+                        'know',
+                        'D2',
+                        'correct',
+                        'C1',
+                        'mcq',
+                        {
+                            hintUsed: true
+                        }
+                    )
+                );
+
+                assert.equal(
+                    r.current
+                        .evidenceSufficiency
+                        .independentObservations,
+                    0
+                );
+
+                assert.equal(
+                    r.current
+                        .evidenceHistory
+                        .know[0]
+                        .independent,
+                    false
+                );
+
+                /**
+                 * D2 = .85
+                 * hint assisted = .60
+                 *
+                 * capability observation:
+                 *
+                 * 1 × .85 × .60 = .51
+                 */
+
+                assert.equal(
+                    r.current
+                        .evidence
+                        .know,
+                    0.51
+                );
+            }
+        );
+
+        /**
+         * -------------------------------------------------
+         * 8. HISTORY HANDOFF
+         * -------------------------------------------------
+         */
+
+        await t.test(
+            '8 history survives current-state handoff',
+
+            () => {
+                const r1 =
+                    run(
+                        state0(),
+
+                        a(
+                            '1',
+                            'know',
+                            'D1',
+                            'correct',
+                            'C1'
+                        )
+                    );
+
+                /**
+                 * IMPORTANT:
+                 *
+                 * No explicit evidenceHistory argument.
+                 *
+                 * Engine must recover runtime history from
+                 * r1.current.evidenceHistory.
+                 */
+
+                const r2 =
+                    run(
+                        r1.current,
+
+                        a(
+                            '2',
+                            'know',
+                            'D1',
+                            'correct',
+                            'C2'
+                        )
+                    );
+
+                assert.equal(
+                    r2.current
+                        .evidenceSufficiency
+                        .distinctContexts,
+                    2
+                );
+
+                assert.equal(
+                    r2.current
+                        .evidenceHistory
+                        .know
+                        .length,
+                    2
+                );
+
+                assert.deepEqual(
+                    r2.current
+                        .evidenceSufficiency
+                        .contextIds,
+
+                    [
+                        'C1',
+                        'C2'
+                    ]
+                );
+            }
+        );
+
+        /**
+         * -------------------------------------------------
+         * 9. BOUNDED WINDOW
+         * -------------------------------------------------
+         */
+
+        await t.test(
+            '9 bounded window keeps last 8 observations',
+
+            () => {
+                let s =
+                    state0();
+
+                /**
+                 * Observations:
+                 *
+                 * 1..8 = correct
+                 * 9    = wrong
+                 *
+                 * Window size = 8
+                 *
+                 * Final window:
+                 *
+                 * 7 correct
+                 * 1 wrong
+                 *
+                 * D3 score:
+                 *
+                 * correct = 1
+                 * wrong   = 0
+                 *
+                 * evidence =
+                 *
+                 * 7 / 8
+                 * = .875
+                 */
+
+                for (
+                    let i = 0;
+                    i < 9;
+                    i++
+                ) {
+                    const result =
+                        i === 8
+                            ? 'wrong'
+                            : 'correct';
+
+                    s = run(
+                        s,
+
+                        a(
+                            String(i),
+                            'apply',
+                            'D3',
+                            result,
+                            `C${i}`,
+                            'mcq'
+                        )
+                    ).current;
                 }
-            };
 
-            state.evidenceWrongStreaks = {
-                know: 0,
-                explain: 0,
-                apply: 0,
-                transfer: 1
-            };
+                assert.equal(
+                    s.evidenceHistory
+                        .apply
+                        .length,
+                    8
+                );
 
+                assert.equal(
+                    s.evidence.apply,
+                    0.875
+                );
+            }
+        );
 
-            /*
-             * Failure #2.
-             */
-            const attempt = {
+        /**
+         * -------------------------------------------------
+         * 10. OVERALL IS NOT HARD GATE
+         * -------------------------------------------------
+         */
 
-                nodeId: "K1",
+        await t.test(
+            '10 overallEvidence is not promotion hard gate',
 
-                primaryDimension:
-                    "transfer",
+            () => {
+                let s =
+                    state0();
 
-                result:
-                    "wrong",
+                /**
+                 * Q1:
+                 *
+                 * KNOW D1
+                 */
 
-                failureType:
-                    "reasoning_error",
+                s = run(
+                    s,
 
-                failureSignatureId:
-                    "FS-TRANSFER-01",
+                    a(
+                        '1',
+                        'know',
+                        'D1',
+                        'correct',
+                        'C1',
+                        'mcq'
+                    )
+                ).current;
 
-                contextId:
-                    "C2",
+                assert.equal(
+                    s.mastery,
+                    'M0'
+                );
 
-                questionType:
-                    "data_analysis"
-            };
+                /**
+                 * Q2:
+                 *
+                 * EXPLAIN D2
+                 *
+                 * independent observations = 2
+                 *
+                 * M1 only requires:
+                 *
+                 * know >= .60
+                 * qualifying know >= 1
+                 * independent >= 2
+                 * confidence >= medium
+                 */
 
+                s = run(
+                    s,
 
-            const result =
-                updateMastery({
-                    attempt,
-                    currentState: state
-                });
+                    a(
+                        '2',
+                        'explain',
+                        'D2',
+                        'correct',
+                        'C2',
+                        'mcq'
+                    )
+                ).current;
 
+                assert.equal(
+                    s.mastery,
+                    'M1'
+                );
 
-            assert.equal(
-                result.decision
-                    .persistentFailureCount,
-                2
-            );
+                /**
+                 * Weighted overall is still far below
+                 * old V1 promotion threshold.
+                 */
 
+                assert.ok(
+                    s.overallEvidence <
+                    0.6
+                );
+            }
+        );
 
-            assert.equal(
-                result.weakness.isWeak,
-                true
-            );
+        /**
+         * -------------------------------------------------
+         * 11. K283 HAPPY PATH
+         * -------------------------------------------------
+         */
 
+        await t.test(
+            '11 K283 V2 happy path reaches M4 sequentially',
 
-            assert.equal(
-                result.weakness.signals.includes(
-                    "trigger_remediation_diagnosis_recommended"
-                ),
-                true
-            );
+            () => {
+                let s =
+                    state0();
 
+                const sequence = [
+                    /**
+                     * M0
+                     *
+                     * KNOW D1
+                     */
+                    a(
+                        '001',
+                        'know',
+                        'D1',
+                        'correct',
+                        'C1',
+                        'mcq'
+                    ),
 
-            assert.equal(
-                result.current.mastery,
-                "M4"
-            );
+                    /**
+                     * M0 -> M1
+                     *
+                     * EXPLAIN D2
+                     */
+                    a(
+                        '002',
+                        'explain',
+                        'D2',
+                        'correct',
+                        'C2',
+                        'mcq'
+                    ),
 
+                    /**
+                     * M1 -> M2
+                     *
+                     * APPLY D3
+                     */
+                    a(
+                        '003',
+                        'apply',
+                        'D3',
+                        'correct',
+                        'C3',
+                        'mcq'
+                    ),
 
-            assert.equal(
-                result.decision
-                    .downgradeTriggered,
-                false
-            );
-        }
-    );
+                    /**
+                     * M2 -> M3
+                     *
+                     * second qualifying APPLY
+                     */
+                    a(
+                        '004',
+                        'apply',
+                        'D3',
+                        'correct',
+                        'C4',
+                        'mcq'
+                    ),
 
+                    /**
+                     * M3 stays M3
+                     *
+                     * first TRANSFER
+                     */
+                    a(
+                        '008',
+                        'transfer',
+                        'D4',
+                        'correct',
+                        'C5',
+                        'data_analysis'
+                    ),
 
-    /*
-     * 24.
-     * Failure cùng signature lần thứ 3:
-     *
-     * → persistent failure
-     * → evidence không còn support M4
-     * → cho phép downgrade
-     * → tối đa 1 level
-     *
-     * M4 → M3
-     */
-    await t.test(
-        '24. Persistent third failure can downgrade M4 to M3',
-        () => {
+                    /**
+                     * M3 -> M4
+                     *
+                     * second TRANSFER
+                     *
+                     * now:
+                     *
+                     * independent = 6
+                     * contexts >= 2
+                     * question types >= 2
+                     * transfer qualifying >= 2
+                     */
+                    a(
+                        '009',
+                        'transfer',
+                        'D4',
+                        'correct',
+                        'C6',
+                        'data_analysis'
+                    )
+                ];
 
-            const state = createDefaultState();
+                const expected = [
+                    'M0',
+                    'M1',
+                    'M2',
+                    'M3',
+                    'M3',
+                    'M4'
+                ];
 
-            state.mastery = "M4";
+                for (
+                    let i = 0;
+                    i <
+                    sequence.length;
+                    i++
+                ) {
+                    const r =
+                        run(
+                            s,
+                            sequence[i]
+                        );
 
-            /*
-             * transfer đã suy yếu đủ để M4
-             * không còn được support.
-             *
-             * Nhưng evidence vẫn support lower mastery.
-             */
-            state.evidence = {
-                know: 0.95,
-                explain: 0.92,
-                apply: 0.90,
-                transfer: 0.60
-            };
+                    s =
+                        r.current;
 
-            state.attemptStats = {
-                total: 9,
-                correct: 7,
-                wrong: 2,
-                partial: 0,
-                skipped: 0
-            };
-
-            state.evidenceSufficiency = {
-                independentObservations: 9,
-                distinctContexts: 3,
-                distinctQuestionTypes: 3,
-                observedEvidenceTypes: [
-                    "know",
-                    "explain",
-                    "apply",
-                    "transfer"
-                ],
-                contextIds: [
-                    "C1",
-                    "C2",
-                    "C3"
-                ],
-                questionTypes: [
-                    "mcq",
-                    "data_analysis",
-                    "experiment"
-                ]
-            };
-
-
-            state.failureSummary = {
-
-                "FS-TRANSFER-01": {
-
-                    count: 2,
-
-                    failureType:
-                        "reasoning_error",
-
-                    failureSignatureId:
-                        "FS-TRANSFER-01",
-
-                    sourceNodeId:
-                        "K1",
-
-                    lastAt:
-                        "2026-09-21T00:00:00Z"
+                    assert.equal(
+                        s.mastery,
+                        expected[i],
+                        `Unexpected mastery at step ${i + 1}`
+                    );
                 }
-            };
 
+                assert.equal(
+                    s.mastery,
+                    'M4'
+                );
 
-            state.evidenceWrongStreaks = {
-                know: 0,
-                explain: 0,
-                apply: 0,
-                transfer: 2
-            };
+                assert.equal(
+                    s.status,
+                    'mastered'
+                );
 
+                assert.equal(
+                    s.evidenceSufficiency
+                        .independentObservations,
+                    6
+                );
 
-            const attempt = {
+                assert.ok(
+                    s.evidenceSufficiency
+                        .distinctContexts >=
+                    2
+                );
 
-                nodeId:
-                    "K1",
+                assert.ok(
+                    s.evidenceSufficiency
+                        .distinctQuestionTypes >=
+                    2
+                );
 
-                primaryDimension:
-                    "transfer",
+                assert.equal(
+                    s.evidenceHistory
+                        .transfer
+                        .length,
+                    2
+                );
+            }
+        );
 
-                result:
-                    "wrong",
+        /**
+         * -------------------------------------------------
+         * 12. ANTI-FARM APPLY
+         * -------------------------------------------------
+         */
 
-                failureType:
-                    "reasoning_error",
+        await t.test(
+            '12 two apply observations cannot bypass know/explain',
 
-                failureSignatureId:
-                    "FS-TRANSFER-01",
+            () => {
+                let s =
+                    state0();
 
-                contextId:
-                    "C3",
+                s = run(
+                    s,
 
-                questionType:
-                    "experiment"
-            };
+                    a(
+                        '1',
+                        'apply',
+                        'D3',
+                        'correct',
+                        'C1',
+                        'mcq'
+                    )
+                ).current;
 
+                s = run(
+                    s,
 
-            const result =
-                updateMastery({
-                    attempt,
-                    currentState: state
-                });
+                    a(
+                        '2',
+                        'apply',
+                        'D3',
+                        'correct',
+                        'C2',
+                        'mcq'
+                    )
+                ).current;
 
+                /**
+                 * APPLY evidence alone cannot
+                 * establish M1 or M2.
+                 */
 
-            assert.equal(
-                result.decision
-                    .persistentFailureCount,
-                3
-            );
+                assert.equal(
+                    s.mastery,
+                    'M0'
+                );
 
+                assert.equal(
+                    s.evidence.know,
+                    0
+                );
 
-            assert.equal(
-                result.current.mastery,
-                "M3"
-            );
+                assert.equal(
+                    s.evidence.explain,
+                    0
+                );
 
+                assert.equal(
+                    s.evidence.apply,
+                    1
+                );
+            }
+        );
 
-            assert.equal(
-                result.decision
-                    .downgradeTriggered,
-                true
-            );
+        /**
+         * -------------------------------------------------
+         * 13. ANTI-FARM TRANSFER
+         * -------------------------------------------------
+         */
 
+        await t.test(
+            '13 one transfer observation cannot establish M4',
 
-            assert.equal(
-                result.decision.direction,
-                "down"
-            );
+            () => {
+                let s =
+                    state0();
 
+                const preM3 = [
+                    a(
+                        '1',
+                        'know',
+                        'D1',
+                        'correct',
+                        'C1',
+                        'mcq'
+                    ),
 
-            assert.equal(
-                result.decision
-                    .downgradeReason,
-                "persistent_failure_recalculate_mastery"
-            );
-        }
-    );
+                    a(
+                        '2',
+                        'explain',
+                        'D2',
+                        'correct',
+                        'C2',
+                        'mcq'
+                    ),
 
+                    a(
+                        '3',
+                        'apply',
+                        'D3',
+                        'correct',
+                        'C3',
+                        'mcq'
+                    ),
 
-    /*
-     * 25.
-     * Dù evidence hiện chỉ support thấp hơn nhiều,
-     * một update chỉ được giảm TỐI ĐA 1 mastery level.
-     *
-     * M4 → M3
-     *
-     * KHÔNG:
-     * M4 → M2
-     * M4 → M1
-     */
-    await t.test(
-        '25. Downgrade is limited to one mastery level per update',
-        () => {
+                    a(
+                        '4',
+                        'apply',
+                        'D3',
+                        'correct',
+                        'C4',
+                        'mcq'
+                    )
+                ];
 
-            const state = createDefaultState();
-
-            state.mastery = "M4";
-
-            /*
-             * Evidence rất yếu.
-             *
-             * supportedLevel có thể thấp hơn M3,
-             * nhưng downgrade vẫn chỉ được M4 → M3.
-             */
-            state.evidence = {
-                know: 0.76,
-                explain: 0.61,
-                apply: 0.40,
-                transfer: 0.30
-            };
-
-            state.attemptStats = {
-                total: 10,
-                correct: 7,
-                wrong: 3,
-                partial: 0,
-                skipped: 0
-            };
-
-            state.evidenceSufficiency = {
-                independentObservations: 10,
-                distinctContexts: 3,
-                distinctQuestionTypes: 3,
-                observedEvidenceTypes: [
-                    "know",
-                    "explain",
-                    "apply",
-                    "transfer"
-                ],
-                contextIds: [
-                    "C1",
-                    "C2",
-                    "C3"
-                ],
-                questionTypes: [
-                    "mcq",
-                    "data_analysis",
-                    "experiment"
-                ]
-            };
-
-
-            state.failureSummary = {
-
-                "FS-APPLY-01": {
-
-                    count: 2,
-
-                    failureType:
-                        "reasoning_error",
-
-                    failureSignatureId:
-                        "FS-APPLY-01",
-
-                    sourceNodeId:
-                        "K1",
-
-                    lastAt:
-                        "2026-09-21T00:00:00Z"
+                for (
+                    const attempt
+                    of preM3
+                ) {
+                    s = run(
+                        s,
+                        attempt
+                    ).current;
                 }
-            };
 
+                assert.equal(
+                    s.mastery,
+                    'M3'
+                );
 
-            state.evidenceWrongStreaks = {
-                know: 0,
-                explain: 0,
-                apply: 2,
-                transfer: 0
-            };
+                s = run(
+                    s,
 
+                    a(
+                        '5',
+                        'transfer',
+                        'D4',
+                        'correct',
+                        'C5',
+                        'data_analysis'
+                    )
+                ).current;
 
-            const attempt = {
+                /**
+                 * Only one qualifying TRANSFER.
+                 *
+                 * M4 requires two.
+                 */
 
-                nodeId:
-                    "K1",
+                assert.equal(
+                    s.mastery,
+                    'M3'
+                );
 
-                primaryDimension:
-                    "apply",
+                assert.equal(
+                    s.evidenceHistory
+                        .transfer
+                        .length,
+                    1
+                );
+            }
+        );
 
-                result:
-                    "wrong",
+        /**
+         * -------------------------------------------------
+         * 14. SINGLE WRONG
+         * -------------------------------------------------
+         */
 
-                failureType:
-                    "reasoning_error",
+        await t.test(
+            '14 single wrong never downgrades mastery',
 
-                failureSignatureId:
-                    "FS-APPLY-01",
+            () => {
+                let s =
+                    state0();
 
-                contextId:
-                    "C3",
+                const happyPath = [
+                    a(
+                        '1',
+                        'know',
+                        'D1',
+                        'correct',
+                        'C1',
+                        'mcq'
+                    ),
 
-                questionType:
-                    "experiment"
-            };
+                    a(
+                        '2',
+                        'explain',
+                        'D2',
+                        'correct',
+                        'C2',
+                        'mcq'
+                    ),
 
+                    a(
+                        '3',
+                        'apply',
+                        'D3',
+                        'correct',
+                        'C3',
+                        'mcq'
+                    ),
 
-            const result =
-                updateMastery({
-                    attempt,
-                    currentState: state
-                });
+                    a(
+                        '4',
+                        'apply',
+                        'D3',
+                        'correct',
+                        'C4',
+                        'mcq'
+                    ),
 
+                    a(
+                        '5',
+                        'transfer',
+                        'D4',
+                        'correct',
+                        'C5',
+                        'data_analysis'
+                    ),
 
-            assert.equal(
-                result.decision
-                    .persistentFailureCount,
-                3
-            );
+                    a(
+                        '6',
+                        'transfer',
+                        'D4',
+                        'correct',
+                        'C6',
+                        'data_analysis'
+                    )
+                ];
 
-
-            /*
-             * Critical assertion.
-             */
-            assert.equal(
-                result.current.mastery,
-                "M3"
-            );
-
-
-            assert.equal(
-                result.decision
-                    .downgradeTriggered,
-                true
-            );
-
-
-            assert.ok(
-                masteryTestRank(
-                    result.decision.supportedLevel
-                ) <
-                masteryTestRank("M3")
-            );
-        }
-    );
-
-
-    /*
-     * 26.
-     * Failed RETEST:
-     *
-     * contract says:
-     *
-     * keepMastery = true
-     * remove_stable_status
-     *
-     * Therefore:
-     *
-     * M3 stable
-     *   ↓ failed retest
-     * M3, NOT stable
-     */
-    await t.test(
-        '26. Failed retest keeps mastery but removes stable status',
-        () => {
-
-            const state = createDefaultState();
-
-            state.mastery = "M3";
-            state.status = "stable";
-
-            state.evidence = {
-                know: 0.85,
-                explain: 0.75,
-                apply: 0.71,
-                transfer: 0.55
-            };
-
-            state.attemptStats = {
-                total: 6,
-                correct: 5,
-                wrong: 1,
-                partial: 0,
-                skipped: 0
-            };
-
-            state.evidenceSufficiency = {
-                independentObservations: 6,
-                distinctContexts: 2,
-                distinctQuestionTypes: 2,
-                observedEvidenceTypes: [
-                    "know",
-                    "explain",
-                    "apply",
-                    "transfer"
-                ],
-                contextIds: [
-                    "C1",
-                    "C2"
-                ],
-                questionTypes: [
-                    "mcq",
-                    "data_analysis"
-                ]
-            };
-
-
-            const attempt = {
-
-                nodeId:
-                    "K1",
-
-                primaryDimension:
-                    "apply",
-
-                result:
-                    "wrong",
-
-                failureType:
-                    "reasoning_error",
-
-                failureSignatureId:
-                    "FS-RETEST-01",
-
-                context: {
-                    pathStage:
-                        "RETEST"
-                },
-
-                contextId:
-                    "C2",
-
-                questionType:
-                    "data_analysis"
-            };
-
-
-            const result =
-                updateMastery({
-                    attempt,
-                    currentState: state
-                });
-
-
-            /*
-             * Mastery retained.
-             */
-            assert.equal(
-                result.current.mastery,
-                "M3"
-            );
-
-
-            /*
-             * Stable removed.
-             */
-            assert.notEqual(
-                result.current.status,
-                "stable"
-            );
-
-
-            assert.equal(
-                result.decision
-                    .downgradeTriggered,
-                false
-            );
-
-
-            assert.equal(
-                result.decision
-                    .downgradeReason,
-                "failed_retest_keeps_mastery"
-            );
-        }
-    );
-
-
-    /*
-     * 27.
-     * Diagnostic failure alone must NOT downgrade mastery,
-     * even if the same signature count reaches persistent
-     * threshold.
-     *
-     * Diagnostic may update evidence/failure evidence,
-     * but must not invalidate mastery by itself.
-     */
-    await t.test(
-        '27. Diagnostic persistent failure alone does not downgrade mastery',
-        () => {
-
-            const state = createDefaultState();
-
-            state.mastery = "M4";
-
-            state.evidence = {
-                know: 0.90,
-                explain: 0.85,
-                apply: 0.80,
-                transfer: 0.60
-            };
-
-            state.attemptStats = {
-                total: 8,
-                correct: 6,
-                wrong: 2,
-                partial: 0,
-                skipped: 0
-            };
-
-            state.evidenceSufficiency = {
-                independentObservations: 8,
-                distinctContexts: 2,
-                distinctQuestionTypes: 2,
-                observedEvidenceTypes: [
-                    "know",
-                    "explain",
-                    "apply",
-                    "transfer"
-                ],
-                contextIds: [
-                    "C1",
-                    "C2"
-                ],
-                questionTypes: [
-                    "mcq",
-                    "data_analysis"
-                ]
-            };
-
-
-            state.failureSummary = {
-
-                "FS-DIAG-01": {
-
-                    count: 2,
-
-                    failureType:
-                        "reasoning_error",
-
-                    failureSignatureId:
-                        "FS-DIAG-01",
-
-                    sourceNodeId:
-                        "K1",
-
-                    lastAt:
-                        "2026-09-21T00:00:00Z"
+                for (
+                    const attempt
+                    of happyPath
+                ) {
+                    s = run(
+                        s,
+                        attempt
+                    ).current;
                 }
-            };
 
+                assert.equal(
+                    s.mastery,
+                    'M4'
+                );
 
-            const attempt = {
+                const r = run(
+                    s,
 
-                nodeId:
-                    "K1",
+                    a(
+                        '7',
+                        'transfer',
+                        'D4',
+                        'wrong',
+                        'C7',
+                        'data_analysis',
+                        {
+                            failureType:
+                                'reasoning_error',
 
-                primaryDimension:
-                    "transfer",
+                            failureSignatureId:
+                                'FS-X'
+                        }
+                    )
+                );
 
-                result:
-                    "wrong",
+                /**
+                 * Evidence may decrease.
+                 *
+                 * Mastery must NOT be destroyed
+                 * by one wrong answer.
+                 */
 
-                mode:
-                    "diagnostic",
+                assert.equal(
+                    r.current.mastery,
+                    'M4'
+                );
 
-                failureType:
-                    "reasoning_error",
+                assert.equal(
+                    r.decision
+                        .downgradeTriggered,
+                    false
+                );
 
-                failureSignatureId:
-                    "FS-DIAG-01",
+                assert.equal(
+                    r.failure
+                        .persistentFailureCount,
+                    1
+                );
+            }
+        );
 
-                contextId:
-                    "C2",
+        /**
+         * -------------------------------------------------
+         * 15. INPUT IMMUTABILITY
+         * -------------------------------------------------
+         */
 
-                questionType:
-                    "data_analysis"
-            };
+        await t.test(
+            '15 input immutability',
 
+            () => {
+                const state =
+                    state0();
 
-            const result =
-                updateMastery({
+                const attempt =
+                    a(
+                        '1',
+                        'know',
+                        'D1'
+                    );
+
+                const originalState =
+                    structuredClone(
+                        state
+                    );
+
+                const originalAttempt =
+                    structuredClone(
+                        attempt
+                    );
+
+                run(
+                    state,
+                    attempt
+                );
+
+                assert.deepEqual(
+                    state,
+                    originalState
+                );
+
+                assert.deepEqual(
                     attempt,
-                    currentState: state
-                });
-
-
-            assert.equal(
-                result.decision
-                    .persistentFailureCount,
-                3
-            );
-
-
-            assert.equal(
-                result.current.mastery,
-                "M4"
-            );
-
-
-            assert.equal(
-                result.decision
-                    .downgradeTriggered,
-                false
-            );
-
-
-            assert.equal(
-                result.decision
-                    .downgradeReason,
-                "diagnostic_failure_not_sufficient_for_downgrade"
-            );
-        }
-    );
-
-
-    /*
-     * 28.
-     * Persistent failure must never downgrade below
-     * minimumPossibleLevel = M1.
-     *
-     * M1 → M0 is prohibited by current downgrade contract.
-     */
-    await t.test(
-        '28. Persistent failure cannot downgrade below M1',
-        () => {
-
-            const state = createDefaultState();
-
-            state.mastery = "M1";
-
-            state.evidence = {
-                know: 0.50,
-                explain: 0.20,
-                apply: 0.10,
-                transfer: 0.00
-            };
-
-            state.attemptStats = {
-                total: 5,
-                correct: 2,
-                wrong: 3,
-                partial: 0,
-                skipped: 0
-            };
-
-            state.evidenceSufficiency = {
-                independentObservations: 5,
-                distinctContexts: 2,
-                distinctQuestionTypes: 2,
-                observedEvidenceTypes: [
-                    "know",
-                    "explain"
-                ],
-                contextIds: [
-                    "C1",
-                    "C2"
-                ],
-                questionTypes: [
-                    "mcq",
-                    "true_false"
-                ]
-            };
-
-
-            state.failureSummary = {
-
-                "FS-KNOW-01": {
-
-                    count: 2,
-
-                    failureType:
-                        "concept_confusion",
-
-                    failureSignatureId:
-                        "FS-KNOW-01",
-
-                    sourceNodeId:
-                        "K1",
-
-                    lastAt:
-                        "2026-09-21T00:00:00Z"
-                }
-            };
-
-
-            state.evidenceWrongStreaks = {
-                know: 2,
-                explain: 0,
-                apply: 0,
-                transfer: 0
-            };
-
-
-            const attempt = {
-
-                nodeId:
-                    "K1",
-
-                primaryDimension:
-                    "know",
-
-                result:
-                    "wrong",
-
-                failureType:
-                    "concept_confusion",
-
-                failureSignatureId:
-                    "FS-KNOW-01",
-
-                contextId:
-                    "C2",
-
-                questionType:
-                    "mcq"
-            };
-
-
-            const result =
-                updateMastery({
-                    attempt,
-                    currentState: state
-                });
-
-
-            /*
-             * Current evidence supports M0,
-             * persistent failure threshold is reached,
-             * but policy minimumPossibleLevel = M1.
-             */
-            assert.equal(
-                result.decision.supportedLevel,
-                "M0"
-            );
-
-
-            assert.equal(
-                result.current.mastery,
-                "M1"
-            );
-
-
-            assert.equal(
-                result.decision
-                    .persistentFailureCount,
-                3
-            );
-
-
-            /*
-             * Important:
-             *
-             * downgradeTriggered must be FALSE because
-             * final mastery remains M1.
-             */
-            assert.equal(
-                result.decision
-                    .downgradeTriggered,
-                false
-            );
-        }
-    );
-
-
-    /*
-     * Test-only helper.
-     *
-     * Do NOT import internal engine masteryRank().
-     */
-    function masteryTestRank(level) {
-
-        return [
-            "M0",
-            "M1",
-            "M2",
-            "M3",
-            "M4"
-        ].indexOf(level);
+                    originalAttempt
+                );
+            }
+        );
     }
-
-});
+);

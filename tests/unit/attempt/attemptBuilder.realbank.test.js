@@ -44,12 +44,12 @@ import addFormats from "ajv-formats";
 
 import {
     evaluateAnswer
-} from "./answerEvaluator.js";
+} from "../../../src/engines/evaluation/answerEvaluator.js";
 
 import {
     buildAttempt,
     ATTEMPT_BUILDER_INFO
-} from "./attemptBuilder.js";
+} from "../../../src/engines/attempt/attemptBuilder.js";
 
 
 /**
@@ -94,14 +94,14 @@ const DATA_DIR =
     path.join(
         __dirname,
         "../../data",
-        "../data/questions/c09"
+        "../../src/data/questions/c09"
     );
 
 
 const ATTEMPT_SCHEMA_PATH =
     path.join(
         __dirname,
-        "../../data/runtime/attempt.schema.json"
+        "../../../src/contracts/schemas/attempt.schema.json"
     );
 
 
@@ -267,87 +267,145 @@ function assertAttemptValid(
  * We intentionally use the Question Contract's answer field
  * because AnswerEvaluator also treats it as source of truth.
  */
-function getCorrectOptionId(
+/**
+ * Return canonical correct runtime response.
+ *
+ * Supported:
+ * - mcq + single
+ * - numeric + number
+ */
+function getCorrectResponse(
     question
 ) {
 
-    assert.equal(
-        question.questionType,
-        "mcq",
-        `${question.id} must be MCQ for Study MVP.`
-    );
+    switch (question.questionType) {
+
+        case "mcq": {
+
+            assert.equal(
+                question.answer?.type,
+                "single",
+                `${question.id} MCQ must use answer.type='single'.`
+            );
+
+            const value =
+                question.answer?.value;
+
+            assert.equal(
+                typeof value,
+                "string",
+                `${question.id} MCQ must contain string answer.value.`
+            );
+
+            assert.ok(
+                value.length > 0,
+                `${question.id} MCQ answer.value must not be empty.`
+            );
+
+            return value;
+        }
 
 
-    assert.equal(
-        question.answer?.type,
-        "single",
-        `${question.id} must use answer.type='single'.`
-    );
+        case "numeric": {
+
+            assert.equal(
+                question.answer?.type,
+                "number",
+                `${question.id} numeric question must use answer.type='number'.`
+            );
+
+            const value =
+                question.answer?.value;
+
+            assert.equal(
+                typeof value,
+                "number",
+                `${question.id} numeric question must contain numeric answer.value.`
+            );
+
+            assert.ok(
+                Number.isFinite(value),
+                `${question.id} numeric answer.value must be finite.`
+            );
+
+            return value;
+        }
 
 
-    const correctOptionId =
-        question.answer?.value;
-
-
-    assert.equal(
-        typeof correctOptionId,
-        "string",
-        `${question.id} must contain answer.value.`
-    );
-
-
-    assert.ok(
-        correctOptionId.length > 0,
-        `${question.id} answer.value must not be empty.`
-    );
-
-
-    return correctOptionId;
+        default:
+            throw new Error(
+                `${question.id} uses unsupported questionType: ` +
+                `${question.questionType}`
+            );
+    }
 }
 
 
 /**
- * Find one intentionally wrong option.
- *
- * This does NOT infer biology correctness.
- * It simply chooses an option ID different from
- * the canonical question.answer.value.
+ * Return one intentionally incorrect runtime response.
  */
-function getWrongOptionId(
+function getWrongResponse(
     question
 ) {
 
-    const correctOptionId =
-        getCorrectOptionId(
-            question
-        );
+    switch (question.questionType) {
+
+        case "mcq": {
+
+            const correct =
+                getCorrectResponse(
+                    question
+                );
+
+            const options =
+                question.content?.options;
+
+            assert.ok(
+                Array.isArray(options),
+                `${question.id} must contain content.options[].`
+            );
+
+            const wrongOption =
+                options.find(
+                    option =>
+                        option.id !== correct
+                );
+
+            assert.ok(
+                wrongOption,
+                `${question.id} must contain at least one wrong option.`
+            );
+
+            return wrongOption.id;
+        }
 
 
-    const options =
-        question.content?.options;
+        case "numeric": {
+
+            const correct =
+                getCorrectResponse(
+                    question
+                );
+
+            const tolerance =
+                question.answer?.tolerance ?? 0;
+
+            assert.ok(
+                Number.isFinite(tolerance) &&
+                tolerance >= 0,
+                `${question.id} numeric tolerance must be finite and >= 0.`
+            );
+
+            return correct + tolerance + 1;
+        }
 
 
-    assert.ok(
-        Array.isArray(options),
-        `${question.id} must contain content.options[].`
-    );
-
-
-    const wrongOption =
-        options.find(
-            (option) =>
-                option.id !==
-                correctOptionId
-        );
-
-
-    assert.ok(
-        wrongOption,
-        `${question.id} must contain at least one wrong option.`
-    );
-
-
-    return wrongOption.id;
+        default:
+            throw new Error(
+                `${question.id} uses unsupported questionType: ` +
+                `${question.questionType}`
+            );
+    }
 }
 
 
@@ -574,12 +632,12 @@ test(
  */
 
 test(
-    "2. real C09 bank contains 32 questions",
+    "2. real C09 bank contains 33 questions",
     () => {
 
         assert.equal(
             allQuestions.length,
-            32,
+            33,
 
             [
                 "Expected the locked C09 Study MVP bank",
@@ -606,7 +664,7 @@ test(
  */
 
 test(
-    "3. all real C09 questions are supported single-answer MCQs",
+    "3. all real C09 questions use AttemptBuilder-supported response types",
     () => {
 
         for (
@@ -617,25 +675,61 @@ test(
             of allQuestions
         ) {
 
-            assert.equal(
-                question.questionType,
-                "mcq",
-                `${filename} / ${question.id}`
-            );
+            const supported =
+                (
+                    question.questionType ===
+                    "mcq" &&
+                    question.answer?.type ===
+                    "single"
+                ) ||
+                (
+                    question.questionType ===
+                    "numeric" &&
+                    question.answer?.type ===
+                    "number"
+                );
 
 
             assert.equal(
-                question.answer?.type,
-                "single",
-                `${filename} / ${question.id}`
+                supported,
+                true,
+                `${filename} / ${question.id} uses unsupported pair: ` +
+                `${question.questionType} + ${question.answer?.type}`
             );
 
 
-            assert.equal(
-                typeof question.answer?.value,
-                "string",
-                `${filename} / ${question.id}`
-            );
+            if (
+                question.questionType ===
+                "mcq"
+            ) {
+
+                assert.equal(
+                    typeof question.answer?.value,
+                    "string",
+                    `${filename} / ${question.id}`
+                );
+            }
+
+
+            if (
+                question.questionType ===
+                "numeric"
+            ) {
+
+                assert.equal(
+                    typeof question.answer?.value,
+                    "number",
+                    `${filename} / ${question.id}`
+                );
+
+
+                assert.ok(
+                    Number.isFinite(
+                        question.answer?.value
+                    ),
+                    `${filename} / ${question.id}`
+                );
+            }
         }
     }
 );
@@ -669,7 +763,7 @@ test(
             ) => {
 
                 const correctOptionId =
-                    getCorrectOptionId(
+                    getCorrectResponse(
                         question
                     );
 
@@ -809,7 +903,7 @@ test(
             ) => {
 
                 const wrongOptionId =
-                    getWrongOptionId(
+                    getWrongResponse(
                         question
                     );
 
@@ -998,7 +1092,7 @@ test(
         ) {
 
             const correctOptionId =
-                getCorrectOptionId(
+                getCorrectResponse(
                     question
                 );
 
@@ -1073,7 +1167,7 @@ test(
                     bank,
 
                     response:
-                        getCorrectOptionId(
+                        getCorrectResponse(
                             question
                         ),
 
@@ -1129,7 +1223,7 @@ test(
                     bank,
 
                     response:
-                        getCorrectOptionId(
+                        getCorrectResponse(
                             question
                         ),
 
@@ -1203,7 +1297,7 @@ test(
                     bank,
 
                     response:
-                        getCorrectOptionId(
+                        getCorrectResponse(
                             question
                         ),
 
@@ -1277,7 +1371,7 @@ test(
                     bank,
 
                     response:
-                        getCorrectOptionId(
+                        getCorrectResponse(
                             question
                         ),
 
@@ -1334,7 +1428,7 @@ test(
                     bank,
 
                     response:
-                        getCorrectOptionId(
+                        getCorrectResponse(
                             question
                         ),
 
@@ -1401,7 +1495,7 @@ test(
                     bank,
 
                     response:
-                        getCorrectOptionId(
+                        getCorrectResponse(
                             question
                         ),
 
@@ -1468,7 +1562,7 @@ test(
                 question,
 
                 response:
-                    getWrongOptionId(
+                    getWrongResponse(
                         question
                     )
             });
@@ -1567,7 +1661,7 @@ test(
                 question,
 
                 response:
-                    getWrongOptionId(
+                    getWrongResponse(
                         question
                     )
             });
@@ -1680,7 +1774,7 @@ test(
                     bank,
 
                     response:
-                        getCorrectOptionId(
+                        getCorrectResponse(
                             question
                         ),
 
@@ -1733,7 +1827,7 @@ test(
                 question,
 
                 response:
-                    getWrongOptionId(
+                    getWrongResponse(
                         question
                     )
             });
@@ -1832,7 +1926,7 @@ test(
                     bank,
 
                     response:
-                        getCorrectOptionId(
+                        getCorrectResponse(
                             question
                         ),
 
@@ -1895,7 +1989,7 @@ test(
                 bank,
 
                 response:
-                    getCorrectOptionId(
+                    getCorrectResponse(
                         question
                     ),
 
@@ -1957,7 +2051,7 @@ test(
                         bank,
 
                         response:
-                            getCorrectOptionId(
+                            getCorrectResponse(
                                 question
                             ),
 
@@ -1995,7 +2089,7 @@ test(
                         bank,
 
                         response:
-                            getWrongOptionId(
+                            getWrongResponse(
                                 question
                             ),
 
@@ -2079,8 +2173,8 @@ test(
         /**
          * Locked current C09 bank:
          *
-         * 32 questions × 3 runtime paths
-         * = 96 schema-valid Attempts.
+         * 33 questions × 3 runtime paths
+         * = 99 schema-valid Attempts.
          */
 
         assert.equal(
@@ -2089,7 +2183,7 @@ test(
                 incorrectAttempts +
                 skippedAttempts
             ),
-            96
+            99
         );
     }
 );

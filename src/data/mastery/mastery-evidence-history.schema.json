@@ -1,0 +1,124 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://example.com/schemas/mastery/mastery-evidence-history.schema.json",
+    "title": "Mastery Evidence History Schema",
+    "description": "Ephemeral/runtime Mastery projection used by Mastery Engine V2 to calculate bounded capability estimates. It is not part of Student State and does not own raw attempts.",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "schemaVersion",
+        "byDimension"
+    ],
+    "properties": {
+        "schemaVersion": {
+            "const": "1.0.0"
+        },
+        "byDimension": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "know",
+                "explain",
+                "apply",
+                "transfer"
+            ],
+            "properties": {
+                "know": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/observation"
+                    }
+                },
+                "explain": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/observation"
+                    }
+                },
+                "apply": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/observation"
+                    }
+                },
+                "transfer": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/observation"
+                    }
+                }
+            }
+        }
+    },
+    "$defs": {
+        "observation": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "attemptId",
+                "questionId",
+                "dimension",
+                "score",
+                "reliabilityWeight",
+                "independent",
+                "contextId",
+                "questionType",
+                "at"
+            ],
+            "properties": {
+                "attemptId": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "questionId": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "dimension": {
+                    "enum": [
+                        "know",
+                        "explain",
+                        "apply",
+                        "transfer"
+                    ]
+                },
+                "score": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "reliabilityWeight": {
+                    "type": "number",
+                    "exclusiveMinimum": 0,
+                    "maximum": 1
+                },
+                "independent": {
+                    "type": "boolean"
+                },
+                "contextId": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "questionType": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "at": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "format": "date-time"
+                }
+            }
+        }
+    }
+}

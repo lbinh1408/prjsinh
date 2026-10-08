@@ -13,7 +13,7 @@ import assert from "node:assert/strict";
 
 import {
     selectQuestion
-} from "./questionSelector.js";
+} from "../../../src/engines/question/questionSelector.js";
 
 
 /**

@@ -1,6 +1,6 @@
 /**
  * adaptiveEngine.js
- * Version: 1.0.0
+ * Version: 1.0.1
  *
  * Responsibility:
  * - Decide what the student should do next.
@@ -22,7 +22,7 @@
  */
 
 const ENGINE_NAME = "AdaptiveEngine";
-const ENGINE_VERSION = "1.0.0";
+const ENGINE_VERSION = "1.0.1";
 
 const SCHEMA_VERSION = "1.0.0";
 
@@ -382,7 +382,101 @@ export function decideNextAction({
 
     return result;
 }
+/**
+ * =========================================================
+ * DESIGN-003 — ROUTING MASTERY
+ * =========================================================
+ *
+ * recordedMastery:
+ *   Canonical mastery currently committed by Mastery Engine.
+ *
+ * supportedMastery:
+ *   Runtime-only signal calculated by Mastery Engine showing
+ *   the highest mastery level already supported by current
+ *   evidence/sufficiency/confidence.
+ *
+ * Adaptive does NOT calculate mastery here.
+ *
+ * It only uses supportedMastery to avoid routing the learner
+ * back into an evidence stage that has already been satisfied.
+ *
+ * Safety:
+ *
+ * - supportedMastery may advance routing.
+ * - it may NEVER route below recorded mastery.
+ * - M4 is special: supported M4 does NOT mean recorded M4.
+ *   RETEST / REVIEW / SKIP remain dependent on actual
+ *   recorded M4/state.
+ */
 
+function resolveRoutingMastery({
+    targetState,
+    sessionContext
+}) {
+
+    const recordedMastery =
+        normalizeMasteryLevel(
+            targetState?.mastery
+        ) || "M0";
+
+
+    const supportedMastery =
+        normalizeMasteryLevel(
+            sessionContext
+                ?.supportedMastery
+        );
+
+
+    if (!supportedMastery) {
+
+        return recordedMastery;
+    }
+
+
+    const recordedRank =
+        masteryRank(
+            recordedMastery
+        );
+
+
+    const supportedRank =
+        masteryRank(
+            supportedMastery
+        );
+
+
+    /*
+     * Never route backwards.
+     */
+    if (
+        supportedRank <=
+        recordedRank
+    ) {
+
+        return recordedMastery;
+    }
+
+
+    /*
+     * IMPORTANT:
+     *
+     * supported M4 is not the same as recorded M4.
+     *
+     * If recorded mastery is M3 and evidence already supports
+     * M4, remain in CHALLENGE routing until Mastery Engine
+     * actually commits M4.
+     */
+    if (
+        supportedMastery === "M4" &&
+        recordedMastery !== "M4"
+    ) {
+
+        return recordedMastery;
+    }
+
+
+    return supportedMastery;
+}
 /**
  * =========================================================
  * PRIMARY DECISION
@@ -490,7 +584,12 @@ function selectPrimaryDecision({
      * 5. Mastery routing.
      */
 
-    if (targetState.mastery === "M0") {
+    const routingMastery =
+        resolveRoutingMastery({
+            targetState,
+            sessionContext
+        });
+    if (routingMastery === "M0") {
         return {
             ruleId: "R004",
             action: "LEARN",
@@ -501,7 +600,7 @@ function selectPrimaryDecision({
         };
     }
 
-    if (targetState.mastery === "M1") {
+    if (routingMastery === "M1") {
         return {
             ruleId: "R005",
             action: "LEARN",
@@ -512,7 +611,7 @@ function selectPrimaryDecision({
         };
     }
 
-    if (targetState.mastery === "M2") {
+    if (routingMastery === "M2") {
         return {
             ruleId: "R006",
             action: "PRACTICE",
@@ -523,7 +622,7 @@ function selectPrimaryDecision({
         };
     }
 
-    if (targetState.mastery === "M3") {
+    if (routingMastery === "M3") {
         return {
             ruleId: "R007",
             action: "CHALLENGE",

@@ -65,22 +65,22 @@ import {
 
 import {
     selectQuestion
-} from "./questionSelector.js";
+} from "../../src/engines/question/questionSelector.js";
 
 
 import {
     evaluateAnswer
-} from "./answerEvaluator.js";
+} from "../../src/engines/evaluation/answerEvaluator.js";
 
 
 import {
     buildAttempt
-} from "./attemptBuilder.js";
+} from "../../src/engines/attempt/attemptBuilder.js";
 
 
 import {
     processAttempt
-} from "./learningFlow.js";
+} from "../../src/engines/orchestration/learningFlow.js";
 
 
 /**
@@ -178,7 +178,7 @@ function firstExistingPath(
 const KNOWLEDGE_MAP_PATH =
     firstExistingPath(
         [
-            "data/knowledge/knowledge-map-v4.json",
+            "src/data/knowledge/knowledge-map-v4.json",
             "knowledge-map-v4.json"
         ],
         "knowledge-map-v4.json"
@@ -188,7 +188,7 @@ const KNOWLEDGE_MAP_PATH =
 const MASTERY_RULES_PATH =
     firstExistingPath(
         [
-            "mastery/rules.json",
+            "src/policies/mastery/rules.json",
             "data/mastery/rules.json",
             "data/mastery-rules.json",
             "data/rules.json"
@@ -200,7 +200,7 @@ const MASTERY_RULES_PATH =
 const EVIDENCE_MODEL_PATH =
     firstExistingPath(
         [
-            "mastery/evidence.json",
+            "src/data/mastery/evidence.json",
             "data/mastery/evidence.json",
             "data/evidence.json"
         ],
@@ -211,7 +211,7 @@ const EVIDENCE_MODEL_PATH =
 const ADAPTIVE_RULES_PATH =
     firstExistingPath(
         [
-            "adaptive/rules.json",
+            "src/policies/adaptive/rules.json",
             "data/adaptive/rules.json",
             "data/adaptive-rules.json"
         ],
@@ -222,7 +222,7 @@ const ADAPTIVE_RULES_PATH =
 const ADAPTIVE_PATHS_PATH =
     firstExistingPath(
         [
-            "adaptive/paths.json",
+            "src/policies/adaptive/paths.json",
             "data/adaptive/paths.json",
             "data/adaptive-paths.json"
         ],
@@ -233,7 +233,7 @@ const ADAPTIVE_PATHS_PATH =
 const FAILURE_SIGNATURES_PATH =
     firstExistingPath(
         [
-            "remediation/failure-signatures.json",
+            "src/data/remediation/failure-signatures.json",
             "data/remediation/failure-signatures.json",
             "data/failure-signatures.json"
         ],
@@ -244,7 +244,7 @@ const FAILURE_SIGNATURES_PATH =
 const QUESTION_BANK_PATH =
     firstExistingPath(
         [
-            "data/questions/c09/K283.question-bank.json"
+            "src/data/questions/c09/K283.question-bank.json"
         ],
         "K283.question-bank.json"
     );
@@ -890,7 +890,7 @@ test(
     () => {
 
         const decision =
-            createInitialAdaptiveDecision();
+            createInitialDecision();
 
 
         const selection =
@@ -953,7 +953,7 @@ test(
         selectQuestion({
 
             adaptiveDecision:
-                createInitialAdaptiveDecision(),
+                createInitialDecision(),
 
             questionBanks:
                 questionBank,
@@ -987,7 +987,7 @@ test(
             selectQuestion({
 
                 adaptiveDecision:
-                    createInitialAdaptiveDecision(),
+                    createInitialDecision(),
 
                 questionBanks:
                     questionBank,
@@ -1045,7 +1045,7 @@ test(
             selectQuestion({
 
                 adaptiveDecision:
-                    createInitialAdaptiveDecision(),
+                    createInitialDecision(),
 
                 questionBanks:
                     questionBank,
@@ -1113,7 +1113,7 @@ test(
             selectQuestion({
 
                 adaptiveDecision:
-                    createInitialAdaptiveDecision(),
+                    createInitialDecision(),
 
                 questionBanks:
                     questionBank,
@@ -1205,7 +1205,7 @@ test(
             selectQuestion({
 
                 adaptiveDecision:
-                    createInitialAdaptiveDecision(),
+                    createInitialDecision(),
 
                 questionBanks:
                     questionBank,
@@ -1239,7 +1239,7 @@ test(
 
         assert.equal(
             result.flow?.version,
-            "1.0.0"
+            "1.0.3"
         );
 
 
@@ -1296,7 +1296,7 @@ test(
     () => {
 
         const initialDecision =
-            createInitialAdaptiveDecision();
+            createInitialDecision();
 
 
         const selection =
@@ -1409,7 +1409,7 @@ test(
             selectQuestion({
 
                 adaptiveDecision:
-                    createInitialAdaptiveDecision(),
+                    createInitialDecision(),
 
                 questionBanks:
                     questionBank,
@@ -1489,7 +1489,7 @@ test(
             selectQuestion({
 
                 adaptiveDecision:
-                    createInitialAdaptiveDecision(),
+                    createInitialDecision(),
 
                 questionBanks:
                     questionBank,
@@ -1594,7 +1594,7 @@ test(
             selectQuestion({
 
                 adaptiveDecision:
-                    createInitialAdaptiveDecision(),
+                    createInitialDecision(),
 
                 questionBanks:
                     questionBank,
@@ -1670,7 +1670,7 @@ test(
             selectQuestion({
 
                 adaptiveDecision:
-                    createInitialAdaptiveDecision(),
+                    createInitialDecision(),
 
                 questionBanks:
                     questionBank,
@@ -1814,7 +1814,7 @@ test(
             selectQuestion({
 
                 adaptiveDecision:
-                    createInitialAdaptiveDecision(),
+                    createInitialDecision(),
 
                 questionBanks:
                     questionBank,
@@ -1930,7 +1930,7 @@ test(
          */
 
         const decision1 =
-            createInitialAdaptiveDecision();
+            createInitialDecision();
 
 
         assert.equal(

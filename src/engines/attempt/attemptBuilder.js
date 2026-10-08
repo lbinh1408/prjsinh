@@ -1,7 +1,7 @@
 /**
  * attemptBuilder.js
  *
- * Attempt Builder V1.0.1
+ * Attempt Builder V1.0.2
  *
  * Responsibility:
  * - Convert Question + AnswerEvaluation + interaction/session metadata
@@ -20,12 +20,13 @@
  * - persist anything
  *
  * Study MVP:
- * - Supports current single-answer MCQ flow.
+ * - Supports single-answer MCQ flow.
+ * - Supports numeric-answer flow.
  * - Output conforms to attempt.schema.json V1.0.0.
  */
 
 const BUILDER_NAME = "AttemptBuilder";
-const BUILDER_VERSION = "1.0.1";
+const BUILDER_VERSION = "1.0.2";
 const SCHEMA_VERSION = "1.0.0";
 
 
@@ -420,41 +421,166 @@ function buildResponse({
 }) {
 
     /**
-     * Study MVP V1 supports:
+     * Attempt Contract V1.0.0 response mapping:
      *
-     * questionType = mcq
-     * answer.type   = single
+     * Question:
+     *
+     * mcq + single
+     *
+     *     ↓
+     *
+     * Attempt:
+     *
+     * response.type = "singleChoice"
+     *
+     *
+     * Question:
+     *
+     * numeric + number
+     *
+     *     ↓
+     *
+     * Attempt:
+     *
+     * response.type = "numeric"
      */
 
-    if (
-        question.questionType !== "mcq" ||
-        question.answer?.type !== "single"
-    ) {
-        throw new Error(
-            `AttemptBuilder V1.0.1 does not support ` +
-            `question '${question.id}' with ` +
-            `questionType='${question.questionType}' ` +
-            `and answer.type='${question.answer?.type}'.`
-        );
-    }
+
+    const questionType =
+        question.questionType;
+
+
+    const answerType =
+        question.answer?.type;
 
 
     const value =
         evaluation
             ?.response
-            ?.value ?? null;
+            ?.value ??
+        null;
 
 
-    return {
+    /**
+     * -----------------------------------------------------
+     * SINGLE-ANSWER MCQ
+     * -----------------------------------------------------
+     */
 
-        type:
-            "singleChoice",
+    if (
+        questionType === "mcq" &&
+        answerType === "single"
+    ) {
 
-        value,
+        return {
 
-        normalizedValue:
-            value
-    };
+            type:
+                "singleChoice",
+
+            value,
+
+            normalizedValue:
+                value
+        };
+    }
+
+
+    /**
+     * -----------------------------------------------------
+     * NUMERIC
+     * -----------------------------------------------------
+     *
+     * AnswerEvaluator V1.1 normalizes accepted numeric
+     * responses before they reach AttemptBuilder.
+     *
+     * Examples:
+     *
+     * student input:
+     *
+     * 20
+     * "20"
+     * { value: "20" }
+     *
+     * evaluator.response.value:
+     *
+     * 20
+     *
+     * Therefore AttemptBuilder does NOT parse numbers.
+     * It only projects the evaluator result into the
+     * canonical Attempt Contract.
+     */
+
+    if (
+        questionType === "numeric" &&
+        answerType === "number"
+    ) {
+
+        /**
+         * A skipped numeric response is represented as null.
+         */
+
+        if (value === null) {
+
+            return {
+
+                type:
+                    "numeric",
+
+                value:
+                    null,
+
+                normalizedValue:
+                    null
+            };
+        }
+
+
+        /**
+         * Protect the Builder boundary.
+         *
+         * AnswerEvaluator owns numeric parsing.
+         * If a non-number reaches this point, the upstream
+         * evaluation object is inconsistent.
+         */
+
+        if (
+            typeof value !== "number" ||
+            !Number.isFinite(value)
+        ) {
+
+            throw new Error(
+                `AttemptBuilder received invalid numeric ` +
+                `evaluation.response.value for question ` +
+                `'${question.id}'.`
+            );
+        }
+
+
+        return {
+
+            type:
+                "numeric",
+
+            value,
+
+            normalizedValue:
+                value
+        };
+    }
+
+
+    /**
+     * -----------------------------------------------------
+     * UNSUPPORTED COMBINATION
+     * -----------------------------------------------------
+     */
+
+    throw new Error(
+        `AttemptBuilder V1.0.2 does not support ` +
+        `question '${question.id}' with ` +
+        `questionType='${questionType}' ` +
+        `and answer.type='${answerType}'.`
+    );
 }
 
 

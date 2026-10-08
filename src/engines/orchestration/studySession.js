@@ -6,25 +6,31 @@
  * Adaptive Biology Learning System
  * Phase 2A — Study MVP Runtime
  *
- * Version: 0.1.0
+ * Version: 0.2.0
  *
  * Responsibility:
  *
  *   AdaptiveDecision
  *        ↓
- *   QuestionSelector
+ *   LessonEngine
  *        ↓
- *   Question
- *        ↓
- *   AnswerEvaluator
- *        ↓
- *   AttemptBuilder
- *        ↓
- *   LearningFlow
- *        ↓
- *   commit runtime Student State
- *        ↓
- *   next AdaptiveDecision
+ *   Study Item
+ *        ├── Content → UI
+ *        └── Question Set
+ *                 ↓
+ *          QuestionSelector
+ *                 ↓
+ *              Question
+ *                 ↓
+ *          AnswerEvaluator
+ *                 ↓
+ *          AttemptBuilder
+ *                 ↓
+ *           LearningFlow
+ *                 ↓
+ *      commit runtime Student State
+ *                 ↓
+ *       next AdaptiveDecision
  *
  *
  * StudySession IS an orchestration/runtime layer.
@@ -32,8 +38,12 @@
  * It DOES:
  *
  * - keep in-memory session runtime
- * - select the next question
- * - evaluate submitted answers
+ * - orchestrate LessonEngine delivery projection
+ * - keep lesson delivery progress
+ * - expose the next study item
+ * - select concrete questions through QuestionSelector
+ * - verify selected-question compatibility with lesson delivery
+ * - evaluate submitted answers through AnswerEvaluator
  * - build canonical Attempts
  * - send Attempts through LearningFlow
  * - commit LearningFlow projections into Student State
@@ -50,6 +60,8 @@
  * - build remediation strategy
  * - grade answers itself
  * - choose question ranking itself
+ * - merge Lesson questionRequest into AdaptiveDecision
+ * - execute QuestionSelector fallback
  * - persist to database/files
  * - mutate caller-owned inputs
  *
@@ -59,22 +71,28 @@
 
 import {
     selectQuestion
-} from "./questionSelector.js";
+} from "../question/questionSelector.js";
 
 
 import {
     evaluateAnswer
-} from "./answerEvaluator.js";
+} from "../evaluation/answerEvaluator.js";
 
 
 import {
     buildAttempt
-} from "./attemptBuilder.js";
+} from "../attempt/attemptBuilder.js";
 
 
 import {
     processAttempt
 } from "./learningFlow.js";
+
+
+import {
+    buildLessonPlan,
+    getNextLessonItem
+} from "../lesson/lessonEngine.js";
 
 
 /**
@@ -87,7 +105,7 @@ const SESSION_NAME =
     "StudySession";
 
 const SESSION_VERSION =
-    "0.1.0";
+    "0.2.0";
 
 const STUDENT_STATE_VERSION =
     "1.2.0";
@@ -138,6 +156,11 @@ const DEFAULT_HISTORY_LIMIT =
  * All caller-owned objects are cloned.
  *
  * The returned session owns its own runtime copy.
+ *
+ * lesson is optional.
+ *
+ * If lesson === null, legacy question-only runtime remains
+ * available through getNextQuestion().
  */
 export function createStudySession({
 
@@ -148,6 +171,8 @@ export function createStudySession({
     initialDecision,
 
     questionBanks,
+
+    lesson = null,
 
     knowledgeMap = {},
 
@@ -198,6 +223,11 @@ export function createStudySession({
     );
 
 
+    assertOptionalLesson(
+        lesson
+    );
+
+
     assertHistoryLimit(
         historyLimit
     );
@@ -233,6 +263,15 @@ export function createStudySession({
         normalizeInitialHistory(
             history,
             historyLimit
+        );
+
+
+    const resolvedLessonId =
+        nullableString(
+            lessonId
+        ) ??
+        nullableString(
+            lesson?.id
         );
 
 
@@ -273,9 +312,7 @@ export function createStudySession({
                 ),
 
             lessonId:
-                nullableString(
-                    lessonId
-                ),
+                resolvedLessonId,
 
             contextId:
                 nullableString(
@@ -292,6 +329,13 @@ export function createStudySession({
                 clonePlainObject(
                     questionBanks
                 ),
+
+            lesson:
+                lesson
+                    ? clonePlainObject(
+                        lesson
+                    )
+                    : null,
 
             knowledgeMap:
                 clonePlainObject(
@@ -348,16 +392,46 @@ export function createStudySession({
             null,
 
 
+        /**
+         * Lesson delivery runtime.
+         *
+         * This is NOT mastery state.
+         *
+         * plan is a projection produced by LessonEngine.
+         * progress only tracks delivery completion/skips.
+         */
+        lessonRuntime: {
+
+            plan:
+                null,
+
+            currentItem:
+                null,
+
+            progress: {
+
+                completedSectionIds:
+                    [],
+
+                skippedSectionIds:
+                    []
+            }
+        },
+
+
         activeRemediationPlan:
             null,
 
 
         attempts: [],
 
-
         history:
             runtimeHistory,
 
+        masteryRuntime: {
+
+            evidenceHistoryByNode: {}
+        },
 
         lastFlowResult:
             null
@@ -399,6 +473,799 @@ export function createStudySession({
 
 
     return session;
+}
+
+
+/**
+ * ------------------------------------------------------------
+ * getNextStudyItem()
+ * ------------------------------------------------------------
+ *
+ * High-level delivery entry point.
+ *
+ * If no lesson is configured, this delegates to the existing
+ * question-only runtime.
+ *
+ * With a lesson:
+ *
+ * AdaptiveDecision
+ *      ↓
+ * LessonEngine
+ *      ↓
+ * next lesson item
+ *      ├── content
+ *      └── question_set → QuestionSelector
+ *
+ * Lesson questionRequest is NOT merged into AdaptiveDecision.
+ */
+export function getNextStudyItem({
+
+    session,
+
+    now = null
+
+} = {}) {
+
+    assertActiveSession(
+        session
+    );
+
+
+    assertAdaptiveDecision(
+        session.currentDecision
+    );
+
+
+    /**
+     * Backward-compatible question-only mode.
+     */
+    if (
+        !session
+            ?.dependencies
+            ?.lesson
+    ) {
+
+        const result =
+            getNextQuestion({
+                session,
+                now
+            });
+
+
+        return {
+
+            status:
+                resolveLegacyStudyItemStatus(
+                    result.selection
+                ),
+
+            item:
+                null,
+
+            selection:
+                clonePlainObject(
+                    result.selection
+                ),
+
+            question:
+                result.question
+                    ? clonePlainObject(
+                        result.question
+                    )
+                    : null,
+
+            compatibility:
+                null,
+
+            session:
+                result.session
+        };
+    }
+
+
+    const timestamp =
+        resolveTimestamp(now);
+
+
+    let next =
+        clonePlainObject(
+            session
+        );
+
+
+    next.runtime.lastActivityAt =
+        timestamp;
+
+
+    /**
+     * A LessonPlan is bound to the current AdaptiveDecision.
+     *
+     * submitAnswer() invalidates the plan when LearningFlow
+     * produces the next AdaptiveDecision.
+     */
+    if (
+        !next.lessonRuntime.plan
+    ) {
+
+        next.lessonRuntime.plan =
+            buildLessonPlan({
+
+                lesson:
+                    next
+                        .dependencies
+                        .lesson,
+
+                deliveryMode:
+                    next
+                        .config
+                        .learningMode,
+
+                adaptiveDecision:
+                    buildLessonAdaptiveDecision(
+                        next.currentDecision
+                    )
+            });
+    }
+
+
+    const plan =
+        next.lessonRuntime.plan;
+
+
+    if (
+        plan?.status ===
+        "SKIPPED"
+    ) {
+
+        next.lessonRuntime.currentItem =
+            null;
+
+        next.currentSelection =
+            null;
+
+        next.currentQuestion =
+            null;
+
+
+        return {
+
+            status:
+                "SKIPPED",
+
+            item:
+                null,
+
+            selection:
+                null,
+
+            question:
+                null,
+
+            compatibility:
+                null,
+
+            plan:
+                clonePlainObject(
+                    plan
+                ),
+
+            session:
+                next
+        };
+    }
+
+
+    if (
+        plan?.status ===
+        "NO_DELIVERY_MATCH"
+    ) {
+
+        next.lessonRuntime.currentItem =
+            null;
+
+        next.currentSelection =
+            null;
+
+        next.currentQuestion =
+            null;
+
+
+        return {
+
+            status:
+                "NO_DELIVERY_MATCH",
+
+            item:
+                null,
+
+            selection:
+                null,
+
+            question:
+                null,
+
+            compatibility:
+                null,
+
+            plan:
+                clonePlainObject(
+                    plan
+                ),
+
+            session:
+                next
+        };
+    }
+
+
+    const navigation =
+        getNextLessonItem({
+
+            plan,
+
+            progress:
+                next
+                    .lessonRuntime
+                    .progress
+        });
+
+
+    if (
+        navigation.status ===
+        "PLAN_COMPLETE"
+    ) {
+
+        next.lessonRuntime.currentItem =
+            null;
+
+        next.currentSelection =
+            null;
+
+        next.currentQuestion =
+            null;
+
+
+        return {
+
+            status:
+                "PLAN_COMPLETE",
+
+            item:
+                null,
+
+            selection:
+                null,
+
+            question:
+                null,
+
+            compatibility:
+                null,
+
+            plan:
+                clonePlainObject(
+                    plan
+                ),
+
+            session:
+                next
+        };
+    }
+
+
+    if (
+        navigation.status !==
+        "NEXT_ITEM" ||
+        !navigation.item
+    ) {
+        throw new Error(
+            "StudySession received invalid LessonEngine navigation result."
+        );
+    }
+
+
+    const item =
+        clonePlainObject(
+            navigation.item
+        );
+
+
+    next.lessonRuntime.currentItem =
+        clonePlainObject(
+            item
+        );
+
+
+    /**
+     * ----------------------------------------------------------
+     * CONTENT ITEM
+     * ----------------------------------------------------------
+     *
+     * No Attempt.
+     * No mastery update.
+     * No Adaptive call.
+     */
+    if (
+        item.kind !==
+        "question_set"
+    ) {
+
+        next.currentSelection =
+            null;
+
+        next.currentQuestion =
+            null;
+
+
+        return {
+
+            status:
+                "CONTENT",
+
+            item:
+                clonePlainObject(
+                    item
+                ),
+
+            selection:
+                null,
+
+            question:
+                null,
+
+            compatibility:
+                null,
+
+            plan:
+                clonePlainObject(
+                    plan
+                ),
+
+            session:
+                next
+        };
+    }
+
+
+    /**
+     * ----------------------------------------------------------
+     * QUESTION ITEM
+     * ----------------------------------------------------------
+     *
+     * QuestionSelector remains the sole concrete-question
+     * selection owner.
+     */
+    const selection =
+        selectQuestion({
+
+            adaptiveDecision:
+                next.currentDecision,
+
+            questionBanks:
+                next
+                    .dependencies
+                    .questionBanks,
+
+            history:
+                clonePlainObject(
+                    next.history
+                ),
+
+            now:
+                timestamp
+        });
+
+
+    next.currentSelection =
+        clonePlainObject(
+            selection
+        );
+
+
+    if (
+        selection?.status ===
+        "NO_MATCH"
+    ) {
+
+        next.currentQuestion =
+            null;
+
+
+        return {
+
+            status:
+                "QUESTION_NO_MATCH",
+
+            item:
+                clonePlainObject(
+                    item
+                ),
+
+            selection:
+                clonePlainObject(
+                    selection
+                ),
+
+            question:
+                null,
+
+            compatibility:
+                null,
+
+            plan:
+                clonePlainObject(
+                    plan
+                ),
+
+            session:
+                next
+        };
+    }
+
+
+    if (
+        selection?.status ===
+        "NOT_REQUIRED"
+    ) {
+
+        next.currentQuestion =
+            null;
+
+
+        return {
+
+            status:
+                "QUESTION_NOT_REQUIRED",
+
+            item:
+                clonePlainObject(
+                    item
+                ),
+
+            selection:
+                clonePlainObject(
+                    selection
+                ),
+
+            question:
+                null,
+
+            compatibility:
+                null,
+
+            plan:
+                clonePlainObject(
+                    plan
+                ),
+
+            session:
+                next
+        };
+    }
+
+
+    if (
+        selection?.status !==
+        "SELECTED"
+    ) {
+        throw new Error(
+            "StudySession received unsupported QuestionSelector status."
+        );
+    }
+
+
+    const question =
+        selection
+            ?.selected
+            ?.question;
+
+
+    if (
+        !question ||
+        typeof question !==
+        "object"
+    ) {
+        throw new Error(
+            "StudySession received SELECTED without selected.question."
+        );
+    }
+
+
+    /**
+     * Lesson request is a delivery compatibility gate.
+     *
+     * It does NOT alter AdaptiveDecision.
+     * It does NOT re-run selection.
+     * It does NOT choose a fallback question.
+     */
+    const compatibility =
+        evaluateQuestionDeliveryCompatibility({
+
+            question,
+
+            questionRequest:
+                item.questionRequest ??
+                null,
+
+            adaptiveAction:
+                next
+                    .currentDecision
+                    .action
+        });
+
+
+    if (
+        !compatibility.compatible
+    ) {
+
+        next.currentQuestion =
+            null;
+
+
+        return {
+
+            status:
+                "QUESTION_DELIVERY_MISMATCH",
+
+            item:
+                clonePlainObject(
+                    item
+                ),
+
+            selection:
+                clonePlainObject(
+                    selection
+                ),
+
+            question:
+                null,
+
+            compatibility:
+                clonePlainObject(
+                    compatibility
+                ),
+
+            plan:
+                clonePlainObject(
+                    plan
+                ),
+
+            session:
+                next
+        };
+    }
+
+
+    next.currentQuestion =
+        clonePlainObject(
+            question
+        );
+
+
+    return {
+
+        status:
+            "QUESTION",
+
+        item:
+            clonePlainObject(
+                item
+            ),
+
+        selection:
+            clonePlainObject(
+                selection
+            ),
+
+        question:
+            clonePlainObject(
+                question
+            ),
+
+        compatibility:
+            clonePlainObject(
+                compatibility
+            ),
+
+        plan:
+            clonePlainObject(
+                plan
+            ),
+
+        session:
+            next
+    };
+}
+
+
+/**
+ * ------------------------------------------------------------
+ * completeLessonItem()
+ * ------------------------------------------------------------
+ *
+ * Complete or skip one delivered lesson item.
+ *
+ * Delivery completion is NOT mastery.
+ *
+ * This function:
+ *
+ * - does not create an Attempt
+ * - does not update mastery
+ * - does not call LearningFlow
+ * - does not create a new AdaptiveDecision
+ */
+export function completeLessonItem({
+
+    session,
+
+    sectionId = null,
+
+    skipped = false,
+
+    now = null
+
+} = {}) {
+
+    assertActiveSession(
+        session
+    );
+
+
+    if (
+        !session
+            ?.dependencies
+            ?.lesson
+    ) {
+        throw new Error(
+            "StudySession has no lesson configured."
+        );
+    }
+
+
+    const currentItem =
+        session
+            ?.lessonRuntime
+            ?.currentItem;
+
+
+    if (
+        !currentItem ||
+        typeof currentItem !==
+        "object"
+    ) {
+        throw new Error(
+            "StudySession has no current lesson item to complete."
+        );
+    }
+
+
+    const resolvedSectionId =
+        sectionId ??
+        currentItem.sectionId;
+
+
+    assertNonEmptyString(
+        resolvedSectionId,
+        "sectionId"
+    );
+
+
+    if (
+        resolvedSectionId !==
+        currentItem.sectionId
+    ) {
+        throw new Error(
+            "StudySession sectionId does not match the current lesson item."
+        );
+    }
+
+
+    /**
+     * Question sections are completed by submitAnswer().
+     *
+     * This prevents content completion from bypassing the
+     * canonical Attempt → LearningFlow pipeline.
+     */
+    if (
+        currentItem.kind ===
+        "question_set"
+    ) {
+        throw new Error(
+            "Question lesson items must be completed through submitAnswer()."
+        );
+    }
+
+
+    const timestamp =
+        resolveTimestamp(now);
+
+
+    const next =
+        clonePlainObject(
+            session
+        );
+
+
+    const progress =
+        next
+            .lessonRuntime
+            .progress;
+
+
+    if (skipped) {
+
+        progress.skippedSectionIds =
+            appendUniqueString(
+                progress.skippedSectionIds,
+                resolvedSectionId
+            );
+
+    } else {
+
+        progress.completedSectionIds =
+            appendUniqueString(
+                progress.completedSectionIds,
+                resolvedSectionId
+            );
+    }
+
+
+    /**
+     * Ensure a section cannot be simultaneously marked completed
+     * and skipped.
+     */
+    if (skipped) {
+
+        progress.completedSectionIds =
+            removeString(
+                progress.completedSectionIds,
+                resolvedSectionId
+            );
+
+    } else {
+
+        progress.skippedSectionIds =
+            removeString(
+                progress.skippedSectionIds,
+                resolvedSectionId
+            );
+    }
+
+
+    next.lessonRuntime.currentItem =
+        null;
+
+
+    next.currentSelection =
+        null;
+
+
+    next.currentQuestion =
+        null;
+
+
+    next.runtime.lastActivityAt =
+        timestamp;
+
+
+    return {
+
+        status:
+            skipped
+                ? "ITEM_SKIPPED"
+                : "ITEM_COMPLETED",
+
+        sectionId:
+            resolvedSectionId,
+
+        progress:
+            clonePlainObject(
+                progress
+            ),
+
+        session:
+            next
+    };
 }
 
 
@@ -698,7 +1565,45 @@ export function submitAnswer({
             metadata
         });
 
+    const masteryNodeId =
+        attempt
+            ?.context
+            ?.nodeId;
 
+    const masteryEvidenceHistory =
+        masteryNodeId
+            ? (
+                session
+                    ?.masteryRuntime
+                    ?.evidenceHistoryByNode
+                ?.[masteryNodeId] ??
+                null
+            )
+            : null;
+
+    const masteryEvidenceContext = {
+
+        /*
+         * DESIGN-004
+         * ----------------------------------------------------
+         * Evidence context belongs to the Question/content
+         * semantics, not to the StudySession runtime context.
+         *
+         * Do NOT fall back to session.config.contextId here.
+         * A session ID/context would make every question in the
+         * session look like the same mastery evidence context.
+         */
+        contextId:
+            question
+                ?.context
+                ?.contextId ??
+            null,
+
+        questionType:
+            question
+                ?.questionType ??
+            null
+    };
     const recentResults =
         buildRecentResults(
             session.history
@@ -754,6 +1659,9 @@ export function submitAnswer({
                 buildLearningFlowSessionContext(
                     session
                 ),
+            masteryEvidenceHistory,
+
+            masteryEvidenceContext,
 
             learningMode:
                 session
@@ -828,7 +1736,35 @@ export function submitAnswer({
             session
         );
 
+    nextSession.masteryRuntime =
+        clonePlainObject(
+            session.masteryRuntime ?? {
+                evidenceHistoryByNode: {}
+            }
+        );
 
+    if (masteryNodeId) {
+
+        nextSession
+            .masteryRuntime
+            .evidenceHistoryByNode = {
+
+            ...(
+                nextSession
+                    .masteryRuntime
+                    .evidenceHistoryByNode ??
+                {}
+            ),
+
+            [masteryNodeId]:
+                clonePlainObject(
+                    flowResult
+                        ?.runtime
+                        ?.masteryEvidenceHistory ??
+                    {}
+                )
+        };
+    }
     nextSession.state =
         committedState;
 
@@ -838,7 +1774,87 @@ export function submitAnswer({
             flowResult
                 .adaptiveDecision
         );
+    /**
+     * ========================================================
+     * LESSON DELIVERY COMMIT / INVALIDATION
+     * ========================================================
+     *
+     * A successfully submitted question completes the current
+     * question_set section for delivery purposes.
+     *
+     * IMPORTANT:
+     *
+     * section completion != mastery.
+     *
+     * Mastery was already handled by LearningFlow.
+     *
+     * The existing LessonPlan belongs to the previous
+     * AdaptiveDecision, so it must be invalidated after the
+     * next AdaptiveDecision is committed.
+     */
+    if (
+        nextSession
+            ?.lessonRuntime
+    ) {
 
+        const currentLessonItem =
+            session
+                ?.lessonRuntime
+                ?.currentItem;
+
+
+        if (
+            currentLessonItem &&
+            currentLessonItem.kind ===
+            "question_set" &&
+            typeof currentLessonItem.sectionId ===
+            "string" &&
+            currentLessonItem.sectionId.length > 0
+        ) {
+
+            nextSession
+                .lessonRuntime
+                .progress
+                .completedSectionIds =
+                appendUniqueString(
+                    nextSession
+                        .lessonRuntime
+                        .progress
+                        .completedSectionIds,
+
+                    currentLessonItem
+                        .sectionId
+                );
+
+
+            nextSession
+                .lessonRuntime
+                .progress
+                .skippedSectionIds =
+                removeString(
+                    nextSession
+                        .lessonRuntime
+                        .progress
+                        .skippedSectionIds,
+
+                    currentLessonItem
+                        .sectionId
+                );
+        }
+
+
+        /**
+         * AdaptiveDecision changed.
+         *
+         * Never reuse a projection produced for the old decision.
+         */
+        nextSession.lessonRuntime.plan =
+            null;
+
+
+        nextSession.lessonRuntime.currentItem =
+            null;
+    }
 
     nextSession.currentSelection =
         null;
@@ -2727,7 +3743,533 @@ function resolvePathStage({
     return action;
 }
 
+/**
+ * ============================================================
+ * LESSON INTEGRATION HELPERS
+ * ============================================================
+ */
 
+
+/**
+ * Adapt canonical AdaptiveDecision into the minimal input
+ * required by LessonEngine.
+ *
+ * This is shape adaptation only.
+ *
+ * It does NOT alter or reinterpret the Adaptive decision.
+ */
+function buildLessonAdaptiveDecision(
+    decision
+) {
+
+    assertAdaptiveDecision(
+        decision
+    );
+
+
+    const targetNodeId =
+        decision
+            ?.target
+            ?.primaryNodeId ??
+        (
+            Array.isArray(
+                decision
+                    ?.target
+                    ?.nodeIds
+            )
+                ? decision
+                    .target
+                    .nodeIds[0]
+                : null
+        ) ??
+        decision
+            ?.targetNodeId ??
+        null;
+
+
+    return {
+
+        action:
+            decision.action,
+
+        targetNodeId:
+            typeof targetNodeId ===
+                "string" &&
+                targetNodeId.length > 0
+                ? targetNodeId
+                : null
+    };
+}
+
+
+/**
+ * Verify that a concrete question selected by QuestionSelector
+ * is deliverable by the current lesson question_set.
+ *
+ * This is a compatibility gate only.
+ *
+ * It MUST NOT:
+ *
+ * - rank questions
+ * - choose another question
+ * - mutate AdaptiveDecision
+ * - execute fallback
+ */
+function evaluateQuestionDeliveryCompatibility({
+
+    question,
+
+    questionRequest,
+
+    adaptiveAction
+
+}) {
+
+    if (
+        !question ||
+        typeof question !==
+        "object"
+    ) {
+        return {
+
+            compatible:
+                false,
+
+            reasons: [
+                "QUESTION_MISSING"
+            ]
+        };
+    }
+
+
+    if (
+        !questionRequest ||
+        typeof questionRequest !==
+        "object"
+    ) {
+        return {
+
+            compatible:
+                true,
+
+            reasons:
+                []
+        };
+    }
+
+
+    const reasons =
+        [];
+
+
+    /**
+     * --------------------------------------------------------
+     * PRIMARY NODE
+     * --------------------------------------------------------
+     */
+    const requestedPrimaryNode =
+        nullableString(
+            questionRequest
+                .primaryNode
+        );
+
+
+    if (
+        requestedPrimaryNode
+    ) {
+
+        const questionNodes =
+            normalizeStringArray(
+                question.nodes
+            );
+
+
+        const directlyMeasuresTarget =
+            question.primaryNode ===
+            requestedPrimaryNode ||
+            questionNodes.includes(
+                requestedPrimaryNode
+            );
+
+
+        if (
+            !directlyMeasuresTarget
+        ) {
+            reasons.push(
+                "PRIMARY_NODE_MISMATCH"
+            );
+        }
+    }
+
+
+    /**
+     * --------------------------------------------------------
+     * EVIDENCE
+     * --------------------------------------------------------
+     */
+    const requestedEvidence =
+        normalizeEvidenceDimensions(
+            questionRequest
+                .evidence ??
+            []
+        );
+
+
+    if (
+        requestedEvidence.length > 0 &&
+        !requestedEvidence.includes(
+            question.evidence
+        )
+    ) {
+        reasons.push(
+            "EVIDENCE_MISMATCH"
+        );
+    }
+
+
+    /**
+     * --------------------------------------------------------
+     * DIFFICULTY
+     * --------------------------------------------------------
+     */
+    const requestedDifficulty =
+        normalizeDifficultyArray(
+            questionRequest
+                .difficulty ??
+            []
+        );
+
+
+    if (
+        requestedDifficulty.length > 0 &&
+        !requestedDifficulty.includes(
+            question.difficulty
+        )
+    ) {
+        reasons.push(
+            "DIFFICULTY_MISMATCH"
+        );
+    }
+
+
+    /**
+     * --------------------------------------------------------
+     * MODE
+     * --------------------------------------------------------
+     *
+     * Lesson mode constraints describe modes acceptable for
+     * this delivery section.
+     *
+     * The selected question must overlap with them.
+     *
+     * We do not reinterpret Adaptive action here because
+     * QuestionSelector already enforces action ↔ mode.
+     */
+    const requestedModes =
+        normalizeStringArray(
+            questionRequest
+                .mode ??
+            []
+        );
+
+
+    const questionModes =
+        normalizeStringArray(
+            question.mode
+        );
+
+
+    if (
+        requestedModes.length > 0 &&
+        !arraysOverlap(
+            requestedModes,
+            questionModes
+        )
+    ) {
+        reasons.push(
+            "MODE_MISMATCH"
+        );
+    }
+
+
+    /**
+     * --------------------------------------------------------
+     * SKILLS
+     * --------------------------------------------------------
+     */
+    const requestedSkills =
+        normalizeStringArray(
+            questionRequest
+                .skills ??
+            []
+        );
+
+
+    if (
+        requestedSkills.length > 0
+    ) {
+
+        const questionSkills =
+            normalizeStringArray(
+                question.skills
+            );
+
+
+        if (
+            !requestedSkills.every(
+                skill =>
+                    questionSkills.includes(
+                        skill
+                    )
+            )
+        ) {
+            reasons.push(
+                "SKILL_MISMATCH"
+            );
+        }
+    }
+
+
+    /**
+     * --------------------------------------------------------
+     * FAILURE SIGNATURES
+     * --------------------------------------------------------
+     */
+    const requestedFailureSignatures =
+        normalizeStringArray(
+            questionRequest
+                .failureSignatures ??
+            []
+        );
+
+
+    if (
+        requestedFailureSignatures.length >
+        0
+    ) {
+
+        const questionFailureSignatures =
+            normalizeStringArray(
+                question
+                    .failureSignatures ??
+                []
+            );
+
+
+        if (
+            !arraysOverlap(
+                requestedFailureSignatures,
+                questionFailureSignatures
+            )
+        ) {
+            reasons.push(
+                "FAILURE_SIGNATURE_MISMATCH"
+            );
+        }
+    }
+
+
+    /**
+     * contextType and retestGroupId are checked only when
+     * explicitly requested.
+     */
+    const requestedContextType =
+        nullableString(
+            questionRequest
+                .contextType
+        );
+
+
+    if (
+        requestedContextType &&
+        question
+            ?.context
+            ?.contextType !==
+        requestedContextType
+    ) {
+        reasons.push(
+            "CONTEXT_TYPE_MISMATCH"
+        );
+    }
+
+
+    const requestedRetestGroupId =
+        nullableString(
+            questionRequest
+                .retestGroupId
+        );
+
+
+    if (
+        requestedRetestGroupId &&
+        (
+            question
+                ?.retestGroupId ??
+            question
+                ?.context
+                ?.retestGroupId ??
+            null
+        ) !==
+        requestedRetestGroupId
+    ) {
+        reasons.push(
+            "RETEST_GROUP_MISMATCH"
+        );
+    }
+
+
+    return {
+
+        compatible:
+            reasons.length ===
+            0,
+
+        reasons,
+
+        checkedAgainst: {
+
+            action:
+                adaptiveAction ??
+                null,
+
+            primaryNode:
+                requestedPrimaryNode,
+
+            evidence:
+                requestedEvidence,
+
+            difficulty:
+                requestedDifficulty,
+
+            mode:
+                requestedModes,
+
+            skills:
+                requestedSkills,
+
+            failureSignatures:
+                requestedFailureSignatures,
+
+            contextType:
+                requestedContextType,
+
+            retestGroupId:
+                requestedRetestGroupId
+        }
+    };
+}
+
+
+/**
+ * Convert legacy getNextQuestion() outcome into the common
+ * getNextStudyItem() status vocabulary.
+ */
+function resolveLegacyStudyItemStatus(
+    selection
+) {
+
+    switch (
+    selection?.status
+    ) {
+
+        case "SELECTED":
+            return "QUESTION";
+
+
+        case "NO_MATCH":
+            return "QUESTION_NO_MATCH";
+
+
+        case "NOT_REQUIRED":
+            return "QUESTION_NOT_REQUIRED";
+
+
+        default:
+            throw new Error(
+                "StudySession received unsupported QuestionSelector status."
+            );
+    }
+}
+
+
+/**
+ * Add one string without duplicates.
+ */
+function appendUniqueString(
+    values,
+    value
+) {
+
+    const source =
+        Array.isArray(values)
+            ? values
+            : [];
+
+
+    if (
+        source.includes(value)
+    ) {
+        return [
+            ...source
+        ];
+    }
+
+
+    return [
+        ...source,
+        value
+    ];
+}
+
+
+/**
+ * Remove all occurrences of one string.
+ */
+function removeString(
+    values,
+    value
+) {
+
+    if (
+        !Array.isArray(values)
+    ) {
+        return [];
+    }
+
+
+    return values.filter(
+        item =>
+            item !==
+            value
+    );
+}
+
+
+/**
+ * True when two string arrays share at least one value.
+ */
+function arraysOverlap(
+    left,
+    right
+) {
+
+    const rightSet =
+        new Set(
+            normalizeStringArray(
+                right
+            )
+        );
+
+
+    return normalizeStringArray(
+        left
+    ).some(
+        value =>
+            rightSet.has(
+                value
+            )
+    );
+}
 /**
  * ============================================================
  * TIME HELPERS
@@ -3008,7 +4550,44 @@ function assertQuestionBanks(
         );
     }
 }
+function assertOptionalLesson(
+    lesson
+) {
 
+    if (
+        lesson == null
+    ) {
+        return;
+    }
+
+
+    if (
+        typeof lesson !==
+        "object" ||
+        Array.isArray(lesson)
+    ) {
+        throw new TypeError(
+            "StudySession lesson must be an object or null."
+        );
+    }
+
+
+    assertNonEmptyString(
+        lesson.id,
+        "lesson.id"
+    );
+
+
+    if (
+        !Array.isArray(
+            lesson.sections
+        )
+    ) {
+        throw new TypeError(
+            "StudySession lesson.sections must be an array."
+        );
+    }
+}
 
 function assertHistoryLimit(
     value
@@ -3231,8 +4810,11 @@ export const STUDY_SESSION_INFO =
         studentStateVersion:
             STUDENT_STATE_VERSION,
 
+        lessonIntegration:
+            true,
+
         responsibility:
-            "Runtime study-session orchestration and projection commit.",
+            "Runtime study-session orchestration, lesson delivery, question execution, and projection commit.",
 
         persistence:
             false
@@ -3241,6 +4823,8 @@ export const STUDY_SESSION_INFO =
 
 export default {
     createStudySession,
+    getNextStudyItem,
+    completeLessonItem,
     getNextQuestion,
     submitAnswer,
     getSessionSnapshot,

@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 
 import {
     buildRemediationPlan
-} from "./remediationEngine.js";
+} from "../../../src/engines/remediation/remediationEngine.js";
 
 
 /**

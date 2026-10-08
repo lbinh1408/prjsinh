@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { validateQuestion } from './questionValidator.js';
+import { validateQuestion } from '../../../../src/contracts/validators/questionValidator.js';
 
 const MOCK_OPTIONS = {
     knowledgeMap: {

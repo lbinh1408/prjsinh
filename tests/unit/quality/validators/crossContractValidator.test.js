@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { validateCrossContract } from './crossContractValidator.js';
+import { validateCrossContract } from '../../../../src/quality/validators/crossContractValidator.js';
 
 function getBaseArtifacts() {
     return {

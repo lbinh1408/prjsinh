@@ -5,7 +5,7 @@ import assert from "node:assert/strict";
 import {
     processAttempt,
     processRemediationProbe
-} from "./learningFlow.js";
+} from "../../../src/engines/orchestration/learningFlow.js";
 
 
 /**
@@ -2013,7 +2013,7 @@ test(
 
                 assert.equal(
                     result.flow.version,
-                    "1.0.0"
+                    "1.0.3"
                 );
             }
         );

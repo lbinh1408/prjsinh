@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { validateLesson } from './lessonValidator.js';
+import { validateLesson } from '../../../../src/contracts/validators/lessonValidator.js';
 
 // Inlined fixture
 const MOCK_OPTIONS = {

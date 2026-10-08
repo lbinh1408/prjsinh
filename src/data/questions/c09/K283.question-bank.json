@@ -116,6 +116,10 @@
                     "tan-so-hoan-vi-gene",
                     "diagnostic"
                 ]
+            },
+            "context": {
+                "contextId": "c09-k283-concept-frequency-definition",
+                "contextType": "direct"
             }
         },
         {
@@ -230,11 +234,15 @@
                     "learning",
                     "practice"
                 ]
+            },
+            "context": {
+                "contextId": "c09-k283-frequency-to-recombinant-pair",
+                "contextType": "direct"
             }
         },
         {
             "id": "Q-A-K283-A-003",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "nodes": [
                 "K283"
             ],
@@ -341,6 +349,10 @@
                     "f-to-one-recombinant-class",
                     "practice"
                 ]
+            },
+            "context": {
+                "contextId": "c09-k283-frequency-to-one-recombinant",
+                "contextType": "direct"
             }
         },
         {
@@ -453,6 +465,10 @@
                     "apply",
                     "practice"
                 ]
+            },
+            "context": {
+                "contextId": "c09-k283-gamete-distribution-to-frequency",
+                "contextType": "data_table"
             }
         },
         {
@@ -564,6 +580,10 @@
                     "one-recombinant-class",
                     "double-recombinant-percentage"
                 ]
+            },
+            "context": {
+                "contextId": "c09-k283-one-recombinant-to-frequency",
+                "contextType": "direct"
             }
         },
         {
@@ -676,6 +696,10 @@
                     "remediation",
                     "one-recombinant-class"
                 ]
+            },
+            "context": {
+                "contextId": "c09-k283-one-recombinant-to-frequency",
+                "contextType": "direct"
             }
         },
         {
@@ -737,7 +761,7 @@
             ],
             "context": {
                 "contextId": "c09-k283-retest-one-recombinant-01",
-                "contextType": "genetic_cross",
+                "contextType": "direct",
                 "retestGroupId": "c09-k283-one-recombinant-class-01"
             },
             "explanation": {
@@ -1072,6 +1096,130 @@
                     "retest",
                     "transfer",
                     "sampling-variation"
+                ]
+            }
+        },
+        {
+            "id": "Q-A-K283-T-010",
+            "version": "1.0.0",
+            "nodes": [
+                "K283"
+            ],
+            "primaryNode": "K283",
+            "evidence": "transfer",
+            "difficulty": "D4",
+            "questionType": "numeric",
+            "mode": [
+                "challenge"
+            ],
+            "prerequisites": [
+                "K282"
+            ],
+            "content": {
+                "stem": "Một cơ thể dị hợp hai gene liên kết có kiểu sắp xếp allele AB/ab tạo ra 2000 giao tử. Trong đó có 760 giao tử AB, 740 giao tử ab, 260 giao tử Ab và 240 giao tử aB. Hãy tính tần số hoán vị gene giữa A và B. Nhập kết quả theo đơn vị phần trăm.",
+                "context": "Suy ra tần số hoán vị gene từ số lượng thực tế của bốn loại giao tử khi hai nhóm tái tổ hợp quan sát được không hoàn toàn bằng nhau.",
+                "options": [],
+                "media": [],
+                "data": {
+                    "totalGametes": 2000,
+                    "gameteCounts": [
+                        {
+                            "gamete": "AB",
+                            "count": 760
+                        },
+                        {
+                            "gamete": "ab",
+                            "count": 740
+                        },
+                        {
+                            "gamete": "Ab",
+                            "count": 260
+                        },
+                        {
+                            "gamete": "aB",
+                            "count": 240
+                        }
+                    ]
+                }
+            },
+            "answer": {
+                "type": "number",
+                "value": 25,
+                "tolerance": 0,
+                "unit": "%"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "data_interpretation_error",
+                "calculation_error",
+                "reasoning_error"
+            ],
+            "context": {
+                "contextId": "c09-k283-transfer-gamete-counts-03",
+                "contextType": "data_table"
+            },
+            "explanation": {
+                "correct": "Với kiểu sắp xếp AB/ab, Ab và aB là hai loại giao tử tái tổ hợp. Tổng số giao tử tái tổ hợp là 260 + 240 = 500. Vì vậy f = 500 / 2000 × 100% = 25%.",
+                "incorrect": {
+                    "default": "Hãy xác định hai loại giao tử tái tổ hợp trước, cộng số lượng của chúng rồi chia cho tổng số giao tử."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Với kiểu sắp xếp AB/ab, hai loại giao tử tái tổ hợp là Ab và aB."
+                    },
+                    {
+                        "level": 2,
+                        "text": "Số giao tử tái tổ hợp = 260 + 240 = 500. Hãy lấy 500 chia cho 2000 rồi đổi sang phần trăm."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "data_interpretation_error": {
+                        "sourceNodes": [
+                            "K282",
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "calculation_error": {
+                        "sourceNodes": [
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "reasoning_error": {
+                        "sourceNodes": [
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-10-05",
+                "updatedAt": "2026-10-05",
+                "source": "original",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 90,
+                "contextId": "c09-k283-transfer-gamete-counts-03",
+                "tags": [
+                    "c09",
+                    "k283",
+                    "gamete-counts",
+                    "numeric",
+                    "transfer",
+                    "challenge"
                 ]
             }
         }

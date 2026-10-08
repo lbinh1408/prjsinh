@@ -23,7 +23,7 @@ import { fileURLToPath } from "node:url";
 
 import {
     selectQuestion
-} from "./questionSelector.js";
+} from "../../../src/engines/question/questionSelector.js";
 
 
 /**
@@ -42,7 +42,7 @@ const __dirname =
 function loadJson(fileName) {
     const filePath =
         path.join(
-            __dirname, "../../data/questions/c09/",
+            __dirname, "../../../src/data/questions/c09/",
             fileName
         );
 
@@ -405,7 +405,7 @@ test(
 
         assert.equal(
             K283_BANK.questions.length,
-            9
+            10
         );
 
         assert.equal(

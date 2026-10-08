@@ -68,7 +68,7 @@ import {
     createStudySession,
     getNextQuestion,
     submitAnswer
-} from "./studySession.js";
+} from "../../../src/engines/orchestration/studySession.js";
 
 
 import {
@@ -134,37 +134,37 @@ function loadJson(
 
 const knowledgeMap =
     loadJson(
-        "data/knowledge/knowledge-map-v4.json"
+        "../src/data/knowledge/knowledge-map-v4.json"
     );
 
 
 const masteryRules =
     loadJson(
-        "data/mastery/rules.json"
+        "../src/policies/mastery/rules.json"
     );
 
 
 const evidenceModel =
     loadJson(
-        "data/mastery/evidence.json"
+        "../src/data/mastery/evidence.json"
     );
 
 
 const adaptiveRules =
     loadJson(
-        "data/adaptive/rules.json"
+        "../src/policies/adaptive/rules.json"
     );
 
 
 const adaptivePaths =
     loadJson(
-        "data/adaptive/paths.json"
+        "../src/policies/adaptive/paths.json"
     );
 
 
 const failureSignatures =
     loadJson(
-        "data/remediation/failure-signatures.json"
+        "../src/data/remediation/failure-signatures.json"
     );
 
 
@@ -177,7 +177,7 @@ const remediationRules = {};
 
 const k283Bank =
     loadJson(
-        "data/questions/c09/K283.question-bank.json"
+        "../src/data/questions/c09/K283.question-bank.json"
     );
 
 

@@ -1,60 +1,71 @@
-/*
- * masteryEngine.js
+/**
+ * =========================================================
+ * MASTER ENGINE
+ * =========================================================
  *
- * Adaptive Biology Learning System
- * Phase 2A — Study MVP
+ * Phase:
+ *   Phase 2A — Study MVP
  *
- * Engine Version: 1.0.1
+ * Engine Version:
+ *   2.0.0
  *
  * Source of truth:
- *   mastery/rules.json
+ *   mastery/rules.json — Mastery Rules V2
  *
- * Responsibility:
+ * =========================================================
+ * RESPONSIBILITY
+ * =========================================================
+ *
+ * Mastery Engine owns:
  *
  * Attempt
  *   ↓
- * Interpret attempt
+ * interpret attempt
  *   ↓
- * Update evidence
+ * build capability observation
  *   ↓
- * Update evidence sufficiency / attempt statistics
+ * update bounded evidence history
  *   ↓
- * Calculate overall evidence
+ * calculate capability evidence
  *   ↓
- * Calculate confidence
+ * update evidence sufficiency
  *   ↓
- * Record failure evidence
+ * calculate overall evidence
  *   ↓
- * Evaluate weakness
+ * calculate confidence
  *   ↓
- * Evaluate mastery promotion / conservative downgrade
+ * update failure evidence
  *   ↓
- * Evaluate status
+ * detect weakness
  *   ↓
- * Return Mastery Update
+ * evaluate promotion / downgrade
+ *   ↓
+ * determine status
+ *   ↓
+ * emit Mastery Update
  *
- * IMPORTANT:
+ * Mastery Engine DOES NOT own:
  *
- * Mastery Engine DOES NOT:
- * - choose next action
- * - choose lesson
- * - choose question
- * - schedule review
- * - schedule retest
- * - execute remediation
- * - mutate Student State
+ * - next action
+ * - lesson selection
+ * - question selection
+ * - remediation planning
+ * - scheduling
+ * - Student State persistence
  *
- * It only emits mastery/evidence/failure/weakness state.
+ * Student State remains a runtime projection.
+ *
+ * V2 IMPORTANT:
+ *
+ * capability !== sufficiency !== confidence
+ *
+ * Evidence history is Mastery runtime data.
+ * It is NOT required to be persisted inside Student State.
+ *
+ * =========================================================
  */
 
-
-const ENGINE_NAME = "mastery-engine";
-const ENGINE_VERSION = "1.0.1";
-
-
-/* =========================================================
- * Canonical domains
- * ========================================================= */
+const ENGINE_VERSION = "2.0.0";
 
 const EVIDENCE_DIMENSIONS = [
     "know",
@@ -62,7 +73,6 @@ const EVIDENCE_DIMENSIONS = [
     "apply",
     "transfer"
 ];
-
 
 const MASTERY_LEVELS = [
     "M0",
@@ -72,7 +82,6 @@ const MASTERY_LEVELS = [
     "M4"
 ];
 
-
 const CONFIDENCE_LEVELS = [
     "low",
     "medium",
@@ -80,8 +89,15 @@ const CONFIDENCE_LEVELS = [
     "very_high"
 ];
 
+const VALID_RESULTS = [
+    "correct",
+    "incorrect",
+    "wrong",
+    "partial",
+    "skipped"
+];
 
-const FAILURE_TYPES = new Set([
+const VALID_FAILURE_TYPES = [
     "prerequisite_gap",
     "concept_confusion",
     "mechanism_confusion",
@@ -92,17 +108,26 @@ const FAILURE_TYPES = new Set([
     "careless_error",
     "source_knowledge_gap",
     "meta_skill_gap"
-]);
+];
 
-
-/* =========================================================
- * Fallback rules
+/**
+ * =========================================================
+ * DEFAULT RULES
+ * =========================================================
  *
- * These are safety fallbacks only.
- * mastery/rules.json remains source of truth.
- * ========================================================= */
+ * These are fallbacks only.
+ *
+ * Production source of truth remains mastery/rules.json.
+ *
+ * V2:
+ * - no zero-seed EMA
+ * - bounded observation window
+ * - overall evidence is NOT a hard promotion gate
+ * - diagnostic reliability does NOT reduce capability score
+ */
 
 const DEFAULT_RULES = {
+    schemaVersion: "2.0.0",
 
     evidenceWeights: {
         know: 0.15,
@@ -112,11 +137,11 @@ const DEFAULT_RULES = {
     },
 
     attemptWeights: {
-        independentCorrect: 1.00,
-        correctAfterHint: 0.60,
-        partialCorrect: 0.50,
-        wrong: 0.00,
-        skipped: 0.00
+        independentCorrect: 1.0,
+        correctAfterHint: 0.6,
+        partialCorrect: 0.5,
+        wrong: 0,
+        skipped: 0
     },
 
     difficultyWeights: {
@@ -128,66 +153,89 @@ const DEFAULT_RULES = {
     },
 
     evidenceUpdate: {
-        method: "weighted_rolling_average",
-        defaultLearningRate: 0.20,
-        minimumLearningRate: 0.10,
-        maximumLearningRate: 0.35,
+        method: "bounded_weighted_observation_mean",
 
-        wrongAnswerRule: {
-            enabled: true,
-            defaultDecay: 0.08,
-            maximumDecay: 0.15
-        }
+        capabilityRange: {
+            minimum: 0,
+            maximum: 1
+        },
+
+        maxRecentObservationsPerDimension: 8
+    },
+
+    diagnostic: {
+        diagnosticReliabilityWeight: 0.70,
+        affectsCapabilityObservationScore: false
     },
 
     levelThresholds: {
-
         M0: {
-            maxOverallEvidence: 0.39
+            meaning:
+                "Chưa đủ evidence đáng tin cậy để xác nhận M1."
         },
 
         M1: {
-            minOverallEvidence: 0.40,
-            maxOverallEvidence: 0.59,
             requiredEvidence: {
                 know: 0.60
-            }
+            },
+
+            minimumEvidenceSufficiency: {
+                minimumQualifyingKnowObservations: 1,
+                minimumIndependentObservations: 2
+            },
+
+            minimumConfidence: "medium"
         },
 
         M2: {
-            minOverallEvidence: 0.60,
-            maxOverallEvidence: 0.74,
             requiredEvidence: {
-                know: 0.75,
-                explain: 0.60
-            }
+                know: 0.60,
+                explain: 0.65
+            },
+
+            minimumEvidenceSufficiency: {
+                minimumQualifyingKnowObservations: 1,
+                minimumQualifyingExplainObservations: 1,
+                minimumIndependentObservations: 3
+            },
+
+            minimumConfidence: "medium"
         },
 
         M3: {
-            minOverallEvidence: 0.75,
-            maxOverallEvidence: 0.89,
             requiredEvidence: {
-                know: 0.80,
-                explain: 0.70,
+                explain: 0.60,
                 apply: 0.70
-            }
+            },
+
+            minimumEvidenceSufficiency: {
+                minimumQualifyingApplyObservations: 2,
+                minimumIndependentObservations: 4,
+                minimumDistinctContexts: 2
+            },
+
+            minimumConfidence: "high"
         },
 
         M4: {
-            minOverallEvidence: 0.90,
             requiredEvidence: {
-                know: 0.85,
-                explain: 0.80,
-                apply: 0.80,
-                transfer: 0.65
-            }
+                apply: 0.70,
+                transfer: 0.70
+            },
+
+            minimumEvidenceSufficiency: {
+                minimumQualifyingTransferObservations: 2,
+                minimumIndependentObservations: 6,
+                minimumDistinctContexts: 2,
+                minimumDistinctQuestionTypes: 2
+            },
+
+            minimumConfidence: "high"
         }
     },
 
     evidenceConfidence: {
-
         levels: {
-
             low: {
                 minimumAttempts: 0
             },
@@ -210,2744 +258,1802 @@ const DEFAULT_RULES = {
         minimumDistinctQuestionTypesForMastery: 2
     },
 
-    masteryPromotionRules: {
-
-        M0_to_M1: {
-            conditions: [
-                "know >= 0.60",
-                "evidenceConfidence != low"
-            ]
-        },
-
-        M1_to_M2: {
-            conditions: [
-                "know >= 0.75",
-                "explain >= 0.60",
-                "overallEvidence >= 0.60"
-            ]
-        },
-
-        M2_to_M3: {
-            conditions: [
-                "know >= 0.80",
-                "explain >= 0.70",
-                "apply >= 0.70",
-                "overallEvidence >= 0.75"
-            ]
-        },
-
-        M3_to_M4: {
-            conditions: [
-                "know >= 0.85",
-                "explain >= 0.80",
-                "apply >= 0.80",
-                "transfer >= 0.65",
-                "overallEvidence >= 0.90",
-                "minimumAttempts >= 4",
-                "minimumDistinctContexts >= 2"
-            ]
-        }
-    },
-
-    weaknessRules: {
-
-        weakEvidenceThreshold: {
-            know: 0.60,
-            explain: 0.55,
+    weakness: {
+        thresholds: {
+            know: 0.50,
+            explain: 0.50,
             apply: 0.55,
-            transfer: 0.50
+            transfer: 0.55
         },
 
-        weaknessTriggers: [
-            {
-                id: "W01",
-                condition: "sameEvidenceWrongStreak >= 2",
-                signal: "mark_evidence_weak_recommended"
-            },
-            {
-                id: "W02",
-                condition: "sameFailureSignatureCount >= 2",
-                signal: "trigger_remediation_diagnosis_recommended"
-            },
-            {
-                id: "W03",
-                condition: "retestFailed == true",
-                signal: "schedule_review_recommended"
-            }
-        ]
+        sameEvidenceWrongStreak: 2,
+        sameFailureSignatureCount: 2
     },
 
-    masteryDowngradeRules: {
-
-        singleWrongAnswer: {
-            action: "update_evidence_only",
-            resetMastery: false
-        },
-
-        repeatedWrongSameSignature: {
-            threshold: 2,
-            action: "mark_weak_and_remediate",
-            resetMastery: false
-        },
-
-        failedRetest: {
-            action: "remove_stable_status",
-            keepMastery: true,
-            signal: "review_or_remediation_recommended"
-        },
-
-        persistentFailure: {
-            threshold: 3,
-            action: "recalculate_mastery",
-            maximumLevelsPerUpdate: 1,
-            minimumPossibleLevel: "M1"
-        }
+    downgrade: {
+        persistentFailureThreshold: 3,
+        minimumPossibleLevel: "M1",
+        maximumLevelsPerUpdate: 1
     },
 
-    diagnosticRules: {
-        diagnosticEvidenceWeight: 0.70
-    },
-
-    recencyRules: {
-        enabled: true,
-        halfLifeDays: 45
+    promotion: {
+        sequentialPromotion: true,
+        maximumLevelsPerUpdate: 1
     }
 };
 
+/**
+ * =========================================================
+ * GENERIC HELPERS
+ * =========================================================
+ */
 
-/* =========================================================
- * Public API
- * ========================================================= */
-
-export function updateMastery({
-    attempt,
-    currentState = null,
-    masteryRules = {},
-    evidenceModel = {}
-}) {
-
-    if (!isPlainObject(attempt)) {
-        throw new TypeError(
-            "MasteryEngine requires a valid attempt object."
-        );
+function deepClone(value) {
+    if (value === undefined) {
+        return undefined;
     }
 
-
-    const rules = resolveRules(
-        masteryRules,
-        evidenceModel
-    );
-
-
-    const previousState =
-        normalizeCurrentState(currentState);
-
-
-    const nodeId =
-        resolveNodeId(attempt);
-
-
-    const dimension =
-        resolveEvidenceDimension(attempt);
-
-
-    const result =
-        normalizeAttemptResult(attempt);
-
-
-    const directEvidence =
-        EVIDENCE_DIMENSIONS.includes(dimension);
-
-
-    /* -----------------------------------------------------
-     * Evidence
-     * ----------------------------------------------------- */
-
-    const attemptStrength =
-        calculateAttemptStrength(
-            attempt,
-            result,
-            rules
-        );
-
-
-    const evidenceUpdate =
-        directEvidence
-            ? updateEvidenceDimension({
-                dimension,
-                previousEvidence:
-                    previousState.evidence,
-                attempt,
-                result,
-                attemptStrength,
-                rules
-            })
-            : createNoEvidenceUpdate(
-                previousState.evidence
-            );
-
-
-    const evidence =
-        evidenceUpdate.evidence;
-
-
-    /* -----------------------------------------------------
-     * Attempt statistics
-     * ----------------------------------------------------- */
-
-    const attemptStats =
-        updateAttemptStatistics(
-            previousState.attemptStats,
-            attempt,
-            result
-        );
-
-
-    /* -----------------------------------------------------
-     * Evidence sufficiency
-     * ----------------------------------------------------- */
-
-    const evidenceSufficiency =
-        updateEvidenceSufficiency({
-            previous:
-                previousState.evidenceSufficiency,
-            attempt,
-            dimension,
-            result
-        });
-
-
-    /* -----------------------------------------------------
-     * Overall evidence
-     * ----------------------------------------------------- */
-
-    const overallEvidence =
-        calculateOverallEvidence(
-            evidence,
-            rules
-        );
-
-
-    /* -----------------------------------------------------
-     * Confidence
-     * ----------------------------------------------------- */
-
-    const confidence =
-        calculateConfidence({
-            evidenceSufficiency,
-            attemptStats,
-            attempt,
-            previousState,
-            rules
-        });
-
-
-    /* -----------------------------------------------------
-     * Failure
-     * ----------------------------------------------------- */
-
-    const failure =
-        buildFailureUpdate({
-            attempt,
-            result
-        });
-
-
-    /* -----------------------------------------------------
-     * Failure history + streak
-     * ----------------------------------------------------- */
-
-    const failureState =
-        updateFailureState({
-            previousState,
-            attempt,
-            result,
-            dimension,
-            failure
-        });
-
-
-    /* -----------------------------------------------------
-     * Weakness
-     * ----------------------------------------------------- */
-
-    const weakness =
-        evaluateWeakness({
-            evidence,
-            failureState,
-            attempt,
-            result,
-            rules
-        });
-
-
-    /* -----------------------------------------------------
-     * Mastery
-     * ----------------------------------------------------- */
-
-    const masteryEvaluation =
-        evaluateMastery({
-            previousMastery:
-                previousState.mastery,
-
-            evidence,
-
-            overallEvidence,
-
-            confidence,
-
-            evidenceSufficiency,
-
-            attemptStats,
-
-            attempt,
-
-            result,
-
-            failureState,
-
-            rules
-        });
-
-
-    const mastery =
-        masteryEvaluation.mastery;
-
-
-    /* -----------------------------------------------------
-     * Status
-     * ----------------------------------------------------- */
-
-    const status =
-        evaluateStatus({
-            previousStatus:
-                previousState.status,
-            mastery,
-            weakness,
-            attempt,
-            rules
-        });
-
-
-    /* -----------------------------------------------------
-     * Output
-     * ----------------------------------------------------- */
-
-    return {
-
-        engine: {
-            name: ENGINE_NAME,
-            version: ENGINE_VERSION
-        },
-
-        nodeId,
-
-        attemptId:
-            attempt.attemptId ?? null,
-
-        questionId:
-            attempt.questionId ?? null,
-
-
-        previous: {
-
-            mastery:
-                previousState.mastery,
-
-            status:
-                previousState.status,
-
-            evidence:
-                cloneEvidence(
-                    previousState.evidence
-                ),
-
-            overallEvidence:
-                previousState.overallEvidence,
-
-            confidence:
-                cloneObject(
-                    previousState.confidence
-                )
-        },
-
-
-        current: {
-
-            mastery,
-
-            status,
-
-            evidence:
-                cloneEvidence(evidence),
-
-            overallEvidence,
-
-            confidence,
-
-            evidenceSufficiency,
-
-            attemptStats,
-
-            signals:
-                [...weakness.signals],
-
-            failureSummary:
-                cloneObject(
-                    failureState.failureSummary
-                ),
-
-            evidenceWrongStreaks:
-                cloneObject(
-                    failureState.evidenceWrongStreaks
-                )
-        },
-
-
-        update: {
-
-            directEvidence,
-
-            dimension:
-                directEvidence
-                    ? dimension
-                    : null,
-
-            result,
-
-            attemptStrength,
-
-            previousValue:
-                directEvidence
-                    ? evidenceUpdate.previousValue
-                    : null,
-
-            newValue:
-                directEvidence
-                    ? evidenceUpdate.newValue
-                    : null,
-
-            delta:
-                directEvidence
-                    ? round(
-                        evidenceUpdate.newValue -
-                        evidenceUpdate.previousValue
-                    )
-                    : 0
-        },
-
-
-        weakness,
-
-        failure,
-
-
-        decision: {
-
-            masteryChanged:
-                mastery !== previousState.mastery,
-
-            from:
-                previousState.mastery,
-
-            to:
-                mastery,
-
-            direction:
-                masteryEvaluation.direction,
-
-            supportedLevel:
-                masteryEvaluation.supportedLevel,
-
-            downgradeTriggered:
-                masteryEvaluation.downgradeTriggered,
-
-            downgradeReason:
-                masteryEvaluation.downgradeReason,
-
-            persistentFailureCount:
-                masteryEvaluation.persistentFailureCount,
-
-            statusChanged:
-                status !== previousState.status
-        }
-    };
+    return JSON.parse(JSON.stringify(value));
 }
 
-
-/* =========================================================
- * Evidence update
- * ========================================================= */
-
-function updateEvidenceDimension({
-    dimension,
-    previousEvidence,
-    attempt,
-    result,
-    attemptStrength,
-    rules
-}) {
-
-    const evidence =
-        cloneEvidence(previousEvidence);
-
-
-    const previousValue =
-        clamp01(evidence[dimension]);
-
-
-    let newValue =
-        previousValue;
-
-
-    /*
-     * skipped != wrong
-     */
-    if (result === "skipped") {
-
-        return {
-            evidence,
-            previousValue,
-            newValue
-        };
-    }
-
-
-    /*
-     * Wrong answer → decay only.
-     */
-    if (isWrongResult(result)) {
-
-        const wrongRule =
-            rules.evidenceUpdate
-                .wrongAnswerRule;
-
-
-        if (wrongRule.enabled === false) {
-
-            return {
-                evidence,
-                previousValue,
-                newValue
-            };
-        }
-
-
-        const decay =
-            calculateWrongDecay(rules);
-
-
-        newValue =
-            previousValue *
-            (1 - decay);
-
-
-        evidence[dimension] =
-            round(
-                clamp01(newValue)
-            );
-
-
-        return {
-            evidence,
-            previousValue:
-                round(previousValue),
-            newValue:
-                evidence[dimension]
-        };
-    }
-
-
-    /*
-     * correct / partial
-     */
-    const learningRate =
-        calculateLearningRate(rules);
-
-
-    newValue =
-        previousValue *
-        (1 - learningRate) +
-        attemptStrength *
-        learningRate;
-
-
-    evidence[dimension] =
-        round(
-            clamp01(newValue)
-        );
-
-
-    return {
-        evidence,
-        previousValue:
-            round(previousValue),
-        newValue:
-            evidence[dimension]
-    };
-}
-
-
-/* =========================================================
- * Attempt strength
- * ========================================================= */
-
-function calculateAttemptStrength(
-    attempt,
-    result,
-    rules
-) {
-
-    if (
-        isWrongResult(result) ||
-        result === "skipped"
-    ) {
-        return 0;
-    }
-
-
-    let baseWeight = 0;
-
-
-    if (result === "partial") {
-
-        /*
-         * Partial is based on score/rubric.
-         *
-         * partialCorrect remains the maximum
-         * default evidence weight for partial.
-         */
-        const partialWeight =
-            rules.attemptWeights
-                .partialCorrect;
-
-
-        if (isFiniteNumber(attempt.score)) {
-
-            baseWeight =
-                clamp01(attempt.score) *
-                partialWeight;
-
-        } else {
-
-            baseWeight =
-                partialWeight;
-        }
-
-    } else if (attempt.hintUsed === true) {
-
-        baseWeight =
-            rules.attemptWeights
-                .correctAfterHint;
-
-    } else {
-
-        baseWeight =
-            rules.attemptWeights
-                .independentCorrect;
-    }
-
-
-    const difficulty =
-        resolveDifficulty(attempt);
-
-
-    const difficultyWeight =
-        rules.difficultyWeights[
-        difficulty
-        ] ?? 1;
-
-
-    /*
-     * Difficulty > D3 should be capable of
-     * creating stronger evidence.
-     *
-     * Do NOT clamp difficulty multiplier before
-     * learning-rate application.
-     *
-     * Final evidence remains bounded [0,1].
-     */
-    let strength =
-        baseWeight *
-        difficultyWeight;
-
-
-    /*
-     * Diagnostic evidence is weaker.
-     */
-    if (isDiagnosticAttempt(attempt)) {
-
-        strength *=
-            rules.diagnosticRules
-                .diagnosticEvidenceWeight;
-    }
-
-
-    return round(
-        Math.max(0, strength)
+function isObject(value) {
+    return (
+        value !== null &&
+        typeof value === "object" &&
+        !Array.isArray(value)
     );
 }
 
+function clamp(value, minimum = 0, maximum = 1) {
+    const numeric = Number(value);
 
-/* =========================================================
- * Learning rate
- * ========================================================= */
+    if (!Number.isFinite(numeric)) {
+        return minimum;
+    }
 
-function calculateLearningRate(rules) {
-
-    const config =
-        rules.evidenceUpdate;
-
-
-    return clamp(
-        config.defaultLearningRate,
-        config.minimumLearningRate,
-        config.maximumLearningRate
+    return Math.min(
+        maximum,
+        Math.max(minimum, numeric)
     );
 }
 
+function safeNumber(value, fallback = 0) {
+    const numeric = Number(value);
 
-/* =========================================================
- * Wrong decay
- * ========================================================= */
-
-function calculateWrongDecay(rules) {
-
-    const config =
-        rules.evidenceUpdate
-            .wrongAnswerRule;
-
-
-    return clamp(
-        config.defaultDecay,
-        0,
-        config.maximumDecay
-    );
+    return Number.isFinite(numeric)
+        ? numeric
+        : fallback;
 }
 
+function safeInteger(value, fallback = 0) {
+    const numeric = Number(value);
 
-/* =========================================================
- * Overall evidence
- * ========================================================= */
-
-function calculateOverallEvidence(
-    evidence,
-    rules
-) {
-
-    let score = 0;
-    let totalWeight = 0;
-
-
-    for (
-        const dimension
-        of EVIDENCE_DIMENSIONS
-    ) {
-
-        const weight =
-            numericOr(
-                rules.evidenceWeights[
-                dimension
-                ],
-                0
-            );
-
-
-        score +=
-            clamp01(
-                evidence[dimension]
-            ) *
-            weight;
-
-
-        totalWeight += weight;
+    if (!Number.isInteger(numeric)) {
+        return fallback;
     }
 
+    return numeric;
+}
 
-    if (totalWeight <= 0) {
-        return 0;
+function uniqueStrings(values = []) {
+    if (!Array.isArray(values)) {
+        return [];
     }
 
-
-    return round(
-        clamp01(
-            score / totalWeight
+    return [
+        ...new Set(
+            values.filter(
+                value =>
+                    typeof value === "string" &&
+                    value.length > 0
+            )
         )
-    );
-}
-
-
-/* =========================================================
- * Evidence sufficiency
- * ========================================================= */
-
-function updateEvidenceSufficiency({
-    previous,
-    attempt,
-    dimension,
-    result
-}) {
-
-    const old =
-        normalizeEvidenceSufficiency(
-            previous
-        );
-
-
-    const contextIds =
-        new Set(old.contextIds);
-
-
-    const questionTypes =
-        new Set(old.questionTypes);
-
-
-    const observedEvidenceTypes =
-        new Set(
-            old.observedEvidenceTypes
-        );
-
-
-    let independentObservations =
-        old.independentObservations;
-
-
-    const direct =
-        EVIDENCE_DIMENSIONS.includes(
-            dimension
-        );
-
-
-    const usableObservation =
-        direct &&
-        result !== "skipped";
-
-
-    const independent =
-        attempt.hintUsed !== true;
-
-
-    if (usableObservation) {
-
-        observedEvidenceTypes.add(
-            dimension
-        );
-
-
-        if (independent) {
-
-            independentObservations++;
-        }
-
-
-        const contextId =
-            resolveContextId(attempt);
-
-
-        if (contextId) {
-            contextIds.add(contextId);
-        }
-
-
-        const questionType =
-            resolveQuestionType(attempt);
-
-
-        if (questionType) {
-            questionTypes.add(
-                questionType
-            );
-        }
-    }
-
-
-    return {
-
-        independentObservations,
-
-        distinctContexts:
-            contextIds.size,
-
-        distinctQuestionTypes:
-            questionTypes.size,
-
-        observedEvidenceTypes:
-            [...observedEvidenceTypes],
-
-        contextIds:
-            [...contextIds],
-
-        questionTypes:
-            [...questionTypes]
-    };
-}
-
-
-/* =========================================================
- * Confidence
- *
- * rules.json defines confidence levels primarily by
- * evidence amount (attempt count), while also declaring:
- *
- * - evidence consistency
- * - context diversity
- * - question type diversity
- * - recency
- *
- * V1.0.1 therefore computes a score from these dimensions,
- * but level cannot exceed the amount-supported level.
- * ========================================================= */
-
-function calculateConfidence({
-    evidenceSufficiency,
-    attemptStats,
-    attempt,
-    previousState,
-    rules
-}) {
-
-    const confidenceRules =
-        rules.evidenceConfidence;
-
-
-    const levels =
-        confidenceRules.levels;
-
-
-    const totalAttempts =
-        attemptStats.total;
-
-
-    const amountLevel =
-        resolveConfidenceLevelByAttempts(
-            totalAttempts,
-            levels
-        );
-
-
-    /* ---------------- consistency ---------------- */
-
-    const answered =
-        attemptStats.correct +
-        attemptStats.wrong +
-        attemptStats.partial;
-
-
-    const consistency =
-        answered > 0
-            ? clamp01(
-                (
-                    attemptStats.correct +
-                    attemptStats.partial * 0.5
-                ) /
-                answered
-            )
-            : 0;
-
-
-    /* ---------------- amount ---------------- */
-
-    const veryHighAttempts =
-        numericOr(
-            levels.very_high
-                ?.minimumAttempts,
-            6
-        );
-
-
-    const amount =
-        clamp01(
-            totalAttempts /
-            Math.max(
-                1,
-                veryHighAttempts
-            )
-        );
-
-
-    /* ---------------- context diversity ---------------- */
-
-    const contextTarget =
-        Math.max(
-            1,
-            confidenceRules
-                .minimumDistinctContextsForMastery ??
-            2
-        );
-
-
-    const contextDiversity =
-        clamp01(
-            evidenceSufficiency
-                .distinctContexts /
-            contextTarget
-        );
-
-
-    /* ---------------- question diversity ---------------- */
-
-    const questionTypeTarget =
-        Math.max(
-            1,
-            confidenceRules
-                .minimumDistinctQuestionTypesForMastery ??
-            2
-        );
-
-
-    const questionTypeDiversity =
-        clamp01(
-            evidenceSufficiency
-                .distinctQuestionTypes /
-            questionTypeTarget
-        );
-
-
-    /* ---------------- recency ---------------- */
-
-    const recency =
-        calculateRecencyFactor({
-            attempt,
-            previousState,
-            rules
-        });
-
-
-    /*
-     * confidenceRules lists five dimensions but
-     * does not define numeric weights.
-     *
-     * Equal weighting is used for V1.0.1.
-     * This is an implementation policy, not a new
-     * mastery contract.
-     */
-    const score =
-        round(
-            (
-                amount +
-                consistency +
-                contextDiversity +
-                questionTypeDiversity +
-                recency
-            ) / 5
-        );
-
-
-    const scoreLevel =
-        confidenceLevelFromScore(score);
-
-
-    /*
-     * Confidence cannot exceed the level supported
-     * by the amount of evidence.
-     */
-    const level =
-        lowerConfidenceLevel(
-            amountLevel,
-            scoreLevel
-        );
-
-
-    return {
-
-        level,
-
-        score,
-
-        attemptCount:
-            totalAttempts,
-
-        factors: {
-
-            evidenceAmount:
-                round(amount),
-
-            evidenceConsistency:
-                round(consistency),
-
-            contextDiversity:
-                round(contextDiversity),
-
-            questionTypeDiversity:
-                round(
-                    questionTypeDiversity
-                ),
-
-            recency:
-                round(recency)
-        }
-    };
-}
-
-
-/* =========================================================
- * Confidence helpers
- * ========================================================= */
-
-function resolveConfidenceLevelByAttempts(
-    attempts,
-    levels
-) {
-
-    const ordered = [
-        "very_high",
-        "high",
-        "medium",
-        "low"
     ];
-
-
-    for (const level of ordered) {
-
-        const minimum =
-            levels[level]
-                ?.minimumAttempts;
-
-
-        if (
-            isFiniteNumber(minimum) &&
-            attempts >= minimum
-        ) {
-            return level;
-        }
-    }
-
-
-    return "low";
 }
 
-
-function confidenceLevelFromScore(score) {
-
-    if (score >= 0.85) {
-        return "very_high";
+function normalizeResult(result) {
+    if (result === "wrong") {
+        return "incorrect";
     }
 
-    if (score >= 0.70) {
-        return "high";
+    if (VALID_RESULTS.includes(result)) {
+        return result;
     }
 
-    if (score >= 0.45) {
-        return "medium";
-    }
-
-    return "low";
+    return null;
 }
 
+function masteryRank(level) {
+    const index = MASTERY_LEVELS.indexOf(level);
 
-function lowerConfidenceLevel(
-    a,
-    b
+    return index >= 0
+        ? index
+        : 0;
+}
+
+function confidenceRank(level) {
+    const index = CONFIDENCE_LEVELS.indexOf(level);
+
+    return index >= 0
+        ? index
+        : 0;
+}
+
+function isConfidenceAtLeast(
+    actual,
+    required
 ) {
-
-    const rank = {
-        low: 0,
-        medium: 1,
-        high: 2,
-        very_high: 3
-    };
-
-
-    return rank[a] <= rank[b]
-        ? a
-        : b;
-}
-
-
-/* =========================================================
- * Recency
- * ========================================================= */
-
-function calculateRecencyFactor({
-    attempt,
-    previousState,
-    rules
-}) {
-
-    const config =
-        rules.recencyRules;
-
-
-    if (config.enabled === false) {
-        return 1;
-    }
-
-
-    const timestamp =
-        resolveAttemptTimestamp(attempt) ??
-        previousState.lastAttemptAt;
-
-
-    if (!timestamp) {
-
-        /*
-         * Unknown recency must not destroy confidence.
-         */
-        return 0.5;
-    }
-
-
-    const parsed =
-        Date.parse(timestamp);
-
-
-    if (!Number.isFinite(parsed)) {
-        return 0.5;
-    }
-
-
-    const now =
-        Date.now();
-
-
-    const days =
-        Math.max(
-            0,
-            (now - parsed) /
-            86400000
-        );
-
-
-    const halfLife =
-        Math.max(
-            1,
-            numericOr(
-                config.halfLifeDays,
-                45
-            )
-        );
-
-
-    return clamp01(
-        Math.pow(
-            0.5,
-            days / halfLife
-        )
-    );
-}
-
-
-/* =========================================================
- * Failure update
- * ========================================================= */
-
-function buildFailureUpdate({
-    attempt,
-    result
-}) {
-
-    if (!isWrongResult(result)) {
-        return null;
-    }
-
-
-    const diagnostic =
-        isPlainObject(
-            attempt.diagnostic
-        )
-            ? attempt.diagnostic
-            : {};
-
-
-    const failureType =
-        diagnostic.failureType ??
-        attempt.failureType ??
-        null;
-
-
-    const failureSignatureId =
-        diagnostic.failureSignatureId ??
-        attempt.failureSignatureId ??
-        null;
-
-
-    const sourceNodeId =
-        diagnostic.sourceNodeId ??
-        attempt.sourceNodeId ??
-        null;
-
-
-    return {
-
-        failureType:
-            FAILURE_TYPES.has(
-                failureType
-            )
-                ? failureType
-                : null,
-
-        failureSignatureId:
-            typeof failureSignatureId ===
-                "string"
-                ? failureSignatureId
-                : null,
-
-        sourceNodeId:
-            typeof sourceNodeId ===
-                "string"
-                ? sourceNodeId
-                : null,
-
-        confidence:
-            isFiniteNumber(
-                diagnostic.confidence
-            )
-                ? clamp01(
-                    diagnostic.confidence
-                )
-                : null,
-
-        at:
-            resolveAttemptTimestamp(
-                attempt
-            )
-    };
-}
-
-
-/* =========================================================
- * Failure state
- *
- * We track:
- *
- * - failureSummary by canonical failure signature/type key
- * - wrong streak by evidence dimension
- *
- * persistentFailure uses the strongest available repeated
- * failure count.
- * ========================================================= */
-
-function updateFailureState({
-    previousState,
-    attempt,
-    result,
-    dimension,
-    failure
-}) {
-
-    const failureSummary =
-        cloneFailureSummary(
-            previousState.failureSummary
-        );
-
-
-    const evidenceWrongStreaks = {
-        ...previousState.evidenceWrongStreaks
-    };
-
-
-    /* -----------------------------------------------------
-     * Evidence wrong streak
-     * ----------------------------------------------------- */
-
-    if (
-        EVIDENCE_DIMENSIONS.includes(
-            dimension
-        )
-    ) {
-
-        if (isWrongResult(result)) {
-
-            evidenceWrongStreaks[
-                dimension
-            ] =
-                safeInteger(
-                    evidenceWrongStreaks[
-                    dimension
-                    ]
-                ) + 1;
-
-        } else if (
-            result === "correct" ||
-            result === "partial"
-        ) {
-
-            /*
-             * A successful attempt breaks the wrong streak.
-             */
-            evidenceWrongStreaks[
-                dimension
-            ] = 0;
-        }
-    }
-
-
-    /* -----------------------------------------------------
-     * Failure signature count
-     * ----------------------------------------------------- */
-
-    let currentFailureKey = null;
-    let currentFailureCount = 0;
-
-
-    if (failure) {
-
-        /*
-         * Prefer failureSignatureId because downgrade rule
-         * explicitly says repeatedWrongSameSignature.
-         *
-         * Fall back to failureType for older/prototype
-         * attempts without a signature ID.
-         */
-        currentFailureKey =
-            failure.failureSignatureId ??
-            failure.failureType ??
-            null;
-
-
-        if (currentFailureKey) {
-
-            const previous =
-                failureSummary[
-                currentFailureKey
-                ] ?? {
-                    count: 0,
-                    failureType: null,
-                    failureSignatureId: null,
-                    sourceNodeId: null,
-                    lastAt: null
-                };
-
-
-            currentFailureCount =
-                safeInteger(
-                    previous.count
-                ) + 1;
-
-
-            failureSummary[
-                currentFailureKey
-            ] = {
-
-                count:
-                    currentFailureCount,
-
-                failureType:
-                    failure.failureType ??
-                    previous.failureType ??
-                    null,
-
-                failureSignatureId:
-                    failure.failureSignatureId ??
-                    previous.failureSignatureId ??
-                    null,
-
-                sourceNodeId:
-                    failure.sourceNodeId ??
-                    previous.sourceNodeId ??
-                    null,
-
-                lastAt:
-                    failure.at ??
-                    previous.lastAt ??
-                    null
-            };
-        }
-    }
-
-
-    const sameEvidenceWrongStreak =
-        EVIDENCE_DIMENSIONS.includes(
-            dimension
-        )
-            ? safeInteger(
-                evidenceWrongStreaks[
-                dimension
-                ]
-            )
-            : 0;
-
-
-    return {
-
-        failureSummary,
-
-        evidenceWrongStreaks,
-
-        currentFailureKey,
-
-        currentFailureCount,
-
-        sameEvidenceWrongStreak
-    };
-}
-
-
-/* =========================================================
- * Weakness
- * ========================================================= */
-
-function evaluateWeakness({
-    evidence,
-    failureState,
-    attempt,
-    result,
-    rules
-}) {
-
-    const config =
-        rules.weaknessRules;
-
-
-    const weakEvidence = [];
-
-
-    for (
-        const dimension
-        of EVIDENCE_DIMENSIONS
-    ) {
-
-        const threshold =
-            config
-                .weakEvidenceThreshold[
-            dimension
-            ];
-
-
-        if (
-            isFiniteNumber(threshold) &&
-            evidence[dimension] <
-            threshold
-        ) {
-
-            weakEvidence.push(
-                dimension
-            );
-        }
-    }
-
-
-    const signals =
-        new Set();
-
-
-    const sameWrongThreshold =
-        resolveWeaknessTriggerThreshold(
-            config,
-            "sameEvidenceWrongStreak",
-            2
-        );
-
-
-    if (
-        failureState
-            .sameEvidenceWrongStreak >=
-        sameWrongThreshold
-    ) {
-
-        signals.add(
-            "mark_evidence_weak_recommended"
-        );
-    }
-
-
-    const repeatedSignatureThreshold =
-        rules.masteryDowngradeRules
-            .repeatedWrongSameSignature
-            ?.threshold ??
-        resolveWeaknessTriggerThreshold(
-            config,
-            "sameFailureSignatureCount",
-            2
-        );
-
-
-    if (
-        failureState
-            .currentFailureCount >=
-        repeatedSignatureThreshold
-    ) {
-
-        signals.add(
-            "trigger_remediation_diagnosis_recommended"
-        );
-    }
-
-
-    if (
-        resolveRetestFailed(attempt)
-    ) {
-
-        signals.add(
-            "schedule_review_recommended"
-        );
-    }
-
-
-    /*
-     * Weak is triggered by weakness patterns,
-     * NOT merely because untouched dimensions start at zero.
-     */
-    const isWeak =
-        signals.size > 0;
-
-
-    return {
-
-        isWeak,
-
-        weakEvidence,
-
-        signals:
-            [...signals],
-
-        sameEvidenceWrongStreak:
-            failureState
-                .sameEvidenceWrongStreak,
-
-        sameFailureSignatureCount:
-            failureState
-                .currentFailureCount
-    };
-}
-
-
-/* =========================================================
- * Mastery evaluation
- * ========================================================= */
-
-function evaluateMastery({
-    previousMastery,
-    evidence,
-    overallEvidence,
-    confidence,
-    evidenceSufficiency,
-    attemptStats,
-    attempt,
-    result,
-    failureState,
-    rules
-}) {
-
-    /*
-     * Determine what level current evidence supports.
-     *
-     * This does NOT automatically mean downgrade.
-     */
-    const supportedLevel =
-        findHighestSupportedMastery({
-            evidence,
-            overallEvidence,
-            confidence,
-            evidenceSufficiency,
-            attemptStats,
-            rules
-        });
-
-
-    const previousRank =
-        masteryRank(previousMastery);
-
-
-    const supportedRank =
-        masteryRank(supportedLevel);
-
-
-    /* =====================================================
-     * Promotion
-     * ===================================================== */
-
-    if (supportedRank > previousRank) {
-
-        /*
-         * Promotion is sequential.
-         *
-         * A single update must not leap through multiple
-         * mastery levels.
-         *
-         * This also preserves the semantic transitions in
-         * masteryPromotionRules:
-         *
-         * M0→M1
-         * M1→M2
-         * M2→M3
-         * M3→M4
-         */
-        const promoted =
-            oneLevelAbove(
-                previousMastery
-            );
-
-
-        if (
-            masteryRank(promoted) <=
-            supportedRank
-        ) {
-
-            return {
-                mastery: promoted,
-                supportedLevel,
-                direction: "up",
-                downgradeTriggered: false,
-                downgradeReason: null,
-                persistentFailureCount:
-                    failureState
-                        .currentFailureCount
-            };
-        }
-    }
-
-
-    /* =====================================================
-     * Same level
-     * ===================================================== */
-
-    if (supportedRank === previousRank) {
-
-        return {
-            mastery: previousMastery,
-            supportedLevel,
-            direction: "stable",
-            downgradeTriggered: false,
-            downgradeReason: null,
-            persistentFailureCount:
-                failureState
-                    .currentFailureCount
-        };
-    }
-
-
-    /* =====================================================
-     * Potential downgrade
-     * ===================================================== */
-
-    const downgrade =
-        evaluateDowngrade({
-            previousMastery,
-            supportedLevel,
-            attempt,
-            result,
-            failureState,
-            rules
-        });
-
-
-    if (!downgrade.allowed) {
-
-        return {
-            mastery:
-                previousMastery,
-
-            supportedLevel,
-
-            direction:
-                "stable",
-
-            downgradeTriggered:
-                false,
-
-            downgradeReason:
-                downgrade.reason,
-
-            persistentFailureCount:
-                downgrade.persistentFailureCount
-        };
-    }
-
-
-    const downgraded =
-        downgradeOneLevel({
-            previousMastery,
-            rules
-        });
-
-
-    return {
-
-        mastery:
-            downgraded,
-
-        supportedLevel,
-
-        direction:
-            "down",
-
-        downgradeTriggered:
-            downgraded !==
-            previousMastery,
-
-        downgradeReason:
-            downgrade.reason,
-
-        persistentFailureCount:
-            downgrade.persistentFailureCount
-    };
-}
-
-
-/* =========================================================
- * Highest currently supported mastery
- * ========================================================= */
-
-function findHighestSupportedMastery({
-    evidence,
-    overallEvidence,
-    confidence,
-    evidenceSufficiency,
-    attemptStats,
-    rules
-}) {
-
-    /*
-     * Evaluate highest → lowest.
-     */
-    if (
-        qualifiesForM4({
-            evidence,
-            overallEvidence,
-            confidence,
-            evidenceSufficiency,
-            attemptStats,
-            rules
-        })
-    ) {
-        return "M4";
-    }
-
-
-    if (
-        qualifiesForM3({
-            evidence,
-            overallEvidence,
-            rules
-        })
-    ) {
-        return "M3";
-    }
-
-
-    if (
-        qualifiesForM2({
-            evidence,
-            overallEvidence,
-            rules
-        })
-    ) {
-        return "M2";
-    }
-
-
-    if (
-        qualifiesForM1({
-            evidence,
-            confidence,
-            rules
-        })
-    ) {
-        return "M1";
-    }
-
-
-    return "M0";
-}
-
-
-/* =========================================================
- * Promotion conditions
- *
- * Implement masteryPromotionRules directly.
- * ========================================================= */
-
-function qualifiesForM1({
-    evidence,
-    confidence,
-    rules
-}) {
-
-    const threshold =
-        rules.levelThresholds
-            .M1
-            .requiredEvidence;
-
-
     return (
-        meetsRequiredEvidence(
-            evidence,
-            threshold
-        ) &&
-        confidence.level !== "low"
+        confidenceRank(actual) >=
+        confidenceRank(required)
     );
 }
 
-
-function qualifiesForM2({
-    evidence,
-    overallEvidence,
-    rules
-}) {
-
-    const level =
-        rules.levelThresholds.M2;
-
-
-    return (
-        meetsRequiredEvidence(
-            evidence,
-            level.requiredEvidence
-        ) &&
-        overallEvidence >=
-        level.minOverallEvidence
-    );
-}
-
-
-function qualifiesForM3({
-    evidence,
-    overallEvidence,
-    rules
-}) {
-
-    const level =
-        rules.levelThresholds.M3;
-
-
-    return (
-        meetsRequiredEvidence(
-            evidence,
-            level.requiredEvidence
-        ) &&
-        overallEvidence >=
-        level.minOverallEvidence
-    );
-}
-
-
-function qualifiesForM4({
-    evidence,
-    overallEvidence,
-    confidence,
-    evidenceSufficiency,
-    attemptStats,
-    rules
-}) {
-
-    const level =
-        rules.levelThresholds.M4;
-
-
-    const confidenceRules =
-        rules.evidenceConfidence;
-
-
-    return (
-        meetsRequiredEvidence(
-            evidence,
-            level.requiredEvidence
-        ) &&
-
-        overallEvidence >=
-        level.minOverallEvidence &&
-
-        attemptStats.total >=
-        confidenceRules
-            .minimumAttemptsForMastery &&
-
-        evidenceSufficiency
-            .distinctContexts >=
-        confidenceRules
-            .minimumDistinctContextsForMastery &&
-
-        /*
-         * rules.json globally declares minimum distinct
-         * question types for mastery.
-         */
-        evidenceSufficiency
-            .distinctQuestionTypes >=
-        confidenceRules
-            .minimumDistinctQuestionTypesForMastery &&
-
-        confidence.level !== "low"
-    );
-}
-
-
-/* =========================================================
- * Required evidence helper
- * ========================================================= */
-
-function meetsRequiredEvidence(
-    evidence,
-    requiredEvidence
-) {
-
-    if (!isPlainObject(requiredEvidence)) {
-        return false;
-    }
-
-
-    for (
-        const [
-            dimension,
-            threshold
-        ]
-        of Object.entries(
-            requiredEvidence
-        )
-    ) {
-
-        if (
-            !EVIDENCE_DIMENSIONS.includes(
-                dimension
-            )
-        ) {
-            continue;
-        }
-
-
-        if (
-            evidence[dimension] <
-            threshold
-        ) {
-            return false;
-        }
-    }
-
-
-    return true;
-}
-
-
-/* =========================================================
- * Downgrade evaluation
- *
- * Canonical rules:
- *
- * 1 wrong:
- *   update evidence only
- *
- * same signature >= 2:
- *   weak/remediation signal
- *   NO mastery reset
- *
- * persistent failure >= 3:
- *   recalculate mastery
- *
- * failed retest:
- *   keep mastery
- *   remove stable
- * ========================================================= */
-
-function evaluateDowngrade({
-    previousMastery,
-    supportedLevel,
-    attempt,
-    result,
-    failureState,
-    rules
-}) {
-
-    const policy =
-        rules.masteryDowngradeRules;
-
-
-    /* -----------------------------------------------------
-     * Nothing below M0
-     * ----------------------------------------------------- */
-
-    if (previousMastery === "M0") {
-
-        return {
-            allowed: false,
-            reason: "already_M0",
-            persistentFailureCount: 0
-        };
-    }
-
-
-    /* -----------------------------------------------------
-     * Retest failure explicitly keeps mastery
-     * ----------------------------------------------------- */
-
-    if (
-        resolveRetestFailed(attempt)
-    ) {
-
-        return {
-            allowed: false,
-            reason:
-                "failed_retest_keeps_mastery",
-            persistentFailureCount:
-                failureState
-                    .currentFailureCount
-        };
-    }
-
-
-    /* -----------------------------------------------------
-     * Only wrong answers can contribute to downgrade.
-     * ----------------------------------------------------- */
-
-    if (!isWrongResult(result)) {
-
-        return {
-            allowed: false,
-            reason:
-                "current_attempt_not_wrong",
-            persistentFailureCount:
-                failureState
-                    .currentFailureCount
-        };
-    }
-
-
-    /*
-     * Hint-related / diagnostic wrong attempts still update
-     * evidence, but diagnostic evidence alone should not be
-     * used as persistent mastery invalidation in V1.
-     */
-    if (isDiagnosticAttempt(attempt)) {
-
-        return {
-            allowed: false,
-            reason:
-                "diagnostic_failure_not_sufficient_for_downgrade",
-            persistentFailureCount:
-                failureState
-                    .currentFailureCount
-        };
-    }
-
-
-    /* -----------------------------------------------------
-     * Current evidence must support a lower level.
-     * ----------------------------------------------------- */
-
-    if (
-        masteryRank(supportedLevel) >=
-        masteryRank(previousMastery)
-    ) {
-
-        return {
-            allowed: false,
-            reason:
-                "current_mastery_still_supported",
-            persistentFailureCount:
-                failureState
-                    .currentFailureCount
-        };
-    }
-
-
-    /* -----------------------------------------------------
-     * Persistent failure threshold
-     * ----------------------------------------------------- */
-
-    const threshold =
-        safePositiveInteger(
-            policy
-                .persistentFailure
-                ?.threshold,
-            3
-        );
-
-
-    const persistentFailureCount =
-        failureState
-            .currentFailureCount;
-
-
-    if (
-        persistentFailureCount <
-        threshold
-    ) {
-
-        /*
-         * This covers:
-         *
-         * #1 wrong → evidence only
-         * #2 same signature → weak/remediation
-         *
-         * Neither downgrades mastery.
-         */
-        return {
-            allowed: false,
-            reason:
-                persistentFailureCount >= 2
-                    ? "repeated_failure_marks_weak_only"
-                    : "single_failure_updates_evidence_only",
-
-            persistentFailureCount
-        };
-    }
-
-
-    /* -----------------------------------------------------
-     * Persistent failure established.
-     * Mastery may now be recalculated conservatively.
-     * ----------------------------------------------------- */
-
-    return {
-        allowed: true,
-        reason:
-            "persistent_failure_recalculate_mastery",
-        persistentFailureCount
-    };
-}
-
-
-/* =========================================================
- * Conservative one-level downgrade
- * ========================================================= */
-
-function downgradeOneLevel({
-    previousMastery,
-    rules
-}) {
-
-    const policy =
-        rules.masteryDowngradeRules
-            .persistentFailure;
-
-
-    const previousRank =
-        masteryRank(previousMastery);
-
-
-    if (previousRank <= 0) {
-        return "M0";
-    }
-
-
-    const maximumLevels =
-        safePositiveInteger(
-            policy
-                ?.maximumLevelsPerUpdate,
-            1
-        );
-
-
-    /*
-     * Contract currently says 1.
-     * Implementation supports config but never
-     * allows negative rank.
-     */
-    let targetRank =
-        Math.max(
-            0,
-            previousRank -
-            maximumLevels
-        );
-
-
-    const minimumLevel =
-        MASTERY_LEVELS.includes(
-            policy?.minimumPossibleLevel
-        )
-            ? policy.minimumPossibleLevel
-            : "M1";
-
-
-    const minimumRank =
-        masteryRank(
-            minimumLevel
-        );
-
-
-    targetRank =
-        Math.max(
-            targetRank,
-            minimumRank
-        );
-
-
-    /*
-     * M0 cannot be reached through persistentFailure
-     * while minimumPossibleLevel = M1.
-     */
-    return (
-        MASTERY_LEVELS[
-        targetRank
-        ] ??
-        previousMastery
-    );
-}
-
-
-/* =========================================================
- * Promotion helper
- * ========================================================= */
-
-function oneLevelAbove(level) {
-
-    const rank =
-        masteryRank(level);
-
+function nextMasteryLevel(level) {
+    const index = masteryRank(level);
 
     return (
         MASTERY_LEVELS[
         Math.min(
-            rank + 1,
+            index + 1,
             MASTERY_LEVELS.length - 1
         )
-        ] ?? level
+        ]
     );
 }
 
+function previousMasteryLevel(level) {
+    const index = masteryRank(level);
 
-/* =========================================================
- * Status
- * ========================================================= */
-
-function evaluateStatus({
-    previousStatus,
-    mastery,
-    weakness,
-    attempt
-}) {
-
-    /*
-     * Failed retest:
-     *
-     * remove stable status,
-     * keep mastery.
-     */
-    if (
-        resolveRetestFailed(attempt)
-    ) {
-
-        if (weakness.isWeak) {
-            return "weak";
-        }
-
-
-        if (mastery === "M4") {
-            return "mastered";
-        }
-
-
-        return "developing";
-    }
-
-
-    /*
-     * Weakness takes precedence over normal developing.
-     */
-    if (weakness.isWeak) {
-        return "weak";
-    }
-
-
-    /*
-     * Stable is retained unless a rule explicitly removes it.
-     */
-    if (
-        previousStatus === "stable" &&
-        mastery === "M4"
-    ) {
-        return "stable";
-    }
-
-
-    if (mastery === "M4") {
-        return "mastered";
-    }
-
-
-    if (mastery === "M0") {
-
-        /*
-         * If there are attempts, M0 is developing,
-         * otherwise caller may persist not_started.
-         *
-         * updateMastery itself is invoked because an
-         * interaction occurred, therefore developing.
-         */
-        return "developing";
-    }
-
-
-    return "developing";
+    return (
+        MASTERY_LEVELS[
+        Math.max(index - 1, 0)
+        ]
+    );
 }
 
-
-/* =========================================================
- * Attempt statistics
- * ========================================================= */
-
-function updateAttemptStatistics(
-    previous,
-    attempt,
-    result
-) {
-
-    const old =
-        normalizeAttemptStats(previous);
-
-
-    const next = {
-        ...old
-    };
-
-
-    next.total++;
-
-
-    switch (result) {
-
-        case "correct":
-            next.correct++;
-            break;
-
-        case "partial":
-            next.partial++;
-            break;
-
-        case "skipped":
-            next.skipped++;
-            break;
-
-        case "incorrect":
-        case "wrong":
-            next.wrong++;
-            break;
-    }
-
-
-    return next;
+function nowIso(attempt = {}) {
+    return (
+        attempt.submittedAt ||
+        attempt.at ||
+        new Date().toISOString()
+    );
 }
 
+/**
+ * =========================================================
+ * RULE RESOLUTION
+ * =========================================================
+ */
 
-/* =========================================================
- * Rules resolution
- * ========================================================= */
+function mergeObjects(base, override) {
+    if (!isObject(base)) {
+        return deepClone(override);
+    }
 
-function resolveRules(
-    masteryRules,
-    evidenceModel
-) {
+    if (!isObject(override)) {
+        return deepClone(base);
+    }
 
-    const supplied =
-        isPlainObject(masteryRules)
-            ? masteryRules
-            : {};
+    const result = deepClone(base);
 
+    for (
+        const [key, value]
+        of Object.entries(override)
+    ) {
+        if (
+            isObject(value) &&
+            isObject(result[key])
+        ) {
+            result[key] =
+                mergeObjects(
+                    result[key],
+                    value
+                );
+        } else {
+            result[key] =
+                deepClone(value);
+        }
+    }
 
+    return result;
+}
+
+function resolveRules(masteryRules = {}) {
+    return mergeObjects(
+        DEFAULT_RULES,
+        masteryRules || {}
+    );
+}
+
+function getDifficultyWeights(rules) {
+    return (
+        rules.difficultyWeights ||
+        rules.attemptScoring?.difficultyWeights ||
+        rules.attemptWeighting?.difficultyWeights ||
+        DEFAULT_RULES.difficultyWeights
+    );
+}
+
+function getAttemptWeights(rules) {
+    return (
+        rules.attemptWeights ||
+        rules.attemptScoring?.attemptWeights ||
+        rules.attemptWeighting?.attemptWeights ||
+        DEFAULT_RULES.attemptWeights
+    );
+}
+
+function getEvidenceWeights(rules) {
+    return (
+        rules.evidenceWeights ||
+        rules.overallEvidenceCalculation?.weights ||
+        DEFAULT_RULES.evidenceWeights
+    );
+}
+
+function getMaxObservationWindow(rules) {
+    const value =
+        rules.evidenceUpdate
+            ?.maxRecentObservationsPerDimension;
+
+    if (
+        Number.isInteger(value) &&
+        value > 0
+    ) {
+        return value;
+    }
+
+    return 8;
+}
+
+function getDiagnosticReliability(rules) {
+    const value =
+        rules.diagnostic
+            ?.diagnosticReliabilityWeight;
+
+    return clamp(
+        value ?? 0.70,
+        0,
+        1
+    );
+}
+
+/**
+ * =========================================================
+ * DEFAULT STATE
+ * =========================================================
+ */
+
+function createEmptyEvidence() {
     return {
-
-        evidenceWeights: {
-            ...DEFAULT_RULES.evidenceWeights,
-            ...(
-                supplied.evidenceWeights ??
-                evidenceModel?.evidenceWeights ??
-                evidenceModel?.weights ??
-                {}
-            )
-        },
-
-
-        attemptWeights: {
-            ...DEFAULT_RULES.attemptWeights,
-            ...(
-                supplied.attemptWeights ??
-                {}
-            )
-        },
-
-
-        difficultyWeights: {
-            ...DEFAULT_RULES.difficultyWeights,
-            ...(
-                supplied.difficultyWeights ??
-                {}
-            )
-        },
-
-
-        evidenceUpdate: {
-
-            ...DEFAULT_RULES.evidenceUpdate,
-
-            ...(
-                supplied.evidenceUpdate ??
-                {}
-            ),
-
-            wrongAnswerRule: {
-
-                ...DEFAULT_RULES
-                    .evidenceUpdate
-                    .wrongAnswerRule,
-
-                ...(
-                    supplied
-                        .evidenceUpdate
-                        ?.wrongAnswerRule ??
-                    {}
-                )
-            }
-        },
-
-
-        levelThresholds:
-            deepMergeObject(
-                DEFAULT_RULES
-                    .levelThresholds,
-
-                supplied
-                    .levelThresholds ??
-                {}
-            ),
-
-
-        evidenceConfidence:
-            deepMergeObject(
-                DEFAULT_RULES
-                    .evidenceConfidence,
-
-                supplied
-                    .evidenceConfidence ??
-                {}
-            ),
-
-
-        masteryPromotionRules:
-            deepMergeObject(
-                DEFAULT_RULES
-                    .masteryPromotionRules,
-
-                supplied
-                    .masteryPromotionRules ??
-                {}
-            ),
-
-
-        weaknessRules:
-            deepMergeObject(
-                DEFAULT_RULES
-                    .weaknessRules,
-
-                supplied
-                    .weaknessRules ??
-                {}
-            ),
-
-
-        masteryDowngradeRules:
-            deepMergeObject(
-                DEFAULT_RULES
-                    .masteryDowngradeRules,
-
-                supplied
-                    .masteryDowngradeRules ??
-                {}
-            ),
-
-
-        diagnosticRules:
-            deepMergeObject(
-                DEFAULT_RULES
-                    .diagnosticRules,
-
-                supplied
-                    .diagnosticRules ??
-                {}
-            ),
-
-
-        recencyRules:
-            deepMergeObject(
-                DEFAULT_RULES
-                    .recencyRules,
-
-                supplied
-                    .recencyRules ??
-                {}
-            )
+        know: 0,
+        explain: 0,
+        apply: 0,
+        transfer: 0
     };
 }
 
-
-/* =========================================================
- * State normalization
- * ========================================================= */
-
-function normalizeCurrentState(
-    currentState
-) {
-
-    const state =
-        isPlainObject(currentState)
-            ? currentState
-            : {};
-
-
+function createEmptyEvidenceHistory() {
     return {
+        know: [],
+        explain: [],
+        apply: [],
+        transfer: []
+    };
+}
 
-        mastery:
-            MASTERY_LEVELS.includes(
-                state.mastery
-            )
-                ? state.mastery
-                : "M0",
+function createDefaultEvidenceSufficiency() {
+    return {
+        independentObservations: 0,
+        distinctContexts: 0,
+        distinctQuestionTypes: 0,
+        observedEvidenceTypes: [],
 
+        // Runtime-only compatibility fields.
+        // These do NOT need to be committed to
+        // Student State V1.2.0.
+        contextIds: [],
+        questionTypes: []
+    };
+}
 
-        status:
-            typeof state.status === "string"
-                ? state.status
-                : "developing",
+function createDefaultAttemptStats() {
+    return {
+        total: 0,
+        correct: 0,
+        wrong: 0,
+        partial: 0,
+        skipped: 0
+    };
+}
 
+function createDefaultWrongStreaks() {
+    return {
+        know: 0,
+        explain: 0,
+        apply: 0,
+        transfer: 0
+    };
+}
 
-        evidence:
-            normalizeEvidence(
-                state.evidence
-            ),
+function createDefaultState() {
+    return {
+        mastery: "M0",
+        status: "developing",
 
+        evidence: createEmptyEvidence(),
 
-        overallEvidence:
-            isFiniteNumber(
-                state.overallEvidence
-            )
-                ? clamp01(
-                    state.overallEvidence
-                )
-                : 0,
+        overallEvidence: 0,
 
-
-        confidence:
-            normalizeConfidence(
-                state.confidence
-            ),
-
+        confidence: {
+            level: "low",
+            score: 0,
+            attemptCount: 0
+        },
 
         evidenceSufficiency:
-            normalizeEvidenceSufficiency(
-                state.evidenceSufficiency
-            ),
-
-
-        attemptStats:
-            normalizeAttemptStats(
-                state.attemptStats ??
-                state.attempts
-            ),
-
-
-        failureSummary:
-            cloneFailureSummary(
-                state.failureSummary
-            ),
-
+            createDefaultEvidenceSufficiency(),
 
         evidenceWrongStreaks:
-            normalizeEvidenceWrongStreaks(
-                state.evidenceWrongStreaks
-            ),
+            createDefaultWrongStreaks(),
 
+        attemptStats:
+            createDefaultAttemptStats(),
 
-        signals:
-            Array.isArray(
-                state.signals
-            )
-                ? [...state.signals]
-                : [],
+        weakEvidence: [],
 
+        signals: [],
 
-        lastAttemptAt:
-            typeof state.lastAttemptAt ===
-                "string"
-                ? state.lastAttemptAt
-                : null
+        failureSummary: {},
+
+        lastAttemptAt: null,
+        lastSuccessAt: null,
+        lastFailure: null,
+
+        retest: {
+            attempted: false,
+            lastRetestAt: null,
+            passed: false,
+            differentQuestion: false,
+            differentContext: false,
+            independent: false
+        },
+
+        review: {
+            lastReviewedAt: null
+        }
     };
 }
 
+/**
+ * =========================================================
+ * STATE NORMALIZATION
+ * =========================================================
+ */
 
-/* =========================================================
- * Evidence normalization
- * ========================================================= */
-
-function normalizeEvidence(value) {
-
+function normalizeEvidence(evidence) {
     const source =
-        isPlainObject(value)
-            ? value
+        isObject(evidence)
+            ? evidence
             : {};
 
+    const normalized =
+        createEmptyEvidence();
 
-    return {
-        know:
-            normalizeEvidenceValue(
-                source.know
-            ),
+    for (
+        const dimension
+        of EVIDENCE_DIMENSIONS
+    ) {
+        normalized[dimension] =
+            clamp(
+                source[dimension] ?? 0
+            );
+    }
 
-        explain:
-            normalizeEvidenceValue(
-                source.explain
-            ),
-
-        apply:
-            normalizeEvidenceValue(
-                source.apply
-            ),
-
-        transfer:
-            normalizeEvidenceValue(
-                source.transfer
-            )
-    };
+    return normalized;
 }
 
+function normalizeEvidenceHistory(history) {
+    const source =
+        isObject(history)
+            ? history
+            : {};
 
-function normalizeEvidenceValue(value) {
+    const result =
+        createEmptyEvidenceHistory();
 
-    return isFiniteNumber(value)
-        ? round(clamp01(value))
-        : 0;
+    for (
+        const dimension
+        of EVIDENCE_DIMENSIONS
+    ) {
+        const observations =
+            Array.isArray(source[dimension])
+                ? source[dimension]
+                : [];
+
+        result[dimension] =
+            observations
+                .filter(isObject)
+                .map(observation => ({
+                    dimension,
+                    score:
+                        clamp(
+                            observation.score ?? 0
+                        ),
+
+                    reliabilityWeight:
+                        clamp(
+                            observation
+                                .reliabilityWeight ?? 1,
+                            0,
+                            1
+                        ),
+
+                    independent:
+                        observation.independent === true,
+
+                    contextId:
+                        typeof observation.contextId
+                            === "string"
+                            ? observation.contextId
+                            : null,
+
+                    questionType:
+                        typeof observation.questionType
+                            === "string"
+                            ? observation.questionType
+                            : null,
+
+                    diagnostic:
+                        observation.diagnostic === true,
+
+                    result:
+                        normalizeResult(
+                            observation.result
+                        ),
+
+                    at:
+                        typeof observation.at
+                            === "string"
+                            ? observation.at
+                            : null,
+
+                    questionId:
+                        typeof observation.questionId
+                            === "string"
+                            ? observation.questionId
+                            : null
+                }));
+    }
+
+    return result;
 }
-
-
-/* =========================================================
- * Evidence sufficiency normalization
- * ========================================================= */
 
 function normalizeEvidenceSufficiency(
-    value
+    sufficiency
 ) {
-
     const source =
-        isPlainObject(value)
-            ? value
+        isObject(sufficiency)
+            ? sufficiency
             : {};
 
-
-    const contextIds =
-        uniqueStrings(
-            source.contextIds
-        );
-
-
-    const questionTypes =
-        uniqueStrings(
-            source.questionTypes
-        );
-
-
     return {
-
         independentObservations:
-            safeInteger(
-                source.independentObservations
+            Math.max(
+                0,
+                safeInteger(
+                    source
+                        .independentObservations,
+                    0
+                )
             ),
 
         distinctContexts:
             Math.max(
+                0,
                 safeInteger(
-                    source.distinctContexts
-                ),
+                    source.distinctContexts,
+                    0
+                )
+            ),
+
+        distinctQuestionTypes:
+            Math.max(
+                0,
+                safeInteger(
+                    source
+                        .distinctQuestionTypes,
+                    0
+                )
+            ),
+
+        observedEvidenceTypes:
+            uniqueStrings(
+                source
+                    .observedEvidenceTypes
+            ).filter(
+                value =>
+                    EVIDENCE_DIMENSIONS
+                        .includes(value)
+            ),
+
+        contextIds:
+            uniqueStrings(
+                source.contextIds
+            ),
+
+        questionTypes:
+            uniqueStrings(
+                source.questionTypes
+            )
+    };
+}
+
+function normalizeAttemptStats(stats) {
+    const source =
+        isObject(stats)
+            ? stats
+            : {};
+
+    return {
+        total:
+            Math.max(
+                0,
+                safeInteger(
+                    source.total,
+                    0
+                )
+            ),
+
+        correct:
+            Math.max(
+                0,
+                safeInteger(
+                    source.correct,
+                    0
+                )
+            ),
+
+        wrong:
+            Math.max(
+                0,
+                safeInteger(
+                    source.wrong,
+                    0
+                )
+            ),
+
+        partial:
+            Math.max(
+                0,
+                safeInteger(
+                    source.partial,
+                    0
+                )
+            ),
+
+        skipped:
+            Math.max(
+                0,
+                safeInteger(
+                    source.skipped,
+                    0
+                )
+            )
+    };
+}
+
+function normalizeWrongStreaks(streaks) {
+    const source =
+        isObject(streaks)
+            ? streaks
+            : {};
+
+    const result =
+        createDefaultWrongStreaks();
+
+    for (
+        const dimension
+        of EVIDENCE_DIMENSIONS
+    ) {
+        result[dimension] =
+            Math.max(
+                0,
+                safeInteger(
+                    source[dimension],
+                    0
+                )
+            );
+    }
+
+    return result;
+}
+
+function normalizeConfidence(confidence) {
+    const source =
+        isObject(confidence)
+            ? confidence
+            : {};
+
+    const level =
+        CONFIDENCE_LEVELS.includes(
+            source.level
+        )
+            ? source.level
+            : "low";
+
+    return {
+        level,
+
+        score:
+            clamp(
+                source.score ?? 0
+            ),
+
+        attemptCount:
+            Math.max(
+                0,
+                safeInteger(
+                    source.attemptCount,
+                    0
+                )
+            )
+    };
+}
+
+function normalizeState(currentState) {
+    const defaults =
+        createDefaultState();
+
+    if (!isObject(currentState)) {
+        return defaults;
+    }
+
+    const state = {
+        ...defaults,
+        ...deepClone(currentState)
+    };
+
+    state.mastery =
+        MASTERY_LEVELS.includes(
+            currentState.mastery
+        )
+            ? currentState.mastery
+            : "M0";
+
+    state.status =
+        typeof currentState.status
+            === "string"
+            ? currentState.status
+            : "developing";
+
+    state.evidence =
+        normalizeEvidence(
+            currentState.evidence
+        );
+
+    state.overallEvidence =
+        clamp(
+            currentState
+                .overallEvidence ?? 0
+        );
+
+    state.confidence =
+        normalizeConfidence(
+            currentState.confidence
+        );
+
+    state.evidenceSufficiency =
+        normalizeEvidenceSufficiency(
+            currentState
+                .evidenceSufficiency
+        );
+
+    state.evidenceWrongStreaks =
+        normalizeWrongStreaks(
+            currentState
+                .evidenceWrongStreaks
+        );
+
+    state.attemptStats =
+        normalizeAttemptStats(
+            currentState
+                .attemptStats
+        );
+
+    state.weakEvidence =
+        uniqueStrings(
+            currentState
+                .weakEvidence
+        ).filter(
+            value =>
+                EVIDENCE_DIMENSIONS
+                    .includes(value)
+        );
+
+    state.signals =
+        uniqueStrings(
+            currentState.signals
+        );
+
+    state.failureSummary =
+        isObject(
+            currentState.failureSummary
+        )
+            ? deepClone(
+                currentState.failureSummary
+            )
+            : {};
+
+    return state;
+}
+
+/**
+ * =========================================================
+ * ATTEMPT INTERPRETATION
+ * =========================================================
+ */
+
+function getPrimaryDimension(attempt) {
+    const dimension =
+        attempt?.primaryDimension ||
+        attempt?.evidence
+            ?.primaryDimension ||
+        null;
+
+    if (
+        EVIDENCE_DIMENSIONS.includes(
+            dimension
+        )
+    ) {
+        return dimension;
+    }
+
+    return null;
+}
+
+function getAttemptResult(attempt) {
+    return normalizeResult(
+        attempt?.result
+    );
+}
+
+function getAttemptDifficulty(attempt) {
+    const difficulty =
+        attempt?.difficulty ||
+        attempt?.evidence
+            ?.difficulty ||
+        "D3";
+
+    return (
+        typeof difficulty === "string"
+            ? difficulty
+            : "D3"
+    );
+}
+
+function isDiagnosticAttempt(attempt) {
+    if (
+        attempt?.mode === "diagnostic"
+    ) {
+        return true;
+    }
+
+    if (
+        Array.isArray(attempt?.mode) &&
+        attempt.mode.includes(
+            "diagnostic"
+        )
+    ) {
+        return true;
+    }
+
+    return (
+        attempt?.context
+            ?.pathStage ===
+        "DIAGNOSTIC"
+    );
+}
+
+function isRetestAttempt(attempt) {
+    return (
+        attempt?.context
+            ?.pathStage ===
+        "RETEST" ||
+        attempt?.mode ===
+        "retest"
+    );
+}
+
+function isReviewAttempt(attempt) {
+    return (
+        attempt?.context
+            ?.pathStage ===
+        "REVIEW" ||
+        attempt?.mode ===
+        "review"
+    );
+}
+
+function isHintUsed(attempt) {
+    if (
+        attempt?.hintUsed === true
+    ) {
+        return true;
+    }
+
+    return (
+        attempt?.hint?.used === true
+    );
+}
+
+function isRetryAttempt(attempt) {
+    if (
+        attempt?.retry?.isRetry === true
+    ) {
+        return true;
+    }
+
+    return (
+        safeInteger(
+            attempt?.retryNumber,
+            0
+        ) > 0
+    );
+}
+
+function getIndependenceType(attempt) {
+    const explicit =
+        attempt?.evidence
+            ?.independence;
+
+    if (
+        explicit ===
+        "hint_assisted" ||
+        explicit ===
+        "retry_assisted" ||
+        explicit ===
+        "independent"
+    ) {
+        return explicit;
+    }
+
+    if (isHintUsed(attempt)) {
+        return "hint_assisted";
+    }
+
+    if (isRetryAttempt(attempt)) {
+        return "retry_assisted";
+    }
+
+    return "independent";
+}
+
+function getContextId(
+    attempt,
+    evidenceContext = {}
+) {
+    return (
+        evidenceContext.contextId ||
+        attempt?.contextId ||
+        attempt?.context
+            ?.contextId ||
+        null
+    );
+}
+
+function getQuestionType(
+    attempt,
+    evidenceContext = {}
+) {
+    /*
+     * Canonical Attempt V1.0.0 does NOT
+     * own questionType.
+     *
+     * evidenceContext is therefore the
+     * preferred V2 runtime source.
+     *
+     * Legacy top-level attempt.questionType
+     * is still read for backward-compatible
+     * tests/runtime fixtures.
+     */
+
+    return (
+        evidenceContext.questionType ||
+        attempt?.questionType ||
+        null
+    );
+}
+/**
+ * =========================================================
+ * ATTEMPT SCORE / CAPABILITY OBSERVATION
+ * =========================================================
+ */
+
+function getNormalizedPartialScore(attempt) {
+    const candidates = [
+        attempt?.score,
+        attempt?.normalizedScore,
+        attempt?.response?.score
+    ];
+
+    for (const value of candidates) {
+        const numeric = Number(value);
+
+        if (Number.isFinite(numeric)) {
+            return clamp(numeric);
+        }
+    }
+
+    return 0.5;
+}
+
+function getDifficultyWeight(
+    difficulty,
+    rules
+) {
+    const weights =
+        getDifficultyWeights(rules);
+
+    const value =
+        safeNumber(
+            weights?.[difficulty],
+            1
+        );
+
+    return Math.max(0, value);
+}
+
+function getIndependenceWeight(
+    attempt,
+    rules
+) {
+    const weights =
+        getAttemptWeights(rules);
+
+    const independence =
+        getIndependenceType(attempt);
+
+    /*
+     * V2 interpretation:
+     *
+     * - independent:
+     *     full reliability/capability contribution.
+     *
+     * - hint_assisted:
+     *     reduced observation score.
+     *
+     * - retry_assisted:
+     *     reduced observation score.
+     *
+     * The V2 rules file still carries legacy
+     * attemptWeight names, therefore this function
+     * is the compatibility adapter.
+     */
+
+    if (
+        independence ===
+        "hint_assisted"
+    ) {
+        return clamp(
+            weights.correctAfterHint ??
+            0.6
+        );
+    }
+
+    if (
+        independence ===
+        "retry_assisted"
+    ) {
+        /*
+         * Until rules explicitly define a
+         * retry-assisted weight, use the same
+         * conservative weight as assisted work.
+         *
+         * This remains isolated here so the
+         * mapping can later be replaced without
+         * changing estimator logic.
+         */
+        return clamp(
+            weights.retryAssisted ??
+            weights.correctAfterHint ??
+            0.6
+        );
+    }
+
+    return clamp(
+        weights.independentCorrect ??
+        1
+    );
+}
+
+function calculateResultScore(
+    attempt,
+    rules
+) {
+    const result =
+        getAttemptResult(attempt);
+
+    const weights =
+        getAttemptWeights(rules);
+
+    if (result === "correct") {
+        return 1;
+    }
+
+    if (result === "partial") {
+        const normalized =
+            getNormalizedPartialScore(
+                attempt
+            );
+
+        const partialWeight =
+            clamp(
+                weights.partialCorrect ??
+                0.5
+            );
+
+        return clamp(
+            normalized *
+            partialWeight
+        );
+    }
+
+    if (
+        result === "incorrect" ||
+        result === "wrong"
+    ) {
+        return 0;
+    }
+
+    if (result === "skipped") {
+        return null;
+    }
+
+    return null;
+}
+
+function calculateCapabilityObservationScore({
+    attempt,
+    rules
+}) {
+    const resultScore =
+        calculateResultScore(
+            attempt,
+            rules
+        );
+
+    if (resultScore === null) {
+        return null;
+    }
+
+    const difficulty =
+        getAttemptDifficulty(
+            attempt
+        );
+
+    const difficultyWeight =
+        getDifficultyWeight(
+            difficulty,
+            rules
+        );
+
+    const independenceWeight =
+        getIndependenceWeight(
+            attempt,
+            rules
+        );
+
+    /*
+     * V2:
+     *
+     * capability observation =
+     *
+     * resultScore
+     * × difficultyWeight
+     * × independenceWeight
+     *
+     * Diagnostic reliability is intentionally
+     * NOT multiplied here.
+     */
+
+    return clamp(
+        resultScore *
+        difficultyWeight *
+        independenceWeight
+    );
+}
+
+function calculateObservationReliability({
+    attempt,
+    rules
+}) {
+    let reliability = 1;
+
+    /*
+     * Diagnostic affects reliability,
+     * not demonstrated capability.
+     */
+
+    if (isDiagnosticAttempt(attempt)) {
+        reliability *=
+            getDiagnosticReliability(
+                rules
+            );
+    }
+
+    /*
+     * Hint/retry assistance has already
+     * affected observationScore through
+     * independenceWeight.
+     *
+     * Do not double-penalize it here.
+     */
+
+    return clamp(
+        reliability,
+        0,
+        1
+    );
+}
+
+function buildCapabilityObservation({
+    attempt,
+    dimension,
+    rules,
+    evidenceContext
+}) {
+    if (
+        !EVIDENCE_DIMENSIONS.includes(
+            dimension
+        )
+    ) {
+        return null;
+    }
+
+    const score =
+        calculateCapabilityObservationScore({
+            attempt,
+            rules
+        });
+
+    /*
+     * skipped / invalid result:
+     * no capability observation.
+     */
+
+    if (score === null) {
+        return null;
+    }
+
+    const reliabilityWeight =
+        calculateObservationReliability({
+            attempt,
+            rules
+        });
+
+    const independence =
+        getIndependenceType(
+            attempt
+        );
+
+    return {
+        dimension,
+
+        score,
+
+        reliabilityWeight,
+
+        independent:
+            independence ===
+            "independent",
+
+        contextId:
+            getContextId(
+                attempt,
+                evidenceContext
+            ),
+
+        questionType:
+            getQuestionType(
+                attempt,
+                evidenceContext
+            ),
+
+        diagnostic:
+            isDiagnosticAttempt(
+                attempt
+            ),
+
+        result:
+            getAttemptResult(
+                attempt
+            ),
+
+        at:
+            nowIso(attempt),
+
+        questionId:
+            typeof attempt?.questionId
+                === "string"
+                ? attempt.questionId
+                : null
+    };
+}
+
+/**
+ * =========================================================
+ * EVIDENCE HISTORY
+ * =========================================================
+ */
+
+function resolveEvidenceHistory({
+    evidenceHistory,
+    currentState
+}) {
+    /*
+     * Preferred source:
+     *
+     * explicit runtime input.
+     */
+
+    if (isObject(evidenceHistory)) {
+        return normalizeEvidenceHistory(
+            evidenceHistory
+        );
+    }
+
+    /*
+     * Runtime handoff compatibility:
+     *
+     * result.current may be passed directly
+     * into the next updateMastery call.
+     *
+     * This field is Mastery runtime projection,
+     * NOT a required Student State field.
+     */
+
+    if (
+        isObject(
+            currentState?.evidenceHistory
+        )
+    ) {
+        return normalizeEvidenceHistory(
+            currentState
+                .evidenceHistory
+        );
+    }
+
+    return createEmptyEvidenceHistory();
+}
+
+function appendObservation({
+    history,
+    observation,
+    rules
+}) {
+    const nextHistory =
+        normalizeEvidenceHistory(
+            history
+        );
+
+    if (!observation) {
+        return nextHistory;
+    }
+
+    const dimension =
+        observation.dimension;
+
+    if (
+        !EVIDENCE_DIMENSIONS.includes(
+            dimension
+        )
+    ) {
+        return nextHistory;
+    }
+
+    const windowSize =
+        getMaxObservationWindow(
+            rules
+        );
+
+    const existing =
+        Array.isArray(
+            nextHistory[dimension]
+        )
+            ? nextHistory[dimension]
+            : [];
+
+    const updated = [
+        ...existing,
+        deepClone(observation)
+    ];
+
+    nextHistory[dimension] =
+        updated.slice(
+            Math.max(
+                0,
+                updated.length -
+                windowSize
+            )
+        );
+
+    return nextHistory;
+}
+
+/**
+ * =========================================================
+ * CAPABILITY ESTIMATOR
+ * =========================================================
+ */
+
+function calculateDimensionEvidence(
+    observations
+) {
+    if (
+        !Array.isArray(observations) ||
+        observations.length === 0
+    ) {
+        return null;
+    }
+
+    let weightedScore = 0;
+    let totalWeight = 0;
+
+    for (
+        const observation
+        of observations
+    ) {
+        if (!isObject(observation)) {
+            continue;
+        }
+
+        const score =
+            clamp(
+                observation.score ?? 0
+            );
+
+        const reliability =
+            clamp(
+                observation
+                    .reliabilityWeight ?? 1,
+                0,
+                1
+            );
+
+        /*
+         * A zero reliability observation
+         * carries no estimator weight.
+         */
+
+        if (reliability <= 0) {
+            continue;
+        }
+
+        weightedScore +=
+            score *
+            reliability;
+
+        totalWeight +=
+            reliability;
+    }
+
+    if (totalWeight <= 0) {
+        return null;
+    }
+
+    return clamp(
+        weightedScore /
+        totalWeight
+    );
+}
+
+function calculateEvidenceFromHistory({
+    previousEvidence,
+    evidenceHistory
+}) {
+    const previous =
+        normalizeEvidence(
+            previousEvidence
+        );
+
+    const history =
+        normalizeEvidenceHistory(
+            evidenceHistory
+        );
+
+    const nextEvidence = {
+        ...previous
+    };
+
+    for (
+        const dimension
+        of EVIDENCE_DIMENSIONS
+    ) {
+        const estimate =
+            calculateDimensionEvidence(
+                history[dimension]
+            );
+
+        /*
+         * No observations for this dimension:
+         *
+         * preserve existing aggregate evidence.
+         *
+         * This matters when migrating a runtime
+         * snapshot that has V1 aggregate evidence
+         * but no V2 observation history yet.
+         */
+
+        if (estimate === null) {
+            continue;
+        }
+
+        nextEvidence[dimension] =
+            estimate;
+    }
+
+    return nextEvidence;
+}
+
+/**
+ * =========================================================
+ * QUALIFYING OBSERVATIONS
+ * =========================================================
+ */
+
+function isQualifyingObservation(
+    observation,
+    dimension,
+    rules
+) {
+    if (!isObject(observation)) {
+        return false;
+    }
+
+    if (
+        observation.dimension !==
+        dimension
+    ) {
+        return false;
+    }
+
+    if (
+        observation.independent !==
+        true
+    ) {
+        return false;
+    }
+
+    /*
+     * A qualifying observation must show
+     * capability at or above the threshold
+     * relevant to that evidence dimension.
+     *
+     * We use the lowest V2 threshold that
+     * establishes meaningful evidence for
+     * that dimension.
+     */
+
+    const thresholds =
+        getQualifyingThresholds(
+            rules
+        );
+
+    const minimum =
+        thresholds[dimension];
+
+    return (
+        safeNumber(
+            observation.score,
+            0
+        ) >= minimum
+    );
+}
+
+function getQualifyingThresholds(
+    rules
+) {
+    const levelThresholds =
+        rules.levelThresholds ||
+        DEFAULT_RULES.levelThresholds;
+
+    return {
+        know:
+            safeNumber(
+                levelThresholds
+                    ?.M1
+                    ?.requiredEvidence
+                    ?.know,
+                0.60
+            ),
+
+        explain:
+            safeNumber(
+                levelThresholds
+                    ?.M2
+                    ?.requiredEvidence
+                    ?.explain,
+                0.65
+            ),
+
+        apply:
+            safeNumber(
+                levelThresholds
+                    ?.M3
+                    ?.requiredEvidence
+                    ?.apply,
+                0.70
+            ),
+
+        transfer:
+            safeNumber(
+                levelThresholds
+                    ?.M4
+                    ?.requiredEvidence
+                    ?.transfer,
+                0.70
+            )
+    };
+}
+
+function countQualifyingObservations({
+    evidenceHistory,
+    dimension,
+    rules
+}) {
+    const observations =
+        evidenceHistory?.[dimension];
+
+    if (!Array.isArray(observations)) {
+        return 0;
+    }
+
+    return observations.filter(
+        observation =>
+            isQualifyingObservation(
+                observation,
+                dimension,
+                rules
+            )
+    ).length;
+}
+
+function getQualifyingCounts({
+    evidenceHistory,
+    rules
+}) {
+    return {
+        know:
+            countQualifyingObservations({
+                evidenceHistory,
+                dimension: "know",
+                rules
+            }),
+
+        explain:
+            countQualifyingObservations({
+                evidenceHistory,
+                dimension: "explain",
+                rules
+            }),
+
+        apply:
+            countQualifyingObservations({
+                evidenceHistory,
+                dimension: "apply",
+                rules
+            }),
+
+        transfer:
+            countQualifyingObservations({
+                evidenceHistory,
+                dimension: "transfer",
+                rules
+            })
+    };
+}
+
+/**
+ * =========================================================
+ * EVIDENCE SUFFICIENCY
+ * =========================================================
+ */
+
+function collectHistoryObservations(
+    evidenceHistory
+) {
+    const observations = [];
+
+    for (
+        const dimension
+        of EVIDENCE_DIMENSIONS
+    ) {
+        const list =
+            evidenceHistory?.[dimension];
+
+        if (!Array.isArray(list)) {
+            continue;
+        }
+
+        observations.push(
+            ...list
+        );
+    }
+
+    return observations;
+}
+
+function calculateHistorySufficiency(
+    evidenceHistory
+) {
+    const observations =
+        collectHistoryObservations(
+            evidenceHistory
+        );
+
+    const independentObservations =
+        observations.filter(
+            observation =>
+                observation?.independent ===
+                true
+        ).length;
+
+    const contextIds =
+        uniqueStrings(
+            observations.map(
+                observation =>
+                    observation?.contextId
+            )
+        );
+
+    const questionTypes =
+        uniqueStrings(
+            observations.map(
+                observation =>
+                    observation
+                        ?.questionType
+            )
+        );
+
+    const observedEvidenceTypes =
+        EVIDENCE_DIMENSIONS.filter(
+            dimension =>
+                Array.isArray(
+                    evidenceHistory
+                    ?.[dimension]
+                ) &&
+                evidenceHistory[
+                    dimension
+                ].length > 0
+        );
+
+    return {
+        independentObservations,
+        distinctContexts:
+            contextIds.length,
+        distinctQuestionTypes:
+            questionTypes.length,
+        observedEvidenceTypes,
+        contextIds,
+        questionTypes
+    };
+}
+
+function updateEvidenceSufficiency({
+    previous,
+    evidenceHistory,
+    observation
+}) {
+    const previousNormalized =
+        normalizeEvidenceSufficiency(
+            previous
+        );
+
+    const fromHistory =
+        calculateHistorySufficiency(
+            evidenceHistory
+        );
+
+    /*
+     * V2 migration compatibility:
+     *
+     * Evidence history may be unavailable for
+     * an older runtime snapshot.
+     *
+     * Therefore never erase aggregate
+     * sufficiency already present in state.
+     */
+
+    const contextIds =
+        uniqueStrings([
+            ...previousNormalized
+                .contextIds,
+
+            ...fromHistory
+                .contextIds,
+
+            observation?.contextId
+        ]);
+
+    const questionTypes =
+        uniqueStrings([
+            ...previousNormalized
+                .questionTypes,
+
+            ...fromHistory
+                .questionTypes,
+
+            observation?.questionType
+        ]);
+
+    const observedEvidenceTypes =
+        uniqueStrings([
+            ...previousNormalized
+                .observedEvidenceTypes,
+
+            ...fromHistory
+                .observedEvidenceTypes,
+
+            observation?.dimension
+        ]).filter(
+            dimension =>
+                EVIDENCE_DIMENSIONS
+                    .includes(dimension)
+        );
+
+    let independentObservations =
+        Math.max(
+            previousNormalized
+                .independentObservations,
+
+            fromHistory
+                .independentObservations
+        );
+
+    /*
+     * If explicit history already contains the
+     * current observation, do not increment
+     * again.
+     *
+     * appendObservation() runs before this
+     * function, therefore fromHistory normally
+     * already includes it.
+     */
+
+    if (
+        fromHistory
+            .independentObservations === 0 &&
+        observation?.independent === true
+    ) {
+        independentObservations =
+            Math.max(
+                independentObservations,
+                previousNormalized
+                    .independentObservations +
+                1
+            );
+    }
+
+    return {
+        independentObservations,
+
+        distinctContexts:
+            Math.max(
+                previousNormalized
+                    .distinctContexts,
                 contextIds.length
             ),
 
         distinctQuestionTypes:
             Math.max(
-                safeInteger(
-                    source.distinctQuestionTypes
-                ),
+                previousNormalized
+                    .distinctQuestionTypes,
                 questionTypes.length
             ),
 
-        observedEvidenceTypes:
-            uniqueEvidenceDimensions(
-                source.observedEvidenceTypes
-            ),
+        observedEvidenceTypes,
 
         contextIds,
 
@@ -2955,736 +2061,2813 @@ function normalizeEvidenceSufficiency(
     };
 }
 
+/**
+ * =========================================================
+ * OVERALL EVIDENCE
+ * =========================================================
+ */
 
-/* =========================================================
- * Attempt statistics normalization
- * ========================================================= */
+function calculateOverallEvidence(
+    evidence,
+    rules
+) {
+    const normalized =
+        normalizeEvidence(
+            evidence
+        );
 
-function normalizeAttemptStats(value) {
+    const weights =
+        getEvidenceWeights(
+            rules
+        );
 
-    const source =
-        isPlainObject(value)
-            ? value
-            : {};
+    let total = 0;
 
+    for (
+        const dimension
+        of EVIDENCE_DIMENSIONS
+    ) {
+        const weight =
+            safeNumber(
+                weights?.[dimension],
+                0
+            );
 
-    return {
-
-        total:
-            safeInteger(
-                source.total ??
-                source.attempts
-            ),
-
-        correct:
-            safeInteger(
-                source.correct
-            ),
-
-        wrong:
-            safeInteger(
-                source.wrong
-            ),
-
-        partial:
-            safeInteger(
-                source.partial
-            ),
-
-        skipped:
-            safeInteger(
-                source.skipped
-            )
-    };
-}
-
-
-/* =========================================================
- * Confidence normalization
- * ========================================================= */
-
-function normalizeConfidence(value) {
-
-    if (!isPlainObject(value)) {
-
-        return {
-            level: "low",
-            score: 0,
-            attemptCount: 0
-        };
+        total +=
+            normalized[dimension] *
+            weight;
     }
 
+    /*
+     * V2:
+     *
+     * overallEvidence is an analytics /
+     * progress summary.
+     *
+     * It is NOT a promotion hard gate.
+     */
 
-    return {
-
-        level:
-            CONFIDENCE_LEVELS.includes(
-                value.level
-            )
-                ? value.level
-                : "low",
-
-        score:
-            isFiniteNumber(value.score)
-                ? clamp01(value.score)
-                : 0,
-
-        attemptCount:
-            safeInteger(
-                value.attemptCount
-            )
-    };
+    return clamp(total);
 }
 
+/**
+ * =========================================================
+ * ATTEMPT STATS
+ * =========================================================
+ */
 
-/* =========================================================
- * Evidence wrong streak normalization
- * ========================================================= */
-
-function normalizeEvidenceWrongStreaks(
-    value
+function updateAttemptStats(
+    previousStats,
+    attempt
 ) {
+    const stats =
+        normalizeAttemptStats(
+            previousStats
+        );
 
-    const source =
-        isPlainObject(value)
-            ? value
-            : {};
+    const result =
+        getAttemptResult(
+            attempt
+        );
 
+    stats.total += 1;
 
-    return {
+    if (result === "correct") {
+        stats.correct += 1;
+    } else if (
+        result === "incorrect" ||
+        result === "wrong"
+    ) {
+        stats.wrong += 1;
+    } else if (
+        result === "partial"
+    ) {
+        stats.partial += 1;
+    } else if (
+        result === "skipped"
+    ) {
+        stats.skipped += 1;
+    }
 
-        know:
-            safeInteger(source.know),
-
-        explain:
-            safeInteger(source.explain),
-
-        apply:
-            safeInteger(source.apply),
-
-        transfer:
-            safeInteger(source.transfer)
-    };
+    return stats;
 }
 
+/**
+ * =========================================================
+ * WRONG STREAKS
+ * =========================================================
+ */
 
-/* =========================================================
- * Attempt interpretation
- * ========================================================= */
+function updateWrongStreaks({
+    previous,
+    attempt,
+    dimension
+}) {
+    const streaks =
+        normalizeWrongStreaks(
+            previous
+        );
 
-function resolveNodeId(attempt) {
+    if (
+        !EVIDENCE_DIMENSIONS.includes(
+            dimension
+        )
+    ) {
+        return streaks;
+    }
 
+    const result =
+        getAttemptResult(
+            attempt
+        );
+
+    if (
+        result === "incorrect" ||
+        result === "wrong"
+    ) {
+        streaks[dimension] += 1;
+
+        return streaks;
+    }
+
+    if (
+        result === "correct" ||
+        result === "partial"
+    ) {
+        streaks[dimension] = 0;
+    }
+
+    return streaks;
+}
+
+/**
+ * =========================================================
+ * CONFIDENCE
+ * =========================================================
+ */
+
+function calculateConsistencyScore(
+    attemptStats
+) {
+    const stats =
+        normalizeAttemptStats(
+            attemptStats
+        );
+
+    const evaluated =
+        stats.correct +
+        stats.wrong +
+        stats.partial;
+
+    if (evaluated <= 0) {
+        return 0;
+    }
+
+    const partialCredit =
+        stats.partial * 0.5;
+
+    return clamp(
+        (
+            stats.correct +
+            partialCredit
+        ) /
+        evaluated
+    );
+}
+
+function calculateAmountScore(
+    independentObservations
+) {
+    /*
+     * Six independent observations are enough
+     * to fully saturate the amount component.
+     */
+
+    return clamp(
+        safeNumber(
+            independentObservations,
+            0
+        ) / 6
+    );
+}
+
+function calculateContextDiversityScore(
+    distinctContexts
+) {
+    /*
+     * Two contexts satisfy the V2 M4
+     * diversity requirement.
+     */
+
+    return clamp(
+        safeNumber(
+            distinctContexts,
+            0
+        ) / 2
+    );
+}
+
+function calculateQuestionTypeDiversityScore(
+    distinctQuestionTypes
+) {
+    /*
+     * Two question types satisfy the V2 M4
+     * diversity requirement.
+     */
+
+    return clamp(
+        safeNumber(
+            distinctQuestionTypes,
+            0
+        ) / 2
+    );
+}
+
+function calculateConfidenceScore({
+    evidenceSufficiency,
+    attemptStats
+}) {
+    const sufficiency =
+        normalizeEvidenceSufficiency(
+            evidenceSufficiency
+        );
+
+    const amountScore =
+        calculateAmountScore(
+            sufficiency
+                .independentObservations
+        );
+
+    const consistencyScore =
+        calculateConsistencyScore(
+            attemptStats
+        );
+
+    const contextScore =
+        calculateContextDiversityScore(
+            sufficiency
+                .distinctContexts
+        );
+
+    const questionTypeScore =
+        calculateQuestionTypeDiversityScore(
+            sufficiency
+                .distinctQuestionTypes
+        );
+
+    /*
+     * Confidence is deliberately broader than
+     * attempt count.
+     *
+     * V2 principle:
+     *
+     * confidence reflects quantity +
+     * consistency + diversity.
+     */
+
+    return clamp(
+        amountScore * 0.40 +
+        consistencyScore * 0.30 +
+        contextScore * 0.15 +
+        questionTypeScore * 0.15
+    );
+}
+
+function getAttemptSupportedConfidenceLevel({
+    independentObservations,
+    rules
+}) {
+    const levels =
+        rules.evidenceConfidence
+            ?.levels ||
+        DEFAULT_RULES
+            .evidenceConfidence
+            .levels;
+
+    let supported =
+        "low";
+
+    for (
+        const level
+        of CONFIDENCE_LEVELS
+    ) {
+        const minimum =
+            safeInteger(
+                levels
+                    ?.[level]
+                    ?.minimumAttempts,
+                0
+            );
+
+        if (
+            independentObservations >=
+            minimum
+        ) {
+            supported = level;
+        }
+    }
+
+    return supported;
+}
+
+function scoreToConfidenceLevel(score) {
+    if (score >= 0.85) {
+        return "very_high";
+    }
+
+    if (score >= 0.65) {
+        return "high";
+    }
+
+    if (score >= 0.40) {
+        return "medium";
+    }
+
+    return "low";
+}
+
+function lowerConfidenceLevel(
+    levelA,
+    levelB
+) {
     return (
-        attempt.nodeId ??
-        attempt.primaryNode ??
-        attempt.evidence?.primaryNode ??
+        confidenceRank(levelA) <=
+            confidenceRank(levelB)
+            ? levelA
+            : levelB
+    );
+}
+
+function calculateConfidence({
+    evidenceSufficiency,
+    attemptStats,
+    rules
+}) {
+    const sufficiency =
+        normalizeEvidenceSufficiency(
+            evidenceSufficiency
+        );
+
+    const score =
+        calculateConfidenceScore({
+            evidenceSufficiency:
+                sufficiency,
+            attemptStats
+        });
+
+    const scoreLevel =
+        scoreToConfidenceLevel(
+            score
+        );
+
+    const attemptSupportedLevel =
+        getAttemptSupportedConfidenceLevel({
+            independentObservations:
+                sufficiency
+                    .independentObservations,
+            rules
+        });
+
+    /*
+     * Confidence cannot exceed what the
+     * amount of independent evidence supports.
+     */
+
+    const level =
+        lowerConfidenceLevel(
+            scoreLevel,
+            attemptSupportedLevel
+        );
+
+    return {
+        level,
+        score,
+        attemptCount:
+            sufficiency
+                .independentObservations
+    };
+}
+/**
+ * =========================================================
+ * FAILURE TRACKING
+ * =========================================================
+ */
+
+function normalizeFailureType(
+    failureType
+) {
+    return (
+        VALID_FAILURE_TYPES.includes(
+            failureType
+        )
+            ? failureType
+            : null
+    );
+}
+
+function getFailureType(attempt) {
+    return normalizeFailureType(
+        attempt?.failureType ||
+        attempt?.diagnostic
+            ?.failureType ||
         null
     );
 }
 
-
-function resolveEvidenceDimension(
+function getFailureSignatureId(
     attempt
 ) {
-
-    return (
-        attempt.evidence
-            ?.primaryDimension ??
-        attempt.primaryDimension ??
-        (
-            typeof attempt.evidence ===
-                "string"
-                ? attempt.evidence
-                : null
-        ) ??
-        "none"
-    );
-}
-
-
-function resolveDifficulty(attempt) {
-
-    return (
-        attempt.evidence
-            ?.difficulty ??
-        attempt.difficulty ??
-        "D3"
-    );
-}
-
-
-function resolveQuestionType(attempt) {
-
     const value =
-        attempt.questionType ??
-        attempt.context?.questionType ??
+        attempt?.failureSignatureId ||
+        attempt?.diagnostic
+            ?.failureSignatureId ||
         null;
-
 
     return (
         typeof value === "string" &&
-        value.trim().length > 0
-    )
-        ? value
-        : null;
+            value.length > 0
+            ? value
+            : null
+    );
 }
 
-
-function resolveContextId(attempt) {
-
-    const candidates = [
-        attempt.contextId,
-        attempt.context?.contextId,
-        attempt.context?.lessonId,
-        attempt.lessonId
-    ];
-
-
-    for (const value of candidates) {
-
-        if (
-            typeof value === "string" &&
-            value.trim().length > 0
-        ) {
-            return value;
-        }
-    }
-
-
-    return null;
-}
-
-
-function normalizeAttemptResult(
+function getFailureSourceNodeId(
     attempt
 ) {
-
-    const raw =
-        attempt.result ??
-        attempt.outcome ??
+    const value =
+        attempt?.sourceNodeId ||
+        attempt?.diagnostic
+            ?.sourceNodeId ||
+        attempt?.nodeId ||
+        attempt?.context
+            ?.nodeId ||
         null;
 
-
-    switch (raw) {
-
-        case "correct":
-            return "correct";
-
-        case "incorrect":
-        case "wrong":
-            return "incorrect";
-
-        case "partial":
-            return "partial";
-
-        case "skipped":
-            return "skipped";
-
-        default:
-            return "skipped";
-    }
+    return (
+        typeof value === "string"
+            ? value
+            : null
+    );
 }
 
-
-function isWrongResult(result) {
+function getFailureMetaSkillId(
+    attempt
+) {
+    const value =
+        attempt?.metaSkillId ||
+        attempt?.diagnostic
+            ?.metaSkillId ||
+        null;
 
     return (
+        typeof value === "string"
+            ? value
+            : null
+    );
+}
+
+function buildFailureKey({
+    failureType,
+    failureSignatureId
+}) {
+    /*
+     * Signature is preferred because two
+     * failures of the same broad type may
+     * represent different misconceptions.
+     */
+
+    if (failureSignatureId) {
+        return failureSignatureId;
+    }
+
+    return failureType;
+}
+
+function updateFailureEvidence({
+    previousFailureSummary,
+    previousLastFailure,
+    attempt
+}) {
+    const summary =
+        isObject(
+            previousFailureSummary
+        )
+            ? deepClone(
+                previousFailureSummary
+            )
+            : {};
+
+    const result =
+        getAttemptResult(
+            attempt
+        );
+
+    const isFailure =
         result === "incorrect" ||
-        result === "wrong"
-    );
-}
+        result === "wrong";
 
+    if (!isFailure) {
+        return {
+            summary,
+            lastFailure:
+                previousLastFailure
+                    ? deepClone(
+                        previousLastFailure
+                    )
+                    : null,
 
-function isDiagnosticAttempt(
-    attempt
-) {
-
-    const candidates = [
-        attempt.mode,
-        attempt.context?.mode,
-        attempt.context?.pathStage
-    ];
-
-
-    for (const value of candidates) {
-
-        if (
-            value === "diagnostic" ||
-            value === "DIAGNOSTIC"
-        ) {
-            return true;
-        }
-
-
-        if (
-            Array.isArray(value) &&
-            value.some(
-                item =>
-                    item === "diagnostic" ||
-                    item === "DIAGNOSTIC"
-            )
-        ) {
-            return true;
-        }
-    }
-
-
-    return false;
-}
-
-
-/* =========================================================
- * Retest interpretation
- * ========================================================= */
-
-function resolveRetestFailed(attempt) {
-
-    if (
-        attempt.retestFailed === true
-    ) {
-        return true;
-    }
-
-
-    if (
-        attempt.retest?.passed === false
-    ) {
-        return true;
-    }
-
-
-    const stage =
-        attempt.context?.pathStage ??
-        attempt.pathStage ??
-        null;
-
-
-    return (
-        stage === "RETEST" &&
-        isWrongResult(
-            normalizeAttemptResult(
-                attempt
-            )
-        )
-    );
-}
-
-
-/* =========================================================
- * Timestamp
- * ========================================================= */
-
-function resolveAttemptTimestamp(
-    attempt
-) {
-
-    const candidates = [
-        attempt.timestamp,
-        attempt.submittedAt,
-        attempt.completedAt,
-        attempt.createdAt
-    ];
-
-
-    for (const value of candidates) {
-
-        if (
-            typeof value === "string" &&
-            value.trim().length > 0
-        ) {
-            return value;
-        }
-    }
-
-
-    return null;
-}
-
-
-/* =========================================================
- * Weakness trigger threshold parser
- * ========================================================= */
-
-function resolveWeaknessTriggerThreshold(
-    weaknessRules,
-    conditionName,
-    fallback
-) {
-
-    const triggers =
-        Array.isArray(
-            weaknessRules
-                .weaknessTriggers
-        )
-            ? weaknessRules
-                .weaknessTriggers
-            : [];
-
-
-    const trigger =
-        triggers.find(
-            item =>
-                typeof item?.condition ===
-                "string" &&
-                item.condition.startsWith(
-                    conditionName
-                )
-        );
-
-
-    if (!trigger) {
-        return fallback;
-    }
-
-
-    const match =
-        trigger.condition.match(
-            />=\s*(\d+)/
-        );
-
-
-    if (!match) {
-        return fallback;
-    }
-
-
-    return safePositiveInteger(
-        Number(match[1]),
-        fallback
-    );
-}
-
-
-/* =========================================================
- * Failure summary
- * ========================================================= */
-
-function cloneFailureSummary(value) {
-
-    if (!isPlainObject(value)) {
-        return {};
-    }
-
-
-    const output = {};
-
-
-    for (
-        const [key, entry]
-        of Object.entries(value)
-    ) {
-
-        if (!isPlainObject(entry)) {
-            continue;
-        }
-
-
-        output[key] = {
-
-            count:
-                safeInteger(
-                    entry.count
-                ),
-
-            failureType:
-                entry.failureType ??
-                null,
-
-            failureSignatureId:
-                entry.failureSignatureId ??
-                null,
-
-            sourceNodeId:
-                entry.sourceNodeId ??
-                null,
-
-            lastAt:
-                entry.lastAt ??
-                null
+            failureType: null,
+            failureSignatureId: null,
+            failureKey: null,
+            persistentFailureCount: 0,
+            recorded: false
         };
     }
 
+    const failureType =
+        getFailureType(attempt);
 
-    return output;
-}
-
-
-/* =========================================================
- * No evidence update
- * ========================================================= */
-
-function createNoEvidenceUpdate(
-    evidence
-) {
-
-    return {
-        evidence:
-            cloneEvidence(evidence),
-        previousValue: null,
-        newValue: null
-    };
-}
-
-
-/* =========================================================
- * Mastery rank
- * ========================================================= */
-
-function masteryRank(level) {
-
-    const rank =
-        MASTERY_LEVELS.indexOf(
-            level
+    const failureSignatureId =
+        getFailureSignatureId(
+            attempt
         );
 
+    /*
+     * Invalid / missing canonical failure type:
+     * do not create a failure record.
+     */
 
-    return rank >= 0
-        ? rank
-        : 0;
-}
-
-
-/* =========================================================
- * Utility helpers
- * ========================================================= */
-
-function cloneEvidence(evidence) {
-
-    return {
-        know: evidence.know,
-        explain: evidence.explain,
-        apply: evidence.apply,
-        transfer: evidence.transfer
-    };
-}
-
-
-function uniqueEvidenceDimensions(
-    values
-) {
-
-    if (!Array.isArray(values)) {
-        return [];
-    }
-
-
-    return [
-        ...new Set(
-            values.filter(
-                value =>
-                    EVIDENCE_DIMENSIONS.includes(
-                        value
+    if (!failureType) {
+        return {
+            summary,
+            lastFailure:
+                previousLastFailure
+                    ? deepClone(
+                        previousLastFailure
                     )
-            )
-        )
-    ];
-}
+                    : null,
 
-
-function uniqueStrings(values) {
-
-    if (!Array.isArray(values)) {
-        return [];
+            failureType: null,
+            failureSignatureId: null,
+            failureKey: null,
+            persistentFailureCount: 0,
+            recorded: false
+        };
     }
 
+    const failureKey =
+        buildFailureKey({
+            failureType,
+            failureSignatureId
+        });
 
-    return [
-        ...new Set(
-            values.filter(
-                value =>
-                    typeof value === "string" &&
-                    value.trim().length > 0
-            )
-        )
-    ];
-}
-
-
-function deepMergeObject(
-    base,
-    override
-) {
-
-    if (!isPlainObject(base)) {
-
-        return cloneObject(
-            override
+    const sourceNodeId =
+        getFailureSourceNodeId(
+            attempt
         );
+
+    const metaSkillId =
+        getFailureMetaSkillId(
+            attempt
+        );
+
+    const at =
+        nowIso(attempt);
+
+    const previousRecord =
+        isObject(
+            summary[failureKey]
+        )
+            ? summary[failureKey]
+            : {};
+
+    const count =
+        Math.max(
+            0,
+            safeInteger(
+                previousRecord.count,
+                0
+            )
+        ) + 1;
+
+    const record = {
+        count,
+        failureType,
+        sourceNodeId,
+        lastAt: at
+    };
+
+    if (failureSignatureId) {
+        record.failureSignatureId =
+            failureSignatureId;
     }
 
-
-    const output =
-        cloneObject(base);
-
-
-    if (!isPlainObject(override)) {
-        return output;
+    if (metaSkillId) {
+        record.metaSkillId =
+            metaSkillId;
     }
 
+    summary[failureKey] =
+        record;
+
+    const lastFailure = {
+        questionId:
+            typeof attempt?.questionId
+                === "string"
+                ? attempt.questionId
+                : null,
+
+        failureType,
+
+        sourceNodeId,
+
+        at
+    };
+
+    if (failureSignatureId) {
+        lastFailure
+            .failureSignatureId =
+            failureSignatureId;
+    }
+
+    if (metaSkillId) {
+        lastFailure.metaSkillId =
+            metaSkillId;
+    }
+
+    return {
+        summary,
+        lastFailure,
+        failureType,
+        failureSignatureId,
+        failureKey,
+        persistentFailureCount:
+            count,
+        recorded: true
+    };
+}
+
+/**
+ * =========================================================
+ * WEAKNESS
+ * =========================================================
+ */
+
+function hasEnoughObservationsForWeakness({
+    evidenceHistory,
+    dimension
+}) {
+    const observations =
+        evidenceHistory?.[dimension];
+
+    /*
+     * An unobserved dimension must NOT be
+     * interpreted as weak.
+     *
+     * Two actual observations are the minimum
+     * before capability weakness can be inferred.
+     */
+
+    return (
+        Array.isArray(observations) &&
+        observations.length >= 2
+    );
+}
+
+function getWeaknessThresholds(
+    rules
+) {
+    return (
+        rules.weakness
+            ?.thresholds ||
+        DEFAULT_RULES
+            .weakness
+            .thresholds
+    );
+}
+
+function evaluateWeakEvidence({
+    evidence,
+    evidenceHistory,
+    rules
+}) {
+    const thresholds =
+        getWeaknessThresholds(
+            rules
+        );
+
+    const weakEvidence = [];
 
     for (
-        const [key, value]
-        of Object.entries(override)
+        const dimension
+        of EVIDENCE_DIMENSIONS
     ) {
+        if (
+            !hasEnoughObservationsForWeakness({
+                evidenceHistory,
+                dimension
+            })
+        ) {
+            continue;
+        }
+
+        const threshold =
+            safeNumber(
+                thresholds
+                ?.[dimension],
+                0
+            );
 
         if (
-            isPlainObject(value) &&
-            isPlainObject(output[key])
+            safeNumber(
+                evidence?.[dimension],
+                0
+            ) < threshold
         ) {
-
-            output[key] =
-                deepMergeObject(
-                    output[key],
-                    value
-                );
-
-        } else {
-
-            output[key] =
-                cloneValue(value);
+            weakEvidence.push(
+                dimension
+            );
         }
     }
 
-
-    return output;
+    return weakEvidence;
 }
 
+function evaluateWeakness({
+    evidence,
+    evidenceHistory,
+    evidenceWrongStreaks,
+    failureResult,
+    previousSignals,
+    rules
+}) {
+    const signals =
+        uniqueStrings(
+            previousSignals
+        );
 
-function cloneValue(value) {
+    const weakEvidence =
+        evaluateWeakEvidence({
+            evidence,
+            evidenceHistory,
+            rules
+        });
 
-    if (
-        value === undefined ||
-        value === null
-    ) {
-        return value;
-    }
-
-
-    if (
-        typeof value !== "object"
-    ) {
-        return value;
-    }
-
-
-    return JSON.parse(
-        JSON.stringify(value)
-    );
-}
-
-
-function cloneObject(value) {
-
-    if (!isPlainObject(value)) {
-        return {};
-    }
-
-
-    return JSON.parse(
-        JSON.stringify(value)
-    );
-}
-
-
-function numericOr(
-    value,
-    fallback
-) {
-
-    return isFiniteNumber(value)
-        ? value
-        : fallback;
-}
-
-
-function safeInteger(value) {
-
-    return (
-        Number.isInteger(value) &&
-        value >= 0
-    )
-        ? value
-        : 0;
-}
-
-
-function safePositiveInteger(
-    value,
-    fallback
-) {
-
-    return (
-        Number.isInteger(value) &&
-        value > 0
-    )
-        ? value
-        : fallback;
-}
-
-
-function clamp(
-    value,
-    minimum,
-    maximum
-) {
-
-    if (!isFiniteNumber(value)) {
-        return minimum;
-    }
-
-
-    return Math.min(
-        maximum,
+    const sameEvidenceWrongThreshold =
         Math.max(
-            minimum,
-            value
+            1,
+            safeInteger(
+                rules.weakness
+                    ?.sameEvidenceWrongStreak,
+                DEFAULT_RULES
+                    .weakness
+                    .sameEvidenceWrongStreak
+            )
+        );
+
+    const sameFailureThreshold =
+        Math.max(
+            1,
+            safeInteger(
+                rules.weakness
+                    ?.sameFailureSignatureCount,
+                DEFAULT_RULES
+                    .weakness
+                    .sameFailureSignatureCount
+            )
+        );
+
+    let repeatedEvidenceFailure =
+        false;
+
+    for (
+        const dimension
+        of EVIDENCE_DIMENSIONS
+    ) {
+        if (
+            safeInteger(
+                evidenceWrongStreaks
+                ?.[dimension],
+                0
+            ) >=
+            sameEvidenceWrongThreshold
+        ) {
+            repeatedEvidenceFailure =
+                true;
+
+            const signal =
+                `weak_${dimension}`;
+
+            if (
+                !signals.includes(
+                    signal
+                )
+            ) {
+                signals.push(signal);
+            }
+        }
+    }
+
+    const repeatedFailureSignature =
+        safeInteger(
+            failureResult
+                ?.persistentFailureCount,
+            0
+        ) >=
+        sameFailureThreshold;
+
+    if (
+        repeatedFailureSignature &&
+        !signals.includes(
+            "trigger_remediation_diagnosis_recommended"
+        )
+    ) {
+        signals.push(
+            "trigger_remediation_diagnosis_recommended"
+        );
+    }
+
+    for (
+        const dimension
+        of weakEvidence
+    ) {
+        const signal =
+            `low_${dimension}_evidence`;
+
+        if (!signals.includes(signal)) {
+            signals.push(signal);
+        }
+    }
+
+    const isWeak =
+        weakEvidence.length > 0 ||
+        repeatedEvidenceFailure ||
+        repeatedFailureSignature;
+
+    return {
+        isWeak,
+        weakEvidence,
+        signals,
+
+        repeatedEvidenceFailure,
+        repeatedFailureSignature
+    };
+}
+
+/**
+ * =========================================================
+ * PROMOTION REQUIREMENT HELPERS
+ * =========================================================
+ */
+
+function getLevelRule(
+    level,
+    rules
+) {
+    return (
+        rules.levelThresholds
+        ?.[level] ||
+        DEFAULT_RULES
+            .levelThresholds
+        ?.[level] ||
+        null
+    );
+}
+
+function evidenceRequirementsSatisfied({
+    evidence,
+    requiredEvidence
+}) {
+    if (
+        !isObject(
+            requiredEvidence
+        )
+    ) {
+        return true;
+    }
+
+    for (
+        const [
+            dimension,
+            minimum
+        ]
+        of Object.entries(
+            requiredEvidence
+        )
+    ) {
+        if (
+            !EVIDENCE_DIMENSIONS
+                .includes(dimension)
+        ) {
+            continue;
+        }
+
+        if (
+            safeNumber(
+                evidence
+                ?.[dimension],
+                0
+            ) <
+            safeNumber(
+                minimum,
+                0
+            )
+        ) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+function getMinimumRequirement(
+    requirements,
+    key,
+    fallback = 0
+) {
+    return Math.max(
+        0,
+        safeInteger(
+            requirements?.[key],
+            fallback
         )
     );
 }
 
+function sufficiencyRequirementsSatisfied({
+    level,
+    evidenceSufficiency,
+    qualifyingCounts,
+    rules
+}) {
+    const levelRule =
+        getLevelRule(
+            level,
+            rules
+        );
 
-function clamp01(value) {
+    if (!levelRule) {
+        return false;
+    }
 
-    return clamp(
-        value,
-        0,
-        1
+    const requirements =
+        levelRule
+            .minimumEvidenceSufficiency ||
+        {};
+
+    const sufficiency =
+        normalizeEvidenceSufficiency(
+            evidenceSufficiency
+        );
+
+    const minimumIndependent =
+        getMinimumRequirement(
+            requirements,
+            "minimumIndependentObservations"
+        );
+
+    if (
+        sufficiency
+            .independentObservations <
+        minimumIndependent
+    ) {
+        return false;
+    }
+
+    const minimumContexts =
+        getMinimumRequirement(
+            requirements,
+            "minimumDistinctContexts"
+        );
+
+    if (
+        sufficiency
+            .distinctContexts <
+        minimumContexts
+    ) {
+        return false;
+    }
+
+    const minimumQuestionTypes =
+        getMinimumRequirement(
+            requirements,
+            "minimumDistinctQuestionTypes"
+        );
+
+    if (
+        sufficiency
+            .distinctQuestionTypes <
+        minimumQuestionTypes
+    ) {
+        return false;
+    }
+
+    const qualifyingRequirementMap = {
+        minimumQualifyingKnowObservations:
+            "know",
+
+        minimumQualifyingExplainObservations:
+            "explain",
+
+        minimumQualifyingApplyObservations:
+            "apply",
+
+        minimumQualifyingTransferObservations:
+            "transfer"
+    };
+
+    for (
+        const [
+            requirementKey,
+            dimension
+        ]
+        of Object.entries(
+            qualifyingRequirementMap
+        )
+    ) {
+        const minimum =
+            getMinimumRequirement(
+                requirements,
+                requirementKey
+            );
+
+        if (
+            safeInteger(
+                qualifyingCounts
+                ?.[dimension],
+                0
+            ) < minimum
+        ) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+function confidenceRequirementSatisfied({
+    level,
+    confidence,
+    rules
+}) {
+    const levelRule =
+        getLevelRule(
+            level,
+            rules
+        );
+
+    if (!levelRule) {
+        return false;
+    }
+
+    const minimumConfidence =
+        levelRule.minimumConfidence ||
+        "low";
+
+    return isConfidenceAtLeast(
+        confidence?.level ||
+        "low",
+        minimumConfidence
     );
 }
 
+/**
+ * =========================================================
+ * LEVEL SUPPORT
+ * =========================================================
+ */
 
-function round(
-    value,
-    digits = 4
+function isLevelSupported({
+    level,
+    evidence,
+    evidenceSufficiency,
+    qualifyingCounts,
+    confidence,
+    rules
+}) {
+    if (level === "M0") {
+        return true;
+    }
+
+    const levelRule =
+        getLevelRule(
+            level,
+            rules
+        );
+
+    if (!levelRule) {
+        return false;
+    }
+
+    const evidenceSatisfied =
+        evidenceRequirementsSatisfied({
+            evidence,
+            requiredEvidence:
+                levelRule
+                    .requiredEvidence
+        });
+
+    if (!evidenceSatisfied) {
+        return false;
+    }
+
+    const sufficiencySatisfied =
+        sufficiencyRequirementsSatisfied({
+            level,
+            evidenceSufficiency,
+            qualifyingCounts,
+            rules
+        });
+
+    if (!sufficiencySatisfied) {
+        return false;
+    }
+
+    const confidenceSatisfied =
+        confidenceRequirementSatisfied({
+            level,
+            confidence,
+            rules
+        });
+
+    if (!confidenceSatisfied) {
+        return false;
+    }
+
+    /*
+     * IMPORTANT V2:
+     *
+     * No overallEvidence requirement here.
+     *
+     * This is deliberate.
+     */
+
+    return true;
+}
+
+function findHighestSupportedMastery({
+    evidence,
+    evidenceSufficiency,
+    qualifyingCounts,
+    confidence,
+    rules
+}) {
+    for (
+        let index =
+            MASTERY_LEVELS.length - 1;
+        index >= 1;
+        index -= 1
+    ) {
+        const level =
+            MASTERY_LEVELS[index];
+
+        if (
+            isLevelSupported({
+                level,
+                evidence,
+                evidenceSufficiency,
+                qualifyingCounts,
+                confidence,
+                rules
+            })
+        ) {
+            return level;
+        }
+    }
+
+    return "M0";
+}
+
+/**
+ * =========================================================
+ * PROMOTION
+ * =========================================================
+ */
+
+function evaluatePromotion({
+    previousMastery,
+    evidence,
+    evidenceSufficiency,
+    qualifyingCounts,
+    confidence,
+    rules
+}) {
+    const previous =
+        MASTERY_LEVELS.includes(
+            previousMastery
+        )
+            ? previousMastery
+            : "M0";
+
+    if (previous === "M4") {
+        return {
+            mastery: "M4",
+            promoted: false,
+            direction: "none",
+            supportedLevel:
+                findHighestSupportedMastery({
+                    evidence,
+                    evidenceSufficiency,
+                    qualifyingCounts,
+                    confidence,
+                    rules
+                })
+        };
+    }
+
+    const target =
+        nextMasteryLevel(
+            previous
+        );
+
+    const targetSupported =
+        isLevelSupported({
+            level: target,
+            evidence,
+            evidenceSufficiency,
+            qualifyingCounts,
+            confidence,
+            rules
+        });
+
+    /*
+     * Sequential promotion:
+     *
+     * one update may advance at most
+     * one mastery level.
+     */
+
+    if (targetSupported) {
+        return {
+            mastery: target,
+            promoted: true,
+            direction: "up",
+            supportedLevel:
+                findHighestSupportedMastery({
+                    evidence,
+                    evidenceSufficiency,
+                    qualifyingCounts,
+                    confidence,
+                    rules
+                })
+        };
+    }
+
+    return {
+        mastery: previous,
+        promoted: false,
+        direction: "none",
+        supportedLevel:
+            findHighestSupportedMastery({
+                evidence,
+                evidenceSufficiency,
+                qualifyingCounts,
+                confidence,
+                rules
+            })
+    };
+}
+
+/**
+ * =========================================================
+ * DOWNGRADE POLICY
+ * =========================================================
+ */
+
+function getPersistentFailureThreshold(
+    rules
 ) {
-
-    const factor =
-        10 ** digits;
-
-
-    return (
-        Math.round(
-            value * factor
-        ) /
-        factor
+    return Math.max(
+        1,
+        safeInteger(
+            rules.downgrade
+                ?.persistentFailureThreshold,
+            DEFAULT_RULES
+                .downgrade
+                .persistentFailureThreshold
+        )
     );
 }
 
-
-function isFiniteNumber(value) {
+function getMinimumDowngradeLevel(
+    rules
+) {
+    const configured =
+        rules.downgrade
+            ?.minimumPossibleLevel;
 
     return (
-        typeof value === "number" &&
-        Number.isFinite(value)
+        MASTERY_LEVELS.includes(
+            configured
+        )
+            ? configured
+            : "M1"
     );
 }
 
+function evaluateDowngrade({
+    previousMastery,
+    promotedMastery,
+    supportedLevel,
+    failureResult,
+    attempt,
+    rules
+}) {
+    const previous =
+        MASTERY_LEVELS.includes(
+            previousMastery
+        )
+            ? previousMastery
+            : "M0";
 
-function isPlainObject(value) {
+    /*
+     * Promotion wins this update.
+     *
+     * Do not promote and downgrade in
+     * the same transaction.
+     */
+
+    if (
+        masteryRank(
+            promotedMastery
+        ) >
+        masteryRank(previous)
+    ) {
+        return {
+            mastery:
+                promotedMastery,
+
+            downgradeTriggered:
+                false,
+
+            downgradeReason:
+                null,
+
+            direction: "up"
+        };
+    }
+
+    const result =
+        getAttemptResult(
+            attempt
+        );
+
+    const isFailure =
+        result === "incorrect" ||
+        result === "wrong";
+
+    if (!isFailure) {
+        return {
+            mastery: previous,
+            downgradeTriggered:
+                false,
+            downgradeReason:
+                null,
+            direction: "none"
+        };
+    }
+
+    /*
+     * Failed RETEST:
+     *
+     * retain mastery.
+     * Stability is handled separately.
+     */
+
+    if (isRetestAttempt(attempt)) {
+        return {
+            mastery: previous,
+
+            downgradeTriggered:
+                false,
+
+            downgradeReason:
+                "failed_retest_keeps_mastery",
+
+            direction: "none"
+        };
+    }
+
+    /*
+     * Diagnostic failure alone cannot
+     * invalidate established mastery.
+     */
+
+    if (
+        isDiagnosticAttempt(
+            attempt
+        )
+    ) {
+        return {
+            mastery: previous,
+
+            downgradeTriggered:
+                false,
+
+            downgradeReason:
+                "diagnostic_failure_not_sufficient_for_downgrade",
+
+            direction: "none"
+        };
+    }
+
+    const persistentCount =
+        safeInteger(
+            failureResult
+                ?.persistentFailureCount,
+            0
+        );
+
+    const threshold =
+        getPersistentFailureThreshold(
+            rules
+        );
+
+    /*
+     * Single / repeated-but-not-persistent
+     * failures update evidence and weakness
+     * only.
+     */
+
+    if (
+        persistentCount <
+        threshold
+    ) {
+        return {
+            mastery: previous,
+
+            downgradeTriggered:
+                false,
+
+            downgradeReason:
+                null,
+
+            direction: "none"
+        };
+    }
+
+    /*
+     * Persistent failure only allows
+     * downgrade when current evidence no
+     * longer supports the existing level.
+     */
+
+    if (
+        masteryRank(
+            supportedLevel
+        ) >=
+        masteryRank(previous)
+    ) {
+        return {
+            mastery: previous,
+
+            downgradeTriggered:
+                false,
+
+            downgradeReason:
+                null,
+
+            direction: "none"
+        };
+    }
+
+    const minimumLevel =
+        getMinimumDowngradeLevel(
+            rules
+        );
+
+    const candidate =
+        previousMasteryLevel(
+            previous
+        );
+
+    const boundedCandidate =
+        masteryRank(candidate) <
+            masteryRank(minimumLevel)
+            ? minimumLevel
+            : candidate;
+
+    /*
+     * If policy floor means final mastery
+     * equals previous mastery, no actual
+     * downgrade occurred.
+     */
+
+    if (
+        boundedCandidate ===
+        previous
+    ) {
+        return {
+            mastery: previous,
+
+            downgradeTriggered:
+                false,
+
+            downgradeReason:
+                "persistent_failure_recalculate_mastery",
+
+            direction: "none"
+        };
+    }
+
+    return {
+        mastery:
+            boundedCandidate,
+
+        downgradeTriggered:
+            true,
+
+        downgradeReason:
+            "persistent_failure_recalculate_mastery",
+
+        direction: "down"
+    };
+}
+
+/**
+ * =========================================================
+ * MASTERY DECISION
+ * =========================================================
+ */
+
+function evaluateMastery({
+    previousMastery,
+    evidence,
+    evidenceSufficiency,
+    qualifyingCounts,
+    confidence,
+    failureResult,
+    attempt,
+    rules
+}) {
+    const promotion =
+        evaluatePromotion({
+            previousMastery,
+            evidence,
+            evidenceSufficiency,
+            qualifyingCounts,
+            confidence,
+            rules
+        });
+
+    const downgrade =
+        evaluateDowngrade({
+            previousMastery,
+
+            promotedMastery:
+                promotion.mastery,
+
+            supportedLevel:
+                promotion.supportedLevel,
+
+            failureResult,
+            attempt,
+            rules
+        });
+
+    const finalMastery =
+        downgrade.mastery;
+
+    const masteryChanged =
+        finalMastery !==
+        previousMastery;
+
+    let direction =
+        downgrade.direction;
+
+    if (
+        direction === "none" &&
+        promotion.promoted
+    ) {
+        direction = "up";
+    }
+
+    return {
+        mastery:
+            finalMastery,
+
+        supportedLevel:
+            promotion.supportedLevel,
+
+        masteryChanged,
+
+        promoted:
+            promotion.promoted &&
+            finalMastery ===
+            promotion.mastery,
+
+        downgradeTriggered:
+            downgrade
+                .downgradeTriggered,
+
+        downgradeReason:
+            downgrade
+                .downgradeReason,
+
+        direction,
+
+        persistentFailureCount:
+            safeInteger(
+                failureResult
+                    ?.persistentFailureCount,
+                0
+            )
+    };
+}
+
+/**
+ * =========================================================
+ * RETEST STATE
+ * =========================================================
+ */
+
+function normalizeRetestState(
+    retest
+) {
+    const source =
+        isObject(retest)
+            ? retest
+            : {};
+
+    return {
+        attempted:
+            source.attempted === true,
+
+        lastRetestAt:
+            typeof source.lastRetestAt
+                === "string"
+                ? source.lastRetestAt
+                : null,
+
+        passed:
+            source.passed === true,
+
+        differentQuestion:
+            source
+                .differentQuestion === true,
+
+        differentContext:
+            source
+                .differentContext === true,
+
+        independent:
+            source.independent === true
+    };
+}
+
+function updateRetestState({
+    previousRetest,
+    attempt,
+    observation
+}) {
+    const retest =
+        normalizeRetestState(
+            previousRetest
+        );
+
+    if (
+        !isRetestAttempt(
+            attempt
+        )
+    ) {
+        return retest;
+    }
+
+    const result =
+        getAttemptResult(
+            attempt
+        );
+
+    retest.attempted = true;
+
+    retest.lastRetestAt =
+        nowIso(attempt);
+
+    retest.passed =
+        result === "correct";
+
+    retest.independent =
+        observation
+            ?.independent === true;
+
+    /*
+     * These flags may be supplied by the
+     * orchestration/runtime layer.
+     */
+
+    if (
+        attempt
+            ?.retest
+            ?.differentQuestion === true ||
+        attempt
+            ?.differentQuestion === true
+    ) {
+        retest.differentQuestion =
+            true;
+    }
+
+    if (
+        attempt
+            ?.retest
+            ?.differentContext === true ||
+        attempt
+            ?.differentContext === true
+    ) {
+        retest.differentContext =
+            true;
+    }
+
+    return retest;
+}
+
+/**
+ * =========================================================
+ * REVIEW STATE
+ * =========================================================
+ */
+
+function normalizeReviewState(
+    review
+) {
+    const source =
+        isObject(review)
+            ? review
+            : {};
+
+    return {
+        lastReviewedAt:
+            typeof source.lastReviewedAt
+                === "string"
+                ? source.lastReviewedAt
+                : null
+    };
+}
+
+function updateReviewState({
+    previousReview,
+    attempt
+}) {
+    const review =
+        normalizeReviewState(
+            previousReview
+        );
+
+    if (
+        isReviewAttempt(
+            attempt
+        )
+    ) {
+        review.lastReviewedAt =
+            nowIso(attempt);
+    }
+
+    return review;
+}
+
+/**
+ * =========================================================
+ * STABILITY
+ * =========================================================
+ */
+
+function isSuccessfulRetest({
+    attempt,
+    retest
+}) {
+    if (
+        !isRetestAttempt(
+            attempt
+        )
+    ) {
+        return false;
+    }
+
+    if (
+        getAttemptResult(
+            attempt
+        ) !== "correct"
+    ) {
+        return false;
+    }
+
+    /*
+     * V2 retains the existing conservative
+     * stability semantics:
+     *
+     * successful independent retest.
+     *
+     * Different-question/context information
+     * may be supplied by orchestration.
+     */
 
     return (
-        value !== null &&
-        typeof value === "object" &&
-        !Array.isArray(value)
+        retest?.independent === true
     );
 }
+
+/**
+ * =========================================================
+ * STATUS
+ * =========================================================
+ */
+
+function determineStatus({
+    previousStatus,
+    mastery,
+    weakness,
+    attempt,
+    retest
+}) {
+    /*
+     * Weakness takes precedence.
+     */
+
+    if (weakness?.isWeak) {
+        return "weak";
+    }
+
+    /*
+     * Failed retest removes stable status
+     * without reducing mastery.
+     */
+
+    if (
+        isRetestAttempt(
+            attempt
+        ) &&
+        getAttemptResult(
+            attempt
+        ) !== "correct"
+    ) {
+        return (
+            mastery === "M4"
+                ? "mastered"
+                : "developing"
+        );
+    }
+
+    /*
+     * Successful independent retest
+     * establishes stability.
+     */
+
+    if (
+        isSuccessfulRetest({
+            attempt,
+            retest
+        })
+    ) {
+        return "stable";
+    }
+
+    /*
+     * Preserve an existing stable state unless
+     * a rule above explicitly invalidates it.
+     */
+
+    if (
+        previousStatus === "stable"
+    ) {
+        return "stable";
+    }
+
+    if (mastery === "M4") {
+        return "mastered";
+    }
+
+    return "developing";
+}
+/**
+ * =========================================================
+ * TIMESTAMPS
+ * =========================================================
+ */
+
+function updateTimestamps({
+    previousState,
+    attempt
+}) {
+    const result =
+        getAttemptResult(attempt);
+
+    const at =
+        nowIso(attempt);
+
+    let lastAttemptAt =
+        previousState
+            ?.lastAttemptAt ||
+        null;
+
+    let lastSuccessAt =
+        previousState
+            ?.lastSuccessAt ||
+        null;
+
+    /*
+     * Every processed attempt becomes
+     * the latest attempt timestamp.
+     */
+    lastAttemptAt = at;
+
+    if (result === "correct") {
+        lastSuccessAt = at;
+    }
+
+    return {
+        lastAttemptAt,
+        lastSuccessAt
+    };
+}
+
+/**
+ * =========================================================
+ * DIRECT EVIDENCE RESULT
+ * =========================================================
+ */
+
+function buildDirectEvidenceResult({
+    dimension,
+    observation,
+    previousEvidence,
+    currentEvidence
+}) {
+    if (
+        !dimension ||
+        !observation
+    ) {
+        return {
+            directEvidence: false,
+            dimension: null,
+            previousValue: null,
+            currentValue: null,
+            observationScore: null,
+            reliabilityWeight: null
+        };
+    }
+
+    return {
+        directEvidence: true,
+
+        dimension,
+
+        previousValue:
+            safeNumber(
+                previousEvidence
+                ?.[dimension],
+                0
+            ),
+
+        currentValue:
+            safeNumber(
+                currentEvidence
+                ?.[dimension],
+                0
+            ),
+
+        observationScore:
+            observation.score,
+
+        reliabilityWeight:
+            observation
+                .reliabilityWeight
+    };
+}
+
+/**
+ * =========================================================
+ * MASTERED EVALUATION
+ * =========================================================
+ */
+
+function isMastered({
+    mastery
+}) {
+    /*
+     * V2 distinction:
+     *
+     * M4     → mastered capability
+     * stable → successful retest / stability
+     *
+     * Do NOT collapse mastered and stable.
+     */
+
+    return mastery === "M4";
+}
+
+/**
+ * =========================================================
+ * PUBLIC UPDATE
+ * =========================================================
+ */
+
+export function updateMastery({
+    attempt = {},
+    currentState = null,
+    masteryRules = {},
+    evidenceModel = {},
+    evidenceHistory = null,
+    evidenceContext = {}
+} = {}) {
+    /*
+     * =====================================================
+     * 1. INPUT IMMUTABILITY
+     * =====================================================
+     *
+     * Never mutate caller-owned objects.
+     */
+
+    const safeAttempt =
+        isObject(attempt)
+            ? deepClone(attempt)
+            : {};
+
+    const safeCurrentState =
+        isObject(currentState)
+            ? deepClone(currentState)
+            : null;
+
+    const safeMasteryRules =
+        isObject(masteryRules)
+            ? deepClone(masteryRules)
+            : {};
+
+    const safeEvidenceHistory =
+        isObject(evidenceHistory)
+            ? deepClone(
+                evidenceHistory
+            )
+            : null;
+
+    const safeEvidenceContext =
+        isObject(evidenceContext)
+            ? deepClone(
+                evidenceContext
+            )
+            : {};
+
+    /*
+     * evidenceModel remains part of the
+     * public API for compatibility.
+     *
+     * V2 rules are currently sufficient for
+     * the estimator implemented here.
+     */
+
+    const safeEvidenceModel =
+        isObject(evidenceModel)
+            ? deepClone(
+                evidenceModel
+            )
+            : {};
+
+    void safeEvidenceModel;
+
+    /*
+     * =====================================================
+     * 2. RESOLVE RULES
+     * =====================================================
+     */
+
+    const rules =
+        resolveRules(
+            safeMasteryRules
+        );
+
+    /*
+     * =====================================================
+     * 3. NORMALIZE CURRENT STATE
+     * =====================================================
+     */
+
+    const previousState =
+        normalizeState(
+            safeCurrentState
+        );
+
+    const previousMastery =
+        previousState.mastery;
+
+    const previousStatus =
+        previousState.status;
+
+    const previousEvidence =
+        normalizeEvidence(
+            previousState.evidence
+        );
+
+    /*
+     * =====================================================
+     * 4. RESOLVE EVIDENCE HISTORY
+     * =====================================================
+     *
+     * Preferred:
+     *
+     *   updateMastery({
+     *     evidenceHistory
+     *   })
+     *
+     * Runtime handoff:
+     *
+     *   updateMastery({
+     *     currentState:
+     *       previousResult.current
+     *   })
+     *
+     * Neither requires evidenceHistory to
+     * become part of Student State V1.2.0.
+     */
+
+    const previousHistory =
+        resolveEvidenceHistory({
+            evidenceHistory:
+                safeEvidenceHistory,
+
+            currentState:
+                safeCurrentState
+        });
+
+    /*
+     * =====================================================
+     * 5. INTERPRET ATTEMPT
+     * =====================================================
+     */
+
+    const nodeId =
+        typeof safeAttempt.nodeId
+            === "string"
+            ? safeAttempt.nodeId
+            : (
+                typeof safeAttempt
+                    ?.context
+                    ?.nodeId === "string"
+                    ? safeAttempt
+                        .context
+                        .nodeId
+                    : null
+            );
+
+    const dimension =
+        getPrimaryDimension(
+            safeAttempt
+        );
+
+    const result =
+        getAttemptResult(
+            safeAttempt
+        );
+
+    /*
+     * =====================================================
+     * 6. BUILD CAPABILITY OBSERVATION
+     * =====================================================
+     *
+     * skipped / primaryDimension=none /
+     * missing dimension:
+     *
+     * → no capability observation.
+     */
+
+    const observation =
+        dimension
+            ? buildCapabilityObservation({
+                attempt:
+                    safeAttempt,
+
+                dimension,
+
+                rules,
+
+                evidenceContext:
+                    safeEvidenceContext
+            })
+            : null;
+
+    /*
+     * =====================================================
+     * 7. UPDATE BOUNDED HISTORY
+     * =====================================================
+     */
+
+    const currentHistory =
+        appendObservation({
+            history:
+                previousHistory,
+
+            observation,
+
+            rules
+        });
+
+    /*
+     * =====================================================
+     * 8. CALCULATE CAPABILITY EVIDENCE
+     * =====================================================
+     *
+     * V2 estimator:
+     *
+     * weighted mean over recent bounded
+     * observations.
+     *
+     * First observation seeds capability
+     * directly.
+     */
+
+    const currentEvidence =
+        calculateEvidenceFromHistory({
+            previousEvidence,
+            evidenceHistory:
+                currentHistory
+        });
+
+    /*
+     * =====================================================
+     * 9. UPDATE ATTEMPT STATS
+     * =====================================================
+     */
+
+    const currentAttemptStats =
+        updateAttemptStats(
+            previousState
+                .attemptStats,
+
+            safeAttempt
+        );
+
+    /*
+     * =====================================================
+     * 10. UPDATE WRONG STREAKS
+     * =====================================================
+     */
+
+    const currentWrongStreaks =
+        updateWrongStreaks({
+            previous:
+                previousState
+                    .evidenceWrongStreaks,
+
+            attempt:
+                safeAttempt,
+
+            dimension
+        });
+
+    /*
+     * =====================================================
+     * 11. UPDATE EVIDENCE SUFFICIENCY
+     * =====================================================
+     */
+
+    const currentSufficiency =
+        updateEvidenceSufficiency({
+            previous:
+                previousState
+                    .evidenceSufficiency,
+
+            evidenceHistory:
+                currentHistory,
+
+            observation
+        });
+
+    /*
+     * =====================================================
+     * 12. QUALIFYING OBSERVATIONS
+     * =====================================================
+     */
+
+    const qualifyingCounts =
+        getQualifyingCounts({
+            evidenceHistory:
+                currentHistory,
+
+            rules
+        });
+
+    /*
+     * =====================================================
+     * 13. OVERALL EVIDENCE
+     * =====================================================
+     *
+     * Analytics summary only.
+     *
+     * NOT a promotion hard gate.
+     */
+
+    const overallEvidence =
+        calculateOverallEvidence(
+            currentEvidence,
+            rules
+        );
+
+    /*
+     * =====================================================
+     * 14. CONFIDENCE
+     * =====================================================
+     */
+
+    const confidence =
+        calculateConfidence({
+            evidenceSufficiency:
+                currentSufficiency,
+
+            attemptStats:
+                currentAttemptStats,
+
+            rules
+        });
+
+    /*
+     * =====================================================
+     * 15. FAILURE EVIDENCE
+     * =====================================================
+     */
+
+    const failureResult =
+        updateFailureEvidence({
+            previousFailureSummary:
+                previousState
+                    .failureSummary,
+
+            previousLastFailure:
+                previousState
+                    .lastFailure,
+
+            attempt:
+                safeAttempt
+        });
+
+    /*
+     * =====================================================
+     * 16. WEAKNESS
+     * =====================================================
+     */
+
+    const weakness =
+        evaluateWeakness({
+            evidence:
+                currentEvidence,
+
+            evidenceHistory:
+                currentHistory,
+
+            evidenceWrongStreaks:
+                currentWrongStreaks,
+
+            failureResult,
+
+            previousSignals:
+                previousState
+                    .signals,
+
+            rules
+        });
+
+    /*
+     * =====================================================
+     * 17. PROMOTION / DOWNGRADE
+     * =====================================================
+     */
+
+    const masteryDecision =
+        evaluateMastery({
+            previousMastery,
+
+            evidence:
+                currentEvidence,
+
+            evidenceSufficiency:
+                currentSufficiency,
+
+            qualifyingCounts,
+
+            confidence,
+
+            failureResult,
+
+            attempt:
+                safeAttempt,
+
+            rules
+        });
+
+    const currentMastery =
+        masteryDecision.mastery;
+
+    /*
+     * =====================================================
+     * 18. RETEST
+     * =====================================================
+     */
+
+    const retest =
+        updateRetestState({
+            previousRetest:
+                previousState
+                    .retest,
+
+            attempt:
+                safeAttempt,
+
+            observation
+        });
+
+    /*
+     * =====================================================
+     * 19. REVIEW
+     * =====================================================
+     */
+
+    const review =
+        updateReviewState({
+            previousReview:
+                previousState
+                    .review,
+
+            attempt:
+                safeAttempt
+        });
+
+    /*
+     * =====================================================
+     * 20. STATUS
+     * =====================================================
+     */
+
+    const status =
+        determineStatus({
+            previousStatus,
+
+            mastery:
+                currentMastery,
+
+            weakness,
+
+            attempt:
+                safeAttempt,
+
+            retest
+        });
+
+    /*
+     * =====================================================
+     * 21. TIMESTAMPS
+     * =====================================================
+     */
+
+    const timestamps =
+        updateTimestamps({
+            previousState,
+
+            attempt:
+                safeAttempt
+        });
+
+    /*
+     * =====================================================
+     * 22. DIRECT EVIDENCE RESULT
+     * =====================================================
+     */
+
+    const directEvidenceResult =
+        buildDirectEvidenceResult({
+            dimension,
+            observation,
+            previousEvidence,
+            currentEvidence
+        });
+
+    /*
+     * =====================================================
+     * 23. BUILD CURRENT STATE PROJECTION
+     * =====================================================
+     *
+     * IMPORTANT:
+     *
+     * evidenceHistory below is Mastery runtime
+     * handoff data.
+     *
+     * Student State persistence layer should
+     * DROP this property when committing to
+     * canonical Student State V1.2.0.
+     */
+
+    const current = {
+        ...previousState,
+
+        mastery:
+            currentMastery,
+
+        status,
+
+        evidence:
+            currentEvidence,
+
+        overallEvidence,
+
+        confidence,
+
+        evidenceSufficiency:
+            currentSufficiency,
+
+        evidenceWrongStreaks:
+            currentWrongStreaks,
+
+        attemptStats:
+            currentAttemptStats,
+
+        weakEvidence:
+            weakness
+                .weakEvidence,
+
+        signals:
+            weakness
+                .signals,
+
+        failureSummary:
+            failureResult
+                .summary,
+
+        lastFailure:
+            failureResult
+                .lastFailure,
+
+        lastAttemptAt:
+            timestamps
+                .lastAttemptAt,
+
+        lastSuccessAt:
+            timestamps
+                .lastSuccessAt,
+
+        retest,
+
+        review,
+
+        /*
+         * Runtime-only Mastery projection.
+         */
+        evidenceHistory:
+            currentHistory
+    };
+
+    /*
+     * =====================================================
+     * 24. BUILD DECISION
+     * =====================================================
+     */
+
+    const decision = {
+        previousMastery,
+
+        currentMastery,
+
+        supportedLevel:
+            masteryDecision
+                .supportedLevel,
+
+        masteryChanged:
+            masteryDecision
+                .masteryChanged,
+
+        promoted:
+            masteryDecision
+                .promoted,
+
+        downgradeTriggered:
+            masteryDecision
+                .downgradeTriggered,
+
+        downgradeReason:
+            masteryDecision
+                .downgradeReason,
+
+        direction:
+            masteryDecision
+                .direction,
+
+        persistentFailureCount:
+            masteryDecision
+                .persistentFailureCount,
+
+        mastered:
+            isMastered({
+                mastery:
+                    currentMastery
+            }),
+
+        stable:
+            status === "stable"
+    };
+
+    /*
+     * =====================================================
+     * 25. BUILD UPDATE METADATA
+     * =====================================================
+     */
+
+    const update = {
+        directEvidence:
+            directEvidenceResult
+                .directEvidence,
+
+        dimension:
+            directEvidenceResult
+                .dimension,
+
+        previousValue:
+            directEvidenceResult
+                .previousValue,
+
+        currentValue:
+            directEvidenceResult
+                .currentValue,
+
+        observationScore:
+            directEvidenceResult
+                .observationScore,
+
+        reliabilityWeight:
+            directEvidenceResult
+                .reliabilityWeight,
+
+        overallEvidence,
+
+        qualifyingObservations: {
+            ...qualifyingCounts
+        }
+    };
+
+    /*
+     * =====================================================
+     * 26. FAILURE OUTPUT
+     * =====================================================
+     */
+
+    const failure = {
+        recorded:
+            failureResult.recorded,
+
+        failureType:
+            failureResult
+                .failureType,
+
+        failureSignatureId:
+            failureResult
+                .failureSignatureId,
+
+        failureKey:
+            failureResult
+                .failureKey,
+
+        persistentFailureCount:
+            failureResult
+                .persistentFailureCount,
+
+        lastFailure:
+            failureResult
+                .lastFailure
+    };
+
+    /*
+     * =====================================================
+     * 27. WEAKNESS OUTPUT
+     * =====================================================
+     */
+
+    const weaknessOutput = {
+        isWeak:
+            weakness.isWeak,
+
+        weakEvidence: [
+            ...weakness
+                .weakEvidence
+        ],
+
+        signals: [
+            ...weakness.signals
+        ],
+
+        repeatedEvidenceFailure:
+            weakness
+                .repeatedEvidenceFailure,
+
+        repeatedFailureSignature:
+            weakness
+                .repeatedFailureSignature
+    };
+
+    /*
+     * =====================================================
+     * 28. RETURN MASTERy UPDATE
+     * =====================================================
+     */
+
+    return {
+        engine: {
+            name:
+                "MasteryEngine",
+
+            version:
+                ENGINE_VERSION
+        },
+
+        nodeId,
+
+        previous: {
+            mastery:
+                previousMastery,
+
+            status:
+                previousStatus,
+
+            evidence:
+                previousEvidence,
+
+            overallEvidence:
+                previousState
+                    .overallEvidence,
+
+            confidence:
+                previousState
+                    .confidence
+        },
+
+        current,
+
+        update,
+
+        failure,
+
+        weakness:
+            weaknessOutput,
+
+        decision,
+
+        /*
+         * Runtime handoff convenience.
+         *
+         * Caller may persist this in a dedicated
+         * Mastery evidence store or reconstruct
+         * it from Attempt/Event history.
+         *
+         * Do NOT blindly commit this object into
+         * Student State V1.2.0.
+         */
+        evidenceHistory:
+            currentHistory,
+
+        metadata: {
+            rulesVersion:
+                rules.schemaVersion ||
+                null,
+
+            processedResult:
+                result,
+
+            primaryDimension:
+                dimension,
+
+            diagnostic:
+                isDiagnosticAttempt(
+                    safeAttempt
+                ),
+
+            retest:
+                isRetestAttempt(
+                    safeAttempt
+                ),
+
+            review:
+                isReviewAttempt(
+                    safeAttempt
+                )
+        }
+    };
+}
+
+/**
+ * =========================================================
+ * OPTIONAL NAMED EXPORTS
+ * =========================================================
+ *
+ * Keep the public engine surface small.
+ *
+ * These helpers are exported only where useful for
+ * V2 tests / integration diagnostics.
+ */
+
+export {
+    ENGINE_VERSION,
+
+    EVIDENCE_DIMENSIONS,
+
+    MASTERY_LEVELS,
+
+    CONFIDENCE_LEVELS
+};
+
+/**
+ * =========================================================
+ * END MASTER ENGINE V2.0.0
+ * =========================================================
+ */
