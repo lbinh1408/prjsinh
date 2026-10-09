@@ -1,0 +1,341 @@
+{
+  "schemaVersion": "1.0.0-draft",
+  "revision": 1,
+  "savedAt": "2026-10-07T10:05:00.000Z",
+  "runtime": {
+    "name": "StudySession",
+    "version": "0.2.0",
+    "sessionId": "SESSION-K283-LF-001",
+    "startedAt": "2026-10-07T10:00:00.000Z",
+    "lastActivityAt": "2026-10-07T10:05:00.000Z",
+    "status": "active"
+  },
+  "config": {
+    "learningMode": "HOC_SAU",
+    "timeBudget": 60,
+    "clusterId": "C09",
+    "lessonId": "lesson-k283-v1",
+    "contextId": "runtime-k283-learningflow",
+    "historyLimit": 50
+  },
+  "contentRefs": {
+    "lesson": {
+      "id": "lesson-k283-v1",
+      "version": "1.0.0",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "knowledgeMap": {
+      "id": "knowledgeMap",
+      "version": "1.0.0",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "evidenceModel": {
+      "id": "evidenceModel",
+      "version": "1.0.0",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "masteryRules": {
+      "id": "masteryRules",
+      "version": "1.0.0",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "adaptiveRules": {
+      "id": "adaptiveRules",
+      "version": "1.0.0",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "adaptivePaths": {
+      "id": "adaptivePaths",
+      "version": "1.0.0",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "failureSignatures": {
+      "id": "failureSignatures",
+      "version": "1.0.0",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "remediationRules": {
+      "id": "none",
+      "version": "1.0.0",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  },
+  "state": {
+    "schemaVersion": "1.2.0",
+    "stateId": "STATE-K283-LF-001",
+    "stateType": "student-learning-state",
+    "updatedAt": "2026-10-07T10:05:00.000Z",
+    "student": {
+      "studentId": "STUDENT-K283-LF"
+    },
+    "learning": {
+      "currentMode": "HOC_SAU",
+      "session": {
+        "sessionId": "SESSION-K283-LF-001",
+        "startedAt": "2026-10-07T10:00:00.000Z",
+        "lastActivityAt": "2026-10-07T10:05:00.000Z",
+        "timeBudgetMinutes": 60,
+        "timeUsedMinutes": 1,
+        "runtimeSignals": {
+          "consecutiveWrong": 0,
+          "consecutiveSkip": 0,
+          "consecutiveRemediation": 0
+        },
+        "fatigue": {
+          "level": "normal",
+          "signals": []
+        }
+      },
+      "current": {
+        "clusterId": "C09",
+        "lessonId": "lesson-k283-v1",
+        "nodeId": "K283",
+        "action": "CHALLENGE",
+        "contextId": "runtime-k283-learningflow"
+      }
+    },
+    "knowledge": {
+      "K283": {
+        "mastery": "M3",
+        "status": "developing",
+        "evidence": {
+          "know": 0.85,
+          "explain": 0.8,
+          "apply": 0.75,
+          "transfer": 1
+        },
+        "overallEvidence": 0.8525,
+        "confidence": "high",
+        "evidenceSufficiency": {
+          "independentObservations": 5,
+          "distinctContexts": 2,
+          "distinctQuestionTypes": 1,
+          "observedEvidenceTypes": [
+            "know",
+            "explain",
+            "apply",
+            "transfer"
+          ]
+        },
+        "attemptStats": {
+          "total": 6,
+          "correct": 5,
+          "wrong": 1,
+          "partial": 0,
+          "skipped": 0
+        },
+        "weakEvidence": [
+          "transfer"
+        ],
+        "signals": [],
+        "lastAttemptAt": "2026-10-07T10:05:00.000Z",
+        "lastSuccessAt": "2026-10-07T10:05:00.000Z",
+        "lastFailure": null,
+        "retest": {
+          "attempted": false,
+          "lastRetestAt": null,
+          "passed": false,
+          "differentQuestion": false,
+          "differentContext": false,
+          "independent": false
+        },
+        "review": {
+          "lastReviewedAt": null
+        }
+      }
+    },
+    "metaSkills": {},
+    "failurePatterns": {},
+    "remediation": {
+      "lastResult": null,
+      "activePlan": null
+    },
+    "adaptive": {
+      "lastDecision": {
+        "action": "CHALLENGE",
+        "nodeId": "K283",
+        "reasonCodes": [
+          "MASTERY_M3",
+          "HOC_SAU_MODE"
+        ],
+        "at": "2026-10-07T10:05:00.000Z"
+      },
+      "nextAction": {
+        "action": "CHALLENGE",
+        "nodeId": "K283",
+        "priority": 0,
+        "constraints": {},
+        "decidedAt": "2026-10-07T10:05:00.000Z"
+      }
+    },
+    "history": {
+      "recentActions": [
+        {
+          "action": "CHALLENGE",
+          "nodeId": "K283",
+          "at": "2026-10-07T10:05:00.000Z"
+        }
+      ],
+      "recentQuestions": [
+        "Q-A-K283-T-010"
+      ]
+    },
+    "progress": {},
+    "preferences": {}
+  },
+  "currentDecision": {
+    "schemaVersion": "1.0.0",
+    "decisionId": "AD-STUDENT-K283-LF-K283-20261007T100500000Z",
+    "studentId": "STUDENT-K283-LF",
+    "timestamp": "2026-10-07T10:05:00.000Z",
+    "action": "CHALLENGE",
+    "reason": {
+      "primary": "Cần phát triển transfer.",
+      "codes": [
+        "MASTERY_M3",
+        "HOC_SAU_MODE"
+      ],
+      "masteryLevel": "M3",
+      "status": "developing"
+    },
+    "target": {
+      "type": "KNOWLEDGE_NODE",
+      "nodeIds": [
+        "K283"
+      ],
+      "primaryNodeId": "K283"
+    },
+    "selectionCriteria": {
+      "questionTypes": [
+        "mcq",
+        "multi_select",
+        "true_false",
+        "ordering",
+        "short_answer",
+        "numeric",
+        "data_analysis",
+        "experiment",
+        "sequence",
+        "open_response"
+      ],
+      "difficulty": {
+        "min": "D3",
+        "max": "D5",
+        "preferred": "D3"
+      },
+      "evidenceDimensions": [
+        "apply",
+        "transfer"
+      ],
+      "excludeQuestionIds": [
+        "Q-A-K283-T-010"
+      ],
+      "requireDifferentContext": true
+    },
+    "path": {
+      "current": "CHALLENGE",
+      "next": "RETEST",
+      "terminal": false
+    },
+    "constraints": {
+      "respectPrerequisites": true,
+      "minimumPrerequisiteMastery": "M2",
+      "allowSkip": true,
+      "allowStudentChoice": true,
+      "requireDifferentContext": true,
+      "requireDifferentQuestion": false,
+      "maxTimeMinutes": 60,
+      "maxSameNodeActions": 2,
+      "maxSameFailureSignature": 3
+    },
+    "priority": {
+      "score": 0,
+      "factors": {
+        "knowledgePriority": 0,
+        "weaknessBonus": 0,
+        "prerequisiteBonus": 0,
+        "examRelevance": 0,
+        "dependencyCentrality": 0,
+        "recentFailureBonus": 0,
+        "staleBonus": 0,
+        "transferGapBonus": 0
+      }
+    },
+    "source": {
+      "engine": "AdaptiveEngine",
+      "rulesVersion": "1.0.0",
+      "pathsVersion": "1.0.0",
+      "learningMode": "HOC_SAU"
+    },
+    "previousAction": "CHALLENGE",
+    "fallback": {
+      "action": "PRACTICE",
+      "reason": "Nếu challenge phù hợp chưa khả dụng, tiếp tục practice trên cùng node.",
+      "targetNodeIds": [
+        "K283"
+      ]
+    }
+  },
+  "currentSelection": null,
+  "currentQuestion": null,
+  "lessonRuntime": {
+    "currentItem": null,
+    "progress": {
+      "completedSectionIds": [
+        "S08",
+        "S09"
+      ],
+      "skippedSectionIds": []
+    }
+  },
+  "activeRemediationPlan": null,
+  "history": [
+    {
+      "attemptId": "ATT-K283-Q010-001",
+      "questionId": "Q-A-K283-T-010",
+      "nodeId": "K283",
+      "result": "correct",
+      "score": 1,
+      "action": "CHALLENGE",
+      "nextAction": "CHALLENGE",
+      "context": {
+        "learningMode": "HOC_SAU",
+        "action": "CHALLENGE",
+        "pathStage": "CHALLENGE",
+        "nodeId": "K283",
+        "clusterId": "C09",
+        "lessonId": "lesson-k283-v1",
+        "decisionId": "DEC-K283-TRANSFER-D4-001",
+        "contextId": "lesson-k283-v1"
+      },
+      "submittedAt": "2026-10-07T10:05:00.000Z",
+      "at": "2026-10-07T10:05:00.000Z"
+    }
+  ],
+  "masteryRuntime": {
+    "evidenceHistoryByNode": {
+      "K283": {
+        "know": [],
+        "explain": [],
+        "apply": [],
+        "transfer": [
+          {
+            "dimension": "transfer",
+            "score": 1,
+            "reliabilityWeight": 1,
+            "independent": true,
+            "contextId": "c09-k283-transfer-gamete-counts-03",
+            "questionType": "numeric",
+            "diagnostic": false,
+            "result": "correct",
+            "at": "2026-10-07T10:05:00.000Z",
+            "questionId": "Q-A-K283-T-010"
+          }
+        ]
+      }
+    }
+  },
+  "attemptIds": [
+    "ATT-K283-Q010-001"
+  ]
+}

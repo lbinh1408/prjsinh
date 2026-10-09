@@ -1,0 +1,43 @@
+[
+  {
+    "schemaVersion": "1.0.0",
+    "attemptId": "ATT-K283-Q010-001",
+    "studentId": "STUDENT-K283-LF",
+    "sessionId": "SESSION-K283-LF-001",
+    "questionId": "Q-A-K283-T-010",
+    "startedAt": "2026-10-07T10:04:00.000Z",
+    "submittedAt": "2026-10-07T10:05:00.000Z",
+    "response": {
+      "type": "numeric",
+      "value": 25,
+      "normalizedValue": 25
+    },
+    "result": "correct",
+    "score": 1,
+    "attemptNumber": 1,
+    "hint": {
+      "used": false,
+      "count": 0
+    },
+    "timing": {
+      "timeSpentSeconds": 60
+    },
+    "context": {
+      "learningMode": "HOC_SAU",
+      "action": "CHALLENGE",
+      "pathStage": "CHALLENGE",
+      "nodeId": "K283",
+      "clusterId": "C09",
+      "lessonId": "lesson-k283-v1",
+      "decisionId": "DEC-K283-TRANSFER-D4-001"
+    },
+    "evidence": {
+      "difficulty": "D4",
+      "primaryDimension": "transfer",
+      "independence": "independent"
+    },
+    "metadata": {
+      "questionVersion": "1.0.0"
+    }
+  }
+]
