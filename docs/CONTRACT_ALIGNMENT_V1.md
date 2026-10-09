@@ -13,3 +13,14 @@ Status: REVIEW CANDIDATE, NOT LOCKED.
 5. HYC-27 no partial candidate is returned on failure. Typed errors must not embed answer values. The code currently exposes an external error's `code` as `details.causeCode`; audit that value for possible sensitive data before LOCK.
 
 6. `validateHydrationRequest` is invoked twice (Planner and Reader); document this as intentional defense in depth or remove the duplicate in a later contract-compatible revision.
+
+
+Checkpoint schema version không được hỗ trợ → HYDRATION_UNSUPPORTED_VERSION.
+
+
+
+Checkpoint sai cấu trúc hoặc không hợp lệ theo codec → HYDRATION_INVALID_CHECKPOINT.
+
+
+
+Checkpoint thiếu dữ liệu bắt buộc → HYDRATION_INVALID_CHECKPOINT.

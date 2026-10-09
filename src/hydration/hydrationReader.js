@@ -287,12 +287,9 @@ export function readHydrationSnapshot(request) {
         throw new HydrationError(
             CODES.READ_FAILED,
             'Hydration store read failed.',
-            {
-                causeCode:
-                    typeof error?.code === 'string'
-                        ? error.code
-                        : null
-            }
+            // Do not copy arbitrary adapter-controlled error.code.
+            // It may contain student answers, tokens or other secrets.
+            {}
         );
     }
 }
