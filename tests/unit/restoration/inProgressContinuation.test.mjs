@@ -1,0 +1,16 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { assertRealPendingItem, compareMultiStepRealContinuation } from '../../../src/restoration/inProgressContinuation.js';
+const base = () => ({ runtime: { status: 'active' }, lessonRuntime: { plan: { id: 'p' }, currentItem: { kind: 'content', sectionId: 's1' }, progress: { completedSectionIds: [] } }, lastFlowResult: null });
+const api = { completeLessonItem: ({ session, sectionId }) => { const s = structuredClone(session); s.lessonRuntime.progress.completedSectionIds.push(sectionId); s.lessonRuntime.currentItem = null; return { status: 'ITEM_COMPLETED', progress: structuredClone(s.lessonRuntime.progress), session: s }; }, getNextStudyItem: ({ session }) => { const s = structuredClone(session); s.lessonRuntime.currentItem = { kind: 'content', sectionId: 's2' }; return { status: 'ITEM', item: s.lessonRuntime.currentItem, session: s }; } };
+test('requires actual pending item', () => assert.equal(assertRealPendingItem(base()).sectionId, 's1'));
+test('rejects no pending item', () => { const s = base(); s.lessonRuntime.currentItem = null; assert.throws(() => assertRealPendingItem(s)); });
+test('rejects no lesson plan', () => { const s = base(); s.lessonRuntime.plan = null; assert.throws(() => assertRealPendingItem(s)); });
+test('rejects question set', () => { const s = base(); s.lessonRuntime.currentItem.kind = 'question_set'; assert.throws(() => assertRealPendingItem(s)); });
+test('rejects inactive session', () => { const s = base(); s.runtime.status = 'completed'; assert.throws(() => assertRealPendingItem(s)); });
+test('multi-step continuation compares each state', () => { const s = base(); const r = compareMultiStepRealContinuation({ api, original: s, restored: structuredClone(s), steps: 4 }); assert.equal(r.stepsCompared, 4); assert.equal(r.executable, false); assert.deepEqual(r.trace.map(x => x.operation), ['complete:s1', 'navigate:ITEM', 'complete:s2', 'navigate:ITEM']); });
+test('rejects initial drift', () => { const s = base(), t = base(); t.lastFlowResult = { x: 1 }; assert.throws(() => compareMultiStepRealContinuation({ api, original: s, restored: t }), /reconstructed snapshot/); });
+test('detects behavioral drift', () => { const s = base(); let n = 0; const bad = { ...api, completeLessonItem: args => { n++; const result = api.completeLessonItem(args); if (n === 2) result.session.lessonRuntime.progress.completedSectionIds.push('corrupt'); return result; } }; assert.throws(() => compareMultiStepRealContinuation({ api: bad, original: s, restored: structuredClone(s) }), /behavioral drift/); });
+test('rejects one-step false proof', () => assert.throws(() => compareMultiStepRealContinuation({ api, original: base(), restored: base(), steps: 1 })));
+test('rejects excessive steps', () => assert.throws(() => compareMultiStepRealContinuation({ api, original: base(), restored: base(), steps: 21 })));
+test('rejects malformed section', () => { const s = base(); s.lessonRuntime.currentItem.sectionId = ''; assert.throws(() => assertRealPendingItem(s)); });

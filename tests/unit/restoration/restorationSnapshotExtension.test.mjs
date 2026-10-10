@@ -1,0 +1,33 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
+import { captureRestorationSnapshotExtension as capture, validateRestorationSnapshotExtension as verify, REQUIRED_DEPENDENCIES } from '../../../src/restoration/restorationSnapshotExtension.js';
+const hash = createHash('sha256').update('real-bytes').digest('hex');
+function fixture() {
+    const runtime = { name: 'StudySession', version: '0.2.0', sessionId: 'S1', status: 'active', startedAt: '2026-10-01', lastActivityAt: '2026-10-02' };
+    const lessonRuntime = { plan: null, currentItem: null, progress: { completedSectionIds: ['q1'], skippedSectionIds: [] } };
+    const attempts = [{ attemptId: 'A1', sessionId: 'S1', result: 'correct' }];
+    const checkpoint = { schemaVersion: '1.0.0-draft', revision: 1, runtime, config: { historyLimit: 50 }, state: { learning: { session: { sessionId: 'S1' } } }, currentDecision: { action: 'PRACTICE' }, currentSelection: null, currentQuestion: null, lessonRuntime, activeRemediationPlan: null, history: [{ attemptId: 'A1', nextAction: 'PRACTICE' }], masteryRuntime: { evidenceHistoryByNode: {} }, attemptIds: ['A1'], contentRefs: { knowledgeMap: { id: 'km', version: '1', sha256: hash } } };
+    const snapshot = { ...structuredClone(checkpoint), dependencies: Object.fromEntries(REQUIRED_DEPENDENCIES.map(k => [k, k === 'lesson' ? null : {}])), attempts, lastFlowResult: { adaptiveDecision: { action: 'PRACTICE' } } };
+    return { checkpoint, snapshot };
+}
+const make = () => { const { checkpoint, snapshot } = fixture(); return { checkpoint, snapshot, extension: capture({ checkpoint, liveSnapshot: snapshot }) } };
+test('capture binds to checkpoint and refuses execution', () => { const x = make(); assert.equal(x.extension.executable, false); assert.equal(x.extension.checkpointBinding.revision, 1) });
+test('verify valid extension', () => { const x = make(); assert.equal(verify({ checkpoint: x.checkpoint, extension: x.extension }).status, 'validated-extension') });
+test('verification explicitly does not claim content integrity', () => { const x = make(); assert.equal(verify({ checkpoint: x.checkpoint, extension: x.extension }).contentIntegrityVerified, false) });
+test('verification explicitly does not claim atomicity', () => { const x = make(); assert.equal(verify({ checkpoint: x.checkpoint, extension: x.extension }).atomicityGuaranteed, false) });
+test('verification explicitly does not claim continuity', () => { const x = make(); assert.equal(verify({ checkpoint: x.checkpoint, extension: x.extension }).runtimeContinuityVerified, false) });
+test('does not mutate live snapshot', () => { const { checkpoint, snapshot } = fixture(); const before = structuredClone(snapshot); capture({ checkpoint, liveSnapshot: snapshot }); assert.deepEqual(snapshot, before) });
+test('rejects checkpoint drift at capture', () => { const x = fixture(); x.snapshot.currentDecision.action = 'REVIEW'; assert.throws(() => capture({ checkpoint: x.checkpoint, liveSnapshot: x.snapshot }), /SNAPSHOT_CHECKPOINT_DRIFT/) });
+test('rejects missing dependencies', () => { const x = fixture(); delete x.snapshot.dependencies.questionBanks; assert.throws(() => capture({ checkpoint: x.checkpoint, liveSnapshot: x.snapshot }), /SNAPSHOT_MISSING_DEPENDENCIES/) });
+test('rejects zero hash placeholder', () => { const x = fixture(); x.checkpoint.contentRefs.knowledgeMap.sha256 = '0'.repeat(64); assert.throws(() => capture({ checkpoint: x.checkpoint, liveSnapshot: x.snapshot }), /SNAPSHOT_UNVERIFIED_REFS/) });
+test('rejects missing lastFlowResult', () => { const x = fixture(); x.snapshot.lastFlowResult = null; assert.throws(() => capture({ checkpoint: x.checkpoint, liveSnapshot: x.snapshot }), /SNAPSHOT_LAST_FLOW_MISMATCH/) });
+test('rejects pending question', () => { const x = fixture(); x.checkpoint.currentQuestion = { id: 'Q1' }; x.snapshot.currentQuestion = { id: 'Q1' }; assert.throws(() => capture({ checkpoint: x.checkpoint, liveSnapshot: x.snapshot }), /PENDING_QUESTION_STATE/) });
+test('rejects mismatched attempt', () => { const x = fixture(); x.snapshot.attempts[0].attemptId = 'X'; assert.throws(() => capture({ checkpoint: x.checkpoint, liveSnapshot: x.snapshot }), /SNAPSHOT_ATTEMPT_DRIFT/) });
+test('detects tampered extension continuity', () => { const x = make(); x.extension.continuity.lastFlowResult.adaptiveDecision.action = 'REVIEW'; assert.throws(() => verify({ checkpoint: x.checkpoint, extension: x.extension }), /SNAPSHOT_CONTINUITY_TAMPERED/) });
+test('detects tampered checkpoint', () => { const x = make(); x.checkpoint.revision = 2; assert.throws(() => verify({ checkpoint: x.checkpoint, extension: x.extension }), /SNAPSHOT_BINDING_MISMATCH/) });
+test('rejects claimed executable', () => { const x = make(); x.extension.executable = true; assert.throws(() => verify({ checkpoint: x.checkpoint, extension: x.extension }), /SNAPSHOT_UNTRUSTED_CLAIM/) });
+test('rejects forged provenance claim', () => { const x = make(); x.extension.provenance.verified = true; assert.throws(() => verify({ checkpoint: x.checkpoint, extension: x.extension }), /SNAPSHOT_UNTRUSTED_CLAIM/) });
+test('rejects mismatched dependency refs', () => { const x = make(); x.extension.dependencyRefs.knowledgeMap.id = 'other'; assert.throws(() => verify({ checkpoint: x.checkpoint, extension: x.extension }), /SNAPSHOT_REFERENCE_DRIFT/) });
+test('rejects mismatched lesson plan', () => { const x = make(); x.extension.continuity.lessonPlan = { fake: true }; assert.throws(() => verify({ checkpoint: x.checkpoint, extension: x.extension }), /SNAPSHOT_CONTINUITY_TAMPERED/) });
+test('no replay or restore adapter needed', () => { const x = make(); assert.equal(typeof x.extension.continuity, 'object'); assert.equal(verify({ checkpoint: x.checkpoint, extension: x.extension }).executable, false) });

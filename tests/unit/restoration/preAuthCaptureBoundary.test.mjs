@@ -1,0 +1,17 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { captureFencedLiveSnapshot, readPreAuthenticatedBoundCapture } from '../../../src/restoration/preAuthCaptureBoundary.js';
+const err = (code) => (e) => e.code === code;
+test('fenced capture stable snapshot', () => { const v = captureFencedLiveSnapshot({ readSnapshot: () => ({ a: 1 }), readRevision: () => 2 }); assert.deepEqual(v.snapshot, { a: 1 }); assert.equal(v.revision, 2); assert.equal(v.atomicityProven, false); assert.equal(v.executable, false); });
+test('fenced capture refuses changing revision', () => { let n = 0; assert.throws(() => captureFencedLiveSnapshot({ readSnapshot: () => ({ a: 1 }), readRevision: () => ++n }), err('CAPTURE_CONCURRENT_MUTATION')); });
+test('fenced capture refuses changing snapshots', () => { let n = 0; assert.throws(() => captureFencedLiveSnapshot({ readSnapshot: () => ({ a: ++n }), readRevision: () => 2 }), err('CAPTURE_CONCURRENT_MUTATION')); });
+test('fenced capture requires valid reader', () => assert.throws(() => captureFencedLiveSnapshot({ readRevision: () => 1 }), err('CAPTURE_INVALID_READER')));
+test('fenced capture requires valid revision reader', () => assert.throws(() => captureFencedLiveSnapshot({ readSnapshot: () => ({}) }), err('CAPTURE_INVALID_READER')));
+test('fenced capture rejects invalid revision', () => assert.throws(() => captureFencedLiveSnapshot({ readSnapshot: () => ({}), readRevision: () => -1 }), err('CAPTURE_INVALID_REVISION')));
+test('fenced capture rejects unsafe revision', () => assert.throws(() => captureFencedLiveSnapshot({ readSnapshot: () => ({}), readRevision: () => 1.2 }), err('CAPTURE_INVALID_REVISION')));
+test('fenced capture rejects false quiescence', () => assert.throws(() => captureFencedLiveSnapshot({ readSnapshot: () => ({}), readRevision: () => 1, requireQuiescent: () => false }), err('CAPTURE_NOT_QUIESCENT')));
+test('fenced capture detects quiescence revoked', () => { let n = 0; assert.throws(() => captureFencedLiveSnapshot({ readSnapshot: () => ({}), readRevision: () => 1, requireQuiescent: () => ++n === 1 }), err('CAPTURE_NOT_QUIESCENT')); });
+test('fenced capture validates quiescence function', () => assert.throws(() => captureFencedLiveSnapshot({ readSnapshot: () => ({}), readRevision: () => 1, requireQuiescent: true }), err('CAPTURE_INVALID_QUIESCENCE')));
+test('preauth refuses invalid root', () => assert.throws(() => readPreAuthenticatedBoundCapture({ rootDir: 'relative', sessionId: 'a', validateEnvelope: () => { }, resolveKey: () => { } }), err('PREAUTH_INVALID_INPUT')));
+test('preauth refuses absent resolver', () => assert.throws(() => readPreAuthenticatedBoundCapture({ rootDir: '/tmp', sessionId: 'a', validateEnvelope: () => { } }), err('PREAUTH_INVALID_INPUT')));
+test('preauth refuses blank session', () => assert.throws(() => readPreAuthenticatedBoundCapture({ rootDir: '/tmp', sessionId: ' ', validateEnvelope: () => { }, resolveKey: () => { } }), err('PREAUTH_INVALID_INPUT')));

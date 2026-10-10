@@ -1,0 +1,27 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { createHash } from 'node:crypto';
+import { assembleGuardedFixture } from '../../../scripts/runPersistedReconstructionIntegration.mjs';
+import { persistGuardedCapture, readPersistedGuardedCapture } from '../../../src/restoration/persistedReconstructionIntegration.js';
+import { validateRestorationSnapshotExtension } from '../../../src/restoration/restorationSnapshotExtension.js';
+import { REQUIRED_RUNTIME_DEPENDENCIES } from '../../../src/restoration/dependencyCoverageValidator.js';
+const validateEnvelope = e => { assert.equal(e.executable, false); validateRestorationSnapshotExtension({ checkpoint: e.checkpoint, extension: e.extension }); };
+const snap = (id = 's1') => ({ runtime: { name: 'StudySession', version: '0.2.0', status: 'active', sessionId: id }, config: { lessonId: null }, state: { knowledge: {} }, currentDecision: { action: 'LEARN' }, currentSelection: null, currentQuestion: null, lessonRuntime: { plan: null, currentItem: null, progress: {} }, activeRemediationPlan: null, history: [], masteryRuntime: { evidenceHistoryByNode: {} }, attempts: [], lastFlowResult: null, dependencies: Object.fromEntries(REQUIRED_RUNTIME_DEPENDENCIES.map(k => [k, k === 'lesson' ? null : {}])) });
+function setup() { const rootDir = fs.mkdtempSync(path.join(os.tmpdir(), 'persist-c3-')); const fixture = assembleGuardedFixture(snap()); return { rootDir, fixture }; }
+function save(x) { return persistGuardedCapture({ ...x, expectedRevision: 0, validateEnvelope }); }
+function load(x, d) { return readPersistedGuardedCapture({ rootDir: x.rootDir, sessionId: 's1', manifestDigest: d, validateEnvelope }); }
+test('commit and reconstruct with new store instance', () => { const x = setup(); try { const r = save(x); const v = load(x, r.manifestDigest); assert.deepEqual(v.guarded.candidate, snap()); assert.equal(v.executable, false); } finally { fs.rmSync(x.rootDir, { recursive: true, force: true }); } });
+test('absent session returns null', () => { const x = setup(); try { assert.equal(load(x, 'a'.repeat(64)), null); } finally { fs.rmSync(x.rootDir, { recursive: true, force: true }); } });
+test('idempotent retry same envelope', () => { const x = setup(); try { save(x); assert.equal(save(x).receipt.status, 'idempotent'); } finally { fs.rmSync(x.rootDir, { recursive: true, force: true }); } });
+test('stale revision rejected', () => { const x = setup(); try { save(x); const y = assembleGuardedFixture(snap(), 2); assert.throws(() => persistGuardedCapture({ rootDir: x.rootDir, fixture: y, expectedRevision: 0, validateEnvelope }), /REVISION_CONFLICT/); } finally { fs.rmSync(x.rootDir, { recursive: true, force: true }); } });
+test('wrong manifest hash rejected', () => { const x = setup(); try { save(x); assert.throws(() => load(x, 'b'.repeat(64)), /PERSIST_MISSING_MANIFEST/); } finally { fs.rmSync(x.rootDir, { recursive: true, force: true }); } });
+test('manifest revision drift rejected', () => { const x = setup(); try { const a = save(x); const y = assembleGuardedFixture(snap(), 2); persistGuardedCapture({ rootDir: x.rootDir, fixture: y, expectedRevision: 1, validateEnvelope }); assert.throws(() => load(x, a.manifestDigest), /PERSIST_REVISION_DRIFT/); } finally { fs.rmSync(x.rootDir, { recursive: true, force: true }); } });
+test('dependency tampering rejected', () => { const x = setup(); try { const r = save(x); const digest = x.fixture.envelope.checkpoint.contentRefs.questionBanks.sha256; fs.writeFileSync(path.join(x.rootDir, 'dependency-blobs', digest + '.json'), '{} '); assert.throws(() => load(x, r.manifestDigest), /PERSIST_BLOB_TAMPER/); } finally { fs.rmSync(x.rootDir, { recursive: true, force: true }); } });
+test('manifest tampering rejected', () => { const x = setup(); try { const r = save(x); fs.appendFileSync(path.join(x.rootDir, 'dependency-blobs', r.manifestDigest + '.manifest'), ' '); assert.throws(() => load(x, r.manifestDigest), /PERSIST_MANIFEST_TAMPER/); } finally { fs.rmSync(x.rootDir, { recursive: true, force: true }); } });
+test('missing dependency blob rejected', () => { const x = setup(); try { const r = save(x); const digest = x.fixture.envelope.checkpoint.contentRefs.questionBanks.sha256; fs.unlinkSync(path.join(x.rootDir, 'dependency-blobs', digest + '.json')); assert.throws(() => load(x, r.manifestDigest), /PERSIST_MISSING_BLOB/); } finally { fs.rmSync(x.rootDir, { recursive: true, force: true }); } });
+test('missing manifest rejected', () => { const x = setup(); try { const r = save(x); fs.unlinkSync(path.join(x.rootDir, 'dependency-blobs', r.manifestDigest + '.manifest')); assert.throws(() => load(x, r.manifestDigest), /PERSIST_MISSING_MANIFEST/); } finally { fs.rmSync(x.rootDir, { recursive: true, force: true }); } });
+test('non-executable flags retained', () => { const x = setup(); try { const r = save(x), v = load(x, r.manifestDigest); assert.equal(r.executable, false); assert.equal(v.guarded.executable, false); assert.equal(v.authenticatedCaptureProven, false); } finally { fs.rmSync(x.rootDir, { recursive: true, force: true }); } });
+test('reject altered source bytes before persistence', () => { const x = setup(); try { x.fixture.contentBundle.questionBanks.bytes = Buffer.from('{"evil":1}'); assert.throws(() => save(x), /COVERAGE_DIGEST_MISMATCH/); } finally { fs.rmSync(x.rootDir, { recursive: true, force: true }); } });
