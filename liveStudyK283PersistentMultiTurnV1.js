@@ -57,6 +57,8 @@ import { createK283PersistentMultiTurnCoordinatorV1 } from "./src/restoration/k2
 import { createAtomicCaptureCoordinationV1 } from "./src/restoration/atomicCaptureCoordinationV1.js";
 
 import { createHash } from "node:crypto";
+import { evaluateK283Completion, MASTERY_LEVELS } from "./k283SessionCompletionV1.js";
+import { findLatestVerifiedK283Progress } from "./k283ProgressContinuationV1.js";
 
 
 import {
@@ -1505,14 +1507,14 @@ function formatNumber(
  * ============================================================
  */
 
-function createRuntimeSession() {
+function createRuntimeSession(previousProgress = null) {
 
     const dependencies =
         loadDependencies();
 
 
     const studentState =
-        loadStudentState();
+        previousProgress?.studentState ?? loadStudentState();
 
 
     /**
@@ -2077,6 +2079,14 @@ function createPersistentSession(initialSession) {
  */
 
 async function main() {
+    const targetMastery = process.env.K283_TARGET_MASTERY ?? 'M2';
+    if (!MASTERY_LEVELS.includes(targetMastery)) {
+        console.error('Invalid K283_TARGET_MASTERY (expected M0-M4).');
+        process.exitCode = 1;
+        return;
+    }
+    console.log(`\nK283 session target: ${targetMastery}`);
+
 
     const rl =
         readline.createInterface({
@@ -2091,8 +2101,18 @@ async function main() {
 
     try {
 
-        session =
-            createRuntimeSession();
+        const previousProgress = process.env.K283_CONTINUE_PROGRESS === '1'
+            ? findLatestVerifiedK283Progress({
+                rootDir: path.resolve(__dirname, '.k283-persistent-draft'),
+                contentRefs: buildContentRefs()
+            })
+            : null;
+        session = createRuntimeSession(previousProgress);
+        if (previousProgress) {
+            session.masteryRuntime.evidenceHistoryByNode = structuredClone(previousProgress.evidenceHistoryByNode);
+            console.log(`\nNEW SESSION using verified progress from ${previousProgress.fromSessionId}.`);
+            console.log('This is progress continuation, NOT recovery of the old session.');
+        }
         persistent = createPersistentSession(session);
 
     } catch (error) {
@@ -2558,6 +2578,16 @@ async function main() {
                 printRemediation(
                     session
                 );
+                const completion = evaluateK283Completion({
+                    nodeState: getK283State(session),
+                    targetMastery,
+                    checkpointObserved: true
+                });
+                if (completion.complete) {
+                    console.log(`\nSESSION COMPLETE — K283 reached ${completion.currentMastery} (target ${targetMastery}).`);
+                    console.log('Checkpoint verified. Cross-process resume is NOT yet supported.');
+                    return;
+                }
                 console.log("\nDurable checkpoint observed. Proceeding to next question.");
             }
         }
