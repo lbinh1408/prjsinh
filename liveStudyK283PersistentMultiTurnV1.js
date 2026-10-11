@@ -6,7 +6,7 @@
  * Adaptive Biology Learning System
  * Phase 2A — LIVE STUDY CLI
  *
- * Purpose:
+ * Purpose: 
  * - Run one real interactive K283 study session in terminal.
  * - Use the LOCKED StudySession runtime.
  *
@@ -2415,8 +2415,10 @@ async function main() {
                     nowIso();
 
 
-                const attemptNumber =
-                    session.attempts.length + 1;
+                // This CLI permits one submission per newly selected question.
+                // attemptNumber is per-question retry count, NOT the session turn.
+                // The session-wide sequence is still used for unique attempt IDs.
+                const attemptNumber = 1;
 
 
                 let result;

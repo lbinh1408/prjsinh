@@ -283,6 +283,7 @@ export function decideNextAction({
         action: decision.action,
         adaptiveRules,
         targetState,
+        targetNodeId: selectedTarget.primaryNodeId,
         recentResults,
         sessionContext: context
     });
@@ -1052,6 +1053,8 @@ function resolveTarget({
 function buildSelectionCriteria({
     action,
     adaptiveRules,
+    targetState,
+    targetNodeId,
     recentResults,
     sessionContext
 }) {
@@ -1121,6 +1124,23 @@ function buildSelectionCriteria({
     if (finalEvidence.length > 0) {
         result.evidenceDimensions =
             finalEvidence;
+    }
+
+    // Opt-in evidence-gap routing. Limit to explicitly configured nodes
+    // with verified know questions; never change mastery thresholds.
+    const gapRouting = adaptiveRules?.evidenceGapRouting;
+    if (
+        action === "LEARN" &&
+        gapRouting?.enabled === true &&
+        Array.isArray(gapRouting.nodeIds) &&
+        gapRouting.nodeIds.includes(targetNodeId) &&
+        targetState?.mastery === "M0" &&
+        Number(targetState?.evidence?.know ?? 0) <
+        (Number.isFinite(gapRouting.knowThreshold)
+            ? gapRouting.knowThreshold : 0.6) &&
+        finalEvidence.includes("know")
+    ) {
+        result.evidenceDimensions = ["know"];
     }
 
     const recentQuestionIds =

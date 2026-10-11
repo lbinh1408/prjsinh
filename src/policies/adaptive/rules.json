@@ -282,7 +282,7 @@
             }
         },
         "diagnosticDoesNotMeanMastery": true,
-        "diagnosticEvidenceWeight": 0.70
+        "diagnosticEvidenceWeight": 0.7
     },
     "acceleratedLearningRules": {
         "enabled": true,
@@ -1207,5 +1207,12 @@
             "Thêm lesson type.",
             "Thêm question selection strategy."
         ]
+    },
+    "evidenceGapRouting": {
+        "enabled": true,
+        "nodeIds": [
+            "K283"
+        ],
+        "knowThreshold": 0.6
     }
 }
