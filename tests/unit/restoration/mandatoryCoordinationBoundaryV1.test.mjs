@@ -1,0 +1,22 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { createMandatoryCoordinationBoundaryV1 } from '../../../src/restoration/mandatoryCoordinationBoundaryV1.js';
+const sid = 's1';
+const make = (methods = ['submitOnce', 'reconcile', 'audit']) => {
+  let held = false, calls = 0;
+  const coordination = { withWriter({ sessionId, write }) { assert.equal(sessionId, sid); if (held) throw Error('CAPTURE_LOCK_BUSY'); held = true; try { return write({ epoch: 1 }) } finally { held = false } } };
+  const integration = { submitOnce(x) { calls++; return { status: 'COMMITTED', ...x } }, reconcile() { calls++; return { status: 'COMMITTED' } }, audit() { calls++; return { status: 'CHECKPOINT_MATCHED' } }, inspect() { return { phase: 'IDLE' } } };
+  return { api: createMandatoryCoordinationBoundaryV1({ coordination, sessionId: sid, integration, methods }), calls: () => calls, coordination, integration };
+};
+test('submit preserves raw result', () => { const x = make(); assert.deepEqual(x.api.submitOnce({ attemptId: 'a' }), { status: 'COMMITTED', attemptId: 'a' }); });
+test('reconcile preserves raw result', () => assert.equal(make().api.reconcile().status, 'COMMITTED'));
+test('audit preserves raw result', () => assert.equal(make().api.audit().status, 'CHECKPOINT_MATCHED'));
+test('inspection remains available', () => assert.equal(make().api.inspect().phase, 'IDLE'));
+test('wrong session rejected before writing', () => { const x = make(); assert.throws(() => x.api.submitOnce({ sessionId: 'other' }), /SESSION_CONFLICT/); assert.equal(x.calls(), 0) });
+test('matching session accepted', () => assert.equal(make().api.submitOnce({ sessionId: sid }).status, 'COMMITTED'));
+test('exception propagates', () => { const x = make(); x.integration.submitOnce = () => { throw Error('FAILED') }; assert.throws(() => x.api.submitOnce({}), /FAILED/) });
+test('async result rejected', () => { const x = make(); x.integration.submitOnce = () => Promise.resolve(1); assert.throws(() => x.api.submitOnce({}), /ASYNC_UNSUPPORTED/) });
+test('lock busy fails closed', () => { const x = make(); x.coordination.withWriter = () => { throw Error('CAPTURE_LOCK_BUSY') }; assert.throws(() => x.api.submitOnce({}), /LOCK_BUSY/); assert.equal(x.calls(), 0) });
+test('invalid method rejected', () => assert.throws(() => make(['missing']), /INVALID_INPUT/));
+test('empty methods rejected', () => assert.throws(() => make([]), /INVALID_INPUT/));
+test('no recovery permission granted', () => { const i = make().api.coordinationInfo(); assert.equal(i.mandatoryEnforcementProven, false); assert.equal(i.resumeAuthorized, false); assert.equal(i.retryAuthorized, false) });

@@ -55,7 +55,25 @@ const EXPECTED_QUESTION_IDS = [
 
     "Q-A-K283-T-008",
     "Q-A-K283-T-009",
-    "Q-A-K283-T-010"
+    "Q-A-K283-T-010",
+
+    "Q-A-K283-K-011",
+    "Q-A-K283-K-012",
+    "Q-A-K283-K-013",
+    "Q-A-K283-K-014",
+    "Q-A-K283-K-015",
+    "Q-A-K283-K-016",
+    "Q-A-K283-K-017",
+    "Q-A-K283-K-018",
+
+    "Q-A-K283-E-019",
+    "Q-A-K283-E-020",
+    "Q-A-K283-E-021",
+    "Q-A-K283-E-022",
+    "Q-A-K283-E-023",
+    "Q-A-K283-E-024",
+    "Q-A-K283-E-025",
+    "Q-A-K283-E-026"
 ];
 
 
@@ -234,19 +252,19 @@ test(
 
 
 test(
-    "bank contains exactly 10 questions",
+    "bank contains exactly 26 questions",
     () => {
 
         assertEqual(
             bank.questions.length,
-            10
+            26
         );
     }
 );
 
 
 test(
-    "bank contains expected Q001-Q010 question IDs",
+    "bank contains expected Q001-Q026 question IDs",
     () => {
 
         const ids =
@@ -476,28 +494,28 @@ const report =
  * ======================================================= */
 
 test(
-    "runner executed 10 individual validators",
+    "runner executed 26 individual validators",
     () => {
 
         assertEqual(
             report.summary
                 ?.individual
                 ?.run,
-            10
+            26
         );
     }
 );
 
 
 test(
-    "all 10 individual question validations pass",
+    "all 26 individual question validations pass",
     () => {
 
         assertEqual(
             report.summary
                 ?.individual
                 ?.passed,
-            10
+            26
         );
 
 
@@ -512,7 +530,7 @@ test(
 
 
 test(
-    "artifact summary reports 10 valid questions",
+    "artifact summary reports 26 valid questions",
     () => {
 
         assertEqual(
@@ -520,7 +538,7 @@ test(
                 ?.artifacts
                 ?.questions
                 ?.supplied,
-            10
+            26
         );
 
 
@@ -529,7 +547,7 @@ test(
                 ?.artifacts
                 ?.questions
                 ?.valid,
-            10
+            26
         );
 
 
@@ -561,7 +579,7 @@ test(
             report.reports
                 .questions
                 .length,
-            10
+            26
         );
     }
 );

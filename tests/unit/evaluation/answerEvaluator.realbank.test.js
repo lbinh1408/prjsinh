@@ -330,7 +330,7 @@ test(
 
         assert.equal(
             K283_BANK.questions.length,
-            10
+            26
         );
 
         assert.equal(
@@ -425,11 +425,11 @@ test(
 
 
         /**
-         * 5 + 6 + 9 + 12
+         * 5 + 6 + 26 + 12
          */
         assert.equal(
             evaluatedCount,
-            33
+            49
         );
     }
 );
@@ -484,7 +484,7 @@ test(
 
         assert.equal(
             evaluatedCount,
-            33
+            49
         );
     }
 );
@@ -550,7 +550,7 @@ test(
 
         assert.equal(
             evaluatedCount,
-            33
+            49
         );
     }
 );
@@ -1442,7 +1442,7 @@ test(
 
         assert.equal(
             allQuestions.length,
-            33
+            49
         );
 
 

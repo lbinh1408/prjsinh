@@ -405,7 +405,7 @@ test(
 
         assert.equal(
             K283_BANK.questions.length,
-            10
+            26
         );
 
         assert.equal(

@@ -539,7 +539,10 @@ export function processAttempt({
          *
          * Mastery V2 exposes the updated runtime evidence history at:
          *
-         *     masteryRuntimeResult.current.evidenceHistory
+         *     masteryRuntimeResult.evidenceHistory
+         *
+         * The legacy current.evidenceHistory path is retained only as a
+         * compatibility fallback for older runtime result shapes.
          *
          * This history remains runtime-only and is intentionally not
          * persisted into canonical Student State.
@@ -548,6 +551,8 @@ export function processAttempt({
 
             masteryEvidenceHistory:
                 clonePlainObject(
+                    masteryRuntimeResult
+                        ?.evidenceHistory ??
                     masteryRuntimeResult
                         ?.current
                         ?.evidenceHistory ??

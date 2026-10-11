@@ -1,7 +1,7 @@
 {
     "schemaVersion": "1.0.0",
     "bankId": "QB-C09-K283-V1",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "subject": "biology",
     "language": "vi",
     "cluster": "C09",
@@ -1221,6 +1221,1878 @@
                     "transfer",
                     "challenge"
                 ]
+            }
+        },
+        {
+            "id": "Q-A-K283-K-011",
+            "version": "1.0.0",
+            "nodes": [
+                "K283"
+            ],
+            "primaryNode": "K283",
+            "evidence": "know",
+            "difficulty": "D1",
+            "questionType": "mcq",
+            "mode": [
+                "learning",
+                "practice"
+            ],
+            "prerequisites": [
+                "K282"
+            ],
+            "content": {
+                "stem": "Với kiểu liên kết AB/ab, hai loại giao tử mang tổ hợp allele bố mẹ là cặp nào?",
+                "context": "Bài tập nhận biết về tần số hoán vị gene.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "AB và ab",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "B",
+                        "text": "Ab và aB",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "C",
+                        "text": "AB và aB",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "Ab và ab",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "A"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "concept_confusion",
+                "reasoning_error"
+            ],
+            "explanation": {
+                "correct": "AB và ab giữ nguyên tổ hợp allele trên hai nhiễm sắc thể tương đồng ban đầu.",
+                "incorrect": {
+                    "B": "Lựa chọn này chưa đúng. AB và ab giữ nguyên tổ hợp allele trên hai nhiễm sắc thể tương đồng ban đầu.",
+                    "C": "Lựa chọn này chưa đúng. AB và ab giữ nguyên tổ hợp allele trên hai nhiễm sắc thể tương đồng ban đầu.",
+                    "D": "Lựa chọn này chưa đúng. AB và ab giữ nguyên tổ hợp allele trên hai nhiễm sắc thể tương đồng ban đầu."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Xác định pha liên kết và phân biệt giao tử bố mẹ với giao tử tái tổ hợp."
+                    },
+                    {
+                        "level": 2,
+                        "text": "Ghi nhớ f là tổng tỉ lệ của hai loại giao tử tái tổ hợp."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "concept_confusion": {
+                        "sourceNodes": [
+                            "K282",
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "reasoning_error": {
+                        "sourceNodes": [
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-10-11",
+                "updatedAt": "2026-10-11",
+                "source": "K283-extension-draft",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 60,
+                "tags": [
+                    "c09",
+                    "k283",
+                    "know",
+                    "learning",
+                    "practice"
+                ]
+            },
+            "context": {
+                "contextId": "c09-k283-identify-parental-coupling",
+                "contextType": "direct"
+            }
+        },
+        {
+            "id": "Q-A-K283-K-012",
+            "version": "1.0.0",
+            "nodes": [
+                "K283"
+            ],
+            "primaryNode": "K283",
+            "evidence": "know",
+            "difficulty": "D1",
+            "questionType": "mcq",
+            "mode": [
+                "learning",
+                "practice"
+            ],
+            "prerequisites": [
+                "K282"
+            ],
+            "content": {
+                "stem": "Với kiểu liên kết AB/ab, hai loại giao tử tái tổ hợp là cặp nào?",
+                "context": "Bài tập nhận biết về tần số hoán vị gene.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "ab và aB",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "B",
+                        "text": "Ab và aB",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "C",
+                        "text": "AB và ab",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "AB và Ab",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "B"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "concept_confusion",
+                "reasoning_error"
+            ],
+            "explanation": {
+                "correct": "Ab và aB là hai tổ hợp allele mới so với AB và ab của bố mẹ.",
+                "incorrect": {
+                    "A": "Lựa chọn này chưa đúng. Ab và aB là hai tổ hợp allele mới so với AB và ab của bố mẹ.",
+                    "C": "Lựa chọn này chưa đúng. Ab và aB là hai tổ hợp allele mới so với AB và ab của bố mẹ.",
+                    "D": "Lựa chọn này chưa đúng. Ab và aB là hai tổ hợp allele mới so với AB và ab của bố mẹ."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Xác định pha liên kết và phân biệt giao tử bố mẹ với giao tử tái tổ hợp."
+                    },
+                    {
+                        "level": 2,
+                        "text": "Ghi nhớ f là tổng tỉ lệ của hai loại giao tử tái tổ hợp."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "concept_confusion": {
+                        "sourceNodes": [
+                            "K282",
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "reasoning_error": {
+                        "sourceNodes": [
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-10-11",
+                "updatedAt": "2026-10-11",
+                "source": "K283-extension-draft",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 60,
+                "tags": [
+                    "c09",
+                    "k283",
+                    "know",
+                    "learning",
+                    "practice"
+                ]
+            },
+            "context": {
+                "contextId": "c09-k283-identify-recombinant-coupling",
+                "contextType": "direct"
+            }
+        },
+        {
+            "id": "Q-A-K283-K-013",
+            "version": "1.0.0",
+            "nodes": [
+                "K283"
+            ],
+            "primaryNode": "K283",
+            "evidence": "know",
+            "difficulty": "D1",
+            "questionType": "mcq",
+            "mode": [
+                "learning",
+                "practice"
+            ],
+            "prerequisites": [
+                "K282"
+            ],
+            "content": {
+                "stem": "Trong mô hình hai gene liên kết, tần số hoán vị gene f được tính bằng đại lượng nào?",
+                "context": "Bài tập nhận biết về tần số hoán vị gene.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "Tỉ lệ một loại giao tử bố mẹ",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "B",
+                        "text": "Tỉ lệ của cả bốn loại giao tử",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "C",
+                        "text": "Tổng tỉ lệ hai loại giao tử tái tổ hợp",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "D",
+                        "text": "Tổng tỉ lệ hai loại giao tử bố mẹ",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "C"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "concept_confusion",
+                "reasoning_error"
+            ],
+            "explanation": {
+                "correct": "f là tổng tỉ lệ các giao tử tái tổ hợp đối với cặp gene đang xét.",
+                "incorrect": {
+                    "A": "Lựa chọn này chưa đúng. f là tổng tỉ lệ các giao tử tái tổ hợp đối với cặp gene đang xét.",
+                    "B": "Lựa chọn này chưa đúng. f là tổng tỉ lệ các giao tử tái tổ hợp đối với cặp gene đang xét.",
+                    "D": "Lựa chọn này chưa đúng. f là tổng tỉ lệ các giao tử tái tổ hợp đối với cặp gene đang xét."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Xác định pha liên kết và phân biệt giao tử bố mẹ với giao tử tái tổ hợp."
+                    },
+                    {
+                        "level": 2,
+                        "text": "Ghi nhớ f là tổng tỉ lệ của hai loại giao tử tái tổ hợp."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "concept_confusion": {
+                        "sourceNodes": [
+                            "K282",
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "reasoning_error": {
+                        "sourceNodes": [
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-10-11",
+                "updatedAt": "2026-10-11",
+                "source": "K283-extension-draft",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 60,
+                "tags": [
+                    "c09",
+                    "k283",
+                    "know",
+                    "learning",
+                    "practice"
+                ]
+            },
+            "context": {
+                "contextId": "c09-k283-definition-total-recombinant",
+                "contextType": "direct"
+            }
+        },
+        {
+            "id": "Q-A-K283-K-014",
+            "version": "1.0.0",
+            "nodes": [
+                "K283"
+            ],
+            "primaryNode": "K283",
+            "evidence": "know",
+            "difficulty": "D1",
+            "questionType": "mcq",
+            "mode": [
+                "learning",
+                "practice"
+            ],
+            "prerequisites": [
+                "K282"
+            ],
+            "content": {
+                "stem": "Trong kiểu liên kết Ab/aB, cặp giao tử nào thuộc nhóm bố mẹ?",
+                "context": "Bài tập nhận biết về tần số hoán vị gene.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "AB và ab",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "B",
+                        "text": "AB và Ab",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "C",
+                        "text": "ab và aB",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "Ab và aB",
+                        "isCorrect": true
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "D"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "concept_confusion",
+                "reasoning_error"
+            ],
+            "explanation": {
+                "correct": "Với kiểu sắp xếp Ab/aB, hai tổ hợp bố mẹ là Ab và aB.",
+                "incorrect": {
+                    "A": "Lựa chọn này chưa đúng. Với kiểu sắp xếp Ab/aB, hai tổ hợp bố mẹ là Ab và aB.",
+                    "B": "Lựa chọn này chưa đúng. Với kiểu sắp xếp Ab/aB, hai tổ hợp bố mẹ là Ab và aB.",
+                    "C": "Lựa chọn này chưa đúng. Với kiểu sắp xếp Ab/aB, hai tổ hợp bố mẹ là Ab và aB."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Xác định pha liên kết và phân biệt giao tử bố mẹ với giao tử tái tổ hợp."
+                    },
+                    {
+                        "level": 2,
+                        "text": "Ghi nhớ f là tổng tỉ lệ của hai loại giao tử tái tổ hợp."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "concept_confusion": {
+                        "sourceNodes": [
+                            "K282",
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "reasoning_error": {
+                        "sourceNodes": [
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-10-11",
+                "updatedAt": "2026-10-11",
+                "source": "K283-extension-draft",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 60,
+                "tags": [
+                    "c09",
+                    "k283",
+                    "know",
+                    "learning",
+                    "practice"
+                ]
+            },
+            "context": {
+                "contextId": "c09-k283-identify-parental-repulsion",
+                "contextType": "direct"
+            }
+        },
+        {
+            "id": "Q-A-K283-K-015",
+            "version": "1.0.0",
+            "nodes": [
+                "K283"
+            ],
+            "primaryNode": "K283",
+            "evidence": "know",
+            "difficulty": "D1",
+            "questionType": "mcq",
+            "mode": [
+                "learning",
+                "practice"
+            ],
+            "prerequisites": [
+                "K282"
+            ],
+            "content": {
+                "stem": "Trong kiểu liên kết Ab/aB, cặp giao tử nào là tái tổ hợp?",
+                "context": "Bài tập nhận biết về tần số hoán vị gene.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "AB và ab",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "B",
+                        "text": "Ab và aB",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "C",
+                        "text": "AB và Ab",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "aB và ab",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "A"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "concept_confusion",
+                "reasoning_error"
+            ],
+            "explanation": {
+                "correct": "Khi bố mẹ mang Ab/aB, giao tử AB và ab là hai tổ hợp mới.",
+                "incorrect": {
+                    "B": "Lựa chọn này chưa đúng. Khi bố mẹ mang Ab/aB, giao tử AB và ab là hai tổ hợp mới.",
+                    "C": "Lựa chọn này chưa đúng. Khi bố mẹ mang Ab/aB, giao tử AB và ab là hai tổ hợp mới.",
+                    "D": "Lựa chọn này chưa đúng. Khi bố mẹ mang Ab/aB, giao tử AB và ab là hai tổ hợp mới."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Xác định pha liên kết và phân biệt giao tử bố mẹ với giao tử tái tổ hợp."
+                    },
+                    {
+                        "level": 2,
+                        "text": "Ghi nhớ f là tổng tỉ lệ của hai loại giao tử tái tổ hợp."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "concept_confusion": {
+                        "sourceNodes": [
+                            "K282",
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "reasoning_error": {
+                        "sourceNodes": [
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-10-11",
+                "updatedAt": "2026-10-11",
+                "source": "K283-extension-draft",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 60,
+                "tags": [
+                    "c09",
+                    "k283",
+                    "know",
+                    "learning",
+                    "practice"
+                ]
+            },
+            "context": {
+                "contextId": "c09-k283-identify-recombinant-repulsion",
+                "contextType": "direct"
+            }
+        },
+        {
+            "id": "Q-A-K283-K-016",
+            "version": "1.0.0",
+            "nodes": [
+                "K283"
+            ],
+            "primaryNode": "K283",
+            "evidence": "know",
+            "difficulty": "D2",
+            "questionType": "mcq",
+            "mode": [
+                "learning",
+                "practice"
+            ],
+            "prerequisites": [
+                "K282"
+            ],
+            "content": {
+                "stem": "Nếu tần số hoán vị gene là 0% ở kiểu AB/ab, nhóm giao tử nào được tạo ra trong mô hình đang xét?",
+                "context": "Bài tập nhận biết về tần số hoán vị gene.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "Chỉ AB và Ab",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "B",
+                        "text": "Chỉ AB và ab",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "C",
+                        "text": "Chỉ Ab và aB",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "Cả bốn loại với tỉ lệ bằng nhau",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "B"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "concept_confusion",
+                "reasoning_error"
+            ],
+            "explanation": {
+                "correct": "f = 0% nghĩa là không có giao tử tái tổ hợp Ab và aB trong mô hình.",
+                "incorrect": {
+                    "A": "Lựa chọn này chưa đúng. f = 0% nghĩa là không có giao tử tái tổ hợp Ab và aB trong mô hình.",
+                    "C": "Lựa chọn này chưa đúng. f = 0% nghĩa là không có giao tử tái tổ hợp Ab và aB trong mô hình.",
+                    "D": "Lựa chọn này chưa đúng. f = 0% nghĩa là không có giao tử tái tổ hợp Ab và aB trong mô hình."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Xác định pha liên kết và phân biệt giao tử bố mẹ với giao tử tái tổ hợp."
+                    },
+                    {
+                        "level": 2,
+                        "text": "Ghi nhớ f là tổng tỉ lệ của hai loại giao tử tái tổ hợp."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "concept_confusion": {
+                        "sourceNodes": [
+                            "K282",
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "reasoning_error": {
+                        "sourceNodes": [
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-10-11",
+                "updatedAt": "2026-10-11",
+                "source": "K283-extension-draft",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 60,
+                "tags": [
+                    "c09",
+                    "k283",
+                    "know",
+                    "learning",
+                    "practice"
+                ]
+            },
+            "context": {
+                "contextId": "c09-k283-zero-recombination-gametes",
+                "contextType": "scenario"
+            }
+        },
+        {
+            "id": "Q-A-K283-K-017",
+            "version": "1.0.0",
+            "nodes": [
+                "K283"
+            ],
+            "primaryNode": "K283",
+            "evidence": "know",
+            "difficulty": "D2",
+            "questionType": "mcq",
+            "mode": [
+                "learning",
+                "practice"
+            ],
+            "prerequisites": [
+                "K282"
+            ],
+            "content": {
+                "stem": "Nếu f = 20% ở kiểu AB/ab, tổng tỉ lệ giao tử mang tổ hợp bố mẹ là bao nhiêu?",
+                "context": "Bài tập nhận biết về tần số hoán vị gene.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "40%",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "B",
+                        "text": "10%",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "C",
+                        "text": "80%",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "D",
+                        "text": "20%",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "C"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "concept_confusion",
+                "reasoning_error"
+            ],
+            "explanation": {
+                "correct": "Tổng giao tử bố mẹ bằng 100% trừ tổng giao tử tái tổ hợp: 100% − 20% = 80%.",
+                "incorrect": {
+                    "A": "Lựa chọn này chưa đúng. Tổng giao tử bố mẹ bằng 100% trừ tổng giao tử tái tổ hợp: 100% − 20% = 80%.",
+                    "B": "Lựa chọn này chưa đúng. Tổng giao tử bố mẹ bằng 100% trừ tổng giao tử tái tổ hợp: 100% − 20% = 80%.",
+                    "D": "Lựa chọn này chưa đúng. Tổng giao tử bố mẹ bằng 100% trừ tổng giao tử tái tổ hợp: 100% − 20% = 80%."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Xác định pha liên kết và phân biệt giao tử bố mẹ với giao tử tái tổ hợp."
+                    },
+                    {
+                        "level": 2,
+                        "text": "Ghi nhớ f là tổng tỉ lệ của hai loại giao tử tái tổ hợp."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "concept_confusion": {
+                        "sourceNodes": [
+                            "K282",
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "reasoning_error": {
+                        "sourceNodes": [
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-10-11",
+                "updatedAt": "2026-10-11",
+                "source": "K283-extension-draft",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 60,
+                "tags": [
+                    "c09",
+                    "k283",
+                    "know",
+                    "learning",
+                    "practice"
+                ]
+            },
+            "context": {
+                "contextId": "c09-k283-parental-total-complement",
+                "contextType": "numeric_context"
+            }
+        },
+        {
+            "id": "Q-A-K283-K-018",
+            "version": "1.0.0",
+            "nodes": [
+                "K283"
+            ],
+            "primaryNode": "K283",
+            "evidence": "know",
+            "difficulty": "D2",
+            "questionType": "mcq",
+            "mode": [
+                "learning",
+                "practice"
+            ],
+            "prerequisites": [
+                "K282"
+            ],
+            "content": {
+                "stem": "Trong mô hình hai gene liên kết, giá trị f nào dưới đây là phù hợp?",
+                "context": "Bài tập nhận biết về tần số hoán vị gene.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "65%",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "B",
+                        "text": "80%",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "C",
+                        "text": "100%",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "35%",
+                        "isCorrect": true
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "D"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "concept_confusion",
+                "reasoning_error"
+            ],
+            "explanation": {
+                "correct": "Tần số hoán vị gene của hai gene không vượt quá 50% trong mô hình di truyền liên kết thông dụng.",
+                "incorrect": {
+                    "A": "Lựa chọn này chưa đúng. Tần số hoán vị gene của hai gene không vượt quá 50% trong mô hình di truyền liên kết thông dụng.",
+                    "B": "Lựa chọn này chưa đúng. Tần số hoán vị gene của hai gene không vượt quá 50% trong mô hình di truyền liên kết thông dụng.",
+                    "C": "Lựa chọn này chưa đúng. Tần số hoán vị gene của hai gene không vượt quá 50% trong mô hình di truyền liên kết thông dụng."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Xác định pha liên kết và phân biệt giao tử bố mẹ với giao tử tái tổ hợp."
+                    },
+                    {
+                        "level": 2,
+                        "text": "Ghi nhớ f là tổng tỉ lệ của hai loại giao tử tái tổ hợp."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "concept_confusion": {
+                        "sourceNodes": [
+                            "K282",
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "reasoning_error": {
+                        "sourceNodes": [
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-10-11",
+                "updatedAt": "2026-10-11",
+                "source": "K283-extension-draft",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 60,
+                "tags": [
+                    "c09",
+                    "k283",
+                    "know",
+                    "learning",
+                    "practice"
+                ]
+            },
+            "context": {
+                "contextId": "c09-k283-recombination-upper-bound",
+                "contextType": "concept"
+            }
+        },
+        {
+            "id": "Q-A-K283-E-019",
+            "version": "1.0.0",
+            "nodes": [
+                "K283"
+            ],
+            "primaryNode": "K283",
+            "evidence": "explain",
+            "difficulty": "D2",
+            "questionType": "mcq",
+            "mode": [
+                "learning",
+                "practice"
+            ],
+            "prerequisites": [
+                "K282"
+            ],
+            "content": {
+                "stem": "Một cơ thể AB/ab có f = 30%. Vì sao giao tử AB và ab mỗi loại chiếm 35%?",
+                "context": "Bài tập giải thích về tần số hoán vị gene.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "Vì tổng giao tử bố mẹ là 70% và hai loại đối ứng có tỉ lệ bằng nhau",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "B",
+                        "text": "Vì f chính là tỉ lệ của AB",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "C",
+                        "text": "Vì mỗi loại giao tử đều chiếm 25%",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "Vì hai loại tái tổ hợp chiếm 70%",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "A"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "concept_confusion",
+                "reasoning_error"
+            ],
+            "explanation": {
+                "correct": "Hai loại bố mẹ chiếm 100% − 30% = 70%, nên mỗi loại bằng 35%.",
+                "incorrect": {
+                    "B": "Lựa chọn này chưa đúng. Hai loại bố mẹ chiếm 100% − 30% = 70%, nên mỗi loại bằng 35%.",
+                    "C": "Lựa chọn này chưa đúng. Hai loại bố mẹ chiếm 100% − 30% = 70%, nên mỗi loại bằng 35%.",
+                    "D": "Lựa chọn này chưa đúng. Hai loại bố mẹ chiếm 100% − 30% = 70%, nên mỗi loại bằng 35%."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Xác định pha liên kết và phân biệt giao tử bố mẹ với giao tử tái tổ hợp."
+                    },
+                    {
+                        "level": 2,
+                        "text": "Ghi nhớ f là tổng tỉ lệ của hai loại giao tử tái tổ hợp."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "concept_confusion": {
+                        "sourceNodes": [
+                            "K282",
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "reasoning_error": {
+                        "sourceNodes": [
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-10-11",
+                "updatedAt": "2026-10-11",
+                "source": "K283-extension-draft",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 60,
+                "tags": [
+                    "c09",
+                    "k283",
+                    "explain",
+                    "learning",
+                    "practice"
+                ]
+            },
+            "context": {
+                "contextId": "c09-k283-explain-parental-equal-split",
+                "contextType": "numeric_context"
+            }
+        },
+        {
+            "id": "Q-A-K283-E-020",
+            "version": "1.0.0",
+            "nodes": [
+                "K283"
+            ],
+            "primaryNode": "K283",
+            "evidence": "explain",
+            "difficulty": "D2",
+            "questionType": "mcq",
+            "mode": [
+                "learning",
+                "practice"
+            ],
+            "prerequisites": [
+                "K282"
+            ],
+            "content": {
+                "stem": "Với kiểu Ab/aB và f = 20%, vì sao giao tử AB chiếm 10%?",
+                "context": "Bài tập giải thích về tần số hoán vị gene.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "Vì mọi giao tử đều chiếm 10%",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "B",
+                        "text": "Vì AB là giao tử tái tổ hợp, một trong hai loại đối ứng chia đều tổng 20%",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "C",
+                        "text": "Vì AB là giao tử bố mẹ nên chiếm 10%",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "Vì 20% phải chia cho bốn loại giao tử",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "B"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "concept_confusion",
+                "reasoning_error"
+            ],
+            "explanation": {
+                "correct": "Ở kiểu Ab/aB, AB và ab là tái tổ hợp; mỗi loại chiếm f/2 = 10%.",
+                "incorrect": {
+                    "A": "Lựa chọn này chưa đúng. Ở kiểu Ab/aB, AB và ab là tái tổ hợp; mỗi loại chiếm f/2 = 10%.",
+                    "C": "Lựa chọn này chưa đúng. Ở kiểu Ab/aB, AB và ab là tái tổ hợp; mỗi loại chiếm f/2 = 10%.",
+                    "D": "Lựa chọn này chưa đúng. Ở kiểu Ab/aB, AB và ab là tái tổ hợp; mỗi loại chiếm f/2 = 10%."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Xác định pha liên kết và phân biệt giao tử bố mẹ với giao tử tái tổ hợp."
+                    },
+                    {
+                        "level": 2,
+                        "text": "Ghi nhớ f là tổng tỉ lệ của hai loại giao tử tái tổ hợp."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "concept_confusion": {
+                        "sourceNodes": [
+                            "K282",
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "reasoning_error": {
+                        "sourceNodes": [
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-10-11",
+                "updatedAt": "2026-10-11",
+                "source": "K283-extension-draft",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 60,
+                "tags": [
+                    "c09",
+                    "k283",
+                    "explain",
+                    "learning",
+                    "practice"
+                ]
+            },
+            "context": {
+                "contextId": "c09-k283-explain-repulsion-recombinant",
+                "contextType": "scenario"
+            }
+        },
+        {
+            "id": "Q-A-K283-E-021",
+            "version": "1.0.0",
+            "nodes": [
+                "K283"
+            ],
+            "primaryNode": "K283",
+            "evidence": "explain",
+            "difficulty": "D2",
+            "questionType": "mcq",
+            "mode": [
+                "learning",
+                "practice"
+            ],
+            "prerequisites": [
+                "K282"
+            ],
+            "content": {
+                "stem": "Một học sinh nói: “f = 16% nghĩa là giao tử Ab chiếm 16%” với kiểu AB/ab. Vì sao nhận định này sai?",
+                "context": "Bài tập giải thích về tần số hoán vị gene.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "Vì tỉ lệ Ab luôn là 25%",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "B",
+                        "text": "Vì f chỉ tính giao tử AB",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "C",
+                        "text": "Vì 16% là tổng tỉ lệ Ab và aB, mỗi loại chiếm 8%",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "D",
+                        "text": "Vì Ab là giao tử bố mẹ",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "C"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "concept_confusion",
+                "reasoning_error"
+            ],
+            "explanation": {
+                "correct": "f cộng hai loại giao tử tái tổ hợp; trong mô hình này Ab = aB = 8%.",
+                "incorrect": {
+                    "A": "Lựa chọn này chưa đúng. f cộng hai loại giao tử tái tổ hợp; trong mô hình này Ab = aB = 8%.",
+                    "B": "Lựa chọn này chưa đúng. f cộng hai loại giao tử tái tổ hợp; trong mô hình này Ab = aB = 8%.",
+                    "D": "Lựa chọn này chưa đúng. f cộng hai loại giao tử tái tổ hợp; trong mô hình này Ab = aB = 8%."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Xác định pha liên kết và phân biệt giao tử bố mẹ với giao tử tái tổ hợp."
+                    },
+                    {
+                        "level": 2,
+                        "text": "Ghi nhớ f là tổng tỉ lệ của hai loại giao tử tái tổ hợp."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "concept_confusion": {
+                        "sourceNodes": [
+                            "K282",
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "reasoning_error": {
+                        "sourceNodes": [
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-10-11",
+                "updatedAt": "2026-10-11",
+                "source": "K283-extension-draft",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 60,
+                "tags": [
+                    "c09",
+                    "k283",
+                    "explain",
+                    "learning",
+                    "practice"
+                ]
+            },
+            "context": {
+                "contextId": "c09-k283-explain-one-vs-total-error",
+                "contextType": "error_analysis"
+            }
+        },
+        {
+            "id": "Q-A-K283-E-022",
+            "version": "1.0.0",
+            "nodes": [
+                "K283"
+            ],
+            "primaryNode": "K283",
+            "evidence": "explain",
+            "difficulty": "D2",
+            "questionType": "mcq",
+            "mode": [
+                "learning",
+                "practice"
+            ],
+            "prerequisites": [
+                "K282"
+            ],
+            "content": {
+                "stem": "Ở kiểu AB/ab, một loại giao tử bố mẹ AB chiếm 42%. Vì sao suy ra f = 16%?",
+                "context": "Bài tập giải thích về tần số hoán vị gene.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "Vì f bằng 42% chia 2",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "B",
+                        "text": "Vì f bằng 100% trừ 42%",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "C",
+                        "text": "Vì hai giao tử tái tổ hợp đều chiếm 42%",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "Vì ab cũng chiếm 42%, nên tổng bố mẹ 84% và tái tổ hợp 16%",
+                        "isCorrect": true
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "D"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "concept_confusion",
+                "reasoning_error"
+            ],
+            "explanation": {
+                "correct": "Hai loại giao tử bố mẹ đối ứng có tỉ lệ bằng nhau, tổng 84%; f = 100% − 84% = 16%.",
+                "incorrect": {
+                    "A": "Lựa chọn này chưa đúng. Hai loại giao tử bố mẹ đối ứng có tỉ lệ bằng nhau, tổng 84%; f = 100% − 84% = 16%.",
+                    "B": "Lựa chọn này chưa đúng. Hai loại giao tử bố mẹ đối ứng có tỉ lệ bằng nhau, tổng 84%; f = 100% − 84% = 16%.",
+                    "C": "Lựa chọn này chưa đúng. Hai loại giao tử bố mẹ đối ứng có tỉ lệ bằng nhau, tổng 84%; f = 100% − 84% = 16%."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Xác định pha liên kết và phân biệt giao tử bố mẹ với giao tử tái tổ hợp."
+                    },
+                    {
+                        "level": 2,
+                        "text": "Ghi nhớ f là tổng tỉ lệ của hai loại giao tử tái tổ hợp."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "concept_confusion": {
+                        "sourceNodes": [
+                            "K282",
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "reasoning_error": {
+                        "sourceNodes": [
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-10-11",
+                "updatedAt": "2026-10-11",
+                "source": "K283-extension-draft",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 60,
+                "tags": [
+                    "c09",
+                    "k283",
+                    "explain",
+                    "learning",
+                    "practice"
+                ]
+            },
+            "context": {
+                "contextId": "c09-k283-explain-infer-f-from-parental",
+                "contextType": "numeric_context"
+            }
+        },
+        {
+            "id": "Q-A-K283-E-023",
+            "version": "1.0.0",
+            "nodes": [
+                "K283"
+            ],
+            "primaryNode": "K283",
+            "evidence": "explain",
+            "difficulty": "D2",
+            "questionType": "mcq",
+            "mode": [
+                "learning",
+                "practice"
+            ],
+            "prerequisites": [
+                "K282"
+            ],
+            "content": {
+                "stem": "Với kiểu Ab/aB, một học sinh gọi Ab và aB là giao tử tái tổ hợp. Giải thích nào sửa đúng lỗi này?",
+                "context": "Bài tập giải thích về tần số hoán vị gene.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "Ab và aB là tổ hợp bố mẹ; AB và ab mới là tái tổ hợp",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "B",
+                        "text": "Ab và aB luôn là tái tổ hợp bất kể kiểu gene",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "C",
+                        "text": "Chỉ Ab là giao tử tái tổ hợp",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "Cả bốn giao tử đều là giao tử bố mẹ",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "A"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "concept_confusion",
+                "reasoning_error"
+            ],
+            "explanation": {
+                "correct": "Nhóm bố mẹ phụ thuộc vào pha liên kết ban đầu; ở Ab/aB, Ab và aB là nhóm bố mẹ.",
+                "incorrect": {
+                    "B": "Lựa chọn này chưa đúng. Nhóm bố mẹ phụ thuộc vào pha liên kết ban đầu; ở Ab/aB, Ab và aB là nhóm bố mẹ.",
+                    "C": "Lựa chọn này chưa đúng. Nhóm bố mẹ phụ thuộc vào pha liên kết ban đầu; ở Ab/aB, Ab và aB là nhóm bố mẹ.",
+                    "D": "Lựa chọn này chưa đúng. Nhóm bố mẹ phụ thuộc vào pha liên kết ban đầu; ở Ab/aB, Ab và aB là nhóm bố mẹ."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Xác định pha liên kết và phân biệt giao tử bố mẹ với giao tử tái tổ hợp."
+                    },
+                    {
+                        "level": 2,
+                        "text": "Ghi nhớ f là tổng tỉ lệ của hai loại giao tử tái tổ hợp."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "concept_confusion": {
+                        "sourceNodes": [
+                            "K282",
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "reasoning_error": {
+                        "sourceNodes": [
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-10-11",
+                "updatedAt": "2026-10-11",
+                "source": "K283-extension-draft",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 60,
+                "tags": [
+                    "c09",
+                    "k283",
+                    "explain",
+                    "learning",
+                    "practice"
+                ]
+            },
+            "context": {
+                "contextId": "c09-k283-explain-phase-dependence",
+                "contextType": "error_analysis"
+            }
+        },
+        {
+            "id": "Q-A-K283-E-024",
+            "version": "1.0.0",
+            "nodes": [
+                "K283"
+            ],
+            "primaryNode": "K283",
+            "evidence": "explain",
+            "difficulty": "D2",
+            "questionType": "mcq",
+            "mode": [
+                "learning",
+                "practice"
+            ],
+            "prerequisites": [
+                "K282"
+            ],
+            "content": {
+                "stem": "Trong phép lai phân tích AB/ab × ab/ab, vì sao tỉ lệ các nhóm con có thể dùng để suy ra tỉ lệ giao tử của cơ thể AB/ab?",
+                "context": "Bài tập giải thích về tần số hoán vị gene.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "Vì tần số hoán vị luôn bằng 50%",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "B",
+                        "text": "Vì cơ thể ab/ab chỉ cho giao tử ab, nên kiểu gene con phản ánh giao tử từ cơ thể dị hợp",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "C",
+                        "text": "Vì cơ thể ab/ab tạo bốn loại giao tử",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "Vì mọi kiểu gene con đều có tỉ lệ bằng nhau",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "B"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "concept_confusion",
+                "reasoning_error"
+            ],
+            "explanation": {
+                "correct": "Ở phép lai phân tích này, cơ thể kiểm tra chỉ cho ab; sự khác biệt ở đời con đến từ giao tử của cơ thể dị hợp.",
+                "incorrect": {
+                    "A": "Lựa chọn này chưa đúng. Ở phép lai phân tích này, cơ thể kiểm tra chỉ cho ab; sự khác biệt ở đời con đến từ giao tử của cơ thể dị hợp.",
+                    "C": "Lựa chọn này chưa đúng. Ở phép lai phân tích này, cơ thể kiểm tra chỉ cho ab; sự khác biệt ở đời con đến từ giao tử của cơ thể dị hợp.",
+                    "D": "Lựa chọn này chưa đúng. Ở phép lai phân tích này, cơ thể kiểm tra chỉ cho ab; sự khác biệt ở đời con đến từ giao tử của cơ thể dị hợp."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Xác định pha liên kết và phân biệt giao tử bố mẹ với giao tử tái tổ hợp."
+                    },
+                    {
+                        "level": 2,
+                        "text": "Ghi nhớ f là tổng tỉ lệ của hai loại giao tử tái tổ hợp."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "concept_confusion": {
+                        "sourceNodes": [
+                            "K282",
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "reasoning_error": {
+                        "sourceNodes": [
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-10-11",
+                "updatedAt": "2026-10-11",
+                "source": "K283-extension-draft",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 60,
+                "tags": [
+                    "c09",
+                    "k283",
+                    "explain",
+                    "learning",
+                    "practice"
+                ]
+            },
+            "context": {
+                "contextId": "c09-k283-explain-testcross-interpretation",
+                "contextType": "genetic_cross"
+            }
+        },
+        {
+            "id": "Q-A-K283-E-025",
+            "version": "1.0.0",
+            "nodes": [
+                "K283"
+            ],
+            "primaryNode": "K283",
+            "evidence": "explain",
+            "difficulty": "D2",
+            "questionType": "mcq",
+            "mode": [
+                "learning",
+                "practice"
+            ],
+            "prerequisites": [
+                "K282"
+            ],
+            "content": {
+                "stem": "Trong một phép lai phân tích, hai nhóm con tái tổ hợp có 48 và 52 cá thể trên tổng 500 cá thể. Vì sao phải cộng cả hai nhóm khi tính f?",
+                "context": "Bài tập giải thích về tần số hoán vị gene.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "Vì f bằng 52/500",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "B",
+                        "text": "Vì f bằng (48 + 52)/2",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "C",
+                        "text": "Vì f là tổng tỉ lệ các nhóm tái tổ hợp, nên f = (48 + 52)/500 = 20%",
+                        "isCorrect": true
+                    },
+                    {
+                        "id": "D",
+                        "text": "Vì f bằng 48/500",
+                        "isCorrect": false
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "C"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "concept_confusion",
+                "reasoning_error"
+            ],
+            "explanation": {
+                "correct": "Tần số hoán vị gene tính trên tổng số cá thể thuộc cả hai nhóm tái tổ hợp, không chỉ một nhóm.",
+                "incorrect": {
+                    "A": "Lựa chọn này chưa đúng. Tần số hoán vị gene tính trên tổng số cá thể thuộc cả hai nhóm tái tổ hợp, không chỉ một nhóm.",
+                    "B": "Lựa chọn này chưa đúng. Tần số hoán vị gene tính trên tổng số cá thể thuộc cả hai nhóm tái tổ hợp, không chỉ một nhóm.",
+                    "D": "Lựa chọn này chưa đúng. Tần số hoán vị gene tính trên tổng số cá thể thuộc cả hai nhóm tái tổ hợp, không chỉ một nhóm."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Xác định pha liên kết và phân biệt giao tử bố mẹ với giao tử tái tổ hợp."
+                    },
+                    {
+                        "level": 2,
+                        "text": "Ghi nhớ f là tổng tỉ lệ của hai loại giao tử tái tổ hợp."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "concept_confusion": {
+                        "sourceNodes": [
+                            "K282",
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "reasoning_error": {
+                        "sourceNodes": [
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-10-11",
+                "updatedAt": "2026-10-11",
+                "source": "K283-extension-draft",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 60,
+                "tags": [
+                    "c09",
+                    "k283",
+                    "explain",
+                    "learning",
+                    "practice"
+                ]
+            },
+            "context": {
+                "contextId": "c09-k283-explain-testcross-sampling",
+                "contextType": "genetic_cross"
+            }
+        },
+        {
+            "id": "Q-A-K283-E-026",
+            "version": "1.0.0",
+            "nodes": [
+                "K283"
+            ],
+            "primaryNode": "K283",
+            "evidence": "explain",
+            "difficulty": "D2",
+            "questionType": "mcq",
+            "mode": [
+                "learning",
+                "practice"
+            ],
+            "prerequisites": [
+                "K282"
+            ],
+            "content": {
+                "stem": "Hai loại giao tử tái tổ hợp quan sát được chiếm 9% và 11%. Vì sao có thể ước tính f = 20% từ số liệu này?",
+                "context": "Bài tập giải thích về tần số hoán vị gene.",
+                "options": [
+                    {
+                        "id": "A",
+                        "text": "Vì f phải lấy trung bình 9% và 11%",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "B",
+                        "text": "Vì f bằng 100% trừ 9%",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "C",
+                        "text": "Vì chỉ được dùng nhóm có tỉ lệ cao hơn",
+                        "isCorrect": false
+                    },
+                    {
+                        "id": "D",
+                        "text": "Vì f bằng tổng hai tỉ lệ tái tổ hợp quan sát được",
+                        "isCorrect": true
+                    }
+                ],
+                "media": [],
+                "data": null
+            },
+            "answer": {
+                "type": "single",
+                "value": "D"
+            },
+            "scoring": {
+                "maxScore": 1,
+                "partialCredit": false,
+                "rubric": null
+            },
+            "failureSignatures": [
+                "concept_confusion",
+                "reasoning_error"
+            ],
+            "explanation": {
+                "correct": "Từ dữ liệu thực nghiệm, cộng cả hai nhóm tái tổ hợp: 9% + 11% = 20%; dao động mẫu có thể làm số quan sát không bằng nhau.",
+                "incorrect": {
+                    "A": "Lựa chọn này chưa đúng. Từ dữ liệu thực nghiệm, cộng cả hai nhóm tái tổ hợp: 9% + 11% = 20%; dao động mẫu có thể làm số quan sát không bằng nhau.",
+                    "B": "Lựa chọn này chưa đúng. Từ dữ liệu thực nghiệm, cộng cả hai nhóm tái tổ hợp: 9% + 11% = 20%; dao động mẫu có thể làm số quan sát không bằng nhau.",
+                    "C": "Lựa chọn này chưa đúng. Từ dữ liệu thực nghiệm, cộng cả hai nhóm tái tổ hợp: 9% + 11% = 20%; dao động mẫu có thể làm số quan sát không bằng nhau."
+                }
+            },
+            "hint": {
+                "enabled": true,
+                "levels": [
+                    {
+                        "level": 1,
+                        "text": "Xác định pha liên kết và phân biệt giao tử bố mẹ với giao tử tái tổ hợp."
+                    },
+                    {
+                        "level": 2,
+                        "text": "Ghi nhớ f là tổng tỉ lệ của hai loại giao tử tái tổ hợp."
+                    }
+                ]
+            },
+            "remediation": {
+                "enabled": true,
+                "byFailureSignature": {
+                    "concept_confusion": {
+                        "sourceNodes": [
+                            "K282",
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    },
+                    "reasoning_error": {
+                        "sourceNodes": [
+                            "K283"
+                        ],
+                        "action": "REMEDIATE"
+                    }
+                }
+            },
+            "metadata": {
+                "author": "system",
+                "createdAt": "2026-10-11",
+                "updatedAt": "2026-10-11",
+                "source": "K283-extension-draft",
+                "reviewStatus": "draft",
+                "estimatedTimeSeconds": 60,
+                "tags": [
+                    "c09",
+                    "k283",
+                    "explain",
+                    "learning",
+                    "practice"
+                ]
+            },
+            "context": {
+                "contextId": "c09-k283-explain-observed-variation",
+                "contextType": "data_interpretation"
             }
         }
     ]

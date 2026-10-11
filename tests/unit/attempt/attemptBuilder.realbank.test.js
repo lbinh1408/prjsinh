@@ -637,7 +637,7 @@ test(
 
         assert.equal(
             allQuestions.length,
-            33,
+            49,
 
             [
                 "Expected the locked C09 Study MVP bank",
@@ -2183,7 +2183,7 @@ test(
                 incorrectAttempts +
                 skippedAttempts
             ),
-            99
+            147
         );
     }
 );
