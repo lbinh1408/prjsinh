@@ -1,0 +1,32 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { createRequire } from 'node:module';
+import { createProductionWriterCoordinationV1 } from '../../../src/restoration/productionWriterCoordinationV1.js';
+import { createAtomicCaptureCoordinationV1 } from '../../../src/restoration/atomicCaptureCoordinationV1.js';
+import { createDurableAttemptStore } from '../../../src/persistence/durableAttemptStore.js';
+function fixture() {
+    const root = fs.mkdtempSync(path.join(os.tmpdir(), 'writer-integration-'));
+    const store = createDurableAttemptStore({ rootDir: path.join(root, 'attempts') });
+    const calls = [];
+    const journal = { prepare: a => { calls.push(['prepare', a]); return { status: 'PREPARED' } }, markUnknown: a => { calls.push(['markUnknown', a]); return { status: 'COMMIT_UNKNOWN' } } };
+    const durableCommit = { commit: a => { calls.push(['commit', a]); return { status: 'OBSERVED' } } };
+    const coordination = createAtomicCaptureCoordinationV1({ rootDir: root, publisher: { publish: () => ({ status: 'PUBLISHED' }) }, capture: () => ({ status: 'CONSISTENT' }) });
+    const adapter = createProductionWriterCoordinationV1({ coordination, attemptStore: store, journal, durableCommit });
+    return { root, store, calls, coordination, adapter, cleanup: () => fs.rmSync(root, { recursive: true, force: true }) };
+}
+const run = (name, fn) => test(name, () => { const f = fixture(); try { fn(f) } finally { f.cleanup() } });
+run('1 append real attempt via coordination', f => { const r = f.adapter.appendAttempt({ sessionId: 's1', attempt: { attemptId: 'a1', answer: 'A' } }); assert.equal(r.operation, 'appendAttempt'); assert.equal(f.store.countAttempts({ sessionId: 's1' }), 1) });
+run('2 identical attempts remain idempotent', f => { const a = { sessionId: 's1', attempt: { attemptId: 'a1', answer: 'A' } }; f.adapter.appendAttempt(a); f.adapter.appendAttempt(a); assert.equal(f.store.countAttempts({ sessionId: 's1' }), 1) });
+run('3 conflicting attempts fail closed', f => { f.adapter.appendAttempt({ sessionId: 's1', attempt: { attemptId: 'a1', answer: 'A' } }); assert.throws(() => f.adapter.appendAttempt({ sessionId: 's1', attempt: { attemptId: 'a1', answer: 'B' } }), { code: 'ATTEMPT_CONFLICT' }); assert.equal(f.store.getAttempt({ sessionId: 's1', attemptId: 'a1' }).answer, 'A') });
+run('4 journal prepare is guarded', f => { const r = f.adapter.prepare({ sessionId: 's1', attemptId: 'a1' }); assert.equal(r.value.status, 'PREPARED'); assert.equal(f.calls.length, 1) });
+run('5 journal markUnknown is guarded', f => { assert.equal(f.adapter.markUnknown({ sessionId: 's1', attemptId: 'a1' }).value.status, 'COMMIT_UNKNOWN'); assert.equal(f.calls[0][0], 'markUnknown') });
+run('6 durable commit is guarded', f => { assert.equal(f.adapter.commit({ sessionId: 's1' }).value.status, 'OBSERVED'); assert.equal(f.calls[0][0], 'commit') });
+run('7 lock busy denies attempt without side effect', f => { f.coordination.withWriter({ sessionId: 's1', write: () => assert.throws(() => f.adapter.appendAttempt({ sessionId: 's1', attempt: { attemptId: 'a1' } }), { code: 'CAPTURE_LOCK_BUSY' }) }); assert.equal(f.store.countAttempts({ sessionId: 's1' }), 0) });
+run('8 lock busy denies journal without side effect', f => { f.coordination.withWriter({ sessionId: 's1', write: () => assert.throws(() => f.adapter.prepare({ sessionId: 's1' }), { code: 'CAPTURE_LOCK_BUSY' }) }); assert.equal(f.calls.length, 0) });
+run('9 lock busy denies checkpoint without side effect', f => { f.coordination.withWriter({ sessionId: 's1', write: () => assert.throws(() => f.adapter.commit({ sessionId: 's1' }), { code: 'CAPTURE_LOCK_BUSY' }) }); assert.equal(f.calls.length, 0) });
+run('10 invalid session denies before mutation', f => { assert.throws(() => f.adapter.prepare({ sessionId: '../bad' }), { code: 'WRITER_INTEGRATION_INVALID_SESSION' }); assert.equal(f.calls.length, 0) });
+run('11 each successful write advances fencing epoch', f => { const x = f.adapter.prepare({ sessionId: 's1' }); const y = f.adapter.markUnknown({ sessionId: 's1' }); assert.equal(y.epoch, x.epoch + 1) });
+run('12 no execution or recovery authorization', f => { const x = f.adapter.appendAttempt({ sessionId: 's1', attempt: { attemptId: 'a1' } }); for (const k of ['resumeAuthorized', 'retryAuthorized', 'executable', 'recoveryAuthorized', 'crossStoreAtomicityProven']) assert.equal(x[k], false) });

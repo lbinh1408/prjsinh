@@ -1,0 +1,30 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { createDurableSessionCommitV1 } from '../../../src/restoration/durableSessionCommitV1.js';
+const ref = { lesson: { id: 'lesson', version: '1', sha256: 'a'.repeat(64) } };
+const session = () => ({ runtime: { name: 'StudySession', version: '1', sessionId: 's', startedAt: '2026-01-01T00:00:00Z', lastActivityAt: '2026-01-01T00:00:00Z', status: 'ACTIVE' }, config: {}, state: {}, currentDecision: {}, currentSelection: null, currentQuestion: null, lessonRuntime: { currentItem: null, progress: { completedSectionIds: [], skippedSectionIds: [] } }, activeRemediationPlan: null, attempts: [{ attemptId: 'a', sessionId: 's', answer: 'A' }], history: [], masteryRuntime: { evidenceHistoryByNode: {} } });
+function fixture({ failpoint = null } = {}) {
+    const root = fs.mkdtempSync(path.join(os.tmpdir(), 'session-commit-v1-'));
+    let current = session(), revision = 1;
+    const authority = { inspect: () => ({ sessionId: 's', revision, session: structuredClone(current) }) };
+    const store = { getAttempt: ({ attemptId }) => attemptId === 'a' ? structuredClone(current.attempts[0]) : null, listAttemptIds: () => current.attempts.map(a => a.attemptId) };
+    const journal = { read: () => ({ entries: [{ attemptId: 'a', state: 'COMMITTED' }] }), reconcile: () => ({ status: 'COMMITTED', verification: 'ATTEMPT_MATCHED', externalAttemptCommitVerified: true }) };
+    const make = () => createDurableSessionCommitV1({ rootDir: root, attemptStore: store, journal, failpoint });
+    return { root, authority, store, journal, make, update: (s, r) => { current = s; revision = r }, cleanup: () => fs.rmSync(root, { recursive: true, force: true }) };
+}
+const args = f => ({ authority: f.authority, sessionId: 's', expectedAuthorityRevision: 1, expectedCheckpointRevision: 0, contentRefs: ref, savedAt: '2026-01-01T00:00:00Z' });
+test('1 durable checkpoint and read', () => { const f = fixture(); try { const v = f.make().commit(args(f)); assert.equal(v.checkpointRevision, 1); assert.deepEqual(v.checkpoint.attemptIds, ['a']); } finally { f.cleanup() } });
+test('2 restart read', () => { const f = fixture(); try { f.make().commit(args(f)); assert.equal(f.make().read({ sessionId: 's' }).checkpointRevision, 1); } finally { f.cleanup() } });
+test('3 audit matches journal', () => { const f = fixture(); try { f.make().commit(args(f)); assert.equal(f.make().audit({ sessionId: 's' }).status, 'CHECKPOINT_MATCHED'); } finally { f.cleanup() } });
+test('4 no resume authorization', () => { const f = fixture(); try { const r = f.make().commit(args(f)); assert.equal(r.resumeAuthorized, false); assert.equal(r.durableSessionCommitProven, false); } finally { f.cleanup() } });
+test('5 stale checkpoint CAS', () => { const f = fixture(); try { f.make().commit(args(f)); assert.throws(() => f.make().commit(args(f)), { code: 'SESSION_COMMIT_REVISION_CONFLICT' }); } finally { f.cleanup() } });
+test('6 authority revision mismatch', () => { const f = fixture(); try { assert.throws(() => f.make().commit({ ...args(f), expectedAuthorityRevision: 2 }), { code: 'SESSION_COMMIT_AUTHORITY_CONFLICT' }); } finally { f.cleanup() } });
+test('7 temp fsync failure preserves absence', () => { const f = fixture({ failpoint: 'afterTempFsync' }); try { assert.throws(() => f.make().commit(args(f)), { code: 'SESSION_COMMIT_INJECTED_FAILURE' }); assert.equal(f.make().read({ sessionId: 's' }), null); } finally { f.cleanup() } });
+test('8 after rename ambiguous, re-read', () => { const f = fixture({ failpoint: 'afterRename' }); try { assert.throws(() => f.make().commit(args(f)), { code: 'SESSION_COMMIT_INJECTED_FAILURE' }); assert.equal(f.make().read({ sessionId: 's' }).checkpointRevision, 1); } finally { f.cleanup() } });
+test('9 no checkpoint audit', () => { const f = fixture(); try { assert.equal(f.make().audit({ sessionId: 's' }).status, 'NO_CHECKPOINT'); } finally { f.cleanup() } });
+test('10 corrupted checkpoint rejected', () => { const f = fixture(); try { f.make().commit(args(f)); const file = fs.readdirSync(f.root).find(x => x.endsWith('.json')); fs.writeFileSync(path.join(f.root, file), '{}'); assert.throws(() => f.make().read({ sessionId: 's' }), { code: 'SESSION_COMMIT_CORRUPT' }); } finally { f.cleanup() } });
+test('11 next checkpoint revision after session mutation', () => { const f = fixture(); try { f.make().commit(args(f)); const s = session(); s.history = ['later']; f.update(s, 2); const v = f.make().commit({ ...args(f), expectedAuthorityRevision: 2, expectedCheckpointRevision: 1 }); assert.equal(v.checkpointRevision, 2); } finally { f.cleanup() } });
+test('12 invalid session identity rejected', () => { const f = fixture(); try { assert.throws(() => f.make().commit({ ...args(f), sessionId: 'other' }), { code: 'SESSION_COMMIT_AUTHORITY_CONFLICT' }); } finally { f.cleanup() } });

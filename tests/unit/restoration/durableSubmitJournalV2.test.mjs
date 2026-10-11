@@ -1,0 +1,25 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { createRequire } from 'node:module';
+import { createDurableSubmitJournalV2 } from '../../../src/restoration/durableSubmitJournalV2.js';
+import { createDurableAttemptStore } from '../../../src/persistence/durableAttemptStore.js';
+const setup = () => {
+    const root = fs.mkdtempSync(path.join(os.tmpdir(), 'submit-v2-'));
+    const attemptStore = createDurableAttemptStore({ rootDir: path.join(root, 'attempts') });
+    const create = (opts = {}) => createDurableSubmitJournalV2({ rootDir: path.join(root, 'journal'), attemptStore, ...opts });
+    return { root, attemptStore, create, attempt: { attemptId: 'a1', sessionId: 's1', result: 'correct' } };
+};
+const clean = x => fs.rmSync(x.root, { recursive: true, force: true });
+test('01 prepare durable and restart', () => { const x = setup(); try { x.create().prepare({ sessionId: 's1', attempt: x.attempt, expectedRevision: 0 }); assert.equal(x.create().read('s1').state, 'PREPARED'); } finally { clean(x); } });
+test('02 absent attempt never authorizes retry', () => { const x = setup(); try { const j = x.create(); j.prepare({ sessionId: 's1', attempt: x.attempt, expectedRevision: 0 }); const r = j.reconcile({ sessionId: 's1' }); assert.equal(r.externalAttemptCommitVerified, false); assert.equal(r.safeToRetry, false); } finally { clean(x); } });
+test('03 matching durable attempt reconciles committed', () => { const x = setup(); try { const j = x.create(); j.prepare({ sessionId: 's1', attempt: x.attempt, expectedRevision: 0 }); x.attemptStore.appendAttempt({ sessionId: 's1', attempt: x.attempt }); const r = x.create().reconcile({ sessionId: 's1' }); assert.equal(r.status, 'COMMITTED'); assert.equal(r.externalAttemptCommitVerified, true); assert.equal(r.executable, false); } finally { clean(x); } });
+test('04 mismatch fails closed', () => { const x = setup(); try { const j = x.create(); j.prepare({ sessionId: 's1', attempt: x.attempt, expectedRevision: 0 }); x.attemptStore.appendAttempt({ sessionId: 's1', attempt: { ...x.attempt, result: 'incorrect' } }); assert.throws(() => j.reconcile({ sessionId: 's1' }), { code: 'SUBMIT_V2_ATTEMPT_MISMATCH' }); } finally { clean(x); } });
+test('05 duplicate prepare denied', () => { const x = setup(); try { const j = x.create(); const p = { sessionId: 's1', attempt: x.attempt, expectedRevision: 0 }; j.prepare(p); assert.throws(() => j.prepare(p), { code: 'SUBMIT_V2_ALREADY_EXISTS' }); } finally { clean(x); } });
+test('06 unknown remains blocked after restart', () => { const x = setup(); try { const j = x.create(); j.prepare({ sessionId: 's1', attempt: x.attempt, expectedRevision: 0 }); j.markUnknown({ sessionId: 's1', attemptId: 'a1' }); const r = x.create().reconcile({ sessionId: 's1' }); assert.equal(r.status, 'COMMIT_UNKNOWN'); assert.equal(r.safeToRetry, false); } finally { clean(x); } });
+test('07 corrupted journal rejected', () => { const x = setup(); try { const j = x.create(); j.prepare({ sessionId: 's1', attempt: x.attempt, expectedRevision: 0 }); const file = fs.readdirSync(path.join(x.root, 'journal')).find(n => n.endsWith('.json')); fs.writeFileSync(path.join(x.root, 'journal', file), '{}'); assert.throws(() => j.read('s1'), { code: 'SUBMIT_V2_CORRUPT' }); } finally { clean(x); } });
+test('08 preexisting attempt denied', () => { const x = setup(); try { x.attemptStore.appendAttempt({ sessionId: 's1', attempt: x.attempt }); assert.throws(() => x.create().prepare({ sessionId: 's1', attempt: x.attempt, expectedRevision: 0 }), { code: 'SUBMIT_V2_ATTEMPT_ALREADY_PRESENT' }); } finally { clean(x); } });
+test('09 lock collision fails closed', () => { const x = setup(); try { const j = x.create({ lockTimeoutMs: 0 }); const { createHash } = createRequire(import.meta.url)('node:crypto'); const id = createHash('sha256').update('s1').digest('hex'); fs.mkdirSync(path.join(x.root, 'journal', id + '.lock')); assert.throws(() => j.prepare({ sessionId: 's1', attempt: x.attempt, expectedRevision: 0 }), { code: 'SUBMIT_V2_LOCK_TIMEOUT' }); } finally { clean(x); } });
+test('10 post-rename ambiguity reconciles from durable attempt', () => { const x = setup(); try { const j = x.create({ failpoint: 'afterRename' }); assert.throws(() => j.prepare({ sessionId: 's1', attempt: x.attempt, expectedRevision: 0 }), { code: 'SUBMIT_V2_INJECTED_FAILURE' }); x.attemptStore.appendAttempt({ sessionId: 's1', attempt: x.attempt }); const r = x.create().reconcile({ sessionId: 's1' }); assert.equal(r.status, 'COMMITTED'); } finally { clean(x); } });

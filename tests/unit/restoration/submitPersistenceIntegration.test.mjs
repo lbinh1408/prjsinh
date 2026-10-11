@@ -1,0 +1,31 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { createSubmitPersistenceIntegration } from '../../../src/restoration/submitPersistenceIntegration.js';
+import { createDurableAttemptStore } from '../../../src/persistence/durableAttemptStore.js';
+import { createDurableSubmitJournalV2 } from '../../../src/restoration/durableSubmitJournalV2.js';
+function setup({ attemptFailpoint = null, journalFailpoint = null, drift = false } = {}) {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'submit-integration-'));
+    const attemptStore = createDurableAttemptStore({ rootDir: path.join(dir, 'attempts'), failpoint: attemptFailpoint, lockTimeoutMs: 40 });
+    const journal = createDurableSubmitJournalV2({ rootDir: path.join(dir, 'journal'), attemptStore, failpoint: journalFailpoint, lockTimeoutMs: 40 });
+    let revision = 0;
+    let session = { runtime: { sessionId: 's1' }, currentSelection: { status: 'SELECTED' }, currentQuestion: { id: 'q1' } };
+    const authority = { inspect() { return structuredClone({ revision, session }); }, capture() { return { ok: true }; }, mutate({ expectedRevision, apply }) { assert.equal(revision, expectedRevision); session = apply(); revision++; } };
+    const submit = ({ session, attemptId }) => { if (drift) revision++; return { session: { ...session, currentSelection: { status: 'ANSWERED' } }, attempt: { attemptId, sessionId: 's1', answer: 'A' } }; };
+    const integration = createSubmitPersistenceIntegration({ authority, submit, attemptStore, journal });
+    const cleanup = () => fs.rmSync(dir, { recursive: true, force: true });
+    return { integration, attemptStore, journal, authority, dir, cleanup };
+}
+const input = { expectedRevision: 0, attemptId: 'a1' };
+test('verified commit persists Attempt and mutates session', () => { const x = setup(); try { const r = x.integration.submitOnce(input); assert.equal(r.phase, 'COMMITTED'); assert.equal(r.attemptStoreVerifiedBeforeSessionMutation, true); assert.equal(x.authority.inspect().revision, 1); assert.equal(x.journal.read('s1').state, 'COMMITTED'); assert.equal(x.attemptStore.getAttempt({ sessionId: 's1', attemptId: 'a1' }).answer, 'A'); } finally { x.cleanup(); } });
+test('never claims durable session atomicity or resume permission', () => { const x = setup(); try { const r = x.integration.submitOnce(input); for (const key of ['durableSessionCommitProven', 'crossStoreAtomicityProven', 'resumeAuthorized', 'retryAuthorized', 'executable']) assert.equal(r[key], false); } finally { x.cleanup(); } });
+test('duplicate submit blocked by fence', () => { const x = setup(); try { x.integration.submitOnce(input); assert.throws(() => x.integration.submitOnce(input), { code: 'SUBMIT_FENCE_SUBMIT_BLOCKED' }); } finally { x.cleanup(); } });
+test('restart reconciliation matches persisted Attempt without session resume', () => { const x = setup(); try { x.integration.submitOnce(input); const reopenedStore = createDurableAttemptStore({ rootDir: path.join(x.dir, 'attempts') }); const reopenedJournal = createDurableSubmitJournalV2({ rootDir: path.join(x.dir, 'journal'), attemptStore: reopenedStore }); const r = reopenedJournal.reconcile({ sessionId: 's1' }); assert.equal(r.verification, 'ATTEMPT_MATCHED'); assert.equal(r.executable, false); } finally { x.cleanup(); } });
+test('missing journal never authorizes retry', () => { const x = setup(); try { const r = x.integration.reconcile({ sessionId: 's1' }); assert.equal(r.status, 'NO_JOURNAL'); assert.equal(r.retryAuthorized, false); } finally { x.cleanup(); } });
+test('failure before Attempt commit leaves fail-closed state', () => { const x = setup({ attemptFailpoint: 'afterTempFsync' }); try { assert.throws(() => x.integration.submitOnce(input), { code: 'ATTEMPT_STORE_INJECTED_FAILURE' }); assert.equal(x.integration.inspect().phase, 'COMMIT_UNKNOWN'); assert.equal(x.journal.read('s1').state, 'COMMIT_UNKNOWN'); assert.equal(x.attemptStore.getAttempt({ sessionId: 's1', attemptId: 'a1' }), null); assert.equal(x.integration.reconcile({ sessionId: 's1' }).retryAuthorized, false); } finally { x.cleanup(); } });
+test('after rename failure is reconciled as committed, but fence remains unknown', () => { const x = setup({ attemptFailpoint: 'afterRename' }); try { assert.throws(() => x.integration.submitOnce(input), { code: 'ATTEMPT_STORE_INJECTED_FAILURE' }); assert.equal(x.integration.inspect().phase, 'COMMIT_UNKNOWN'); assert.equal(x.integration.reconcile({ sessionId: 's1' }).verification, 'ATTEMPT_MATCHED'); assert.equal(x.authority.inspect().revision, 0); } finally { x.cleanup(); } });
+test('session drift after Attempt persistence fails closed', () => { const x = setup({ drift: true }); try { assert.throws(() => x.integration.submitOnce(input), { code: 'SUBMIT_FENCE_STATE_DRIFT' }); assert.equal(x.integration.inspect().phase, 'COMMIT_UNKNOWN'); assert.equal(x.journal.read('s1').state, 'COMMITTED'); assert.equal(x.authority.inspect().revision, 1); } finally { x.cleanup(); } });
+test('journal failure before Attempt append leaves no Attempt', () => { const x = setup({ journalFailpoint: 'afterTempFsync' }); try { assert.throws(() => x.integration.submitOnce(input), { code: 'SUBMIT_V2_INJECTED_FAILURE' }); assert.equal(x.attemptStore.getAttempt({ sessionId: 's1', attemptId: 'a1' }), null); assert.equal(x.integration.inspect().phase, 'COMMIT_UNKNOWN'); } finally { x.cleanup(); } });
+test('invalid dependencies rejected', () => assert.throws(() => createSubmitPersistenceIntegration({}), { code: 'SUBMIT_INTEGRATION_INVALID_INPUT' }));

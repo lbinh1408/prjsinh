@@ -1,0 +1,27 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
+import { createRecoveryReadinessAuditV1 } from '../../../src/restoration/recoveryReadinessAuditV1.js';
+const digest = a => createHash('sha256').update(JSON.stringify(a)).digest('hex');
+const make = (options = {}) => {
+    const attempts = options.attempts ?? [{ attemptId: 'a', sessionId: 's' }];
+    const entries = options.entries === undefined ? attempts.map((a, i) => ({ attemptId: a.attemptId, attemptSha256: digest(a), expectedRevision: i, state: 'COMMITTED' })) : options.entries;
+    const checkpoint = options.checkpoint === undefined ? { sessionId: 's', authorityRevision: attempts.length, checkpointRevision: 1, checkpoint: { runtime: { sessionId: 's' }, revision: 1, attemptIds: attempts.map(a => a.attemptId) } } : options.checkpoint;
+    const store = { listAttemptIds: () => attempts.map(a => a.attemptId), getAttempt: ({ attemptId }) => attempts.find(a => a.attemptId === attemptId) ?? null };
+    const journal = { read: () => entries === null ? null : { sessionId: 's', entries }, reconcile: () => { throw Error('must not reconcile') } };
+    const durableCommit = { read: () => checkpoint, audit: () => { throw Error('must not audit') } };
+    return createRecoveryReadinessAuditV1({ attemptStore: store, journal, durableCommit });
+};
+const check = (opts, status, reason) => { const v = make(opts).inspect({ sessionId: 's' }); assert.equal(v.status, status); assert.equal(v.reason, reason); for (const k of ['resumeAuthorized', 'retryAuthorized', 'executable', 'crossStoreAtomicityProven', 'durableSessionCommitProven']) assert.equal(v[k], false); };
+test('1 consistent still no resume', () => check({}, 'CONSISTENT', 'OBSERVED_STORES_AGREE'));
+test('2 no durable data', () => check({ attempts: [], entries: null, checkpoint: null }, 'INCOMPLETE', 'NO_DURABLE_SESSION'));
+test('3 attempt but no journal', () => check({ entries: null, checkpoint: null }, 'INCOMPLETE', 'ATTEMPTS_WITHOUT_JOURNAL'));
+test('4 journal committed but checkpoint absent', () => check({ checkpoint: null }, 'INCOMPLETE', 'CHECKPOINT_MISSING'));
+test('5 checkpoint behind', () => check({ attempts: [{ attemptId: 'a', sessionId: 's' }, { attemptId: 'b', sessionId: 's' }], checkpoint: { sessionId: 's', authorityRevision: 1, checkpointRevision: 1, checkpoint: { runtime: { sessionId: 's' }, revision: 1, attemptIds: ['a'] } } }, 'INCOMPLETE', 'CHECKPOINT_BEHIND_ATTEMPTS'));
+test('6 unresolved journal', () => check({ entries: [{ attemptId: 'a', attemptSha256: digest({ attemptId: 'a', sessionId: 's' }), expectedRevision: 0, state: 'COMMIT_UNKNOWN' }], checkpoint: null }, 'INCOMPLETE', 'JOURNAL_NOT_COMMITTED'));
+test('7 journal wrong order', () => check({ entries: [{ attemptId: 'b', attemptSha256: '0'.repeat(64), expectedRevision: 0, state: 'COMMITTED' }] }, 'CONFLICT', 'JOURNAL_ORDER_MISMATCH'));
+test('8 mismatched digest', () => check({ entries: [{ attemptId: 'a', attemptSha256: '0'.repeat(64), expectedRevision: 0, state: 'COMMITTED' }] }, 'CONFLICT', 'ATTEMPT_DIGEST_MISMATCH'));
+test('9 checkpoint future attempts', () => check({ checkpoint: { sessionId: 's', authorityRevision: 2, checkpointRevision: 1, checkpoint: { runtime: { sessionId: 's' }, revision: 1, attemptIds: ['a', 'b'] } } }, 'CONFLICT', 'DURABLE_SEQUENCE_EXCEEDS_ATTEMPTS'));
+test('10 checkpoint wrong revision', () => check({ checkpoint: { sessionId: 's', authorityRevision: 1, checkpointRevision: 2, checkpoint: { runtime: { sessionId: 's' }, revision: 1, attemptIds: ['a'] } } }, 'CORRUPT', 'CHECKPOINT_REVISION_INVALID'));
+test('11 checkpoint authority drift', () => check({ checkpoint: { sessionId: 's', authorityRevision: 9, checkpointRevision: 1, checkpoint: { runtime: { sessionId: 's' }, revision: 1, attemptIds: ['a'] } } }, 'CONFLICT', 'CHECKPOINT_AUTHORITY_REVISION_MISMATCH'));
+test('12 invalid input and no mutating APIs', () => { const a = make(); assert.throws(() => a.inspect({ sessionId: '' }), { code: 'RECOVERY_AUDIT_INVALID_SESSION' }); assert.equal(a.inspect({ sessionId: 's' }).status, 'CONSISTENT'); });

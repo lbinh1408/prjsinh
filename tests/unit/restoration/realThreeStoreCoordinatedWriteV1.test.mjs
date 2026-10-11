@@ -1,0 +1,42 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { createDurableAttemptStore } from '../../../src/persistence/durableAttemptStore.js';
+import { createDurableSubmitJournalV3 } from '../../../src/restoration/durableSubmitJournalV3.js';
+import { createDurableSessionCommitV1 } from '../../../src/restoration/durableSessionCommitV1.js';
+import { createAtomicCaptureCoordinationV1 } from '../../../src/restoration/atomicCaptureCoordinationV1.js';
+import { createProductionWriterCoordinationV1 } from '../../../src/restoration/productionWriterCoordinationV1.js';
+const deny = ['resumeAuthorized', 'retryAuthorized', 'executable', 'recoveryAuthorized', 'crossStoreAtomicityProven'];
+function fixture() {
+    const root = fs.mkdtempSync(path.join(os.tmpdir(), 'three-real-stores-'));
+    const store = createDurableAttemptStore({ rootDir: path.join(root, 'attempts') });
+    const journal = createDurableSubmitJournalV3({ rootDir: path.join(root, 'journal'), attemptStore: store });
+    const durableCommit = createDurableSessionCommitV1({ rootDir: path.join(root, 'checkpoint'), attemptStore: store, journal });
+    const coordination = createAtomicCaptureCoordinationV1({ rootDir: root, publisher: { publish: () => ({ status: 'PUBLISHED' }) }, capture: () => ({ status: 'INCOMPLETE' }) });
+    const adapter = createProductionWriterCoordinationV1({ coordination, attemptStore: store, journal, durableCommit });
+    const sessionId = 's1', attempt = { attemptId: 'a1', answer: 'A' };
+    const session = { runtime: { name: 'StudySession', version: '1', sessionId, startedAt: '2026-10-11T00:00:00Z', lastActivityAt: '2026-10-11T00:00:00Z', status: 'ACTIVE' }, config: {}, state: {}, currentDecision: {}, currentSelection: null, currentQuestion: null, lessonRuntime: { currentItem: null, progress: { completedSectionIds: [], skippedSectionIds: [] } }, activeRemediationPlan: null, attempts: [attempt], history: [], masteryRuntime: { evidenceHistoryByNode: {} } };
+    const authority = { inspect: () => ({ sessionId, revision: 1, session }) };
+    const contentRefs = { biology: { id: 'bio', version: '1', sha256: 'a'.repeat(64) } };
+    const commitArgs = { sessionId, authority, expectedAuthorityRevision: 1, expectedCheckpointRevision: 0, contentRefs, savedAt: '2026-10-11T00:00:00Z' };
+    const prepare = () => adapter.prepare({ sessionId, attempt, expectedRevision: 0 });
+    const append = () => adapter.appendAttempt({ sessionId, attempt });
+    const mark = () => adapter.markUnknown({ sessionId, attemptId: attempt.attemptId });
+    const reconcile = () => journal.reconcile({ sessionId, attemptId: attempt.attemptId }); // Legacy reconciliation writes; intentionally called outside adapter; NOT part of coordinated boundary.
+    return { root, store, journal, durableCommit, coordination, adapter, sessionId, attempt, authority, commitArgs, prepare, append, mark, reconcile, cleanup: () => fs.rmSync(root, { recursive: true, force: true }) };
+}
+const run = (name, fn) => test(name, () => { const f = fixture(); try { fn(f) } finally { f.cleanup() } });
+run('1 real journal prepare guarded and durable', f => { const r = f.prepare(); assert.equal(r.operation, 'prepare'); assert.equal(f.journal.read('s1').entries[0].state, 'PREPARED') });
+run('2 real attempt append guarded and durable', f => { f.append(); assert.deepEqual(f.store.getAttempt({ sessionId: 's1', attemptId: 'a1' }), f.attempt) });
+run('3 real journal markUnknown guarded and durable', f => { f.prepare(); f.mark(); assert.equal(f.journal.read('s1').entries[0].state, 'COMMIT_UNKNOWN') });
+run('4 all three stores commit real checkpoint', f => { f.prepare(); f.append(); f.reconcile(); const r = f.adapter.commit(f.commitArgs); assert.equal(r.operation, 'commit'); assert.equal(f.durableCommit.read({ sessionId: 's1' }).checkpointRevision, 1); for (const k of deny) assert.equal(r[k], false) });
+run('5 checkpoint cannot commit missing attempt', f => { f.prepare(); assert.throws(() => f.adapter.commit(f.commitArgs)); assert.equal(f.durableCommit.read({ sessionId: 's1' }), null) });
+run('6 checkpoint cannot commit unresolved journal', f => { f.prepare(); f.append(); assert.throws(() => f.adapter.commit(f.commitArgs), { code: 'SESSION_COMMIT_JOURNAL_UNVERIFIED' }); assert.equal(f.durableCommit.read({ sessionId: 's1' }), null) });
+run('7 lock blocks real journal prepare', f => { f.coordination.withWriter({ sessionId: 's1', write: () => assert.throws(f.prepare, { code: 'CAPTURE_LOCK_BUSY' }) }); assert.equal(f.journal.read('s1'), null) });
+run('8 lock blocks real attempt append', f => { f.coordination.withWriter({ sessionId: 's1', write: () => assert.throws(f.append, { code: 'CAPTURE_LOCK_BUSY' }) }); assert.equal(f.store.countAttempts({ sessionId: 's1' }), 0) });
+run('9 lock blocks real checkpoint commit', f => { f.coordination.withWriter({ sessionId: 's1', write: () => assert.throws(() => f.adapter.commit(f.commitArgs), { code: 'CAPTURE_LOCK_BUSY' }) }); assert.equal(f.durableCommit.read({ sessionId: 's1' }), null) });
+run('10 stale publisher token rejected after write', f => { const token = f.coordination.issuePublisherToken({ sessionId: 's1' }); f.prepare(); assert.throws(() => f.coordination.publishCaptured({ sessionId: 's1', token }), { code: 'STALE_PUBLISHER' }) });
+run('11 wrong authority revision rejects checkpoint', f => { f.prepare(); f.append(); f.reconcile(); assert.throws(() => f.adapter.commit({ ...f.commitArgs, expectedAuthorityRevision: 0 }), { code: 'SESSION_COMMIT_AUTHORITY_CONFLICT' }); assert.equal(f.durableCommit.read({ sessionId: 's1' }), null) });
+run('12 epoch increases across real three-store writes', f => { const a = f.prepare(), b = f.append(), c = f.mark(); assert.equal(b.epoch, a.epoch + 1); assert.equal(c.epoch, b.epoch + 1); assert.equal(f.store.countAttempts({ sessionId: 's1' }), 1); assert.equal(f.journal.read('s1').entries[0].state, 'COMMIT_UNKNOWN') });
