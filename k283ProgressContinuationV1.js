@@ -27,17 +27,31 @@ export function findLatestVerifiedK283Progress({ rootDir, contentRefs } = {}) {
     if (!latest) return null;
     // Compare content against the newest VERIFIED checkpoint only. An older
     // checkpoint may refer to an earlier version of the question bank.
-    if (JSON.stringify(latest.checkpoint.contentRefs) !== JSON.stringify(contentRefs)) {
-        const previous = latest.checkpoint.contentRefs ?? {};
-        const current = contentRefs ?? {};
-        const changed = [...new Set([...Object.keys(previous), ...Object.keys(current)])]
-            .filter(key => JSON.stringify(previous[key]) !== JSON.stringify(current[key]));
-        throw new Error(`K283_LATEST_CONTENT_CHANGED_CONTINUATION_BLOCKED: session=${latest.sessionId}; changedRefs=${changed.join(',') || 'unknown'}`);
+    const changed = diffK283ContentRefs(latest.checkpoint.contentRefs, contentRefs);
+    if (changed.length > 0) {
+        throw new Error(`K283_LATEST_CONTENT_CHANGED_CONTINUATION_BLOCKED: session=${latest.sessionId}; changedRefs=${changed.join(',')}`);
     }
     return {
         fromSessionId: latest.sessionId,
         savedAt: latest.checkpoint.savedAt,
-        studentState: structuredClone(latest.checkpoint.state.studentState),
+        studentState: structuredClone(latest.checkpoint.state.studentState ?? latest.checkpoint.state),
         evidenceHistoryByNode: structuredClone(latest.checkpoint.masteryRuntime.evidenceHistoryByNode)
     };
+}
+
+/** Order-independent strict identity check. Missing/extra refs and fields fail closed. */
+export function diffK283ContentRefs(previous, current) {
+    if (!previous || !current || typeof previous !== 'object' || typeof current !== 'object' ||
+        Array.isArray(previous) || Array.isArray(current)) return ['invalidContentRefs'];
+    const keys = [...new Set([...Object.keys(previous), ...Object.keys(current)])].sort();
+    if (keys.length === 0) return ['emptyContentRefs'];
+    return keys.filter(key => {
+        const a = previous[key];
+        const b = current[key];
+        if (!a || !b || typeof a !== 'object' || typeof b !== 'object' ||
+            Array.isArray(a) || Array.isArray(b)) return true;
+        const fields = ['id', 'version', 'sha256'];
+        if (Object.keys(a).length !== 3 || Object.keys(b).length !== 3) return true;
+        return fields.some(field => typeof a[field] !== 'string' || !a[field] || a[field] !== b[field]);
+    });
 }

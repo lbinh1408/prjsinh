@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { diffK283ContentRefs } from './k283ProgressContinuationV1.js';
+const a = { questionBank: { id: './bank.json', version: 'v1', sha256: 'abc' }, adaptiveRules: { id: './rules.json', version: 'v1', sha256: 'def' } };
+const b = { adaptiveRules: { sha256: 'def', id: './rules.json', version: 'v1' }, questionBank: { sha256: 'abc', version: 'v1', id: './bank.json' } };
+test('reordered entries and fields match', () => assert.deepEqual(diffK283ContentRefs(a, b), []));
+test('changed hash is blocked', () => assert.deepEqual(diffK283ContentRefs(a, { ...b, questionBank: { ...b.questionBank, sha256: 'xyz' } }), ['questionBank']));
+test('missing entry is blocked', () => assert.deepEqual(diffK283ContentRefs(a, { questionBank: b.questionBank }), ['adaptiveRules']));
+test('changed version is blocked', () => assert.deepEqual(diffK283ContentRefs(a, { ...b, adaptiveRules: { ...b.adaptiveRules, version: 'v2' } }), ['adaptiveRules']));
+test('empty refs are blocked', () => assert.deepEqual(diffK283ContentRefs({}, {}), ['emptyContentRefs']));
+test('unexpected ref fields are blocked', () => assert.deepEqual(diffK283ContentRefs(a, { ...b, questionBank: { ...b.questionBank, other: 1 } }), ['questionBank']));

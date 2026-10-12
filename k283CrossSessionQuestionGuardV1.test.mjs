@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { getPreviouslyObservedK283QuestionIds, applyK283InitialExclusions, assertK283QuestionNotPreviouslyObserved } from './k283CrossSessionQuestionGuardV1.js';
+const history = { K283: { know: [{ questionId: 'Q016' }], explain: [{ questionId: 'Q002' }], apply: [{ questionId: 'Q003' }, { questionId: 'Q003' }], transfer: [] } };
+test('extracts distinct IDs from all dimensions', () => assert.deepEqual(getPreviouslyObservedK283QuestionIds(history), ['Q002', 'Q003', 'Q016']));
+test('fails closed on missing observation ID', () => assert.throws(() => getPreviouslyObservedK283QuestionIds({ K283: { ...history.K283, apply: [{}] } }), /QUESTION_ID_MISSING/));
+test('fails closed on missing history dimension', () => assert.throws(() => getPreviouslyObservedK283QuestionIds({ K283: { know: [] } }), /DIMENSION_INVALID/));
+test('initial selector exclusions preserve existing criteria and source', () => { const session = { currentDecision: { selectionCriteria: { excludeQuestionIds: ['Q001'], difficulty: { preferred: 'D3' } } } }; const next = applyK283InitialExclusions(session, ['Q003', 'Q002']); assert.deepEqual(next.currentDecision.selectionCriteria.excludeQuestionIds, ['Q001', 'Q002', 'Q003']); assert.deepEqual(session.currentDecision.selectionCriteria.excludeQuestionIds, ['Q001']); });
+test('blocks prior question before submission', () => assert.throws(() => assertK283QuestionNotPreviouslyObserved('Q003', ['Q003']), /REPEATED_QUESTION_BLOCKED/));
+test('allows unseen question', () => assert.doesNotThrow(() => assertK283QuestionNotPreviouslyObserved('Q020', ['Q003'])));

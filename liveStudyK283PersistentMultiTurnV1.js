@@ -59,6 +59,7 @@ import { createAtomicCaptureCoordinationV1 } from "./src/restoration/atomicCaptu
 import { createHash } from "node:crypto";
 import { evaluateK283Completion, MASTERY_LEVELS } from "./k283SessionCompletionV1.js";
 import { findLatestVerifiedK283Progress } from "./k283ProgressContinuationV1.js";
+import { getPreviouslyObservedK283QuestionIds, applyK283InitialExclusions, applyK283SelectionExclusions, assertK283QuestionNotPreviouslyObserved } from "./k283CrossSessionQuestionGuardV1.js";
 
 
 import {
@@ -777,9 +778,12 @@ function printQuestion({
     }
 
 
+    const isNumeric = question?.questionType === "numeric";
     console.log(
         "\n" +
-        "Commands: A/B/C/D | status | state | decision | help | quit"
+        (isNumeric
+            ? "Commands: <number> | status | state | decision | help | quit"
+            : "Commands: A/B/C/D | status | state | decision | help | quit")
     );
 
     console.log(
@@ -1424,15 +1428,35 @@ function normalizeCommand(
 
 
 function normalizeAnswer(
-    value
+    value,
+    question = null
 ) {
-
-    const candidate =
+    const raw =
         normalizeCommand(
             value
-        )
-            .toUpperCase();
+        );
 
+    if (
+        question?.questionType === "numeric"
+    ) {
+        if (!raw) {
+            return null;
+        }
+
+        const parsed =
+            Number(raw);
+
+        if (
+            Number.isFinite(parsed)
+        ) {
+            return parsed;
+        }
+
+        return null;
+    }
+
+    const candidate =
+        raw.toUpperCase();
 
     if (
         [
@@ -1444,10 +1468,8 @@ function normalizeAnswer(
             candidate
         )
     ) {
-
         return candidate;
     }
-
 
     return null;
 }
@@ -2055,7 +2077,7 @@ function buildContentRefs() {
     }
     return refs;
 }
-function createPersistentSession(initialSession) {
+function createPersistentSession(initialSession, excludedQuestionIds = []) {
     const root = path.resolve(__dirname, ".k283-persistent-draft");
     const attemptStore = createDurableAttemptStore({ rootDir: path.join(root, "attempts") });
     const journal = createDurableSubmitJournalV3({ rootDir: path.join(root, "journal"), attemptStore });
@@ -2068,7 +2090,15 @@ function createPersistentSession(initialSession) {
     });
     return createK283PersistentMultiTurnCoordinatorV1({
         sessionId: SESSION_ID, authority, coordination, attemptStore, journal, durableCommit,
-        contentRefs: buildContentRefs(), select: getNextQuestion, submit: submitAnswer, now: nowIso
+        contentRefs: buildContentRefs(),
+        select: ({ session, now }) => {
+            const excluded = typeof excludedQuestionIds === "function"
+                ? excludedQuestionIds()
+                : (Array.isArray(excludedQuestionIds) ? excludedQuestionIds : []);
+            const sessionWithExclusions = applyK283SelectionExclusions(session, excluded);
+            return getNextQuestion({ session: sessionWithExclusions, now });
+        },
+        submit: submitAnswer, now: nowIso
     });
 }
 
@@ -2097,6 +2127,7 @@ async function main() {
 
     let session;
     let persistent;
+    let priorQuestionIds = [];
 
 
     try {
@@ -2110,10 +2141,13 @@ async function main() {
         session = createRuntimeSession(previousProgress);
         if (previousProgress) {
             session.masteryRuntime.evidenceHistoryByNode = structuredClone(previousProgress.evidenceHistoryByNode);
+            priorQuestionIds = getPreviouslyObservedK283QuestionIds(previousProgress.evidenceHistoryByNode);
+            session = applyK283InitialExclusions(session, priorQuestionIds);
+            console.log(`Cross-session exclusion: ${priorQuestionIds.length} previously observed question IDs.`);
             console.log(`\nNEW SESSION using verified progress from ${previousProgress.fromSessionId}.`);
             console.log('This is progress continuation, NOT recovery of the old session.');
         }
-        persistent = createPersistentSession(session);
+        persistent = createPersistentSession(session, priorQuestionIds);
 
     } catch (error) {
 
@@ -2271,6 +2305,9 @@ async function main() {
             const question =
                 next.question;
 
+            // Fail closed before any submit: a repeated question cannot produce new independent evidence.
+            assertK283QuestionNotPreviouslyObserved(question.id, priorQuestionIds);
+
 
             questionNumber +=
                 1;
@@ -2417,15 +2454,19 @@ async function main() {
 
                 const answer =
                     normalizeAnswer(
-                        command
+                        command,
+                        question
                     );
 
 
-                if (!answer) {
+                if (answer === null || answer === undefined) {
 
-                    console.log(
-                        "Please enter A, B, C, D, status, state, decision, help, or quit."
-                    );
+                    const hint =
+                        question?.questionType === "numeric"
+                            ? "Please enter a number (e.g. 25 or -3.5), status, state, decision, help, or quit."
+                            : "Please enter A, B, C, D, status, state, decision, help, or quit.";
+
+                    console.log(hint);
 
                     continue;
                 }
@@ -2506,6 +2547,8 @@ async function main() {
 
                 session =
                     result.session;
+                // Also prevent repeated evidence within this new session.
+                priorQuestionIds.push(question.id);
 
 
                 submitted =
