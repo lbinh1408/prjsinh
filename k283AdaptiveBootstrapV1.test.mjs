@@ -6,6 +6,7 @@ import path from 'node:path';
 import { createHash } from 'node:crypto';
 import {
     bootstrapAdaptiveDecision,
+    acceptBootstrapRemediationProvenance,
     resolveBootstrapRemediationGenerationStop,
     restoreBootstrapRemediationGenerationStop,
     resolveBootstrapRemediationPolicyErrorStop,
@@ -27,6 +28,91 @@ import { createLiveSessionRevisionAuthority } from './src/restoration/liveSessio
 import { findLatestVerifiedK283Progress } from './k283ProgressContinuationV1.js';
 import { createRuntimeSession } from './liveStudyK283PersistentMultiTurnV1.js';
 import { resolveProbeAuthoringPolicy } from './src/engines/remediation/probeAuthoringPolicyResolver.js';
+import { createRemediationStopProvenance } from './src/engines/orchestration/remediationStopProvenance.js';
+
+function handoffFixture(kind) {
+    const f = kind === 'POLICY_ERROR' ? makePolicyErrorFixture() : makeCheckpoint();
+    const checkpoint = f.checkpoint;
+    checkpoint.state = { student: { id: 'handoff-test' }, knowledge: {} };
+    const stop = Object.values(checkpoint.extensions)[0];
+    const inputs = kind === 'POLICY_ERROR'
+        ? policyErrorFingerprintInput({ dependencies: f.dependencies, bank: f.questionBank, config: STOP_CONFIG, policy: f.policy })
+        : { resolverVersion: PROBE_FEASIBILITY_RESOLVER_VERSION, targetNodeId: 'K283',
+            bankIdentity: { bankId: f.questionBank.bankId, version: f.questionBank.version }, questionBank: f.questionBank,
+            selectorConstraints: {}, config: STOP_CONFIG, generationRules: Object.fromEntries(
+                ['adaptiveRules', 'adaptivePaths', 'knowledgeMap', 'failureSignatures', 'remediationRules'].map(k => [k, f.dependencies[k]])) };
+    const source = { sessionId: checkpoint.runtime.sessionId, checkpointRevision: checkpoint.revision,
+        checkpointPayloadSha256: createHash('sha256').update(JSON.stringify(canonicalize(checkpoint))).digest('hex') };
+    const provenance = createRemediationStopProvenance({ ...source, stopKind: kind, stopFingerprint: stop.configFingerprint,
+        fingerprintContract: 'V1', participation: null, generationInputs: inputs });
+    const progress = { fromSessionId: source.sessionId, checkpoint, studentState: checkpoint.state, history: checkpoint.history,
+        remediationGenerationStop: checkpoint.extensions.remediationGenerationStop ?? null,
+        remediationPolicyErrorStop: checkpoint.extensions.remediationPolicyErrorStop ?? null,
+        remediationProvenance: { status: 'VERIFIED', source, provenance } };
+    return { progress, policy: f.policy };
+}
+
+for (const kind of ['INFEASIBLE', 'POLICY_ERROR']) {
+    test(`${kind}: CLI hands verified immutable evidence to bootstrap without changing decisions`, () => {
+        const { progress, policy } = handoffFixture(kind);
+        const before = structuredClone(progress);
+        const runtime = createRuntimeSession(progress, policy);
+        assert.deepEqual(runtime.remediationProvenance, progress.remediationProvenance);
+        assert.deepEqual(progress, before);
+        assert.ok(Object.isFrozen(runtime.remediationProvenance.source));
+        assert.ok(Object.isFrozen(runtime.remediationProvenance.provenance.generationInputs));
+        const legacy = structuredClone(progress); delete legacy.remediationProvenance;
+        const oldRuntime = createRuntimeSession(legacy, policy);
+        assert.equal(Object.hasOwn(oldRuntime, 'remediationProvenance'), false);
+        assert.deepEqual(runtime.remediationGenerationStop, oldRuntime.remediationGenerationStop);
+        assert.deepEqual(runtime.remediationPolicyErrorStop, oldRuntime.remediationPolicyErrorStop);
+        assert.deepEqual(runtime.session.currentDecision, oldRuntime.session.currentDecision);
+        assert.deepEqual(runtime.session.state.knowledge, oldRuntime.session.state.knowledge);
+        assert.deepEqual(runtime.session.masteryRuntime, oldRuntime.session.masteryRuntime);
+        assert.deepEqual(runtime.session.attempts, []);
+        if (kind === 'POLICY_ERROR') assert.equal(getNextQuestion({ session: runtime.session }).selection.status, 'NO_MATCH');
+    });
+}
+test('bootstrap preserves explicit absence and legacy missing metadata', () => {
+    const { progress } = handoffFixture('INFEASIBLE');
+    progress.remediationProvenance.status = 'ABSENT_UNVERIFIED'; progress.remediationProvenance.provenance = null;
+    assert.deepEqual(createRuntimeSession(progress).remediationProvenance, progress.remediationProvenance);
+    delete progress.remediationProvenance;
+    assert.equal(acceptBootstrapRemediationProvenance(progress), undefined);
+    assert.equal(acceptBootstrapRemediationProvenance(null), undefined);
+});
+test('bootstrap payload binding uses durable lexical ordering for numeric object keys', () => {
+    const { progress } = handoffFixture('INFEASIBLE');
+    progress.checkpoint.state.numericKeys = { 2: 'two', 10: 'ten' };
+    const canonical = value => Array.isArray(value) ? '[' + value.map(canonical).join(',') + ']'
+        : value && typeof value === 'object' ? '{' + Object.keys(value).sort()
+            .map(k => JSON.stringify(k) + ':' + canonical(value[k])).join(',') + '}' : JSON.stringify(value);
+    const metadata = progress.remediationProvenance;
+    metadata.status = 'ABSENT_UNVERIFIED'; metadata.provenance = null;
+    metadata.source.checkpointPayloadSha256 = createHash('sha256').update(canonical(progress.checkpoint)).digest('hex');
+    assert.deepEqual(acceptBootstrapRemediationProvenance(progress), metadata);
+});
+test('CLI rejects malformed, swapped and stale handoff metadata before runtime initialization', () => {
+    const { progress } = handoffFixture('POLICY_ERROR');
+    for (const mutate of [
+        p => { p.remediationProvenance = undefined; }, p => { p.remediationProvenance = null; },
+        p => { p.remediationProvenance.status = 'UNKNOWN'; },
+        p => { p.remediationProvenance.status = 'ABSENT_UNVERIFIED'; },
+        p => { p.remediationProvenance.provenance = null; },
+        p => { delete p.remediationProvenance.source; },
+        p => { p.remediationProvenance.source.sessionId = 'other'; },
+        p => { p.fromSessionId = 'other'; },
+        p => { p.remediationProvenance.source.checkpointRevision++; },
+        p => { p.remediationProvenance.source.checkpointPayloadSha256 = 'a'.repeat(64); },
+        p => { p.checkpoint.history.push('changed'); },
+        p => { p.remediationPolicyErrorStop.triggerAttemptId = 'other'; },
+        p => { p.remediationProvenance.provenance.inputSha256 = 'a'.repeat(64); },
+        p => { p.remediationProvenance.provenance.generationInputs.config.timeBudget++; }
+    ]) {
+        const changed = structuredClone(progress); mutate(changed);
+        assert.throws(() => createRuntimeSession(changed), /K283_BOOTSTRAP_PROVENANCE_INVALID/);
+    }
+});
 
 const PATHS = {
     questionBank: './src/data/questions/c09/K283.question-bank.json',

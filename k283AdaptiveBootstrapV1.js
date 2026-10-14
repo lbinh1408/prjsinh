@@ -4,6 +4,61 @@
  */
 import { decideNextAction } from "./src/engines/adaptive/adaptiveEngine.js";
 import { decodeCheckpoint } from "./src/persistence/checkpointCodec.js";
+import { createHash } from "node:crypto";
+import { isDeepStrictEqual } from "node:util";
+import { verifyRemediationStopProvenance } from "./src/engines/orchestration/remediationStopProvenance.js";
+
+// Read-only boundary, separate from stop classification and Adaptive initialization.
+// VERIFIED is a transported assertion from durable read, not authenticated attestation.
+export function acceptBootstrapRemediationProvenance(progress) {
+    if (!progress || !Object.hasOwn(progress, "remediationProvenance")) return undefined;
+    try {
+        const metadata = structuredClone(progress.remediationProvenance);
+        const exact = (value, keys) => value && typeof value === "object" && !Array.isArray(value) &&
+            Object.keys(value).length === keys.length && keys.every(key => Object.hasOwn(value, key));
+        if (!exact(metadata, ["status", "source", "provenance"]) ||
+            !exact(metadata.source, ["sessionId", "checkpointRevision", "checkpointPayloadSha256"])) throw Error();
+        const checkpoint = decodeCheckpoint(progress.checkpoint);
+        // Match the durable wrapper's lexical key order, including numeric-looking keys.
+        const canonical = value => {
+            if (Array.isArray(value)) return '[' + value.map(canonical).join(',') + ']';
+            if (value && typeof value === 'object') return '{' + Object.keys(value).sort()
+                .map(key => JSON.stringify(key) + ':' + canonical(value[key])).join(',') + '}';
+            return JSON.stringify(value);
+        };
+        const payload = canonical(checkpoint);
+        const source = metadata.source;
+        if (source.sessionId !== progress.fromSessionId || source.sessionId !== checkpoint.runtime.sessionId ||
+            source.checkpointRevision !== checkpoint.revision ||
+            source.checkpointPayloadSha256 !== createHash("sha256").update(payload).digest("hex")) throw Error();
+        for (const field of ["remediationGenerationStop", "remediationPolicyErrorStop"]) {
+            if (!isDeepStrictEqual(progress[field] ?? null, checkpoint.extensions?.[field] ?? null)) throw Error();
+        }
+        if (metadata.status === "ABSENT_UNVERIFIED") {
+            if (metadata.provenance !== null) throw Error();
+        } else if (metadata.status === "VERIFIED") {
+            const p = metadata.provenance;
+            const stop = p?.stopKind === "INFEASIBLE" ? checkpoint.extensions?.remediationGenerationStop
+                : p?.stopKind === "POLICY_ERROR" ? checkpoint.extensions?.remediationPolicyErrorStop : null;
+            const inputs = p?.generationInputs;
+            if (!stop || p.fingerprintContract !== "V1" || p.participation !== null ||
+                !checkpoint.attemptIds.includes(stop.triggerAttemptId) || inputs?.targetNodeId !== stop.targetNodeId ||
+                inputs?.bankIdentity?.bankId !== stop.bankId || inputs?.bankIdentity?.version !== stop.bankVersion ||
+                (stop.status === "POLICY_ERROR" && (inputs?.policy?.policyId !== stop.policyId ||
+                    inputs?.policy?.policyVersion !== stop.policyVersion))) throw Error();
+            verifyRemediationStopProvenance({ provenance: p, sessionId: source.sessionId,
+                checkpointRevision: source.checkpointRevision, checkpointPayloadSha256: source.checkpointPayloadSha256,
+                stopKind: stop.status, stopFingerprint: stop.configFingerprint });
+        } else throw Error();
+        const freeze = value => {
+            if (value && typeof value === "object") { Object.values(value).forEach(freeze); Object.freeze(value); }
+            return value;
+        };
+        return freeze(metadata);
+    } catch {
+        throw new Error("K283_BOOTSTRAP_PROVENANCE_INVALID");
+    }
+}
 import {
     computeLegacyInfeasibleFingerprintV1,
     computePolicyErrorFingerprintV1

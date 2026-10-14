@@ -63,6 +63,7 @@ import { findLatestVerifiedK283Progress } from "./k283ProgressContinuationV1.js"
 import { getPreviouslyObservedK283QuestionIds, applyK283InitialExclusions, applyK283SelectionExclusions, assertK283QuestionNotPreviouslyObserved } from "./k283CrossSessionQuestionGuardV1.js";
 import {
     bootstrapAdaptiveDecision,
+    acceptBootstrapRemediationProvenance,
     resolveBootstrapRemediationGenerationStop,
     restoreBootstrapRemediationGenerationStop,
     resolveBootstrapRemediationPolicyErrorStop,
@@ -1529,6 +1530,7 @@ function formatNumber(
  */
 
 export function createRuntimeSession(previousProgress = null, probeAuthoringPolicy = null) {
+    const remediationProvenance = acceptBootstrapRemediationProvenance(previousProgress);
 
     const dependencies =
         loadDependencies();
@@ -1686,7 +1688,8 @@ export function createRuntimeSession(previousProgress = null, probeAuthoringPoli
         restoreBootstrapRemediationPolicyErrorStop(session, remediationPolicyErrorStop);
     }
 
-    return { session, remediationGenerationStop, remediationPolicyErrorStop };
+    return { session, remediationGenerationStop, remediationPolicyErrorStop,
+        ...(remediationProvenance === undefined ? {} : { remediationProvenance }) };
 }
 
 /**
