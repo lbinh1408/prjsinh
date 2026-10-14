@@ -48,6 +48,10 @@ export function createMultiAttemptIntegrationV2({ authority, submit, attemptStor
             if (!result?.session || !result?.attempt || result.attempt.attemptId !== attemptId ||
                 result.attempt.sessionId !== sessionId || result.session.runtime?.sessionId !== sessionId) fail('MULTI_V2_INVALID_RESULT');
             if (!isDeepStrictEqual(authority.inspect(), before)) fail('MULTI_V2_STATE_DRIFT');
+            if (Object.hasOwn(result, 'remediationStopCapture') &&
+                (result.remediationStopCapture === undefined || result.remediationStopCapture === null)) {
+                fail('MULTI_V2_REMEDIATION_CAPTURE_INVALID');
+            }
             journal.prepare({ sessionId, attempt: clone(result.attempt), expectedRevision });
             phase = 'COMMIT_UNKNOWN';
             journal.markUnknown({ sessionId, attemptId });
@@ -65,7 +69,10 @@ export function createMultiAttemptIntegrationV2({ authority, submit, attemptStor
             return {
                 status: 'COMMITTED', attemptId, revision: ownedRevision,
                 attemptStoreVerifiedBeforeSessionMutation: true, durableSessionCommitProven: false,
-                crossStoreAtomicityProven: false, resumeAuthorized: false, retryAuthorized: false, executable: false
+                crossStoreAtomicityProven: false, resumeAuthorized: false, retryAuthorized: false, executable: false,
+                ...(Object.hasOwn(result, 'remediationStopCapture')
+                    ? { remediationStopCapture: result.remediationStopCapture }
+                    : {})
             };
         } catch (e) {
             phase = 'COMMIT_UNKNOWN'; // Even a failure before durable intent cannot authorize a retry.

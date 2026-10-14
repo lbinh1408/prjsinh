@@ -66,6 +66,7 @@ import assert from "node:assert/strict";
 import {
     createStudySession,
     getNextStudyItem,
+    getNextQuestion,
     submitAnswer,
     getSessionSnapshot,
     STUDY_SESSION_INFO
@@ -119,6 +120,11 @@ import {
 import {
     registerPersistenceCoordinatorRealSessionTests
 } from './persistence/persistenceCoordinator.realSession.integration.test.js';
+
+import {
+    encodeCheckpoint,
+    decodeCheckpoint
+} from "../../src/persistence/checkpointCodec.js";
 
 /**
  * ============================================================
@@ -2668,6 +2674,198 @@ test('P3.2 characterization: post-Q010 evidence JSON round-trip', () => {
     const observations = decoded.masteryRuntime.evidenceHistoryByNode.K283?.transfer;
     assert.ok(Array.isArray(observations) && observations.length > 0);
     assert.ok(observations.some(o => o.contextId === 'c09-k283-transfer-gamete-counts-03' && o.questionType === 'numeric'));
+});
+
+function makeProbeTransactionSession(successCriteria = {
+    minimumResult: "correct",
+    requiredEvidenceDimension: "apply"
+}) {
+    const session = makeSession();
+    session.currentDecision = structuredClone(session.currentDecision);
+    session.currentDecision.action = "REMEDIATE";
+    session.currentDecision.target.primaryNodeId = "K283";
+    session.currentDecision.target.nodeIds = ["K283"];
+    session.currentDecision.selectionCriteria.questionTypes = ["mcq"];
+    session.currentDecision.selectionCriteria.evidenceDimensions = ["apply"];
+    session.currentDecision.selectionCriteria.difficulty = {
+        min: "D3",
+        max: "D3",
+        preferred: "D3"
+    };
+    session.currentDecision.path = {
+        current: "MINI_PRACTICE",
+        next: "MINI_PROBE",
+        terminal: false
+    };
+    session.activeRemediationPlan = {
+        remediationId: "REM-K283-PROBE-001",
+        target: {
+            originalNodeId: "K283",
+            targetNodeId: "K283",
+            sourceNodeId: "K283"
+        },
+        diagnosis: {
+            failureType: "concept_confusion",
+            failureSignatureId: "concept_confusion"
+        },
+        probe: {
+            required: true,
+            type: "MINI_PROBE",
+            targetNodeId: "K283",
+            questionTypes: ["mcq"],
+            difficulty: "D3",
+            successCriteria
+        }
+    };
+    return getNextQuestion({ session, now: FIXED_NOW }).session;
+}
+
+function submitProbe(session, { correct = true, attemptId = "ATT-K283-PROBE-001" } = {}) {
+    const question = session.currentQuestion;
+    const option = question.content.options.find(item => item.isCorrect === correct);
+    assert.ok(option, "probe question must provide the requested answer option");
+    return submitAnswer({
+        session,
+        attemptId,
+        response: option.id,
+        startedAt: QUESTION_STARTED_AT,
+        submittedAt: SUBMIT_NOW,
+        now: SUBMIT_NOW
+    });
+}
+
+test("K283 probe transaction: pass clears plan and routes one probe through LearningFlow", () => {
+    const selected = makeProbeTransactionSession();
+    const result = submitProbe(selected);
+
+    assert.deepStrictEqual(selected.currentSelection.remediationIdentity, {
+        remediationId: "REM-K283-PROBE-001",
+        targetNodeId: "K283",
+        questionId: selected.currentQuestion.id,
+        pathStage: "MINI_PROBE"
+    });
+    assert.equal(result.attempt.context.pathStage, "MINI_PROBE");
+    assert.equal(result.attempt.context.remediationId, "REM-K283-PROBE-001");
+    assert.equal(result.flowResult.probeOutcome.isProbe, true);
+    assert.equal(result.flowResult.probeOutcome.passed, true);
+    assert.equal(result.session.activeRemediationPlan, null);
+    assert.equal(result.session.state.remediation.activePlan, null);
+    assert.equal(result.session.attempts.length, selected.attempts.length + 1);
+    assert.equal(
+        result.session.masteryRuntime.evidenceHistoryByNode.K283.apply.length,
+        (selected.masteryRuntime.evidenceHistoryByNode.K283?.apply?.length ?? 0) + 1
+    );
+    assert.equal(result.flowResult.adaptiveDecision.path.current, "MINI_PROBE");
+    assert.equal(result.flowResult.adaptiveDecision.path.next, "RETURN");
+});
+
+test("K283 probe transaction: failure retains active plan and passes failure to Adaptive", () => {
+    const selected = makeProbeTransactionSession();
+    const result = submitProbe(selected, { correct: false });
+
+    assert.equal(result.flowResult.probeOutcome.passed, false);
+    assert.deepStrictEqual(result.session.activeRemediationPlan, selected.activeRemediationPlan);
+    assert.equal(result.session.state.remediation.activePlan.planId, "REM-K283-PROBE-001");
+    assert.equal(result.flowResult.adaptiveDecision.path.current, "MINI_PROBE");
+    assert.equal(result.flowResult.adaptiveDecision.path.next, "REMEDIATE");
+});
+
+test("K283 probe transaction: mismatched active identity fails before attempt processing", () => {
+    const selected = makeProbeTransactionSession();
+    selected.activeRemediationPlan.remediationId = "REM-OTHER";
+
+    assert.throws(
+        () => submitProbe(selected),
+        /remediation selection identity does not match/
+    );
+    assert.equal(selected.attempts.length, 0);
+});
+
+test("K283 probe transaction: unsatisfied evidence criteria retain plan", () => {
+    const selected = makeProbeTransactionSession({
+        minimumResult: "correct",
+        requiredEvidenceDimension: "transfer"
+    });
+    const result = submitProbe(selected);
+
+    assert.equal(result.flowResult.probeOutcome.passed, false);
+    assert.equal(result.flowResult.probeOutcome.reason, "EVIDENCE_DIMENSION_NOT_MET");
+    assert.deepStrictEqual(result.session.activeRemediationPlan, selected.activeRemediationPlan);
+});
+
+test("K283 probe transaction: minimum evidence threshold uses post-mastery evidence", () => {
+    const selected = makeProbeTransactionSession({
+        minimumResult: "correct",
+        requiredEvidenceDimension: "apply",
+        minimumEvidence: 1
+    });
+    const result = submitProbe(selected);
+
+    assert.equal(result.flowResult.probeOutcome.passed, false);
+    assert.equal(result.flowResult.probeOutcome.reason, "MINIMUM_EVIDENCE_NOT_MET");
+    assert.deepStrictEqual(result.session.activeRemediationPlan, selected.activeRemediationPlan);
+});
+
+test("K283 probe transaction: ordinary submission stays on the ordinary flow", () => {
+    const selected = selectTransferQuestion(makeSession()).session;
+    const result = submitAnswer({
+        session: selected,
+        attemptId: "ATT-K283-ORDINARY",
+        response: 25,
+        startedAt: QUESTION_STARTED_AT,
+        submittedAt: SUBMIT_NOW,
+        now: SUBMIT_NOW
+    });
+
+    assert.equal(result.attempt.context.pathStage, "CHALLENGE");
+    assert.equal(Object.hasOwn(result.flowResult, "probeOutcome"), false);
+    assert.equal(result.session.attempts.length, 1);
+});
+
+test("K283 probe transaction: durable Attempt identity and checkpoint reference stay aligned", () => {
+    const selected = makeProbeTransactionSession();
+    const selectedCheckpoint = encodeCheckpoint({
+        session: selected,
+        contentRefs: {
+            knowledgeMap: {
+                id: "knowledge-map-v4",
+                version: "4.0.0",
+                sha256: "a".repeat(64)
+            }
+        },
+        revision: 0,
+        savedAt: FIXED_NOW,
+        persistedAttemptIds: []
+    });
+    assert.deepStrictEqual(
+        decodeCheckpoint(selectedCheckpoint).currentSelection.remediationIdentity,
+        selected.currentSelection.remediationIdentity
+    );
+
+    const result = submitProbe(selected, {
+        attemptId: "ATT-K283-PROBE-DURABLE"
+    });
+    const persistedAttempt = structuredClone(result.attempt);
+    const checkpoint = encodeCheckpoint({
+        session: result.session,
+        contentRefs: {
+            knowledgeMap: {
+                id: "knowledge-map-v4",
+                version: "4.0.0",
+                sha256: "a".repeat(64)
+            }
+        },
+        revision: 1,
+        savedAt: SUBMIT_NOW,
+        persistedAttemptIds: [persistedAttempt.attemptId]
+    });
+    const decoded = decodeCheckpoint(checkpoint);
+
+    assert.equal(persistedAttempt.context.remediationId, "REM-K283-PROBE-001");
+    assert.equal(persistedAttempt.context.nodeId, "K283");
+    assert.equal(persistedAttempt.questionId, result.session.history.at(-1).questionId);
+    assert.deepStrictEqual(decoded.attemptIds, [persistedAttempt.attemptId]);
+    assert.equal(decoded.activeRemediationPlan, null);
 });
 registerCheckpointRealSessionTests({
     makeSession,

@@ -4,6 +4,7 @@ import path from 'node:path';
 import { createDurableAttemptStore } from './src/persistence/durableAttemptStore.js';
 import { createDurableSubmitJournalV3 } from './src/restoration/durableSubmitJournalV3.js';
 import { createDurableSessionCommitV1 } from './src/restoration/durableSessionCommitV1.js';
+import { decodeCheckpoint } from './src/persistence/checkpointCodec.js';
 
 export function findLatestVerifiedK283Progress({ rootDir, contentRefs } = {}) {
     const dir = path.join(rootDir, 'checkpoints');
@@ -25,17 +26,28 @@ export function findLatestVerifiedK283Progress({ rootDir, contentRefs } = {}) {
     candidates.sort((a, b) => b.checkpoint.savedAt.localeCompare(a.checkpoint.savedAt));
     const latest = candidates[0];
     if (!latest) return null;
-    // Compare content against the newest VERIFIED checkpoint only. An older
-    // checkpoint may refer to an earlier version of the question bank.
+    const checkpoint = decodeCheckpoint(latest.checkpoint);
+    // A policy-error stop must reach bootstrap so its fingerprint can classify
+    // changed content as RETRY_ELIGIBLE; other continuation remains strict.
     const changed = diffK283ContentRefs(latest.checkpoint.contentRefs, contentRefs);
-    if (changed.length > 0) {
+    const hasPolicyErrorStop =
+        latest.checkpoint.extensions?.remediationPolicyErrorStop !== undefined;
+    if (changed.length > 0 && !hasPolicyErrorStop) {
         throw new Error(`K283_LATEST_CONTENT_CHANGED_CONTINUATION_BLOCKED: session=${latest.sessionId}; changedRefs=${changed.join(',')}`);
     }
     return {
         fromSessionId: latest.sessionId,
         savedAt: latest.checkpoint.savedAt,
-        studentState: structuredClone(latest.checkpoint.state.studentState ?? latest.checkpoint.state),
-        evidenceHistoryByNode: structuredClone(latest.checkpoint.masteryRuntime.evidenceHistoryByNode)
+        studentState: structuredClone(checkpoint.state.studentState ?? checkpoint.state),
+        evidenceHistoryByNode: structuredClone(checkpoint.masteryRuntime.evidenceHistoryByNode),
+        history: structuredClone(checkpoint.history ?? []),
+        checkpoint,
+        remediationGenerationStop: checkpoint.extensions?.remediationGenerationStop
+            ? structuredClone(checkpoint.extensions.remediationGenerationStop)
+            : null,
+        remediationPolicyErrorStop: checkpoint.extensions?.remediationPolicyErrorStop
+            ? structuredClone(checkpoint.extensions.remediationPolicyErrorStop)
+            : null
     };
 }
 

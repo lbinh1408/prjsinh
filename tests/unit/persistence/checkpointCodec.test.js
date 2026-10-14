@@ -685,3 +685,206 @@ test('P3.2-C30: decode does not hydrate StudySession', () => {
         false
     );
 });
+
+/* ============================================================
+ * H. REMEDIATION GENERATION STOP EXTENSION V1
+ * ============================================================ */
+
+const REMEDIATION_GENERATION_STOP = {
+    schemaVersion: '1.0.0',
+    status: 'INFEASIBLE',
+    reasonCode: 'NO_ELIGIBLE_BANK_QUESTION',
+    triggerAttemptId: 'attempt-k283-stop-001',
+    targetNodeId: 'K283',
+    bankId: 'k283-question-bank',
+    bankVersion: '1.0.0',
+    configFingerprint: 'c'.repeat(64)
+};
+
+test('P4c.3b: generation-stop extension round-trips without changing the checkpoint boundary', () => {
+    const session = makeSession({ withAttempt: true });
+    const extensions = {
+        remediationGenerationStop: REMEDIATION_GENERATION_STOP,
+        unrelatedSupportedExtension: { revision: 2 }
+    };
+    const checkpoint = encode(session, { extensions });
+    const decoded = decodeCheckpoint(JSON.stringify(checkpoint));
+
+    assert.deepStrictEqual(decoded.extensions, extensions);
+    assert.equal(decoded.currentSelection, null);
+    assert.equal(decoded.currentQuestion, null);
+    assert.deepStrictEqual(decoded.history, checkpoint.history);
+    assert.deepStrictEqual(decoded.attemptIds, checkpoint.attemptIds);
+    assert.deepStrictEqual(decoded.state, checkpoint.state);
+});
+
+test('P4c.3b: legacy checkpoints without extensions remain valid', () => {
+    const checkpoint = encode(makeSession());
+    assert.equal(Object.hasOwn(checkpoint, 'extensions'), false);
+    assert.equal(validateCheckpoint(decodeCheckpoint(checkpoint)), true);
+});
+
+test('P4c.3b: repeated extension encoding has deterministic serialization', () => {
+    const session = makeSession();
+    const args = {
+        extensions: {
+            remediationGenerationStop: REMEDIATION_GENERATION_STOP
+        }
+    };
+
+    assert.equal(
+        JSON.stringify(encode(session, args)),
+        JSON.stringify(encode(session, args))
+    );
+});
+
+test('P4c.3b: malformed, unsupported and partial stop extensions are rejected', () => {
+    const invalidStops = [
+        null,
+        { ...REMEDIATION_GENERATION_STOP, schemaVersion: '2.0.0' },
+        { ...REMEDIATION_GENERATION_STOP, status: 'FEASIBLE' },
+        { ...REMEDIATION_GENERATION_STOP, reasonCode: 'bad code' },
+        { ...REMEDIATION_GENERATION_STOP, configFingerprint: 'not-a-digest' },
+        Object.fromEntries(
+            Object.entries(REMEDIATION_GENERATION_STOP)
+                .filter(([field]) => field !== 'bankVersion')
+        ),
+        { ...REMEDIATION_GENERATION_STOP, extra: true }
+    ];
+
+    for (const stop of invalidStops) {
+        const checkpoint = encode(makeSession());
+        checkpoint.extensions = { remediationGenerationStop: stop };
+        assert.throws(
+            () => validateCheckpoint(checkpoint),
+            /remediationGenerationStop/
+        );
+        assert.throws(
+            () => decodeCheckpoint(checkpoint),
+            /remediationGenerationStop/
+        );
+    }
+});
+
+test('P4c.3b: invalid extension container is rejected', () => {
+    const checkpoint = encode(makeSession());
+    checkpoint.extensions = [];
+    assert.throws(
+        () => validateCheckpoint(checkpoint),
+        /extensions must be an object/
+    );
+});
+
+/* ============================================================
+ * I. REMEDIATION POLICY ERROR STOP EXTENSION V1
+ * ============================================================ */
+
+const REMEDIATION_POLICY_ERROR_STOP = {
+    schemaVersion: '1.0.0',
+    status: 'POLICY_ERROR',
+    reasonCode: 'UNSUPPORTED_POLICY_VERSION',
+    triggerAttemptId: 'attempt-k283-policy-error-001',
+    targetNodeId: 'K283',
+    bankId: 'k283-question-bank',
+    bankVersion: '1.0.0',
+    policyId: 'probe-authoring-policy',
+    policyVersion: '1.2.0',
+    configFingerprint: 'd'.repeat(64)
+};
+
+test('P4d.2e: policy-error stop round-trips with unrelated extension and post-submit boundary', () => {
+    const session = makeSession({ withAttempt: true });
+    const extensions = {
+        remediationPolicyErrorStop: REMEDIATION_POLICY_ERROR_STOP,
+        unrelatedSupportedExtension: { revision: 3 }
+    };
+    const checkpoint = encode(session, { extensions });
+    const decoded = decodeCheckpoint(JSON.stringify(checkpoint));
+
+    assert.deepStrictEqual(decoded.extensions, extensions);
+    assert.equal(decoded.currentSelection, null);
+    assert.equal(decoded.currentQuestion, null);
+    assert.deepStrictEqual(decoded.attemptIds, ['attempt-k283-001']);
+    assert.deepStrictEqual(decoded.history, checkpoint.history);
+});
+
+test('P4d.2e: legacy checkpoints and generation-stop extension remain valid', () => {
+    const legacy = encode(makeSession());
+    assert.equal(Object.hasOwn(legacy, 'extensions'), false);
+    assert.equal(validateCheckpoint(decodeCheckpoint(legacy)), true);
+
+    const generationStop = encode(makeSession(), {
+        extensions: { remediationGenerationStop: REMEDIATION_GENERATION_STOP }
+    });
+    assert.deepStrictEqual(
+        decodeCheckpoint(generationStop).extensions.remediationGenerationStop,
+        REMEDIATION_GENERATION_STOP
+    );
+});
+
+test('P4d.2e: policy-error stop serialization is deterministic', () => {
+    const session = makeSession();
+    const args = {
+        extensions: {
+            remediationPolicyErrorStop: REMEDIATION_POLICY_ERROR_STOP,
+            unrelatedSupportedExtension: { revision: 3 }
+        }
+    };
+
+    assert.equal(
+        JSON.stringify(encode(session, args)),
+        JSON.stringify(encode(session, args))
+    );
+});
+
+test('P4d.2e: malformed, partial, extra-field and unsupported policy stops are rejected', () => {
+    const invalidStops = [
+        null,
+        { ...REMEDIATION_POLICY_ERROR_STOP, schemaVersion: '2.0.0' },
+        { ...REMEDIATION_POLICY_ERROR_STOP, status: 'INFEASIBLE' },
+        { ...REMEDIATION_POLICY_ERROR_STOP, reasonCode: 'bad code' },
+        { ...REMEDIATION_POLICY_ERROR_STOP, policyId: '' },
+        { ...REMEDIATION_POLICY_ERROR_STOP, configFingerprint: 'not-a-digest' },
+        Object.fromEntries(
+            Object.entries(REMEDIATION_POLICY_ERROR_STOP)
+                .filter(([field]) => field !== 'policyVersion')
+        ),
+        { ...REMEDIATION_POLICY_ERROR_STOP, extra: true }
+    ];
+
+    for (const stop of invalidStops) {
+        const checkpoint = encode(makeSession());
+        checkpoint.extensions = { remediationPolicyErrorStop: stop };
+        assert.throws(
+            () => validateCheckpoint(checkpoint),
+            /remediationPolicyErrorStop/
+        );
+        assert.throws(
+            () => decodeCheckpoint(checkpoint),
+            /remediationPolicyErrorStop/
+        );
+    }
+});
+
+test('P4d.2e: checkpoints cannot contain both active stop extensions', () => {
+    const checkpoint = encode(makeSession());
+    checkpoint.extensions = {
+        remediationGenerationStop: REMEDIATION_GENERATION_STOP,
+        remediationPolicyErrorStop: REMEDIATION_POLICY_ERROR_STOP
+    };
+    assert.throws(
+        () => validateCheckpoint(checkpoint),
+        /cannot contain both remediationGenerationStop and remediationPolicyErrorStop/
+    );
+});
+
+test('P4d.2e: policy-error stop requires null post-submit selection and question', () => {
+    const checkpoint = encode(makeSession({ withActiveQuestion: true }));
+    checkpoint.extensions = {
+        remediationPolicyErrorStop: REMEDIATION_POLICY_ERROR_STOP
+    };
+    assert.throws(
+        () => validateCheckpoint(checkpoint),
+        /requires currentSelection and currentQuestion to be null/
+    );
+});

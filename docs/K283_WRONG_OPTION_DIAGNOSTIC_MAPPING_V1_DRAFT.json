@@ -1,0 +1,252 @@
+{
+  "status": "DRAFT",
+  "scope": {
+    "questionBank": "src/data/questions/c09/K283.question-bank.json",
+    "failureSignatureRegistry": "src/data/remediation/failure-signatures.json",
+    "questionCountReviewed": 26,
+    "wrongOptionCountReviewed": 75,
+    "classificationCounts": {
+      "DETERMINISTIC": 5,
+      "AMBIGUOUS": 70,
+      "UNSUPPORTED": 0
+    }
+  },
+  "contractNotes": [
+    "Each option key is checked against its question's content.options; the correct answer is not mapped.",
+    "Deterministic entries use the same existing registry ID for failureType and failureSignatureId.",
+    "Ambiguous and unsupported entries intentionally contain no failureType or failureSignatureId.",
+    "Question-level failureSignatures are candidate diagnoses, not a per-option mapping."
+  ],
+  "questions": [
+    {
+      "questionId": "Q-A-K283-K-001",
+      "candidateFailureTypes": ["concept_confusion"],
+      "options": {
+        "B": {"classification": "DETERMINISTIC", "failureType": "concept_confusion", "failureSignatureId": "concept_confusion", "basis": "Explanation identifies parental gametes as non-recombinant; the only candidate signature directly matches this category confusion."},
+        "C": {"classification": "DETERMINISTIC", "failureType": "concept_confusion", "failureSignatureId": "concept_confusion", "basis": "Explanation distinguishes one recombinant class from the total recombinant frequency; the only candidate signature directly matches."},
+        "D": {"classification": "DETERMINISTIC", "failureType": "concept_confusion", "failureSignatureId": "concept_confusion", "basis": "Explanation distinguishes the most frequent parental class from recombination frequency; the only candidate signature directly matches."}
+      }
+    },
+    {
+      "questionId": "Q-A-K283-E-002",
+      "candidateFailureTypes": ["concept_confusion", "reasoning_error"],
+      "options": {
+        "B": {"classification": "AMBIGUOUS"},
+        "C": {"classification": "AMBIGUOUS"},
+        "D": {"classification": "AMBIGUOUS"}
+      }
+    },
+    {
+      "questionId": "Q-A-K283-A-003",
+      "candidateFailureTypes": ["calculation_error", "concept_confusion"],
+      "options": {
+        "A": {"classification": "AMBIGUOUS"},
+        "C": {"classification": "DETERMINISTIC", "failureType": "concept_confusion", "failureSignatureId": "concept_confusion", "basis": "Explanation says 20% is the combined recombinant frequency, not the frequency of Ab alone; the distractor confuses aggregate and component."},
+        "D": {"classification": "DETERMINISTIC", "failureType": "concept_confusion", "failureSignatureId": "concept_confusion", "basis": "Explanation identifies 40% as a parental-gamete class rather than the recombinant class; the distractor swaps the two categories."}
+      }
+    },
+    {
+      "questionId": "Q-A-K283-A-004",
+      "candidateFailureTypes": ["calculation_error", "data_interpretation_error"],
+      "options": {
+        "A": {"classification": "AMBIGUOUS"},
+        "C": {"classification": "AMBIGUOUS"},
+        "D": {"classification": "AMBIGUOUS"}
+      }
+    },
+    {
+      "questionId": "Q-A-K283-A-005",
+      "candidateFailureTypes": ["calculation_error", "reasoning_error"],
+      "options": {
+        "A": {"classification": "AMBIGUOUS"},
+        "B": {"classification": "AMBIGUOUS"},
+        "D": {"classification": "AMBIGUOUS"}
+      }
+    },
+    {
+      "questionId": "Q-A-K283-A-006",
+      "candidateFailureTypes": ["calculation_error", "reasoning_error"],
+      "options": {
+        "A": {"classification": "AMBIGUOUS"},
+        "C": {"classification": "AMBIGUOUS"},
+        "D": {"classification": "AMBIGUOUS"}
+      }
+    },
+    {
+      "questionId": "Q-A-K283-A-007",
+      "candidateFailureTypes": ["calculation_error", "reasoning_error"],
+      "options": {
+        "A": {"classification": "AMBIGUOUS"},
+        "C": {"classification": "AMBIGUOUS"},
+        "D": {"classification": "AMBIGUOUS"}
+      }
+    },
+    {
+      "questionId": "Q-A-K283-T-008",
+      "candidateFailureTypes": ["data_interpretation_error", "calculation_error", "reasoning_error"],
+      "options": {
+        "A": {"classification": "AMBIGUOUS"},
+        "C": {"classification": "AMBIGUOUS"},
+        "D": {"classification": "AMBIGUOUS"}
+      }
+    },
+    {
+      "questionId": "Q-A-K283-T-009",
+      "candidateFailureTypes": ["data_interpretation_error", "calculation_error", "reasoning_error"],
+      "options": {
+        "A": {"classification": "AMBIGUOUS"},
+        "C": {"classification": "AMBIGUOUS"},
+        "D": {"classification": "AMBIGUOUS"}
+      }
+    },
+    {
+      "questionId": "Q-A-K283-T-010",
+      "candidateFailureTypes": ["data_interpretation_error", "calculation_error", "reasoning_error"],
+      "options": {}
+    },
+    {
+      "questionId": "Q-A-K283-K-011",
+      "candidateFailureTypes": ["concept_confusion", "reasoning_error"],
+      "options": {
+        "B": {"classification": "AMBIGUOUS"},
+        "C": {"classification": "AMBIGUOUS"},
+        "D": {"classification": "AMBIGUOUS"}
+      }
+    },
+    {
+      "questionId": "Q-A-K283-K-012",
+      "candidateFailureTypes": ["concept_confusion", "reasoning_error"],
+      "options": {
+        "A": {"classification": "AMBIGUOUS"},
+        "C": {"classification": "AMBIGUOUS"},
+        "D": {"classification": "AMBIGUOUS"}
+      }
+    },
+    {
+      "questionId": "Q-A-K283-K-013",
+      "candidateFailureTypes": ["concept_confusion", "reasoning_error"],
+      "options": {
+        "A": {"classification": "AMBIGUOUS"},
+        "B": {"classification": "AMBIGUOUS"},
+        "D": {"classification": "AMBIGUOUS"}
+      }
+    },
+    {
+      "questionId": "Q-A-K283-K-014",
+      "candidateFailureTypes": ["concept_confusion", "reasoning_error"],
+      "options": {
+        "A": {"classification": "AMBIGUOUS"},
+        "B": {"classification": "AMBIGUOUS"},
+        "C": {"classification": "AMBIGUOUS"}
+      }
+    },
+    {
+      "questionId": "Q-A-K283-K-015",
+      "candidateFailureTypes": ["concept_confusion", "reasoning_error"],
+      "options": {
+        "B": {"classification": "AMBIGUOUS"},
+        "C": {"classification": "AMBIGUOUS"},
+        "D": {"classification": "AMBIGUOUS"}
+      }
+    },
+    {
+      "questionId": "Q-A-K283-K-016",
+      "candidateFailureTypes": ["concept_confusion", "reasoning_error"],
+      "options": {
+        "A": {"classification": "AMBIGUOUS"},
+        "C": {"classification": "AMBIGUOUS"},
+        "D": {"classification": "AMBIGUOUS"}
+      }
+    },
+    {
+      "questionId": "Q-A-K283-K-017",
+      "candidateFailureTypes": ["concept_confusion", "reasoning_error"],
+      "options": {
+        "A": {"classification": "AMBIGUOUS"},
+        "B": {"classification": "AMBIGUOUS"},
+        "D": {"classification": "AMBIGUOUS"}
+      }
+    },
+    {
+      "questionId": "Q-A-K283-K-018",
+      "candidateFailureTypes": ["concept_confusion", "reasoning_error"],
+      "options": {
+        "A": {"classification": "AMBIGUOUS"},
+        "B": {"classification": "AMBIGUOUS"},
+        "C": {"classification": "AMBIGUOUS"}
+      }
+    },
+    {
+      "questionId": "Q-A-K283-E-019",
+      "candidateFailureTypes": ["concept_confusion", "reasoning_error"],
+      "options": {
+        "B": {"classification": "AMBIGUOUS"},
+        "C": {"classification": "AMBIGUOUS"},
+        "D": {"classification": "AMBIGUOUS"}
+      }
+    },
+    {
+      "questionId": "Q-A-K283-E-020",
+      "candidateFailureTypes": ["concept_confusion", "reasoning_error"],
+      "options": {
+        "A": {"classification": "AMBIGUOUS"},
+        "C": {"classification": "AMBIGUOUS"},
+        "D": {"classification": "AMBIGUOUS"}
+      }
+    },
+    {
+      "questionId": "Q-A-K283-E-021",
+      "candidateFailureTypes": ["concept_confusion", "reasoning_error"],
+      "options": {
+        "A": {"classification": "AMBIGUOUS"},
+        "B": {"classification": "AMBIGUOUS"},
+        "D": {"classification": "AMBIGUOUS"}
+      }
+    },
+    {
+      "questionId": "Q-A-K283-E-022",
+      "candidateFailureTypes": ["concept_confusion", "reasoning_error"],
+      "options": {
+        "A": {"classification": "AMBIGUOUS"},
+        "B": {"classification": "AMBIGUOUS"},
+        "C": {"classification": "AMBIGUOUS"}
+      }
+    },
+    {
+      "questionId": "Q-A-K283-E-023",
+      "candidateFailureTypes": ["concept_confusion", "reasoning_error"],
+      "options": {
+        "B": {"classification": "AMBIGUOUS"},
+        "C": {"classification": "AMBIGUOUS"},
+        "D": {"classification": "AMBIGUOUS"}
+      }
+    },
+    {
+      "questionId": "Q-A-K283-E-024",
+      "candidateFailureTypes": ["concept_confusion", "reasoning_error"],
+      "options": {
+        "A": {"classification": "AMBIGUOUS"},
+        "C": {"classification": "AMBIGUOUS"},
+        "D": {"classification": "AMBIGUOUS"}
+      }
+    },
+    {
+      "questionId": "Q-A-K283-E-025",
+      "candidateFailureTypes": ["concept_confusion", "reasoning_error"],
+      "options": {
+        "A": {"classification": "AMBIGUOUS"},
+        "B": {"classification": "AMBIGUOUS"},
+        "D": {"classification": "AMBIGUOUS"}
+      }
+    },
+    {
+      "questionId": "Q-A-K283-E-026",
+      "candidateFailureTypes": ["concept_confusion", "reasoning_error"],
+      "options": {
+        "A": {"classification": "AMBIGUOUS"},
+        "B": {"classification": "AMBIGUOUS"},
+        "C": {"classification": "AMBIGUOUS"}
+      }
+    }
+  ]
+}

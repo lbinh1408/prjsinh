@@ -85,8 +85,22 @@ import {
 
 
 import {
-    processAttempt
+    processAttempt,
+    processRemediationProbe
 } from "./learningFlow.js";
+
+import {
+    PROBE_FEASIBILITY_RESOLVER_VERSION
+} from "../remediation/probeFeasibilityResolver.js";
+
+import {
+    resolveProbeAuthoringPolicy
+} from "../remediation/probeAuthoringPolicyResolver.js";
+
+import {
+    computeLegacyInfeasibleFingerprintV1,
+    computePolicyErrorFingerprintV1
+} from "./remediationStopFingerprint.js";
 
 
 import {
@@ -110,6 +124,11 @@ const SESSION_VERSION =
 const STUDENT_STATE_VERSION =
     "1.2.0";
 
+const REMEDIATION_GENERATION_STOP_VERSION =
+    "1.0.0";
+
+const REMEDIATION_POLICY_ERROR_STOP_VERSION =
+    "1.0.0";
 
 const CANONICAL_ACTIONS =
     new Set([
@@ -184,6 +203,7 @@ export function createStudySession({
 
     failureSignatures = {},
     remediationRules = {},
+    probeAuthoringPolicy = null,
 
     learningMode = null,
 
@@ -192,6 +212,7 @@ export function createStudySession({
     clusterId = null,
     lessonId = null,
     contextId = null,
+    remediationProbeSelectorConstraints = null,
 
     history = [],
 
@@ -319,6 +340,15 @@ export function createStudySession({
                     contextId
                 ),
 
+            ...(remediationProbeSelectorConstraints == null
+                ? {}
+                : {
+                    remediationProbeSelectorConstraints:
+                        clonePlainObject(
+                            remediationProbeSelectorConstraints
+                        )
+                }),
+
             historyLimit
         },
 
@@ -370,7 +400,14 @@ export function createStudySession({
             remediationRules:
                 clonePlainObject(
                     remediationRules
-                )
+                ),
+
+            ...(probeAuthoringPolicy == null
+                ? {}
+                : {
+                    probeAuthoringPolicy:
+                        clonePlainObject(probeAuthoringPolicy)
+                })
         },
 
 
@@ -1296,6 +1333,38 @@ export function getNextQuestion({
         session
     );
 
+    const policyErrorStop = getEffectiveRemediationPolicyErrorStop(session);
+    if (policyErrorStop) {
+        const next = clonePlainObject(session);
+        next.runtime.lastActivityAt = resolveTimestamp(now);
+        next.currentSelection = null;
+        next.currentQuestion = null;
+        return {
+            session: next,
+            selection: {
+                status: "NO_MATCH",
+                reasonCode: "REMEDIATION_POLICY_ERROR_STOP",
+                message: policyErrorStop.message
+            },
+            question: null
+        };
+    }
+
+    if (session.extensions?.remediationPolicyErrorStop) {
+        const next = clonePlainObject(session);
+        next.runtime.lastActivityAt = resolveTimestamp(now);
+        next.currentSelection = null;
+        next.currentQuestion = null;
+        return {
+            session: next,
+            selection: {
+                status: "NO_MATCH",
+                reasonCode: "REMEDIATION_POLICY_ERROR_RETRY_ELIGIBLE",
+                message: "Policy or configuration changed; a new trigger is required."
+            },
+            question: null
+        };
+    }
 
     assertAdaptiveDecision(
         session.currentDecision
@@ -1326,6 +1395,51 @@ export function getNextQuestion({
                 timestamp
         });
 
+    const deliveryPathStage =
+        resolveSelectionPathStage(
+            session.currentDecision
+        );
+
+    let remediationIdentity = null;
+    if (
+        selection?.status === "SELECTED" &&
+        session.currentDecision.action === "REMEDIATE" &&
+        [
+            "MINI_PRACTICE",
+            "MINI_PROBE"
+        ].includes(deliveryPathStage)
+    ) {
+        const plan = session.activeRemediationPlan;
+        const remediationId = plan?.remediationId;
+        const targetNodeId = plan?.probe?.targetNodeId;
+        const selectedQuestion = selection?.selected?.question;
+        const questionId = selection?.selected?.questionId;
+
+        if (
+            typeof remediationId !== "string" || !remediationId.trim() ||
+            plan?.probe?.required !== true ||
+            (deliveryPathStage === "MINI_PROBE" && plan?.probe?.type !== "MINI_PROBE") ||
+            typeof targetNodeId !== "string" || !targetNodeId.trim() ||
+            typeof questionId !== "string" || !questionId.trim() ||
+            selectedQuestion?.id !== questionId ||
+            selectedQuestion?.primaryNode !== targetNodeId ||
+            (Array.isArray(plan.probe.questionTypes) &&
+                plan.probe.questionTypes.length > 0 &&
+                !plan.probe.questionTypes.includes(selectedQuestion?.questionType)) ||
+            (typeof plan.probe.difficulty === "string" &&
+                selectedQuestion?.difficulty !== plan.probe.difficulty)
+        ) {
+            throw new Error("StudySession cannot bind remediation selection to the active probe plan.");
+        }
+
+        remediationIdentity = {
+            remediationId,
+            targetNodeId,
+            questionId,
+            pathStage: deliveryPathStage
+        };
+    }
+
 
     const next =
         clonePlainObject(
@@ -1341,6 +1455,11 @@ export function getNextQuestion({
         clonePlainObject(
             selection
         );
+
+    if (remediationIdentity) {
+        next.currentSelection.remediationIdentity =
+            clonePlainObject(remediationIdentity);
+    }
 
 
     if (
@@ -1452,11 +1571,23 @@ export function submitAnswer({
         session
     );
 
-
     assertNonEmptyString(
         attemptId,
         "attemptId"
     );
+
+    if (
+        session.attempts.some(
+            existingAttempt =>
+                existingAttempt?.attemptId === attemptId
+        ) ||
+        session.extensions?.remediationGenerationStop?.triggerAttemptId === attemptId ||
+        session.extensions?.remediationPolicyErrorStop?.triggerAttemptId === attemptId
+    ) {
+        throw new Error(
+            `StudySession has already processed attempt ID: ${attemptId}`
+        );
+    }
 
 
     const question =
@@ -1489,7 +1620,10 @@ export function submitAnswer({
         );
 
 
+    const remediationIdentity =
+        resolveSelectedRemediationIdentity(session, question, decision);
     const pathStage =
+        remediationIdentity?.pathStage ??
         resolvePathStage({
             action,
             decision
@@ -1551,7 +1685,9 @@ export function submitAnswer({
                 decisionId:
                     decision
                         ?.decisionId ??
-                    undefined
+                    undefined,
+                remediationId:
+                    remediationIdentity?.remediationId
             },
 
             diagnostic,
@@ -1609,73 +1745,50 @@ export function submitAnswer({
             session.history
         );
 
+    const flowOptions = {
+        attempt,
+        studentState: session.state,
+        knowledgeMap: session.dependencies.knowledgeMap,
+        masteryRules: session.dependencies.masteryRules,
+        evidenceModel: session.dependencies.evidenceModel,
+        adaptiveRules: session.dependencies.adaptiveRules,
+        adaptivePaths: session.dependencies.adaptivePaths,
+        failureSignatures: session.dependencies.failureSignatures,
+        remediationRules: session.dependencies.remediationRules,
+        ...(session.dependencies.probeAuthoringPolicy === undefined
+            ? {}
+            : { probeAuthoringPolicy: session.dependencies.probeAuthoringPolicy }),
+        recentResults,
+        sessionContext: buildLearningFlowSessionContext(session),
+        masteryEvidenceHistory,
+        masteryEvidenceContext,
+        learningMode: session.config.learningMode,
+        timeBudget: session.config.timeBudget,
+        remediationProbeBank:
+            resolveRemediationProbeBank({
+                session,
+                attempt
+            }),
+        now: timestamp
+    };
+
+    const isProbe =
+        pathStage === "MINI_PROBE";
 
     const flowResult =
-        processAttempt({
+        isProbe
+            ? processRemediationProbe({
+                ...flowOptions,
+                remediationPlan: session.activeRemediationPlan
+            })
+            : processAttempt(flowOptions);
 
-            attempt,
-
-            studentState:
-                session.state,
-
-            knowledgeMap:
-                session
-                    .dependencies
-                    .knowledgeMap,
-
-            masteryRules:
-                session
-                    .dependencies
-                    .masteryRules,
-
-            evidenceModel:
-                session
-                    .dependencies
-                    .evidenceModel,
-
-            adaptiveRules:
-                session
-                    .dependencies
-                    .adaptiveRules,
-
-            adaptivePaths:
-                session
-                    .dependencies
-                    .adaptivePaths,
-
-            failureSignatures:
-                session
-                    .dependencies
-                    .failureSignatures,
-
-            remediationRules:
-                session
-                    .dependencies
-                    .remediationRules,
-
-            recentResults,
-
-            sessionContext:
-                buildLearningFlowSessionContext(
-                    session
-                ),
-            masteryEvidenceHistory,
-
-            masteryEvidenceContext,
-
-            learningMode:
-                session
-                    .config
-                    .learningMode,
-
-            timeBudget:
-                session
-                    .config
-                    .timeBudget,
-
-            now:
-                timestamp
-        });
+    if (
+        isProbe &&
+        flowResult?.probeOutcome?.isProbe !== true
+    ) {
+        throw new Error("StudySession probe outcome could not be verified.");
+    }
 
 
     assertFlowResult(
@@ -1708,6 +1821,24 @@ export function submitAnswer({
 
             session
         });
+
+    const probePassed =
+        isProbe &&
+        flowResult.probeOutcome.passed === true;
+
+    if (
+        session.activeRemediationPlan &&
+        committedState?.remediation &&
+        typeof committedState.remediation === "object"
+    ) {
+        committedState.remediation.activePlan =
+            probePassed
+                ? null
+                : projectRemediationState({
+                    previous: committedState.remediation,
+                    remediationPlan: session.activeRemediationPlan
+                }).activePlan;
+    }
 
 
     const nextHistory =
@@ -1863,14 +1994,21 @@ export function submitAnswer({
     nextSession.currentQuestion =
         null;
 
-
     nextSession.activeRemediationPlan =
-        flowResult.remediationPlan
-            ? clonePlainObject(
-                flowResult
-                    .remediationPlan
-            )
-            : null;
+        session.activeRemediationPlan
+            ? (probePassed
+                ? null
+                : clonePlainObject(session.activeRemediationPlan))
+            : flowResult.remediationPlan
+                ? clonePlainObject(flowResult.remediationPlan)
+                : null;
+
+    const remediationStopCapture = updateRemediationGenerationStop({
+        nextSession,
+        flowResult,
+        attempt,
+        session
+    });
 
 
     nextSession.attempts =
@@ -1923,7 +2061,11 @@ export function submitAnswer({
             clonePlainObject(
                 flowResult
                     .adaptiveDecision
-            )
+            ),
+
+        ...(remediationStopCapture
+            ? { remediationStopCapture }
+            : {})
     };
 }
 
@@ -3202,6 +3344,515 @@ function buildLearningFlowSessionContext(
     };
 }
 
+function resolveRemediationProbeBank({
+    session,
+    attempt,
+    targetNodeId
+}) {
+    const banks = Array.isArray(session?.dependencies?.questionBanks)
+        ? session.dependencies.questionBanks
+        : Object.values(session?.dependencies?.questionBanks ?? {});
+    const targetCandidates = [
+        targetNodeId,
+        attempt?.context?.nodeId,
+        attempt?.diagnostic?.sourceNodeId,
+        session?.currentDecision?.target?.primaryNodeId
+    ].filter(
+        (value, index, values) =>
+            typeof value === "string" &&
+            value.trim() &&
+            values.indexOf(value) === index
+    );
+
+    for (const candidate of targetCandidates) {
+        const matches = banks.filter(
+            bank =>
+                bank?.primaryNode === candidate &&
+                typeof bank.bankId === "string" &&
+                bank.bankId.trim() &&
+                typeof bank.version === "string" &&
+                bank.version.trim() &&
+                Array.isArray(bank.questions)
+        );
+        if (matches.length === 1) {
+            const questionBank = matches[0];
+            return {
+                targetNodeId: candidate,
+                bankIdentity: {
+                    bankId: questionBank.bankId,
+                    version: questionBank.version
+                },
+                questionBank: clonePlainObject(questionBank),
+                selectorConstraints: clonePlainObject(
+                    session.config.remediationProbeSelectorConstraints ?? {}
+                )
+            };
+        }
+        if (matches.length > 1) {
+            return null;
+        }
+    }
+    return null;
+}
+
+function createRemediationConfigFingerprintInput({
+    session,
+    targetNodeId,
+    probeBank
+}) {
+    return {
+        resolverVersion: PROBE_FEASIBILITY_RESOLVER_VERSION,
+        targetNodeId,
+        bankIdentity: probeBank.bankIdentity,
+        questionBank: probeBank.questionBank,
+        selectorConstraints: probeBank.selectorConstraints,
+        config: session.config,
+        generationRules: {
+            adaptiveRules: session.dependencies?.adaptiveRules,
+            adaptivePaths: session.dependencies?.adaptivePaths,
+            knowledgeMap: session.dependencies?.knowledgeMap,
+            failureSignatures: session.dependencies?.failureSignatures,
+            remediationRules: session.dependencies?.remediationRules
+        }
+    };
+}
+
+export function computeRemediationConfigFingerprint({
+    targetNodeId,
+    bankIdentity,
+    questionBank,
+    selectorConstraints = {},
+    config,
+    dependencies
+}) {
+    return computeLegacyInfeasibleFingerprintV1({
+        resolverVersion: PROBE_FEASIBILITY_RESOLVER_VERSION,
+        targetNodeId,
+        bankIdentity,
+        questionBank,
+        selectorConstraints,
+        config,
+        generationRules: {
+            adaptiveRules: dependencies?.adaptiveRules,
+            adaptivePaths: dependencies?.adaptivePaths,
+            knowledgeMap: dependencies?.knowledgeMap,
+            failureSignatures: dependencies?.failureSignatures,
+            remediationRules: dependencies?.remediationRules
+        }
+    });
+}
+
+function buildRemediationPolicyErrorFingerprint({
+    session,
+    targetNodeId,
+    probeBank,
+    canonicalPolicy
+}) {
+    return computePolicyErrorFingerprintV1(
+        createRemediationPolicyErrorFingerprintInput({
+            session,
+            targetNodeId,
+            probeBank,
+            canonicalPolicy
+        })
+    );
+}
+
+function createRemediationPolicyErrorFingerprintInput({
+    session,
+    targetNodeId,
+    probeBank,
+    canonicalPolicy
+}) {
+    return {
+        resolverVersion: PROBE_FEASIBILITY_RESOLVER_VERSION,
+        targetNodeId,
+        bankIdentity: probeBank.bankIdentity,
+        questionBank: probeBank.questionBank,
+        selectorConstraints: probeBank.selectorConstraints,
+        config: session.config,
+        policy: canonicalPolicy,
+        generationRules: {
+            adaptiveRules: session.dependencies?.adaptiveRules,
+            adaptivePaths: session.dependencies?.adaptivePaths,
+            knowledgeMap: session.dependencies?.knowledgeMap,
+            failureSignatures: session.dependencies?.failureSignatures,
+            remediationRules: session.dependencies?.remediationRules
+        }
+    };
+}
+
+function canonicalizeRemediationFingerprintInput(
+    value,
+    path = "$",
+    ancestors = new Set(),
+    inArray = false
+) {
+    if (value === null || typeof value === "string" || typeof value === "boolean") {
+        return value;
+    }
+    if (typeof value === "number") {
+        if (!Number.isFinite(value)) {
+            throw new TypeError(`Non-finite remediation fingerprint input at ${path}.`);
+        }
+        return value;
+    }
+    if (value === undefined) {
+        if (inArray) {
+            throw new TypeError(`Undefined remediation fingerprint array value at ${path}.`);
+        }
+        return undefined;
+    }
+    if (typeof value !== "object") {
+        throw new TypeError(`Unsupported remediation fingerprint input at ${path}.`);
+    }
+    if (ancestors.has(value)) {
+        throw new TypeError(`Cyclic remediation fingerprint input at ${path}.`);
+    }
+
+    ancestors.add(value);
+    try {
+        if (Array.isArray(value)) {
+            const result = [];
+            for (let index = 0; index < value.length; index += 1) {
+                result.push(canonicalizeRemediationFingerprintInput(
+                    value[index],
+                    `${path}[${index}]`,
+                    ancestors,
+                    true
+                ));
+            }
+            return result;
+        }
+        const prototype = Object.getPrototypeOf(value);
+        if (prototype !== Object.prototype && prototype !== null) {
+            throw new TypeError(`Unsupported remediation fingerprint object at ${path}.`);
+        }
+        const result = {};
+        for (const key of Object.keys(value).sort()) {
+            const item = canonicalizeRemediationFingerprintInput(
+                value[key],
+                `${path}.${key}`,
+                ancestors
+            );
+            if (item !== undefined) {
+                result[key] = item;
+            }
+        }
+        return result;
+    } finally {
+        ancestors.delete(value);
+    }
+}
+
+function freezeRemediationStopCapture(value) {
+    if (value && typeof value === "object" && !Object.isFrozen(value)) {
+        for (const child of Object.values(value)) {
+            freezeRemediationStopCapture(child);
+        }
+        Object.freeze(value);
+    }
+    return value;
+}
+
+function createRemediationStopCapture({
+    stopKind,
+    stopFingerprint,
+    targetNodeId,
+    triggerAttemptId,
+    generationInputs
+}) {
+    return freezeRemediationStopCapture({
+        stopKind,
+        stopFingerprint,
+        targetNodeId,
+        triggerAttemptId,
+        generationInputs
+    });
+}
+
+function canonicalPolicyForFingerprint(policy, targetNodeId) {
+    const signatures = Object.keys(policy?.failureSignatureDefaults ?? {}).sort();
+    if (signatures.length > 0) {
+        try {
+            return resolveProbeAuthoringPolicy({
+                policy,
+                targetNodeId,
+                failureSignature: signatures[0]
+            }).canonicalPolicy;
+        } catch {
+            // Invalid policies still need stable error-stop provenance when their
+            // raw JSON content and required identity fields are available.
+        }
+    }
+    return policy;
+}
+
+function policyIdentityFrom(policy) {
+    if (
+        !policy ||
+        typeof policy.policyId !== "string" ||
+        !policy.policyId.trim() ||
+        typeof policy.policyVersion !== "string" ||
+        !policy.policyVersion.trim()
+    ) {
+        return null;
+    }
+    return {
+        policyId: policy.policyId,
+        policyVersion: policy.policyVersion
+    };
+}
+
+function getEffectiveRemediationPolicyErrorStop(session) {
+    const stop = session.extensions?.remediationPolicyErrorStop;
+    if (stop) {
+        const policy = session.dependencies?.probeAuthoringPolicy;
+        const currentIdentity = policyIdentityFrom(policy);
+        if (!currentIdentity) {
+            return { message: "Policy identity is unavailable; selection is blocked." };
+        }
+        if (
+            currentIdentity.policyId !== stop.policyId ||
+            currentIdentity.policyVersion !== stop.policyVersion
+        ) {
+            return null;
+        }
+
+        const probeBank = resolveRemediationProbeBank({
+            session,
+            targetNodeId: stop.targetNodeId
+        });
+        if (!probeBank) {
+            return { message: "Policy stop bank identity is unavailable; selection is blocked." };
+        }
+        if (
+            probeBank.bankIdentity.bankId !== stop.bankId ||
+            probeBank.bankIdentity.version !== stop.bankVersion
+        ) {
+            return null;
+        }
+
+        try {
+            const fingerprint = buildRemediationPolicyErrorFingerprint({
+                session,
+                targetNodeId: stop.targetNodeId,
+                probeBank,
+                canonicalPolicy: canonicalPolicyForFingerprint(policy, stop.targetNodeId)
+            });
+            return fingerprint === stop.configFingerprint
+                ? { message: stop.reasonCode }
+                : null;
+        } catch {
+            return { message: "Policy stop configuration could not be verified; selection is blocked." };
+        }
+    }
+
+    if (session.lastFlowResult?.remediationGeneration?.status === "POLICY_ERROR") {
+        return {
+            message: session.lastFlowResult.remediationGeneration.reasonCode ??
+                "Policy error metadata is incomplete; selection is blocked."
+        };
+    }
+    return null;
+}
+
+function updateRemediationGenerationStop({
+    nextSession,
+    flowResult,
+    attempt,
+    session
+}) {
+    const generation = flowResult?.remediationGeneration;
+    if (!generation) {
+        return null;
+    }
+
+    const extensions = clonePlainObject(nextSession.extensions ?? {});
+    if (generation.status === "FEASIBLE") {
+        delete extensions.remediationGenerationStop;
+        delete extensions.remediationPolicyErrorStop;
+        if (Object.keys(extensions).length > 0) {
+            nextSession.extensions = extensions;
+        } else {
+            delete nextSession.extensions;
+        }
+        return null;
+    }
+    if (generation.status === "POLICY_ERROR") {
+        delete extensions.remediationGenerationStop;
+        delete extensions.remediationPolicyErrorStop;
+
+        const policyProvenance = generation.policyProvenance;
+        const policy = session.dependencies?.probeAuthoringPolicy;
+        const canonicalPolicy = policyProvenance?.canonicalPolicy ??
+            canonicalPolicyForFingerprint(policy, generation.targetNodeId);
+        const identity = policyProvenance?.identity ?? policyIdentityFrom(policy);
+        const targetNodeId = generation.targetNodeId;
+        const triggerAttemptId = generation.triggerAttemptId;
+        const bankId = generation.bankId;
+        const bankVersion = generation.bankVersion;
+        const probeBank = resolveRemediationProbeBank({
+            session,
+            targetNodeId
+        });
+
+        if (
+            probeBank &&
+            typeof generation.reasonCode === "string" &&
+            /^[A-Z][A-Z0-9_]*$/.test(generation.reasonCode) &&
+            typeof triggerAttemptId === "string" &&
+            triggerAttemptId.trim() &&
+            triggerAttemptId === attempt?.attemptId &&
+            typeof targetNodeId === "string" &&
+            targetNodeId.trim() &&
+            typeof bankId === "string" &&
+            bankId === probeBank.bankIdentity.bankId &&
+            typeof bankVersion === "string" &&
+            bankVersion === probeBank.bankIdentity.version &&
+            typeof identity?.policyId === "string" &&
+            identity.policyId.trim() &&
+            typeof identity?.policyVersion === "string" &&
+            identity.policyVersion.trim() &&
+            policyIdentityFrom(canonicalPolicy)?.policyId === identity.policyId &&
+            policyIdentityFrom(canonicalPolicy)?.policyVersion === identity.policyVersion
+        ) {
+            try {
+                const generationInputs = canonicalizeRemediationFingerprintInput(
+                    createRemediationPolicyErrorFingerprintInput({
+                        session,
+                        targetNodeId,
+                        probeBank,
+                        canonicalPolicy
+                    })
+                );
+                const configFingerprint =
+                    computePolicyErrorFingerprintV1(generationInputs);
+                extensions.remediationPolicyErrorStop = {
+                    schemaVersion: REMEDIATION_POLICY_ERROR_STOP_VERSION,
+                    status: "POLICY_ERROR",
+                    reasonCode: generation.reasonCode,
+                    triggerAttemptId,
+                    targetNodeId,
+                    bankId,
+                    bankVersion,
+                    policyId: identity.policyId,
+                    policyVersion: identity.policyVersion,
+                    configFingerprint
+                };
+                if (triggerAttemptId === attempt?.attemptId) {
+                    if (Object.keys(extensions).length > 0) {
+                        nextSession.extensions = extensions;
+                    } else {
+                        delete nextSession.extensions;
+                    }
+                    return createRemediationStopCapture({
+                        stopKind: "POLICY_ERROR",
+                        stopFingerprint: configFingerprint,
+                        targetNodeId,
+                        triggerAttemptId,
+                        generationInputs
+                    });
+                }
+            } catch {
+                // Keep the processed attempt and rely on lastFlowResult to block
+                // selection when the invalid configuration cannot be fingerprinted.
+            }
+        }
+
+        if (Object.keys(extensions).length > 0) {
+            nextSession.extensions = extensions;
+        } else {
+            delete nextSession.extensions;
+        }
+        return null;
+    }
+    if (generation.status !== "INFEASIBLE") {
+        return null;
+    }
+
+    delete extensions.remediationPolicyErrorStop;
+    const targetNodeId =
+        generation.targetNodeId ??
+        attempt?.context?.nodeId ??
+        attempt?.diagnostic?.sourceNodeId;
+    const probeBank =
+        resolveRemediationProbeBank({
+            session,
+            attempt,
+            targetNodeId
+        });
+    const triggerAttemptId =
+        generation.triggerAttemptId ??
+        attempt?.attemptId;
+    const bankId =
+        generation.bankId ??
+        probeBank?.bankIdentity?.bankId;
+    const bankVersion =
+        generation.bankVersion ??
+        probeBank?.bankIdentity?.version;
+
+    if (
+        !probeBank ||
+        typeof targetNodeId !== "string" ||
+        !targetNodeId.trim() ||
+        typeof triggerAttemptId !== "string" ||
+        !triggerAttemptId.trim() ||
+        typeof bankId !== "string" ||
+        !bankId.trim() ||
+        typeof bankVersion !== "string" ||
+        !bankVersion.trim() ||
+        typeof generation.reasonCode !== "string" ||
+        !generation.reasonCode.trim()
+    ) {
+        return null;
+    }
+    if (
+        generation.bankId !== undefined &&
+        generation.bankId !== probeBank.bankIdentity.bankId
+    ) {
+        return;
+    }
+    if (
+        generation.bankVersion !== undefined &&
+        generation.bankVersion !== probeBank.bankIdentity.version
+    ) {
+        return null;
+    }
+
+    const generationInputs = canonicalizeRemediationFingerprintInput(
+        createRemediationConfigFingerprintInput({
+            session,
+            targetNodeId,
+            probeBank
+        })
+    );
+    const configFingerprint =
+        computeLegacyInfeasibleFingerprintV1(generationInputs);
+
+    extensions.remediationGenerationStop = {
+        schemaVersion: REMEDIATION_GENERATION_STOP_VERSION,
+        status: "INFEASIBLE",
+        reasonCode: generation.reasonCode,
+        triggerAttemptId,
+        targetNodeId,
+        bankId,
+        bankVersion,
+        configFingerprint
+    };
+    nextSession.extensions = extensions;
+    if (triggerAttemptId === attempt?.attemptId) {
+        return createRemediationStopCapture({
+            stopKind: "INFEASIBLE",
+            stopFingerprint: configFingerprint,
+            targetNodeId,
+            triggerAttemptId,
+            generationInputs
+        });
+    }
+    return null;
+}
+
 
 /**
  * ============================================================
@@ -3693,6 +4344,58 @@ function resolveDecisionAction(
 
 
     return action;
+}
+
+function resolveSelectionPathStage(decision) {
+    const next = decision?.path?.next;
+    if (
+        decision?.action === "REMEDIATE" &&
+        (next === "MINI_PRACTICE" || next === "MINI_PROBE")
+    ) {
+        return next;
+    }
+
+    return resolvePathStage({
+        action: resolveDecisionAction(decision),
+        decision
+    });
+}
+
+function resolveSelectedRemediationIdentity(session, question, decision) {
+    const identity =
+        session?.currentSelection?.remediationIdentity;
+    const expectedStage =
+        resolveSelectionPathStage(decision);
+    const expectsIdentity =
+        decision?.action === "REMEDIATE" &&
+        (expectedStage === "MINI_PRACTICE" || expectedStage === "MINI_PROBE");
+
+    if (!expectsIdentity) {
+        if (identity !== undefined && identity !== null) {
+            throw new Error("StudySession found unexpected remediation selection identity.");
+        }
+        return null;
+    }
+
+    const plan = session.activeRemediationPlan;
+    if (
+        !identity ||
+        typeof identity !== "object" ||
+        identity.pathStage !== expectedStage ||
+        typeof identity.remediationId !== "string" ||
+        identity.remediationId !== plan?.remediationId ||
+        typeof identity.targetNodeId !== "string" ||
+        identity.targetNodeId !== plan?.probe?.targetNodeId ||
+        identity.questionId !== session.currentSelection?.selected?.questionId ||
+        identity.questionId !== question?.id ||
+        question?.primaryNode !== identity.targetNodeId ||
+        (expectedStage === "MINI_PROBE" &&
+            (plan?.probe?.required !== true || plan?.probe?.type !== "MINI_PROBE"))
+    ) {
+        throw new Error("StudySession remediation selection identity does not match the active plan and question.");
+    }
+
+    return identity;
 }
 
 

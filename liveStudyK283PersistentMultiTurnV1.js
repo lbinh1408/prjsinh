@@ -30,6 +30,7 @@
  * Run:
  *
  *   node liveStudyK283.js
+ *   K283_PROBE_AUTHORING_POLICY=/path/to/policy.json node liveStudyK283PersistentMultiTurnV1.js
  *
  * Commands:
  *
@@ -60,6 +61,21 @@ import { createHash } from "node:crypto";
 import { evaluateK283Completion, MASTERY_LEVELS } from "./k283SessionCompletionV1.js";
 import { findLatestVerifiedK283Progress } from "./k283ProgressContinuationV1.js";
 import { getPreviouslyObservedK283QuestionIds, applyK283InitialExclusions, applyK283SelectionExclusions, assertK283QuestionNotPreviouslyObserved } from "./k283CrossSessionQuestionGuardV1.js";
+import {
+    bootstrapAdaptiveDecision,
+    resolveBootstrapRemediationGenerationStop,
+    restoreBootstrapRemediationGenerationStop,
+    resolveBootstrapRemediationPolicyErrorStop,
+    restoreBootstrapRemediationPolicyErrorStop
+} from "./k283AdaptiveBootstrapV1.js";
+import { resolveQuestionFeedback, formatQuestionFeedbackLines } from "./k283ImmediateFeedbackV1.js";
+import { resolveRemediationStepContent, formatRemediationStepLines, INSTRUCTIONAL_STEP_TYPES } from "./k283RemediationContentResolverV1.js";
+import { selectK283NextQuestion, formatK283ProbeOutcome } from "./k283RemediationCLIProbeV1.js";
+import { submitK283DiagnosticAnswer } from "./k283A003DiagnosticConfirmationV1.js";
+import {
+    K283ProbePolicyConfigurationError,
+    preflightK283ProbeAuthoringPolicy
+} from "./k283ProbePolicyPreflightV1.js";
 
 
 import {
@@ -877,55 +893,14 @@ function printEvaluation(
 
 function displayQuestionFeedback(
     question,
-    evaluation
+    evaluation,
+    userResponse = null
 ) {
+    const feedback = resolveQuestionFeedback(question, evaluation, userResponse);
+    const lines = formatQuestionFeedbackLines(feedback);
 
-    const explanation =
-        question
-            ?.content
-            ?.solution
-            ?.explanation ??
-        question
-            ?.content
-            ?.explanation ??
-        question
-            ?.solution
-            ?.explanation ??
-        null;
-
-
-    if (
-        typeof explanation ===
-        "string" &&
-        explanation.trim()
-    ) {
-
-        console.log(
-            "\nExplanation:"
-        );
-
-        console.log(
-            explanation.trim()
-        );
-    }
-
-
-    if (
-        !evaluation.correct
-    ) {
-
-        const correctValue =
-            question
-                ?.answer
-                ?.value;
-
-
-        if (correctValue) {
-
-            console.log(
-                `\nCorrect answer: ${correctValue}`
-            );
-        }
+    if (lines.length > 0) {
+        console.log("\n" + lines.join("\n"));
     }
 }
 
@@ -1263,7 +1238,9 @@ function printDecision(
  */
 
 function printRemediation(
-    session
+    session,
+    question = null,
+    attempt = null
 ) {
 
     const plan =
@@ -1323,6 +1300,14 @@ function printRemediation(
         [];
 
 
+    // Resolve the learner's chosen option from the failed attempt
+    // (used by ERROR_ANALYSIS to select the per-option explanation).
+    const chosenOption =
+        attempt?.response?.value ??
+        attempt?.response?.selected ??
+        null;
+
+
     if (
         Array.isArray(steps) &&
         steps.length > 0
@@ -1339,24 +1324,38 @@ function printRemediation(
                 index
             ) => {
 
-                const text =
-                    typeof step ===
-                        "string"
-                        ? step
-                        : step
-                            ?.instruction ??
-                        step
-                            ?.description ??
-                        step
-                            ?.type ??
-                        JSON.stringify(
-                            step
-                        );
-
-
                 console.log(
-                    `  ${index + 1}. ${text}`
+                    `  ${index + 1}. [${step?.type ?? "STEP"}]`
                 );
+
+
+                if (INSTRUCTIONAL_STEP_TYPES.includes(step?.type)) {
+
+                    // Resolve authoritative content from the question that
+                    // triggered this remediation. Never use an unrelated question.
+                    const resolved = resolveRemediationStepContent({
+                        step,
+                        question,
+                        chosenOption
+                    });
+
+                    const contentLines = formatRemediationStepLines(resolved);
+
+                    contentLines.forEach(l => console.log(`     ${l}`));
+
+                } else {
+
+                    // Unsupported step type — preserve original fallback display.
+                    const text =
+                        typeof step === "string"
+                            ? step
+                            : step?.instruction ??
+                              step?.description ??
+                              step?.type ??
+                              JSON.stringify(step);
+
+                    console.log(`     ${text}`);
+                }
             }
         );
     }
@@ -1529,11 +1528,30 @@ function formatNumber(
  * ============================================================
  */
 
-function createRuntimeSession(previousProgress = null) {
+export function createRuntimeSession(previousProgress = null, probeAuthoringPolicy = null) {
 
     const dependencies =
         loadDependencies();
 
+    const config = {
+        learningMode: LEARNING_MODE,
+        timeBudget: TIME_BUDGET_MINUTES,
+        clusterId: CLUSTER_ID,
+        lessonId: null,
+        contextId: CONTEXT_ID,
+        historyLimit: 50
+    };
+    const policyPreflight = preflightK283ProbeAuthoringPolicy({
+        policy: probeAuthoringPolicy,
+        dependencies,
+        targetNodeId: TARGET_NODE_ID,
+        config,
+        selectorConstraints: {}
+    });
+
+    if (policyPreflight.status === "VALIDATED") {
+        dependencies.probeAuthoringPolicy = policyPreflight.policy;
+    }
 
     const studentState =
         previousProgress?.studentState ?? loadStudentState();
@@ -1545,15 +1563,28 @@ function createRuntimeSession(previousProgress = null) {
      * Existing knowledge/mastery inside studentState is preserved.
      */
 
-    return createStudySession({
+    const initialDecision =
+        (previousProgress
+            ? bootstrapAdaptiveDecision({
+                studentState,
+                dependencies,
+                targetNodeId: TARGET_NODE_ID,
+                clusterId: CLUSTER_ID,
+                learningMode: LEARNING_MODE,
+                timeBudget: TIME_BUDGET_MINUTES,
+                sessionId: SESSION_ID,
+                now: nowIso()
+            })
+            : null) ?? createInitialDecision();
+
+    const session = createStudySession({
 
         sessionId:
             SESSION_ID,
 
         studentState,
 
-        initialDecision:
-            createInitialDecision(),
+        initialDecision,
 
         questionBanks:
             buildQuestionBanks(
@@ -1589,30 +1620,73 @@ function createRuntimeSession(previousProgress = null) {
             dependencies
                 .remediationRules,
 
-        learningMode:
-            LEARNING_MODE,
+        ...(dependencies.probeAuthoringPolicy === undefined
+            ? {}
+            : { probeAuthoringPolicy: dependencies.probeAuthoringPolicy }),
 
-        timeBudget:
-            TIME_BUDGET_MINUTES,
-
-        clusterId:
-            CLUSTER_ID,
-
-        lessonId:
-            null,
-
-        contextId:
-            CONTEXT_ID,
-
+        ...config,
         history:
-            [],
-
-        historyLimit:
-            50,
+            previousProgress?.history ?? [],
 
         now:
             nowIso()
     });
+
+    const remediationGenerationStop = previousProgress?.remediationGenerationStop
+        ? resolveBootstrapRemediationGenerationStop({
+            checkpoint: previousProgress.checkpoint,
+            dependencies,
+            questionBank: dependencies.questionBank,
+            targetNodeId: TARGET_NODE_ID,
+            selectorConstraints: {},
+            config: {
+                learningMode: LEARNING_MODE,
+                timeBudget: TIME_BUDGET_MINUTES,
+                clusterId: CLUSTER_ID,
+                lessonId: null,
+                contextId: CONTEXT_ID,
+                historyLimit: 50
+            }
+        })
+        : null;
+
+    if (remediationGenerationStop?.status === "FAIL_CLOSED") {
+        throw new Error(
+            `K283_REMEDIATION_STOP_RESTORE_BLOCKED: ${remediationGenerationStop.reasonCode}`
+        );
+    }
+    if (
+        remediationGenerationStop?.status === "PROBE_GENERATION_INFEASIBLE" ||
+        remediationGenerationStop?.status === "RETRY_ELIGIBLE"
+    ) {
+        restoreBootstrapRemediationGenerationStop(session, remediationGenerationStop);
+    }
+
+    const remediationPolicyErrorStop = previousProgress?.remediationPolicyErrorStop
+        ? resolveBootstrapRemediationPolicyErrorStop({
+            checkpoint: previousProgress.checkpoint,
+            dependencies,
+            questionBank: dependencies.questionBank,
+            policy: dependencies.probeAuthoringPolicy,
+            targetNodeId: TARGET_NODE_ID,
+            selectorConstraints: {},
+            config
+        })
+        : null;
+
+    if (remediationPolicyErrorStop?.status === "FAIL_CLOSED") {
+        throw new Error(
+            `K283_POLICY_ERROR_STOP_RESTORE_BLOCKED: ${remediationPolicyErrorStop.reasonCode}`
+        );
+    }
+    if (
+        remediationPolicyErrorStop?.status === "POLICY_ERROR" ||
+        remediationPolicyErrorStop?.status === "RETRY_ELIGIBLE"
+    ) {
+        restoreBootstrapRemediationPolicyErrorStop(session, remediationPolicyErrorStop);
+    }
+
+    return { session, remediationGenerationStop, remediationPolicyErrorStop };
 }
 
 /**
@@ -2096,7 +2170,7 @@ function createPersistentSession(initialSession, excludedQuestionIds = []) {
                 ? excludedQuestionIds()
                 : (Array.isArray(excludedQuestionIds) ? excludedQuestionIds : []);
             const sessionWithExclusions = applyK283SelectionExclusions(session, excluded);
-            return getNextQuestion({ session: sessionWithExclusions, now });
+            return selectK283NextQuestion({ session: sessionWithExclusions, now });
         },
         submit: submitAnswer, now: nowIso
     });
@@ -2126,19 +2200,37 @@ async function main() {
 
 
     let session;
+    let restoredGenerationStop;
+    let restoredPolicyErrorStop;
     let persistent;
     let priorQuestionIds = [];
 
 
     try {
 
+        const policyPath = process.env.K283_PROBE_AUTHORING_POLICY;
+        let probeAuthoringPolicy = null;
+        if (policyPath) {
+            try {
+                probeAuthoringPolicy = readJson(policyPath);
+            } catch (error) {
+                throw new K283ProbePolicyConfigurationError(
+                    "POLICY_FILE_INVALID",
+                    `Unable to load K283 probe authoring policy: ${error.message}`,
+                    { cause: error }
+                );
+            }
+        }
         const previousProgress = process.env.K283_CONTINUE_PROGRESS === '1'
             ? findLatestVerifiedK283Progress({
                 rootDir: path.resolve(__dirname, '.k283-persistent-draft'),
                 contentRefs: buildContentRefs()
             })
             : null;
-        session = createRuntimeSession(previousProgress);
+        const runtime = createRuntimeSession(previousProgress, probeAuthoringPolicy);
+        session = runtime.session;
+        restoredGenerationStop = runtime.remediationGenerationStop;
+        restoredPolicyErrorStop = runtime.remediationPolicyErrorStop;
         if (previousProgress) {
             session.masteryRuntime.evidenceHistoryByNode = structuredClone(previousProgress.evidenceHistoryByNode);
             priorQuestionIds = getPreviouslyObservedK283QuestionIds(previousProgress.evidenceHistoryByNode);
@@ -2146,6 +2238,30 @@ async function main() {
             console.log(`Cross-session exclusion: ${priorQuestionIds.length} previously observed question IDs.`);
             console.log(`\nNEW SESSION using verified progress from ${previousProgress.fromSessionId}.`);
             console.log('This is progress continuation, NOT recovery of the old session.');
+        }
+        if (restoredGenerationStop?.status === "PROBE_GENERATION_INFEASIBLE") {
+            console.log(
+                `\nPROBE_GENERATION_INFEASIBLE: ${restoredGenerationStop.reasonCode} ` +
+                `(trigger ${restoredGenerationStop.stop.triggerAttemptId}); ` +
+                "the stored trigger will not be replayed."
+            );
+        } else if (restoredGenerationStop?.status === "RETRY_ELIGIBLE") {
+            console.log(
+                "\nRETRY_ELIGIBLE: remediation constraints changed since the stored stop; " +
+                "no automatic retry will occur."
+            );
+        }
+        if (restoredPolicyErrorStop?.status === "POLICY_ERROR") {
+            console.log(
+                `\nPOLICY_ERROR: ${restoredPolicyErrorStop.reasonCode} ` +
+                `(trigger ${restoredPolicyErrorStop.stop.triggerAttemptId}); ` +
+                "the stored trigger will not be replayed and selection is suppressed."
+            );
+        } else if (restoredPolicyErrorStop?.status === "RETRY_ELIGIBLE") {
+            console.log(
+                "\nRETRY_ELIGIBLE: policy or configuration changed since the stored policy error; " +
+                "no automatic retry will occur."
+            );
         }
         persistent = createPersistentSession(session, priorQuestionIds);
 
@@ -2174,6 +2290,7 @@ async function main() {
 
     let questionNumber =
         0;
+    let remediationTrigger = null;
 
 
     try {
@@ -2472,10 +2589,6 @@ async function main() {
                 }
 
 
-                const submittedAt =
-                    nowIso();
-
-
                 // This CLI permits one submission per newly selected question.
                 // attemptNumber is per-question retry count, NOT the session turn.
                 // The session-wide sequence is still used for unique attempt IDs.
@@ -2507,14 +2620,22 @@ async function main() {
                      * Student State commit
                      */
 
-                    const committed = persistent.submitSelected({
-                        attemptId: createAttemptId(session.attempts.length + 1),
-                        args: {
-                            response: answer, startedAt, submittedAt, attemptNumber,
-                            hint: null, timing: null, diagnostic: null, retry: null, feedback: null,
-                            ui: { device: "desktop", inputMethod: "keyboard" },
-                            metadata: { engineVersion: "live-study-k283-persistent-multiturn-v1" },
-                            now: submittedAt
+                    const committed = await submitK283DiagnosticAnswer({
+                        question,
+                        response: answer,
+                        askConfirmation: prompt => rl.question(prompt),
+                        submit: ({ response, diagnostic }) => {
+                            const submittedAt = nowIso();
+                            return persistent.submitSelected({
+                                attemptId: createAttemptId(session.attempts.length + 1),
+                                args: {
+                                    response, startedAt, submittedAt, attemptNumber,
+                                    hint: null, timing: null, diagnostic, retry: null, feedback: null,
+                                    ui: { device: "desktop", inputMethod: "keyboard" },
+                                    metadata: { engineVersion: "live-study-k283-persistent-multiturn-v1" },
+                                    now: submittedAt
+                                }
+                            });
                         }
                     });
                     if (committed.status !== "CHECKPOINT_OBSERVED") throw new Error("K283_CHECKPOINT_NOT_OBSERVED");
@@ -2547,6 +2668,16 @@ async function main() {
 
                 session =
                     result.session;
+                const activePlan = session.activeRemediationPlan;
+                if (!activePlan) {
+                    remediationTrigger = null;
+                } else if (remediationTrigger?.remediationId !== activePlan.remediationId) {
+                    remediationTrigger = {
+                        remediationId: activePlan.remediationId,
+                        question,
+                        attempt: result.attempt
+                    };
+                }
                 // Also prevent repeated evidence within this new session.
                 priorQuestionIds.push(question.id);
 
@@ -2598,6 +2729,8 @@ async function main() {
                     session
                 );
 
+                const probeMessage = formatK283ProbeOutcome(result.flowResult?.probeOutcome);
+                if (probeMessage) console.log(`\n${probeMessage}`);
 
                 console.log(
                     `\nAdaptive → ${result
@@ -2619,7 +2752,9 @@ async function main() {
 
 
                 printRemediation(
-                    session
+                    session,
+                    remediationTrigger?.question ?? null,
+                    remediationTrigger?.attempt ?? null
                 );
                 const completion = evaluateK283Completion({
                     nodeState: getK283State(session),
@@ -2663,4 +2798,6 @@ async function main() {
  * ============================================================
  */
 
-main();
+if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
+    main();
+}

@@ -30,3 +30,31 @@ test('9 submit callback failure blocks', () => { const x = fixture({ submitOverr
 test('10 asynchronous submit is rejected', () => { const x = fixture({ submitOverride: () => Promise.resolve({}) }); try { assert.throws(() => run(x.create(), 'a', 0), { code: 'MULTI_V2_ASYNC_UNSUPPORTED' }); } finally { x.cleanup(); } });
 test('11 capture allowed only while idle', () => { const x = fixture(); try { const f = x.create(); assert.equal(f.capturePreSubmit({ expectedRevision: 0, readSnapshot: s => ({ n: s.count }) }).snapshot.n, 0); run(f, 'a', 0); assert.equal(f.capturePreSubmit({ expectedRevision: 1, readSnapshot: s => ({ n: s.count }) }).snapshot.n, 1); } finally { x.cleanup(); } });
 test('12 result never authorizes resume/retry', () => { const x = fixture(); try { const f = x.create(); const r = run(f, 'a', 0); assert.equal(r.resumeAuthorized, false); assert.equal(r.retryAuthorized, false); assert.equal(r.durableSessionCommitProven, false); assert.equal(r.crossStoreAtomicityProven, false); } finally { x.cleanup(); } });
+test('13 transient remediation capture is forwarded unchanged', () => {
+    const capture = Object.freeze({ stopKind: 'INFEASIBLE', stopFingerprint: 'a'.repeat(64), targetNodeId: 'K283', triggerAttemptId: 'a', generationInputs: Object.freeze({ targetNodeId: 'K283' }) });
+    const x = fixture({
+        submitOverride: ({ session: s, attemptId }) => ({
+            session: { ...s, count: s.count + 1, currentSelection: null, currentQuestion: null, attempts: [{ sessionId: 's1', attemptId }] },
+            attempt: { sessionId: 's1', attemptId, questionId: s.currentQuestion.id },
+            remediationStopCapture: capture
+        })
+    });
+    try {
+        const result = run(x.create(), 'a', 0);
+        assert.equal(result.remediationStopCapture, capture);
+        assert.equal(x.authority.inspect().session.remediationStopCapture, undefined);
+    } finally { x.cleanup(); }
+});
+test('14 explicitly undefined capture is rejected instead of silently dropped', () => {
+    const x = fixture({
+        submitOverride: ({ session: s, attemptId }) => ({
+            session: { ...s, count: s.count + 1, currentSelection: null, currentQuestion: null },
+            attempt: { sessionId: 's1', attemptId, questionId: s.currentQuestion.id },
+            remediationStopCapture: undefined
+        })
+    });
+    try {
+        assert.throws(() => run(x.create(), 'a', 0), { code: 'MULTI_V2_REMEDIATION_CAPTURE_INVALID' });
+        assert.equal(x.attemptStore.countAttempts({ sessionId: 's1' }), 0);
+    } finally { x.cleanup(); }
+});

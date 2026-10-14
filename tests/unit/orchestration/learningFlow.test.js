@@ -1032,11 +1032,22 @@ function runFlow({
 
     sessionContext = {},
 
+    remediationProbeBank,
+
+    probeAuthoringPolicy = null,
+
     learningMode = null,
 
     timeBudget = null
 
 } = {}) {
+    const probeBank = remediationProbeBank === undefined
+        ? createFeasibilityTestBank(
+            attempt?.diagnostic?.sourceNodeId ??
+                attempt?.context?.nodeId ??
+                "K283"
+        )
+        : remediationProbeBank;
 
     return processAttempt({
 
@@ -1069,6 +1080,10 @@ function runFlow({
 
         sessionContext,
 
+        remediationProbeBank: probeBank,
+
+        probeAuthoringPolicy,
+
         learningMode,
 
         timeBudget,
@@ -1076,6 +1091,42 @@ function runFlow({
         now:
             FIXED_NOW
     });
+}
+
+function createFeasibilityTestBank(targetNodeId) {
+    const difficulties = ["D1", "D2", "D3", "D4", "D5"];
+    const evidenceDimensions = ["know", "explain", "apply", "transfer"];
+    const questionTypes = [
+        "mcq", "multi_select", "true_false", "matching", "ordering",
+        "fill_blank", "short_answer", "numeric", "data_analysis",
+        "experiment", "sequence", "open_response"
+    ];
+    const questions = difficulties.flatMap(difficulty =>
+        evidenceDimensions.flatMap(evidence =>
+            questionTypes.map(questionType => ({
+                id: `Q-FEASIBILITY-${targetNodeId}-${difficulty}-${evidence}-${questionType}`,
+                primaryNode: targetNodeId,
+                nodes: [targetNodeId],
+                evidence,
+                difficulty,
+                questionType,
+                mode: ["practice", "remediation"],
+                failureSignatures: [],
+                context: { contextId: `ctx-${targetNodeId}-${difficulty}-${evidence}` }
+            }))
+        )
+    );
+    const questionBank = {
+        bankId: `QB-FEASIBILITY-${targetNodeId}`,
+        version: "test-v1",
+        primaryNode: targetNodeId,
+        questions
+    };
+    return {
+        targetNodeId,
+        bankIdentity: { bankId: questionBank.bankId, version: questionBank.version },
+        questionBank
+    };
 }
 
 
@@ -1126,7 +1177,6 @@ test(
                     result.masteryUpdate
                 );
 
-
                 assert.ok(
                     result.adaptiveDecision
                 );
@@ -1142,6 +1192,219 @@ test(
             }
         );
 
+        function p4cPrerequisiteScenario(
+            bankQuestions,
+            sessionContext = {},
+            probeAuthoringPolicy = null
+        ) {
+            const studentState = makeStudentState({
+                k281: makeKnowledgeState({
+                    nodeId: "K281",
+                    mastery: "M1",
+                    status: "developing",
+                    evidence: makeEvidence({ know: 0.62, explain: 0.45, apply: 0.3, transfer: 0.2 })
+                }),
+                k283: makeKnowledgeState({ nodeId: "K283", mastery: "M2", status: "developing" })
+            });
+            const attempt = makeAttempt({
+                attemptId: "ATT-P4C2-001",
+                result: "incorrect",
+                score: 0,
+                failureType: "prerequisite_gap",
+                sourceNodeId: "K281",
+                occurrenceCount: 2,
+                evidenceDimension: "apply"
+            });
+            const questionBank = {
+                bankId: "QB-P4C2-K281",
+                version: "test-v1",
+                primaryNode: "K281",
+                questions: bankQuestions
+            };
+            return runFlow({
+                studentState,
+                attempt,
+                sessionContext: {
+                    ...sessionContext,
+                    prerequisites: [{ nodeId: "K281", type: "D1", mastery: "M1" }]
+                },
+                remediationProbeBank: {
+                    targetNodeId: "K281",
+                    bankIdentity: { bankId: questionBank.bankId, version: questionBank.version },
+                    questionBank
+                },
+                probeAuthoringPolicy
+            });
+        }
+
+        const P4C2_K281_D1_KNOW = {
+            id: "Q-P4C2-K281-D1-KNOW",
+            primaryNode: "K281",
+            nodes: ["K281"],
+            evidence: "know",
+            difficulty: "D1",
+            questionType: "mcq",
+            mode: ["practice"],
+            failureSignatures: [],
+            context: { contextId: "p4c2-k281-ctx" }
+        };
+
+        await t.test("P4c.2 FEASIBLE returns unchanged plan after mastery and adaptive processing", () => {
+            const result = p4cPrerequisiteScenario([P4C2_K281_D1_KNOW]);
+            assert.ok(result.masteryUpdate);
+            assert.equal(result.adaptiveDecision.action, "REMEDIATE");
+            assert.equal(result.remediationGeneration.status, "FEASIBLE");
+            assert.equal(result.remediationPlan.probe.difficulty, "D1");
+            assert.equal(result.remediationPlan.probe.successCriteria.requiredEvidenceDimension, "know");
+            assert.equal(result.remediationGeneration.triggerAttemptId, "ATT-P4C2-001");
+            assert.equal(Object.hasOwn(result.remediationGeneration, "policyProvenance"), false);
+        });
+
+        await t.test("P4d.2c LEGACY path without policy keeps generated probe and result shape", () => {
+            const result = p4cPrerequisiteScenario([P4C2_K281_D1_KNOW]);
+            assert.equal(result.remediationGeneration.status, "FEASIBLE");
+            assert.equal(result.remediationPlan.probe.difficulty, "D1");
+            assert.equal(result.remediationPlan.probe.successCriteria.requiredEvidenceDimension, "know");
+            assert.deepEqual(result.remediationPlan.probe.questionTypes, [
+                "mcq",
+                "true_false",
+                "matching",
+                "fill_blank"
+            ]);
+            assert.equal(Object.hasOwn(result.remediationGeneration, "policyProvenance"), false);
+        });
+
+        await t.test("P4d.2c valid policy passes through and preserves canonical provenance", () => {
+            const policy = {
+                schemaVersion: "1.0.0",
+                policyId: "learning-flow-test",
+                policyVersion: "1.0.0",
+                failureSignatureDefaults: {
+                    prerequisite_gap: {
+                        difficulty: "D1",
+                        evidenceDimension: "know",
+                        questionTypes: ["mcq", "numeric"]
+                    }
+                }
+            };
+            const result = p4cPrerequisiteScenario(
+                [P4C2_K281_D1_KNOW],
+                {},
+                policy
+            );
+            assert.ok(result.masteryUpdate);
+            assert.equal(result.adaptiveDecision.action, "REMEDIATE");
+            assert.equal(result.remediationGeneration.status, "FEASIBLE");
+            assert.equal(result.remediationPlan.probe.difficulty, "D1");
+            assert.equal(result.remediationPlan.probe.successCriteria.requiredEvidenceDimension, "know");
+            assert.deepEqual(result.remediationPlan.probe.questionTypes, ["mcq"]);
+            assert.equal(
+                result.remediationGeneration.policyProvenance.identity.policyId,
+                "learning-flow-test"
+            );
+            assert.equal(result.attempt.attemptId, "ATT-P4C2-001");
+        });
+
+        await t.test("P4c.2 INFEASIBLE returns metadata and no plan without disturbing outcomes", () => {
+            const result = p4cPrerequisiteScenario([]);
+            assert.ok(result.masteryUpdate);
+            assert.equal(result.adaptiveDecision.action, "REMEDIATE");
+            assert.equal(result.remediationPlan, null);
+            assert.equal(result.remediationGeneration.status, "INFEASIBLE");
+            assert.equal(result.remediationGeneration.reasonCode, "NO_ELIGIBLE_BANK_QUESTION");
+            assert.equal(result.remediationGeneration.targetNodeId, "K281");
+        });
+
+        await t.test("P4d.2c bank INFEASIBLE stays distinct through LearningFlow", () => {
+            const result = p4cPrerequisiteScenario([], {}, {
+                schemaVersion: "1.0.0",
+                policyId: "learning-flow-infeasible",
+                policyVersion: "1.0.0",
+                failureSignatureDefaults: {
+                    prerequisite_gap: {
+                        difficulty: "D1",
+                        evidenceDimension: "know",
+                        questionTypes: ["mcq"]
+                    }
+                }
+            });
+            assert.ok(result.masteryUpdate);
+            assert.equal(result.adaptiveDecision.action, "REMEDIATE");
+            assert.equal(result.remediationPlan, null);
+            assert.equal(result.remediationGeneration.status, "INFEASIBLE");
+            assert.equal(result.remediationGeneration.reasonCode, "NO_ELIGIBLE_BANK_QUESTION");
+            assert.equal(result.remediationGeneration.policyProvenance.identity.policyId, "learning-flow-infeasible");
+        });
+
+        await t.test("P4d.2c POLICY_ERROR creates no plan and preserves attempt outcomes", () => {
+            const result = p4cPrerequisiteScenario([P4C2_K281_D1_KNOW], {}, {
+                schemaVersion: "2.0.0",
+                policyId: "learning-flow-invalid",
+                policyVersion: "1.0.0",
+                failureSignatureDefaults: {
+                    prerequisite_gap: {
+                        difficulty: "D1",
+                        evidenceDimension: "know"
+                    }
+                }
+            });
+            assert.ok(result.masteryUpdate);
+            assert.equal(result.adaptiveDecision.action, "REMEDIATE");
+            assert.equal(result.remediationPlan, null);
+            assert.equal(result.remediationGeneration.status, "POLICY_ERROR");
+            assert.equal(result.remediationGeneration.reasonCode, "UNSUPPORTED_POLICY_VERSION");
+            assert.equal(result.attempt.attemptId, "ATT-P4C2-001");
+        });
+
+        await t.test("P4c.2 missing bank capability fails closed after attempt outcomes", () => {
+            const result = runFlow({
+                studentState: makeStudentState(),
+                attempt: makeAttempt({
+                    result: "incorrect",
+                    score: 0,
+                    failureType: "calculation_error",
+                    occurrenceCount: 2,
+                    evidenceDimension: "apply"
+                }),
+                remediationProbeBank: null
+            });
+            assert.ok(result.masteryUpdate);
+            assert.equal(result.adaptiveDecision.action, "REMEDIATE");
+            assert.equal(result.remediationPlan, null);
+            assert.equal(result.remediationGeneration.status, "INFEASIBLE");
+            assert.equal(result.remediationGeneration.reasonCode, "BANK_CAPABILITY_UNAVAILABLE");
+        });
+
+        await t.test("P4c.2 active remediation context skips plan regeneration", () => {
+            const result = p4cPrerequisiteScenario(
+                [P4C2_K281_D1_KNOW],
+                { remediationId: "ACTIVE-PLAN-1" },
+                {
+                    schemaVersion: "2.0.0",
+                    policyId: "unused-invalid-policy",
+                    policyVersion: "1.0.0",
+                    failureSignatureDefaults: {}
+                }
+            );
+            assert.ok(result.masteryUpdate);
+            assert.equal(Object.hasOwn(result, "remediationGeneration"), false);
+            assert.equal(result.remediationPlan, null);
+        });
+
+        await t.test("P4c.2 ordinary non-remediation attempt has no generation metadata", () => {
+            const result = runFlow({
+                studentState: makeStudentState(),
+                attempt: makeAttempt({ result: "correct", score: 1 }),
+                remediationProbeBank: {
+                    targetNodeId: "K281",
+                    bankIdentity: { bankId: "unused", version: "unused" },
+                    questionBank: null
+                }
+            });
+            assert.ok(result.masteryUpdate);
+            assert.notEqual(result.adaptiveDecision.action, "REMEDIATE");
+            assert.equal(Object.hasOwn(result, "remediationGeneration"), false);
+        });
 
         /**
          * ====================================================
@@ -1547,7 +1810,8 @@ test(
                  * Adaptive selected REMEDIATE.
                  */
                 assert.ok(
-                    result.remediationPlan
+                    result.remediationPlan,
+                    JSON.stringify(result.remediationGeneration)
                 );
 
 
@@ -1687,7 +1951,8 @@ test(
                 assert.ok(
                     CANONICAL_FAILURES.has(
                         failure
-                    )
+                    ),
+                    JSON.stringify(result.remediationGeneration)
                 );
 
 

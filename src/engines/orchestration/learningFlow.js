@@ -75,8 +75,12 @@ import {
 
 
 import {
-    buildRemediationPlan
-} from "../remediation/remediationEngine.js";
+    buildFeasibilityAwareRemediationPlan
+} from "../remediation/feasibilityAwareRemediationGenerator.js";
+
+import {
+    evaluateProbeOutcome
+} from "../remediation/probeOutcomeEvaluator.js";
 
 
 /**
@@ -146,6 +150,12 @@ export function processAttempt({
 
     masteryEvidenceHistory = null,
     masteryEvidenceContext = {},
+
+    remediationProbePlan = null,
+
+    remediationProbeBank = null,
+
+    probeAuthoringPolicy = null,
 
     learningMode = null,
 
@@ -306,6 +316,15 @@ export function processAttempt({
             now
         });
 
+    const probeOutcome =
+        remediationProbePlan
+            ? evaluateProbeOutcome({
+                attempt,
+                remediationPlan: remediationProbePlan,
+                masteryUpdate
+            })
+            : null;
+
 
     /*
      * --------------------------------------------------------
@@ -384,7 +403,9 @@ export function processAttempt({
                 engineAttempt,
 
             masteryUpdate:
-                masteryRuntimeResult
+                masteryRuntimeResult,
+
+            probeOutcome
         });
 
 
@@ -450,34 +471,65 @@ export function processAttempt({
      */
 
     let remediationPlan = null;
+    let remediationGeneration = null;
 
 
     if (
         adaptiveDecision.action ===
-        "REMEDIATE"
+            "REMEDIATE" &&
+        !remediationProbePlan &&
+        !sessionContext?.remediationId
     ) {
 
-        remediationPlan =
-            buildRemediationPlan({
+        const generationInput = {
+            studentId,
+            adaptiveDecision,
+            attempt: engineAttempt,
+            masteryState: projectedNodeState,
+            knowledgeMap,
+            failureSignatures,
+            remediationRules,
+            now: now ?? attempt?.submittedAt ?? attempt?.timestamp ?? null
+        };
 
-                studentId,
+        const probeTargetNodeId = remediationProbeBank?.targetNodeId ??
+            adaptiveDecision?.target?.primaryNodeId ??
+            targetNodeId;
+        const result = remediationProbeBank
+            ? buildFeasibilityAwareRemediationPlan({
+                planInput: generationInput,
+                targetNodeId: probeTargetNodeId,
+                bankIdentity: remediationProbeBank.bankIdentity,
+                questionBank: remediationProbeBank.questionBank,
+                selectorConstraints: remediationProbeBank.selectorConstraints ?? {},
+                ...(probeAuthoringPolicy === null
+                    ? {}
+                    : { probeAuthoringPolicy })
+            })
+            : {
+                status: "INFEASIBLE",
+                reasonCode: "BANK_CAPABILITY_UNAVAILABLE",
+                targetNodeId: probeTargetNodeId,
+                bankId: null,
+                bankVersion: null,
+                triggerAttemptId: attempt.attemptId ?? null
+            };
 
-                adaptiveDecision,
-
-                attempt:
-                    engineAttempt,
-
-                masteryState:
-                    projectedNodeState,
-
-                knowledgeMap,
-
-                failureSignatures,
-
-                remediationRules,
-
-                now
-            });
+        if (result.status === "FEASIBLE") {
+            remediationPlan = result.plan;
+            remediationGeneration = {
+                status: "FEASIBLE",
+                targetNodeId: probeTargetNodeId,
+                bankId: remediationProbeBank.bankIdentity.bankId,
+                bankVersion: remediationProbeBank.bankIdentity.version,
+                triggerAttemptId: attempt.attemptId ?? null,
+                ...(result.policyProvenance
+                    ? { policyProvenance: result.policyProvenance }
+                    : {})
+            };
+        } else {
+            remediationGeneration = result;
+        }
     }
 
 
@@ -532,8 +584,12 @@ export function processAttempt({
 
         adaptiveDecision,
 
+        ...(probeOutcome ? { probeOutcome } : {}),
 
         remediationPlan,
+        ...(remediationGeneration
+            ? { remediationGeneration }
+            : {}),
         /**
          * DESIGN-005 / runtime evidence-history bridge
          *
@@ -715,6 +771,7 @@ export function processRemediationProbe({
 
         masteryEvidenceHistory,
         masteryEvidenceContext,
+        remediationProbePlan: remediationPlan,
         learningMode,
 
         timeBudget,
@@ -2553,7 +2610,9 @@ function buildAdaptiveSessionContext({
 
     attempt,
 
-    masteryUpdate
+    masteryUpdate,
+
+    probeOutcome = null
 
 }) {
 
@@ -2662,6 +2721,23 @@ function buildAdaptiveSessionContext({
     ) {
         context.pathStage =
             attempt.context.pathStage;
+    }
+
+    if (
+        attempt?.context?.action === "REMEDIATE" &&
+        [
+            "REMEDIATE",
+            "MINI_PRACTICE",
+            "MINI_PROBE"
+        ].includes(attempt?.context?.pathStage)
+    ) {
+        context.currentPathStage =
+            attempt.context.pathStage;
+    }
+
+    if (probeOutcome?.isProbe === true) {
+        context.probePassed =
+            probeOutcome.passed === true;
     }
 
 

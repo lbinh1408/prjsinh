@@ -14,6 +14,30 @@ export const CHECKPOINT_CODEC_INFO = Object.freeze({
 
 const hasOwn = (obj, key) => Object.prototype.hasOwnProperty.call(obj, key);
 const isRecord = value => value !== null && typeof value === 'object' && !Array.isArray(value);
+const REMEDIATION_GENERATION_STOP_VERSION = '1.0.0';
+const REMEDIATION_GENERATION_STOP_FIELDS = [
+    'schemaVersion',
+    'status',
+    'reasonCode',
+    'triggerAttemptId',
+    'targetNodeId',
+    'bankId',
+    'bankVersion',
+    'configFingerprint'
+];
+const REMEDIATION_POLICY_ERROR_STOP_VERSION = '1.0.0';
+const REMEDIATION_POLICY_ERROR_STOP_FIELDS = [
+    'schemaVersion',
+    'status',
+    'reasonCode',
+    'triggerAttemptId',
+    'targetNodeId',
+    'bankId',
+    'bankVersion',
+    'policyId',
+    'policyVersion',
+    'configFingerprint'
+];
 
 function fail(message) {
     throw new TypeError(`Invalid checkpoint: ${message}`);
@@ -112,6 +136,111 @@ function validateContentRefs(refs) {
     }
 }
 
+function validateRemediationGenerationStop(stop) {
+    requireFields(
+        stop,
+        REMEDIATION_GENERATION_STOP_FIELDS,
+        'extensions.remediationGenerationStop'
+    );
+    if (Object.keys(stop).some(
+        field => !REMEDIATION_GENERATION_STOP_FIELDS.includes(field)
+    )) {
+        fail('extensions.remediationGenerationStop contains unsupported fields');
+    }
+    if (stop.schemaVersion !== REMEDIATION_GENERATION_STOP_VERSION) {
+        fail('extensions.remediationGenerationStop has unsupported schemaVersion');
+    }
+    if (stop.status !== 'INFEASIBLE') {
+        fail('extensions.remediationGenerationStop.status must be INFEASIBLE');
+    }
+    for (const field of [
+        'reasonCode',
+        'triggerAttemptId',
+        'targetNodeId',
+        'bankId',
+        'bankVersion'
+    ]) {
+        if (typeof stop[field] !== 'string' || !stop[field].trim()) {
+            fail(`extensions.remediationGenerationStop.${field} must be a nonempty string`);
+        }
+    }
+    if (!/^[A-Z][A-Z0-9_]*$/.test(stop.reasonCode)) {
+        fail('extensions.remediationGenerationStop.reasonCode must be a stable code');
+    }
+    if (
+        typeof stop.configFingerprint !== 'string' ||
+        !/^[a-fA-F0-9]{64}$/.test(stop.configFingerprint)
+    ) {
+        fail('extensions.remediationGenerationStop.configFingerprint must be a 64-character SHA-256 hex digest');
+    }
+}
+
+function validateRemediationPolicyErrorStop(stop) {
+    requireFields(
+        stop,
+        REMEDIATION_POLICY_ERROR_STOP_FIELDS,
+        'extensions.remediationPolicyErrorStop'
+    );
+    if (Object.keys(stop).some(
+        field => !REMEDIATION_POLICY_ERROR_STOP_FIELDS.includes(field)
+    )) {
+        fail('extensions.remediationPolicyErrorStop contains unsupported fields');
+    }
+    if (stop.schemaVersion !== REMEDIATION_POLICY_ERROR_STOP_VERSION) {
+        fail('extensions.remediationPolicyErrorStop has unsupported schemaVersion');
+    }
+    if (stop.status !== 'POLICY_ERROR') {
+        fail('extensions.remediationPolicyErrorStop.status must be POLICY_ERROR');
+    }
+    for (const field of [
+        'reasonCode',
+        'triggerAttemptId',
+        'targetNodeId',
+        'bankId',
+        'bankVersion',
+        'policyId',
+        'policyVersion'
+    ]) {
+        if (typeof stop[field] !== 'string' || !stop[field].trim()) {
+            fail(`extensions.remediationPolicyErrorStop.${field} must be a nonempty string`);
+        }
+    }
+    if (!/^[A-Z][A-Z0-9_]*$/.test(stop.reasonCode)) {
+        fail('extensions.remediationPolicyErrorStop.reasonCode must be a stable code');
+    }
+    if (
+        typeof stop.configFingerprint !== 'string' ||
+        !/^[a-fA-F0-9]{64}$/.test(stop.configFingerprint)
+    ) {
+        fail('extensions.remediationPolicyErrorStop.configFingerprint must be a 64-character SHA-256 hex digest');
+    }
+}
+
+function validateExtensions(extensions, checkpoint) {
+    if (!isRecord(extensions)) {
+        fail('extensions must be an object');
+    }
+    if (
+        hasOwn(extensions, 'remediationGenerationStop') &&
+        hasOwn(extensions, 'remediationPolicyErrorStop')
+    ) {
+        fail('extensions cannot contain both remediationGenerationStop and remediationPolicyErrorStop');
+    }
+    if (hasOwn(extensions, 'remediationGenerationStop')) {
+        validateRemediationGenerationStop(
+            extensions.remediationGenerationStop
+        );
+    }
+    if (hasOwn(extensions, 'remediationPolicyErrorStop')) {
+        validateRemediationPolicyErrorStop(
+            extensions.remediationPolicyErrorStop
+        );
+        if (checkpoint.currentSelection !== null || checkpoint.currentQuestion !== null) {
+            fail('extensions.remediationPolicyErrorStop requires currentSelection and currentQuestion to be null');
+        }
+    }
+}
+
 export function validateCheckpoint(checkpoint) {
     requireFields(checkpoint, [
         'schemaVersion', 'revision', 'savedAt', 'runtime', 'config',
@@ -145,6 +274,9 @@ export function validateCheckpoint(checkpoint) {
         new Set(checkpoint.attemptIds).size !== checkpoint.attemptIds.length) {
         fail('attemptIds must be unique nonempty strings');
     }
+    if (hasOwn(checkpoint, 'extensions')) {
+        validateExtensions(checkpoint.extensions, checkpoint);
+    }
     if (hasOwn(checkpoint, 'dependencies') || hasOwn(checkpoint, 'lastFlowResult') ||
         hasOwn(checkpoint.lessonRuntime, 'plan') || hasOwn(checkpoint, 'attempts')) {
         fail('checkpoint contains excluded runtime data');
@@ -162,7 +294,12 @@ export function validateCheckpoint(checkpoint) {
  * @param {string[]} options.persistedAttemptIds - IDs confirmed durable by Attempt store
  */
 export function encodeCheckpoint({
-    session, contentRefs, revision, savedAt, persistedAttemptIds = []
+    session,
+    contentRefs,
+    revision,
+    savedAt,
+    persistedAttemptIds = [],
+    extensions = session?.extensions
 }) {
     requireFields(session, [
         'runtime', 'config', 'state', 'currentDecision', 'currentSelection',
@@ -202,6 +339,9 @@ export function encodeCheckpoint({
         masteryRuntime: session.masteryRuntime,
         attemptIds
     };
+    if (extensions !== undefined) {
+        checkpoint.extensions = extensions;
+    }
     validateCheckpoint(checkpoint);
     return jsonCopy(checkpoint, 'checkpoint');
 }
