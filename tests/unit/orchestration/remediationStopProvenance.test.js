@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { createHash } from "node:crypto";
 import {
     createRemediationStopProvenance,
     REMEDIATION_STOP_PROVENANCE_VERSION,
@@ -104,6 +105,53 @@ function assertProvenanceError(callback, code) {
         error => error instanceof RemediationStopProvenanceValidationError &&
             error.code === code
     );
+}
+
+for (const stopKind of ["INFEASIBLE", "POLICY_ERROR"]) {
+    test(`${stopKind}: explicit null remediationRules preserves V1 inputs and digests`, () => {
+        const inputs = generationInputs({ policyError: stopKind === "POLICY_ERROR" });
+        inputs.generationRules.remediationRules = null;
+        const original = structuredClone(inputs);
+        const fingerprint = stopKind === "INFEASIBLE"
+            ? computeLegacyInfeasibleFingerprintV1 : computePolicyErrorFingerprintV1;
+        const provenance = provenanceFor({ stopKind, inputs });
+        assert.deepEqual(inputs, original);
+        assert.deepEqual(provenance.generationInputs, original);
+        assert.equal(provenance.generationInputs.generationRules.remediationRules, null);
+        assert.equal(provenance.stopFingerprint, fingerprint(inputs));
+        const canonical = JSON.stringify(inputs, (key, value) =>
+            value && typeof value === "object" && !Array.isArray(value)
+                ? Object.fromEntries(Object.keys(value).sort().map(k => [k, value[k]])) : value);
+        assert.equal(provenance.inputSha256, createHash("sha256").update(canonical).digest("hex"));
+        assert.equal(verify(JSON.parse(JSON.stringify(provenance))).status, "VERIFIED");
+        for (const replacement of [{}, undefined]) {
+            const changed = structuredClone(inputs);
+            if (replacement === undefined) delete changed.generationRules.remediationRules;
+            else changed.generationRules.remediationRules = replacement;
+            assert.notEqual(fingerprint(changed), provenance.stopFingerprint);
+        }
+    });
+
+    test(`${stopKind}: encoding and verification reject missing or invalid remediationRules`, () => {
+        const inputs = generationInputs({ policyError: stopKind === "POLICY_ERROR" });
+        inputs.generationRules.remediationRules = null;
+        const valid = provenanceFor({ stopKind, inputs });
+        for (const value of [undefined, [], "rules", 0, false, () => {}, new Date(0)]) {
+            const changed = structuredClone(inputs);
+            changed.generationRules.remediationRules = value;
+            assertProvenanceError(() => createRemediationStopProvenance({ ...valid, generationInputs: changed }), "GENERATION_RULES_INVALID");
+            assertProvenanceError(() => verify({ ...valid, generationInputs: changed }), "GENERATION_RULES_INVALID");
+        }
+        const missing = structuredClone(inputs);
+        delete missing.generationRules.remediationRules;
+        assertProvenanceError(() => createRemediationStopProvenance({ ...valid, generationInputs: missing }), "GENERATION_RULES_INVALID");
+        assertProvenanceError(() => verify({ ...valid, generationInputs: missing }), "GENERATION_RULES_INVALID");
+        for (const field of ["adaptiveRules", "adaptivePaths", "knowledgeMap", "failureSignatures"]) {
+            const changed = structuredClone(inputs); changed.generationRules[field] = null;
+            assertProvenanceError(() => createRemediationStopProvenance({ ...valid, generationInputs: changed }), "GENERATION_RULES_INVALID");
+            assertProvenanceError(() => verify({ ...valid, generationInputs: changed }), "GENERATION_RULES_INVALID");
+        }
+    });
 }
 
 test("V1 INFEASIBLE and POLICY_ERROR inputs verify with exact historical semantics", () => {

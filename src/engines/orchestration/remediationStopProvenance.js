@@ -185,6 +185,11 @@ function validateGenerationInputs(generationInputs, stopKind, fingerprintContrac
         "generationInputs.generationRules"
     );
     for (const field of GENERATION_RULE_FIELDS) {
+        // V1 fingerprints preserve explicit null when no remediation rules were supplied.
+        // Keep that generation-time value intact; the exact-field check still requires it.
+        if (field === "remediationRules" && generationInputs.generationRules[field] === null) {
+            continue;
+        }
         if (!isRecord(generationInputs.generationRules[field])) {
             reject("GENERATION_RULES_INVALID", `${field} must be an object.`);
         }

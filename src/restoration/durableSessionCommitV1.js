@@ -4,6 +4,7 @@ import path from 'node:path';
 import { createHash, randomUUID } from 'node:crypto';
 import { isDeepStrictEqual } from 'node:util';
 import { encodeCheckpoint, validateCheckpoint } from '../persistence/checkpointCodec.js';
+import { createRemediationStopProvenance, verifyRemediationStopProvenance } from '../engines/orchestration/remediationStopProvenance.js';
 const fail = code => { const e = new Error(code); e.code = code; throw e; };
 const sha = s => createHash('sha256').update(s).digest('hex');
 const idOk = x => typeof x === 'string' && x.length > 0 && x.length <= 256 && x.trim() === x;
@@ -22,6 +23,44 @@ function canonical(v, seen = new Set()) {
     } finally { seen.delete(v); }
 }
 const copy = v => JSON.parse(canonical(v));
+const captureFields = ['stopKind', 'stopFingerprint', 'targetNodeId', 'triggerAttemptId', 'generationInputs'];
+function frozenData(value, seen = new Set()) {
+    if (!value || typeof value !== 'object') return true;
+    if (!Object.isFrozen(value) || seen.has(value)) return false;
+    seen.add(value);
+    return Reflect.ownKeys(value).every(key => {
+        const descriptor = Object.getOwnPropertyDescriptor(value, key);
+        return Object.hasOwn(descriptor, 'value') && frozenData(descriptor.value, seen);
+    });
+}
+function boundStop(checkpoint, kind, inputs) {
+    const field = kind === 'INFEASIBLE' ? 'remediationGenerationStop'
+        : kind === 'POLICY_ERROR' ? 'remediationPolicyErrorStop' : null;
+    const stop = field && checkpoint.extensions?.[field];
+    if (!stop || stop.status !== kind || !checkpoint.attemptIds.includes(stop.triggerAttemptId) ||
+        inputs?.targetNodeId !== stop.targetNodeId || inputs?.bankIdentity?.bankId !== stop.bankId ||
+        inputs?.bankIdentity?.version !== stop.bankVersion ||
+        inputs?.questionBank?.bankId !== stop.bankId || inputs?.questionBank?.version !== stop.bankVersion ||
+        inputs?.questionBank?.primaryNode !== stop.targetNodeId ||
+        (kind === 'POLICY_ERROR' && (inputs?.policy?.policyId !== stop.policyId ||
+            inputs?.policy?.policyVersion !== stop.policyVersion))) fail('SESSION_COMMIT_REMEDIATION_CAPTURE_INVALID');
+    return stop;
+}
+function verifyWrapperProvenance(wrapper, checkpoint) {
+    const provenance = wrapper.remediationStopProvenance;
+    const stop = boundStop(checkpoint, provenance?.stopKind, provenance?.generationInputs);
+    // This integration writes/accepts V1 only; library V2 support is not activation.
+    if (provenance.fingerprintContract !== 'V1' || provenance.participation !== null)
+        fail('SESSION_COMMIT_REMEDIATION_CAPTURE_INVALID');
+    return verifyRemediationStopProvenance({ provenance, sessionId: wrapper.sessionId,
+        checkpointRevision: wrapper.checkpointRevision, checkpointPayloadSha256: wrapper.sha256,
+        stopKind: stop.status, stopFingerprint: stop.configFingerprint });
+}
+// Compatibility: only a supplied capture requires provenance at commit time.
+// No capture means the historical wrapper bytes/shape, even for a historical stop.
+// A missing whole member on read is absent/unverified: its deletion is indistinguishable
+// from a legacy wrapper. sha256 still covers checkpointPayload only, not this envelope.
+// No provenance is reconstructed or carried forward from a previous revision.
 const syncDir = dir => { const fd = fs.openSync(dir, 'r'); try { fs.fsyncSync(fd); } finally { fs.closeSync(fd); } };
 export function createDurableSessionCommitV1({ rootDir, attemptStore, journal, lockTimeoutMs = 1000, lockPollMs = 10, failpoint = null } = {}) {
     if (typeof rootDir !== 'string' || !path.isAbsolute(rootDir) || typeof attemptStore?.getAttempt !== 'function' ||
@@ -43,10 +82,13 @@ export function createDurableSessionCommitV1({ rootDir, attemptStore, journal, l
         try {
             checkpoint = JSON.parse(wrapper.checkpointPayload); validateCheckpoint(checkpoint);
             if (canonical(checkpoint) !== wrapper.checkpointPayload || checkpoint.revision !== wrapper.checkpointRevision || checkpoint.runtime.sessionId !== sessionId) fail('SESSION_COMMIT_CORRUPT');
+            if (Object.hasOwn(wrapper, 'remediationStopProvenance')) verifyWrapperProvenance(wrapper, checkpoint);
         } catch { fail('SESSION_COMMIT_CORRUPT'); }
         return {
             sessionId, authorityRevision: wrapper.authorityRevision, checkpointRevision: wrapper.checkpointRevision,
             checkpoint: copy(checkpoint), sha256: wrapper.sha256, durableCheckpointObserved: true,
+            ...(Object.hasOwn(wrapper, 'remediationStopProvenance')
+                ? { remediationStopProvenance: copy(wrapper.remediationStopProvenance) } : {}),
             durableSessionCommitProven: false, crossStoreAtomicityProven: false, resumeAuthorized: false, retryAuthorized: false, executable: false
         };
     }
@@ -89,7 +131,8 @@ export function createDurableSessionCommitV1({ rootDir, attemptStore, journal, l
         }
         return ids;
     }
-    function commit({ authority, sessionId, expectedAuthorityRevision, expectedCheckpointRevision, contentRefs, savedAt } = {}) {
+    function commit(request = {}) {
+        const { authority, sessionId, expectedAuthorityRevision, expectedCheckpointRevision, contentRefs, savedAt } = request;
         if (typeof authority?.inspect !== 'function' || !Number.isSafeInteger(expectedAuthorityRevision) || expectedAuthorityRevision < 0 ||
             !Number.isSafeInteger(expectedCheckpointRevision) || expectedCheckpointRevision < 0) fail('SESSION_COMMIT_INVALID_REQUEST');
         return locked(sessionId, () => {
@@ -107,6 +150,32 @@ export function createDurableSessionCommitV1({ rootDir, attemptStore, journal, l
                 format: 'durable-session-commit-v1', sessionId, authorityRevision: expectedAuthorityRevision,
                 checkpointRevision, checkpointPayload: payload, sha256: sha(payload)
             };
+            if (Object.hasOwn(request, 'remediationStopCapture')) {
+                try {
+                    const capture = request.remediationStopCapture;
+                    if (!capture || ![Object.prototype, null].includes(Object.getPrototypeOf(capture)) ||
+                        Reflect.ownKeys(capture).length !== captureFields.length ||
+                        captureFields.some(key => !Object.hasOwn(capture, key)) || !frozenData(capture))
+                        fail('SESSION_COMMIT_REMEDIATION_CAPTURE_INVALID');
+                    // Reject non-JSON inputs before the helper can canonicalize away undefined values.
+                    canonical(capture);
+                    const stop = boundStop(checkpoint, capture.stopKind, capture.generationInputs);
+                    const trigger = before.session.attempts.at(-1);
+                    if (capture.targetNodeId !== stop.targetNodeId || capture.triggerAttemptId !== stop.triggerAttemptId ||
+                        capture.stopFingerprint !== stop.configFingerprint || trigger?.attemptId !== capture.triggerAttemptId ||
+                        trigger?.sessionId !== sessionId) fail('SESSION_COMMIT_REMEDIATION_CAPTURE_INVALID');
+                    wrapper.remediationStopProvenance = createRemediationStopProvenance({
+                        sessionId, checkpointRevision, checkpointPayloadSha256: wrapper.sha256,
+                        stopKind: capture.stopKind, stopFingerprint: capture.stopFingerprint,
+                        fingerprintContract: 'V1', participation: null, generationInputs: capture.generationInputs
+                    });
+                    verifyWrapperProvenance(wrapper, checkpoint);
+                } catch (cause) {
+                    const error = new Error('SESSION_COMMIT_REMEDIATION_CAPTURE_INVALID', { cause });
+                    error.code = 'SESSION_COMMIT_REMEDIATION_CAPTURE_INVALID';
+                    throw error;
+                }
+            }
             const target = filename(sessionId), tmp = target + '.' + randomUUID() + '.tmp';
             try {
                 const fd = fs.openSync(tmp, 'wx', 0o600);
