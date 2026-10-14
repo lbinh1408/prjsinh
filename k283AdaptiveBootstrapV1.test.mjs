@@ -7,6 +7,7 @@ import { createHash } from 'node:crypto';
 import {
     bootstrapAdaptiveDecision,
     acceptBootstrapRemediationProvenance,
+    classifyBootstrapRemediationStop,
     resolveBootstrapRemediationGenerationStop,
     restoreBootstrapRemediationGenerationStop,
     resolveBootstrapRemediationPolicyErrorStop,
@@ -70,13 +71,77 @@ for (const kind of ['INFEASIBLE', 'POLICY_ERROR']) {
         assert.deepEqual(runtime.session.state.knowledge, oldRuntime.session.state.knowledge);
         assert.deepEqual(runtime.session.masteryRuntime, oldRuntime.session.masteryRuntime);
         assert.deepEqual(runtime.session.attempts, []);
+        assert.ok(Object.isFrozen(runtime.remediationStopClassification));
+        assert.equal(runtime.remediationStopClassification.status, 'CURRENT_MATCH');
+        assert.equal(oldRuntime.remediationStopClassification.status, 'FAIL_CLOSED');
+        for (const key of ['retryAuthorized', 'resumeAuthorized', 'remediationGenerationAuthorized', 'migrationAuthorized', 'executable']) {
+            assert.equal(runtime.remediationStopClassification[key], false);
+        }
         if (kind === 'POLICY_ERROR') assert.equal(getNextQuestion({ session: runtime.session }).selection.status, 'NO_MATCH');
     });
 }
+for (const kind of ['INFEASIBLE', 'POLICY_ERROR']) {
+    test(`${kind}: historical drift changes only informational comparison, never current defaults`, () => {
+        const { progress, policy } = handoffFixture(kind);
+        const old = progress.remediationProvenance.provenance;
+        old.generationInputs.config = { ...old.generationInputs.config, timeBudget: 7 };
+        const fingerprint = (kind === 'INFEASIBLE' ? computeLegacyInfeasibleFingerprintV1 : computePolicyErrorFingerprintV1)(old.generationInputs);
+        Object.values(progress.checkpoint.extensions)[0].configFingerprint = fingerprint;
+        const sha = createHash('sha256').update(JSON.stringify(canonicalize(progress.checkpoint))).digest('hex');
+        progress.remediationProvenance.source.checkpointPayloadSha256 = sha;
+        progress.remediationProvenance.provenance = createRemediationStopProvenance({ ...old, stopFingerprint: fingerprint, checkpointPayloadSha256: sha });
+        const runtime = createRuntimeSession(progress, policy);
+        assert.equal(runtime.remediationStopClassification.status, 'RETRY_ELIGIBLE');
+        assert.equal(runtime.session.config.timeBudget, 60);
+        const legacy = structuredClone(progress); delete legacy.remediationProvenance;
+        const without = createRuntimeSession(legacy, policy);
+        assert.deepEqual(runtime.remediationGenerationStop, without.remediationGenerationStop);
+        assert.deepEqual(runtime.remediationPolicyErrorStop, without.remediationPolicyErrorStop);
+        assert.deepEqual(runtime.session.masteryRuntime, without.session.masteryRuntime);
+        assert.deepEqual(runtime.session.currentDecision, without.session.currentDecision);
+        assert.deepEqual(runtime.session.attempts, []);
+    });
+    test(`${kind}: adapter preserves null and rejects invalid current inputs without historical fallback`, () => {
+        const { progress, policy } = handoffFixture(kind);
+        const dependencies = { ...loadDeps(), probeAuthoringPolicy: policy };
+        const args = { checkpoint: progress.checkpoint, remediationProvenance: acceptBootstrapRemediationProvenance(progress),
+            dependencies, config: STOP_CONFIG, targetNodeId: 'K283', selectorConstraints: {} };
+        const before = structuredClone(args);
+        assert.equal(classifyBootstrapRemediationStop(args).status, 'CURRENT_MATCH');
+        assert.deepEqual(args, before);
+        dependencies.remediationRules = null;
+        const r = classifyBootstrapRemediationStop(args);
+        assert.equal(r.status, 'RETRY_ELIGIBLE'); // historical {} and current null remain distinct
+        assert.equal(dependencies.remediationRules, null);
+        for (const value of [undefined, [], 'invalid']) {
+            dependencies.remediationRules = value;
+            assert.equal(classifyBootstrapRemediationStop(args).status, 'FAIL_CLOSED');
+        }
+        delete dependencies.remediationRules;
+        assert.equal(classifyBootstrapRemediationStop(args).status, 'FAIL_CLOSED');
+        dependencies.remediationRules = null;
+        const resolver = kind === 'INFEASIBLE' ? resolveBootstrapRemediationGenerationStop : resolveBootstrapRemediationPolicyErrorStop;
+        assert.equal(resolver({ ...args, questionBank: dependencies.questionBank, policy }).status, 'FAIL_CLOSED');
+    });
+}
+test('policy comparison errors fail closed while runtime preflight errors remain fatal', () => {
+    const { progress, policy } = handoffFixture('POLICY_ERROR');
+    const invalidPolicy = { ...policy, schemaVersion: 'unsupported' };
+    const args = { checkpoint: progress.checkpoint, remediationProvenance: acceptBootstrapRemediationProvenance(progress),
+        dependencies: { ...loadDeps(), probeAuthoringPolicy: invalidPolicy }, config: STOP_CONFIG,
+        targetNodeId: 'K283', selectorConstraints: {} };
+    assert.equal(classifyBootstrapRemediationStop(args).status, 'FAIL_CLOSED');
+    assert.throws(() => createRuntimeSession(progress, invalidPolicy), /K283_PROBE_POLICY_CONFIGURATION_INVALID/);
+    for (const field of ['fingerprintContract', 'participation', 'stopKind']) {
+        const changed = structuredClone(progress); changed.remediationProvenance.provenance[field] = 'spoofed';
+        assert.throws(() => createRuntimeSession(changed, policy), /K283_BOOTSTRAP_PROVENANCE_INVALID/);
+    }
+});
 test('bootstrap preserves explicit absence and legacy missing metadata', () => {
     const { progress } = handoffFixture('INFEASIBLE');
     progress.remediationProvenance.status = 'ABSENT_UNVERIFIED'; progress.remediationProvenance.provenance = null;
     assert.deepEqual(createRuntimeSession(progress).remediationProvenance, progress.remediationProvenance);
+    assert.equal(createRuntimeSession(progress).remediationStopClassification.status, 'FAIL_CLOSED');
     delete progress.remediationProvenance;
     assert.equal(acceptBootstrapRemediationProvenance(progress), undefined);
     assert.equal(acceptBootstrapRemediationProvenance(null), undefined);

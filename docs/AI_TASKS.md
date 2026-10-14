@@ -12,7 +12,7 @@
 - **P4d.3g.4a:** Added pure
   `src/engines/orchestration/remediationStopProvenance.js` and focused tests.
   It validates explicit session/revision/payload-hash/stop bindings and recomputes
-  the declared V1 or V2 digest. No persistence integration.
+  the declared V1 or V2 digest.
 - **P4d.3g.4b.1–2:** Audited generation-time inputs, then added frozen,
   one-submit `remediationStopCapture` to StudySession results for genuine
   INFEASIBLE and POLICY_ERROR stops. The V1 digest is computed from the captured
@@ -22,56 +22,69 @@
   `submitCheckpointIntegrationV1` to `durableCommit.commit`. Receivers verify
   Attempt/session, stop kind/fingerprint/target/trigger, bank/policy identity,
   deep immutability, and V1 digest.
+- **P4d.3g.4c:** Atomic wrapper integration in `src/restoration/durableSessionCommitV1.js`.
+  Durable commit validates bindings, creates `remediationStopProvenance`, and replaces
+  the durable wrapper atomically via temporary file, fsync, and rename. Durable read
+  verifies wrapper provenance against checkpoint payload SHA-256 and stop fields;
+  legacy wrappers without provenance remain readable as `ABSENT_UNVERIFIED`.
+- **P4d.3g.4d.1–2:** Transported verified remediation provenance through
+  `k283ProgressContinuationV1.js` (with journal/attempt sequence audit) and
+  `k283AdaptiveBootstrapV1.js` without recomputing historical inputs or replaying attempts.
+- **P4d.3g.4e:** Added pure informational classifier
+  `src/engines/orchestration/remediationStopClassifierV1.js` and bootstrap adapter
+  `classifyBootstrapRemediationStop`. Evaluates `CURRENT_MATCH` vs `RETRY_ELIGIBLE`
+  (fingerprint change) vs `FAIL_CLOSED`. All authorization flags remain strictly false.
+- **P4d.3g.4f.2:** Implemented fresh-process restart-level E2E coverage across 10 scenarios
+  in `tests/integration/k283FreshProcessRemediationProvenanceE2E.integration.test.mjs`
+  using genuinely isolated Node.js child processes for Process A and Process B.
+- **P4d.3g.4f.3:** Frozen informational V1 baseline checkpoint. Verified test suites,
+  documented contracts, invariants, and known limitations.
 
-## Current blockers / limits
+## Frozen V1 baseline contracts and invariants
 
-- `src/restoration/durableSessionCommitV1.js` ignores `remediationStopCapture`.
-  No provenance is persisted; existing wrapper/checkpoint formats and readback
-  contain no generation input snapshot.
-- Existing persisted stops therefore cannot gain verified historical generation
-  inputs from current mutable runtime configuration. Keep legacy behavior; never
-  synthesize provenance during restart.
-- The capture is validated transiently but currently is not bound durably to the
-  committed checkpoint revision/payload SHA or wrapper transaction.
-- V2 fingerprints remain disabled for generation. The pure V2 provenance verifier
-  is not an authorization to retry or resume.
-- Worktree has pre-existing source, test, and `.k283-persistent-draft/` changes.
-  Do not discard them as part of follow-up work.
+1. **Stop Extensions**:
+   - `checkpoint.extensions.remediationGenerationStop` (for `INFEASIBLE`)
+   - `checkpoint.extensions.remediationPolicyErrorStop` (for `POLICY_ERROR`)
+   - Mutually exclusive; checkpointCodec V1 schema unchanged.
+2. **Provenance Envelope**:
+   - Optional property `remediationStopProvenance` on the `durable-session-commit-v1` wrapper.
+   - Strictly bound to `sessionId`, `checkpointRevision`, `checkpointPayloadSha256`, and stop metadata.
+   - `fingerprintContract: 'V1'`, `participation: null`.
+3. **Continuation & Bootstrap**:
+   - Missing provenance is explicitly `ABSENT_UNVERIFIED` and fails closed on classification.
+   - Tampered / corrupt provenance causes fatal read failure (`SESSION_COMMIT_CORRUPT`).
+   - Historical inputs are never reconstructed or inferred from mutable runtime state.
+   - Committed attempts and journal entries are never replayed or re-evaluated (`session.attempts === []`).
+   - Stop suppression blocks selection; M4/stable derives `SKIP`.
+4. **Informational Classification**:
+   - `CURRENT_MATCH` (`V1_FINGERPRINT_MATCH`)
+   - `RETRY_ELIGIBLE` (`V1_FINGERPRINT_CHANGED`)
+   - `FAIL_CLOSED` (`INVALID_OR_UNSUPPORTED_COMPARISON`)
+   - All authorization flags (`retryAuthorized`, `resumeAuthorized`, `remediationGenerationAuthorized`,
+     `migrationAuthorized`, `executable`) remain strictly `false`.
 
-## Exact next task — P4d.3g.4c Atomic Wrapper Integration
+## Explicitly disabled capabilities
 
-Integrate the existing transient capture with
-`src/restoration/durableSessionCommitV1.js` and its directly related tests.
-Use `createRemediationStopProvenance`/`verifyRemediationStopProvenance` from
-`src/engines/orchestration/remediationStopProvenance.js`; do not recreate or
-recompute generation inputs from current session configuration.
+- **V2 Generation**: Disabled in the frozen V1 baseline. No V2 digests or domain separation generated for active sessions.
+- **AUTHORED Migration**: Disabled in the frozen V1 baseline. Historical V1 stops cannot be converted to V2 or AUTHORED.
+- **Automatic Retry / Resume**: Disabled in the frozen V1 baseline. Classification results are informational only; no
+  automatic retry, re-execution, or session resumption is permitted.
 
-Required implementation decisions/tests for that task:
+## Known limitations
 
-1. Store optional provenance at the durable wrapper layer, not in
-   `checkpointCodec` V1 fields. Preserve the existing wrapper format and readers'
-   compatibility with wrappers that omit provenance.
-2. At commit, bind the captured stop to the requested session, next checkpoint
-   revision, canonical encoded checkpoint payload SHA-256, and stop metadata in
-   that checkpoint. Confirm the matching committed trigger Attempt ID is present
-   in the checkpoint and aligns with the stop's `triggerAttemptId`.
-3. Verify capture and build provenance before writing the temporary wrapper.
-   Include checkpoint and provenance in the same canonical temporary wrapper
-   bytes and existing fsync/rename replacement; never use a separate provenance
-   file or a second non-atomic write.
-4. On read, verify optional provenance against wrapper session/revision/checkpoint
-   payload digest and checkpoint stop before returning it. Missing provenance
-   on historical wrappers remains explicitly absent/unverified, not reconstructed.
-5. Define fail-closed behavior for malformed/mismatched optional provenance while
-   preserving normal reads of legacy wrappers with no provenance.
-6. Test both stop kinds, exact captured-input preservation, wrong Attempt/session/
-   revision/payload hash/stop bindings, tampered/missing optional fields, historical
-   wrapper compatibility, and injected failures before/after rename. Assert there
-   is no checkpoint/provenance split and no Attempt replay.
-7. Keep checkpoint V1 bytes/fields, Attempt/journal ordering, mastery/Adaptive,
-   no-replay behavior, stop suppression, M4/stable-to-SKIP, and V2-disabled
-   behavior unchanged.
-
-Do not start this next task without confirming the wrapper compatibility/error
-policy in the implementation context. Do not modify bootstrap/continuation unless
-that task's approved scope explicitly expands.
+1. **Optional Provenance Deletion**: Deleting the `remediationStopProvenance` member leaves
+   a valid legacy wrapper that reads as `ABSENT_UNVERIFIED`. The checkpoint payload hash
+   covers `checkpointPayload`, not the optional wrapper envelope.
+2. **Rollback / Historical Snapshotting**: In-place wrapper replacement maintains only the
+   latest committed checkpoint revision; prior revisions are not retained in an append log.
+3. **Authenticity & Non-Repudiation**: Payload SHA-256 proves local snapshot consistency,
+   not cryptographic signing, public-key authentication, or hardware attestation.
+4. **Cross-Store Atomicity**: AttemptStore, SubmitJournal, and CheckpointWrapper writes
+   are individually atomic on filesystem rename, but cross-store synchronization relies
+   on cooperative coordinator locking rather than a multi-resource distributed transaction.
+5. **Operating System Power-Loss Safety**: Exception injection tests (`afterTempFsync`,
+   `afterRename`) verify process-level execution interruption and filesystem directory
+   entry replacement, but do not guarantee safety against power loss or hardware failure.
+6. **Concurrent Multi-Process Writers & Stale Locks**: Process fencing uses lockfile
+   ownership with timeouts (`owner.json`). Stale locks from crashed processes must wait
+   for timeout expiration before acquisition.

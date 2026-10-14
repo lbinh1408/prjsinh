@@ -7,6 +7,40 @@ import { decodeCheckpoint } from "./src/persistence/checkpointCodec.js";
 import { createHash } from "node:crypto";
 import { isDeepStrictEqual } from "node:util";
 import { verifyRemediationStopProvenance } from "./src/engines/orchestration/remediationStopProvenance.js";
+import { classifyRemediationStopV1 } from "./src/engines/orchestration/remediationStopClassifierV1.js";
+
+// Comparison-only adapter. Never supplies historical defaults or changes runtime guards.
+export function classifyBootstrapRemediationStop({ checkpoint, remediationProvenance,
+    dependencies, config, targetNodeId, selectorConstraints } = {}) {
+    const stopKind = checkpoint?.extensions?.remediationGenerationStop ? 'INFEASIBLE'
+        : checkpoint?.extensions?.remediationPolicyErrorStop ? 'POLICY_ERROR' : null;
+    const comparison = { checkpoint, remediationProvenance,
+        comparisonSemantics: { fingerprintContract: 'V1', stopKind, participation: null } };
+    try {
+        const bank = dependencies?.questionBank;
+        const currentGenerationInputs = structuredClone({
+            resolverVersion: PROBE_FEASIBILITY_RESOLVER_VERSION, targetNodeId,
+            bankIdentity: { bankId: bank?.bankId, version: bank?.version }, questionBank: bank,
+            selectorConstraints, config,
+            generationRules: {
+                adaptiveRules: dependencies?.adaptiveRules, adaptivePaths: dependencies?.adaptivePaths,
+                knowledgeMap: dependencies?.knowledgeMap, failureSignatures: dependencies?.failureSignatures,
+                remediationRules: dependencies?.remediationRules
+            }
+        });
+        if (stopKind === 'POLICY_ERROR') {
+            const policy = dependencies?.probeAuthoringPolicy;
+            const signature = Object.keys(policy?.failureSignatureDefaults ?? {}).sort()[0];
+            currentGenerationInputs.policy = resolveProbeAuthoringPolicy({
+                policy, targetNodeId, failureSignature: signature
+            }).canonicalPolicy;
+        }
+        return classifyRemediationStopV1({ ...comparison, currentGenerationInputs });
+    } catch {
+        // Invalid comparison inputs cannot bypass existing preflight/resolver failures.
+        return classifyRemediationStopV1(comparison);
+    }
+}
 
 // Read-only boundary, separate from stop classification and Adaptive initialization.
 // VERIFIED is a transported assertion from durable read, not authenticated attestation.

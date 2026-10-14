@@ -64,6 +64,7 @@ import { getPreviouslyObservedK283QuestionIds, applyK283InitialExclusions, apply
 import {
     bootstrapAdaptiveDecision,
     acceptBootstrapRemediationProvenance,
+    classifyBootstrapRemediationStop,
     resolveBootstrapRemediationGenerationStop,
     restoreBootstrapRemediationGenerationStop,
     resolveBootstrapRemediationPolicyErrorStop,
@@ -1555,6 +1556,11 @@ export function createRuntimeSession(previousProgress = null, probeAuthoringPoli
         dependencies.probeAuthoringPolicy = policyPreflight.policy;
     }
 
+    const remediationStopClassification = classifyBootstrapRemediationStop({
+        checkpoint: previousProgress?.checkpoint, remediationProvenance,
+        dependencies, config, targetNodeId: TARGET_NODE_ID, selectorConstraints: {}
+    });
+
     const studentState =
         previousProgress?.studentState ?? loadStudentState();
 
@@ -1688,7 +1694,7 @@ export function createRuntimeSession(previousProgress = null, probeAuthoringPoli
         restoreBootstrapRemediationPolicyErrorStop(session, remediationPolicyErrorStop);
     }
 
-    return { session, remediationGenerationStop, remediationPolicyErrorStop,
+    return { session, remediationGenerationStop, remediationPolicyErrorStop, remediationStopClassification,
         ...(remediationProvenance === undefined ? {} : { remediationProvenance }) };
 }
 
